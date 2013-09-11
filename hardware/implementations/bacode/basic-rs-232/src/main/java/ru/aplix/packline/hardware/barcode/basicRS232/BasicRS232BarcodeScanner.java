@@ -198,15 +198,25 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 					// and parse strings
 					int endPos = 0;
 					int startPos = 0;
-					for (int i = 0; i < bufferPos - 1; i++) {
-						if ((buffer[i] == 10 && buffer[i + 1] == 13) || (buffer[i] == 13 && buffer[i + 1] == 10)) {
-							endPos = i + 1;
+					for (int i = 0; i < bufferPos; i++) {
+						short thisByte = buffer[i];
+						short nextByte = (i < bufferPos - 1) ? buffer[i + 1] : Short.MIN_VALUE;
 
-							String string = new String(buffer, startPos, endPos - startPos + 1 - 2);
+						int increment = 0;
+						if ((thisByte == 10 && nextByte == 13) || (thisByte == 13 && nextByte == 10)) {
+							increment = 2;
+						} else if ((thisByte == 10) || (thisByte == 13)) {
+							increment = 1;
+						}
+
+						if (increment > 0) {
+							endPos = i;
+							String string = new String(buffer, startPos, endPos - startPos);
 							onReadString(string);
 
-							endPos++;
+							endPos += increment;
 							startPos = endPos;
+							i = startPos;
 						}
 					}
 

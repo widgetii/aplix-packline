@@ -196,7 +196,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 		ordersTableView.setPlaceholder(new Text(getResources().getString("act.noorders")));
 
-		actInfoContainer.prefWidthProperty().bind(((AnchorPane) rootNode).widthProperty().multiply(0.2));
+		actInfoContainer.prefWidthProperty().bind(((AnchorPane) rootNode).widthProperty().multiply(0.25));
 	}
 
 	@Override
