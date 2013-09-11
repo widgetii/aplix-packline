@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<StackPane fx:id="errorPane" prefHeight="150.0" prefWidth="200.0" visible="false" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" text="Label" textAlignment="CENTER" wrapText="true" StackPane.alignment="CENTER">
+      <StackPane.margin>
+        <Insets top="-100.0" />
+      </StackPane.margin>
+    </Label>
+  </children>
+</StackPane>

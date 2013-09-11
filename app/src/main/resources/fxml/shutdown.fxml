@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane fx:id="rootNode" minHeight="202.0" prefHeight="311.0" prefWidth="652.0" styleClass="shutdown-dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.dialog.ShutdownDialogController">
+  <bottom>
+    <AnchorPane prefHeight="75.0" prefWidth="648.0" styleClass="shutdown-dialog-bottom">
+      <children>
+        <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Button cancelButton="true" defaultButton="true" layoutY="20.0" mnemonicParsing="false" onAction="#cancelClick" text="%dialog.cancel" AnchorPane.rightAnchor="60.0" />
+      </children>
+    </AnchorPane>
+  </bottom>
+  <center>
+    <HBox alignment="CENTER" spacing="10.0">
+      <children>
+        <Button alignment="TOP_CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logoffClick" prefHeight="150.0" prefWidth="200.0" styleClass="logoff-button" text="%system.logoff" textAlignment="CENTER" wrapText="true" />
+        <Button alignment="TOP_CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#restartClick" prefHeight="150.0" prefWidth="200.0" styleClass="restart-button" text="%system.restart" textAlignment="CENTER" wrapText="true" />
+        <Button alignment="TOP_CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#poweroffClick" prefHeight="150.0" prefWidth="200.0" styleClass="power-off-button" text="%system.poweroff" textAlignment="CENTER" wrapText="true" />
+      </children>
+      <padding>
+        <Insets top="50.0" />
+      </padding>
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
+    </HBox>
+  </center>
+  <stylesheets>
+    <URL value="@../styles/dialogs.css" />
+  </stylesheets>
+</BorderPane>

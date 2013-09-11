@@ -1,0 +1,36 @@
+package ru.aplix.packline;
+
+import junit.framework.TestCase;
+import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.hardware.barcode.BarcodeScannerFactory;
+import ru.aplix.packline.hardware.camera.PhotoCamera;
+import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
+import ru.aplix.packline.hardware.scales.Scales;
+import ru.aplix.packline.hardware.scales.ScalesFactory;
+
+public class HardwareTest extends TestCase {
+
+    public void testBarcodeScannerFactoty() throws ClassNotFoundException {
+        BarcodeScanner<?> bs = BarcodeScannerFactory.createAnyInstance();
+        assertNotNull(bs);
+
+        bs = BarcodeScannerFactory.createInstance(bs.getName());
+        assertNotNull(bs);
+    }
+
+    public void testPhotoCameraFactoty() throws ClassNotFoundException {
+        PhotoCamera<?> pc = PhotoCameraFactory.createAnyInstance();
+        assertNotNull(pc);
+
+        pc = PhotoCameraFactory.createInstance(pc.getName());
+        assertNotNull(pc);
+    }
+
+    public void testScalesFactoty() throws ClassNotFoundException {
+        Scales<?> sc = ScalesFactory.createAnyInstance();
+        assertNotNull(sc);
+
+        sc = ScalesFactory.createInstance(sc.getName());
+        assertNotNull(sc);
+    }
+}

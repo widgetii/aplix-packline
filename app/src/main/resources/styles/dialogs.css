@@ -1,0 +1,79 @@
+/* Dialogs styles */
+
+.dialog {
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 11, 0.0, 3, 3);
+    -fx-border-color: #3e3e3e;
+}
+
+.dialog .top-panel {
+    -fx-background-color: linear-gradient(#e2e2e2,#e2e2e2,#eeeeee);
+}
+
+.dialog .content-panel {
+    -fx-background-color: linear-gradient(#ffffff,#f3f3f4);
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #b4b4b4 white #b4b4b4 white;
+}
+
+.dialog .label {
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+    -fx-font-family: Verdana;
+	-fx-font-size: 1.11em;
+	-fx-font-weight: normal;
+	-fx-effect: dropshadow(three-pass-box, white, 1, 0, -1, -1);
+}
+
+.button {
+	-fx-font-size: 1.11em;
+	-fx-font-weight: bold;
+}
+
+.separator:horizontal *.line {
+	-fx-border-style: solid;
+}
+
+.shutdown-dialog {
+	-fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 11, 0.0, 3, 3);
+    -fx-border-color: black;
+	-fx-background-image: url("../images/bg_pattern1.png");
+}
+
+.shutdown-dialog-bottom {
+	-fx-background-color: rgba(64, 64, 64, 1.0);
+}
+
+.power-off-button {
+	-fx-graphic: url('../images/btn-power-off.png');
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.power-off-button:pressed:hover {
+	-fx-text-fill: red;
+}
+
+.restart-button {
+	-fx-graphic: url('../images/btn-restart.png');
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.restart-button:pressed:hover {
+	-fx-text-fill: red;
+}
+
+.logoff-button {
+	-fx-graphic: url('../images/btn-log-off.png');
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.logoff-button:pressed:hover {
+	-fx-text-fill: red;
+}

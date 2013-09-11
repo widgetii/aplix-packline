@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="976.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.WeightingOrderController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="590.0" styleClass="action-label" text="%weighting.order.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <HBox id="HBox" alignment="CENTER" prefHeight="337.0" prefWidth="991.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
+                  <children>
+                    <VBox alignment="CENTER_LEFT" prefHeight="338.0" prefWidth="829.0" spacing="20.0">
+                      <children>
+                        <AnchorPane prefHeight="88.0" prefWidth="829.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="33.0" prefWidth="140.0" text="%order.info.weight" />
+                            <Button contentDisplay="TOP" layoutX="727.0" layoutY="-1.0" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
+                            <Label fx:id="weightLabel" layoutY="33.0" prefWidth="470.0" styleClass="measure-label" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="140.0" />
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="orderInfoContainer" prefHeight="200.0" prefWidth="755.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" layoutY="33.0" prefWidth="140.0" text="%order.info.client" AnchorPane.leftAnchor="40.0" />
+                            <Label alignment="CENTER_RIGHT" layoutY="82.0" prefWidth="140.0" text="%order.info.delivery" AnchorPane.leftAnchor="40.0" />
+                            <Label alignment="CENTER_RIGHT" layoutY="133.0" prefWidth="140.0" text="%order.info.customer" AnchorPane.leftAnchor="40.0" />
+                            <Label fx:id="clientLabel" layoutY="33.0" prefWidth="570.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                            <Label fx:id="deliveryLabel" layoutY="82.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                            <Label fx:id="customerLabel" layoutY="133.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                          </children>
+                        </AnchorPane>
+                      </children>
+                      <HBox.margin>
+                        <Insets />
+                      </HBox.margin>
+                    </VBox>
+                  </children>
+                </HBox>
+              </children>
+            </AnchorPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

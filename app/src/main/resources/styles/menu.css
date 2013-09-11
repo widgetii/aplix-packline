@@ -1,0 +1,11 @@
+.menu-item {
+	-fx-padding: 20 20 20 20;
+	-fx-font-size: 1.11em;
+	-fx-font-weight: normal;
+}
+
+.default-menu-item {
+	-fx-padding: 20 20 20 20;
+	-fx-font-size: 1.11em;
+	-fx-font-weight: bold;
+}

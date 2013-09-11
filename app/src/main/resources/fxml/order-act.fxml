@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="953.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.OrderActController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <center>
+                <TableView fx:id="ordersTableView" prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane.margin>
+                    <Insets top="10.0" fx:id="x1" />
+                  </BorderPane.margin>
+                </TableView>
+              </center>
+              <right>
+                <AnchorPane fx:id="actInfoContainer" prefHeight="459.0" prefWidth="300.0" BorderPane.margin="$x1">
+                  <children>
+                    <VBox id="VBox" alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane id="orderInfoContainer" prefHeight="267.0" prefWidth="237.0" VBox.vgrow="ALWAYS">
+                          <children>
+                            <Label id="actInfo" fx:id="actInfoLabel" alignment="TOP_LEFT" prefHeight="151.0" prefWidth="197.0" text="Act Info, Customer Info" wrapText="true" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                            <Label id="ordersTotal" fx:id="totalOrdersLabel" prefHeight="60.0" prefWidth="197.0" text="Total Number of Orders" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                          </children>
+                        </AnchorPane>
+                        <Button mnemonicParsing="false" onAction="#closeActClick" prefHeight="70.0" prefWidth="200.0" styleClass="green-button" text="%button.act.close" textAlignment="CENTER" wrapText="true" />
+                        <Button mnemonicParsing="false" onAction="#saveActClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" text="%button.act.save" textAlignment="CENTER" wrapText="true" />
+                      </children>
+                    </VBox>
+                  </children>
+                  <padding>
+                    <Insets left="20.0" />
+                  </padding>
+                </AnchorPane>
+              </right>
+              <top>
+                <AnchorPane prefHeight="120.0" prefWidth="817.0">
+                  <children>
+                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="action-label" text="%order.act.info" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  </children>
+                </AnchorPane>
+              </top>
+            </BorderPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

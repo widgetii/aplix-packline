@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="217.0" prefHeight="373.0" prefWidth="547.0" styleClass="dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.dialog.ConfirmationDialogController">
+  <children>
+    <AnchorPane prefHeight="79.0" prefWidth="547.0" styleClass="top-panel" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@../images/ic-confirm.png" preserveRatio="false" smooth="false" />
+          </image>
+        </ImageView>
+        <Label fx:id="titleLabel" prefHeight="57.0" prefWidth="482.0" text="Title" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="0.0" />
+      </children>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x1" />
+      </padding>
+    </AnchorPane>
+    <AnchorPane minHeight="121.0" padding="$x1" prefHeight="138.0" prefWidth="547.0" styleClass="content-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+      <children>
+        <Label fx:id="messageLabel" prefHeight="165.0" prefWidth="527.0" text="Message" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+        <HBox alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="521.0" spacing="10.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+          <children>
+            <Button fx:id="yesButton" defaultButton="true" mnemonicParsing="false" onAction="#yesClick" prefHeight="69.0" prefWidth="100.0" text="%dialog.yes" />
+            <Button fx:id="noButton" cancelButton="true" mnemonicParsing="false" onAction="#noClick" prefHeight="69.0" prefWidth="100.0" text="%dialog.no" />
+          </children>
+          <padding>
+            <Insets left="10.0" right="10.0" />
+          </padding>
+        </HBox>
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/dialogs.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<packline version="${project.version}">
+
+	<!-- Hardware connection parameters. -->
+	<Hardware>
+		<BarcodeScanner portName="COM3" portSpeed="57600" enabled="true" />
+		<Scales portName="COM4" enabled="true" />
+		<PhotoCamera hostName="localhost:8080" enabled="true" />
+		<Printers>
+			<Printer />
+		</Printers>
+	</Hardware>
+
+	<!-- Time in seconds to lock the app, if there are no user activity. -->
+	<ActivityMonitor idleTreshold="600" />
+</packline>

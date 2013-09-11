@@ -1,0 +1,236 @@
+/* Application wide styles */
+.root {
+	/*	-fx-background-color: rgba(64, 64, 64, 1.0);*/
+	-fx-background-image: url("../images/bg_pattern2.png");
+}
+
+.label {
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.2em;
+	-fx-font-weight: normal;
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.button {
+	-fx-font-size: 1.125em;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.text-field {
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.4em;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+	-fx-cursor: default;
+}
+
+.text-field:focused {
+	-fx-background-color: -fx-focus-color, -fx-text-box-border, #a3ecfb;
+}
+
+.separator:horizontal *.line {
+	-fx-border-style: solid;
+}
+
+/* Component specific styles */
+.action-label {
+	-fx-font-size: 2.3em;
+	-fx-text-fill: #f1f1f1;
+	-fx-effect: dropshadow(three-pass-box, black, 2, 0, -2, 2);
+}
+
+.measure-label {
+	-fx-text-fill: rgba(0, 225, 55, 1.0);
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+#titleLabel {
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.7em;
+	-fx-font-weight: bold;
+	-fx-text-fill: #c1c1c1;
+	-fx-effect: dropshadow(three-pass-box, black, 2, 0, -2, 2);
+}
+
+#errorLabel {
+	-fx-background-color: rgba(255, 0, 0, 0.7);
+	-fx-background-radius: 10 10 10 10;
+	-fx-border-radius: 10 10 10 10;
+	-fx-padding: 50 50 50 50;
+	-fx-border-style: solid;
+	-fx-border-width: 2;
+	-fx-border-color: yellow;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.startup-pane {
+	-fx-background-color: silver;
+	-fx-background-insets: 20 0 0 0;
+	-fx-effect: innershadow(three-pass-box, black, 10.0, 0.0, 0.0, 0.0);
+}
+
+.startup-pane-logo {
+	-fx-background-image: url("../images/logo-full.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+}
+
+#startupPane .label {
+	-fx-text-fill: black;
+	-fx-effect: dropshadow(three-pass-box, rgba(240, 240, 240, 1.0), 1, 0,
+		-1, -1);
+}
+
+#orderInfoContainer {
+	-fx-background-color: rgba(74, 74, 74, 1.0);
+	-fx-background-radius: 10 10 10 10;
+	-fx-effect: innershadow(three-pass-box, black, 10.0, 0.0, 0.0, 0.0);
+}
+
+.barcode-box-pane-bg {
+	-fx-background-image: url("../images/img-barcode-box.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 0% 100%
+}
+
+.date-time-label {
+	-fx-font-family: Verdana;
+	-fx-font-size: 1em;
+	-fx-font-weight: normal;
+	-fx-text-fill: #c1c1c1;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.shutdown-button {
+	-fx-background-color: transparent;
+	-fx-background-image: url('../images/btn-shutdown-i.png');
+	-fx-background-repeat: stretch;
+	-fx-background-size: 70 70;
+	-fx-background-position: center center;
+}
+
+.shutdown-button:pressed:hover {
+	-fx-background-image: url('../images/btn-shutdown-a.png');
+}
+
+.next-button {
+	-fx-graphic: url('../images/btn-next.png');
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+}
+
+.next-button:pressed:hover {
+	-fx-text-fill: red;
+}
+
+.numpad-button {
+	-fx-font-size: 1.9em;
+	-fx-font-weight: bold;
+}
+
+.numpad-button2 {
+	-fx-font-size: 1.3em;
+	-fx-font-weight: bold;
+}
+
+#boxPackButton {
+	-fx-graphic: url('../images/img-pack-box.png');
+}
+
+#packetPackButon {
+	-fx-graphic: url('../images/img-pack-packet.png');
+}
+
+#paperPackButton {
+	-fx-graphic: url('../images/img-pack-paper.png');
+}
+
+.blue-button {
+	-fx-background-color: #a6b5c9,
+		linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
+		linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%,
+		#4a6c9b 100%);
+	-fx-background-insets: 0 0 -1 0, 0, 1;
+	-fx-background-radius: 5, 5, 4;
+	-fx-padding: 7 30 7 30;
+	-fx-font-family: Verdana;
+	-fx-text-fill: #242d35;
+	-fx-font-size: 1em;
+	-fx-text-fill: white;
+}
+
+.blue-button .text {
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.blue-button:pressed:hover {
+	-fx-background-color: #a6b5c9,
+		linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%,
+		#4a6c9b 100%), linear-gradient(#303842 0%, #3e5577 20%, #375074 100%);
+}
+
+.green-button {
+	-fx-background-color: #a6c9b4,
+		linear-gradient(#304239 0%, #3e775c 20%, #377458 100%),
+		linear-gradient(#76a594 0%, #84bba7 5%, #58a285 50%, #489a7c 51%,
+		#4a9b7c 100%);
+	-fx-background-insets: 0 0 -1 0, 0, 1;
+	-fx-background-radius: 5, 5, 4;
+	-fx-padding: 7 30 7 30;
+	-fx-font-family: Verdana;
+	-fx-text-fill: #242d35;
+	-fx-font-size: 1em;
+	-fx-text-fill: white;
+}
+
+.green-button .text {
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.green-button:pressed:hover {
+	-fx-background-color: #a6b5c9,
+		linear-gradient(#76a594 0%, #84bba7 5%, #58a285 50%, #489a7c 51%,
+		#4a9b7c 100%), linear-gradient(#304239 0%, #3e775c 20%, #377458 100%);
+}
+
+#deleteButton {
+	-fx-background-color: transparent;
+	-fx-background-image: url('../images/btn-delete-i.png');
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+}
+
+#deleteButton:pressed:hover {
+	-fx-background-image: url('../images/btn-delete-a.png');
+}
+
+#ordersTableView .column-header .label {
+	-fx-text-fill: black;
+	-fx-effect: dropshadow(three-pass-box, rgba(240, 240, 240, 1.0), 1, 0,
+		-1, -1);
+	-fx-padding: 10 0 10 0;	
+	-fx-wrap-text: true;
+}
+
+#ordersTableView .table-cell {
+	-fx-alignment: CENTER;
+	-fx-text-alignment: CENTER;
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.22em;
+	-fx-font-weight: normal;
+	-fx-text-fill: black;
+	-fx-wrap-text: true;
+}
+
+#ordersTableView .scroll-bar:vertical {
+	-fx-font-size: 4em;
+}
+
+#ordersTableView .scroll-bar:vertical .thumb {
+	-fx-background-radius: 0;
+}
+
+#ordersTableView .scroll-bar:vertical .track {
+	-fx-background-radius: 0;
+}

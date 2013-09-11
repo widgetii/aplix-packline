@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<alias alias="firstWorkflowAction" name="action1" />
+	<alias alias="startWorkflowAction" name="action2" />
+
+	<bean id="action1" class="ru.aplix.packline.action.AuthAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="action2" class="ru.aplix.packline.action.ReadBarcodeOrderAction">
+		<property name="acceptanceAction" ref="action3" />
+		<property name="packingAction" ref="action6" />
+		<property name="markingAction" ref="action9" />
+	</bean>
+
+	<bean id="action3" class="ru.aplix.packline.action.WeightingOrderAction">
+		<property name="nextAction" ref="action4" />
+	</bean>
+
+	<bean id="action4" class="ru.aplix.packline.action.PhotoAction">
+		<property name="nextAction" ref="action5" />
+	</bean>
+	
+	<bean id="action5" class="ru.aplix.packline.action.OrderActAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="action6" class="ru.aplix.packline.action.PackTypeAction">
+		<property name="barcodeAction" ref="action7" />
+		<property name="dimentionAction" ref="action8" />
+	</bean>
+
+	<bean id="action7" class="ru.aplix.packline.action.ReadBarcodeBoxAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="action8" class="ru.aplix.packline.action.DimentionsAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="action9" class="ru.aplix.packline.action.WeightingBoxAction">
+		<property name="nextAction" ref="action10" />
+	</bean>
+
+	<bean id="action10" class="ru.aplix.packline.action.PrintFormsAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+</beans>

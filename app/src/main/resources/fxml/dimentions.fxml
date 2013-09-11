@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.000199999995" prefWidth="995.999800000005" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.DimentionsController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="719.0" styleClass="action-label" text="%dimentions.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <VBox id="VBox" alignment="CENTER" fillWidth="false" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+                  <children>
+                    <HBox id="HBox" alignment="CENTER" fillHeight="false" prefHeight="499.0" prefWidth="924.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                      <children>
+                        <Pane prefHeight="499.0" prefWidth="879.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="163.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.length" />
+                            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="237.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.height" />
+                            <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="312.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.width" />
+                            <TextField fx:id="lengthEdit" layoutX="190.0" layoutY="163.0" prefHeight="49.94140625" prefWidth="150.0" />
+                            <TextField fx:id="heightEdit" layoutX="190.0" layoutY="238.0" prefHeight="49.94140625" prefWidth="150.0" />
+                            <TextField fx:id="widthEdit" layoutX="190.0" layoutY="312.0" prefHeight="49.94140625" prefWidth="150.0" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="395.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord7Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="7" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="504.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord8Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="8" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="613.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord9Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="9" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="395.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybord4Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="4" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="504.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybord5Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="5" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="613.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybord6Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="6" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="395.0" layoutY="262.0" mnemonicParsing="false" onAction="#numericKeybord1Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="1" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="504.0" layoutY="262.0" mnemonicParsing="false" onAction="#numericKeybord2Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="2" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="613.0" layoutY="262.0" mnemonicParsing="false" onAction="#numericKeybord3Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="3" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="395.0" layoutY="373.0" mnemonicParsing="false" onAction="#numericKeybord0Click" prefHeight="100.0" prefWidth="208.0" styleClass="numpad-button" text="0" textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="613.0" layoutY="373.0" mnemonicParsing="false" onAction="#numericKeybordDotClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="." textAlignment="CENTER" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="262.0" mnemonicParsing="false" onAction="#numericKeybordEnterClick" prefHeight="210.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.enter" textAlignment="CENTER" wrapText="true" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybordClearClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.clear" textAlignment="CENTER" wrapText="true" />
+                            <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybordBackClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.back" textAlignment="CENTER" wrapText="true" />
+                          </children>
+                        </Pane>
+                      </children>
+                      <VBox.margin>
+                        <Insets />
+                      </VBox.margin>
+                    </HBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>
