@@ -37,7 +37,7 @@ do
     fi
 done 
 
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true"
 
 #--------------------------------------------
 #  gather command line arguments

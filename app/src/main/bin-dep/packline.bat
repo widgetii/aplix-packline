@@ -17,7 +17,7 @@ set APP_CONFIG=%RESOLVED_APP_HOME%\conf\packline.xconf
 
 for %%l in (%JARFILE% %LIBDIR%\*.jar) do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
 
-set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger
+set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true
 
 @rem --------------------------------------------
 @rem  gather command line arguments
