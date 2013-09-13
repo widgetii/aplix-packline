@@ -13,16 +13,16 @@ public class AuthAction extends WorkflowActionWithUserActivityMonitor<AuthContro
 
 	public Operator authenticateOperator(String code) {
 		// TODO: place authentication code here
-		if ("0036000291452".equals(code)) {
+		if ("4627085462743".equals(code)) {
 			Operator operator = new Operator();
 			operator.setId(1L);
-			operator.setName("Василий Теркин");
+			operator.setName("Ильин ДВ");
 			operator.setCode(code);
 			return operator;
-		} else if ("8007141009277".equals(code)) {
+		} else if ("4627085462750".equals(code)) {
 			Operator operator = new Operator();
 			operator.setId(2L);
-			operator.setName("Михаил Лихачев");
+			operator.setName("Палагин СА");
 			operator.setCode(code);
 			return operator;
 		} else if ("9780140318296".equals(code)) {

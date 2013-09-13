@@ -18,6 +18,12 @@ public class RS232Configuration implements BarcodeScannerConfiguration {
 	@XmlAttribute(name = "enabled")
 	private boolean enabled;
 
+	public RS232Configuration() {
+		portName = "COM1";
+		portSpeed = 57600;
+		enabled = true;
+	}
+
 	public String getPortName() {
 		return portName;
 	}

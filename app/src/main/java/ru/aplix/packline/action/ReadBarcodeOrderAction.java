@@ -44,7 +44,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 
 	public Order processBarcode(String code) {
 		// TODO: place processing code here
-		if ("0123456789012".equals(code)) {
+		if ("008002".equals(code)) {
 			Order order = new Order();
 			order.setId(1L);
 			order.setCode(code);
@@ -55,7 +55,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 
 			setNextAction(getAcceptanceAction());
 			return order;
-		} else if ("0008888176770".equals(code)) {
+		} else if ("010932".equals(code)) {
 			Order order = new Order();
 			order.setId(2L);
 			order.setCode(code);
@@ -66,7 +66,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 
 			setNextAction(getPackingAction());
 			return order;
-		} else if ("640509-040147".equals(code)) {
+		} else if ("70001792".equals(code)) {
 			Order order = new Order();
 			order.setId(3L);
 			order.setCode(code);
@@ -78,7 +78,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			Packing packing = new Packing();
 			packing.setPackingId(1L);
 			packing.setPackingCode("1234567890");
-			packing.setPackingType(PackingType.PACKET);
+			packing.setPackingType(PackingType.BOX);
 			packing.setPackingSize(new PackingSize(100f, 90f, 20f));
 			order.setPacking(packing);
 

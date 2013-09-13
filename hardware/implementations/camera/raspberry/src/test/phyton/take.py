@@ -1,20 +1,20 @@
-import sys, logging
+import sys, logging, random
 
 logging.basicConfig(filename='d:\camera.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 print 'Content-Type: text/plain'
 print ''
 
-print 'Camera controller'
-print '-----------------'
-print ''
-
 if len(sys.argv) < 2:
-	print 'No guid has been specified.'
+	print 'ERROR: No guid has been specified'
 	sys.exit(0)
 	
-imageGUID = sys.argv[1]
-logMsg = 'Image GUID: ' + imageGUID
-print logMsg
-logging.debug(logMsg);
+rNum = random.randrange(0,1+1)
+if rNum == 0:
+	imageGUID = sys.argv[1]
+	logMsg = 'Image GUID: ' + imageGUID
+	logging.debug(logMsg);
 
+	print 'OK'
+else:
+	print 'BUSY'

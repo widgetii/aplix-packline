@@ -10,7 +10,7 @@ public class OrderActAction extends CommonAction<OrderActController> {
 	}
 
 	public boolean processBarcode(String code) {
-		if ("0123456789012".equals(code)) {
+		if ("008002".equals(code)) {
 			return true;
 		} else
 			return false;

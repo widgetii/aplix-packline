@@ -17,6 +17,12 @@ public class RS232Configuration implements ScalesConfiguration {
     private int portSpeed;
     @XmlAttribute(name = "enabled")
     private boolean enabled;
+    
+    public RS232Configuration() {
+		portName = "COM1";
+		portSpeed = 14400;
+		enabled = true;
+	}
 
     public String getPortName() {
         return portName;

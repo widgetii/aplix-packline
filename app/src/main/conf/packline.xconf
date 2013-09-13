@@ -5,7 +5,7 @@
 	<Hardware>
 		<BarcodeScanner portName="COM3" portSpeed="57600" enabled="true" />
 		<Scales portName="COM4" enabled="true" />
-		<PhotoCamera hostName="localhost:8080" enabled="true" />
+		<PhotoCamera hostName="localhost:8080" timeout="20000" enabled="true" />
 		<Printers>
 			<Printer />
 		</Printers>
