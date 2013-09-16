@@ -85,6 +85,7 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 							serialPort.addEventListener(new BarcodeSerialPortEventListener());
 							serialPort.notifyOnDataAvailable(true);
 							serialPort.setSerialPortParams(configuration.getPortSpeed(), SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 
 							isConnected = true;
 						}
@@ -185,6 +186,10 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 					// Add incoming data to our buffer
 					int readLenght = Math.min(buffer.length - bufferPos, inputStream.available());
 					int bytesReaded = inputStream.read(buffer, bufferPos, readLenght);
+					if (bytesReaded <= 0) {
+						break;
+					}
+
 					bufferPos += bytesReaded;
 
 					// If buffer is not enough for data available,
@@ -212,7 +217,9 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 						if (increment > 0) {
 							endPos = i;
 							String string = new String(buffer, startPos, endPos - startPos);
-							onReadString(string);
+							if (string != null && string.length() > 0) {
+								onReadString(string);
+							}
 
 							endPos += increment;
 							startPos = endPos;

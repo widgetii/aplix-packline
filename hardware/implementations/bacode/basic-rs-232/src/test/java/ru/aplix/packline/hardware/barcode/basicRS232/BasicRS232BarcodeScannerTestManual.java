@@ -37,7 +37,7 @@ public class BasicRS232BarcodeScannerTestManual {
 
 			RS232Configuration configuration = new RS232Configuration();
 			configuration.setPortName(portName);
-			configuration.setPortSpeed(57600);
+			configuration.setPortSpeed(115200);
 			configuration.setEnabled(true);
 
 			BasicRS232BarcodeScanner scanner = new BasicRS232BarcodeScanner();
