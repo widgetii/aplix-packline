@@ -8,20 +8,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerConfiguration;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "BarcodeScanner")
+@XmlRootElement(name = "Configuration")
 public class RS232Configuration implements BarcodeScannerConfiguration {
 
 	@XmlAttribute(name = "portName")
 	private String portName;
 	@XmlAttribute(name = "portSpeed")
 	private int portSpeed;
-	@XmlAttribute(name = "enabled")
-	private boolean enabled;
+	@XmlAttribute(name = "timeout")
+	private int timeout;
 
 	public RS232Configuration() {
 		portName = "COM1";
 		portSpeed = 57600;
-		enabled = true;
+		timeout = 200;
 	}
 
 	public String getPortName() {
@@ -40,11 +40,11 @@ public class RS232Configuration implements BarcodeScannerConfiguration {
 		this.portSpeed = portSpeed;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public int getTimeout() {
+		return timeout;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
 	}
 }

@@ -16,12 +16,15 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.context.ApplicationContext;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.dialog.ManualInputDialog;
+import ru.aplix.packline.dialog.ManualInputListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.idle.WorkflowActionWithUserActivityMonitor;
 import ru.aplix.packline.workflow.StandardWorkflowController;
@@ -31,7 +34,7 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 
 	private Timeline logoImageMousePressedTimeline;
 	private int logoImageMousePressedCount;
-
+	private Parent rootNode;
 	private ContextMenu contextMenu = null;
 	private boolean skipClick;
 
@@ -53,6 +56,7 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	@Override
 	protected void onFormLoaded(Parent rootNode, final ResourceBundle resources) {
 		super.onFormLoaded(rootNode, resources);
+		this.rootNode = rootNode;
 
 		// Add mouse handlers for logoImage
 		final ImageView logoImage = (ImageView) rootNode.lookup("#logoImage");
@@ -117,19 +121,19 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		MenuItem itemBarcode = null;
 		if (getController() instanceof BarcodeListener) {
 			itemBarcode = new MenuItem(resources.getString("menu.input.barcode"));
-			itemBarcode.setStyle(menuItemStyle);
-			itemBarcode.setDisable(true);
+			itemBarcode.setStyle(menuItemStyle2);
 			itemBarcode.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
+					manualBarcodeInput();
 				}
 			});
 		}
 
 		MenuItem itemMarkers = new MenuItem(resources.getString("menu.markers"));
 		itemMarkers.setStyle(menuItemStyle2);
-		itemMarkers.setDisable(true);
 		itemMarkers.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
+				generateStickers();
 			}
 		});
 
@@ -158,5 +162,26 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.START_WORKFLOW_ACTION_BEAN_NAME);
 		wa.execute(getContext());
+	}
+
+	private void generateStickers() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void manualBarcodeInput() {
+		Window owner = rootNode.getScene().getWindow();
+		ManualInputDialog mid = new ManualInputDialog(owner, new ManualInputListener() {
+			@Override
+			public void onTextInput(String value) {
+				if (getController() instanceof BarcodeListener) {
+					BarcodeListener bl = (BarcodeListener) getController();
+					bl.onCatchBarcode(value);
+				}
+			}
+		});
+		mid.centerOnScreen();
+		mid.show();
 	}
 }

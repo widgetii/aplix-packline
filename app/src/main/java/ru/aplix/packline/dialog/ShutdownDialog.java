@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import ru.aplix.packline.utils.Utils;
 
 public class ShutdownDialog extends Stage {
 
@@ -28,6 +29,11 @@ public class ShutdownDialog extends Stage {
 			loader.setLocation(getClass().getResource(fxmlName));
 			loader.setResources(ResourceBundle.getBundle("resources.messages.strings"));
 			Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlName));
+
+			if (Utils.isJ2DPipelineUsed) {
+				rootNode.getStylesheets().clear();
+				rootNode.getStylesheets().add(getClass().getResource("/resources/styles-lg/dialogs.css").toExternalForm());
+			}
 
 			ShutdownDialogController sfc = (ShutdownDialogController) loader.getController();
 			sfc.setAnotherOwner(owner);

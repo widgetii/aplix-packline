@@ -38,7 +38,6 @@ public class BasicRS232BarcodeScannerTestManual {
 			RS232Configuration configuration = new RS232Configuration();
 			configuration.setPortName(portName);
 			configuration.setPortSpeed(115200);
-			configuration.setEnabled(true);
 
 			BasicRS232BarcodeScanner scanner = new BasicRS232BarcodeScanner();
 			scanner.setConfiguration(configuration);
@@ -50,14 +49,17 @@ public class BasicRS232BarcodeScannerTestManual {
 			scanner.addConnectionListener(new BarcodeScannerConnectionListener() {
 				public void onConnected() {
 					connectLatch.countDown();
+					System.out.println("Connected.");
 				}
 
 				public void onDisconnected() {
 					connectLatch.countDown();
+					System.out.println("Disconnected.");
 				}
 
 				public void onConnectionFailed() {
 					connectLatch.countDown();
+					System.out.println("Connection failed.");
 				}
 			});
 
@@ -65,7 +67,6 @@ public class BasicRS232BarcodeScannerTestManual {
 			scanner.connect();
 			connectLatch.await();
 			if (scanner.isConnected()) {
-				System.out.println("Connected");
 				waitForEnter();
 				scanner.disconnect();
 			}

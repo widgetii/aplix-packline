@@ -51,4 +51,7 @@
 		<property name="nextAction" ref="action2" />
 	</bean>
 
+	<bean id="genStickAction" class="ru.aplix.packline.action.GenStickAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
 </beans>

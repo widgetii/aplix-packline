@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.utils.Utils;
 
 @SuppressWarnings("rawtypes")
 public abstract class StandardWorkflowAction<Controller extends StandardWorkflowController> implements WorkflowAction, DoneListener {
@@ -87,6 +88,8 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 			}
 		} catch (IOException e) {
 			LOG.error(e);
+		} catch (SkipActionException sae) {
+			done();
 		}
 	}
 
@@ -105,6 +108,11 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 			Rectangle2D screenBounds = (Rectangle2D) getContext().getAttribute(Const.SCREEN_BOUNDS);
 			region.setPrefWidth(screenBounds.getWidth());
 			region.setPrefHeight(screenBounds.getHeight());
+		}
+
+		if (Utils.isJ2DPipelineUsed) {
+			rootNode.getStylesheets().clear();
+			rootNode.getStylesheets().add(getClass().getResource("/resources/styles-lg/styles.css").toExternalForm());
 		}
 	}
 }

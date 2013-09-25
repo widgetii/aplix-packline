@@ -76,7 +76,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
 
-	private BarcodeScanner<?> barcodeScanner;
+	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
@@ -115,9 +115,10 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
-		barcodeScanner.addBarcodeListener(this);
-
-		barcodeChecker.playFromStart();
+		if (barcodeScanner != null) {
+			barcodeScanner.addBarcodeListener(this);
+			barcodeChecker.playFromStart();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -201,8 +202,10 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 	@Override
 	public void terminate() {
-		barcodeChecker.stop();
-		barcodeScanner.removeBarcodeListener(this);
+		if (barcodeScanner != null) {
+			barcodeChecker.stop();
+			barcodeScanner.removeBarcodeListener(this);
+		}
 	}
 
 	public void closeActClick(ActionEvent event) {
@@ -239,6 +242,9 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		}
 	}
 
+	/**
+	 *
+	 */
 	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
 
 		private int delayCount;
@@ -251,7 +257,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		@Override
 		public void handle(ActionEvent event) {
 			if (delayCount <= 1) {
-				if (barcodeScanner.isConnected()) {
+				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
 					errorMessageProperty.set(null);
 					errorVisibleProperty.set(false);
 				} else {
@@ -268,7 +274,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		}
 
 		public void reset() {
-			delayCount = 5;
+			delayCount = Const.ERROR_DISPLAY_DELAY;
 		}
 	}
 

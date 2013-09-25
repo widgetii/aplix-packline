@@ -1,11 +1,8 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,10 +10,13 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.action.WeightingOrderAction;
+import ru.aplix.packline.hardware.scales.MeasurementListener;
+import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.model.Order;
+import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
-public class WeightingOrderController extends StandardController<WeightingOrderAction> {
+public class WeightingOrderController extends StandardController<WeightingOrderAction> implements MeasurementListener {
 
 	@FXML
 	private Label clientLabel;
@@ -26,25 +26,19 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	private Label customerLabel;
 	@FXML
 	private Label weightLabel;
-	
+
 	private float measure = 0f;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
+	private Scales<?> scales = null;
+	private Timeline scalesChecker;
+	private ScalesCheckerEventHandler scalesCheckerEventHandler;
 
-		final Random random = new Random();
+	public WeightingOrderController() {
+		scalesCheckerEventHandler = new ScalesCheckerEventHandler();
 
-		Timeline timeline = new Timeline();
-		timeline.setCycleCount(Timeline.INDEFINITE);
-		timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.5), new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				measure = 10f + random.nextFloat() * 1f;
-				weightLabel.setText(String.format("%.3f", measure));
-			}
-		}));
-		timeline.playFromStart();
+		scalesChecker = new Timeline();
+		scalesChecker.setCycleCount(Timeline.INDEFINITE);
+		scalesChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), scalesCheckerEventHandler));
 	}
 
 	@Override
@@ -52,19 +46,88 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		super.prepare(context);
 
 		Order order = (Order) context.getAttribute(Const.ORDER);
+		if (order != null) {
+			clientLabel.setText(order.getClient());
+			deliveryLabel.setText(order.getDeliveryMethod());
+			customerLabel.setText(order.getCustomer());
+		}
 
-		clientLabel.setText(order.getClient());
-		deliveryLabel.setText(order.getDeliveryMethod());
-		customerLabel.setText(order.getCustomer());
+		errorMessageProperty.set(null);
+		errorVisibleProperty.set(false);
+
+		updateMeasure(0f);
+
+		scales = (Scales<?>) context.getAttribute(Const.SCALES);
+		if (scales != null) {
+			scales.addMeasurementListener(this);
+			scalesChecker.playFromStart();
+		} else {
+			throw new SkipActionException();
+		}
 	}
 
 	@Override
 	public void terminate() {
+		if (scales != null) {
+			scalesChecker.stop();
+			scales.removeMeasurementListener(this);
+		}
 	}
 
 	public void nextClick(ActionEvent event) {
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
 		getAction().processMeasure(measure, order);
 		done();
+	}
+
+	@Override
+	public void onMeasure(final Float value) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				updateMeasure(value);
+			}
+		});
+	}
+
+	private void updateMeasure(Float value) {
+		measure = value;
+		weightLabel.setText(String.format("%.3f", measure));
+	}
+
+	/**
+	 *
+	 */
+	private class ScalesCheckerEventHandler implements EventHandler<ActionEvent> {
+
+		private int delayCount;
+		private String errorStr;
+
+		public ScalesCheckerEventHandler() {
+			reset();
+		}
+
+		@Override
+		public void handle(ActionEvent event) {
+			if (delayCount <= 1) {
+				if ((scales != null) && scales.isConnected()) {
+					errorMessageProperty.set(null);
+					errorVisibleProperty.set(false);
+				} else {
+					if (errorStr == null) {
+						errorStr = WeightingOrderController.this.getResources().getString("error.scales");
+					}
+
+					errorMessageProperty.set(errorStr);
+					errorVisibleProperty.set(true);
+				}
+			} else {
+				delayCount--;
+			}
+		}
+
+		public void reset() {
+			delayCount = Const.ERROR_DISPLAY_DELAY;
+		}
 	}
 }

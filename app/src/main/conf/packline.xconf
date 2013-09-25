@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <packline version="${project.version}">
 
-	<!-- Hardware connection parameters. -->
-	<Hardware>
-		<BarcodeScanner portName="COM3" portSpeed="57600" enabled="true" />
-		<Scales portName="COM4" enabled="true" />
-		<PhotoCamera hostName="localhost:8080" timeout="20000" enabled="true" />
+	<!-- Hardware connection parameters -->
+	<!-- 	"reconnect" - the interval in seconds to reconnect to device if connection has failed -->
+	<Hardware reconnect="5">
+
+		<!-- Barcode scanner driver -->
+		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="true" >
+			<!-- "portName"  - port name, for example "COM1" or "/dev/tty0"                      -->
+			<!-- "portSpeed" - port speed (optional), for example 57600                          -->
+			<!-- "timeout"   - receiver timeout in milliseconds (optional), for example 2000     -->
+			<Configuration portName="COM4"/>				
+		</BarcodeScanner>
+		
+		<!-- Scales driver -->
+		<!-- Available drivers: MeraScalesAuto, MeraScalesByte9 -->
+		<Scales name="MeraScalesByte9" enabled="true" >
+			<!-- "portName"     - port name, for example "COM1" or "/dev/tty0"                   -->
+			<!-- "readTimeout"  - receiver timeout in milliseconds (optional), for example 2000  -->
+			<!-- "writeTimeout" - transmitter timeout in milliseconds (optional), for example 20 -->
+			<Configuration portName="COM5" />
+		</Scales>
+		
+		<!-- Photo Camera driver -->
+		<PhotoCamera name="RaspberryCamera" enabled="true" >
+			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      -->
+			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 -->
+			<Configuration hostName="localhost:8080" />			
+		</PhotoCamera>
+	
 		<Printers>
 			<Printer />
 		</Printers>
 	</Hardware>
 
-	<!-- Time in seconds to lock the app, if there are no user activity. -->
+	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleTreshold="600" />
 </packline>

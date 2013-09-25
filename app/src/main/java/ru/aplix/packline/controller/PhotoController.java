@@ -17,6 +17,7 @@ import ru.aplix.packline.hardware.camera.ImageListener;
 import ru.aplix.packline.hardware.camera.PhotoCamera;
 import ru.aplix.packline.hardware.camera.PhotoCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.PhotoCameraImage;
+import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class PhotoController extends StandardController<PhotoAction> {
@@ -36,18 +37,20 @@ public class PhotoController extends StandardController<PhotoAction> {
 		errorVisibleProperty.set(false);
 
 		PhotoCamera<?> pc = (PhotoCamera<?>) context.getAttribute(Const.PHOTO_CAMERA);
-
-		photoTask = new PhotoTask(pc);
-		new Thread(photoTask).start();
+		if (pc != null) {
+			photoTask = new PhotoTask(pc);
+			new Thread(photoTask).start();
+		} else {
+			throw new SkipActionException();
+		}
 	}
 
 	@Override
 	public void terminate() {
-		photoTask.cancel(false);
-	}
-
-	private void imageAcquired(PhotoCameraImage result) {
-		// TODO: place image processing logic here
+		if (photoTask != null) {
+			photoTask.cancel(false);
+			photoTask = null;
+		}
 	}
 
 	/**
@@ -72,10 +75,6 @@ public class PhotoController extends StandardController<PhotoAction> {
 
 		@Override
 		public Void call() {
-			if (!photoCamera.getConfiguration().isEnabled()) {
-				return null;
-			}
-
 			try {
 				boolean waitForConnection = !photoCamera.isConnected();
 
@@ -101,7 +100,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 							}
 						});
 
-						terminateLatch.await(5, TimeUnit.SECONDS);
+						terminateLatch.await(Const.ERROR_DISPLAY_DELAY, TimeUnit.SECONDS);
 					}
 				} finally {
 					photoCamera.removeConnectionListener(this);
@@ -133,7 +132,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 			super.succeeded();
 
 			if (result != null) {
-				imageAcquired(result);
+				getAction().imageAcquired(result);
 			}
 
 			progressIndicator.setVisible(false);

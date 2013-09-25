@@ -1,6 +1,8 @@
 package ru.aplix.packline.hardware.scales;
 
-public interface Scales<C extends ScalesConfiguration> {
+import ru.aplix.packline.hardware.Connectable;
+
+public interface Scales<C extends ScalesConfiguration> extends Connectable {
 
     String getName();
 
@@ -9,12 +11,6 @@ public interface Scales<C extends ScalesConfiguration> {
     void setConfiguration(C config) throws IllegalArgumentException;
 
     C getConfiguration();
-
-    void connect();
-
-    void disconnect();
-
-    boolean isConnected();
 
     void setConnectOnDemand(boolean value);
 

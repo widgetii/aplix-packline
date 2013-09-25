@@ -27,6 +27,6 @@ public class PhotoCameraFactory {
 				return bs;
 			}
 		}
-		throw new ClassNotFoundException();
+		throw new ClassNotFoundException(name);
 	}
 }

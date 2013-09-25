@@ -20,9 +20,25 @@ fi
 # Change dir to script dir
 RESOLVED_APP_HOME=`cd "$SCRIPTDIR/.."; pwd`
 
+# Determine OS type and processor architecture
+case "$OSTYPE" in
+  darwin*)
+    ARCH=mac
+    ;;
+  *)
+    # Linux OS detected, determine processrot architecture
+    if $(uname -p | grep 'i686'); then
+	ARCH=linux-i686
+    else
+	ARCH=linux-x86-64
+    fi
+    ;;
+esac
+
 JARFILE=$RESOLVED_APP_HOME/bin/packline.jar
 LIBDIR=$RESOLVED_APP_HOME/lib/*.jar
 APP_CONFIG=$RESOLVED_APP_HOME/conf/packline.xconf
+RXTX_LIBS=$RESOLVED_APP_HOME/lib/rxtx/$ARCH
 
 LOCALCLASSPATH=$JARFILE
 for i in ${LIBDIR}
@@ -37,7 +53,7 @@ do
     fi
 done 
 
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS"
 
 #--------------------------------------------
 #  gather command line arguments

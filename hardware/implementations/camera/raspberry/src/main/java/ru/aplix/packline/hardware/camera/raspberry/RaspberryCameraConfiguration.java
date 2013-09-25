@@ -8,20 +8,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 import ru.aplix.packline.hardware.camera.PhotoCameraConfiguration;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "PhotoCamera")
+@XmlRootElement(name = "Configuration")
 public class RaspberryCameraConfiguration implements PhotoCameraConfiguration {
 
 	@XmlAttribute(name = "hostName")
 	private String hostName;
 	@XmlAttribute(name = "timeout")
 	private int timeout;
-	@XmlAttribute(name = "enabled")
-	private boolean enabled;
 
 	public RaspberryCameraConfiguration() {
 		hostName = "localhost";
 		timeout = 20000;
-		enabled = true;
 	}
 
 	public String getHostName() {
@@ -38,13 +35,5 @@ public class RaspberryCameraConfiguration implements PhotoCameraConfiguration {
 
 	public void setTimeout(int timeout) {
 		this.timeout = timeout;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 }

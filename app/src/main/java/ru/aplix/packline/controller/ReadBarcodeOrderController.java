@@ -15,7 +15,7 @@ import ru.aplix.packline.workflow.WorkflowContext;
 
 public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOrderAction> implements BarcodeListener {
 
-	private BarcodeScanner<?> barcodeScanner;
+	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
@@ -35,9 +35,10 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
-		barcodeScanner.addBarcodeListener(this);
-
-		barcodeChecker.playFromStart();
+		if (barcodeScanner != null) {
+			barcodeScanner.addBarcodeListener(this);
+			barcodeChecker.playFromStart();
+		}
 
 		final String barcode = (String) getContext().getAttribute(Const.JUST_SCANNED_BARCODE);
 		if (barcode != null) {
@@ -53,8 +54,10 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 	@Override
 	public void terminate() {
-		barcodeChecker.stop();
-		barcodeScanner.removeBarcodeListener(this);
+		if (barcodeScanner != null) {
+			barcodeChecker.stop();
+			barcodeScanner.removeBarcodeListener(this);
+		}
 	}
 
 	@Override
@@ -93,7 +96,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		@Override
 		public void handle(ActionEvent event) {
 			if (delayCount <= 1) {
-				if (barcodeScanner.isConnected()) {
+				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
 					errorMessageProperty.set(null);
 					errorVisibleProperty.set(false);
 				} else {
@@ -110,7 +113,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		}
 
 		public void reset() {
-			delayCount = 5;
+			delayCount = Const.ERROR_DISPLAY_DELAY;
 		}
 	}
 }

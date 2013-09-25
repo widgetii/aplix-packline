@@ -1,6 +1,8 @@
 package ru.aplix.packline.hardware.barcode;
 
-public interface BarcodeScanner<C extends BarcodeScannerConfiguration> {
+import ru.aplix.packline.hardware.Connectable;
+
+public interface BarcodeScanner<C extends BarcodeScannerConfiguration> extends Connectable {
 
 	String getName();
 
@@ -9,16 +11,10 @@ public interface BarcodeScanner<C extends BarcodeScannerConfiguration> {
 	void setConfiguration(C config) throws IllegalArgumentException;
 
 	C getConfiguration();
-
-	void connect();
-
-	void disconnect();
-
-	boolean isConnected();
-
+	
 	void setConnectOnDemand(boolean value);
 
-	boolean getConnectOnDemand();
+    boolean getConnectOnDemand();
 
 	void addBarcodeListener(BarcodeListener listener);
 

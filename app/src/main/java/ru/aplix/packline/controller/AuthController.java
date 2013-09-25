@@ -15,7 +15,7 @@ import ru.aplix.packline.workflow.WorkflowContext;
 
 public class AuthController extends StandardController<AuthAction> implements BarcodeListener {
 
-	private BarcodeScanner<?> barcodeScanner;
+	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
@@ -36,15 +36,18 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
-		barcodeScanner.addBarcodeListener(this);
-
-		barcodeChecker.playFromStart();
+		if (barcodeScanner != null) {
+			barcodeScanner.addBarcodeListener(this);
+			barcodeChecker.playFromStart();
+		}
 	}
 
 	@Override
 	public void terminate() {
-		barcodeChecker.stop();
-		barcodeScanner.removeBarcodeListener(this);
+		if (barcodeScanner != null) {
+			barcodeChecker.stop();
+			barcodeScanner.removeBarcodeListener(this);
+		}
 	}
 
 	@Override
@@ -83,7 +86,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		@Override
 		public void handle(ActionEvent event) {
 			if (delayCount <= 1) {
-				if (barcodeScanner.isConnected()) {
+				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
 					errorMessageProperty.set(null);
 					errorVisibleProperty.set(false);
 				} else {
@@ -100,7 +103,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		}
 
 		public void reset() {
-			delayCount = 5;
+			delayCount = Const.ERROR_DISPLAY_DELAY;
 		}
 	}
 }

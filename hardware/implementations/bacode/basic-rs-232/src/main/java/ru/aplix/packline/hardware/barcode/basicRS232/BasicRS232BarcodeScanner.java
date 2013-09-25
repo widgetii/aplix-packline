@@ -1,11 +1,17 @@
 package ru.aplix.packline.hardware.barcode.basicRS232;
 
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.xml.bind.JAXBContext;
@@ -15,10 +21,6 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import purejavacomm.CommPortIdentifier;
-import purejavacomm.SerialPort;
-import purejavacomm.SerialPortEvent;
-import purejavacomm.SerialPortEventListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerConnectionListener;
@@ -28,6 +30,7 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private ReentrantLock connectionLock;
+	private CountDownLatch connectLatch = null;
 	private SerialPort serialPort;
 	private volatile boolean isConnected = false;
 
@@ -72,6 +75,8 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 	public void connect() {
 		new Thread(new Runnable() {
 			public void run() {
+				BarcodeSerialPortEventListener bspl = null;
+
 				connectionLock.lock();
 				try {
 					try {
@@ -81,11 +86,14 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
 							}
 
+							connectLatch = new CountDownLatch(1);
+
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
-							serialPort.addEventListener(new BarcodeSerialPortEventListener());
-							serialPort.notifyOnDataAvailable(true);
 							serialPort.setSerialPortParams(configuration.getPortSpeed(), SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+							serialPort.enableReceiveTimeout(configuration.getTimeout());
+
+							bspl = new BarcodeSerialPortEventListener();
 
 							isConnected = true;
 						}
@@ -107,6 +115,41 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 				} finally {
 					connectionLock.unlock();
 				}
+
+				if (bspl == null) {
+					return;
+				}
+
+				try {
+					while (connectLatch.getCount() > 0) {
+						bspl.readData();
+					}
+				} catch (IOException e) {
+					if (connectLatch.getCount() > 0) {
+						LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), e);
+					}
+				}
+
+				connectionLock.lock();
+				try {
+					try {
+						isConnected = false;
+						connectLatch = null;
+
+						serialPort.getInputStream().close();
+						serialPort.close();
+
+						synchronized (connectionListeners) {
+							for (BarcodeScannerConnectionListener listener : connectionListeners) {
+								listener.onDisconnected();
+							}
+						}
+					} catch (Exception e) {
+						LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), e);
+					}
+				} finally {
+					connectionLock.unlock();
+				}
 			}
 		}).start();
 	}
@@ -118,15 +161,8 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 					connectionLock.lock();
 					try {
 						if (isConnected) {
-							serialPort.removeEventListener();
-							serialPort.close();
-
-							isConnected = false;
-						}
-
-						synchronized (connectionListeners) {
-							for (BarcodeScannerConnectionListener listener : connectionListeners) {
-								listener.onDisconnected();
+							if (connectLatch != null) {
+								connectLatch.countDown();
 							}
 						}
 					} finally {
@@ -172,83 +208,96 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 		private InputStream inputStream;
 
 		public void serialEvent(SerialPortEvent event) {
-			try {
-				switch (event.getEventType()) {
-				case SerialPortEvent.DATA_AVAILABLE:
-					if (buffer == null) {
-						buffer = new byte[BUFFER_LENGTH];
-					}
-
-					if (inputStream == null) {
-						inputStream = serialPort.getInputStream();
-					}
-
-					// Add incoming data to our buffer
-					int readLenght = Math.min(buffer.length - bufferPos, inputStream.available());
-					int bytesReaded = inputStream.read(buffer, bufferPos, readLenght);
-					if (bytesReaded <= 0) {
-						break;
-					}
-
-					bufferPos += bytesReaded;
-
-					// If buffer is not enough for data available,
-					// then throw an exception
-					if (bufferPos == buffer.length) {
-						bufferPos = 0;
-						throw new RuntimeException("Buffer overflow.");
-					}
-
-					// Search line terminators in buffer
-					// and parse strings
-					int endPos = 0;
-					int startPos = 0;
-					for (int i = 0; i < bufferPos; i++) {
-						short thisByte = buffer[i];
-						short nextByte = (i < bufferPos - 1) ? buffer[i + 1] : Short.MIN_VALUE;
-
-						int increment = 0;
-						if ((thisByte == 10 && nextByte == 13) || (thisByte == 13 && nextByte == 10)) {
-							increment = 2;
-						} else if ((thisByte == 10) || (thisByte == 13)) {
-							increment = 1;
-						}
-
-						if (increment > 0) {
-							endPos = i;
-							String string = new String(buffer, startPos, endPos - startPos);
-							if (string != null && string.length() > 0) {
-								onReadString(string);
-							}
-
-							endPos += increment;
-							startPos = endPos;
-							i = startPos;
-						}
-					}
-
-					// If buffer is fully parsed then reset its position
-					if (endPos == bufferPos) {
-						bufferPos = 0;
-					} else
-					// If something was left in buffer then
-					// shift it to the beginning of our buffer
-					if (endPos > 0 && endPos < bufferPos) {
-						for (int i = endPos; i <= bufferPos; i++) {
-							buffer[i - endPos] = buffer[i];
-						}
-						bufferPos -= endPos;
-					}
-
-					// Wait for another part of data
-
-					break;
-				default:
-					break;
+			switch (event.getEventType()) {
+			case SerialPortEvent.DATA_AVAILABLE:
+				try {
+					readData();
+				} catch (IOException e) {
+					LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), e);
 				}
-			} catch (IOException e) {
-				LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), e);
+				break;
+			default:
+				break;
 			}
+		}
+
+		public void readData() throws IOException {
+			if (buffer == null) {
+				buffer = new byte[BUFFER_LENGTH];
+			}
+
+			if (inputStream == null) {
+				inputStream = serialPort.getInputStream();
+			}
+
+			// Add incoming data to our buffer
+			int bytesReaded = -1;
+			if (inputStream.available() > 0) {
+				int readLenght = Math.min(buffer.length - bufferPos, inputStream.available());
+				bytesReaded = inputStream.read(buffer, bufferPos, readLenght);
+			} else {
+				byte value = (byte) inputStream.read();
+				if (value >= 0) {
+					buffer[bufferPos] = value;
+					bytesReaded = 1;
+				}
+			}
+
+			if (bytesReaded <= 0) {
+				return;
+			}
+
+			bufferPos += bytesReaded;
+
+			// If buffer is not enough for data available,
+			// then throw an exception
+			if (bufferPos == buffer.length) {
+				bufferPos = 0;
+				throw new RuntimeException("Buffer overflow.");
+			}
+
+			// Search line terminators in buffer
+			// and parse strings
+			int endPos = 0;
+			int startPos = 0;
+			for (int i = 0; i < bufferPos; i++) {
+				short thisByte = buffer[i];
+				short nextByte = (i < bufferPos - 1) ? buffer[i + 1] : Short.MIN_VALUE;
+
+				int increment = 0;
+				if ((thisByte == 10 && nextByte == 13) || (thisByte == 13 && nextByte == 10)) {
+					increment = 2;
+				} else if ((thisByte == 10) || (thisByte == 13)) {
+					increment = 1;
+				}
+
+				if (increment > 0) {
+					endPos = i;
+					String string = new String(buffer, startPos, endPos - startPos);
+					if (string != null && string.length() > 0) {
+						onReadString(string);
+					}
+
+					endPos += increment;
+					startPos = endPos;
+					i = startPos;
+				}
+			}
+
+			// If buffer is fully parsed then reset its position
+			if (endPos == bufferPos) {
+				bufferPos = 0;
+			} else
+			// If something was left in buffer then
+			// shift it to the beginning of our buffer
+			if (endPos > 0 && endPos < bufferPos) {
+				for (int i = endPos; i <= bufferPos; i++) {
+					buffer[i - endPos] = buffer[i];
+				}
+				bufferPos -= endPos;
+			}
+
+			// Wait for another part of data
 		}
 
 		private void onReadString(String value) {

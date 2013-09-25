@@ -27,6 +27,6 @@ public class BarcodeScannerFactory {
 				return bs;
 			}
 		}
-		throw new ClassNotFoundException();
+		throw new ClassNotFoundException(name);
 	}
 }

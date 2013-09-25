@@ -36,6 +36,7 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.2.7</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>net.java.dev.jna</groupId>
 			<artifactId>jna</artifactId>
@@ -45,6 +46,12 @@
 			<groupId>com.sparetimelabs</groupId>
 			<artifactId>purejavacomm</artifactId>
 			<version>0.0.17</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtxcomm</artifactId>
+			<version>2.2pre2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>

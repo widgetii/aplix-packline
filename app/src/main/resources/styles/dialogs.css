@@ -77,3 +77,27 @@
 .logoff-button:pressed:hover {
 	-fx-text-fill: red;
 }
+
+.manual-input-dialog {
+	-fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 11, 0.0, 3, 3);
+    -fx-border-color: black;
+	-fx-background-color: rgba(64, 64, 64, 1.0);
+}
+
+.numpad-button {
+	-fx-font-size: 1.9em;
+	-fx-font-weight: bold;
+}
+
+.numpad-button2 {
+	-fx-font-size: 1.3em;
+	-fx-font-weight: bold;
+}
+
+.text-field {
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.4em;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+	-fx-cursor: default;
+}

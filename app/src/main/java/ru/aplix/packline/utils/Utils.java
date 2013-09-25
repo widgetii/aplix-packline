@@ -6,6 +6,8 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
 
+import javafx.application.Application;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -97,5 +99,28 @@ public final class Utils {
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 		return currentRootDirectoryPath;
+	}
+
+	/**
+	 * 
+	 */
+	public static final boolean isJ2DPipelineUsed;
+
+	static {
+		isJ2DPipelineUsed = isJ2DPipelineUsed();
+	}
+
+	public static boolean isJ2DPipelineUsed() {
+		java.lang.reflect.Method m;
+		try {
+			m = ClassLoader.class.getDeclaredMethod("findLoadedClass", new Class[] { String.class });
+			m.setAccessible(true);
+			ClassLoader cl = Application.class.getClassLoader();
+			Object test = m.invoke(cl, "com.sun.prism.j2d.J2DPipeline");
+			return test != null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

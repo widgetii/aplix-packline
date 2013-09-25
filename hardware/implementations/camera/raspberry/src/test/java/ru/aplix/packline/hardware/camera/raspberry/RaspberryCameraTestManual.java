@@ -39,7 +39,6 @@ public class RaspberryCameraTestManual {
 			RaspberryCameraConfiguration configuration = new RaspberryCameraConfiguration();
 			configuration.setHostName(hostName);
 			configuration.setTimeout(20000);
-			configuration.setEnabled(true);
 
 			RaspberryCamera camera = new RaspberryCamera();
 			camera.setConfiguration(configuration);

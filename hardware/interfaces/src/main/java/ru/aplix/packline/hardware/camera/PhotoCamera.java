@@ -1,6 +1,8 @@
 package ru.aplix.packline.hardware.camera;
 
-public interface PhotoCamera<C extends PhotoCameraConfiguration> {
+import ru.aplix.packline.hardware.Connectable;
+
+public interface PhotoCamera<C extends PhotoCameraConfiguration> extends Connectable {
 
 	String getName();
 
@@ -9,16 +11,10 @@ public interface PhotoCamera<C extends PhotoCameraConfiguration> {
 	void setConfiguration(C config) throws IllegalArgumentException;
 
 	C getConfiguration();
-
-	void connect();
-
-	void disconnect();
-
-	boolean isConnected();
-
+	
 	void setConnectOnDemand(boolean value);
 
-	boolean getConnectOnDemand();
+    boolean getConnectOnDemand();
 
 	void addConnectionListener(PhotoCameraConnectionListener connectionListener);
 

@@ -31,6 +31,10 @@
 			<directory>${project.basedir}/target/conf</directory>
 			<outputDirectory>/conf</outputDirectory>
 		</fileSet>
+		<fileSet>
+			<directory>${project.basedir}/src/main/rxtx</directory>
+			<outputDirectory>/lib/rxtx</outputDirectory>
+		</fileSet>
 	</fileSets>
 	<dependencySets>
 		<dependencySet>

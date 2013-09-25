@@ -4,31 +4,46 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import ru.aplix.packline.hardware.scales.MeasurementListener;
+import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
 
 public class MeraScalesTestManual {
+
+	private static final boolean PRINT_IN_ONE_LINE = false;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (args.length == 0) {
-			System.out.println("No COM port has been specified.");
+		if (args.length != 2) {
+			System.out.println("No COM port or Protocol has been specified.");
 			return;
 		}
 
-		new MeraScalesTestManual(args[args.length - 1]).run();
+		new MeraScalesTestManual(args[0], args[1]).run();
 	}
 
 	private String portName;
+	private String protocolName;
 
 	/**
 	 * Class constructor.
 	 * 
 	 * @param portName
 	 */
-	public MeraScalesTestManual(String portName) {
+	public MeraScalesTestManual(String portName, String protocolName) {
 		this.portName = portName;
+		this.protocolName = protocolName;
+	}
+
+	protected Scales<RS232Configuration> createScales() {
+		if ("Auto".equalsIgnoreCase(protocolName)) {
+			return new MeraScalesAuto();
+		} else if ("Byte9".equalsIgnoreCase(protocolName)) {
+			return new MeraScalesByte9();
+		} else {
+			throw new IllegalArgumentException(String.format("Protocol '%s' not supported.", protocolName));
+		}
 	}
 
 	public void run() {
@@ -37,16 +52,18 @@ public class MeraScalesTestManual {
 
 			RS232Configuration configuration = new RS232Configuration();
 			configuration.setPortName(portName);
-			configuration.setPortSpeed(57600);
-			configuration.setEnabled(true);
 
-			MeraScales scanner = new MeraScales();
-			scanner.setConfiguration(configuration);
-			scanner.addMeasurementListener(new MeasurementListener() {
+			Scales<RS232Configuration> scales = createScales();
+			scales.setConfiguration(configuration);
+			scales.addMeasurementListener(new MeasurementListener() {
 				private int textLength = -1;
 
 				public void onMeasure(Float value) {
-					print(String.format("%.3f", value));
+					if (PRINT_IN_ONE_LINE) {
+						print(String.format("%.3f kg", value));
+					} else {
+						System.out.println(String.format("%.3f kg", value));
+					}
 				}
 
 				private void print(String value) {
@@ -58,27 +75,29 @@ public class MeraScalesTestManual {
 					System.out.print(value);
 				}
 			});
-			scanner.addConnectionListener(new ScalesConnectionListener() {
+			scales.addConnectionListener(new ScalesConnectionListener() {
 				public void onConnected() {
 					connectLatch.countDown();
+					System.out.println("Connected.");
 				}
 
 				public void onDisconnected() {
 					connectLatch.countDown();
+					System.out.println("Disconnected.");
 				}
 
 				public void onConnectionFailed() {
 					connectLatch.countDown();
+					System.out.println("Connection failed.");
 				}
 			});
 
 			System.out.println(String.format("Conneting to %s...", portName));
-			scanner.connect();
+			scales.connect();
 			connectLatch.await();
-			if (scanner.isConnected()) {
-				System.out.println("Connected");
+			if (scales.isConnected()) {
 				waitForEnter();
-				scanner.disconnect();
+				scales.disconnect();
 			}
 
 			System.out.println("Program terminated.");

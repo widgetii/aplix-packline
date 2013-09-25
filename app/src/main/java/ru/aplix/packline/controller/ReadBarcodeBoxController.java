@@ -24,7 +24,7 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 	@FXML
 	private Label customerLabel;
 
-	private BarcodeScanner<?> barcodeScanner;
+	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
@@ -50,15 +50,18 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
-		barcodeScanner.addBarcodeListener(this);
-
-		barcodeChecker.playFromStart();
+		if (barcodeScanner != null) {
+			barcodeScanner.addBarcodeListener(this);
+			barcodeChecker.playFromStart();
+		}
 	}
 
 	@Override
 	public void terminate() {
-		barcodeChecker.stop();
-		barcodeScanner.removeBarcodeListener(this);
+		if (barcodeScanner != null) {
+			barcodeChecker.stop();
+			barcodeScanner.removeBarcodeListener(this);
+		}
 	}
 
 	@Override
@@ -95,7 +98,7 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		@Override
 		public void handle(ActionEvent event) {
 			if (delayCount <= 1) {
-				if (barcodeScanner.isConnected()) {
+				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
 					errorMessageProperty.set(null);
 					errorVisibleProperty.set(false);
 				} else {
@@ -112,7 +115,7 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		}
 
 		public void reset() {
-			delayCount = 5;
+			delayCount = Const.ERROR_DISPLAY_DELAY;
 		}
 	}
 }

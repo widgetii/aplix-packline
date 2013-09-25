@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="755.0" prefWidth="634.0" styleClass="manual-input-dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.dialog.ManualInputController">
+  <children>
+    <TextField id="widthEdit" fx:id="editText" layoutX="105.0" layoutY="35.0" prefHeight="49.94140625" prefWidth="427.0" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="105.0" layoutY="160.0" mnemonicParsing="false" onAction="#numericKeybord7Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="7" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="214.0" layoutY="160.0" mnemonicParsing="false" onAction="#numericKeybord8Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="8" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="323.0" layoutY="160.0" mnemonicParsing="false" onAction="#numericKeybord9Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="9" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="105.0" layoutY="271.0" mnemonicParsing="false" onAction="#numericKeybord4Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="4" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="214.0" layoutY="271.0" mnemonicParsing="false" onAction="#numericKeybord5Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="5" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="323.0" layoutY="271.0" mnemonicParsing="false" onAction="#numericKeybord6Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="6" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="105.0" layoutY="382.0" mnemonicParsing="false" onAction="#numericKeybord1Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="1" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="214.0" layoutY="382.0" mnemonicParsing="false" onAction="#numericKeybord2Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="2" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="323.0" layoutY="382.0" mnemonicParsing="false" onAction="#numericKeybord3Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="3" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="105.0" layoutY="492.0" mnemonicParsing="false" onAction="#numericKeybord0Click" prefHeight="100.0" prefWidth="208.0" styleClass="numpad-button" text="0" textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="323.0" layoutY="493.0" mnemonicParsing="false" onAction="#numericKeybordDotClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="." textAlignment="CENTER" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="432.0" layoutY="382.0" mnemonicParsing="false" onAction="#numericKeybordEnterClick" prefHeight="210.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.enter" textAlignment="CENTER" wrapText="true" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="432.0" layoutY="271.0" mnemonicParsing="false" onAction="#numericKeybordClearClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.clear" textAlignment="CENTER" wrapText="true" />
+    <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="432.0" layoutY="160.0" mnemonicParsing="false" onAction="#numericKeybordBackClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.back" textAlignment="CENTER" wrapText="true" />
+    <Separator layoutX="76.0" layoutY="121.0" prefWidth="482.0" />
+    <Button cancelButton="true" contentDisplay="TOP" focusTraversable="false" layoutX="324.0" layoutY="641.0" mnemonicParsing="false" onAction="#cancelClick" prefHeight="77.0" prefWidth="208.0" styleClass="next-button" text="%dialog.cancel" />
+  </children>
+  <stylesheets>
+    <URL value="@../styles/dialogs.css" />
+  </stylesheets>
+</Pane>
