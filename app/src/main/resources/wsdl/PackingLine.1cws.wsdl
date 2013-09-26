@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.aplix.ru/PackingLine/1.0/ws" name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws">
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.aplix.ru/PackingLine/1.0/ws" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws" attributeFormDefault="unqualified" elementFormDefault="qualified">
+			<xs:element name="Echo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Text" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EchoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SetAvtivityWorker">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Activity" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SetAvtivityWorkerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</types>
+	<message name="EchoRequestMessage">
+		<part name="parameters" element="tns:Echo"/>
+	</message>
+	<message name="EchoResponseMessage">
+		<part name="parameters" element="tns:EchoResponse"/>
+	</message>
+	<message name="SetAvtivityWorkerRequestMessage">
+		<part name="parameters" element="tns:SetAvtivityWorker"/>
+	</message>
+	<message name="SetAvtivityWorkerResponseMessage">
+		<part name="parameters" element="tns:SetAvtivityWorkerResponse"/>
+	</message>
+	<portType name="PackingLinePortType">
+		<operation name="Echo">
+			<input message="tns:EchoRequestMessage"/>
+			<output message="tns:EchoResponseMessage"/>
+		</operation>
+		<operation name="SetAvtivityWorker">
+			<input message="tns:SetAvtivityWorkerRequestMessage"/>
+			<output message="tns:SetAvtivityWorkerResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
+		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Echo">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:Echo"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SetAvtivityWorker">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:SetAvtivityWorker"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
+		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Echo">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:Echo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SetAvtivityWorker">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:SetAvtivityWorker"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="PackingLine">
+		<port name="PackingLineSoap" binding="tns:PackingLineSoapBinding">
+			<documentation> 
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soapbind:address location="http://localhost/post/ws/PackingLine.1cws"/>
+		</port>
+		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
+			<soap12bind:address location="http://localhost/post/ws/PackingLine.1cws"/>
+		</port>
+	</service>
+</definitions>

@@ -82,7 +82,7 @@
 			<groupId>ru.aplix.packline.hardware.scales</groupId>
 			<artifactId>mera</artifactId>
 			<version>0.1</version>
-		</dependency>
+		</dependency>	            
 	</dependencies>
 
 	<build>
@@ -169,6 +169,57 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                        	<xnocompile>true</xnocompile>
+                        	<wsdlLocation>/resources/wsdl/PackingLine.1cws.wsdl</wsdlLocation>
+                            <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+                            <wsdlFiles>
+                                <wsdlFile>PackingLine.1cws.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>ru.aplix.packline.post</packageName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
+		 
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.jvnet.jax-ws-commons</groupId>
+                                        <artifactId>jaxws-maven-plugin</artifactId>
+                                        <versionRange>[2.2.0,)</versionRange>
+                                        <goals>
+                                            <goal>wsimport</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 	</build>
 </project>
