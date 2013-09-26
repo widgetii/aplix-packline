@@ -36,11 +36,29 @@ public class MeraScalesTestManual {
 		this.protocolName = protocolName;
 	}
 
-	protected Scales<RS232Configuration> createScales() {
+	protected Scales<?> createScales() {
 		if ("Auto".equalsIgnoreCase(protocolName)) {
-			return new MeraScalesAuto();
+			RS232Configuration configuration = new RS232Configuration();
+			configuration.setPortName(portName);
+
+			MeraScalesAuto result = new MeraScalesAuto();
+			result.setConfiguration(configuration);
+			return result;
 		} else if ("Byte9".equalsIgnoreCase(protocolName)) {
-			return new MeraScalesByte9();
+			RS232Configuration configuration = new RS232Configuration();
+			configuration.setPortName(portName);
+
+			MeraScalesByte9 result = new MeraScalesByte9();
+			result.setConfiguration(configuration);
+			return result;
+		} else if ("Universal".equalsIgnoreCase(protocolName)) {
+			MeraScalesConfiguration configuration = new MeraScalesConfiguration();
+			configuration.setPortName(portName);
+			configuration.setProtocolName("Byte9");
+
+			MeraScalesUniversal result = new MeraScalesUniversal();
+			result.setConfiguration(configuration);
+			return result;
 		} else {
 			throw new IllegalArgumentException(String.format("Protocol '%s' not supported.", protocolName));
 		}
@@ -50,11 +68,7 @@ public class MeraScalesTestManual {
 		try {
 			final CountDownLatch connectLatch = new CountDownLatch(1);
 
-			RS232Configuration configuration = new RS232Configuration();
-			configuration.setPortName(portName);
-
-			Scales<RS232Configuration> scales = createScales();
-			scales.setConfiguration(configuration);
+			Scales<?> scales = createScales();
 			scales.addMeasurementListener(new MeasurementListener() {
 				private int textLength = -1;
 

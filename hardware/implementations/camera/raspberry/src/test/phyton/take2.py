@@ -1,18 +1,17 @@
-import os, sys, logging, random, string
+import sys, logging, random
 
 logging.basicConfig(filename='d:\camera.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 print 'Content-Type: text/plain'
 print ''
 
-scriptName = os.environ['SCRIPT_NAME'] + '/'
-pathInfo = os.environ['PATH_INFO']	
-if string.find(pathInfo, scriptName) == 0:
-	pathInfo = pathInfo[len(scriptName):]
+if len(sys.argv) < 2:
+	print 'ERROR: No guid has been specified'
+	sys.exit(0)
 	
 rNum = random.randrange(0,1+1)
 if rNum == 0:
-	imageGUID = pathInfo
+	imageGUID = sys.argv[1]
 	logMsg = 'Image GUID: ' + imageGUID
 	logging.debug(logMsg);
 

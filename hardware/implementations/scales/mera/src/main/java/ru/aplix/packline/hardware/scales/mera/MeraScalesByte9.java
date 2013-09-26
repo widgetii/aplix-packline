@@ -95,7 +95,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
 							serialPort.setSerialPortParams(MERA_SCALES_PORT_SPEED, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-							serialPort.enableReceiveTimeout(configuration.getReadTimeout());
+							serialPort.enableReceiveTimeout(configuration.getTimeout());
 
 							mcspl = new Byte9PortEventListener();
 
@@ -220,11 +220,11 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 		private static final byte BYTE9_DEVICE_ID = (byte) 0xc8;
 		private static final byte BYTE9_ERROR_RETURN = 0x0f;
 
-		private static final int NO_DATA_COUNT = 5;
+		private static final int NO_DATA_COUNT = 3;
 		private static final int NO_DATA_TIMEOUT = 20;
-		private static final int REPEAT_COUNT = 3;
+		private static final int REPEAT_COUNT = 10;
 		private static final int REPEAT_TIMEOUT = 200;
-		private static final int MIN_WRITE_TIMEOUT = 5;
+		private static final int MIN_WRITE_TIMEOUT = 10;
 
 		private byte[] packet = null;
 		private InputStream inputStream;
@@ -233,7 +233,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 		private int writeTimeOut;
 
 		public Byte9PortEventListener() {
-			writeTimeOut = Math.max(MIN_WRITE_TIMEOUT, configuration.getWriteTimeout());
+			writeTimeOut = MIN_WRITE_TIMEOUT;
 		}
 
 		public void serialEvent(SerialPortEvent event) {
@@ -250,6 +250,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 					if (errorCount >= REPEAT_COUNT) {
 						throw ioe;
 					} else {
+						writeTimeOut *= (2f - 0.1f * (float) errorCount);
 						sleep(REPEAT_TIMEOUT);
 					}
 				}

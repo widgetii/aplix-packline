@@ -161,7 +161,7 @@ public class RaspberryCamera implements PhotoCamera<RaspberryCameraConfiguration
 
 					// Generate image UUID
 					String imageId = UUID.randomUUID().toString();
-					String url = String.format("http://%s/take?%s", configuration.getHostName(), imageId);
+					String url = String.format("http://%s/take/%s", configuration.getHostName(), imageId);
 
 					// Loop until successful response will be received
 					// or timeout will occur

@@ -13,15 +13,12 @@ public class RS232Configuration implements ScalesConfiguration {
 
 	@XmlAttribute(name = "portName")
 	private String portName;
-	@XmlAttribute(name = "readTimeout")
-	private int readTimeout;
-	@XmlAttribute(name = "writeTimeout")
-	private int writeTimeout;
+	@XmlAttribute(name = "timeout")
+	private int timeout;
 
 	public RS232Configuration() {
 		portName = "COM1";
-		readTimeout = 200;
-		writeTimeout = 20;
+		timeout = 200;
 	}
 
 	public String getPortName() {
@@ -32,19 +29,11 @@ public class RS232Configuration implements ScalesConfiguration {
 		this.portName = portName;
 	}
 
-	public int getReadTimeout() {
-		return readTimeout;
+	public int getTimeout() {
+		return timeout;
 	}
 
-	public void setReadTimeout(int timeout) {
-		this.readTimeout = timeout;
-	}
-
-	public int getWriteTimeout() {
-		return writeTimeout;
-	}
-
-	public void setWriteTimeout(int writeTimeout) {
-		this.writeTimeout = writeTimeout;
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
 	}
 }

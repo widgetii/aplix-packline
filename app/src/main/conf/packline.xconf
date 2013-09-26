@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <packline version="${project.version}">
 
-	<!-- Hardware connection parameters -->
+	<!-- Hardware connection parameters                                                           -->
 	<!-- 	"reconnect" - the interval in seconds to reconnect to device if connection has failed -->
 	<Hardware reconnect="5">
 
@@ -10,23 +10,27 @@
 			<!-- "portName"  - port name, for example "COM1" or "/dev/tty0"                      -->
 			<!-- "portSpeed" - port speed (optional), for example 57600                          -->
 			<!-- "timeout"   - receiver timeout in milliseconds (optional), for example 2000     -->
-			<Configuration portName="COM4"/>				
+			<Configuration portName="COM4"/>
 		</BarcodeScanner>
 		
 		<!-- Scales driver -->
-		<!-- Available drivers: MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesByte9" enabled="true" >
-			<!-- "portName"     - port name, for example "COM1" or "/dev/tty0"                   -->
-			<!-- "readTimeout"  - receiver timeout in milliseconds (optional), for example 2000  -->
-			<!-- "writeTimeout" - transmitter timeout in milliseconds (optional), for example 20 -->
-			<Configuration portName="COM5" />
+		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
+		<Scales name="MeraScalesUniversal" enabled="true" >
+			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
+			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
+			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
+			<!-- "connectionTimeout" - serial port connection timeout (optional), default 2000                                      -->
+			<!-- "commandRetries"    - maximum number of times to retry to send the command (optional), default 1                   -->
+			<!-- "responseTimeout"   - timeout in milliseconds to wait for response after sending request (optional), default 1000  -->
+			<!-- "dataDelay"         - the delay in milliseconds between the sending of address and data (optional), default 200    -->
+			<Configuration portName="COM5" protocolName="Byte9"/>
 		</Scales>
 		
 		<!-- Photo Camera driver -->
 		<PhotoCamera name="RaspberryCamera" enabled="true" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      -->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 -->
-			<Configuration hostName="localhost:8080" />			
+			<Configuration hostName="localhost:8080" />
 		</PhotoCamera>
 	
 		<Printers>
