@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws/model" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws/model"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+	<!-- ************************** Object Model ******************************* -->
+	<xs:complexType name="Operator">
+		<xs:annotation>
+			<xs:documentation>Оператор</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Уникальный идентификатор оператора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Фамилия и инициалы оператора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Tag">
+		<xs:annotation>
+			<xs:documentation>Метка/Стикер</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Уникальный идентификатор (штрих-код)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Incoming">
+		<xs:annotation>
+			<xs:documentation>Поступление</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Tag">
+				<xs:attribute name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа, которому принадлежит поступление</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="postId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор отправления, с которым будет сопоставлено данное поступление</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="photoId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор фотографии, которая будет сопоставлена с этим поступлением</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="date" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата и время регистрации поступления в списке поступлений заказа</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="weight" type="xs:float">
+					<xs:annotation>
+						<xs:documentation>Вес поступления</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="contentDescription" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Описание содержимого</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Order">
+		<xs:annotation>
+			<xs:documentation>Заказ</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Tag">
+				<xs:sequence>
+					<xs:element name="incomings" type="tns:Incoming" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Список поступлений, зарегистрированных в данном заказе</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="posts" type="tns:Post" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Список отправлений, на которые разбит весь заказ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="clientName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Название клиента, который отправляет заказ</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="deliveryMethod" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Метод доставки</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="deliveryAddress" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Адрес доставки</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="customerName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Название заказчика (интернет магазина)</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="date" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата и время создания заказа</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="totalIncomings" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>
+							Количество поступлений, связанных с этим заказом, которое должно быть принято до того, как заказ поступит в работу
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Post">
+		<xs:annotation>
+			<xs:documentation>Отправление</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Tag">
+				<xs:sequence>
+					<xs:element name="container" type="tns:Container">
+						<xs:annotation>
+							<xs:documentation>Ссылка на контейнер, в который запаковано отправление</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="incomings" type="tns:Incoming" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Список поступлений, которые входят в данное отправление</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа, которому принадлежит отправление</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="date" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата и время создания отправления</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Container">
+		<xs:annotation>
+			<xs:documentation>Контейнер</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Tag">
+				<xs:sequence>
+					<xs:element name="packingSize" type="tns:PackingSize">
+						<xs:annotation>
+							<xs:documentation>Размеры упаковки</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="postId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор отправления, которое содержится в контейнере</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="packingType" type="tns:PackingType">
+					<xs:annotation>
+						<xs:documentation>Тип упаковки</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="totalWeight" type="xs:float">
+					<xs:annotation>
+						<xs:documentation>Общий вес отправления, включая контейнер и его содержимое</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="date" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата и время упаковки отправления в контейнер</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="PackingType">
+		<xs:annotation>
+			<xs:documentation>Тип упаковки</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BOX"></xs:enumeration>
+			<xs:enumeration value="PACKET"></xs:enumeration>
+			<xs:enumeration value="PAPER"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="PackingSize">
+		<xs:annotation>
+			<xs:documentation>Размер упаковки</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="length" type="xs:float"></xs:attribute>
+		<xs:attribute name="height" type="xs:float"></xs:attribute>
+		<xs:attribute name="width" type="xs:float"></xs:attribute>
+	</xs:complexType>
+</xs:schema>
+

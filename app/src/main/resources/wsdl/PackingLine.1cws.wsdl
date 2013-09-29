@@ -1,110 +1,291 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.aplix.ru/PackingLine/1.0/ws" name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:model="http://www.aplix.ru/PackingLine/1.0/ws/model" xmlns:msg="http://www.aplix.ru/PackingLine/1.0/ws/messages"
+	name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws">
 	<types>
-		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.aplix.ru/PackingLine/1.0/ws" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws" attributeFormDefault="unqualified" elementFormDefault="qualified">
-			<xs:element name="Echo">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Text" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="EchoResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="SetAvtivityWorker">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Activity" type="xs:boolean"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="SetAvtivityWorkerResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/model" schemaLocation="PackingLine.1cws_schema1.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/messages" schemaLocation="PackingLine.1cws_schema2.xsd" />
+		</xsd:schema>
 	</types>
-	<message name="EchoRequestMessage">
-		<part name="parameters" element="tns:Echo"/>
+
+	<message name="GetOperatorResponse">
+		<part name="parameters" element="msg:GetOperatorResponse"></part>
 	</message>
-	<message name="EchoResponseMessage">
-		<part name="parameters" element="tns:EchoResponse"/>
+	<message name="SetOperatorActivityRequest">
+		<part name="parameters" element="msg:SetOperatorActivity"></part>
 	</message>
-	<message name="SetAvtivityWorkerRequestMessage">
-		<part name="parameters" element="tns:SetAvtivityWorker"/>
+	<message name="GetOperatorRequest">
+		<part name="parameters" element="msg:GetOperator"></part>
 	</message>
-	<message name="SetAvtivityWorkerResponseMessage">
-		<part name="parameters" element="tns:SetAvtivityWorkerResponse"/>
+	<message name="FindTagRequest">
+		<part name="parameters" element="msg:FindTag"></part>
 	</message>
+	<message name="FindTagResponse">
+		<part name="parameters" element="msg:FindTagResponse"></part>
+	</message>
+	<message name="AddIncomingToOrderRequest">
+		<part name="parameters" element="msg:AddIncomingToOrder"></part>
+	</message>
+	<message name="AddIncomingToOrderResponse">
+		<part name="parameters" element="msg:AddIncomingToOrderResponse"></part>
+	</message>
+	<message name="DeleteIncomingFromOrderRequest">
+		<part name="parameters" element="msg:DeleteIncomingFromOrder"></part>
+	</message>
+	<message name="DeleteIncomingFromOrderResponse">
+		<part name="parameters" element="msg:DeleteIncomingFromOrderResponse"></part>
+	</message>
+	<message name="CarryOutOrderRequest">
+		<part name="parameters" element="msg:CarryOutOrder"></part>
+	</message>
+	<message name="CarryOutOrderResponse">
+		<part name="parameters" element="msg:CarryOutOrderResponse"></part>
+	</message>
+	<message name="DeleteOrderRequest">
+		<part name="parameters" element="msg:DeleteOrder"></part>
+	</message>
+	<message name="DeleteOrderResponse">
+		<part name="parameters" element="msg:DeleteOrderResponse"></part>
+	</message>
+	<message name="AddContainerRequest">
+		<part name="parameters" element="msg:AddContainer"></part>
+	</message>
+	<message name="AddContainerResponse">
+		<part name="parameters" element="msg:AddContainerResponse"></part>
+	</message>
+	<message name="UpdateContainerRequest">
+		<part name="parameters" element="msg:UpdateContainer"></part>
+	</message>
+	<message name="UpdateContainerResponse">
+		<part name="parameters" element="msg:UpdateContainerResponse"></part>
+	</message>
+	<message name="SetBoxSizeRequest">
+		<part name="parameters" element="msg:SetBoxSize"></part>
+	</message>
+	<message name="GetBoxSizeRequest">
+		<part name="parameters" element="msg:GetBoxSize"></part>
+	</message>
+	<message name="GetBoxSizeResponse">
+		<part name="parameters" element="msg:GetBoxSizeResponse"></part>
+	</message>
+	<message name="GetBoxCountRequest">
+		<part name="parameters" element="msg:GetBoxCount"></part>
+	</message>
+	<message name="GetBoxCountResponse">
+		<part name="parameters" element="msg:GetBoxCountResponse"></part>
+	</message>
+	<message name="GenerateTagsRequest">
+		<part name="parameters" element="msg:GenerateTags"></part>
+	</message>
+	<message name="GenerateTagsResponse">
+		<part name="parameters" element="msg:GenerateTagsResponse"></part>
+	</message>
+
 	<portType name="PackingLinePortType">
-		<operation name="Echo">
-			<input message="tns:EchoRequestMessage"/>
-			<output message="tns:EchoResponseMessage"/>
+		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции.</documentation>
+
+		<operation name="GetOperator">
+			<documentation>Возвращает фамилию и инициалы оператора, который вошел в систему.</documentation>			<input message="tns:GetOperatorRequest"></input>			<output message="tns:GetOperatorResponse" />
 		</operation>
-		<operation name="SetAvtivityWorker">
-			<input message="tns:SetAvtivityWorkerRequestMessage"/>
-			<output message="tns:SetAvtivityWorkerResponseMessage"/>
+
+		<operation name="SetOperatorActivity">
+			<documentation>Отмечает текущее время как рабочее или время простоя. Программа упаковочной лини должна вызывать этот метод каждые 5 мин после входа оператора
+				в систему, чтобы подтвердить присутствие на рабочем месте. Если вызов пропущен по причины сбоя программы или недоступности сервиса, то статус оператора
+				должен переключиться на &quot;простой&quot; автоматически.</documentation>
+			<input message="tns:SetOperatorActivityRequest"></input>		</operation>
+
+		<operation name="FindTag">
+			<documentation>По заданному идентификатору находит и возвращает объект: Поступление, Заказ, Отправление, Контейнер.</documentation>			<input message="tns:FindTagRequest"></input>			<output message="tns:FindTagResponse"></output>
+		</operation>
+
+		<operation name="AddIncomingToOrder">
+			<documentation>Добавляет поступление в спискок поступлений заказа</documentation>
+			<input message="tns:AddIncomingToOrderRequest"></input>
+			<output message="tns:AddIncomingToOrderResponse"></output>
+		</operation>
+
+		<operation name="DeleteIncomingFromOrder">
+			<documentation>Удаляет поступление из списка поступлений заказа</documentation>
+			<input message="tns:DeleteIncomingFromOrderRequest"></input>
+			<output message="tns:DeleteIncomingFromOrderResponse"></output>
+		</operation>
+
+		<operation name="CarryOutOrder">
+			<documentation>Проводит и сохраняет заказ (акт)</documentation>
+			<input message="tns:CarryOutOrderRequest"></input>
+			<output message="tns:CarryOutOrderResponse"></output>
+		</operation>
+
+		<operation name="DeleteOrder">
+			<documentation>Удаляет заказ из системы</documentation>
+			<input message="tns:DeleteOrderRequest"></input>
+			<output message="tns:DeleteOrderResponse"></output>
+		</operation>
+
+		<operation name="AddContainer">
+			<documentation>Добавляет новый контейнер к отправлению</documentation>
+			<input message="tns:AddContainerRequest"></input>
+			<output message="tns:AddContainerResponse"></output>
+		</operation>
+
+		<operation name="UpdateContainer">
+			<documentation>Обновляет параметры контейнера</documentation>
+			<input message="tns:UpdateContainerRequest"></input>
+			<output message="tns:UpdateContainerResponse"></output>
+		</operation>
+
+		<operation name="SetBoxSize">
+			<documentation>Сопоставляет размеры коробки со спиком штрих кодов</documentation>
+			<input message="tns:SetBoxSizeRequest"></input>
+		</operation>
+
+		<operation name="GetBoxSize">
+			<documentation>Возвращает размеры коробки по штрих коду</documentation>
+			<input message="tns:GetBoxSizeRequest"></input>
+			<output message="tns:GetBoxSizeResponse"></output>
+		</operation>
+
+		<operation name="GetBoxCount">
+			<documentation>Возвращает количество коробок заданного размера в зоне упаковки</documentation>
+			<input message="tns:GetBoxCountRequest"></input>
+			<output message="tns:GetBoxCountResponse"></output>
+		</operation>
+
+		<operation name="GenerateTags">
+			<documentation>Генерирует маркеры</documentation>
+			<input message="tns:GenerateTagsRequest"></input>
+			<output message="tns:GenerateTagsResponse"></output>
 		</operation>
 	</portType>
+
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
-		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="Echo">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:Echo"/>
+		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="GetOperator">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetOperator" />
 			<input>
-				<soapbind:body use="literal"/>
+				<soapbind:body use="literal" />
 			</input>
 			<output>
-				<soapbind:body use="literal"/>
+				<soapbind:body use="literal" />
 			</output>
 		</operation>
-		<operation name="SetAvtivityWorker">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:SetAvtivityWorker"/>
+		<operation name="SetOperatorActivity">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/SetOperatorActivity" />
 			<input>
-				<soapbind:body use="literal"/>
+				<soapbind:body use="literal" />
+			</input>
+		</operation>
+		<operation name="FindTag">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindTag" />
+			<input>
+				<soapbind:body use="literal" />
 			</input>
 			<output>
-				<soapbind:body use="literal"/>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="AddIncomingToOrder">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddIncomingToOrder" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="DeleteIncomingFromOrder">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/DeleteIncomingFromOrder" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="CarryOutOrder">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/CarryOutOrder" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="DeleteOrder">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/DeleteOrder" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="AddContainer">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddContainer" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="UpdateContainer">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/UpdateContainer" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="SetBoxSize">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/SetBoxSize" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+		</operation>
+		<operation name="GetBoxSize">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxSize" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GetBoxCount">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxCount" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GenerateTags">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTags" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
 			</output>
 		</operation>
 	</binding>
-	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
-		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="Echo">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:Echo"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="SetAvtivityWorker">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine/1.0/ws#PackingLine:SetAvtivityWorker"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-	</binding>
+
 	<service name="PackingLine">
+		<documentation>Сервис обеспечивает взаимодействие программы упаковочной линии с удаленным операционным центром, отвечающим за обработку почты и обмен с
+			корневой системой управления предприятием. Веб-сервис доступен только после аутентификации пользователя, которая оуществляется по методу HTTP Basic
+			authentication (BA), т.е. клиент предоставляется имя пользователя (логин) и пароль в заголовке HTTP запроса.
+		</documentation>
 		<port name="PackingLineSoap" binding="tns:PackingLineSoapBinding">
-			<documentation> 
-				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			<documentation>
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
 			</documentation>
-			<soapbind:address location="http://localhost/post/ws/PackingLine.1cws"/>
-		</port>
-		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
-			<soap12bind:address location="http://localhost/post/ws/PackingLine.1cws"/>
-		</port>
-	</service>
+			<soapbind:address location="http://localhost/post/ws/PackingLine.1cws" />
+		</port>	</service>
+
 </definitions>

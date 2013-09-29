@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws/messages"
+	xmlns:model="http://www.aplix.ru/PackingLine/1.0/ws/model" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws/messages" attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+
+	<xs:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/model" schemaLocation="PackingLine.1cws_schema1.xsd" />
+
+	<!-- ********** Operation requests and responses ********************** -->
+	<xs:element name="GetOperator">
+		<xs:complexType>
+			<xsd:sequence>
+				<xs:element name="operatorId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Логин или идентификатор оператора</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xsd:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetOperatorResponse">
+		<xsd:annotation>
+			<xsd:documentation>Если оператор по указанному идентификатору не найден, то свойство Operator в ответе должно отсутствовать.</xsd:documentation>
+		</xsd:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="operator" type="model:Operator" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SetOperatorActivity">
+		<xs:complexType>
+			<xsd:sequence>
+				<xs:element name="operatorId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Логин или идентификатор оператора</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="isActive" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Статус работы (1) или простоя (0).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xsd:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FindTag">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tagId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FindTagResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tag" type="model:Tag">
+					<xs:annotation>
+						<xs:documentation>Объект, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddIncomingToOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="incoming" type="model:Incoming">
+					<xs:annotation>
+						<xs:documentation>Объект Поступление</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddIncomingToOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="index" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Номер (а точнее индекс, т.е. начиная с нуля) данного поступления в списке поступлений заказа или -1 в случае ошибки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteIncomingFromOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="incomingId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор поступления</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteIncomingFromOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Результат операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CarryOutOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CarryOutOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Результат операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор заказа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Результат операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddContainer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="container" type="model:Container">
+					<xs:annotation>
+						<xs:documentation>Объект контейнер</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddContainerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Результат операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateContainer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="container" type="model:Container">
+					<xs:annotation>
+						<xs:documentation>Объект контейнер</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateContainerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Результат операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SetBoxSize">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tags" type="model:Tag" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Список маркеров</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="packingSize" type="model:PackingSize">
+					<xs:annotation>
+						<xs:documentation>Размеры коробки, с которыми требуется связать данные маркеры</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetBoxSize">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="boxId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Штрих код коробки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetBoxSizeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="size" type="model:PackingSize">
+					<xs:annotation>
+						<xs:documentation>Размеры коробки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetBoxCount">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="packingSize" type="model:PackingSize">
+					<xs:annotation>
+						<xs:documentation>Размеры коробки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetBoxCountResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Количество пустых коробок такого же размера в зоне упаковки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GenerateTags">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="count" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Количество генерируемых маркеров</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GenerateTagsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tags" type="model:Tag" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Список сгенерированных маркеров</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
