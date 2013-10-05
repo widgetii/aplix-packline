@@ -212,5 +212,21 @@
 		<xs:attribute name="height" type="xs:float"></xs:attribute>
 		<xs:attribute name="width" type="xs:float"></xs:attribute>
 	</xs:complexType>
+
+	<xs:complexType name="Field">
+		<xs:annotation>
+			<xs:documentation>Поле с данными</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Название поля</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="value" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Значение поля</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
 </xs:schema>
 

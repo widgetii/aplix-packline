@@ -312,5 +312,29 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+	<xsd:element name="GatherInfo">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fields" type="xsd:string" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Список названий полей, для которых нужно вернуть значения</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GatherInfoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fields" type="model:Field" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Список полей с данными</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 </xs:schema>
 

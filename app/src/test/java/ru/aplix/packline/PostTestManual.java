@@ -5,13 +5,15 @@ import java.util.Map;
 import javax.xml.ws.BindingProvider;
 
 import junit.framework.TestCase;
+import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.PackingLine;
 import ru.aplix.packline.post.PackingLinePortType;
 
-public class PostTest extends TestCase {
+public class PostTestManual extends TestCase {
 
-	public void testEcho() {
-		String serviceAddress = "http://z.aplix.ru/post/ws/PackingLine.1cws";
+	public void testService() {
+		//String serviceAddress = "http://z.aplix.ru/post/ws/PackingLine.1cws";
+		String serviceAddress = "http://localhost:8080/mock-post-service-0.1/PackingLine?WSDL";
 		String userName = "4627085462743";
 		String password = "P8HLCtoOey";
 
@@ -28,8 +30,9 @@ public class PostTest extends TestCase {
 			requestContext.put(BindingProvider.PASSWORD_PROPERTY, password);
 		}
 
-		/*String response = postServicePort.echo(userName);
-		assertNotNull(response);
-		assertTrue(response.indexOf(userName) >= 0);*/
+		Operator operator = postServicePort.getOperator(userName);
+		assertNotNull(operator);
+		assertTrue(userName.equals(operator.getId()));
+		assertTrue(operator.getName() != null && operator.getName().length() > 0);
 	}
 }

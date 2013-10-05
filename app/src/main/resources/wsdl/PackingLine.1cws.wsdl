@@ -83,7 +83,12 @@
 	<message name="GenerateTagsResponse">
 		<part name="parameters" element="msg:GenerateTagsResponse"></part>
 	</message>
-
+	<message name="GatherInfoRequest">
+		<part name="parameters" element="msg:GatherInfo"></part>
+	</message>
+	<message name="GatherInfoResponse">
+		<part name="parameters" element="msg:GatherInfoResponse"></part>
+	</message>
 	<portType name="PackingLinePortType">
 		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции.</documentation>
 
@@ -158,6 +163,12 @@
 			<documentation>Генерирует маркеры</documentation>
 			<input message="tns:GenerateTagsRequest"></input>
 			<output message="tns:GenerateTagsResponse"></output>
+		</operation>
+
+		<operation name="GatherInfo">
+			<documentation>Возвращает данные для печати форм и этикеток</documentation>
+			<input message="tns:GatherInfoRequest"></input>
+			<output message="tns:GatherInfoResponse"></output>
 		</operation>
 	</portType>
 
@@ -267,6 +278,15 @@
 		</operation>
 		<operation name="GenerateTags">
 			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTags" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GatherInfo">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GatherInfo" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>

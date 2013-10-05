@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+	<endpoint 
+		name="MockPostService"
+		service ="{http://www.aplix.ru/PackingLine/1.0/ws}PackingLine"
+		port="{http://www.aplix.ru/PackingLine/1.0/ws}PackingLineSoap" 
+		implementation="ru.aplix.packline.post.MockService" 
+		url-pattern="/PackingLine"
+		wsdl="WEB-INF/wsdl/PackingLine.1cws.wsdl" />
+</endpoints>
