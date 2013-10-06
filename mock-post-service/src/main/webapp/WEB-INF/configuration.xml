@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.aplix.ru/PackingLine/1.0/ws/model">
+	<operators>
+		<operator id="4627085462743" name="Ильин ДВ" />
+		<operator id="4627085462750" name="Палагин СА" />
+		<operator id="9780140318296" name="Иван Фёдорович Крузенштерн" />
+	</operators>
+	<orders>
+		<order 
+			id="1" 
+			clientName="Аллагулов Азат Халитович" 
+			deliveryMethod="Почтовая посылка Почта России (140.7 руб., 7 дня)" 
+			deliveryAddress="456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29" 
+			customerName="ИП Митрюшкин Сергей Сергеевич" 
+			totalIncomings="5"/>
+	</orders>
+	<incomings>
+		<incoming id="008001" orderId="1" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
+		<incoming id="008002" orderId="1" contentDescription="Фишки для игры, 200 шт."/>
+		<incoming id="008003" orderId="1" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
+		<incoming id="008004" orderId="1" contentDescription="Подарочный набор Eleganci."/>
+		<incoming id="008005" orderId="1" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
+	</incomings>
+	<posts>
+		<post id="010931" orderId="1">
+			<incoming id="008001" orderId="1" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
+			<incoming id="008002" orderId="1" contentDescription="Фишки для игры, 200 шт."/>
+		</post>
+		<post id="010932" orderId="1">
+			<container id="70001791" packingType="BOX" postId="010932">
+				<packingSize length="100.0" height="20.0" width="90.0"/>
+			</container>
+			<incoming id="008003" orderId="1" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
+			<incoming id="008004" orderId="1" contentDescription="Подарочный набор Eleganci."/>
+			<incoming id="008005" orderId="1" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
+		</post>
+	</posts>
+	<containers>
+		<container id="70001792" packingType="BOX">
+			<packingSize length="100.0" height="20.0" width="90.0"/>
+		</container>
+		<container id="70001793" packingType="BOX">
+			<packingSize length="100.0" height="20.0" width="90.0"/>
+		</container>
+		<container id="70001794" packingType="BOX">
+			<packingSize length="100.0" height="20.0" width="90.0"/>
+		</container>
+		<container id="70001795" packingType="BOX">
+			<packingSize length="100.0" height="20.0" width="90.0"/>
+		</container>
+	</containers>
+</configuration>

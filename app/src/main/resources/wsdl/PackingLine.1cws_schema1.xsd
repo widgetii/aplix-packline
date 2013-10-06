@@ -77,12 +77,12 @@
 		<xs:complexContent>
 			<xs:extension base="tns:Tag">
 				<xs:sequence>
-					<xs:element name="incomings" type="tns:Incoming" maxOccurs="unbounded">
+					<xs:element name="incoming" type="tns:Incoming" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>Список поступлений, зарегистрированных в данном заказе</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="posts" type="tns:Post" maxOccurs="unbounded">
+					<xs:element name="post" type="tns:Post" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>Список отправлений, на которые разбит весь заказ</xs:documentation>
 						</xs:annotation>
@@ -136,7 +136,7 @@
 							<xs:documentation>Ссылка на контейнер, в который запаковано отправление</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="incomings" type="tns:Incoming" maxOccurs="unbounded">
+					<xs:element name="incoming" type="tns:Incoming" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>Список поступлений, которые входят в данное отправление</xs:documentation>
 						</xs:annotation>

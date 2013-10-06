@@ -227,7 +227,7 @@
 	<xs:element name="SetBoxSize">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tags" type="model:Tag" maxOccurs="unbounded">
+				<xs:element name="tag" type="model:Tag" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список маркеров</xs:documentation>
 					</xs:annotation>
@@ -304,7 +304,7 @@
 	<xs:element name="GenerateTagsResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tags" type="model:Tag" maxOccurs="unbounded">
+				<xs:element name="tag" type="model:Tag" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список сгенерированных маркеров</xs:documentation>
 					</xs:annotation>
@@ -316,7 +316,7 @@
 	<xsd:element name="GatherInfo">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="fields" type="xsd:string" maxOccurs="unbounded">
+				<xsd:element name="field" type="xsd:string" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список названий полей, для которых нужно вернуть значения</xs:documentation>
 					</xs:annotation>
@@ -328,7 +328,7 @@
 	<xsd:element name="GatherInfoResponse">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="fields" type="model:Field" maxOccurs="unbounded">
+				<xsd:element name="field" type="model:Field" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список полей с данными</xs:documentation>
 					</xs:annotation>

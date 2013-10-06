@@ -14,6 +14,7 @@
 		<module>hardware/implementations/camera/raspberry</module>
 		<module>hardware/implementations/scales/mera</module>
 		<module>app</module>
+		<module>mock-post-service</module>
 	</modules>
 
 </project>
