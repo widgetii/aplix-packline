@@ -2,8 +2,11 @@ package ru.aplix.packline.controller;
 
 import java.net.URL;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +15,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,40 +32,24 @@ import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.util.Callback;
 import javafx.util.Duration;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.OrderActAction;
 import ru.aplix.packline.dialog.ConfirmationDialog;
 import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.model.Order;
+import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Order;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class OrderActController extends StandardController<OrderActAction> implements BarcodeListener {
 
-	// @formatter:off
-    final ObservableList<Order> data = FXCollections.observableArrayList(
-            new Order(1L, "123456789", new Date(), 1.5f),
-            new Order(2L, "23424565", new Date(), 4.5f),
-            new Order(3L, "346456", new Date(), 2.3f),
-            new Order(4L, "07890879087", new Date(), 8.7f),
-            new Order(5L, "3465678", new Date(), 9.1f),
-            new Order(6L, "324535345", new Date(), 2.4f),
-            new Order(7L, "45664356", new Date(), 5.4f),
-            new Order(8L, "56786786", new Date(), 8.7f),
-            new Order(9L, "879079808", new Date(), 1.0f),
-            new Order(10L, "046264564564", new Date(), 0.6f),
-            new Order(11L, "123456789", new Date(), 1.5f),
-            new Order(12L, "23424565", new Date(), 4.5f),
-            new Order(13L, "346456", new Date(), 2.3f),
-            new Order(14L, "07890879087", new Date(), 8.7f),
-            new Order(15L, "3465678", new Date(), 9.1f),
-            new Order(16L, "324535345", new Date(), 2.4f),
-            new Order(17L, "45664356", new Date(), 5.4f),
-            new Order(18L, "56786786", new Date(), 8.7f),
-            new Order(19L, "879079808", new Date(), 1.0f),
-            new Order(20L, "046264564564", new Date(), 0.6f));
-    // @formatter:on
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	@SuppressWarnings("rawtypes")
 	@FXML
@@ -72,15 +60,26 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	private Label totalOrdersLabel;
 	@FXML
 	private AnchorPane actInfoContainer;
+	@FXML
+	private Button closeActButton;
+	@FXML
+	private Button saveActButton;
 
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
+	private Order order;
 
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
+	private ResourceBundle resources;
+	private ConfirmationDialog confirmationDialog = null;
+	private List<Task<?>> tasks;
+
 	public OrderActController() {
+		tasks = new ArrayList<Task<?>>();
+
 		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
 
@@ -94,6 +93,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
+		this.resources = resources;
 
 		initTable();
 	}
@@ -103,16 +103,18 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		ordersTableView.setItems(data);
+		order = (Order) context.getAttribute(Const.ORDER);
+		if (order != null) {
+			ObservableList<Incoming> data = FXCollections.observableArrayList(order.getIncoming());
+			ordersTableView.setItems(data);
 
-		Date now = new Date();
-		actInfoLabel.setText(String.format(getResources().getString("act.info"), "123456788", dateFormat.format(now), timeFormat.format(now),
-				"\"ЮниЭкспресс\"\nг.Москва, Озерковская набережная, д.48-50, стр.2, подъезд 7А"));
+			Date date = order.getDate() != null ? order.getDate().toGregorianCalendar().getTime() : null;
+			actInfoLabel.setText(String.format(getResources().getString("act.info"), order.getId(), date != null ? dateFormat.format(date) : "",
+					date != null ? timeFormat.format(date) : "", order.getClientName(), order.getDeliveryMethod(), order.getCustomerName()));
 
-		totalOrdersLabel.setText(String.format(getResources().getString("act.orders.total"), 50));
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
+			totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
+					order.getTotalIncomings()));
+		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -123,69 +125,72 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 	@SuppressWarnings("unchecked")
 	private void initTable() {
-		TableColumn<Order, Long> firstColumn = new TableColumn<Order, Long>(getResources().getString("act.order.number"));
+		TableColumn<Incoming, String> firstColumn = new TableColumn<Incoming, String>(getResources().getString("act.incoming.number"));
 		firstColumn.setSortable(false);
 		firstColumn.setResizable(false);
 		firstColumn.setEditable(false);
-		firstColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
-		firstColumn.setCellValueFactory(new Callback<CellDataFeatures<Order, Long>, ObservableValue<Long>>() {
+		firstColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.20));
+		firstColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
-			public ObservableValue<Long> call(CellDataFeatures<Order, Long> p) {
-				return new ReadOnlyObjectWrapper<Long>(p.getValue().getId());
+			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getId());
 			}
 		});
 
-		TableColumn<Order, String> secondColumn = new TableColumn<Order, String>(getResources().getString("act.order.description"));
+		TableColumn<Incoming, String> secondColumn = new TableColumn<Incoming, String>(getResources().getString("act.incoming.description"));
 		secondColumn.setSortable(false);
 		secondColumn.setResizable(false);
 		secondColumn.setEditable(false);
 		secondColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.38));
-		secondColumn.setCellValueFactory(new Callback<CellDataFeatures<Order, String>, ObservableValue<String>>() {
+		secondColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
-			public ObservableValue<String> call(CellDataFeatures<Order, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getCode());
+			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getContentDescription());
 			}
 		});
 
-		TableColumn<Order, String> thirdColumn = new TableColumn<Order, String>(getResources().getString("act.order.datetime"));
+		TableColumn<Incoming, String> thirdColumn = new TableColumn<Incoming, String>(getResources().getString("act.incoming.datetime"));
 		thirdColumn.setSortable(false);
 		thirdColumn.setResizable(false);
 		thirdColumn.setEditable(false);
-		thirdColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.20));
-		thirdColumn.setCellValueFactory(new Callback<CellDataFeatures<Order, String>, ObservableValue<String>>() {
+		thirdColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.15));
+		thirdColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
-			public ObservableValue<String> call(CellDataFeatures<Order, String> p) {
-				Date d = p.getValue().getDate();
-				String s = String.format("%s\n%s", dateFormat.format(d), timeFormat.format(d));
+			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
+				String s = "";
+				if (p.getValue().getDate() != null) {
+					Date d = p.getValue().getDate().toGregorianCalendar().getTime();
+					s = String.format("%s\n%s", dateFormat.format(d), timeFormat.format(d));
+				}
 				return new ReadOnlyObjectWrapper<String>(s);
 			}
 		});
 
-		TableColumn<Order, String> fourthColumn = new TableColumn<Order, String>(getResources().getString("act.order.weight"));
+		TableColumn<Incoming, Float> fourthColumn = new TableColumn<Incoming, Float>(getResources().getString("act.incoming.weight"));
 		fourthColumn.setSortable(false);
 		fourthColumn.setResizable(false);
 		fourthColumn.setEditable(false);
-		fourthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.15));
-		fourthColumn.setCellValueFactory(new Callback<CellDataFeatures<Order, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Order, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getWeight().toString());
+		fourthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
+		fourthColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, Float>, ObservableValue<Float>>() {
+			public ObservableValue<Float> call(CellDataFeatures<Incoming, Float> p) {
+				return new ReadOnlyObjectWrapper<Float>(p.getValue().getWeight());
 			}
 		});
 
-		TableColumn<Order, Order> fifthColumn = new TableColumn<Order, Order>(getResources().getString("act.order.delete"));
+		TableColumn<Incoming, Incoming> fifthColumn = new TableColumn<Incoming, Incoming>(getResources().getString("act.incoming.delete"));
 		fifthColumn.setSortable(false);
 		fifthColumn.setResizable(false);
 		fifthColumn.setEditable(false);
 		fifthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
-		fifthColumn.setCellFactory(new Callback<TableColumn<Order, Order>, TableCell<Order, Order>>() {
-			public TableCell<Order, Order> call(TableColumn<Order, Order> p) {
+		fifthColumn.setCellFactory(new Callback<TableColumn<Incoming, Incoming>, TableCell<Incoming, Incoming>>() {
+			public TableCell<Incoming, Incoming> call(TableColumn<Incoming, Incoming> p) {
 				return new ButtonTableCell();
 			}
 		});
-		fifthColumn.setCellValueFactory(new Callback<CellDataFeatures<Order, Order>, ObservableValue<Order>>() {
+		fifthColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, Incoming>, ObservableValue<Incoming>>() {
 			@Override
-			public ObservableValue<Order> call(CellDataFeatures<Order, Order> p) {
-				return new ReadOnlyObjectWrapper<Order>(p.getValue());
+			public ObservableValue<Incoming> call(CellDataFeatures<Incoming, Incoming> p) {
+				return new ReadOnlyObjectWrapper<Incoming>(p.getValue());
 			}
 		});
 
@@ -195,7 +200,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		ordersTableView.getColumns().add(thirdColumn);
 		ordersTableView.getColumns().add(fourthColumn);
 
-		ordersTableView.setPlaceholder(new Text(getResources().getString("act.noorders")));
+		ordersTableView.setPlaceholder(new Text(getResources().getString("act.noincomings")));
 
 		actInfoContainer.prefWidthProperty().bind(((AnchorPane) rootNode).widthProperty().multiply(0.25));
 	}
@@ -206,15 +211,183 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
+
+		for (Task<?> task : tasks) {
+			task.cancel(false);
+		}
+	}
+
+	private void setProgress(boolean value) {
+		progressVisibleProperty.set(value);
+		closeActButton.setDisable(value);
+		saveActButton.setDisable(value);
 	}
 
 	public void closeActClick(ActionEvent event) {
-		getAction().closeAct();
-		done();
+		Task<?> task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().carryOutOrder();
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				OrderActController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+		tasks.add(task);
+	}
+
+	public void deleteActClick(ActionEvent event) {
+		Task<?> task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().deleteOrder();
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				OrderActController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+		tasks.add(task);
+	}
+
+	public void deleteIncoming(final Incoming incoming) {
+		Task<?> task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().deleteIncoming(incoming);
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				ordersTableView.getItems().remove(incoming);
+				totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
+						order.getTotalIncomings()));
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+		tasks.add(task);
 	}
 
 	public void saveActClick(ActionEvent event) {
-		getAction().saveAct();
 		done();
 	}
 
@@ -228,18 +401,71 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		});
 	}
 
-	private void processBarcode(String value) {
-		boolean result = getAction().processBarcode(value);
-		if (result) {
-			getContext().setAttribute(Const.JUST_SCANNED_BARCODE, value);
-
-			done();
-		} else {
-			barcodeCheckerEventHandler.reset();
-
-			errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
-			errorVisibleProperty.set(true);
+	private void processBarcode(final String value) {
+		if (progressVisibleProperty.get() || confirmationDialog != null) {
+			return;
 		}
+
+		Task<?> task = new Task<Boolean>() {
+			@Override
+			public Boolean call() throws Exception {
+				try {
+					return getAction().processBarcode(value);
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				Boolean result = getValue();
+				if (result != null && result.booleanValue()) {
+					getContext().setAttribute(Const.JUST_SCANNED_BARCODE, value);
+
+					OrderActController.this.done();
+				} else {
+					barcodeCheckerEventHandler.reset();
+
+					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
+					errorVisibleProperty.set(true);
+				}
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+		tasks.add(task);
 	}
 
 	/**
@@ -281,7 +507,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	/**
 	 *
 	 */
-	private class ButtonTableCell extends TableCell<Order, Order> {
+	private class ButtonTableCell extends TableCell<Incoming, Incoming> {
 
 		private final Button button;
 
@@ -295,27 +521,36 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			this.button.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					ObservableValue<Order> ov = getTableColumn().getCellObservableValue(getIndex());
-					final Order order = ov.getValue();
+					if (progressVisibleProperty.get()) {
+						return;
+					}
 
-					Date orderDate = order.getDate();
-					String orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
+					ObservableValue<Incoming> ov = getTableColumn().getCellObservableValue(getIndex());
+					final Incoming incoming = ov.getValue();
+
+					String orderDateStr = "";
+					if (incoming.getDate() != null) {
+						Date orderDate = incoming.getDate().toGregorianCalendar().getTime();
+						orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
+					}
 
 					Window owner = rootNode.getScene().getWindow();
-					ConfirmationDialog cd = new ConfirmationDialog(owner, "act.order.delete", null, new ConfirmationListener() {
+					confirmationDialog = new ConfirmationDialog(owner, "act.incoming.delete", null, new ConfirmationListener() {
 
 						@Override
 						public void onAccept() {
-							getTableView().getItems().remove(order);
+							confirmationDialog = null;
+							deleteIncoming(incoming);
 						}
 
 						@Override
 						public void onDecline() {
+							confirmationDialog = null;
 						}
 					});
-					cd.centerOnScreen();
-					cd.setMessage("confirmation.act.order.delete", order.getId(), order.getCode(), orderDateStr);
-					cd.show();
+					confirmationDialog.centerOnScreen();
+					confirmationDialog.setMessage("confirmation.act.incoming.delete", incoming.getId(), incoming.getContentDescription(), orderDateStr);
+					confirmationDialog.show();
 				}
 			});
 
@@ -324,7 +559,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		}
 
 		@Override
-		public void updateItem(Order item, boolean empty) {
+		public void updateItem(Incoming item, boolean empty) {
 			super.updateItem(item, empty);
 
 			if (empty) {

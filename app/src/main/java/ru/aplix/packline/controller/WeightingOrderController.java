@@ -12,7 +12,7 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.action.WeightingOrderAction;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
-import ru.aplix.packline.model.Order;
+import ru.aplix.packline.post.Order;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
@@ -47,13 +47,10 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 
 		Order order = (Order) context.getAttribute(Const.ORDER);
 		if (order != null) {
-			clientLabel.setText(order.getClient());
+			clientLabel.setText(order.getClientName());
 			deliveryLabel.setText(order.getDeliveryMethod());
-			customerLabel.setText(order.getCustomer());
+			customerLabel.setText(order.getCustomerName());
 		}
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
 
 		updateMeasure(0f);
 
@@ -75,8 +72,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	}
 
 	public void nextClick(ActionEvent event) {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		getAction().processMeasure(measure, order);
+		getAction().processMeasure(measure);
 		done();
 	}
 

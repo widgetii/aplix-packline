@@ -13,10 +13,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import ru.aplix.packline.Const;
-import ru.aplix.packline.model.Operator;
+import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.workflow.StandardWorkflowController;
 import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
@@ -29,6 +30,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	protected StringProperty titleProperty = new SimpleStringProperty();
 	protected StringProperty errorMessageProperty = new SimpleStringProperty();
 	protected BooleanProperty errorVisibleProperty = new SimpleBooleanProperty();
+	protected BooleanProperty progressVisibleProperty = new SimpleBooleanProperty();
 
 	private ResourceBundle resources;
 	private WorkflowContext context;
@@ -53,16 +55,17 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 			errorLabel.textProperty().bind(errorMessageProperty);
 		}
 
+		// Bind progress properties
+		ProgressIndicator progressIndicator = (ProgressIndicator) rootNode.lookup("#progressIndicator");
+		if (progressIndicator != null) {
+			progressIndicator.visibleProperty().bind(progressVisibleProperty);
+		}
+
 		// Add key event filter
 		rootNode.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyEvent) {
 				switch (keyEvent.getCode()) {
-				/*case N:
-					if (KeyEvent.KEY_RELEASED.equals(keyEvent.getEventType())) {
-						done();
-					}
-					break;*/
 				case X:
 					if (keyEvent.isAltDown()) {
 						Platform.exit();
@@ -85,6 +88,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		} else {
 			titleProperty.set(resources.getString(getTitleResourceName()));
 		}
+		
+		errorMessageProperty.set(null);
+		errorVisibleProperty.set(false);
+		progressVisibleProperty.set(false);
 	}
 
 	protected String getTitleResourceName() {

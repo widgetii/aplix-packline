@@ -1,21 +1,44 @@
 package ru.aplix.packline.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.DimentionsAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.model.Order;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class DimentionsController extends StandardController<DimentionsAction> implements BarcodeListener {
+
+	private final Log LOG = LogFactory.getLog(getClass());
+
+	@FXML
+	private TextField lengthEdit;
+	@FXML
+	private TextField heightEdit;
+	@FXML
+	private TextField widthEdit;
+	@FXML
+	private Pane buttonsContainer;
+
+	private ResourceBundle resources;
 
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
@@ -25,12 +48,7 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	private Float height = Float.NaN;
 	private Float width = Float.NaN;
 
-	@FXML
-	private TextField lengthEdit;
-	@FXML
-	private TextField heightEdit;
-	@FXML
-	private TextField widthEdit;
+	private Task<Void> task;
 
 	public DimentionsController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
@@ -41,15 +59,21 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	}
 
 	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		this.resources = resources;
+	}
+
+	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+
+		buttonsContainer.setDisable(false);
 
 		lengthEdit.setText(null);
 		heightEdit.setText(null);
 		widthEdit.setText(null);
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -64,6 +88,10 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
+
+		if (task != null) {
+			task.cancel(false);
+		}
 	}
 
 	@Override
@@ -76,20 +104,68 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		});
 	}
 
-	private void processBarcode(String value) {
+	private void processBarcode(final String value) {
+		if (progressVisibleProperty.get()) {
+			return;
+		}
+
 		if (!checkDimentions()) {
 			return;
 		}
 
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		if (getAction().processBarcode(value, order, length, height, width)) {
-			done();
-		} else {
-			barcodeCheckerEventHandler.reset();
+		task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().processBarcode(value, length, height, width);
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
 
-			errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
-			errorVisibleProperty.set(true);
-		}
+			@Override
+			protected void running() {
+				super.running();
+
+				progressVisibleProperty.set(true);
+				buttonsContainer.setDisable(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				progressVisibleProperty.set(false);
+				buttonsContainer.setDisable(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				progressVisibleProperty.set(false);
+				buttonsContainer.setDisable(false);
+
+				DimentionsController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
 	}
 
 	private boolean checkDimentions() {

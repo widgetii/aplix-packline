@@ -1,21 +1,33 @@
 package ru.aplix.packline.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReadBarcodeBoxAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.model.Order;
+import ru.aplix.packline.post.Order;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxAction> implements BarcodeListener {
+
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	@FXML
 	private Label clientLabel;
@@ -24,9 +36,13 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 	@FXML
 	private Label customerLabel;
 
+	private ResourceBundle resources;
+
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
+
+	private Task<Void> task;
 
 	public ReadBarcodeBoxController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
@@ -37,17 +53,22 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 	}
 
 	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		this.resources = resources;
+	}
+
+	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
 		Order order = (Order) context.getAttribute(Const.ORDER);
-
-		clientLabel.setText(order.getClient());
-		deliveryLabel.setText(order.getDeliveryMethod());
-		customerLabel.setText(order.getCustomer());
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
+		if (order != null) {
+			clientLabel.setText(order.getClientName());
+			deliveryLabel.setText(order.getDeliveryMethod());
+			customerLabel.setText(order.getCustomerName());
+		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -62,6 +83,10 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
+
+		if (task != null) {
+			task.cancel(false);
+		}
 	}
 
 	@Override
@@ -74,18 +99,66 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		});
 	}
 
-	private void processBarcode(String value) {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		if (getAction().processBarcode(value, order)) {
-			done();
-		} else {
-			barcodeCheckerEventHandler.reset();
-
-			errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
-			errorVisibleProperty.set(true);
+	private void processBarcode(final String value) {
+		if (progressVisibleProperty.get()) {
+			return;
 		}
+
+		task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().processBarcode(value);
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				progressVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				progressVisibleProperty.set(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				progressVisibleProperty.set(false);
+
+				ReadBarcodeBoxController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
 	}
 
+	/**
+	 * 
+	 */
 	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
 
 		private int delayCount;

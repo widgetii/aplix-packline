@@ -12,7 +12,7 @@
 
 <AnchorPane minHeight="60.0" prefHeight="81.0" prefWidth="731.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.SystemHeaderController">
   <children>
-    <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="407.41999999999996" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="79.58" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="0.0">
+    <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="316.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="0.0">
       <font>
         <Font name="Verdana" size="22.0" />
       </font>
@@ -34,5 +34,6 @@
       </image>
     </ImageView>
     <Button contentDisplay="GRAPHIC_ONLY" minHeight="71.0" minWidth="71.0" mnemonicParsing="false" onAction="#shutdownClick" prefHeight="71.0" prefWidth="71.0" styleClass="shutdown-button" text="Button" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <ProgressIndicator fx:id="progressIndicator" layoutY="6.0" AnchorPane.leftAnchor="86.0" />
   </children>
 </AnchorPane>

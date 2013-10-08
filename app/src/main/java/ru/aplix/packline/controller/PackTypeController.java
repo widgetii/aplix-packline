@@ -3,13 +3,21 @@ package ru.aplix.packline.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
 import ru.aplix.packline.action.PackTypeAction;
-import ru.aplix.packline.model.Order;
-import ru.aplix.packline.model.PackingType;
+import ru.aplix.packline.post.Order;
+import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class PackTypeController extends StandardController<PackTypeAction> {
+
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	@FXML
 	private Label clientLabel;
@@ -23,10 +31,11 @@ public class PackTypeController extends StandardController<PackTypeAction> {
 		super.prepare(context);
 
 		Order order = (Order) context.getAttribute(Const.ORDER);
-
-		clientLabel.setText(order.getClient());
-		deliveryLabel.setText(order.getDeliveryMethod());
-		customerLabel.setText(order.getCustomer());
+		if (order != null) {
+			clientLabel.setText(order.getClientName());
+			deliveryLabel.setText(order.getDeliveryMethod());
+			customerLabel.setText(order.getCustomerName());
+		}
 	}
 
 	@Override
@@ -47,8 +56,11 @@ public class PackTypeController extends StandardController<PackTypeAction> {
 	}
 
 	private void selectPacketType(PackingType value) {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		getAction().selectPacketType(value, order);
+		try {
+			getAction().selectPacketType(value);
+		} catch (DatatypeConfigurationException e) {
+			LOG.error(e);
+		}
 		done();
 	}
 }

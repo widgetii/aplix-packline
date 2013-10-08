@@ -25,6 +25,8 @@ public class Configuration {
 	private HardwareConfiguration hardwareConfiguration;
 	@XmlElement(name = "ActivityMonitor")
 	private ActivityMonitorConfiguration activityMonitorConfiguration;
+	@XmlElement(name = "PostService")
+	private PostService postService;
 
 	private Configuration() {
 
@@ -72,5 +74,16 @@ public class Configuration {
 
 	public void setActivityMonitorConfiguration(ActivityMonitorConfiguration activityMonitorConfiguration) {
 		this.activityMonitorConfiguration = activityMonitorConfiguration;
+	}
+
+	public PostService getPostService() {
+		if (postService == null) {
+			postService = new PostService();
+		}
+		return postService;
+	}
+
+	public void setPostService(PostService postService) {
+		this.postService = postService;
 	}
 }

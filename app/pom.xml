@@ -3,7 +3,7 @@
 
 	<name>PackLine App</name>
 	<url>http://git.aplix.ru/packline</url>
-	<version>0.2</version>
+	<version>0.3</version>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>packline</artifactId>
 	<packaging>jar</packaging>
@@ -41,6 +41,11 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>

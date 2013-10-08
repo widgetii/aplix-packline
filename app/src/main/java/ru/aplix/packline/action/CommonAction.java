@@ -37,7 +37,7 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private Parent rootNode;
 	private ContextMenu contextMenu = null;
 	private boolean skipClick;
-
+	
 	public CommonAction() {
 		logoImageMousePressedTimeline = new Timeline();
 		logoImageMousePressedTimeline.setCycleCount(2);

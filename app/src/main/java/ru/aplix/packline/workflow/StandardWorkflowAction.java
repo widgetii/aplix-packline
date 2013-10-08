@@ -25,6 +25,7 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 	private WorkflowAction nextAction;
 	private Scene scene = null;
 	private Controller controller = null;
+	private ResourceBundle resources;
 
 	public WorkflowAction getNextAction() {
 		return nextAction;
@@ -40,6 +41,10 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 
 	protected Controller getController() {
 		return controller;
+	}
+
+	protected ResourceBundle getResources() {
+		return resources;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,7 +64,7 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 			// Load form, controoler and create scene
 			if (controller == null) {
 				String fxmlName = String.format("/resources/fxml/%s.fxml", getFormName());
-				ResourceBundle resources = ResourceBundle.getBundle("resources.messages.strings");
+				resources = ResourceBundle.getBundle("resources.messages.strings");
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource(fxmlName));
 				loader.setResources(resources);

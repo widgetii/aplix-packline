@@ -22,6 +22,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized Operator getOperator(final String operatorId) {
+		if (operatorId == null) {
+			return null;
+		}
+
 		Operator operator = (Operator) CollectionUtils.find(getConfig().getOperators(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
@@ -38,6 +42,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized Tag findTag(final String tagId) {
+		if (tagId == null) {
+			return null;
+		}
+
 		Predicate predicate = new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
@@ -71,7 +79,7 @@ public class MockService implements PackingLinePortType {
 	@Override
 	public synchronized int addIncomingToOrder(final String orderId, final Incoming incoming) {
 		// Check order and incoming linkage
-		if (!orderId.equals(incoming.getOrderId())) {
+		if (orderId == null || incoming == null || !orderId.equals(incoming.getOrderId())) {
 			return -1;
 		}
 
@@ -117,6 +125,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean deleteIncomingFromOrder(final String orderId, final String incomingId) {
+		if (orderId == null || incomingId == null) {
+			return false;
+		}
+
 		// Find order in global list
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 			@Override
@@ -148,6 +160,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean carryOutOrder(final String orderId) {
+		if (orderId == null) {
+			return false;
+		}
+
 		// Find order in global list
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 			@Override
@@ -160,6 +176,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean deleteOrder(final String orderId) {
+		if (orderId == null) {
+			return false;
+		}
+
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
@@ -175,6 +195,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean addContainer(final Container container) {
+		if (container == null) {
+			return false;
+		}
+
 		// Find the post to which the given container belongs
 		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), new Predicate() {
 			@Override
@@ -224,6 +248,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean updateContainer(final Container container) {
+		if (container == null) {
+			return false;
+		}
+
 		// Find the post to which the given container belongs
 		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), new Predicate() {
 			@Override
@@ -260,6 +288,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized void setBoxSize(List<Tag> tags, PackingSize packingSize) {
+		if (tags == null || packingSize == null) {
+			return;
+		}
+
 		for (final Tag tag : tags) {
 			PackingSize ps = new PackingSize();
 			ps.setHeight(packingSize.getHeight());
@@ -288,6 +320,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized PackingSize getBoxSize(final String boxId) {
+		if (boxId == null) {
+			return null;
+		}
+
 		// Find the container
 		Container container = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
 			@Override
@@ -306,6 +342,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized int getBoxCount(PackingSize packingSize) {
+		if (packingSize == null) {
+			return 0;
+		}
+
 		int result = 0;
 		for (Container container : getConfig().getContainers()) {
 			if (container.getPackingSize() != null) {
@@ -354,6 +394,10 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized List<Field> gatherInfo(List<String> fields) {
+		if (fields == null) {
+			return null;
+		}
+
 		return null;
 	}
 

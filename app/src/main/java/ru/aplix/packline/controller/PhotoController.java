@@ -1,12 +1,11 @@
 package ru.aplix.packline.controller;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.fxml.FXML;
-import javafx.scene.control.ProgressIndicator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,22 +23,17 @@ public class PhotoController extends StandardController<PhotoAction> {
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
-	@FXML
-	private ProgressIndicator progressIndicator;
-
 	private PhotoTask photoTask;
 
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
-
 		PhotoCamera<?> pc = (PhotoCamera<?>) context.getAttribute(Const.PHOTO_CAMERA);
 		if (pc != null) {
 			photoTask = new PhotoTask(pc);
-			new Thread(photoTask).start();
+			ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+			executor.submit(photoTask);
 		} else {
 			throw new SkipActionException();
 		}
@@ -94,7 +88,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 						Platform.runLater(new Runnable() {
 							@Override
 							public void run() {
-								progressIndicator.setVisible(false);
+								progressVisibleProperty.set(false);
 								errorMessageProperty.set(getResources().getString("error.camera"));
 								errorVisibleProperty.set(true);
 							}
@@ -124,7 +118,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 		protected void running() {
 			super.running();
 
-			progressIndicator.setVisible(true);
+			progressVisibleProperty.set(true);
 		}
 
 		@Override
@@ -135,7 +129,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 				getAction().imageAcquired(result);
 			}
 
-			progressIndicator.setVisible(false);
+			progressVisibleProperty.set(false);
 			PhotoController.this.done();
 		}
 

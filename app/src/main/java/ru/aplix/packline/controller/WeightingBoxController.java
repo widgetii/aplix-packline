@@ -1,22 +1,36 @@
 package ru.aplix.packline.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.WeightingBoxAction;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
-import ru.aplix.packline.model.Order;
+import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.PackingSize;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class WeightingBoxController extends StandardController<WeightingBoxAction> implements MeasurementListener {
+
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	@FXML
 	private Label packingCode;
@@ -26,12 +40,18 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	private Label packingSize;
 	@FXML
 	private Label weightLabel;
+	@FXML
+	private Button nextButton;
 
 	private float measure = 0f;
 
 	private Scales<?> scales = null;
 	private Timeline scalesChecker;
 	private ScalesCheckerEventHandler scalesCheckerEventHandler;
+
+	private ResourceBundle resources;
+
+	private Task<Void> task;
 
 	public WeightingBoxController() {
 		scalesCheckerEventHandler = new ScalesCheckerEventHandler();
@@ -42,14 +62,24 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	}
 
 	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		this.resources = resources;
+	}
+
+	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		Order order = (Order) context.getAttribute(Const.ORDER);
+		nextButton.setDisable(false);
 
-		packingCode.setText(order.getPacking().getPackingCode());
-		packingSize.setText(String.format("%s %s", order.getPacking().getPackingSize().toString(), getResources().getString("dimentions.unit")));
-		switch (order.getPacking().getPackingType()) {
+		Container container = (Container) context.getAttribute(Const.TAG);
+		PackingSize ps = container.getPackingSize();
+
+		packingCode.setText(container.getId());
+		packingSize.setText(String.format("%.1f x %.1f x %.1f %s", ps.getLength(), ps.getHeight(), ps.getWidth(), getResources().getString("dimentions.unit")));
+		switch (container.getPackingType()) {
 		case BOX:
 			packingType.setText(getResources().getString("packtype.box"));
 			break;
@@ -60,9 +90,6 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			packingType.setText(getResources().getString("packtype.paper"));
 			break;
 		}
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
 
 		updateMeasure(0f);
 
@@ -81,12 +108,66 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			scalesChecker.stop();
 			scales.removeMeasurementListener(this);
 		}
+
+		if (task != null) {
+			task.cancel(false);
+		}
 	}
 
 	public void nextClick(ActionEvent event) {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		getAction().processMeasure(measure, order);
-		done();
+		task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().processMeasure(measure);
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				progressVisibleProperty.set(true);
+				nextButton.setDisable(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				progressVisibleProperty.set(false);
+				nextButton.setDisable(false);
+
+				scalesCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = resources.getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				progressVisibleProperty.set(false);
+				nextButton.setDisable(false);
+
+				WeightingBoxController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
 	}
 
 	@Override

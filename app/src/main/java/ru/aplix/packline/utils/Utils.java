@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
+import java.util.GregorianCalendar;
 
 import javafx.application.Application;
 
@@ -12,6 +13,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.xml.sax.InputSource;
 
@@ -122,5 +126,11 @@ public final class Utils {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static XMLGregorianCalendar now() throws DatatypeConfigurationException {
+		GregorianCalendar gcal = new GregorianCalendar();
+		XMLGregorianCalendar xmlGC = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+		return xmlGC;
 	}
 }

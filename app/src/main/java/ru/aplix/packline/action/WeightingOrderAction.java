@@ -1,7 +1,8 @@
 package ru.aplix.packline.action;
 
+import ru.aplix.packline.Const;
 import ru.aplix.packline.controller.WeightingOrderController;
-import ru.aplix.packline.model.Order;
+import ru.aplix.packline.post.Incoming;
 
 public class WeightingOrderAction extends CommonAction<WeightingOrderController> {
 
@@ -10,7 +11,8 @@ public class WeightingOrderAction extends CommonAction<WeightingOrderController>
 		return "weighting-order";
 	}
 
-	public void processMeasure(Float value, Order order) {
-		order.setWeight(value);
+	public void processMeasure(Float value) {
+		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
+		incoming.setWeight(value);
 	}
 }

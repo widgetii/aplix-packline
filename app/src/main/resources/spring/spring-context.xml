@@ -14,8 +14,8 @@
 
 	<bean id="action2" class="ru.aplix.packline.action.ReadBarcodeOrderAction">
 		<property name="acceptanceAction" ref="action3" />
-		<property name="packingAction" ref="action6" />
-		<property name="markingAction" ref="action9" />
+		<property name="packingAction" ref="action7" />
+		<property name="markingAction" ref="action10" />
 	</bean>
 
 	<bean id="action3" class="ru.aplix.packline.action.WeightingOrderAction">
@@ -26,28 +26,32 @@
 		<property name="nextAction" ref="action5" />
 	</bean>
 	
-	<bean id="action5" class="ru.aplix.packline.action.OrderActAction">
+	<bean id="action5" class="ru.aplix.packline.action.TrolleyAction">
+		<property name="nextAction" ref="action6" />
+	</bean>
+	
+	<bean id="action6" class="ru.aplix.packline.action.OrderActAction">
 		<property name="nextAction" ref="action2" />
 	</bean>
 
-	<bean id="action6" class="ru.aplix.packline.action.PackTypeAction">
-		<property name="barcodeAction" ref="action7" />
-		<property name="dimentionAction" ref="action8" />
+	<bean id="action7" class="ru.aplix.packline.action.PackTypeAction">
+		<property name="barcodeAction" ref="action8" />
+		<property name="dimentionAction" ref="action9" />
 	</bean>
 
-	<bean id="action7" class="ru.aplix.packline.action.ReadBarcodeBoxAction">
+	<bean id="action8" class="ru.aplix.packline.action.ReadBarcodeBoxAction">
 		<property name="nextAction" ref="action2" />
 	</bean>
 
-	<bean id="action8" class="ru.aplix.packline.action.DimentionsAction">
+	<bean id="action9" class="ru.aplix.packline.action.DimentionsAction">
 		<property name="nextAction" ref="action2" />
 	</bean>
 
-	<bean id="action9" class="ru.aplix.packline.action.WeightingBoxAction">
-		<property name="nextAction" ref="action10" />
+	<bean id="action10" class="ru.aplix.packline.action.WeightingBoxAction">
+		<property name="nextAction" ref="action11" />
 	</bean>
 
-	<bean id="action10" class="ru.aplix.packline.action.PrintFormsAction">
+	<bean id="action11" class="ru.aplix.packline.action.PrintFormsAction">
 		<property name="nextAction" ref="action2" />
 	</bean>
 

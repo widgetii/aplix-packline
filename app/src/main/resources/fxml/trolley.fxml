@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="896.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.PhotoController">
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="896.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.TrolleyController">
   <children>
     <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -19,19 +19,20 @@
           <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
               <children>
-                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%photo.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
                 <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="160.0">
                   <children>
-                    <HBox id="HBox" alignment="CENTER" spacing="100.0">
+                    <HBox id="HBox" alignment="CENTER" spacing="80.0">
                       <children>
-                        <ImageView fitHeight="264.29217529296875" fitWidth="275.9330792269682" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView" fitHeight="351.9999694824219" fitWidth="351.9999694824219" pickOnBounds="true" preserveRatio="true">
                           <effect>
                             <InnerShadow />
                           </effect>
                           <image>
-                            <Image url="@../images/img-camera.png" preserveRatio="false" smooth="false" />
+                            <Image url="@../images/img-trolley-blue.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
+                        <Button fx:id="nextButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
                       </children>
                     </HBox>
                   </children>

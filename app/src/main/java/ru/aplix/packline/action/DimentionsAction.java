@@ -1,8 +1,12 @@
 package ru.aplix.packline.action;
 
+import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.DimentionsController;
-import ru.aplix.packline.model.Order;
-import ru.aplix.packline.model.PackingSize;
+import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.PackingSize;
+import ru.aplix.packline.post.Post;
 
 public class DimentionsAction extends CommonAction<DimentionsController> {
 
@@ -11,11 +15,20 @@ public class DimentionsAction extends CommonAction<DimentionsController> {
 		return "dimentions";
 	}
 
-	public boolean processBarcode(String code, Order order, float length, float height, float width) {
-		// TODO: place processing code here
-		order.getPacking().setPackingCode(code);
-		order.getPacking().setPackingSize(new PackingSize(length, height, width));
+	public void processBarcode(String code, float length, float height, float width) throws PackLineException {
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		return true;
+		Post post = (Post) getContext().getAttribute(Const.TAG);
+		Container container = post.getContainer();
+
+		container.setId(code);
+		PackingSize ps = new PackingSize();
+		ps.setLength(length);
+		ps.setWidth(width);
+		ps.setHeight(height);
+
+		if (!postServicePort.addContainer(container)) {
+			throw new PackLineException(getResources().getString("error.post.container.add"));
+		}
 	}
 }

@@ -1,23 +1,38 @@
 package ru.aplix.packline.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import ru.aplix.packline.Const;
 import ru.aplix.packline.action.AuthAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.model.Operator;
+import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class AuthController extends StandardController<AuthAction> implements BarcodeListener {
 
+	private final Log LOG = LogFactory.getLog(getClass());
+
+	private ResourceBundle resources;
+
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
+
+	private Task<Operator> task;
 
 	public AuthController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
@@ -28,12 +43,16 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	}
 
 	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		this.resources = resources;
+	}
+
+	@Override
 	public void prepare(WorkflowContext context) {
 		context.setAttribute(Const.OPERATOR, null);
 		super.prepare(context);
-
-		errorMessageProperty.set(null);
-		errorVisibleProperty.set(false);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -48,6 +67,10 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
+
+		if (task != null) {
+			task.cancel(false);
+		}
 	}
 
 	@Override
@@ -60,20 +83,67 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		});
 	}
 
-	private void authenticateOperator(String value) {
-		Operator operator = getAction().authenticateOperator(value);
-		if (operator != null) {
-			getContext().setAttribute(Const.OPERATOR, operator);
-
-			done();
-		} else {
-			barcodeCheckerEventHandler.reset();
-
-			errorMessageProperty.set(getResources().getString("error.auth.invalid.code"));
-			errorVisibleProperty.set(true);
+	private void authenticateOperator(final String value) {
+		if (progressVisibleProperty.get()) {
+			return;
 		}
+
+		task = new Task<Operator>() {
+			@Override
+			public Operator call() throws Exception {
+				try {
+					Operator operator = getAction().authenticateOperator(value);
+					return operator;
+				} catch (Exception e) {
+					LOG.error(e);
+					throw e;
+				}
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				progressVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				progressVisibleProperty.set(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				errorMessageProperty.set(resources.getString("error.post.service"));
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				progressVisibleProperty.set(false);
+
+				Object result = getValue();
+				if (result != null) {
+					AuthController.this.done();
+				} else {
+					barcodeCheckerEventHandler.reset();
+
+					errorMessageProperty.set(getResources().getString("error.auth.invalid.code"));
+					errorVisibleProperty.set(true);
+				}
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
 	}
 
+	/**
+	 *
+	 */
 	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
 
 		private int delayCount;

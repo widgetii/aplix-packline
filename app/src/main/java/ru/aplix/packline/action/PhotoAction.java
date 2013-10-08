@@ -1,7 +1,9 @@
 package ru.aplix.packline.action;
 
+import ru.aplix.packline.Const;
 import ru.aplix.packline.controller.PhotoController;
 import ru.aplix.packline.hardware.camera.PhotoCameraImage;
+import ru.aplix.packline.post.Incoming;
 
 public class PhotoAction extends CommonAction<PhotoController> {
 
@@ -11,6 +13,7 @@ public class PhotoAction extends CommonAction<PhotoController> {
 	}
 
 	public void imageAcquired(PhotoCameraImage result) {
-		// TODO: place image processing logic here
+		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
+		incoming.setPhotoId(result.getImageId());
 	}
 }

@@ -36,8 +36,8 @@
                             <Label id="ordersTotal" fx:id="totalOrdersLabel" prefHeight="60.0" prefWidth="197.0" text="Total Number of Orders" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                           </children>
                         </AnchorPane>
-                        <Button mnemonicParsing="false" onAction="#closeActClick" prefHeight="70.0" prefWidth="200.0" styleClass="green-button" text="%button.act.close" textAlignment="CENTER" wrapText="true" />
-                        <Button mnemonicParsing="false" onAction="#saveActClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" text="%button.act.save" textAlignment="CENTER" wrapText="true" />
+                        <Button fx:id="closeActButton" mnemonicParsing="false" onAction="#closeActClick" prefHeight="70.0" prefWidth="200.0" styleClass="green-button" text="%button.act.close" textAlignment="CENTER" wrapText="true" />
+                        <Button fx:id="saveActButton" mnemonicParsing="false" onAction="#saveActClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" text="%button.act.save" textAlignment="CENTER" wrapText="true" />
                       </children>
                     </VBox>
                   </children>

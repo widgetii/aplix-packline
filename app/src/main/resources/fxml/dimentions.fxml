@@ -24,7 +24,7 @@
                   <children>
                     <HBox id="HBox" alignment="CENTER" fillHeight="false" prefHeight="499.0" prefWidth="924.0" spacing="5.0" VBox.vgrow="ALWAYS">
                       <children>
-                        <Pane prefHeight="499.0" prefWidth="879.0">
+                        <Pane fx:id="buttonsContainer" prefHeight="499.0" prefWidth="879.0">
                           <children>
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="163.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.length" />
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="237.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.height" />

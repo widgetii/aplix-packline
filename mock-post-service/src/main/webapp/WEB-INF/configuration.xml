@@ -7,36 +7,37 @@
 	</operators>
 	<orders>
 		<order 
-			id="1" 
+			id="123456789" 
 			clientName="Аллагулов Азат Халитович" 
 			deliveryMethod="Почтовая посылка Почта России (140.7 руб., 7 дня)" 
 			deliveryAddress="456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29" 
-			customerName="ИП Митрюшкин Сергей Сергеевич" 
+			customerName="ИП Митрюшкин Сергей Сергеевич"
+			date="2013-10-07T23:06:18.039+03:00"
 			totalIncomings="5"/>
 	</orders>
 	<incomings>
-		<incoming id="008001" orderId="1" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
-		<incoming id="008002" orderId="1" contentDescription="Фишки для игры, 200 шт."/>
-		<incoming id="008003" orderId="1" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
-		<incoming id="008004" orderId="1" contentDescription="Подарочный набор Eleganci."/>
-		<incoming id="008005" orderId="1" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
+		<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
+		<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
+		<incoming id="008003" orderId="123456789" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
+		<incoming id="008004" orderId="123456789" contentDescription="Подарочный набор Eleganci."/>
+		<incoming id="008005" orderId="123456789" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
 	</incomings>
 	<posts>
-		<post id="010931" orderId="1">
-			<incoming id="008001" orderId="1" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
-			<incoming id="008002" orderId="1" contentDescription="Фишки для игры, 200 шт."/>
-		</post>
-		<post id="010932" orderId="1">
-			<container id="70001791" packingType="BOX" postId="010932">
+		<post id="010931" orderId="123456789" date="2013-10-07T23:06:18.039+03:00">
+			<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
+			<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
+			<container id="70001792" packingType="BOX" postId="010932">
 				<packingSize length="100.0" height="20.0" width="90.0"/>
 			</container>
-			<incoming id="008003" orderId="1" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
-			<incoming id="008004" orderId="1" contentDescription="Подарочный набор Eleganci."/>
-			<incoming id="008005" orderId="1" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
+		</post>
+		<post id="010932" orderId="123456789" date="2013-10-07T23:06:18.039+03:00">
+			<incoming id="008003" orderId="123456789" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
+			<incoming id="008004" orderId="123456789" contentDescription="Подарочный набор Eleganci."/>
+			<incoming id="008005" orderId="123456789" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
 		</post>
 	</posts>
 	<containers>
-		<container id="70001792" packingType="BOX">
+		<container id="70001792" packingType="BOX" postId="010931">
 			<packingSize length="100.0" height="20.0" width="90.0"/>
 		</container>
 		<container id="70001793" packingType="BOX">

@@ -2,6 +2,7 @@ package ru.aplix.packline;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,6 +24,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.HardwareConfiguration;
+import ru.aplix.packline.conf.PostService;
 import ru.aplix.packline.hardware.Connectable;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerConnectionListener;
@@ -34,11 +37,18 @@ import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
 import ru.aplix.packline.hardware.scales.ScalesFactory;
 import ru.aplix.packline.idle.IdleListener;
 import ru.aplix.packline.idle.UserActivityMonitor;
+import ru.aplix.packline.post.PackingLine;
+import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.workflow.StandardWorkflowContext;
 import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
+// TODO 41 Generate markers
+// TODO 42 Close Act / Delete Order / Registered Incoming Block
+// TODO 43 Boxes spare notification
+// TODO 44 SetOperatorActivity
+// TODO 50 Printing labels and forms
 // TODO 90 act-table and menu styles
 
 public class App extends Application implements IdleListener {
@@ -50,7 +60,7 @@ public class App extends Application implements IdleListener {
 
 	private ReentrantLock executorLock;
 	private boolean shutdownExecutor;
-	private ScheduledExecutorService executor = null;
+	private ScheduledExecutorService executor;
 
 	public static void main(String[] args) throws Exception {
 		launch(args);
@@ -65,6 +75,7 @@ public class App extends Application implements IdleListener {
 
 		shutdownExecutor = false;
 		executorLock = new ReentrantLock();
+		executor = Executors.newSingleThreadScheduledExecutor();
 	}
 
 	private void initWindow(Stage stage, Rectangle2D screenBounds) {
@@ -89,9 +100,11 @@ public class App extends Application implements IdleListener {
 			workflowContext.setAttribute(Const.APPLICATION_CONTEXT, applicationContext);
 			workflowContext.setAttribute(Const.STAGE, stage);
 			workflowContext.setAttribute(Const.SCREEN_BOUNDS, screenBounds);
+			workflowContext.setAttribute(Const.EXECUTOR, executor);
 		}
 
 		initializeHardware();
+		initializeRemoteServices();
 
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.FIRST_WORKFLOW_ACTION_BEAN_NAME);
 		wa.execute(workflowContext);
@@ -264,5 +277,21 @@ public class App extends Application implements IdleListener {
 		} finally {
 			executorLock.unlock();
 		}
+	}
+
+	private void initializeRemoteServices() throws FileNotFoundException, MalformedURLException, JAXBException {
+		PackingLine postService = new PackingLine();
+		PackingLinePortType postServicePort = postService.getPackingLineSoap();
+
+		if (postServicePort instanceof BindingProvider) {
+			PostService psConf = Configuration.getInstance().getPostService();
+
+			Map<String, Object> requestContext = ((BindingProvider) postServicePort).getRequestContext();
+			requestContext.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, psConf.getServiceAddress());
+			requestContext.put(BindingProvider.USERNAME_PROPERTY, psConf.getUserName());
+			requestContext.put(BindingProvider.PASSWORD_PROPERTY, psConf.getPassword());
+		}
+
+		workflowContext.setAttribute(Const.POST_SERVICE_PORT, postServicePort);
 	}
 }
