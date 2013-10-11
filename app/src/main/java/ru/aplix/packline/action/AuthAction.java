@@ -24,7 +24,7 @@ public class AuthAction extends WorkflowActionWithUserActivityMonitor<AuthContro
 			requestContext.put(BindingProvider.USERNAME_PROPERTY, code);
 		}
 
-		Operator result = postServicePort.getOperator(code);
+		Operator result = postServicePort.getOperator();
 		getContext().setAttribute(Const.OPERATOR, result);
 		return result;
 	}

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <configuration xmlns="http://www.aplix.ru/PackingLine/1.0/ws/model">
+	<customers>
+		<customer id="11111111" name="ИП Митрюшкин Сергей Сергеевич" />
+	</customers>
 	<operators>
 		<operator id="4627085462743" name="Ильин ДВ" />
 		<operator id="4627085462750" name="Палагин СА" />
@@ -26,7 +29,7 @@
 		<post id="010931" orderId="123456789" date="2013-10-07T23:06:18.039+03:00">
 			<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
 			<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
-			<container id="70001792" packingType="BOX" postId="010932">
+			<container id="70001792" packingType="BOX" postId="010932" boxTypeId="180001">
 				<packingSize length="100.0" height="20.0" width="90.0"/>
 			</container>
 		</post>
@@ -37,17 +40,25 @@
 		</post>
 	</posts>
 	<containers>
-		<container id="70001792" packingType="BOX" postId="010931">
+		<container id="70001792" postId="010931" packingType="BOX" boxTypeId="180001">
 			<packingSize length="100.0" height="20.0" width="90.0"/>
 		</container>
-		<container id="70001793" packingType="BOX">
+		<container id="70001793" packingType="BOX" boxTypeId="180001">
 			<packingSize length="100.0" height="20.0" width="90.0"/>
 		</container>
-		<container id="70001794" packingType="BOX">
+		<container id="70001794" packingType="BOX" boxTypeId="180002">
 			<packingSize length="100.0" height="20.0" width="90.0"/>
 		</container>
-		<container id="70001795" packingType="BOX">
+		<container id="70001795" packingType="BOX" boxTypeId="180002">
 			<packingSize length="100.0" height="20.0" width="90.0"/>
 		</container>
 	</containers>
+	<boxTypes>
+		<boxType id="180001" supplierName="Ferplast" cardboardGrade="Класс 3" emptyWeight="0.1">
+			<packingSize length="100.0" height="20.0" width="90.0"/>
+		</boxType>
+		<boxType id="180002" supplierName="Ferplast" cardboardGrade="Класс 3" emptyWeight="0.05">
+			<packingSize length="50.0" height="20.0" width="90.0"/>
+		</boxType>
+	</boxTypes>
 </configuration>

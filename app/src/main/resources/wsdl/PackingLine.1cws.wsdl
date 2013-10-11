@@ -2,6 +2,7 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:model="http://www.aplix.ru/PackingLine/1.0/ws/model" xmlns:msg="http://www.aplix.ru/PackingLine/1.0/ws/messages"
 	name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws">
+
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/model" schemaLocation="PackingLine.1cws_schema1.xsd" />
@@ -11,14 +12,20 @@
 		</xsd:schema>
 	</types>
 
+	<message name="GetOperatorRequest">
+		<part name="parameters" element="msg:GetOperator"></part>
+	</message>
 	<message name="GetOperatorResponse">
 		<part name="parameters" element="msg:GetOperatorResponse"></part>
 	</message>
+	<message name="GetCustomerRequest">
+		<part name="parameters" element="msg:GetCustomer"></part>
+	</message>
+	<message name="GetCustomerResponse">
+		<part name="parameters" element="msg:GetCustomerResponse"></part>
+	</message>
 	<message name="SetOperatorActivityRequest">
 		<part name="parameters" element="msg:SetOperatorActivity"></part>
-	</message>
-	<message name="GetOperatorRequest">
-		<part name="parameters" element="msg:GetOperator"></part>
 	</message>
 	<message name="FindTagRequest">
 		<part name="parameters" element="msg:FindTag"></part>
@@ -62,14 +69,17 @@
 	<message name="UpdateContainerResponse">
 		<part name="parameters" element="msg:UpdateContainerResponse"></part>
 	</message>
-	<message name="SetBoxSizeRequest">
-		<part name="parameters" element="msg:SetBoxSize"></part>
+	<message name="AddBoxContainersRequest">
+		<part name="parameters" element="msg:AddBoxContainers"></part>
 	</message>
-	<message name="GetBoxSizeRequest">
-		<part name="parameters" element="msg:GetBoxSize"></part>
+	<message name="AddBoxContainersResponse">
+		<part name="parameters" element="msg:AddBoxContainersResponse"></part>
 	</message>
-	<message name="GetBoxSizeResponse">
-		<part name="parameters" element="msg:GetBoxSizeResponse"></part>
+	<message name="GetBoxTypeRequest">
+		<part name="parameters" element="msg:GetBoxType"></part>
+	</message>
+	<message name="GetBoxTypeResponse">
+		<part name="parameters" element="msg:GetBoxTypeResponse"></part>
 	</message>
 	<message name="GetBoxCountRequest">
 		<part name="parameters" element="msg:GetBoxCount"></part>
@@ -77,11 +87,17 @@
 	<message name="GetBoxCountResponse">
 		<part name="parameters" element="msg:GetBoxCountResponse"></part>
 	</message>
-	<message name="GenerateTagsRequest">
-		<part name="parameters" element="msg:GenerateTags"></part>
+	<message name="GenerateTagsForContainersRequest">
+		<part name="parameters" element="msg:GenerateTagsForContainers"></part>
 	</message>
-	<message name="GenerateTagsResponse">
-		<part name="parameters" element="msg:GenerateTagsResponse"></part>
+	<message name="GenerateTagsForContainersResponse">
+		<part name="parameters" element="msg:GenerateTagsForContainersResponse"></part>
+	</message>
+	<message name="GenerateTagsForIncomingsRequest">
+		<part name="parameters" element="msg:GenerateTagsForIncomings"></part>
+	</message>
+	<message name="GenerateTagsForIncomingsResponse">
+		<part name="parameters" element="msg:GenerateTagsForIncomingsResponse"></part>
 	</message>
 	<message name="GatherInfoRequest">
 		<part name="parameters" element="msg:GatherInfo"></part>
@@ -89,11 +105,18 @@
 	<message name="GatherInfoResponse">
 		<part name="parameters" element="msg:GatherInfoResponse"></part>
 	</message>
+
 	<portType name="PackingLinePortType">
-		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции.</documentation>
+		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции</documentation>
 
 		<operation name="GetOperator">
-			<documentation>Возвращает фамилию и инициалы оператора, который вошел в систему.</documentation>			<input message="tns:GetOperatorRequest"></input>			<output message="tns:GetOperatorResponse" />
+			<documentation>Возвращает фамилию и инициалы оператора, который вошел в систему</documentation>			<input message="tns:GetOperatorRequest"></input>			<output message="tns:GetOperatorResponse" />
+		</operation>
+
+		<operation name="GetCustomer">
+			<documentation>Возвращает фамилию и инициалы заказчика</documentation>
+			<input message="tns:GetCustomerRequest"></input>
+			<output message="tns:GetCustomerResponse" />
 		</operation>
 
 		<operation name="SetOperatorActivity">
@@ -142,15 +165,16 @@
 			<output message="tns:UpdateContainerResponse"></output>
 		</operation>
 
-		<operation name="SetBoxSize">
+		<operation name="AddBoxContainers">
 			<documentation>Сопоставляет размеры коробки со спиком штрих кодов</documentation>
-			<input message="tns:SetBoxSizeRequest"></input>
+			<input message="tns:AddBoxContainersRequest"></input>
+			<output message="tns:AddBoxContainersResponse"></output>
 		</operation>
 
-		<operation name="GetBoxSize">
+		<operation name="GetBoxType">
 			<documentation>Возвращает размеры коробки по штрих коду</documentation>
-			<input message="tns:GetBoxSizeRequest"></input>
-			<output message="tns:GetBoxSizeResponse"></output>
+			<input message="tns:GetBoxTypeRequest"></input>
+			<output message="tns:GetBoxTypeResponse"></output>
 		</operation>
 
 		<operation name="GetBoxCount">
@@ -159,10 +183,16 @@
 			<output message="tns:GetBoxCountResponse"></output>
 		</operation>
 
-		<operation name="GenerateTags">
-			<documentation>Генерирует маркеры</documentation>
-			<input message="tns:GenerateTagsRequest"></input>
-			<output message="tns:GenerateTagsResponse"></output>
+		<operation name="GenerateTagsForContainers">
+			<documentation>Генерирует маркеры для резерва контейнеров</documentation>
+			<input message="tns:GenerateTagsForContainersRequest"></input>
+			<output message="tns:GenerateTagsForContainersResponse"></output>
+		</operation>
+
+		<operation name="GenerateTagsForIncomings">
+			<documentation>Генерирует маркеры для новых поступлений</documentation>
+			<input message="tns:GenerateTagsForIncomingsRequest"></input>
+			<output message="tns:GenerateTagsForIncomingsResponse"></output>
 		</operation>
 
 		<operation name="GatherInfo">
@@ -176,6 +206,15 @@
 		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 		<operation name="GetOperator">
 			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetOperator" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GetCustomer">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetCustomer" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>
@@ -252,14 +291,17 @@
 				<soapbind:body use="literal" />
 			</output>
 		</operation>
-		<operation name="SetBoxSize">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/SetBoxSize" />
+		<operation name="AddBoxContainers">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddBoxContainers" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
 		</operation>
-		<operation name="GetBoxSize">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxSize" />
+		<operation name="GetBoxType">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxType" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>
@@ -276,8 +318,17 @@
 				<soapbind:body use="literal" />
 			</output>
 		</operation>
-		<operation name="GenerateTags">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTags" />
+		<operation name="GenerateTagsForContainers">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTagsForContainers" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GenerateTagsForIncomings">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTagsForIncomings" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>

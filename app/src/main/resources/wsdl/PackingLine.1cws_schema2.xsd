@@ -6,15 +6,10 @@
 	<xs:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/model" schemaLocation="PackingLine.1cws_schema1.xsd" />
 
 	<!-- ********** Operation requests and responses ********************** -->
+
 	<xs:element name="GetOperator">
 		<xs:complexType>
-			<xsd:sequence>
-				<xs:element name="operatorId" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Логин или идентификатор оператора</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xsd:sequence>
+			
 		</xs:complexType>
 	</xs:element>
 
@@ -29,14 +24,32 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="GetCustomer">
+		<xs:complexType>
+			<xsd:sequence>
+				<xs:element name="customerId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Логин или идентификатор заказчика</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xsd:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetCustomerResponse">
+		<xsd:annotation>
+			<xsd:documentation>Если заказчик по указанному идентификатору не найден, то свойство Customer в ответе должно отсутствовать.</xsd:documentation>
+		</xsd:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="customer" type="model:Customer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="SetOperatorActivity">
 		<xs:complexType>
 			<xsd:sequence>
-				<xs:element name="operatorId" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Логин или идентификатор оператора</xs:documentation>
-					</xs:annotation>
-				</xs:element>
 				<xs:element name="isActive" type="xs:boolean">
 					<xs:annotation>
 						<xs:documentation>Статус работы (1) или простоя (0).</xs:documentation>
@@ -224,41 +237,53 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="SetBoxSize">
+	<xs:element name="AddBoxContainers">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="boxTypeId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Тип коробки, с которым требуется связать данные маркеры</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element name="tag" type="model:Tag" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список маркеров</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="packingSize" type="model:PackingSize">
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddBoxContainersResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Размеры коробки, с которыми требуется связать данные маркеры</xs:documentation>
+						<xs:documentation>Результат операции</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="GetBoxSize">
+	<xs:element name="GetBoxType">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="boxId" type="xs:string">
+				<xs:element name="boxTypeId" type="xs:string">
 					<xs:annotation>
-						<xs:documentation>Штрих код коробки</xs:documentation>
+						<xs:documentation>Уникальный идентификатор типа коробки</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="GetBoxSizeResponse">
+	<xs:element name="GetBoxTypeResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="size" type="model:PackingSize">
+				<xs:element name="boxType" type="model:BoxType">
 					<xs:annotation>
-						<xs:documentation>Размеры коробки</xs:documentation>
+						<xs:documentation>Тип коробки</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
@@ -268,9 +293,9 @@
 	<xs:element name="GetBoxCount">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="packingSize" type="model:PackingSize">
+				<xs:element name="boxTypeId" type="xs:string">
 					<xs:annotation>
-						<xs:documentation>Размеры коробки</xs:documentation>
+						<xs:documentation>Уникальный идентификатор типа коробки</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
@@ -282,14 +307,14 @@
 			<xs:sequence>
 				<xs:element name="result" type="xs:int">
 					<xs:annotation>
-						<xs:documentation>Количество пустых коробок такого же размера в зоне упаковки</xs:documentation>
+						<xs:documentation>Количество пустых коробок такого же типа в зоне упаковки</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="GenerateTags">
+	<xs:element name="GenerateTagsForContainers">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="count" type="xs:int">
@@ -301,7 +326,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="GenerateTagsResponse">
+	<xs:element name="GenerateTagsForContainersResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="tag" type="model:Tag" maxOccurs="unbounded">
@@ -313,9 +338,43 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xsd:element name="GenerateTagsForIncomings">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xs:element name="customerCode" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Идентификатор заказчика, для которого резервируются маркеры</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="count" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Количество генерируемых маркеров</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GenerateTagsForIncomingsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xs:element name="tag" type="model:Tag" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Список сгенерированных маркеров</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="GatherInfo">
 		<xsd:complexType>
 			<xsd:sequence>
+				<xsd:element name="containerId" type="xsd:string">
+					<xs:annotation>
+						<xs:documentation>Идентификатор контейнера</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
 				<xsd:element name="field" type="xsd:string" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Список названий полей, для которых нужно вернуть значения</xs:documentation>

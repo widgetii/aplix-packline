@@ -21,22 +21,33 @@ import org.apache.commons.collections.Predicate;
 public class MockService implements PackingLinePortType {
 
 	@Override
-	public synchronized Operator getOperator(final String operatorId) {
-		if (operatorId == null) {
+	public synchronized Operator getOperator() {
+		Random random = new Random();
+		int max = getConfig().getOperators().size();
+		if (max == 0) {
 			return null;
 		}
-
-		Operator operator = (Operator) CollectionUtils.find(getConfig().getOperators(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return operatorId.equals(((Operator) item).getId());
-			}
-		});
-		return operator;
+		int index = random.nextInt(max);
+		return getConfig().getOperators().get(index);
 	}
 
 	@Override
-	public synchronized void setOperatorActivity(String operatorId, boolean isActive) {
+	public Customer getCustomer(final String customerId) {
+		if (customerId == null) {
+			return null;
+		}
+
+		Customer customer = (Customer) CollectionUtils.find(getConfig().getCustomers(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return customerId.equals(((Customer) item).getId());
+			}
+		});
+		return customer;
+	}
+
+	@Override
+	public synchronized void setOperatorActivity(boolean isActive) {
 		// do nothing
 	}
 
@@ -195,7 +206,7 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean addContainer(final Container container) {
-		if (container == null) {
+		if (container == null || container.getPostId() == null) {
 			return false;
 		}
 
@@ -248,7 +259,7 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public synchronized boolean updateContainer(final Container container) {
-		if (container == null) {
+		if (container == null || container.getPostId() == null) {
 			return false;
 		}
 
@@ -287,16 +298,29 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized void setBoxSize(List<Tag> tags, PackingSize packingSize) {
-		if (tags == null || packingSize == null) {
-			return;
+	public synchronized boolean addBoxContainers(final String boxTypeId, List<Tag> tags) {
+		if (tags == null || boxTypeId == null) {
+			return false;
+		}
+
+		// Verify this is is not used yet
+		BoxType boxType = (BoxType) CollectionUtils.find(getConfig().getBoxTypes(), new Predicate() {
+			@Override
+			public boolean evaluate(Object object) {
+				BoxType item = (BoxType) object;
+				return boxTypeId.equals(item.getId());
+			}
+		});
+
+		if (boxType == null) {
+			return false;
 		}
 
 		for (final Tag tag : tags) {
 			PackingSize ps = new PackingSize();
-			ps.setHeight(packingSize.getHeight());
-			ps.setWidth(packingSize.getWidth());
-			ps.setLength(packingSize.getLength());
+			ps.setHeight(boxType.getPackingSize().getHeight());
+			ps.setWidth(boxType.getPackingSize().getWidth());
+			ps.setLength(boxType.getPackingSize().getLength());
 
 			// Verify this is is not used yet
 			Container container = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
@@ -316,51 +340,45 @@ public class MockService implements PackingLinePortType {
 			container.setPackingSize(ps);
 			container.setPackingType(PackingType.BOX);
 		}
+
+		return true;
 	}
 
 	@Override
-	public synchronized PackingSize getBoxSize(final String boxId) {
-		if (boxId == null) {
+	public synchronized BoxType getBoxType(final String boxTypeId) {
+		if (boxTypeId == null) {
 			return null;
 		}
 
-		// Find the container
-		Container container = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
+		// Find the box
+		BoxType boxType = (BoxType) CollectionUtils.find(getConfig().getBoxTypes(), new Predicate() {
 			@Override
 			public boolean evaluate(Object object) {
-				Container item = (Container) object;
-				return boxId.equals(item.getId()) && PackingType.BOX.equals(item.getPackingType());
+				BoxType item = (BoxType) object;
+				return boxTypeId.equals(item.getId());
 			}
 		});
 
-		if (container != null) {
-			return container.getPackingSize();
-		} else {
-			return null;
-		}
+		return boxType;
 	}
 
 	@Override
-	public synchronized int getBoxCount(PackingSize packingSize) {
-		if (packingSize == null) {
+	public synchronized int getBoxCount(final String boxTypeId) {
+		if (boxTypeId == null) {
 			return 0;
 		}
 
 		int result = 0;
 		for (Container container : getConfig().getContainers()) {
-			if (container.getPackingSize() != null) {
-				PackingSize ps = container.getPackingSize();
-				if ((Float.compare(packingSize.getHeight(), ps.getHeight()) == 0) && (Float.compare(packingSize.getWidth(), ps.getWidth()) == 0)
-						&& (Float.compare(packingSize.getLength(), ps.getLength()) == 0)) {
-					result++;
-				}
+			if (boxTypeId.equals(container.getBoxTypeId())) {
+				result++;
 			}
 		}
 		return result;
 	}
 
 	@Override
-	public synchronized List<Tag> generateTags(int count) {
+	public synchronized List<Tag> generateTagsForContainers(int count) {
 		List<Tag> tags = new ArrayList<Tag>();
 		Random r = new Random();
 		int i = 0;
@@ -393,7 +411,12 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized List<Field> gatherInfo(List<String> fields) {
+	public List<Tag> generateTagsForIncomings(String customerId, int count) {
+		return generateTagsForContainers(count);
+	}
+
+	@Override
+	public synchronized List<Field> gatherInfo(String containerId, List<String> fields) {
 		if (fields == null) {
 			return null;
 		}

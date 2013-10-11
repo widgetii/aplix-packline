@@ -3,6 +3,23 @@
 	attributeFormDefault="unqualified" elementFormDefault="qualified">
 
 	<!-- ************************** Object Model ******************************* -->
+
+	<xs:complexType name="Customer">
+		<xs:annotation>
+			<xs:documentation>Заказчик (интернет-магазин)</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Уникальный идентификатор заказчика</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Фамилия и инициалы заказчика</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
 	<xs:complexType name="Operator">
 		<xs:annotation>
 			<xs:documentation>Оператор</xs:documentation>
@@ -120,6 +137,13 @@
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
+				<xs:attribute name="carriedOutAndClosed" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>
+							Признак того, что заказ принят, проведен и закрыт. Поступления отсылаются на упаковку только после установки этого флага.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -174,6 +198,11 @@
 						<xs:documentation>Уникальный идентификатор отправления, которое содержится в контейнере</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
+				<xs:attribute name="boxTypeId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор типа коробки. Может быть null, если packingType не является BOX.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 				<xs:attribute name="packingType" type="tns:PackingType">
 					<xs:annotation>
 						<xs:documentation>Тип упаковки</xs:documentation>
@@ -191,6 +220,44 @@
 				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BoxType">
+		<xs:annotation>
+			<xs:documentation>Тип коробки</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="packingSize" type="tns:PackingSize">
+				<xs:annotation>
+					<xs:documentation>Размеры упаковки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Уникальный идентификатор типа коробки</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="supplierName" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Название поставщика коробки</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="cardboardGrade" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Марка картона</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="emptyWeight" type="xs:float">
+			<xs:annotation>
+				<xs:documentation>Вес пустой коробки</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="cost" type="xs:float">
+			<xs:annotation>
+				<xs:documentation>Cтоимость коробки</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:simpleType name="PackingType">
@@ -228,5 +295,6 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
+
 </xs:schema>
 

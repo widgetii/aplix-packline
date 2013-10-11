@@ -13,6 +13,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "configuration", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
 public class Configuration {
 
+	@XmlElementWrapper(name = "customers", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElement(name = "customer", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	private List<Customer> customers;
+
 	@XmlElementWrapper(name = "operators", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
 	@XmlElement(name = "operator", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
 	private List<Operator> operators;
@@ -32,6 +36,21 @@ public class Configuration {
 	@XmlElementWrapper(name = "containers", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
 	@XmlElement(name = "container", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
 	private List<Container> containers;
+
+	@XmlElementWrapper(name = "boxTypes", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElement(name = "boxType", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	private List<BoxType> boxTypes;
+
+	public List<Customer> getCustomers() {
+		if (customers == null) {
+			customers = new ArrayList<Customer>();
+		}
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
 
 	public List<Operator> getOperators() {
 		if (operators == null) {
@@ -86,5 +105,16 @@ public class Configuration {
 
 	public void setContainers(List<Container> containers) {
 		this.containers = containers;
+	}
+
+	public List<BoxType> getBoxTypes() {
+		if (boxTypes == null) {
+			boxTypes = new ArrayList<BoxType>();
+		}
+		return boxTypes;
+	}
+
+	public void setBoxTypes(List<BoxType> boxTypes) {
+		this.boxTypes = boxTypes;
 	}
 }
