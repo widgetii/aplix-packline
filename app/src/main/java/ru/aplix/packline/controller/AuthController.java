@@ -53,7 +53,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	public void prepare(WorkflowContext context) {
 		context.setAttribute(Const.OPERATOR, null);
 		super.prepare(context);
-
+		
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);

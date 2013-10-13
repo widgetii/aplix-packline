@@ -63,6 +63,17 @@
 	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
 }
 
+#warningLabel {
+	-fx-background-color: rgba(0, 255, 0, 0.7);
+	-fx-background-radius: 10 10 10 10;
+	-fx-border-radius: 10 10 10 10;
+	-fx-padding: 50 50 50 50;
+	-fx-border-style: solid;
+	-fx-border-width: 2;
+	-fx-border-color: yellow;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
 .startup-pane {
 	-fx-background-color: silver;
 	-fx-background-insets: 20 0 0 0;
@@ -89,6 +100,13 @@
 
 .barcode-box-pane-bg {
 	-fx-background-image: url("../images/img-barcode-box.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 0% 100%
+}
+
+.customer-pane-bg {
+	-fx-background-image: url("../images/img-customer.png");
 	-fx-background-repeat: no-repeat;
 	-fx-background-position: center;
 	-fx-background-size: 0% 100%
@@ -194,6 +212,29 @@
 		#4a9b7c 100%), linear-gradient(#304239 0%, #3e775c 20%, #377458 100%);
 }
 
+.red-button {
+	-fx-background-color: #c9afa6,
+		linear-gradient(#423530 0%, #77513e 20%, #744737 100%),
+		linear-gradient(#a58176 0%, #bb8e84 5%, #a26658 50%, #9a5948 51%, #9b5d4a 100%);
+	-fx-background-insets: 0 0 -1 0, 0, 1;
+	-fx-background-radius: 5, 5, 4;
+	-fx-padding: 7 30 7 30;
+	-fx-font-family: Verdana;
+	-fx-text-fill: #242d35;
+	-fx-font-size: 1em;
+	-fx-text-fill: white;
+}
+
+.red-button .text {
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
+.red-button:pressed:hover {
+	-fx-background-color: #c9afa6,
+		linear-gradient(#a58176 0%, #bb8e84 5%, #a26658 50%, #9a5948 51%, #9b5d4a 100%), 
+		linear-gradient(#423530 0%, #77513e 20%, #744737 100%);
+}
+
 #deleteButton {
 	-fx-background-color: transparent;
 	-fx-background-image: url('../images/btn-delete-i.png');
@@ -211,6 +252,9 @@
 		-1, -1);
 	-fx-padding: 10 0 10 0;	
 	-fx-wrap-text: true;
+	-fx-font-family: Verdana;
+	-fx-font-size: 1.02em;
+	-fx-font-weight: normal;
 }
 
 #ordersTableView .table-cell {
@@ -235,3 +279,68 @@
 	-fx-background-radius: 0;
 }
 
+#pill-left {
+    -fx-padding: 5;
+    -fx-border-image-source: url("../images/btn-pill-left.png");
+    -fx-border-image-slice: 4 4 4 4 fill;
+    -fx-border-image-width: 4 4 4 4;
+    -fx-border-image-insets: 0;
+    -fx-border-image-repeat: stretch;
+    -fx-background-color: null !important; 
+    -fx-font-family: Verdana;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: normal;
+}
+#pill-left:selected { -fx-border-image-source: url("../images/btn-pill-left-selected.png"); }
+#pill-left .label {
+    -fx-text-fill: #d3d3d3; 
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.75) , 0, 0.0 , 0 , -1 );
+}
+#pill-left:selected .label {
+   -fx-text-fill: white;
+    -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
+}
+
+#pill-center {
+    -fx-padding: 5;
+    -fx-border-image-source: url("../images/btn-pill-center.png");
+    -fx-border-image-slice: 4 4 4 4 fill;
+    -fx-border-image-width: 4 4 4 4;
+    -fx-border-image-insets: 0;
+    -fx-border-image-repeat: stretch;
+    -fx-background-color: null !important;
+    -fx-font-family: Verdana;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: normal;
+}
+#pill-center:selected { -fx-border-image-source: url("../images/btn-pill-center-selected.png"); }
+#pill-center .label {
+    -fx-text-fill: #d3d3d3;
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.75) , 0, 0.0 , 0 , -1 );
+}
+#pill-center:selected .label {
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
+}
+
+#pill-right {
+    -fx-padding: 5;
+    -fx-border-image-source: url("../images/btn-pill-right.png");
+    -fx-border-image-slice: 4 4 4 4 fill;
+    -fx-border-image-width: 4 4 4 4;
+    -fx-border-image-insets: 0;
+    -fx-border-image-repeat: stretch;
+    -fx-background-color: null !important;
+    -fx-font-family: Verdana;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: normal;
+}
+#pill-right:selected { -fx-border-image-source: url("../images/btn-pill-right-selected.png"); }
+#pill-right .label {
+    -fx-text-fill: #d3d3d3;
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.75) , 0, 0.0 , 0 , -1 );
+}
+#pill-right:selected .label {
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
+}

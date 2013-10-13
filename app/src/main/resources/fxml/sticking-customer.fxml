@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1032.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.GenStickController">
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1032.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.GenStickCustomerController">
   <children>
     <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -19,7 +19,7 @@
           <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
               <children>
-                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%sticking.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%sticking.customer.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
                 <HBox id="HBox" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
                   <children>
                     <AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="494.0" HBox.hgrow="ALWAYS">
@@ -28,10 +28,10 @@
                           <children>
                             <AnchorPane id="orderInfoContainer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="830.0">
                               <children>
-                                <Label fx:id="boxInfoLabel" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="171.00009999999747" prefWidth="465.0" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                <Label fx:id="customerInfoLabel" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="171.00009999999747" prefWidth="465.0" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
                               </children>
                             </AnchorPane>
-                            <AnchorPane id="AnchorPane" prefHeight="95.0" prefWidth="525.0" styleClass="barcode-box-pane-bg" VBox.vgrow="ALWAYS" />
+                            <AnchorPane id="AnchorPane" prefHeight="95.0" prefWidth="525.0" styleClass="customer-pane-bg" VBox.vgrow="ALWAYS" />
                           </children>
                         </VBox>
                       </children>

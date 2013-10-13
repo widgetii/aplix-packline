@@ -26,15 +26,14 @@ import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
-import ru.aplix.packline.action.GenStickAction;
+import ru.aplix.packline.action.GenStickCustomerAction;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.post.BoxType;
-import ru.aplix.packline.post.PackingSize;
+import ru.aplix.packline.post.Customer;
 import ru.aplix.packline.workflow.WorkflowContext;
 
-public class GenStickController extends StandardController<GenStickAction> implements BarcodeListener {
+public class GenStickCustomerController extends StandardController<GenStickCustomerAction> implements BarcodeListener {
 
 	@FXML
 	public Button buttonComplete;
@@ -49,10 +48,10 @@ public class GenStickController extends StandardController<GenStickAction> imple
 	@FXML
 	public ToggleButton countButton4;
 	@FXML
-	public Label boxInfoLabel;
+	public Label customerInfoLabel;
 
 	private ToggleGroup countGroup;
-	private String boxTypeId = null;
+	private String customerCode = null;
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
@@ -62,7 +61,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 
 	private Task<?> task;
 
-	public GenStickController() {
+	public GenStickCustomerController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
 
 		barcodeChecker = new Timeline();
@@ -91,8 +90,8 @@ public class GenStickController extends StandardController<GenStickAction> imple
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		boxTypeId = null;
-		boxInfoLabel.setText(getResources().getString("sticking.no.box.selected"));
+		customerCode = null;
+		customerInfoLabel.setText(getResources().getString("sticking.no.customer.selected"));
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -153,7 +152,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().generateAndPrint(count != null ? count : 0, boxTypeId);
+					getAction().generateAndPrint(count != null ? count : 0, customerCode);
 				} catch (Exception e) {
 					LOG.error(e);
 					throw e;
@@ -211,12 +210,12 @@ public class GenStickController extends StandardController<GenStickAction> imple
 			return;
 		}
 
-		task = new Task<BoxType>() {
+		task = new Task<Customer>() {
 			@Override
-			public BoxType call() throws Exception {
+			public Customer call() throws Exception {
 				try {
-					BoxType boxType = getAction().processBarcode(value);
-					return boxType;
+					Customer customer = getAction().processBarcode(value);
+					return customer;
 				} catch (Exception e) {
 					LOG.error(e);
 					throw e;
@@ -255,21 +254,13 @@ public class GenStickController extends StandardController<GenStickAction> imple
 
 				setProgress(false);
 
-				BoxType result = getValue();
+				Customer result = getValue();
 				if (result != null) {
 					errorMessageProperty.set(null);
 					errorVisibleProperty.set(false);
 
-					boxTypeId = result.getId();
-					PackingSize ps = result.getPackingSize();
-					if (ps == null) {
-						ps = new PackingSize();
-						ps.setHeight(0f);
-						ps.setWidth(0f);
-						ps.setLength(0f);
-					}
-					boxInfoLabel.setText(String.format(getResources().getString("box.type.info"), result.getId(), ps.getLength(), ps.getHeight(),
-							ps.getWidth(), result.getCardboardGrade(), result.getSupplierName()));
+					customerCode = result.getId();
+					customerInfoLabel.setText(String.format(getResources().getString("customer.info"), result.getId(), result.getName()));
 				} else {
 					barcodeCheckerEventHandler.reset();
 
@@ -303,7 +294,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 					errorVisibleProperty.set(false);
 				} else {
 					if (errorStr == null) {
-						errorStr = GenStickController.this.getResources().getString("error.barcode.scanner");
+						errorStr = GenStickCustomerController.this.getResources().getString("error.barcode.scanner");
 					}
 
 					errorMessageProperty.set(errorStr);

@@ -69,9 +69,20 @@ public class MockService implements PackingLinePortType {
 			return order;
 		}
 
-		Incoming incoming = (Incoming) CollectionUtils.find(getConfig().getIncomings(), predicate);
+		final Incoming incoming = (Incoming) CollectionUtils.find(getConfig().getIncomings(), predicate);
 		if (incoming != null) {
-			return incoming;
+			order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return incoming.getOrderId().equals(((Tag) item).getId());
+				}
+			});
+
+			if (order != null && order.getTotalIncomings() == 1 && order.isCarriedOutAndClosed()) {
+				// go to seeking Post with the same Id
+			} else {
+				return incoming;
+			}
 		}
 
 		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), predicate);
@@ -182,7 +193,13 @@ public class MockService implements PackingLinePortType {
 				return orderId.equals(((Tag) item).getId());
 			}
 		});
-		return order != null;
+
+		if (order != null) {
+			order.setCarriedOutAndClosed(true);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -239,7 +256,7 @@ public class MockService implements PackingLinePortType {
 			}
 			newItem.setPackingSize(newPackingSize);
 
-			// Remove the given container from spare list
+			// Associate the container from spare list with that post
 			Container existing = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
 				@Override
 				public boolean evaluate(Object item) {
@@ -247,7 +264,7 @@ public class MockService implements PackingLinePortType {
 				}
 			});
 			if (existing != null) {
-				getConfig().getContainers().remove(existing);
+				existing.setPostId(post.getId());
 			}
 
 			// Return success to the caller
@@ -370,7 +387,7 @@ public class MockService implements PackingLinePortType {
 
 		int result = 0;
 		for (Container container : getConfig().getContainers()) {
-			if (boxTypeId.equals(container.getBoxTypeId())) {
+			if (boxTypeId.equals(container.getBoxTypeId()) && container.getPostId() == null) {
 				result++;
 			}
 		}

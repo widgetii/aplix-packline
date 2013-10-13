@@ -64,6 +64,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	private Button closeActButton;
 	@FXML
 	private Button saveActButton;
+	@FXML
+	private Button deleteActButton;
 
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
@@ -73,7 +75,6 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
-	private ResourceBundle resources;
 	private ConfirmationDialog confirmationDialog = null;
 	private List<Task<?>> tasks;
 
@@ -93,7 +94,6 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
-		this.resources = resources;
 
 		initTable();
 	}
@@ -221,9 +221,38 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		progressVisibleProperty.set(value);
 		closeActButton.setDisable(value);
 		saveActButton.setDisable(value);
+		deleteActButton.setDisable(value);
 	}
 
 	public void closeActClick(ActionEvent event) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.carryOutAndClose", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				doCloseAct();
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		String orderDateStr = "";
+		if (order.getDate() != null) {
+			Date orderDate = order.getDate().toGregorianCalendar().getTime();
+			orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
+		}
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.act.carryOutAndClose", order.getId(), orderDateStr);
+		confirmationDialog.show();
+	}
+
+	private void doCloseAct() {
+
 		Task<?> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
@@ -255,7 +284,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
@@ -277,7 +306,11 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		tasks.add(task);
 	}
 
-	public void deleteActClick(ActionEvent event) {
+	public void saveActClick(ActionEvent event) {
+		done();
+	}
+
+	private void doDeleteAct() {
 		Task<?> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
@@ -309,7 +342,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
@@ -329,6 +362,54 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
 		tasks.add(task);
+	}
+
+	public void deleteActClick(ActionEvent event) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.delete", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				doDeleteAct();
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		String orderDateStr = "";
+		if (order.getDate() != null) {
+			Date orderDate = order.getDate().toGregorianCalendar().getTime();
+			orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
+		}
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.act.delete", order.getId(), orderDateStr);
+		confirmationDialog.show();
+	}
+
+	private void askDeleteIncoming(final Incoming incoming, String message, Object... params) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.delete", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				deleteIncoming(incoming);
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage(message, params);
+		confirmationDialog.show();
 	}
 
 	public void deleteIncoming(final Incoming incoming) {
@@ -363,7 +444,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
@@ -376,6 +457,9 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 				setProgress(false);
 
+				errorMessageProperty.set(null);
+				errorVisibleProperty.set(false);
+
 				ordersTableView.getItems().remove(incoming);
 				totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
 						order.getTotalIncomings()));
@@ -385,10 +469,6 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
 		tasks.add(task);
-	}
-
-	public void saveActClick(ActionEvent event) {
-		done();
 	}
 
 	@Override
@@ -436,7 +516,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
@@ -534,23 +614,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 						orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
 					}
 
-					Window owner = rootNode.getScene().getWindow();
-					confirmationDialog = new ConfirmationDialog(owner, "act.incoming.delete", null, new ConfirmationListener() {
-
-						@Override
-						public void onAccept() {
-							confirmationDialog = null;
-							deleteIncoming(incoming);
-						}
-
-						@Override
-						public void onDecline() {
-							confirmationDialog = null;
-						}
-					});
-					confirmationDialog.centerOnScreen();
-					confirmationDialog.setMessage("confirmation.act.incoming.delete", incoming.getId(), incoming.getContentDescription(), orderDateStr);
-					confirmationDialog.show();
+					askDeleteIncoming(incoming, "confirmation.act.incoming.delete", incoming.getId(), incoming.getContentDescription(), orderDateStr);
 				}
 			});
 

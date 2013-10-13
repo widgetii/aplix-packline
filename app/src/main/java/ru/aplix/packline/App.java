@@ -44,12 +44,9 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 41 Generate markers
-// TODO 42 Close Act / Delete Order / Registered Incoming Block
-// TODO 43 Boxes spare notification
-// TODO 44 SetOperatorActivity
 // TODO 50 Printing labels and forms
-// TODO 90 act-table and menu styles
+// TODO 90 styles of act-table, menu and quantity buttons
+// FIXME logout doesn't work on Linux
 
 public class App extends Application implements IdleListener {
 
@@ -111,6 +108,7 @@ public class App extends Application implements IdleListener {
 
 		UserActivityMonitor.setTreshold(Configuration.getInstance().getActivityMonitorConfiguration().getIdleTresholdInMillis());
 		UserActivityMonitor.getInstance().setIdleListener(this);
+		UserActivityMonitor.getInstance().setWorkflowContext(workflowContext);
 		UserActivityMonitor.getInstance().start();
 	}
 

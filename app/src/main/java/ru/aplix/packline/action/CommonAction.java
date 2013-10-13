@@ -37,7 +37,7 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private Parent rootNode;
 	private ContextMenu contextMenu = null;
 	private boolean skipClick;
-	
+
 	public CommonAction() {
 		logoImageMousePressedTimeline = new Timeline();
 		logoImageMousePressedTimeline.setCycleCount(2);
@@ -129,17 +129,26 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
-		MenuItem itemMarkers = new MenuItem(resources.getString("menu.markers"));
-		itemMarkers.setStyle(menuItemStyle2);
-		itemMarkers.setOnAction(new EventHandler<ActionEvent>() {
+		MenuItem itemMarkersForContainers = new MenuItem(resources.getString("menu.markers.container"));
+		itemMarkersForContainers.setStyle(menuItemStyle2);
+		itemMarkersForContainers.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				generateStickers();
+				generateStickersForContainer();
+			}
+		});
+
+		MenuItem itemMarkersForCustomer = new MenuItem(resources.getString("menu.markers.customer"));
+		itemMarkersForCustomer.setStyle(menuItemStyle2);
+		itemMarkersForCustomer.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				generateStickersForCustomer();
 			}
 		});
 
 		Menu subMenu = new Menu(resources.getString("menu.sub.operations"));
 		subMenu.setStyle(menuItemStyle2);
-		subMenu.getItems().add(itemMarkers);
+		subMenu.getItems().add(itemMarkersForContainers);
+		subMenu.getItems().add(itemMarkersForCustomer);
 
 		result.getItems().add(itemBegin);
 		if (itemBarcode != null) {
@@ -164,9 +173,15 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		wa.execute(getContext());
 	}
 
-	private void generateStickers() {
+	private void generateStickersForContainer() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void generateStickersForCustomer() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_CUSTOMER_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 

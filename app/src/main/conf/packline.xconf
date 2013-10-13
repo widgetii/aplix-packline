@@ -15,7 +15,7 @@
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesUniversal" enabled="false" >
+		<Scales name="MeraScalesUniversal" enabled="true" >
 			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
 			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
 			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
@@ -48,4 +48,14 @@
 
 	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleTreshold="600" />
+	
+	<!-- Quantity of sticker to print -->
+	<Stickers>
+		<Quantity>5</Quantity>
+		<Quantity>50</Quantity>
+		<Quantity>500</Quantity>
+		<Quantity>5000</Quantity>
+	</Stickers>
+	
+	<EmptyBoxThreshold>10</EmptyBoxThreshold>
 </packline>

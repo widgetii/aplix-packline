@@ -9,6 +9,7 @@ public final class Const {
 	public static final String FIRST_WORKFLOW_ACTION_BEAN_NAME = "firstWorkflowAction";
 	public static final String START_WORKFLOW_ACTION_BEAN_NAME = "startWorkflowAction";
 	public static final String GEN_STICK_ACTION_BEAN_NAME = "genStickAction";
+	public static final String GEN_STICK_CUSTOMER_ACTION_BEAN_NAME = "genStickCustomerAction";
 
 	public static final String APPLICATION_CONTEXT = "ApplicationContext";
 	public static final String STAGE = "Stage";

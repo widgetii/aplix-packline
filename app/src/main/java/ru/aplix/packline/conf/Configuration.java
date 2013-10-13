@@ -3,11 +3,14 @@ package ru.aplix.packline.conf;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.aplix.packline.utils.Utils;
@@ -27,6 +30,11 @@ public class Configuration {
 	private ActivityMonitorConfiguration activityMonitorConfiguration;
 	@XmlElement(name = "PostService")
 	private PostService postService;
+	@XmlElementWrapper(name = "Stickers")
+	@XmlElement(name = "Quantity")
+	private List<Integer> stickersQuantity;
+	@XmlElement(name = "EmptyBoxThreshold")
+	private Integer emptyBoxThreshold;
 
 	private Configuration() {
 
@@ -85,5 +93,24 @@ public class Configuration {
 
 	public void setPostService(PostService postService) {
 		this.postService = postService;
+	}
+
+	public List<Integer> getStickersQuantity() {
+		if (stickersQuantity == null) {
+			stickersQuantity = new ArrayList<Integer>();
+		}
+		return stickersQuantity;
+	}
+
+	public void setStickersQuantity(List<Integer> stickersQuantity) {
+		this.stickersQuantity = stickersQuantity;
+	}
+
+	public Integer getEmptyBoxThreshold() {
+		return emptyBoxThreshold;
+	}
+
+	public void setEmptyBoxThreshold(Integer emptyBoxThreshold) {
+		this.emptyBoxThreshold = emptyBoxThreshold;
 	}
 }

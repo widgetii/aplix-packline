@@ -8,6 +8,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +31,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 	protected StringProperty titleProperty = new SimpleStringProperty();
 	protected StringProperty errorMessageProperty = new SimpleStringProperty();
+	protected StringProperty warningMessageProperty = new SimpleStringProperty();
 	protected BooleanProperty errorVisibleProperty = new SimpleBooleanProperty();
 	protected BooleanProperty progressVisibleProperty = new SimpleBooleanProperty();
 
@@ -50,10 +53,29 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		if (errorPane != null) {
 			errorPane.visibleProperty().bind(errorVisibleProperty);
 		}
-		Label errorLabel = (Label) rootNode.lookup("#errorLabel");
+		final Label errorLabel = (Label) rootNode.lookup("#errorLabel");
 		if (errorLabel != null) {
 			errorLabel.textProperty().bind(errorMessageProperty);
 		}
+		final Label warningLabel = (Label) rootNode.lookup("#warningLabel");
+		if (warningLabel != null) {
+			warningLabel.textProperty().bind(warningMessageProperty);
+		}
+
+		errorMessageProperty.addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				errorLabel.setVisible(newValue != null);
+				warningLabel.setVisible(newValue == null);
+			}
+		});
+		warningMessageProperty.addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				warningLabel.setVisible(newValue != null);
+				errorLabel.setVisible(newValue == null);
+			}
+		});
 
 		// Bind progress properties
 		ProgressIndicator progressIndicator = (ProgressIndicator) rootNode.lookup("#progressIndicator");
@@ -88,7 +110,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		} else {
 			titleProperty.set(resources.getString(getTitleResourceName()));
 		}
-		
+
 		errorMessageProperty.set(null);
 		errorVisibleProperty.set(false);
 		progressVisibleProperty.set(false);

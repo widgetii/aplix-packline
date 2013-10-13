@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.concurrent.Task;
@@ -31,16 +29,7 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 	@FXML
 	private Button nextButton;
 
-	private ResourceBundle resources;
-
 	private Task<?> task;
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
-	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -50,17 +39,17 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 		switch (getAction().getTrolleyMessage()) {
 		case PACK:
-			infoLabel.setText(resources.getString("trolley.pack.info"));
+			infoLabel.setText(getResources().getString("trolley.pack.info"));
 			Image image = new Image(getClass().getResource("/resources/images/img-trolley-red.png").toExternalForm());
 			imageView.setImage(image);
 			break;
 		case KEEP:
-			infoLabel.setText(resources.getString("trolley.keep.info"));
+			infoLabel.setText(getResources().getString("trolley.keep.info"));
 			image = new Image(getClass().getResource("/resources/images/img-trolley-green.png").toExternalForm());
 			imageView.setImage(image);
 			break;
 		case JOIN:
-			infoLabel.setText(resources.getString("trolley.join.info"));
+			infoLabel.setText(getResources().getString("trolley.join.info"));
 			image = new Image(getClass().getResource("/resources/images/img-trolley-blue.png").toExternalForm());
 			imageView.setImage(image);
 			break;
@@ -113,7 +102,7 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
@@ -126,6 +115,9 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 				progressVisibleProperty.set(false);
 				nextButton.setDisable(false);
+
+				errorMessageProperty.set(null);
+				errorVisibleProperty.set(false);
 			}
 		};
 

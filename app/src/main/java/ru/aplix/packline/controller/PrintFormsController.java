@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -31,8 +29,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	@FXML
 	private Button nextButton;
 
-	private ResourceBundle resources;
-
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
@@ -45,13 +41,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		barcodeChecker = new Timeline();
 		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
 		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
 	}
 
 	@Override
@@ -88,7 +77,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		task.setOnRunning(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent arg0) {
-				infoLabel.setText(resources.getString("printing.info1"));
+				infoLabel.setText(getResources().getString("printing.info1"));
 				progressVisibleProperty.set(true);
 				reprintContainer.setDisable(true);
 				nextButton.setDisable(true);
@@ -98,7 +87,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent arg0) {
-				infoLabel.setText(resources.getString("printing.info2"));
+				infoLabel.setText(getResources().getString("printing.info2"));
 				progressVisibleProperty.set(false);
 				reprintContainer.setDisable(false);
 				nextButton.setDisable(false);

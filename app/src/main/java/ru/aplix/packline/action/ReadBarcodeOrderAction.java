@@ -19,6 +19,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	private WorkflowAction acceptanceAction;
 	private WorkflowAction packingAction;
 	private WorkflowAction markingAction;
+	private WorkflowAction orderActAction;
 
 	public WorkflowAction getAcceptanceAction() {
 		return acceptanceAction;
@@ -44,6 +45,14 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		this.markingAction = markingAction;
 	}
 
+	public WorkflowAction getOrderActAction() {
+		return orderActAction;
+	}
+
+	public void setOrderActAction(WorkflowAction orderActAction) {
+		this.orderActAction = orderActAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "barcode-order";
@@ -61,8 +70,12 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		if (result instanceof Incoming) {
 			Incoming incoming = (Incoming) result;
 			order = findAndValidateTag(postServicePort, incoming.getOrderId(), Order.class);
-			checkIncomingRegistered(order, incoming.getId());
-			setNextAction(getAcceptanceAction());
+			checkOrder(order);
+			if (isIncomingRegistered(order, incoming.getId())) {
+				setNextAction(getOrderActAction());
+			} else {
+				setNextAction(getAcceptanceAction());
+			}
 		} else if (result instanceof Post) {
 			Post post = (Post) result;
 			order = findAndValidateTag(postServicePort, post.getOrderId(), Order.class);
@@ -97,21 +110,25 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		}
 	}
 
-	private void checkIncomingRegistered(Order order, final String incomingId) throws PackLineException {
+	private boolean isIncomingRegistered(Order order, final String incomingId) throws PackLineException {
 		Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
 				return incomingId.equals(((Tag) item).getId());
 			}
 		});
-		if (existing != null) {
-			throw new PackLineException(getResources().getString("error.post.incoming.registered"));
-		}
+		return (existing != null);
 	}
 
 	private void checkPostPacked(Post post) throws PackLineException {
 		if (post.getContainer() != null) {
 			throw new PackLineException(getResources().getString("error.post.already.packed"));
+		}
+	}
+
+	private void checkOrder(Order order) throws PackLineException {
+		if (order.isCarriedOutAndClosed()) {
+			throw new PackLineException(getResources().getString("error.post.order.already.closed"));
 		}
 	}
 }

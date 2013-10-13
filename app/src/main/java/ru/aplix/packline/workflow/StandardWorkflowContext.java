@@ -20,12 +20,12 @@ public class StandardWorkflowContext implements WorkflowContext {
 	}
 
 	@Override
-	public Object getAttribute(String name) {
+	public synchronized Object getAttribute(String name) {
 		return context.get(name);
 	}
 
 	@Override
-	public void setAttribute(String name, Object value) {
+	public synchronized void setAttribute(String name, Object value) {
 		context.put(name, value);
 	}
 }

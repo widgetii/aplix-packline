@@ -16,7 +16,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 		return "barcode-box";
 	}
 
-	public void processBarcode(String code) throws PackLineException {
+	public int processBarcode(String code) throws PackLineException {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		Tag tag = postServicePort.findTag(code);
@@ -44,5 +44,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
+		
+		return postServicePort.getBoxCount(container.getBoxTypeId());
 	}
 }

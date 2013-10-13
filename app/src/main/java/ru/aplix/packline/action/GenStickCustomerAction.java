@@ -4,38 +4,35 @@ import java.util.List;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
-import ru.aplix.packline.controller.GenStickController;
-import ru.aplix.packline.post.BoxType;
+import ru.aplix.packline.controller.GenStickCustomerController;
+import ru.aplix.packline.post.Customer;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Tag;
 
-public class GenStickAction extends CommonAction<GenStickController> {
+public class GenStickCustomerAction extends CommonAction<GenStickCustomerController> {
 
 	@Override
 	protected String getFormName() {
-		return "sticking";
+		return "sticking-customer";
 	}
 
-	public BoxType processBarcode(String code) throws PackLineException {
+	public Customer processBarcode(String code) throws PackLineException {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		BoxType result = postServicePort.getBoxType(code);
+		Customer result = postServicePort.getCustomer(code);
 		return result;
 	}
 
-	public void generateAndPrint(int count, String boxTypeId) throws PackLineException {
-		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-
-		List<Tag> tags = postServicePort.generateTagsForContainers(count);
-		if (tags == null) {
-			throw new PackLineException(getResources().getString("error.post.generate.tags"));
+	public void generateAndPrint(int count, String customerCode) throws PackLineException {
+		if (customerCode == null) {
+			throw new PackLineException(getResources().getString("error.customer.not.selected"));
 		}
 
-		if (boxTypeId != null) {
-			boolean res = postServicePort.addBoxContainers(boxTypeId, tags);
-			if (!res) {
-				throw new PackLineException(getResources().getString("error.post.add.containers"));
-			}
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+
+		List<Tag> tags = postServicePort.generateTagsForIncomings(customerCode, count);
+		if (tags == null) {
+			throw new PackLineException(getResources().getString("error.post.generate.tags"));
 		}
 
 		for (int i = 0; i < count; i++) {

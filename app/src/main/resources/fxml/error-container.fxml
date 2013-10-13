@@ -9,7 +9,12 @@
 
 <StackPane fx:id="errorPane" prefHeight="150.0" prefWidth="200.0" visible="false" xmlns:fx="http://javafx.com/fxml">
   <children>
-    <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" text="Label" textAlignment="CENTER" wrapText="true" StackPane.alignment="CENTER">
+    <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" text="Label" textAlignment="CENTER" wrapText="true" StackPane.alignment="CENTER" visible="false">
+      <StackPane.margin>
+        <Insets top="-100.0" />
+      </StackPane.margin>
+    </Label>
+    <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" text="Label" textAlignment="CENTER" wrapText="true" StackPane.alignment="CENTER" visible="false">
       <StackPane.margin>
         <Insets top="-100.0" />
       </StackPane.margin>

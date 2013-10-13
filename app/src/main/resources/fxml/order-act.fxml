@@ -36,8 +36,17 @@
                             <Label id="ordersTotal" fx:id="totalOrdersLabel" prefHeight="60.0" prefWidth="197.0" text="Total Number of Orders" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                           </children>
                         </AnchorPane>
-                        <Button fx:id="closeActButton" mnemonicParsing="false" onAction="#closeActClick" prefHeight="70.0" prefWidth="200.0" styleClass="green-button" text="%button.act.close" textAlignment="CENTER" wrapText="true" />
-                        <Button fx:id="saveActButton" mnemonicParsing="false" onAction="#saveActClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" text="%button.act.save" textAlignment="CENTER" wrapText="true" />
+                        <AnchorPane id="AnchorPane" prefHeight="175.0" prefWidth="280.0">
+                          <children>
+                            <Button fx:id="closeActButton" mnemonicParsing="false" onAction="#closeActClick" prefHeight="70.0" prefWidth="260.0" styleClass="green-button" text="%button.act.close" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                            <HBox id="HBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="260.0" spacing="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                              <children>
+                                <Button fx:id="saveActButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveActClick" prefHeight="70.0" prefWidth="126.0" styleClass="blue-button" text="%button.act.save" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="deleteActButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteActClick" prefHeight="70.0" prefWidth="126.0" styleClass="red-button" text="%button.act.delete" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
                       </children>
                     </VBox>
                   </children>
@@ -49,7 +58,7 @@
               <top>
                 <AnchorPane prefHeight="120.0" prefWidth="817.0">
                   <children>
-                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="action-label" text="%order.act.info" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="action-label" text="%order.act.info" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   </children>
                 </AnchorPane>
               </top>

@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -14,12 +12,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReadBarcodeBoxAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Order;
@@ -36,8 +36,6 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 	@FXML
 	private Label customerLabel;
 
-	private ResourceBundle resources;
-
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
@@ -50,13 +48,6 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		barcodeChecker = new Timeline();
 		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
 		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
 	}
 
 	@Override
@@ -108,7 +99,20 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().processBarcode(value);
+					final Integer emptyBoxCount = getAction().processBarcode(value);
+					Integer emptyBoxThreshold = Configuration.getInstance().getEmptyBoxThreshold();
+					if ((emptyBoxCount != null) && (emptyBoxThreshold != null) && (Integer.compare(emptyBoxCount, emptyBoxThreshold) < 0)) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								barcodeCheckerEventHandler.reset();
+								warningMessageProperty.set(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
+								errorVisibleProperty.set(true);
+							}
+						});
+
+						Thread.sleep(Const.ERROR_DISPLAY_DELAY * DateUtils.MILLIS_PER_SECOND);
+					}
 				} catch (Exception e) {
 					LOG.error(e);
 					throw e;
@@ -135,7 +139,7 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);

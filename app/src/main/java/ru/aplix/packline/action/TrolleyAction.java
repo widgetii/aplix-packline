@@ -18,9 +18,14 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 	}
 
 	public TrolleyType getTrolleyMessage() {
+		int current = 0;
+		int total = 0;
+
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		int current = order.getIncoming().size() + 1;
-		int total = Math.max(1, order.getTotalIncomings());
+		if (order != null) {
+			current = order.getIncoming().size() + 1;
+			total = Math.max(1, order.getTotalIncomings());
+		}
 
 		if (total == 1) {
 			return TrolleyType.PACK;

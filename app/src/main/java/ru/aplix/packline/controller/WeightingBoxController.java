@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -25,6 +23,7 @@ import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.PackingSize;
+import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
@@ -49,8 +48,6 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	private Timeline scalesChecker;
 	private ScalesCheckerEventHandler scalesCheckerEventHandler;
 
-	private ResourceBundle resources;
-
 	private Task<Void> task;
 
 	public WeightingBoxController() {
@@ -62,33 +59,35 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
-	}
-
-	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
 		nextButton.setDisable(false);
 
 		Container container = (Container) context.getAttribute(Const.TAG);
-		PackingSize ps = container.getPackingSize();
+		if (container != null) {
+			packingCode.setText(container.getId());
 
-		packingCode.setText(container.getId());
-		packingSize.setText(String.format("%.1f x %.1f x %.1f %s", ps.getLength(), ps.getHeight(), ps.getWidth(), getResources().getString("dimentions.unit")));
-		switch (container.getPackingType()) {
-		case BOX:
-			packingType.setText(getResources().getString("packtype.box"));
-			break;
-		case PACKET:
-			packingType.setText(getResources().getString("packtype.packet"));
-			break;
-		case PAPER:
-			packingType.setText(getResources().getString("packtype.paper"));
-			break;
+			PackingSize ps = container.getPackingSize();
+			if (ps != null) {
+				packingSize.setText(String.format("%.1f x %.1f x %.1f %s", ps.getLength(), ps.getHeight(), ps.getWidth(),
+						getResources().getString("dimentions.unit")));
+			}
+
+			PackingType pt = container.getPackingType();
+			if (pt != null) {
+				switch (pt) {
+				case BOX:
+					packingType.setText(getResources().getString("packtype.box"));
+					break;
+				case PACKET:
+					packingType.setText(getResources().getString("packtype.packet"));
+					break;
+				case PAPER:
+					packingType.setText(getResources().getString("packtype.paper"));
+					break;
+				}
+			}
 		}
 
 		updateMeasure(0f);
@@ -148,7 +147,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);

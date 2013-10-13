@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -27,8 +25,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
-	private ResourceBundle resources;
-
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
@@ -41,13 +37,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		barcodeChecker = new Timeline();
 		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
 		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
 	}
 
 	@Override
@@ -98,7 +87,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		if (progressVisibleProperty.get()) {
 			return;
 		}
-		
+
 		task = new Task<Tag>() {
 			@Override
 			public Tag call() throws Exception {
@@ -130,7 +119,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);

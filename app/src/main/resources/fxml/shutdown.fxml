@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<BorderPane fx:id="rootNode" minHeight="202.0" prefHeight="311.0" prefWidth="652.0" styleClass="shutdown-dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.dialog.ShutdownDialogController">
+<BorderPane fx:id="rootNode" minHeight="202.0" prefHeight="347.0" prefWidth="652.0" styleClass="shutdown-dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.dialog.ShutdownDialogController">
   <bottom>
-    <AnchorPane prefHeight="75.0" prefWidth="648.0" styleClass="shutdown-dialog-bottom">
+    <AnchorPane prefHeight="96.0" prefWidth="648.0" styleClass="shutdown-dialog-bottom">
       <children>
         <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <Button cancelButton="true" defaultButton="true" layoutY="20.0" mnemonicParsing="false" onAction="#cancelClick" text="%dialog.cancel" AnchorPane.rightAnchor="60.0" />
+        <Button cancelButton="true" defaultButton="true" layoutY="22.0" mnemonicParsing="false" onAction="#cancelClick" prefHeight="52.0" text="%dialog.cancel" AnchorPane.rightAnchor="23.0" />
       </children>
     </AnchorPane>
   </bottom>

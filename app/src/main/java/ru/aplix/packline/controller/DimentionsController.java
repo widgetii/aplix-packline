@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -38,8 +36,6 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	@FXML
 	private Pane buttonsContainer;
 
-	private ResourceBundle resources;
-
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
@@ -56,13 +52,6 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		barcodeChecker = new Timeline();
 		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
 		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
 	}
 
 	@Override
@@ -146,7 +135,7 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
 				} else {
-					errorStr = resources.getString("error.post.service");
+					errorStr = getResources().getString("error.post.service");
 				}
 
 				errorMessageProperty.set(errorStr);
