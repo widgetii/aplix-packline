@@ -63,6 +63,17 @@
 	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
 }
 
+#warningLabel {
+	-fx-background-color: rgba(0, 255, 0, 0.7);
+	-fx-background-radius: 10 10 10 10;
+	-fx-border-radius: 10 10 10 10;
+	-fx-padding: 50 50 50 50;
+	-fx-border-style: solid;
+	-fx-border-width: 2;
+	-fx-border-color: yellow;
+	-fx-effect: dropshadow(three-pass-box, black, 1, 0, -1, 1);
+}
+
 .startup-pane {
 	-fx-background-color: silver;
 	-fx-background-insets: 20 0 0 0;
