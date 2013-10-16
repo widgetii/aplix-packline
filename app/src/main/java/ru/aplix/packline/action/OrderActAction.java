@@ -10,6 +10,7 @@ import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.post.TagType;
 
 public class OrderActAction extends CommonAction<OrderActController> {
 
@@ -22,16 +23,14 @@ public class OrderActAction extends CommonAction<OrderActController> {
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		Tag result = postServicePort.findTag(code);
-		if (result == null || !code.equals(result.getId())) {
-			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
-		}
-
-		if (!(result instanceof Incoming)) {
+		TagType tagType = postServicePort.findTag(code);
+		if (!TagType.INCOMING.equals(tagType)) {
 			throw new PackLineException(getResources().getString("error.post.not.incoming"));
 		}
-
-		final Incoming incoming = (Incoming) result;
+		final Incoming incoming = postServicePort.findIncoming(code);
+		if (incoming == null || !code.equals(incoming.getId())) {
+			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+		}
 		if (!order.getId().equals(incoming.getOrderId())) {
 			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.order"));
 		}

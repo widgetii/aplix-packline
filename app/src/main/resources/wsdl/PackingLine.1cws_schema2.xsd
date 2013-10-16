@@ -9,7 +9,7 @@
 
 	<xs:element name="GetOperator">
 		<xs:complexType>
-			
+
 		</xs:complexType>
 	</xs:element>
 
@@ -72,16 +72,112 @@
 	</xs:element>
 
 	<xs:element name="FindTagResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="tagType" type="tns:TagType">
+					<xs:annotation>
+						<xs:documentation>Тип объекта, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xs:element>
+
+	<xs:element name="FindIncoming">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tag" type="model:Tag">
+				<xs:element name="incomingId" type="xs:string">
 					<xs:annotation>
-						<xs:documentation>Объект, которому принадлежит идентификатор метки</xs:documentation>
+						<xs:documentation>Уникальный идентификатор метки</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+	<xsd:element name="FindIncomingResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="incoming" type="model:Incoming">
+					<xs:annotation>
+						<xs:documentation>Поступление, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xs:element name="FindOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xsd:element name="FindOrderResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="order" type="model:Order">
+					<xs:annotation>
+						<xs:documentation>Заказ, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xs:element name="FindPost">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="postId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xsd:element name="FindPostResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="post" type="model:Post">
+					<xs:annotation>
+						<xs:documentation>Отправление, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xs:element name="FindContainer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="containerId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Уникальный идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xsd:element name="FindContainerResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="container" type="model:Container">
+					<xs:annotation>
+						<xs:documentation>Контейнер, которому принадлежит идентификатор метки</xs:documentation>
+					</xs:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 
 	<xs:element name="AddIncomingToOrder">
 		<xs:complexType>
@@ -395,5 +491,17 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+
+	<xs:simpleType name="TagType">
+		<xs:annotation>
+			<xs:documentation>Тип объекта, которому принадлежит идентификатор метки</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INCOMING"></xs:enumeration>
+			<xs:enumeration value="ORDER"></xs:enumeration>
+			<xs:enumeration value="POST"></xs:enumeration>
+			<xs:enumeration value="CONTAINER"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
 

@@ -33,6 +33,30 @@
 	<message name="FindTagResponse">
 		<part name="parameters" element="msg:FindTagResponse"></part>
 	</message>
+	<message name="FindIncomingRequest">
+		<part name="FindIncomingRequest" element="msg:FindIncoming"></part>
+	</message>
+	<message name="FindIncomingResponse">
+		<part name="parameters" element="msg:FindIncomingResponse"></part>
+	</message>
+	<message name="FindOrderRequest">
+		<part name="FindOrderRequest" element="msg:FindOrder"></part>
+	</message>
+	<message name="FindOrderResponse">
+		<part name="parameters" element="msg:FindOrderResponse"></part>
+	</message>
+	<message name="FindPostRequest">
+		<part name="FindPostRequest" element="msg:FindPost"></part>
+	</message>
+	<message name="FindPostResponse">
+		<part name="parameters" element="msg:FindPostResponse"></part>
+	</message>
+	<message name="FindContainerRequest">
+		<part name="FindContainerRequest" element="msg:FindContainer"></part>
+	</message>
+	<message name="FindContainerResponse">
+		<part name="parameters" element="msg:FindContainerResponse"></part>
+	</message>
 	<message name="AddIncomingToOrderRequest">
 		<part name="parameters" element="msg:AddIncomingToOrder"></part>
 	</message>
@@ -105,7 +129,6 @@
 	<message name="GatherInfoResponse">
 		<part name="parameters" element="msg:GatherInfoResponse"></part>
 	</message>
-
 	<portType name="PackingLinePortType">
 		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции</documentation>
 
@@ -126,7 +149,31 @@
 			<input message="tns:SetOperatorActivityRequest"></input>		</operation>
 
 		<operation name="FindTag">
-			<documentation>По заданному идентификатору находит и возвращает объект: Поступление, Заказ, Отправление, Контейнер.</documentation>			<input message="tns:FindTagRequest"></input>			<output message="tns:FindTagResponse"></output>
+			<documentation>По заданному идентификатору находит и возвращает тип объекта: Поступление, Заказ, Отправление, Контейнер.</documentation>			<input message="tns:FindTagRequest"></input>			<output message="tns:FindTagResponse"></output>
+		</operation>
+
+		<operation name="FindIncoming">
+			<documentation>По заданному идентификатору находит и возвращает Поступление.</documentation>
+			<input message="tns:FindIncomingRequest"></input>
+			<output message="tns:FindIncomingResponse"></output>
+		</operation>
+
+		<operation name="FindOrder">
+			<documentation>По заданному идентификатору находит и возвращает Заказ.</documentation>
+			<input message="tns:FindOrderRequest"></input>
+			<output message="tns:FindOrderResponse"></output>
+		</operation>
+
+		<operation name="FindPost">
+			<documentation>По заданному идентификатору находит и возвращает Отправление.</documentation>
+			<input message="tns:FindPostRequest"></input>
+			<output message="tns:FindPostResponse"></output>
+		</operation>
+
+		<operation name="FindContainer">
+			<documentation>По заданному идентификатору находит и возвращает Контейнер.</documentation>
+			<input message="tns:FindContainerRequest"></input>
+			<output message="tns:FindContainerResponse"></output>
 		</operation>
 
 		<operation name="AddIncomingToOrder">
@@ -230,6 +277,42 @@
 		</operation>
 		<operation name="FindTag">
 			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindTag" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="FindIncoming">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindIncoming" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="FindOrder">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindOrder" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="FindPost">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindPost" />
+			<input>
+				<soapbind:body use="literal" />
+			</input>
+			<output>
+				<soapbind:body use="literal" />
+			</output>
+		</operation>
+		<operation name="FindContainer">
+			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindContainer" />
 			<input>
 				<soapbind:body use="literal" />
 			</input>

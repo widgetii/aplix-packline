@@ -12,6 +12,7 @@ import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.post.TagType;
 import ru.aplix.packline.workflow.WorkflowAction;
 
 public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderController> {
@@ -59,34 +60,38 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	public Tag processBarcode(String code) throws PackLineException {
+		Order order;
+		Tag result;
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		Order order;
-		Tag result = postServicePort.findTag(code);
-		if (result == null || !code.equals(result.getId())) {
-			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
-		}
+		TagType tagType = postServicePort.findTag(code);
+		if (TagType.INCOMING.equals(tagType)) {
+			Incoming incoming = findAndValidateTag(postServicePort, TagType.INCOMING, code, Incoming.class, false);
+			order = findAndValidateTag(postServicePort, TagType.ORDER, incoming.getOrderId(), Order.class, true);
 
-		if (result instanceof Incoming) {
-			Incoming incoming = (Incoming) result;
-			order = findAndValidateTag(postServicePort, incoming.getOrderId(), Order.class);
 			checkOrder(order);
+
 			if (isIncomingRegistered(order, incoming.getId())) {
 				setNextAction(getOrderActAction());
 			} else {
 				setNextAction(getAcceptanceAction());
 			}
-		} else if (result instanceof Post) {
-			Post post = (Post) result;
-			order = findAndValidateTag(postServicePort, post.getOrderId(), Order.class);
-			checkPostPacked(post);
+			result = incoming;
+		} else if (TagType.POST.equals(tagType)) {
+			Post post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
+			checkPost(post);
+			order = findAndValidateTag(postServicePort, TagType.ORDER, post.getOrderId(), Order.class, true);
+
 			setNextAction(getPackingAction());
-		} else if (result instanceof Container) {
-			Container container = (Container) result;
-			Post post = findAndValidateTag(postServicePort, container.getPostId(), Post.class);
-			order = findAndValidateTag(postServicePort, post.getOrderId(), Order.class);
+			result = post;
+		} else if (TagType.CONTAINER.equals(tagType)) {
+			Container container = findAndValidateTag(postServicePort, TagType.CONTAINER, code, Container.class, false);
+			checkContainer(container);
+			Post post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
+			order = findAndValidateTag(postServicePort, TagType.ORDER, post.getOrderId(), Order.class, true);
 
 			setNextAction(getMarkingAction());
+			result = container;
 		} else {
 			order = null;
 			result = null;
@@ -98,11 +103,33 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	@SuppressWarnings("unchecked")
-	private <T> T findAndValidateTag(PackingLinePortType postServicePort, String tagId, Class<T> tagClass) throws PackLineException {
-		Tag tag = postServicePort.findTag(tagId);
-		if (tag == null) {
-			throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
-		} else if (!(tag.getClass().equals(tagClass))) {
+	private <T> T findAndValidateTag(PackingLinePortType postServicePort, TagType tagType, String tagId, Class<T> tagClass, boolean nested)
+			throws PackLineException {
+		Tag tag;
+		switch (tagType) {
+		case INCOMING:
+			tag = postServicePort.findIncoming(tagId);
+			break;
+		case ORDER:
+			tag = postServicePort.findOrder(tagId);
+			break;
+		case POST:
+			tag = postServicePort.findPost(tagId);
+			break;
+		case CONTAINER:
+			tag = postServicePort.findContainer(tagId);
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+		if (tag == null || !tagId.equals(tag.getId())) {
+			if (nested) {
+				throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
+			} else {
+				throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+			}
+		}
+		if (!(tag.getClass().equals(tagClass))) {
 			throw new PackLineException(String.format(getResources().getString("error.post.invalid.tag.class"), tagId, tagClass.getSimpleName(), tag.getClass()
 					.getSimpleName()));
 		} else {
@@ -120,15 +147,21 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		return (existing != null);
 	}
 
-	private void checkPostPacked(Post post) throws PackLineException {
+	private void checkOrder(Order order) throws PackLineException {
+		if (order.isCarriedOutAndClosed()) {
+			throw new PackLineException(getResources().getString("error.post.order.already.closed"));
+		}
+	}
+
+	private void checkPost(Post post) throws PackLineException {
 		if (post.getContainer() != null) {
 			throw new PackLineException(getResources().getString("error.post.already.packed"));
 		}
 	}
 
-	private void checkOrder(Order order) throws PackLineException {
-		if (order.isCarriedOutAndClosed()) {
-			throw new PackLineException(getResources().getString("error.post.order.already.closed"));
+	private void checkContainer(Container container) throws PackLineException {
+		if (container.getPostId() == null) {
+			throw new PackLineException(getResources().getString("error.post.container.empty"));
 		}
 	}
 }

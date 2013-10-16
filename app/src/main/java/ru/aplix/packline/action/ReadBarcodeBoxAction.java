@@ -7,7 +7,7 @@ import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.post.Post;
-import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.post.TagType;
 
 public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController> {
 
@@ -19,14 +19,14 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 	public int processBarcode(String code) throws PackLineException {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		Tag tag = postServicePort.findTag(code);
-		if (tag == null || !code.equals(tag.getId())) {
-			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
-		}
-		if (!(tag instanceof Container)) {
+		TagType tagType = postServicePort.findTag(code);
+		if (!TagType.CONTAINER.equals(tagType)) {
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
 		}
-		Container emptyBox = (Container) tag;
+		Container emptyBox = postServicePort.findContainer(code);
+		if (emptyBox == null || !code.equals(emptyBox.getId())) {
+			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+		}
 		if (!PackingType.BOX.equals(emptyBox.getPackingType())) {
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
 		}
@@ -44,7 +44,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
-		
+
 		return postServicePort.getBoxCount(container.getBoxTypeId());
 	}
 }

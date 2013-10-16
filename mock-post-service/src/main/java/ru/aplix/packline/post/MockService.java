@@ -52,7 +52,7 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized Tag findTag(final String tagId) {
+	public synchronized TagType findTag(final String tagId) {
 		if (tagId == null) {
 			return null;
 		}
@@ -66,7 +66,7 @@ public class MockService implements PackingLinePortType {
 
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), predicate);
 		if (order != null) {
-			return order;
+			return TagType.ORDER;
 		}
 
 		final Incoming incoming = (Incoming) CollectionUtils.find(getConfig().getIncomings(), predicate);
@@ -81,21 +81,81 @@ public class MockService implements PackingLinePortType {
 			if (order != null && order.getTotalIncomings() == 1 && order.isCarriedOutAndClosed()) {
 				// go to seeking Post with the same Id
 			} else {
-				return incoming;
+				return TagType.INCOMING;
 			}
 		}
 
 		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), predicate);
 		if (post != null) {
-			return post;
+			return TagType.POST;
 		}
 
 		Container container = (Container) CollectionUtils.find(getConfig().getContainers(), predicate);
 		if (container != null) {
-			return container;
+			return TagType.CONTAINER;
 		}
 
 		return null;
+	}
+
+	@Override
+	public synchronized Incoming findIncoming(final String incomingId) {
+		if (incomingId == null) {
+			return null;
+		}
+
+		Incoming incoming = (Incoming) CollectionUtils.find(getConfig().getIncomings(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return incomingId.equals(((Tag) item).getId());
+			}
+		});
+		return incoming;
+	}
+
+	@Override
+	public synchronized Order findOrder(final String orderId) {
+		if (orderId == null) {
+			return null;
+		}
+
+		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return orderId.equals(((Tag) item).getId());
+			}
+		});
+		return order;
+	}
+
+	@Override
+	public synchronized Post findPost(final String postId) {
+		if (postId == null) {
+			return null;
+		}
+
+		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return postId.equals(((Tag) item).getId());
+			}
+		});
+		return post;
+	}
+
+	@Override
+	public synchronized Container findContainer(final String containerId) {
+		if (containerId == null) {
+			return null;
+		}
+
+		Container container = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return containerId.equals(((Tag) item).getId());
+			}
+		});
+		return container;
 	}
 
 	@Override
