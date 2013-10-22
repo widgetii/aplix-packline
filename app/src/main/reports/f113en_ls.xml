@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="\\mskfs01\Printer02" FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="210.0" Height="297.0" MarginLeft="0.0" MarginTop="0.0" MarginRight="0.0" MarginBottom="0.0" Orientation="portrait" UseMargins="true">
+            <Views>
+                <BandView Type="master-data" Dataset="PostDataSet" Name="BandView1" Left="0.0" Top="1.3813163" Width="100.13334" Height="63.816814" BoundLeft="0.0" BoundTop="1.3813163" BoundWidth="100.13334" BoundHeight="63.816814" Stretched="false" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView1" Left="74.67681" Top="61.688305" Width="15.495276" Height="1.5873015" BoundLeft="74.6117" BoundTop="40.702785" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="true" Name="MemoView2" Left="90.43251" Top="22.72727" Width="1.6927613" Height="34.054832" BoundLeft="90.36742" BoundTop="15.839092" BoundWidth="1.8229736" BoundHeight="21.824799" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>исправления не допускаются
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="5" FontWeight="normal" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="true" Name="MemoView3" Left="28.97226" Top="22.72727" Width="0.7812744" Height="34.054832" BoundLeft="28.907156" BoundTop="15.839092" BoundWidth="0.9114868" BoundHeight="21.824799" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Линия отреза
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView4" Left="3.0599916" Top="0.50505066" Width="-0.13021241" Height="97.54689" BoundLeft="2.9948854" BoundTop="1.6575797" BoundWidth="0.0" BoundHeight="62.343414" Stretched="false" FrameType="left" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView5" Left="29.883749" Top="0.50505066" Width="-0.13021241" Height="97.54689" BoundLeft="29.81864" BoundTop="1.6575797" BoundWidth="0.0" BoundHeight="62.343414" Stretched="false" FrameType="left" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView6" Left="91.99506" Top="0.50505066" Width="-0.13021241" Height="97.54689" BoundLeft="91.92996" BoundTop="1.6575797" BoundWidth="0.0" BoundHeight="62.343414" Stretched="false" FrameType="left" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView7" Left="3.0599916" Top="98.19625" Width="88.935074" Height="-0.14430015" BoundLeft="2.9948854" BoundTop="64.00099" BoundWidth="89.065285" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView8" Left="4.752753" Top="7.7200575" Width="22.136108" Height="2.7417026" BoundLeft="4.687647" BoundTop="6.261967" BoundWidth="22.266321" BoundHeight="1.841755" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable1]
+</Memo>
+                        </MemoView>
+                        <BarCodeView CheckSum="true" ShowText="true" BarCodeType="intl2of5" Angle="0" Name="MemoView9" Left="4.752753" Top="2.3809524" Width="22.005896" Height="5.6277056" BoundLeft="4.687647" BoundTop="2.8547204" BoundWidth="22.136108" BoundHeight="3.68351" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable2]
+</Memo>
+                        </BarCodeView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView10" Left="3.0599916" Top="0.50505066" Width="88.67465" Height="-0.14430015" BoundLeft="2.9948854" BoundTop="1.6575797" BoundWidth="88.804855" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="9" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView11" Left="49.02497" Top="0.50505066" Width="42.83988" Height="21.212118" BoundLeft="48.959866" BoundTop="1.6575797" BoundWidth="42.970093" BoundHeight="13.628988" Stretched="false" FrameType="left|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView12" Left="85.354225" Top="0.79365075" Width="6.3804073" Height="1.8759018" BoundLeft="85.28912" BoundTop="1.841755" BoundWidth="6.5106196" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>ф. 113эн
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView13" Left="31.967146" Top="18.97547" Width="15.495276" Height="1.5873015" BoundLeft="31.902042" BoundTop="13.444813" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>№
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView14" Left="31.967146" Top="20.85137" Width="15.495276" Height="1.5873015" BoundLeft="31.902042" BoundTop="14.6419525" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(по реестру ф.10)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView15" Left="40.561165" Top="2.3809524" Width="2.4740357" Height="12.842711" BoundLeft="40.49606" BoundTop="2.8547204" BoundWidth="2.6042483" BoundHeight="8.287898" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>П
+Р
+И
+Е
+М
+</Memo>
+                        </MemoView>
+                        <PictureView Centered="false" KeepRatio="true" Name="PictureView1" Left="31.967146" Top="2.3809524" Width="8.333594" Height="12.842711" BoundLeft="31.902042" BoundTop="2.8547204" BoundWidth="8.463806" BoundHeight="8.287898" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <BMPImage Mime="image/bmp">
+                                <Content>Qk0CDwAAAAAAAD4AAAAoAAAAjAAAAL0AAAABAAEAAAAAAMQOAAAAAAAAAAAAAAAAAAACAAAAAAAA//////////////////////////////AAAP//////////////////////8AAA///////////////////////wAAD////////////4/4eG+P+f//AAAP////////////j/B4b4/x//8AAA/w4YH+HDhw8P4DwGBhhjH//wAAD/DhAP4cOHDw/iHAQGGEEf//AAAP8OE4fhw4cPAccYeH4AYB//8AAA/w4Th+HDhw8Bjxj4fgBgH//wAAD/DiPH4cOHHwCPkPj+AGAf//AAAP8MI8fhw4cfCA+A+P4AYB//8AAA/wwjxwHDgB8cD4D4/hBnH//wAAD/DCPGAcOAHxwPgPj+GGcf//AAAP8MI8ABw4A/HA+YeH4YZx//8AAA/wxjwCHDhD8cRxg8PhhnD//wAAD/AHOAYQAAPxjmHAYGGGcP//AAAP8AcYBhAAA/EOIeBgIYZw//8AAA/4B4GOEAAH8B8H+Hhjjn3//wAAD/gfwY4QCB/4/4//////////AAAP//////////////////////8AAA///////////////////////wAAD///////////////////////AAAP//////////////////////8AAA///////////////////////wAAD///////////////////////AAAP//////////P5//////////8AAA////////+P8fn/f////////wAAD////////4PM9vB/////////AAAP////////kcz2YT////////8AAA////////+cHucHv////////wAAD////////5wfbyO/////////AAAP////////3DMJhh////////8AAA////////+MMwmGH////////wAAD////////8ZNkOn/////////AAAP////////xwyWYf////////8AAA/////////5vidz/////////wAAD/////////m+J3P/////////AAAP////////8M5HGf////////8AAA/////////wzMcZ/////////wAAD/////////RkmMz/////////AAAP////////5CSYzP////////8AAA/////////JsS2Gf//8Af///wAAD/////+Af8mTJ5Z/wHgB////AAAP///AABoAMA4HOZAOAe4f//8AAA///4AAf+AwDgcBgH4A5g///wAAD//+HmAP/wGE8BGHgf5mZ///AAAP//wOIAADwQBgCM4H/2bn//8AAA//+PAH+Hg4IABgYHAAYOf//wAAD//48AL4ODggAGBgcABg5///AAAP//gAgIGJBwkhBjGH5gCH//8AAA//8AAB8IkDiyEOEQfmBAf//wAAD//HwHz8MxjxYHAYL+cJ+P//AAAP/8eA/PwzOHFgcEgv7wn4//8AAA//HAeM/AgGPGHGBi+ODg5//wAAD/88fwz8SAMMIYgGT55nzz//AAAP/H4YZnwEwKcGEJMHmOAHn/8AAA/8/wDmfAZEkw4gkQcZ8AeP/wAAD/n8A/J4M0NAGAgxhnH5H+f/AAAP+fxn8zgzQQAwmDDmY/kf5/8AAA/3+Ef5neMEQOBgIeDn+Q/z/wAAD/f4R/md4wxAwGAh4Of5D/v/AAAP5/BP/I3hBwOYEiBh3/kH+f8AAA/n8E/8TcEHgwgmIAef+Qf5/wAAD8/mz/5wOwDiYIgnh5/5N/3/AAAPz+ZH/nB7APBggCcHP/k3/P8AAA/P5mf/OHsAOGEDIH5/8Hf+fwAAD5/mZ/8cMwA4AgQR/n/yd/5/AAAPn+Zn/4+GCJkEDhM8/+Zz/n8AAA+f53P/j8YImQQOEBz/5nP+fwAAD5/nM//PBAxIAA4IGf/O8/5/AAAPn+c5/8YMzyCgGEiB/5j3/38AAA+f55x/ABgHMCAzAggfEff/PwAAD5/nnH4AGAcwIDOCCB4x9/8/AAAPn/fHHARwc5AAY8GAgOfn/x8AAA+f9+eAcOHDgAJh6GABh+f/nwAAD5/z+fAHgz+ACHzmD/4f5/+fAAAPn/v4+A+DP4BIfOYH+D/v/58AAA+f+f4f/Bs/gOB+YAAB/5//nwAAD5/4/4PgCT8g4T4CQA//n/+fAAAPn/x/+AE0gADgAA5oT/8f/58AAA+f/H/8ITSAAOAATmjH/j//nwAAD5/+P/nosDCA4GeCAA/+H/+fAAAPn/8f+YQQAIDgZwAGH/gD/x8AAA+f4Af4MAIwEOAgcez/8fh/HwAAD5/gB/wwBxEQ5CBzzP/x+H8fAAAPn4fn/4w3gxAgAgcB//H+Hz8AAA+eP8f/yAHDAAAODgP/+f+PPwAAD5j/z//xgAEADhGOMfD5/+Z/AAAPmP/P//gMCQAOAYAw8Pj/5n8AAA+T/5/f/A9ICG4AACBm8H/yfwAAD4f/H4OPwEQIZIBn5k4AP/h/AAAPh/4PkBPwAIDhhOfPHh4P+H8AAA+P/geYE/AAgOGE488ePof4fwAAD8/4MRw45wiA4QRh3x5+Yfj/AAAPj/E4Hjz3iADjBGeZPv4A8f8AAA/Hhz4/dHcBMEBhj5lk/hgB/wAAD8eHPj90cwEwQGGPkWTeOAH/AAAP4AAfOzZzMBIIYY+QYZz5//8AAA/wRhm7MnY4AxjFz5BpGfgP/wAAD//PzJsSBJBjEIRmAEkQYAf/AAAP/8/EmQAAgWEQhABAGDJh5/8AAA//z+YJAMADJBYQAOISYEf3/wAAD/wGOkAwxwMkBDGYpQLoj+f/AAAP+AMZQGlPCwQAeCUhgJEf5/8AAA/48ZkASUkBBMB4JSGAgH/gfwAAD/z8xIZASxBAwHhlIQAFx4AfAAAP/n5gAQAaQADheWEBAIkGHx8AAA+AMJgEgBSQAMABYAAGxhh/nwAAD4AYAeSAAJEAAAEAMACAYf+fAAAPn4YAggAAIzAAIAIICIAIfj8AAA+f8ACIAABDOSFkIgiRAAB8fwAAD4+AACTgsAEZNGYbCABIAeAfAAAPx4AAALCUABk0ZhuIAAgHgB8AAA/AAAgAgPYYATQAz/wIAAAfxwAADwYABAAP/BkAIADID4gAfh/vAAAOH/gAAH4IGQghIOAHCAYAH48AAA5//wAJfAAJCCEmA+OYAgAfnwAADHwAMYhx4cADGCYH+cAGH/gfAAAMf/gYAffwICOYBPP5yAAAAB8AAA4AAAcA5+AAZxgB+fmGAD/+HwAADwAAAY/nz4RnGQH584YGAA+HAAAPg/8AMOeP9ncJE/z3yAEAB+cAAA4f/CAx95/yMgAHxOfAbAf/5wAADH/AQB7zmDIwAAcA55AAAB+PAAAM+AB2APOYAgAEBgDniAB4AB8AAAnwwAAAeYOAhCRIHu+GCAPwfwAACPgHDwh5xgDEIAnn7xwAAB4/AAAIAD44EHjscMQhA+fmgAEABx8AAAwA+GAYfPx4BCEDg+ZAjwYHnwAADg+A5hgI/wgQAQR/9hAAGH+PAAAMPADwAYn/wBMBAf/xEAgHB+cAAAhwIAMDE//wAwEB//mIQGHgBwAACODABgYj//ACBSn//OgmcGAHAAAJ5w8YhA//8ggkaf/+YJYYGB8AAAPwcD4MH//ySDAh//+c5mYOPwAAAYHAOE4///JJGAH//45hEYcfAAAAA4YAjH//9kkZCf//ziAY558AAAwOMAEI///2Wwmc///mEMYfjwAADxjAAgP7/+QCQQ5/4/AIYYfnAAAOP4QCA/n/wABATgfh+EkYZ+cAAA5/CAIH+f+AAOQBAen4KYhx5wAADHxxJ4fyfgJA5gBomQSY5hgHAAAM8MZnL/MARMjzBhw4AZhxnn8AAAzDjMZ8AfMMmPkGgBH56BjufwAADAOZwHgA9xiZ+BYAA5zgnn5/AAAMBzuA8AAAATP4AgZmHvAOPx8AAA/PZyH2cIBAAOfABzjv8GefnwAAD9/nYfwDwMAA4OATHm/5YY+fAAAP385D/IeJgBhgIBmGb/8Bh58AAA+fnIP9nz+gwf8AbpNvH5jjnwAAD585nnmcd8mf/z/gSZ8H6GCfAAAPnns8ffhn+z/+HgBMHyfmcB8AAA+cc3h88GB/j/8GAGZ/Z+ZwPwAAD5hmeHwAcAcH/x//4H9wc/n/AAAPgOz5fwAALw/+cAAA/2B5+f8AAA+A+QE/4AAAB/4AAAB+Z3n7/wAAD4H5Ab+AfgAH/hBgDh5mfPv/AAAPmfOYngx84of4I+APHmB+c/8AAA/594mcHAD4IeBvyGcOZ/5n/wAAD/nnwZk8hnwAAJ+JZ49x/wf/AAAP+cfhuTmXfwABH5lnrxn/h/8AAA/5z/MzO5d/gEB/mSMnGf+H/wAAD/mf83N7mz/AAH+BA2ee/8//AAAP/Z/2ebgZP8H4f4AHZx7/7/8AAA/8P+Z5mBg/wAB/4A9nAf///wAAD/w/5nmPgP/AAH/4f2YB////AAAP/n/mfM/H/5ACH/h+Yef///8AAA/+f+AMT8f/gACf8R5jj////wAAD/9/8AJvAf8AEJ/xHg8f////AAAP///8OE8R/zQQH/EfHj////8AAA////+ODxH/EFEv8D+A/////wAAD////8Yfgf4ZaC/8f+//////AAAP////4D/H/nBoL/5///////8AAA/////4f//+AOiH/////////wAAD/////////4A4O//////////AAAP/////////gDgD/////////8AAA//////////AOAf/////////wAAD/////////8AAH//////////AAAP//////////gH//////////8AAA///////////k///////////wAAD//////////+D///////////AAAP//////////4P//////////8AAA///////////Mf//////////wAAD//////////85///////////AAAP//////////xH//////////8AAA///////////Ef//////////wAAD//////////+D///////////AAAP//////////8f//////////8AAA///////////////////////wAAA=</Content>
+                            </BMPImage>
+                        </PictureView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView16" Left="31.967146" Top="15.367964" Width="15.495276" Height="1.5873015" BoundLeft="31.902042" BoundTop="11.142617" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>№
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView17" Left="31.967146" Top="17.243868" Width="15.495276" Height="1.5873015" BoundLeft="31.902042" BoundTop="12.339758" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(по накладной ф.16)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="true" Name="MemoView18" Left="30.144173" Top="22.72727" Width="1.6927613" Height="34.054832" BoundLeft="30.079067" BoundTop="15.839092" BoundWidth="1.8229736" BoundHeight="21.824799" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Обведенное линией заполняется отправителем РПО
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView19" Left="32.22757" Top="23.015873" Width="57.6841" Height="33.18903" BoundLeft="32.03225" BoundTop="15.931182" BoundWidth="58.07473" BoundHeight="21.456446" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="3.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView20" Left="32.74842" Top="41.63059" Width="56.642395" Height="13.997112" BoundLeft="32.68331" BoundTop="27.902588" BoundWidth="56.772606" BoundHeight="9.024599" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView21" Left="32.357784" Top="23.160172" Width="33.07395" Height="1.5873015" BoundLeft="32.292675" BoundTop="16.115356" BoundWidth="33.204166" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>ПОЧТОВЫЙ ПЕРЕВОД наложенного платежа
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView22" Left="32.357784" Top="28.643578" Width="57.423668" Height="1.5873015" BoundLeft="32.292675" BoundTop="19.61469" BoundWidth="57.553886" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(рубли прописью, копейки цифрами)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView23" Left="77.67169" Top="23.160172" Width="7.6825323" Height="1.5873015" BoundLeft="77.6066" BoundTop="16.115356" BoundWidth="7.812744" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView24" Left="65.69216" Top="23.160172" Width="7.6825323" Height="1.5873015" BoundLeft="65.62706" BoundTop="16.115356" BoundWidth="7.812744" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView25" Left="32.357784" Top="36.002884" Width="57.423668" Height="3.318903" BoundLeft="32.292675" BoundTop="24.311165" BoundWidth="57.553886" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>                 [Variable5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView26" Left="32.357784" Top="30.51948" Width="57.423668" Height="3.318903" BoundLeft="32.292675" BoundTop="20.811832" BoundWidth="57.553886" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>                 [Variable6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView27" Left="32.357784" Top="25.036076" Width="57.423668" Height="3.318903" BoundLeft="32.292675" BoundTop="17.312496" BoundWidth="57.553886" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="transparent" FillColor="#F8F8F8" Visible="true">
+                            <Memo> [nalplat]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView28" Left="73.63512" Top="23.160172" Width="3.7761598" Height="1.5873015" BoundLeft="73.570015" BoundTop="16.115356" BoundWidth="3.906372" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>руб.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView29" Left="32.357784" Top="34.126984" Width="57.423668" Height="1.5873015" BoundLeft="32.292675" BoundTop="23.114027" BoundWidth="57.553886" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(для юридического лица - полное или краткое наименование, для гражданина - фамилия, имя, отчество полностью)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView30" Left="32.357784" Top="32.25108" Width="57.423668" Height="-0.14430015" BoundLeft="32.292675" BoundTop="21.916883" BoundWidth="57.553886" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView31" Left="32.357784" Top="37.734486" Width="57.423668" Height="-0.14430015" BoundLeft="32.292675" BoundTop="25.41622" BoundWidth="57.553886" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView32" Left="32.357784" Top="33.83838" Width="57.423668" Height="-0.14430015" BoundLeft="32.292675" BoundTop="22.92985" BoundWidth="57.553886" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView33" Left="32.357784" Top="39.610386" Width="57.423668" Height="0.0" BoundLeft="32.292675" BoundTop="26.613361" BoundWidth="57.553886" BoundHeight="0.09208775" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView34" Left="32.357784" Top="39.610386" Width="57.423668" Height="1.5873015" BoundLeft="32.292675" BoundTop="26.613361" BoundWidth="57.553886" BoundHeight="1.105053" Stretched="false" FrameType="top" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(адрес, почтовый индекс)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView35" Left="33.139057" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="33.07395" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView36" Left="34.962032" Top="43.650787" Width="24.610146" Height="1.5873015" BoundLeft="34.896923" BoundTop="29.191818" BoundWidth="24.740358" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Выплатить наличными деньгами
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView37" Left="32.87863" Top="41.774883" Width="56.38197" Height="1.5873015" BoundLeft="32.81353" BoundTop="27.994677" BoundWidth="56.512188" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Заполняется при приеме перевода в адрес юридического лица
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView38" Left="32.87863" Top="45.670994" Width="56.38197" Height="0.0" BoundLeft="32.81353" BoundTop="30.481047" BoundWidth="56.512188" BoundHeight="0.09208775" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView39" Left="79.624886" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="79.55978" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView40" Left="81.18744" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="81.12233" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView41" Left="82.74998" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="82.68488" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView42" Left="84.31253" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="84.24743" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView43" Left="85.875084" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="85.80997" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView44" Left="87.43763" Top="43.650787" Width="1.4323364" Height="1.5873015" BoundLeft="87.37252" BoundTop="29.191818" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_from_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView45" Left="72.59342" Top="43.650787" Width="6.3804073" Height="1.5873015" BoundLeft="72.528305" BoundTop="29.191818" BoundWidth="6.5106196" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Индекс
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView46" Left="33.269268" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="33.204166" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView47" Left="34.831818" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="34.76671" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView48" Left="36.394367" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="36.32926" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView49" Left="37.956917" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="37.891808" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView50" Left="39.519466" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="39.454357" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView51" Left="41.082016" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="41.016907" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView52" Left="33.269268" Top="45.95959" Width="3.7761598" Height="1.5873015" BoundLeft="33.204166" BoundTop="30.665222" BoundWidth="3.906372" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>ИНН:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView53" Left="57.7492" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="57.6841" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView54" Left="59.311752" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="59.246647" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView55" Left="60.874302" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="60.809196" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView56" Left="62.436848" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="62.37175" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView57" Left="63.9994" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="63.93429" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView58" Left="57.7492" Top="45.95959" Width="5.989771" Height="1.5873015" BoundLeft="57.6841" BoundTop="30.665222" BoundWidth="6.119983" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Кор/счет:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView59" Left="65.56194" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="65.49684" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView60" Left="67.1245" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="67.059395" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_7]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView61" Left="68.68704" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="68.62193" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_8]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView62" Left="70.24959" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="70.18449" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_9]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView63" Left="71.81214" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="71.74703" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_10]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView64" Left="73.374695" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="73.309586" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_11]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView65" Left="74.93724" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="74.87213" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_12]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView66" Left="76.49979" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="76.434685" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_13]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView67" Left="78.06234" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="77.99723" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_14]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView68" Left="79.624886" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="79.55978" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_15]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView69" Left="81.18744" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="81.12233" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_16]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView70" Left="82.74998" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="82.68488" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_17]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView71" Left="84.31253" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="84.24743" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_18]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView72" Left="85.875084" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="85.80997" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_19]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView73" Left="87.43763" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="87.37252" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[ks_20]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView74" Left="42.64456" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="42.579456" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_7]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView75" Left="44.207115" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="44.142006" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_8]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView76" Left="45.76966" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="45.704556" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_9]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView77" Left="47.33221" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="47.267105" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[inn_10]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView78" Left="33.269268" Top="49.711395" Width="13.411878" Height="1.5873015" BoundLeft="33.204166" BoundTop="33.0595" BoundWidth="13.54209" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Наименование банка:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView79" Left="47.071785" Top="49.711395" Width="41.928394" Height="1.5873015" BoundLeft="47.00668" BoundTop="33.0595" BoundWidth="42.05861" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable7]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView80" Left="33.269268" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="33.204166" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView81" Left="34.831818" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="34.76671" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView82" Left="36.394367" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="36.32926" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView83" Left="37.956917" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="37.891808" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView84" Left="39.519466" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="39.454357" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView85" Left="41.082016" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="41.016907" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView86" Left="42.64456" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="42.579456" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_7]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView87" Left="44.207115" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="44.142006" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_8]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView88" Left="45.76966" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="45.704556" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_9]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView89" Left="47.33221" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="47.267105" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_10]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView90" Left="48.89476" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="48.82965" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_11]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView91" Left="50.457306" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="50.392204" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_12]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView92" Left="52.01986" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="51.954746" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_13]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView93" Left="53.582405" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="53.5173" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_14]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView94" Left="55.144955" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="55.07985" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_15]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView95" Left="56.7075" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="56.642395" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_16]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView96" Left="58.270054" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="58.204945" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_17]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView97" Left="59.832603" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="59.767498" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_18]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView98" Left="61.395145" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="61.330044" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_19]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView99" Left="62.9577" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="62.892593" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[rs_20]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView100" Left="74.93724" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="74.87213" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView101" Left="76.49979" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="76.434685" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView102" Left="78.06234" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="77.99723" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView103" Left="79.624886" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="79.55978" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView104" Left="81.18744" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="81.12233" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView105" Left="82.74998" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="82.68488" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView106" Left="84.31253" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="84.24743" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_7]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView107" Left="85.875084" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="85.80997" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_8]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView108" Left="87.43763" Top="53.463196" Width="1.4323364" Height="1.5873015" BoundLeft="87.37252" BoundTop="35.453785" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[bik_9]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView109" Left="33.269268" Top="51.587303" Width="7.4221067" Height="1.5873015" BoundLeft="33.204166" BoundTop="34.25664" BoundWidth="7.5523195" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Рас/счет:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView110" Left="74.93724" Top="51.587303" Width="4.2970095" Height="1.5873015" BoundLeft="74.87213" BoundTop="34.25664" BoundWidth="4.427222" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>БИК:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView111" Left="85.614655" Top="23.160172" Width="3.7761598" Height="1.5873015" BoundLeft="85.54955" BoundTop="16.115356" BoundWidth="3.906372" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>коп.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView112" Left="32.357784" Top="30.51948" Width="6.3804073" Height="1.5873015" BoundLeft="32.292675" BoundTop="20.811832" BoundWidth="6.5106196" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Кому:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView113" Left="32.357784" Top="35.85858" Width="6.3804073" Height="1.7316016" BoundLeft="32.292675" BoundTop="24.21908" BoundWidth="6.5106196" BoundHeight="1.1971408" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Куда:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView114" Left="74.67681" Top="57.215004" Width="15.495276" Height="3.318903" BoundLeft="74.6117" BoundTop="37.848064" BoundWidth="15.625488" BoundHeight="2.210106" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView115" Left="74.67681" Top="63.564213" Width="15.495276" Height="1.5873015" BoundLeft="74.6117" BoundTop="41.899925" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(шифр и подпись)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView116" Left="47.853058" Top="62.409805" Width="26.563332" Height="2.7417026" BoundLeft="47.787952" BoundTop="41.163223" BoundWidth="26.693544" BoundHeight="1.841755" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[barcodl]
+</Memo>
+                        </MemoView>
+                        <BarCodeView CheckSum="true" ShowText="true" BarCodeType="intl2of5" Angle="0" Name="MemoView117" Left="47.853058" Top="57.215004" Width="26.563332" Height="5.050505" BoundLeft="47.787952" BoundTop="37.848064" BoundWidth="26.693544" BoundHeight="3.3151593" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[barkod]
+</Memo>
+                        </BarCodeView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView118" Left="32.09736" Top="57.215004" Width="15.495276" Height="3.318903" BoundLeft="32.03225" BoundTop="37.848064" BoundWidth="15.625488" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Наложенный
+платеж
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView119" Left="32.09736" Top="60.82251" Width="15.495276" Height="3.318903" BoundLeft="32.03225" BoundTop="40.150257" BoundWidth="15.625488" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>за РПО
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView120" Left="31.967146" Top="67.604614" Width="57.6841" Height="29.58153" BoundLeft="31.77183" BoundTop="44.3863" BoundWidth="58.07473" BoundHeight="19.154253" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="3.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView121" Left="31.836933" Top="65.295815" Width="58.204945" Height="1.8759018" BoundLeft="31.77183" BoundTop="43.004982" BoundWidth="58.335155" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Обведенное линией заполняется отправителем перевода
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView122" Left="32.09736" Top="67.74892" Width="6.3804073" Height="1.5873015" BoundLeft="32.03225" BoundTop="44.57047" BoundWidth="6.5106196" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>От кого:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView123" Left="32.09736" Top="69.62482" Width="57.423668" Height="3.318903" BoundLeft="32.03225" BoundTop="45.767612" BoundWidth="57.553886" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable8]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView124" Left="59.441967" Top="67.74892" Width="14.193151" Height="1.5873015" BoundLeft="59.376854" BoundTop="44.57047" BoundWidth="14.323364" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>ИНН при его наличии:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView125" Left="32.22757" Top="73.23231" Width="15.755701" Height="1.5873015" BoundLeft="32.162464" BoundTop="48.069805" BoundWidth="15.885915" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Адрес отправителя:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView126" Left="32.22757" Top="75.10822" Width="57.293457" Height="3.318903" BoundLeft="32.162464" BoundTop="49.266945" BoundWidth="57.423668" BoundHeight="2.210106" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable9] [Variable10] [Variable11] [Variable12]
+
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView127" Left="32.357784" Top="81.313126" Width="56.90282" Height="13.419912" BoundLeft="32.292675" BoundTop="53.226723" BoundWidth="57.03303" BoundHeight="8.656248" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView128" Left="32.61821" Top="81.60173" Width="8.594019" Height="1.5873015" BoundLeft="32.5531" BoundTop="53.410892" BoundWidth="8.724231" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Предъявлен
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView129" Left="53.321983" Top="81.60173" Width="4.427222" Height="1.5873015" BoundLeft="53.256874" BoundTop="53.410892" BoundWidth="4.557434" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Серия
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView130" Left="60.744087" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="60.67898" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>№
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView131" Left="68.81726" Top="81.60173" Width="5.0782843" Height="1.5873015" BoundLeft="68.75215" BoundTop="53.410892" BoundWidth="5.2084966" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>выдан
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView132" Left="76.89043" Top="81.60173" Width="1.1719117" Height="1.5873015" BoundLeft="76.82532" BoundTop="53.410892" BoundWidth="1.3021241" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView133" Left="81.05722" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="80.99212" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>20
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView134" Left="86.52614" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="86.46104" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>г.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView135" Left="83.79169" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="83.72657" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView136" Left="78.32276" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="78.25766" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView137" Left="74.15596" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="74.090866" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView138" Left="58.009624" Top="81.60173" Width="2.4740357" Height="1.5873015" BoundLeft="57.94452" BoundTop="53.410892" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView139" Left="41.472652" Top="81.60173" Width="11.588904" Height="1.5873015" BoundLeft="41.407547" BoundTop="53.410892" BoundWidth="11.719116" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView140" Left="63.478546" Top="81.60173" Width="5.0782843" Height="1.5873015" BoundLeft="63.41344" BoundTop="53.410892" BoundWidth="5.2084966" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView141" Left="32.61821" Top="83.47763" Width="20.443348" Height="1.5873015" BoundLeft="32.5531" BoundTop="54.608036" BoundWidth="20.573559" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(наименование документа)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView142" Left="32.61821" Top="85.35353" Width="56.38197" Height="1.5873015" BoundLeft="32.5531" BoundTop="55.805176" BoundWidth="56.512188" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView143" Left="32.61821" Top="87.22943" Width="56.38197" Height="1.5873015" BoundLeft="32.5531" BoundTop="57.00232" BoundWidth="56.512188" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>(наименование учереждения)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="italic" TextDecoration="underline" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView144" Left="32.61821" Top="89.10532" Width="56.38197" Height="1.5873015" BoundLeft="32.5531" BoundTop="58.19946" BoundWidth="56.512188" BoundHeight="1.105053" Stretched="false" FrameType="top" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Для нерезедентов России
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView145" Left="32.61821" Top="90.981224" Width="8.594019" Height="1.5873015" BoundLeft="32.5531" BoundTop="59.3966" BoundWidth="8.724231" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Предъявлен
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView146" Left="53.321983" Top="90.981224" Width="4.427222" Height="1.5873015" BoundLeft="53.256874" BoundTop="59.3966" BoundWidth="4.557434" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Серия
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView147" Left="60.744087" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="60.67898" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>№
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView148" Left="68.81726" Top="90.981224" Width="5.0782843" Height="1.5873015" BoundLeft="68.75215" BoundTop="59.3966" BoundWidth="5.2084966" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>выдан
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView149" Left="76.89043" Top="90.981224" Width="1.1719117" Height="1.5873015" BoundLeft="76.82532" BoundTop="59.3966" BoundWidth="1.3021241" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView150" Left="81.05722" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="80.99212" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>20
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView151" Left="86.52614" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="86.46104" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>г.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView152" Left="83.79169" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="83.72657" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView153" Left="78.32276" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="78.25766" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView154" Left="74.15596" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="74.090866" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView155" Left="58.009624" Top="90.981224" Width="2.4740357" Height="1.5873015" BoundLeft="57.94452" BoundTop="59.3966" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView156" Left="41.472652" Top="90.981224" Width="11.588904" Height="1.5873015" BoundLeft="41.407547" BoundTop="59.3966" BoundWidth="11.719116" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView157" Left="63.478546" Top="90.981224" Width="5.0782843" Height="1.5873015" BoundLeft="63.41344" BoundTop="59.3966" BoundWidth="5.2084966" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView158" Left="32.61821" Top="92.85714" Width="15.495276" Height="1.5873015" BoundLeft="32.5531" BoundTop="60.593742" BoundWidth="15.625488" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Дата срока пребывания с
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView159" Left="51.10837" Top="92.85714" Width="1.1719117" Height="1.5873015" BoundLeft="51.04326" BoundTop="60.593742" BoundWidth="1.3021241" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView160" Left="55.275166" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="55.21006" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>20
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView161" Left="60.744087" Top="92.85714" Width="3.7761598" Height="1.5873015" BoundLeft="60.67898" BoundTop="60.593742" BoundWidth="3.906372" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>г., по
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView162" Left="58.009624" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="57.94452" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView163" Left="52.540707" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="52.4756" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView164" Left="48.37391" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="48.3088" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView165" Left="67.51514" Top="92.85714" Width="1.1719117" Height="1.5873015" BoundLeft="67.45002" BoundTop="60.593742" BoundWidth="1.3021241" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView166" Left="71.68194" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="71.61682" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>20
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView167" Left="77.15085" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="77.08575" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>г.
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView168" Left="74.41639" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="74.35128" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView169" Left="68.94747" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="68.88236" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView170" Left="64.78067" Top="92.85714" Width="2.4740357" Height="1.5873015" BoundLeft="64.71557" BoundTop="60.593742" BoundWidth="2.6042483" BoundHeight="1.105053" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView171" Left="32.09736" Top="95.16595" Width="10.286779" Height="1.8759018" BoundLeft="32.03225" BoundTop="62.067146" BoundWidth="10.416993" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Гражданство:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView172" Left="60.744087" Top="95.16595" Width="16.146338" Height="1.8759018" BoundLeft="60.67898" BoundTop="62.067146" BoundWidth="16.27655" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Подпись отправителя:
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView173" Left="42.64456" Top="95.16595" Width="17.8391" Height="1.8759018" BoundLeft="42.579456" BoundTop="62.067146" BoundWidth="17.969313" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView174" Left="77.15085" Top="95.16595" Width="12.239966" Height="1.8759018" BoundLeft="77.08575" BoundTop="62.067146" BoundWidth="12.370179" BoundHeight="1.2892284" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView175" Left="79.88531" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="79.82021" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_1]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView176" Left="81.44786" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="81.38275" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_2]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView177" Left="83.01041" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="82.945305" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_3]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView178" Left="84.57296" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="84.50785" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_4]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView179" Left="86.135506" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="86.070404" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_5]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView180" Left="87.69806" Top="73.23231" Width="1.4323364" Height="1.5873015" BoundLeft="87.63295" BoundTop="48.069805" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[index_to_6]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView181" Left="73.24448" Top="73.23231" Width="6.3804073" Height="1.5873015" BoundLeft="73.17937" BoundTop="48.069805" BoundWidth="6.5106196" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Индекс
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView182" Left="32.09736" Top="78.71572" Width="57.423668" Height="1.5873015" BoundLeft="32.03225" BoundTop="51.569145" BoundWidth="57.553886" BoundHeight="1.105053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>адрес места жительства (регистрации), адрес пребывания (ненужное зачеркунть)
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView183" Left="3.8412662" Top="18.686869" Width="24.089296" Height="44.58874" BoundLeft="3.7761598" BoundTop="13.260637" BoundWidth="24.219507" BoundHeight="28.547203" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[comment]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView184" Left="31.836933" Top="71.35642" Width="57.814312" Height="-0.14430015" BoundLeft="31.77183" BoundTop="46.872665" BoundWidth="57.94452" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView185" Left="32.22757" Top="76.83982" Width="57.293457" Height="-0.14430015" BoundLeft="32.162464" BoundTop="50.371998" BoundWidth="57.423668" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView186" Left="31.836933" Top="72.94372" Width="57.553886" Height="-0.14430015" BoundLeft="31.77183" BoundTop="47.885628" BoundWidth="57.6841" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView187" Left="31.836933" Top="78.42712" Width="57.553886" Height="-0.14430015" BoundLeft="31.77183" BoundTop="51.38496" BoundWidth="57.6841" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView188" Left="73.89554" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="73.83044" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView189" Left="75.45809" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="75.39298" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView190" Left="77.02064" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="76.955536" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView191" Left="78.58318" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="78.51808" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView192" Left="80.14574" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="80.080635" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView193" Left="81.70829" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="81.64317" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView194" Left="83.27083" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="83.20573" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView195" Left="84.83338" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="84.76828" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView196" Left="86.395935" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="86.330826" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView197" Left="87.95849" Top="67.8932" Width="1.4323364" Height="1.5873015" BoundLeft="87.89337" BoundTop="44.66256" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo></Memo>
+                        </MemoView>
+                        <PictureView Centered="false" KeepRatio="true" Name="PictureView2" Left="8.008062" Top="73.80952" Width="15.495276" Height="17.171715" BoundLeft="7.9429574" BoundTop="48.43816" BoundWidth="15.625488" BoundHeight="11.05053" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable13]
+</Memo>
+                        </PictureView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView198" Left="48.89476" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="48.82965" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable15]
+</Memo>
+                        </MemoView>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView199" Left="50.457306" Top="47.835495" Width="1.4323364" Height="1.5873015" BoundLeft="50.392204" BoundTop="31.862364" BoundWidth="1.5625488" BoundHeight="1.105053" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable16]
+</Memo>
+                        </MemoView>
+                    </ChildViews>
+                </BandView>
+            </Views>
+        </Page>
+    </Pages>
+    <Variables>
+        <Variable Name="adres" Type="not-assigned"/>
+        <Variable Name="avia" Type="not-assigned"/>
+        <Variable Name="barcodl" Type="expression" Content=""/>
+        <Variable Name="barkod" Type="expression" Content=""/>
+        <Variable Name="bik_1" Type="not-assigned"/>
+        <Variable Name="bik_2" Type="not-assigned"/>
+        <Variable Name="bik_3" Type="not-assigned"/>
+        <Variable Name="bik_4" Type="not-assigned"/>
+        <Variable Name="bik_5" Type="not-assigned"/>
+        <Variable Name="bik_6" Type="not-assigned"/>
+        <Variable Name="bik_7" Type="not-assigned"/>
+        <Variable Name="bik_8" Type="not-assigned"/>
+        <Variable Name="bik_9" Type="not-assigned"/>
+        <Variable Name="comment" Type="not-assigned"/>
+        <Variable Name="data_rep" Type="db-field" Dataset="PostDataSet" Content="DATA_REP"/>
+        <Variable Name="index_from_1" Type="not-assigned"/>
+        <Variable Name="index_from_2" Type="not-assigned"/>
+        <Variable Name="index_from_3" Type="not-assigned"/>
+        <Variable Name="index_from_4" Type="not-assigned"/>
+        <Variable Name="index_from_5" Type="not-assigned"/>
+        <Variable Name="index_from_6" Type="not-assigned"/>
+        <Variable Name="index_to_1" Type="not-assigned"/>
+        <Variable Name="index_to_2" Type="not-assigned"/>
+        <Variable Name="index_to_3" Type="not-assigned"/>
+        <Variable Name="index_to_4" Type="not-assigned"/>
+        <Variable Name="index_to_5" Type="not-assigned"/>
+        <Variable Name="index_to_6" Type="not-assigned"/>
+        <Variable Name="inn_1" Type="not-assigned"/>
+        <Variable Name="inn_10" Type="not-assigned"/>
+        <Variable Name="inn_2" Type="not-assigned"/>
+        <Variable Name="inn_3" Type="not-assigned"/>
+        <Variable Name="inn_4" Type="not-assigned"/>
+        <Variable Name="inn_5" Type="not-assigned"/>
+        <Variable Name="inn_6" Type="not-assigned"/>
+        <Variable Name="inn_7" Type="not-assigned"/>
+        <Variable Name="inn_8" Type="not-assigned"/>
+        <Variable Name="inn_9" Type="not-assigned"/>
+        <Variable Name="ks_1" Type="not-assigned"/>
+        <Variable Name="ks_10" Type="not-assigned"/>
+        <Variable Name="ks_11" Type="not-assigned"/>
+        <Variable Name="ks_12" Type="not-assigned"/>
+        <Variable Name="ks_13" Type="not-assigned"/>
+        <Variable Name="ks_14" Type="not-assigned"/>
+        <Variable Name="ks_15" Type="not-assigned"/>
+        <Variable Name="ks_16" Type="not-assigned"/>
+        <Variable Name="ks_17" Type="not-assigned"/>
+        <Variable Name="ks_18" Type="not-assigned"/>
+        <Variable Name="ks_19" Type="not-assigned"/>
+        <Variable Name="ks_2" Type="not-assigned"/>
+        <Variable Name="ks_20" Type="not-assigned"/>
+        <Variable Name="ks_3" Type="not-assigned"/>
+        <Variable Name="ks_4" Type="not-assigned"/>
+        <Variable Name="ks_5" Type="not-assigned"/>
+        <Variable Name="ks_6" Type="not-assigned"/>
+        <Variable Name="ks_7" Type="not-assigned"/>
+        <Variable Name="ks_8" Type="not-assigned"/>
+        <Variable Name="ks_9" Type="not-assigned"/>
+        <Variable Name="nalplat" Type="not-assigned"/>
+        <Variable Name="osDostavka" Type="not-assigned"/>
+        <Variable Name="osOpis" Type="not-assigned"/>
+        <Variable Name="osProstUvedoml" Type="not-assigned"/>
+        <Variable Name="osService" Type="not-assigned"/>
+        <Variable Name="osWarning" Type="not-assigned"/>
+        <Variable Name="osZakazUvedoml" Type="not-assigned"/>
+        <Variable Name="pps" Type="db-field" Dataset="PostDataSet" Content="PPS"/>
+        <Variable Name="rs_1" Type="not-assigned"/>
+        <Variable Name="rs_10" Type="not-assigned"/>
+        <Variable Name="rs_11" Type="not-assigned"/>
+        <Variable Name="rs_12" Type="not-assigned"/>
+        <Variable Name="rs_13" Type="not-assigned"/>
+        <Variable Name="rs_14" Type="not-assigned"/>
+        <Variable Name="rs_15" Type="not-assigned"/>
+        <Variable Name="rs_16" Type="not-assigned"/>
+        <Variable Name="rs_17" Type="not-assigned"/>
+        <Variable Name="rs_18" Type="not-assigned"/>
+        <Variable Name="rs_19" Type="not-assigned"/>
+        <Variable Name="rs_2" Type="not-assigned"/>
+        <Variable Name="rs_20" Type="not-assigned"/>
+        <Variable Name="rs_3" Type="not-assigned"/>
+        <Variable Name="rs_4" Type="not-assigned"/>
+        <Variable Name="rs_5" Type="not-assigned"/>
+        <Variable Name="rs_6" Type="not-assigned"/>
+        <Variable Name="rs_7" Type="not-assigned"/>
+        <Variable Name="rs_8" Type="not-assigned"/>
+        <Variable Name="rs_9" Type="not-assigned"/>
+        <Variable Name="sobcennost" Type="not-assigned"/>
+        <Variable Name="Variable1" Type="expression" Content="barkod_espp_str"/>
+        <Variable Name="Variable2" Type="expression" Content="barkod_espp"/>
+        <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="NPKop"/>
+        <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="NPRub"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+        <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
+        <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="BR_BNAME"/>
+        <Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+        <Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+        <Variable Name="Variable13" Type="expression" Content="DinamicPictureDSHK32"/>
+        <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="INN"/>
+        <Variable Name="Variable15" Type="expression" Content="f:copy([Variable14],11,1)"/>
+        <Variable Name="Variable16" Type="expression" Content="f:copy([Variable14],12,1)"/>
+    </Variables>
+    <Datasets>
+        <Dataset Name="PostDataSet">
+            <Rows>
+                <Row>
+					<Column Name="data_rep"/>
+					<Column Name="pps"/>
+                    <Column Name="Variable3"/>
+                    <Column Name="Variable4"/>
+					<Column Name="Variable5"/>
+                    <Column Name="Variable6"/>
+                    <Column Name="Variable7"/>
+                    <Column Name="Variable8"/>
+                    <Column Name="Variable9"/>
+                    <Column Name="Variable10"/>
+                    <Column Name="Variable11"/>
+                    <Column Name="Variable12"/>
+                    <Column Name="Variable14"/>
+                    <Column Name="Variable15"/>
+                    <Column Name="Variable16"/>
+                </Row>
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

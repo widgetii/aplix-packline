@@ -3,7 +3,7 @@
 
 	<name>PackLine App</name>
 	<url>http://git.aplix.ru/packline</url>
-	<version>0.4</version>
+	<version>0.5</version>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>packline</artifactId>
 	<packaging>jar</packaging>
@@ -87,7 +87,12 @@
 			<groupId>ru.aplix.packline.hardware.scales</groupId>
 			<artifactId>mera</artifactId>
 			<version>0.1</version>
-		</dependency>	            
+		</dependency>	
+		<dependency>
+			<groupId>ru.aplix.converters</groupId>
+			<artifactId>fr2afop</artifactId>
+			<version>1.0</version>
+		</dependency>            
 	</dependencies>
 
 	<build>
@@ -126,6 +131,16 @@
 				<directory>${basedir}/src/main/conf</directory>
 				<targetPath>${project.build.directory}/conf</targetPath>
 				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/fonts</directory>
+				<targetPath>${project.build.directory}/fonts</targetPath>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/reports</directory>
+				<targetPath>${project.build.directory}/reports</targetPath>
+				<filtering>false</filtering>
 			</resource>
 		</resources>
 		<plugins>
@@ -166,7 +181,7 @@
 						<configuration>
 							<finalName>${project.artifactId}-v${project.version}</finalName>
 							<attach>false</attach>
-							<outputDirectory> ${project.build.directory}/dist</outputDirectory>
+							<outputDirectory>${project.build.directory}/dist</outputDirectory>
 							<descriptors>
 								<descriptor>${basedir}/src/main/assemblies/bin-dep.xml</descriptor>
 							</descriptors>

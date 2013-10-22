@@ -27,4 +27,7 @@ public final class Const {
 	public static final String EXECUTOR = "Executor";
 
 	public static final int ERROR_DISPLAY_DELAY = 5;
+
+	public static final String POST_DATABASE_NAME = "PackLine Post Database";
+	public static final String CONTAINER_ID_PARAM = "containerId";
 }

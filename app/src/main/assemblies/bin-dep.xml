@@ -28,8 +28,16 @@
 			<outputDirectory>/bin</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>${project.basedir}/target/conf</directory>
+			<directory>${project.build.directory}/conf</directory>
 			<outputDirectory>/conf</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${project.build.directory}/fonts</directory>
+			<outputDirectory>/fonts</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${project.build.directory}/reports</directory>
+			<outputDirectory>/reports</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>${project.basedir}/src/main/rxtx</directory>

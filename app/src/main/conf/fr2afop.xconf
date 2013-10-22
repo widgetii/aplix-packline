@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- 
+	Configuration file of FreeReport to Apache FOP Converter
+-->
+<fr2afop version="1.0">		
+	<Databases>	
+		<Database Name="PackLine Post Database">
+			<Connection>
+				<Driver>ru.aplix.packline.jdbc.PostDriver</Driver>	
+			</Connection>
+		</Database>
+	</Databases>
+	
+	<Datasets>		
+		<Dataset Name="PostDataSet" Database="PackLine Post Database">
+			<Parameters>
+				<Parameter Name="containerId">1</Parameter>
+			</Parameters>
+			<Query><![CDATA[
+				SELECT 
+					barkod, data_rep, pps, 
+					FIRM_NAME, ADRES1, index_from, INN, BR_BNAME, bik, rs, ks, 
+					FIO, ADRES, CITY, AREA, REGION, INDEXTO, index_to, TRANSTYPEID, 
+					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop					
+				FROM POST
+				WHERE 
+					CONTAINER_ID = '${containerId}';
+			]]>
+			</Query>			
+		</Dataset>
+	</Datasets>
+</fr2afop>

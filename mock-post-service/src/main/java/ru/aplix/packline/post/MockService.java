@@ -16,6 +16,7 @@ import javax.xml.ws.handler.MessageContext;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.RandomStringUtils;
 
 @WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine/1.0/ws")
 public class MockService implements PackingLinePortType {
@@ -498,7 +499,17 @@ public class MockService implements PackingLinePortType {
 			return null;
 		}
 
-		return null;
+		Random r = new Random();
+
+		List<Field> resultList = new ArrayList<Field>();
+		for (String name : fields) {
+			Field field = new Field();
+			field.setName(name);
+			field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
+			resultList.add(field);
+		}
+
+		return resultList;
 	}
 
 	@Resource

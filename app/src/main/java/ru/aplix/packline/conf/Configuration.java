@@ -26,15 +26,23 @@ public class Configuration {
 
 	@XmlElement(name = "Hardware")
 	private HardwareConfiguration hardwareConfiguration;
+
 	@XmlElement(name = "ActivityMonitor")
 	private ActivityMonitorConfiguration activityMonitorConfiguration;
+
 	@XmlElement(name = "PostService")
 	private PostService postService;
+
 	@XmlElementWrapper(name = "Stickers")
 	@XmlElement(name = "Quantity")
 	private List<Integer> stickersQuantity;
+
 	@XmlElement(name = "EmptyBoxThreshold")
 	private Integer emptyBoxThreshold;
+
+	@XmlElementWrapper(name = "Printing")
+	@XmlElement(name = "Form", type = PrintForm.class)
+	private List<PrintForm> printForms;
 
 	private Configuration() {
 
@@ -47,8 +55,16 @@ public class Configuration {
 			}
 			File configurationFile = new File(configFileName);
 			instance = Utils.fileToObject(configurationFile, Configuration.class);
+			instance.postConstruct();
 		}
 		return instance;
+	}
+
+	private void postConstruct() {
+		for (PrintForm form : getPrintForms()) {
+			Printer printer = getHardwareConfiguration().lookupPrinter(form.getPrinterId());
+			form.setPrinter(printer);
+		}
 	}
 
 	public static String getConfigFileName() {
@@ -112,5 +128,16 @@ public class Configuration {
 
 	public void setEmptyBoxThreshold(Integer emptyBoxThreshold) {
 		this.emptyBoxThreshold = emptyBoxThreshold;
+	}
+
+	public List<PrintForm> getPrintForms() {
+		if (printForms == null) {
+			printForms = new ArrayList<PrintForm>();
+		}
+		return printForms;
+	}
+
+	public void setPrintForms(List<PrintForm> printForms) {
+		this.printForms = printForms;
 	}
 }

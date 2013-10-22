@@ -45,8 +45,10 @@ import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
 // TODO 50 Printing labels and forms
+// TODO 60 scales stabilizing event
 // TODO 90 styles of act-table, menu and quantity buttons
 // FIXME logout doesn't work on Linux
+// FIXME error checker should hide error message after 5s even though barcode scanner is turned off
 
 public class App extends Application implements IdleListener {
 

@@ -1,10 +1,17 @@
 package ru.aplix.packline.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Hardware")
@@ -21,6 +28,10 @@ public class HardwareConfiguration {
 
 	@XmlElement(name = "PhotoCamera", type = Driver.class)
 	private Driver photoCamera;
+
+	@XmlElementWrapper(name = "Printers")
+	@XmlElement(name = "Printer", type = Printer.class)
+	private List<Printer> printers;
 
 	public int getReconnectInterval() {
 		return reconnectInterval;
@@ -61,5 +72,29 @@ public class HardwareConfiguration {
 
 	public void setPhotoCamera(Driver photoCamera) {
 		this.photoCamera = photoCamera;
+	}
+
+	public List<Printer> getPrinters() {
+		if (printers == null) {
+			printers = new ArrayList<Printer>();
+		}
+		return printers;
+	}
+
+	public void setPrinters(List<Printer> printers) {
+		this.printers = printers;
+	}
+
+	public Printer lookupPrinter(final String printerId) {
+		if (printerId == null || printers == null) {
+			return null;
+		}
+		Printer printer = (Printer) CollectionUtils.find(printers, new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return printerId.equals(((Printer) item).getId());
+			}
+		});
+		return printer;
 	}
 }

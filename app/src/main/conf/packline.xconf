@@ -33,8 +33,9 @@
 			<Configuration hostName="localhost:9080" />
 		</PhotoCamera>
 	
+		<!-- List of available printers -->
 		<Printers>
-			<Printer />
+			<Printer id="printer1" name="Adobe PDF" />
 		</Printers>
 	</Hardware>
 	
@@ -44,10 +45,15 @@
 		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws?WSDL</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 	</PostService>
-
-	<!-- Time in seconds to lock the app, if there are no user activity -->
-	<ActivityMonitor idleTreshold="600" />
 	
+	<!-- Printing Settings -->
+	<Printing>
+		<Form name="Ф.2" file="f2" printerId="printer1" autoPrint="true"/>
+		<Form name="Ф.7" file="f7a_new" printerId="printer1" autoPrint="true"/>		
+		<Form name="Ф.113" file="f113en_ls" printerId="printer1" autoPrint="true"/>
+		<Form name="Ф.116" file="f7p+f116_ls" printerId="printer1" autoPrint="true"/>		
+	</Printing>
+
 	<!-- Quantity of sticker to print -->
 	<Stickers>
 		<Quantity>5</Quantity>
@@ -55,6 +61,9 @@
 		<Quantity>500</Quantity>
 		<Quantity>5000</Quantity>
 	</Stickers>
+	
+	<!-- Time in seconds to lock the app, if there are no user activity -->
+	<ActivityMonitor idleTreshold="600" />
 	
 	<!-- Specifies threshold, below which the app will show -->
 	<!-- notification to replenish the stock of boxes -->

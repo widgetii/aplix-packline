@@ -1,7 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -26,8 +24,6 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
-	private ResourceBundle resources;
-
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
@@ -43,17 +39,10 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-
-		this.resources = resources;
-	}
-
-	@Override
 	public void prepare(WorkflowContext context) {
 		context.setAttribute(Const.OPERATOR, null);
 		super.prepare(context);
-		
+
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
@@ -115,7 +104,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 				barcodeCheckerEventHandler.reset();
 
-				errorMessageProperty.set(resources.getString("error.post.service"));
+				errorMessageProperty.set(getResources().getString("error.post.service"));
 				errorVisibleProperty.set(true);
 			}
 
