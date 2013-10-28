@@ -44,7 +44,9 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 50 Printing labels and forms
+// TODO 52 Print with Postscript/PCL
+// TODO 56 DataMatrix barcode
+// TODO 57 EZPL language, print markers
 // TODO 60 scales stabilizing event
 // TODO 90 styles of act-table, menu and quantity buttons
 // FIXME logout doesn't work on Linux

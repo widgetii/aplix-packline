@@ -7,13 +7,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.xml.ws.BindingProvider;
 
-import org.apache.xmlgraphics.util.MimeConstants;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.fop.apps.MimeConstants;
 
 import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
 import ru.aplix.converters.fr2afop.database.ValueResolver;
@@ -30,13 +32,18 @@ import ru.aplix.converters.fr2afop.writer.OutputStreamOpener;
 import ru.aplix.converters.fr2afop.writer.ReportWriter;
 import ru.aplix.converters.fr2afop.writer.XMLReportWriter;
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintForm;
+import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.PackingLinePortType;
 
 public class PrintFormsAction extends CommonAction<PrintFormsController> {
+
+	private static final int[] REPORT_TYPE_ZEBRA = { 105 };
+	private static final int[] REPORT_TYPE_FRF = { 21, 22, 23 };
 
 	private static final int BUFFER_SIZE = 10240;
 
@@ -49,6 +56,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 	private List<Parameter> containerIdParams;
 
 	private String jarFolder = null;
+	private File r2afopConfigFile;
 	private String fr2afopConfigFileName;
 	private String fopConfigFileName;
 
@@ -62,6 +70,10 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 	}
 
 	public void printForms(String containerId, PrintForm printForm) throws Exception {
+		if (printForm.getPrinter() == null) {
+			throw new PackLineException(getResources().getString("error.printer.not.assigned"));
+		}
+
 		if (jarFolder == null) {
 			File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
 			jarFolder = confFolder != null ? confFolder.getParent() : "";
@@ -71,13 +83,14 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		String reportFileName = jarFolder + String.format(REPORT_FILE_TEMPLATE, printForm.getFile());
 		String outputFileName = jarFolder + String.format(OUTPUT_FILE_TEMPLATE, printForm.getFile());
-		printForm(containerId, reportFileName, outputFileName);
+		printForm(containerId, reportFileName, outputFileName, printForm.getPrinter());
 	}
 
-	public void printForm(String containerId, final String reportFileName, String outputFileName) throws Exception {
+	public void printForm(String containerId, final String reportFileName, String outputFileName, Printer printer) throws Exception {
 		// Get config file
 		if (configuration == null) {
-			configuration = Utils.fileToObject(new File(fr2afopConfigFileName), ru.aplix.converters.fr2afop.fr.Configuration.class);
+			r2afopConfigFile = new File(fr2afopConfigFileName);
+			configuration = Utils.fileToObject(r2afopConfigFile, ru.aplix.converters.fr2afop.fr.Configuration.class);
 			prepareDatabase(configuration);
 		}
 
@@ -98,6 +111,16 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		vr.resolve(report, configuration);
 
 		// Render report
+		if (ArrayUtils.contains(REPORT_TYPE_ZEBRA, report.getFileVersion())) {
+			printOnZebraPrepared(report, printer);
+		} else if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
+			printAsUsual(report, printer);
+		} else {
+			throw new PackLineException(getResources().getString("error.report.invalid.type"));
+		}
+	}
+
+	private void printAsUsual(Report report, Printer printer) throws Exception {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
 			ReportWriter reportWriter = new XMLReportWriter();
@@ -109,8 +132,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			});
 
 			RenderXMLToOutputImpl rxto = new RenderXMLToOutputImpl();
-			rxto.setOutputFileName(outputFileName);
-			rxto.setOutputFormat(MimeConstants.MIME_PDF);
+			rxto.setOutputFileName(printer.getName());
+			rxto.setOutputFormat(MimeConstants.MIME_FOP_PRINT);
 			rxto.setFopConfigFileName(fopConfigFileName);
 			rxto.setInputStreamOpener(new InputStreamOpener() {
 				@Override
@@ -119,6 +142,43 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				}
 			});
 			rxto.execute();
+		} finally {
+			baos.close();
+		}
+	}
+
+	private void printOnZebraPrepared(Report report, Printer printer) throws Exception {
+		File xsltFileAfter = null;
+		if (configuration.getReplacementFile().getAfter() != null) {
+			xsltFileAfter = new File(configuration.getReplacementFile().getAfter());
+			if (xsltFileAfter == null || !xsltFileAfter.exists()) {
+				xsltFileAfter = new File(r2afopConfigFile.getParent(), configuration.getReplacementFile().getAfter());
+			}
+		}
+
+		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
+		try {
+			ReportWriter reportWriter = new XMLReportWriter(xsltFileAfter);
+			reportWriter.writeToStream(report, new OutputStreamOpener() {
+				@Override
+				public OutputStream openStream() throws IOException {
+					return baos;
+				}
+			});
+
+			// Send xml to printer directly
+			Socket printerSocket = new Socket(printer.getIpAddress(), printer.getPort());
+			try {
+				OutputStream os = printerSocket.getOutputStream();
+				try {
+					os.write(baos.toByteArray());
+					os.flush();
+				} finally {
+					os.close();
+				}
+			} finally {
+				printerSocket.close();
+			}
 		} finally {
 			baos.close();
 		}

@@ -166,6 +166,11 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
+				<xs:attribute name="postType" type="tns:PostType">
+					<xs:annotation>
+						<xs:documentation>Тип отправления</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 				<xs:attribute name="orderId" type="xs:string">
 					<xs:annotation>
 						<xs:documentation>Уникальный идентификатор заказа, которому принадлежит отправление</xs:documentation>
@@ -279,6 +284,18 @@
 		<xs:attribute name="height" type="xs:float"></xs:attribute>
 		<xs:attribute name="width" type="xs:float"></xs:attribute>
 	</xs:complexType>
+
+	<xs:simpleType name="PostType">
+		<xs:annotation>
+			<xs:documentation>Тип отправления</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FIRSTCLASS"></xs:enumeration>
+			<xs:enumeration value="PARCEL"></xs:enumeration>
+			<xs:enumeration value="BOOKPOST"></xs:enumeration>
+			<xs:enumeration value="LETTER"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 
 	<xs:complexType name="Field">
 		<xs:annotation>

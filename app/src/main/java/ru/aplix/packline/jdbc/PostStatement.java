@@ -20,6 +20,7 @@ public class PostStatement implements Statement {
 
 	private Connection connection;
 	private PackingLinePortType postServicePort;
+	private String lastQuery;
 	private ResultSet lastResultSet;
 	private Pattern queryPattern;
 
@@ -32,6 +33,14 @@ public class PostStatement implements Statement {
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
+		if (sql != null && sql.equals(lastQuery)) {
+			ResultSet resultSet = getResultSet();
+			if (resultSet != null) {
+				resultSet.first();
+			}
+			return resultSet;
+		}
+
 		// Validate query
 		Matcher queryMatcher = queryPattern.matcher(sql);
 		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
@@ -51,6 +60,7 @@ public class PostStatement implements Statement {
 
 		// Return result set with data
 		lastResultSet = new PostResultSet(this, fields);
+		lastQuery = sql;
 		return lastResultSet;
 	}
 

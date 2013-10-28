@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- 
-	Configuration file of FreeReport to Apache FOP Converter
+	Configuration file of Converter FreeReport to Apache FOP
 -->
 <fr2afop version="1.0">		
+	<ReplacementFile>
+		<After>replace.xsl</After>
+	</ReplacementFile>
+	
 	<Databases>	
 		<Database Name="PackLine Post Database">
 			<Connection>
@@ -21,7 +25,8 @@
 					barkod, data_rep, pps, 
 					FIRM_NAME, ADRES1, index_from, INN, BR_BNAME, bik, rs, ks, 
 					FIO, ADRES, CITY, AREA, REGION, INDEXTO, index_to, TRANSTYPEID, 
-					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop					
+					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop,
+					POSTTYPE
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}';

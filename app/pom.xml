@@ -91,7 +91,13 @@
 		<dependency>
 			<groupId>ru.aplix.converters</groupId>
 			<artifactId>fr2afop</artifactId>
-			<version>1.0</version>
+			<version>1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.firebirdsql.jdbc</groupId>
+					<artifactId>jaybird-full</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>            
 	</dependencies>
 

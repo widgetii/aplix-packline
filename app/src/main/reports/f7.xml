@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Printer 1" FileVersion="105">
+	<Pages>
+		<Page />
+	</Pages>
+	<Variables>
+		<!-- General attributes -->
+		<Variable Name="f7a__FORMAT" Type="not-assigned" Content="E:F7A.ZPL" />
+		<Variable Name="f7p__FORMAT" Type="not-assigned" Content="E:F7P.ZPL" />
+		<Variable Name="f7b__FORMAT" Type="not-assigned" Content="E:F7B.ZPL" />
+		<Variable Name="f7l__FORMAT" Type="not-assigned" Content="E:F7L.ZPL" />
+		<Variable Name="_JOBNAME" Type="not-assigned" Content="LBL101" />
+
+		<!-- Fields retrieved from the database -->
+		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES" />
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIO" />
+		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1" />
+		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME" />
+		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="PPS" />
+		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="MASS" />
+		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU" />
+		<Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
+		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="VALUE_" />
+		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="barkod" />
+		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="telefon" />
+		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="DATA_REP" />
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="REGION" />
+		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="CITY" />
+		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="AREA" />
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="index_to" />
+		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from" />
+		<Variable Name="Variable51" Type="db-field" Dataset="PostDataSet" Content="io_band1kl" />
+		<Variable Name="Variable52" Type="db-field" Dataset="PostDataSet" Content="io_nalozh" />
+		<Variable Name="Variable53" Type="db-field" Dataset="PostDataSet" Content="io_opis" />
+		<Variable Name="Variable54" Type="db-field" Dataset="PostDataSet" Content="io_cennost" />
+		<Variable Name="Variable55" Type="db-field" Dataset="PostDataSet" Content="io_prostuved" />
+		<Variable Name="Variable56" Type="db-field" Dataset="PostDataSet" Content="io_zakazuved" />
+		<Variable Name="Variable57" Type="db-field" Dataset="PostDataSet" Content="io_pismo1kl" />
+		<Variable Name="Variable58" Type="db-field" Dataset="PostDataSet" Content="io_gabar" />
+		<Variable Name="Variable59" Type="db-field" Dataset="PostDataSet" Content="io_tyazh" />
+		<Variable Name="Variable60" Type="db-field" Dataset="PostDataSet" Content="io_uved" />
+		<Variable Name="Variable61" Type="db-field" Dataset="PostDataSet" Content="io_Nstd" />
+		<Variable Name="Variable62" Type="db-field" Dataset="PostDataSet" Content="io_obykn" />
+		<Variable Name="Variable63" Type="db-field" Dataset="PostDataSet" Content="io_Zakaz" />
+		<Variable Name="Variable64" Type="db-field" Dataset="PostDataSet" Content="io_std" />
+		<Variable Name="Variable65" Type="db-field" Dataset="PostDataSet" Content="io_prost" />
+
+		<!-- Fields for First Class Post -->
+		<Variable Name="f7a_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7a_Komu" Type="expression" Content="'.               ' + [Variable2]" />
+		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7a_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7a_ottisk" Type="expression" Content="' ' + [Variable5]" />
+		<Variable Name="f7a_ves" Type="expression" Content="[Variable6]" />
+		<Variable Name="f7a_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7a_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
+		<Variable Name="f7a_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
+		<Variable Name="f7a_code2of5" Type="expression" Content="[Variable10]" />
+		<Variable Name="f7a_code_text" Type="expression"
+			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7a_telefon" Type="expression" Content="[Variable11]" />
+		<Variable Name="f7a_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7a_region" Type="expression" Content="[Variable13]" />
+		<Variable Name="f7a_index" Type="expression" Content="'$' + [Variable16]" />
+		<Variable Name="f7a_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
+		<Variable Name="f7a_ind_in2" Type="expression" Content="f:copy([Variable16], 2, 1)" />
+		<Variable Name="f7a_ind_in3" Type="expression" Content="f:copy([Variable16], 3, 1)" />
+		<Variable Name="f7a_ind_in4" Type="expression" Content="f:copy([Variable16], 4, 1)" />
+		<Variable Name="f7a_ind_in5" Type="expression" Content="f:copy([Variable16], 5, 1)" />
+		<Variable Name="f7a_ind_in6" Type="expression" Content="f:copy([Variable16], 6, 1)" />
+		<Variable Name="f7a_ind_out1" Type="expression" Content="f:copy([Variable17], 1, 1)" />
+		<Variable Name="f7a_ind_out2" Type="expression" Content="f:copy([Variable17], 2, 1)" />
+		<Variable Name="f7a_ind_out3" Type="expression" Content="f:copy([Variable17], 3, 1)" />
+		<Variable Name="f7a_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
+		<Variable Name="f7a_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
+		<Variable Name="f7a_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
+		<Variable Name="f7a_io_band1kl" Type="expression" Content="f:choose([Variable51] = '1', 'X', '')" />
+		<Variable Name="f7a_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
+		<Variable Name="f7a_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
+		<Variable Name="f7a_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />
+		<Variable Name="f7a_io_prostuved" Type="expression" Content="f:choose([Variable55] = '1', 'X', '')" />
+		<Variable Name="f7a_io_zakazuved" Type="expression" Content="f:choose([Variable56] = '1', 'X', '')" />
+		<Variable Name="f7a_io_pismo1kl" Type="expression" Content="f:choose([Variable57] = '1', 'X', '')" />
+		<Variable Name="f7a_io_std" Type="expression" Content="f:choose([Variable64] = '1', 'X', '')" />
+
+		<!-- Fields for Parcel Post -->
+		<Variable Name="f7p_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7p_Komu" Type="expression" Content="'.               ' + [Variable2]" />
+		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7p_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7p_ottisk" Type="expression" Content="' ' + [Variable5]" />
+		<Variable Name="f7p_ves" Type="expression" Content="[Variable6]" />
+		<Variable Name="f7p_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7p_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
+		<Variable Name="f7p_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
+		<Variable Name="f7p_code2of5" Type="expression" Content="[Variable10]" />
+		<Variable Name="f7p_code_text" Type="expression"
+			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7p_telefon" Type="expression" Content="[Variable11]" />
+		<Variable Name="f7p_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7p_region" Type="expression" Content="[Variable13]" />
+		<Variable Name="f7p_index" Type="expression" Content="'$' + [Variable16]" />
+		<Variable Name="f7p_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
+		<Variable Name="f7p_ind_in2" Type="expression" Content="f:copy([Variable16], 2, 1)" />
+		<Variable Name="f7p_ind_in3" Type="expression" Content="f:copy([Variable16], 3, 1)" />
+		<Variable Name="f7p_ind_in4" Type="expression" Content="f:copy([Variable16], 4, 1)" />
+		<Variable Name="f7p_ind_in5" Type="expression" Content="f:copy([Variable16], 5, 1)" />
+		<Variable Name="f7p_ind_in6" Type="expression" Content="f:copy([Variable16], 6, 1)" />
+		<Variable Name="f7p_ind_out1" Type="expression" Content="f:copy([Variable17], 1, 1)" />
+		<Variable Name="f7p_ind_out2" Type="expression" Content="f:copy([Variable17], 2, 1)" />
+		<Variable Name="f7p_ind_out3" Type="expression" Content="f:copy([Variable17], 3, 1)" />
+		<Variable Name="f7p_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
+		<Variable Name="f7p_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
+		<Variable Name="f7p_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
+		<Variable Name="f7p_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
+		<Variable Name="f7p_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
+		<Variable Name="f7p_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />
+		<Variable Name="f7p_io_gabar" Type="expression" Content="f:choose([Variable58] = '1', 'X', '')" />
+		<Variable Name="f7p_io_tyazh" Type="expression" Content="f:choose([Variable59] = '1', 'X', '')" />
+		<Variable Name="f7p_io_uved" Type="expression" Content="f:choose([Variable60] = '1', 'X', '')" />
+		<Variable Name="f7p_io_Nstd" Type="expression" Content="f:choose([Variable61] = '1', 'X', '')" />
+		<Variable Name="f7p_io_obykn" Type="expression" Content="f:choose([Variable62] = '1', 'X', '')" />
+		<Variable Name="f7p_io_std" Type="expression" Content="f:choose([Variable64] = '1', 'X', '')" />
+
+		<!-- Fields for Book Post -->
+		<Variable Name="f7b_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7b_Komu" Type="expression" Content="'.               ' + [Variable2]" />
+		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7b_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7b_ottisk" Type="expression" Content="' ' + [Variable5]" />
+		<Variable Name="f7b_ves" Type="expression" Content="[Variable6]" />
+		<Variable Name="f7b_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7b_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
+		<Variable Name="f7b_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
+		<Variable Name="f7b_code2of5" Type="expression" Content="[Variable10]" />
+		<Variable Name="f7b_code_text" Type="expression"
+			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7b_telefon" Type="expression" Content="[Variable11]" />
+		<Variable Name="f7b_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7b_region" Type="expression" Content="[Variable13]" />
+		<Variable Name="f7b_index" Type="expression" Content="'$' + [Variable16]" />
+		<Variable Name="f7b_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
+		<Variable Name="f7b_ind_in2" Type="expression" Content="f:copy([Variable16], 2, 1)" />
+		<Variable Name="f7b_ind_in3" Type="expression" Content="f:copy([Variable16], 3, 1)" />
+		<Variable Name="f7b_ind_in4" Type="expression" Content="f:copy([Variable16], 4, 1)" />
+		<Variable Name="f7b_ind_in5" Type="expression" Content="f:copy([Variable16], 5, 1)" />
+		<Variable Name="f7b_ind_in6" Type="expression" Content="f:copy([Variable16], 6, 1)" />
+		<Variable Name="f7b_ind_out1" Type="expression" Content="f:copy([Variable17], 1, 1)" />
+		<Variable Name="f7b_ind_out2" Type="expression" Content="f:copy([Variable17], 2, 1)" />
+		<Variable Name="f7b_ind_out3" Type="expression" Content="f:copy([Variable17], 3, 1)" />
+		<Variable Name="f7b_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
+		<Variable Name="f7b_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
+		<Variable Name="f7b_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
+		<Variable Name="f7b_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
+		<Variable Name="f7b_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
+		<Variable Name="f7b_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />\
+		<Variable Name="f7b_io_uved" Type="expression" Content="f:choose([Variable60] = '1', 'X', '')" />
+		<Variable Name="f7b_io_Zakaz" Type="expression" Content="f:choose([Variable63] = '1', 'X', '')" />
+		<Variable Name="f7b_io_prost" Type="expression" Content="f:choose([Variable65] = '1', 'X', '')" />
+
+		<!-- Fields for Letter Post -->
+		<Variable Name="f7l_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7l_Komu" Type="expression" Content="'.               ' + [Variable2]" />
+		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7l_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7l_ottisk" Type="expression" Content="' ' + [Variable5]" />
+		<Variable Name="f7l_telefon" Type="expression" Content="[Variable11]" />
+		<Variable Name="f7l_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7l_region" Type="expression" Content="[Variable13]" />
+		<Variable Name="f7l_index" Type="expression" Content="'$' + [Variable16]" />
+		<Variable Name="f7l_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
+		<Variable Name="f7l_ind_in2" Type="expression" Content="f:copy([Variable16], 2, 1)" />
+		<Variable Name="f7l_ind_in3" Type="expression" Content="f:copy([Variable16], 3, 1)" />
+		<Variable Name="f7l_ind_in4" Type="expression" Content="f:copy([Variable16], 4, 1)" />
+		<Variable Name="f7l_ind_in5" Type="expression" Content="f:copy([Variable16], 5, 1)" />
+		<Variable Name="f7l_ind_in6" Type="expression" Content="f:copy([Variable16], 6, 1)" />
+		<Variable Name="f7l_ind_out1" Type="expression" Content="f:copy([Variable17], 1, 1)" />
+		<Variable Name="f7l_ind_out2" Type="expression" Content="f:copy([Variable17], 2, 1)" />
+		<Variable Name="f7l_ind_out3" Type="expression" Content="f:copy([Variable17], 3, 1)" />
+		<Variable Name="f7l_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
+		<Variable Name="f7l_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
+		<Variable Name="f7l_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
+	</Variables>
+	<Datasets>
+		<Dataset Name="PostDataSet">
+			<Rows>
+				<Row>
+					<Column Name="POSTTYPE" />
+
+					<!-- Fields for First Class Post -->
+					<Column Name="f7a_code2of5" />
+					<Column Name="f7a_io_band1kl" />
+					<Column Name="f7a_io_nalozh" />
+					<Column Name="f7a_io_opis" />
+					<Column Name="f7a_io_cennost" />
+					<Column Name="f7a_io_prostuved" />
+					<Column Name="f7a_io_zakazuved" />
+					<Column Name="f7a_io_pismo1kl" />
+					<Column Name="f7a_io_std" />
+					<Column Name="f7a_Kuda" />
+					<Column Name="f7a_code_text" />
+					<Column Name="f7a_ottisk" />
+					<Column Name="f7a_Komu" />
+					<Column Name="f7a_ot_kuda" />
+					<Column Name="f7a_ot_kogo" />
+					<Column Name="f7a_ind_out1" />
+					<Column Name="f7a_ind_out2" />
+					<Column Name="f7a_ind_out3" />
+					<Column Name="f7a_ind_out4" />
+					<Column Name="f7a_ind_out5" />
+					<Column Name="f7a_ind_out6" />
+					<Column Name="f7a_ves" />
+					<Column Name="f7a_Plata" />
+					<Column Name="f7a_index" />
+					<Column Name="f7a_nalozh" />
+					<Column Name="f7a_cennost" />
+					<Column Name="f7a_ind_in1" />
+					<Column Name="f7a_ind_in2" />
+					<Column Name="f7a_ind_in3" />
+					<Column Name="f7a_ind_in4" />
+					<Column Name="f7a_ind_in5" />
+					<Column Name="f7a_ind_in6" />
+					<Column Name="f7a_region" />
+					<Column Name="f7a_telefon" />
+					<Column Name="f7a_data" />
+
+					<!-- Fields for Parcel Post -->
+					<Column Name="f7p_code2of5" />
+					<Column Name="f7p_io_gabar" />
+					<Column Name="f7p_io_tyazh" />
+					<Column Name="f7p_io_nalozh" />
+					<Column Name="f7p_io_opis" />
+					<Column Name="f7p_io_cennost" />
+					<Column Name="f7p_io_uved" />
+					<Column Name="f7p_io_Nstd" />
+					<Column Name="f7p_io_obykn" />
+					<Column Name="f7p_io_std" />
+					<Column Name="f7p_Kuda" />
+					<Column Name="f7p_code_text" />
+					<Column Name="f7p_ottisk" />
+					<Column Name="f7p_Komu" />
+					<Column Name="f7p_ot_kuda" />
+					<Column Name="f7p_ot_kogo" />
+					<Column Name="f7p_ind_out1" />
+					<Column Name="f7p_ind_out2" />
+					<Column Name="f7p_ind_out3" />
+					<Column Name="f7p_ind_out4" />
+					<Column Name="f7p_ind_out5" />
+					<Column Name="f7p_ind_out6" />
+					<Column Name="f7p_ves" />
+					<Column Name="f7p_Plata" />
+					<Column Name="f7p_index" />
+					<Column Name="f7p_nalozh" />
+					<Column Name="f7p_cennost" />
+					<Column Name="f7p_ind_in1" />
+					<Column Name="f7p_ind_in2" />
+					<Column Name="f7p_ind_in3" />
+					<Column Name="f7p_ind_in4" />
+					<Column Name="f7p_ind_in5" />
+					<Column Name="f7p_ind_in6" />
+					<Column Name="f7p_region" />
+					<Column Name="f7p_telefon" />
+					<Column Name="f7p_data" />
+
+					<!-- Fields for Book Post -->
+					<Column Name="f7b_code2of5" />
+					<Column Name="f7b_io_nalozh" />
+					<Column Name="f7b_io_opis" />
+					<Column Name="f7b_io_cennost" />
+					<Column Name="f7b_io_uved" />
+					<Column Name="f7b_io_Zakaz" />
+					<Column Name="f7b_io_prost" />
+					<Column Name="f7b_Kuda" />
+					<Column Name="f7b_code_text" />
+					<Column Name="f7b_ottisk" />
+					<Column Name="f7b_Komu" />
+					<Column Name="f7b_ot_kuda" />
+					<Column Name="f7b_ot_kogo" />
+					<Column Name="f7b_ind_out1" />
+					<Column Name="f7b_ind_out2" />
+					<Column Name="f7b_ind_out3" />
+					<Column Name="f7b_ind_out4" />
+					<Column Name="f7b_ind_out5" />
+					<Column Name="f7b_ind_out6" />
+					<Column Name="f7b_ves" />
+					<Column Name="f7b_Plata" />
+					<Column Name="f7b_index" />
+					<Column Name="f7b_nalozh" />
+					<Column Name="f7b_cennost" />
+					<Column Name="f7b_ind_in1" />
+					<Column Name="f7b_ind_in2" />
+					<Column Name="f7b_ind_in3" />
+					<Column Name="f7b_ind_in4" />
+					<Column Name="f7b_ind_in5" />
+					<Column Name="f7b_ind_in6" />
+					<Column Name="f7b_region" />
+					<Column Name="f7b_telefon" />
+					<Column Name="f7b_data" />
+
+					<!-- Fields for Letter Post -->
+					<Column Name="f7l_Kuda" />
+					<Column Name="f7l_ottisk" />
+					<Column Name="f7l_Komu" />
+					<Column Name="f7l_ot_kuda" />
+					<Column Name="f7l_ot_kogo" />
+					<Column Name="f7l_ind_out1" />
+					<Column Name="f7l_ind_out2" />
+					<Column Name="f7l_ind_out3" />
+					<Column Name="f7l_ind_out4" />
+					<Column Name="f7l_ind_out5" />
+					<Column Name="f7l_ind_out6" />
+					<Column Name="f7l_index" />
+					<Column Name="f7l_ind_in1" />
+					<Column Name="f7l_ind_in2" />
+					<Column Name="f7l_ind_in3" />
+					<Column Name="f7l_ind_in4" />
+					<Column Name="f7l_ind_in5" />
+					<Column Name="f7l_ind_in6" />
+					<Column Name="f7l_region" />
+					<Column Name="f7l_telefon" />
+					<Column Name="f7l_data" />
+				</Row>
+			</Rows>
+		</Dataset>
+	</Datasets>
+</Report>

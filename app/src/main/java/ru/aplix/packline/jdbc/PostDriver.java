@@ -16,6 +16,8 @@ public class PostDriver implements Driver {
 
 	private static final Log LOG;
 
+	private Connection lastConnection = null;
+
 	static {
 		LOG = LogFactory.getLog(PostDriver.class);
 		try {
@@ -29,7 +31,10 @@ public class PostDriver implements Driver {
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
 		if (acceptsURL(url)) {
-			return new PostConnection(url, info);
+			if (lastConnection == null) {
+				lastConnection = new PostConnection(url, info);
+			}
+			return lastConnection;
 		} else {
 			throw new SQLException("Invalid URL");
 		}

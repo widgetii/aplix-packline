@@ -505,7 +505,25 @@ public class MockService implements PackingLinePortType {
 		for (String name : fields) {
 			Field field = new Field();
 			field.setName(name);
-			field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
+
+			if (PostType.class.getSimpleName().equalsIgnoreCase(name)) {
+				switch (1 + r.nextInt(4)) {
+				case 1:
+					field.setValue(PostType.FIRSTCLASS.name().toUpperCase());
+					break;
+				case 2:
+					field.setValue(PostType.PARCEL.name().toUpperCase());
+					break;
+				case 3:
+					field.setValue(PostType.BOOKPOST.name().toUpperCase());
+					break;
+				case 4:
+					field.setValue(PostType.LETTER.name().toUpperCase());
+					break;
+				}
+			} else {
+				field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
+			}
 			resultList.add(field);
 		}
 

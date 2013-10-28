@@ -31,9 +31,10 @@ public class PostConnection implements Connection {
 
 	private static final String PROPERTY_USER = "user";
 	private static final String PROPERTY_PASSWORD = "password";
-	
+
 	private PackingLine postService;
 	private PackingLinePortType postServicePort;
+	private Statement lastStatement = null;
 
 	public PostConnection(String url, Properties info) {
 		postService = new PackingLine();
@@ -57,19 +58,22 @@ public class PostConnection implements Connection {
 
 	@Override
 	public Statement createStatement() throws SQLException {
-		return new PostStatement(this, postServicePort);
+		if (lastStatement == null) {
+			lastStatement = new PostStatement(this, postServicePort);
+		}
+		return lastStatement;
 	}
-	
+
 	@Override
 	public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
 		return createStatement();
 	}
-	
+
 	@Override
 	public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
 		return createStatement();
 	}
-	
+
 	@Override
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
@@ -79,7 +83,7 @@ public class PostConnection implements Connection {
 	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
 	}
-	
+
 	@Override
 	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
@@ -104,12 +108,12 @@ public class PostConnection implements Connection {
 	public CallableStatement prepareCall(String sql) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
 	}
-	
+
 	@Override
 	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
 	}
-	
+
 	@Override
 	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
@@ -119,7 +123,7 @@ public class PostConnection implements Connection {
 	public String nativeSQL(String sql) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
 	}
-	
+
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		throw new SQLFeatureNotSupportedException();
@@ -201,7 +205,7 @@ public class PostConnection implements Connection {
 
 	@Override
 	public Map<String, Class<?>> getTypeMap() throws SQLException {
-		return new HashMap<String,Class<?>>();
+		return new HashMap<String, Class<?>>();
 	}
 
 	@Override

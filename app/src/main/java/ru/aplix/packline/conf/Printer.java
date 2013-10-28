@@ -15,6 +15,12 @@ public class Printer {
 	@XmlAttribute(name = "name")
 	private String name;
 
+	@XmlAttribute(name = "ipAddress")
+	private String ipAddress;
+
+	@XmlAttribute(name = "port")
+	private int port;
+
 	public String getId() {
 		return id;
 	}
@@ -29,5 +35,21 @@ public class Printer {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
 	}
 }

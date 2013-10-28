@@ -6,7 +6,7 @@
 	<Hardware reconnect="5">
 
 		<!-- Barcode scanner driver -->
-		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="true" >
+		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="false" >
 			<!-- "portName"  - port name, for example "COM1" or "/dev/tty0"                      -->
 			<!-- "portSpeed" - port speed (optional), for example 57600                          -->
 			<!-- "timeout"   - receiver timeout in milliseconds (optional), for example 2000     -->
@@ -15,7 +15,7 @@
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesUniversal" enabled="true" >
+		<Scales name="MeraScalesUniversal" enabled="false" >
 			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
 			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
 			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
@@ -27,7 +27,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="true" >
+		<PhotoCamera name="RaspberryCamera" enabled="false" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      -->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 -->
 			<Configuration hostName="localhost:9080" />
@@ -35,7 +35,7 @@
 	
 		<!-- List of available printers -->
 		<Printers>
-			<Printer id="printer1" name="Adobe PDF" />
+			<Printer id="printer1" name="Adobe PDF" ipAddress="127.0.0.1" port="9100"/>
 		</Printers>
 	</Hardware>
 	
@@ -48,10 +48,10 @@
 	
 	<!-- Printing Settings -->
 	<Printing>
-		<Form name="Ф.2" file="f2" printerId="printer1" autoPrint="true"/>
-		<Form name="Ф.7" file="f7a_new" printerId="printer1" autoPrint="true"/>		
-		<Form name="Ф.113" file="f113en_ls" printerId="printer1" autoPrint="true"/>
-		<Form name="Ф.116" file="f7p+f116_ls" printerId="printer1" autoPrint="true"/>		
+		<Form name="Ф.2" file="f2" printerId="printer1" autoPrint="false"/>
+		<Form name="Ф.7" file="f7" printerId="printer1" autoPrint="false"/>		
+		<Form name="Ф.113" file="f113" printerId="printer1" autoPrint="false"/>
+		<Form name="Ф.116" file="f116" printerId="printer1" autoPrint="false"/>		
 	</Printing>
 
 	<!-- Quantity of sticker to print -->

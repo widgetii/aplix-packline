@@ -37,19 +37,19 @@
 		<incoming id="008006" orderId="987654321" contentDescription="Увлажнитель воздуха Scarlett SC-988."/>
 	</incomings>
 	<posts>
-		<post id="010931" orderId="123456789" date="2013-10-07T23:06:18.039+03:00">
+		<post id="010931" orderId="123456789" date="2013-10-07T23:06:18.039+03:00" postType="FIRSTCLASS">
 			<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
 			<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
 			<container id="70001792" packingType="BOX" postId="010932" boxTypeId="180001">
 				<packingSize length="100.0" height="20.0" width="90.0"/>
 			</container>
 		</post>
-		<post id="010932" orderId="123456789" date="2013-10-07T23:06:18.039+03:00">
+		<post id="010932" orderId="123456789" date="2013-10-07T23:06:18.039+03:00" postType="PARCEL">
 			<incoming id="008003" orderId="123456789" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
 			<incoming id="008004" orderId="123456789" contentDescription="Подарочный набор Eleganci."/>
 			<incoming id="008005" orderId="123456789" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
 		</post>
-		<post id="008006" orderId="987654321" date="2013-10-07T23:06:18.039+03:00">
+		<post id="008006" orderId="987654321" date="2013-10-07T23:06:18.039+03:00" postType="LETTER">
 			<incoming id="008006" orderId="987654321" contentDescription="Увлажнитель воздуха Scarlett SC-988."/>
 		</post>
 	</posts>
