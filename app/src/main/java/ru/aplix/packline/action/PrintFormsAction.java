@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,6 @@ import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
 import ru.aplix.converters.fr2afop.reader.InputStreamOpener;
 import ru.aplix.converters.fr2afop.reader.ReportReader;
 import ru.aplix.converters.fr2afop.reader.XMLReportReader;
-import ru.aplix.converters.fr2afop.utils.Utils;
 import ru.aplix.converters.fr2afop.writer.OutputStreamOpener;
 import ru.aplix.converters.fr2afop.writer.ReportWriter;
 import ru.aplix.converters.fr2afop.writer.XMLReportWriter;
@@ -35,10 +33,12 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintForm;
+import ru.aplix.packline.conf.PrintMode;
 import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.utils.Utils;
 
 public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
@@ -90,7 +90,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
-			configuration = Utils.fileToObject(r2afopConfigFile, ru.aplix.converters.fr2afop.fr.Configuration.class);
+			configuration = ru.aplix.converters.fr2afop.utils.Utils.fileToObject(r2afopConfigFile, ru.aplix.converters.fr2afop.fr.Configuration.class);
 			prepareDatabase(configuration);
 		}
 
@@ -111,18 +111,19 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		vr.resolve(report, configuration);
 
 		// Render report
-		if (ArrayUtils.contains(REPORT_TYPE_ZEBRA, report.getFileVersion())) {
+		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
+			printUsingApacheFop(report, printer);
+		} else if (ArrayUtils.contains(REPORT_TYPE_ZEBRA, report.getFileVersion())) {
 			printOnZebraPrepared(report, printer);
-		} else if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
-			printAsUsual(report, printer);
 		} else {
 			throw new PackLineException(getResources().getString("error.report.invalid.type"));
 		}
 	}
 
-	private void printAsUsual(Report report, Printer printer) throws Exception {
+	private void printUsingApacheFop(Report report, Printer printer) throws Exception {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
+			// Convert report to XMl
 			ReportWriter reportWriter = new XMLReportWriter();
 			reportWriter.writeToStream(report, new OutputStreamOpener() {
 				@Override
@@ -131,19 +132,63 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				}
 			});
 
-			RenderXMLToOutputImpl rxto = new RenderXMLToOutputImpl();
-			rxto.setOutputFileName(printer.getName());
-			rxto.setOutputFormat(MimeConstants.MIME_FOP_PRINT);
-			rxto.setFopConfigFileName(fopConfigFileName);
-			rxto.setInputStreamOpener(new InputStreamOpener() {
-				@Override
-				public InputStream openStream() throws IOException {
-					return new ByteArrayInputStream(baos.toByteArray());
+			// Render report using Apache FOP
+			ByteArrayOutputStream baos2 = null;
+			try {
+				RenderXMLToOutputImpl rxto = new RenderXMLToOutputImpl();
+				rxto.setFopConfigFileName(fopConfigFileName);
+				rxto.setInputStreamOpener(new InputStreamOpener() {
+					@Override
+					public InputStream openStream() throws IOException {
+						return new ByteArrayInputStream(baos.toByteArray());
+					}
+				});
+
+				// Select renderer
+				if (PrintMode.JAVA2D.equals(printer.getPrintMode())) {
+					rxto.setOutputFileName(printer.getName());
+					rxto.setOutputFormat(MimeConstants.MIME_FOP_PRINT);
+				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
+					final ByteArrayOutputStream memoryBuffer = new ByteArrayOutputStream(BUFFER_SIZE);
+					baos2 = memoryBuffer;
+
+					rxto.setOutputFormat(MimeConstants.MIME_POSTSCRIPT);
+					rxto.setOutputStreamOpener(new OutputStreamOpener() {
+						@Override
+						public OutputStream openStream() throws IOException {
+							return memoryBuffer;
+						}
+					});
+				} else if (PrintMode.PCL.equals(printer.getPrintMode())) {
+					final ByteArrayOutputStream memoryBuffer = new ByteArrayOutputStream(BUFFER_SIZE);
+					baos2 = memoryBuffer;
+
+					rxto.setOutputFormat(MimeConstants.MIME_PCL);
+					rxto.setOutputStreamOpener(new OutputStreamOpener() {
+						@Override
+						public OutputStream openStream() throws IOException {
+							return memoryBuffer;
+						}
+					});
 				}
-			});
-			rxto.execute();
+
+				// Go!
+				rxto.execute();
+
+				// If we rendered in memory buffer, then the contents
+				// of this buffer should be sent to printer directly
+				if (baos2 != null) {
+					Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos2.toByteArray());
+				}
+			} finally {
+				if (baos2 != null) {
+					baos2.close();
+				}
+			}
 		} finally {
-			baos.close();
+			if (baos != null) {
+				baos.close();
+			}
 		}
 	}
 
@@ -167,18 +212,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			});
 
 			// Send xml to printer directly
-			Socket printerSocket = new Socket(printer.getIpAddress(), printer.getPort());
-			try {
-				OutputStream os = printerSocket.getOutputStream();
-				try {
-					os.write(baos.toByteArray());
-					os.flush();
-				} finally {
-					os.close();
-				}
-			} finally {
-				printerSocket.close();
-			}
+			Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos.toByteArray());
 		} finally {
 			baos.close();
 		}

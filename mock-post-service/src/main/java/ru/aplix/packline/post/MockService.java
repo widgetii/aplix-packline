@@ -494,33 +494,38 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized List<Field> gatherInfo(String containerId, List<String> fields) {
+	public synchronized List<Field> gatherInfo(final String containerId, List<String> fields) {
 		if (fields == null) {
 			return null;
 		}
 
-		Random r = new Random();
+		final Container container = (Container) CollectionUtils.find(getConfig().getContainers(), new Predicate() {
+			@Override
+			public boolean evaluate(Object object) {
+				Container item = (Container) object;
+				return containerId.equals(item.getId());
+			}
+		});
 
 		List<Field> resultList = new ArrayList<Field>();
+		if (container == null) {
+			return resultList;
+		}
+
+		Post post = (Post) CollectionUtils.find(getConfig().getPosts(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return container.getPostId().equals(((Tag) item).getId());
+			}
+		});
+
+		Random r = new Random();
 		for (String name : fields) {
 			Field field = new Field();
 			field.setName(name);
 
 			if (PostType.class.getSimpleName().equalsIgnoreCase(name)) {
-				switch (1 + r.nextInt(4)) {
-				case 1:
-					field.setValue(PostType.FIRSTCLASS.name().toUpperCase());
-					break;
-				case 2:
-					field.setValue(PostType.PARCEL.name().toUpperCase());
-					break;
-				case 3:
-					field.setValue(PostType.BOOKPOST.name().toUpperCase());
-					break;
-				case 4:
-					field.setValue(PostType.LETTER.name().toUpperCase());
-					break;
-				}
+				field.setValue(post.getPostType().name().toUpperCase());
 			} else {
 				field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
 			}

@@ -165,9 +165,12 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		@Override
 		public Void call() throws Exception {
 			try {
+				long t = System.currentTimeMillis();
 				for (Button button : buttons) {
 					printLikeButton(button);
 				}
+				t = System.currentTimeMillis() - t;
+				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
 			} catch (Exception e) {
 				LOG.error(e);
 				throw e;

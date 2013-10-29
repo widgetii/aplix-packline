@@ -2,9 +2,12 @@ package ru.aplix.packline.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
+import java.net.Socket;
 import java.util.GregorianCalendar;
 
 import javafx.application.Application;
@@ -127,10 +130,25 @@ public final class Utils {
 		}
 		return false;
 	}
-	
+
 	public static XMLGregorianCalendar now() throws DatatypeConfigurationException {
 		GregorianCalendar gcal = new GregorianCalendar();
 		XMLGregorianCalendar xmlGC = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
 		return xmlGC;
+	}
+
+	public static void sendDataToSocket(String host, int port, byte[] data) throws IOException {
+		Socket socket = new Socket(host, port);
+		try {
+			OutputStream os = socket.getOutputStream();
+			try {
+				os.write(data);
+				os.flush();
+			} finally {
+				os.close();
+			}
+		} finally {
+			socket.close();
+		}
 	}
 }

@@ -21,6 +21,9 @@ public class Printer {
 	@XmlAttribute(name = "port")
 	private int port;
 
+	@XmlAttribute(name = "printMode")
+	private PrintMode printMode;
+
 	public String getId() {
 		return id;
 	}
@@ -51,5 +54,13 @@ public class Printer {
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public PrintMode getPrintMode() {
+		return printMode;
+	}
+
+	public void setPrintMode(PrintMode printMode) {
+		this.printMode = printMode;
 	}
 }
