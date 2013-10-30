@@ -1,17 +1,40 @@
 package ru.aplix.packline.dialog;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class ManualInputController {
+public class ManualInputController implements Initializable {
 
 	@FXML
 	private TextField editText;
 
 	private ManualInputListener listener;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// Add key event filter
+		editText.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent keyEvent) {
+				switch (keyEvent.getCode()) {
+				case ENTER:
+					numericKeybordEnterClick(null);
+					break;
+				default:
+					break;
+				}
+			}
+		});
+	}
 
 	public ManualInputListener getListener() {
 		return listener;
