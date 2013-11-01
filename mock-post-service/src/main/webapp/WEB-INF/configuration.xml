@@ -1,78 +1,236 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<configuration xmlns="http://www.aplix.ru/PackingLine/1.0/ws/model">
+<configuration xmlns="http://www.aplix.ru/PackingLine">
 	<customers>
-		<customer id="11111111" name="ИП Митрюшкин Сергей Сергеевич" />
+		<customer>
+			<id>11111111</id>
+			<name>ИП Митрюшкин Сергей Сергеевич</name>
+		</customer>
 	</customers>
 	<operators>
-		<operator id="4627085462743" name="Ильин ДВ" />
-		<operator id="4627085462750" name="Палагин СА" />
-		<operator id="9780140318296" name="Иван Фёдорович Крузенштерн" />
+		<operator>
+			<id>4627085462743</id>
+			<name>Ильин ДВ</name>
+		</operator>
+		<operator>
+			<id>4627085462750</id>
+			<name>Палагин СА</name>
+		</operator>
+		<operator>
+			<id>9780140318296</id>
+			<name>Иван Фёдорович Крузенштерн</name>
+		</operator>
 	</operators>
 	<orders>
-		<order 
-			id="123456789" 
-			clientName="Аллагулов Азат Халитович" 
-			deliveryMethod="Почтовая посылка Почта России (140.7 руб., 7 дня)" 
-			deliveryAddress="456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29" 
-			customerName="ИП Митрюшкин Сергей Сергеевич"
-			date="2013-10-07T23:06:18.039+03:00"
-			totalIncomings="5"
-			carriedOutAndClosed="false"/>
-		<order 
-			id="987654321" 
-			clientName="Борис Леонидович Пастернак" 
-			deliveryMethod="Почтовая посылка Почта России (234.1 руб., 5 дней)" 
-			deliveryAddress="142783, Московская область, Одинцовский район, п. Переделкино, ул. Павленко, д. 3" 
-			customerName="ИП Сидоров Иванов Иванович"
-			date="2013-10-07T23:06:18.039+03:00"
-			totalIncomings="1"
-			carriedOutAndClosed="false"/>
+		<order>
+			<id>123456789</id>
+			<clientName>Аллагулов Азат Халитович</clientName>
+			<deliveryMethod>Почтовая посылка Почта России (140.7 руб., 7 дня)</deliveryMethod>
+			<deliveryAddress>456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29</deliveryAddress>
+			<customerName>ИП Митрюшкин Сергей Сергеевич</customerName>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+			<totalIncomings>5</totalIncomings>
+			<carriedOutAndClosed>false</carriedOutAndClosed>
+		</order>
+		<order>
+			<id>987654321</id>
+			<clientName>Борис Леонидович Пастернак</clientName>
+			<deliveryMethod>Почтовая посылка Почта России (234.1 руб., 5 дней)</deliveryMethod>
+			<deliveryAddress>142783, Московская область, Одинцовский район, п. Переделкино, ул. Павленко, д. 3</deliveryAddress>
+			<customerName>ИП Сидоров Иванов Иванович</customerName>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+			<totalIncomings>1</totalIncomings>
+			<carriedOutAndClosed>false</carriedOutAndClosed>
+		</order>
 	</orders>
 	<incomings>
-		<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
-		<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
-		<incoming id="008003" orderId="123456789" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
-		<incoming id="008004" orderId="123456789" contentDescription="Подарочный набор Eleganci."/>
-		<incoming id="008005" orderId="123456789" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
-		<incoming id="008006" orderId="987654321" contentDescription="Увлажнитель воздуха Scarlett SC-988."/>
+		<incoming>
+			<id>008001</id>
+			<orderId>123456789</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008002</id>
+			<orderId>123456789</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008003</id>
+			<orderId>123456789</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008004</id>
+			<orderId>123456789</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Подарочный набор Eleganci.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008005</id>
+			<orderId>123456789</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008006</id>
+			<orderId>987654321</orderId>
+			<photoId></photoId>
+			<weight>0.0</weight>
+			<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
+		</incoming>
 	</incomings>
 	<posts>
-		<post id="010931" orderId="123456789" date="2013-10-07T23:06:18.039+03:00" postType="FIRSTCLASS">
-			<incoming id="008001" orderId="123456789" contentDescription="Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок."/>
-			<incoming id="008002" orderId="123456789" contentDescription="Фишки для игры, 200 шт."/>
-			<container id="70001792" packingType="BOX" postId="010932" boxTypeId="180001">
-				<packingSize length="100.0" height="20.0" width="90.0"/>
+		<post>
+			<id>010931</id>
+			<container>
+				<id>70001792</id>
+				<packingSize>
+					<length>100.0</length>
+					<height>20.0</height>
+					<width>90.0</width>
+				</packingSize>
+				<postId>010931</postId>
+				<boxTypeId>180001</boxTypeId>
+				<packingType>BOX</packingType>
+				<totalWeight>0.0</totalWeight>
 			</container>
+			<incoming>
+				<id>008001</id>
+				<orderId>123456789</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>008002</id>
+				<orderId>123456789</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
+			</incoming>
+			<postType>FIRSTCLASS</postType>
+			<orderId>123456789</orderId>
+			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
-		<post id="010932" orderId="123456789" date="2013-10-07T23:06:18.039+03:00" postType="PARCEL">
-			<incoming id="008003" orderId="123456789" contentDescription="Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см."/>
-			<incoming id="008004" orderId="123456789" contentDescription="Подарочный набор Eleganci."/>
-			<incoming id="008005" orderId="123456789" contentDescription="Часы-метеостанция в автомобильном стиле. Материал: дерево, металл."/>
+		<post>
+			<id>010932</id>
+			<incoming>
+				<id>008003</id>
+				<orderId>123456789</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>008004</id>
+				<orderId>123456789</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Подарочный набор Eleganci.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>008005</id>
+				<orderId>123456789</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
+			</incoming>
+			<postType>PARCEL</postType>
+			<orderId>123456789</orderId>
+			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
-		<post id="008006" orderId="987654321" date="2013-10-07T23:06:18.039+03:00" postType="LETTER">
-			<incoming id="008006" orderId="987654321" contentDescription="Увлажнитель воздуха Scarlett SC-988."/>
+		<post>
+			<id>008006</id>
+			<incoming>
+				<id>008006</id>
+				<orderId>987654321</orderId>
+				<photoId></photoId>
+				<weight>0.0</weight>
+				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
+			</incoming>
+			<postType>LETTER</postType>
+			<orderId>987654321</orderId>
+			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
 	</posts>
 	<containers>
-		<container id="70001792" postId="010931" packingType="BOX" boxTypeId="180001">
-			<packingSize length="100.0" height="20.0" width="90.0"/>
+		<container>
+			<id>70001792</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<postId>010931</postId>
+			<boxTypeId>180001</boxTypeId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
 		</container>
-		<container id="70001793" packingType="BOX" boxTypeId="180001">
-			<packingSize length="100.0" height="20.0" width="90.0"/>
+		<container>
+			<id>70001793</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<boxTypeId>180001</boxTypeId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
 		</container>
-		<container id="70001794" packingType="BOX" boxTypeId="180002">
-			<packingSize length="100.0" height="20.0" width="90.0"/>
+		<container>
+			<id>70001794</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<boxTypeId>180002</boxTypeId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
 		</container>
-		<container id="70001795" packingType="BOX" boxTypeId="180002">
-			<packingSize length="100.0" height="20.0" width="90.0"/>
+		<container>
+			<id>70001795</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<boxTypeId>180002</boxTypeId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
 		</container>
 	</containers>
 	<boxTypes>
-		<boxType id="180001" supplierName="Ferplast" cardboardGrade="Класс 3" emptyWeight="0.1">
-			<packingSize length="100.0" height="20.0" width="90.0"/>
+		<boxType>
+			<id>180001</id>
+			<supplierName>Ferplast</supplierName>
+			<cardboardGrade>Класс 3</cardboardGrade>
+			<emptyWeight>0.1</emptyWeight>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<cost>0.0</cost>
 		</boxType>
-		<boxType id="180002" supplierName="Ferplast" cardboardGrade="Класс 3" emptyWeight="0.05">
-			<packingSize length="50.0" height="20.0" width="90.0"/>
+		<boxType>
+			<id>180002</id>
+			<supplierName>Ferplast</supplierName>
+			<cardboardGrade>Класс 3</cardboardGrade>
+			<emptyWeight>0.05</emptyWeight>
+			<packingSize>
+				<length>50.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<cost>0.0</cost>
 		</boxType>
 	</boxTypes>
 </configuration>

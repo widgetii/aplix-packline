@@ -59,7 +59,7 @@ public class PackTypeController extends StandardController<PackTypeAction> {
 		try {
 			getAction().selectPacketType(value);
 		} catch (DatatypeConfigurationException e) {
-			LOG.error(e);
+			LOG.error(null, e);
 		}
 		done();
 	}

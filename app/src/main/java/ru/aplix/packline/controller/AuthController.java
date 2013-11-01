@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.AuthAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
@@ -83,8 +84,8 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 				try {
 					Operator operator = getAction().authenticateOperator(value);
 					return operator;
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 			}
@@ -104,7 +105,14 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 				barcodeCheckerEventHandler.reset();
 
-				errorMessageProperty.set(getResources().getString("error.post.service"));
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = getResources().getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
 				errorVisibleProperty.set(true);
 			}
 

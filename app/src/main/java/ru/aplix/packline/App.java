@@ -238,7 +238,7 @@ public class App extends Application implements IdleListener {
 					executor.shutdown();
 				}
 			} catch (Exception e) {
-				LOG.error(e);
+				LOG.error(null, e);
 			}
 		} finally {
 			executorLock.unlock();
@@ -273,7 +273,7 @@ public class App extends Application implements IdleListener {
 					}
 				}, Configuration.getInstance().getHardwareConfiguration().getReconnectInterval(), TimeUnit.SECONDS);
 			} catch (Exception e) {
-				LOG.error(e);
+				LOG.error(null, e);
 			}
 		} finally {
 			executorLock.unlock();

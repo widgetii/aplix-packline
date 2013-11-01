@@ -69,21 +69,26 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return "printing";
 	}
 
-	public void printForms(String containerId, PrintForm printForm) throws Exception {
+	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(getResources().getString("error.printer.not.assigned"));
 		}
 
-		if (jarFolder == null) {
-			File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
-			jarFolder = confFolder != null ? confFolder.getParent() : "";
-			fr2afopConfigFileName = jarFolder + FR2AFOP_CONF_FILE;
-			fopConfigFileName = jarFolder + FOP_CONF_FILE;
-		}
+		try {
+			if (jarFolder == null) {
+				File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
+				jarFolder = confFolder != null ? confFolder.getParent() : "";
+				fr2afopConfigFileName = jarFolder + FR2AFOP_CONF_FILE;
+				fopConfigFileName = jarFolder + FOP_CONF_FILE;
+			}
 
-		String reportFileName = jarFolder + String.format(REPORT_FILE_TEMPLATE, printForm.getFile());
-		String outputFileName = jarFolder + String.format(OUTPUT_FILE_TEMPLATE, printForm.getFile());
-		printForm(containerId, reportFileName, outputFileName, printForm.getPrinter());
+			String reportFileName = jarFolder + String.format(REPORT_FILE_TEMPLATE, printForm.getFile());
+			String outputFileName = jarFolder + String.format(OUTPUT_FILE_TEMPLATE, printForm.getFile());
+			printForm(containerId, reportFileName, outputFileName, printForm.getPrinter());
+		} catch (Throwable e) {
+			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
+			throw ple;
+		}
 	}
 
 	public void printForm(String containerId, final String reportFileName, String outputFileName, Printer printer) throws Exception {

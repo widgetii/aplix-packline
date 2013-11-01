@@ -119,8 +119,8 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			public Void call() throws Exception {
 				try {
 					getAction().processMeasure(measure);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;

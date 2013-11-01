@@ -28,7 +28,7 @@ public class OrderActAction extends CommonAction<OrderActController> {
 			throw new PackLineException(getResources().getString("error.post.not.incoming"));
 		}
 		final Incoming incoming = postServicePort.findIncoming(code);
-		if (incoming == null || !code.equals(incoming.getId())) {
+		if (incoming == null || incoming.getId() == null) {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 		if (!order.getId().equals(incoming.getOrderId())) {
@@ -70,7 +70,7 @@ public class OrderActAction extends CommonAction<OrderActController> {
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.deleteIncomingFromOrder(order.getId(), incoming.getId())) {
+		if (!postServicePort.deleteIncomingFromOrder(order.getId(), incoming)) {
 			throw new PackLineException(getResources().getString("error.post.order.incoming.delete"));
 		}
 

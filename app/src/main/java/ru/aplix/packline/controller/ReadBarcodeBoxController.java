@@ -113,8 +113,8 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 
 						Thread.sleep(Const.ERROR_DISPLAY_DELAY * DateUtils.MILLIS_PER_SECOND);
 					}
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;

@@ -1,8 +1,6 @@
 package ru.aplix.packline.post;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -18,7 +16,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.RandomStringUtils;
 
-@WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine/1.0/ws")
+@WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine")
 public class MockService implements PackingLinePortType {
 
 	@Override
@@ -48,8 +46,9 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized void setOperatorActivity(boolean isActive) {
+	public synchronized boolean setOperatorActivity(boolean isActive) {
 		// do nothing
+		return true;
 	}
 
 	@Override
@@ -190,7 +189,6 @@ public class MockService implements PackingLinePortType {
 				// Copy incoming properties
 				newItem.setId(incoming.getId());
 				newItem.setOrderId(incoming.getOrderId());
-				newItem.setPostId(incoming.getPostId());
 				newItem.setPhotoId(incoming.getPhotoId());
 				newItem.setWeight(incoming.getWeight());
 				newItem.setContentDescription(incoming.getContentDescription());
@@ -207,8 +205,8 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized boolean deleteIncomingFromOrder(final String orderId, final String incomingId) {
-		if (orderId == null || incomingId == null) {
+	public synchronized boolean deleteIncomingFromOrder(final String orderId, final Incoming incoming) {
+		if (orderId == null || incoming == null || incoming.getId() == null) {
 			return false;
 		}
 
@@ -222,17 +220,17 @@ public class MockService implements PackingLinePortType {
 
 		if (order != null) {
 			// Find incoming in the given order
-			Incoming incoming = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+			Incoming incoming2 = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
 				@Override
 				public boolean evaluate(Object object) {
 					Incoming item = (Incoming) object;
-					return incomingId.equals(item.getId()) && orderId.equals(item.getOrderId());
+					return incoming.getId().equals(item.getId()) && orderId.equals(item.getOrderId());
 				}
 			});
 
-			if (incoming != null) {
+			if (incoming2 != null) {
 				// Remove incoming from list
-				return order.getIncoming().remove(incoming);
+				return order.getIncoming().remove(incoming2);
 			} else {
 				return false;
 			}
@@ -376,8 +374,8 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized boolean addBoxContainers(final String boxTypeId, List<Tag> tags) {
-		if (tags == null || boxTypeId == null) {
+	public synchronized boolean addBoxContainers(final String boxTypeId, TagList tagList) {
+		if (tagList == null || boxTypeId == null) {
 			return false;
 		}
 
@@ -394,7 +392,7 @@ public class MockService implements PackingLinePortType {
 			return false;
 		}
 
-		for (final Tag tag : tags) {
+		for (final Tag tag : tagList.getItems()) {
 			PackingSize ps = new PackingSize();
 			ps.setHeight(boxType.getPackingSize().getHeight());
 			ps.setWidth(boxType.getPackingSize().getWidth());
@@ -456,8 +454,8 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized List<Tag> generateTagsForContainers(int count) {
-		List<Tag> tags = new ArrayList<Tag>();
+	public synchronized TagList generateTagsForContainers(int count) {
+		TagList tagList = new TagList();
 		Random r = new Random();
 		int i = 0;
 		while (i < count) {
@@ -481,20 +479,20 @@ public class MockService implements PackingLinePortType {
 			// Add new id to returned list
 			Tag tag = new Tag();
 			tag.setId(id);
-			tags.add(tag);
+			tagList.getItems().add(tag);
 
 			i++;
 		}
-		return tags;
+		return tagList;
 	}
 
 	@Override
-	public List<Tag> generateTagsForIncomings(String customerId, int count) {
+	public TagList generateTagsForIncomings(String customerId, int count) {
 		return generateTagsForContainers(count);
 	}
 
 	@Override
-	public synchronized List<Field> gatherInfo(final String containerId, List<String> fields) {
+	public synchronized FieldList gatherInfo(final String containerId, StringList fields) {
 		if (fields == null) {
 			return null;
 		}
@@ -507,7 +505,7 @@ public class MockService implements PackingLinePortType {
 			}
 		});
 
-		List<Field> resultList = new ArrayList<Field>();
+		FieldList resultList = new FieldList();
 		if (container == null) {
 			return resultList;
 		}
@@ -520,7 +518,7 @@ public class MockService implements PackingLinePortType {
 		});
 
 		Random r = new Random();
-		for (String name : fields) {
+		for (String name : fields.getItems()) {
 			Field field = new Field();
 			field.setName(name);
 
@@ -529,10 +527,20 @@ public class MockService implements PackingLinePortType {
 			} else {
 				field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
 			}
-			resultList.add(field);
+			resultList.getItems().add(field);
 		}
 
 		return resultList;
+	}
+
+	@Override
+	public String echo(String text) {
+		return text;
+	}
+
+	@Override
+	public ParcelInfo getParcelInfo(String marker) {
+		return null;
 	}
 
 	@Resource

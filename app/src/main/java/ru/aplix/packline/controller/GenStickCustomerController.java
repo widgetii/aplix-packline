@@ -153,8 +153,8 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 			public Void call() throws Exception {
 				try {
 					getAction().generateAndPrint(count != null ? count : 0, customerCode);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;
@@ -216,8 +216,8 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 				try {
 					Customer customer = getAction().processBarcode(value);
 					return customer;
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 			}

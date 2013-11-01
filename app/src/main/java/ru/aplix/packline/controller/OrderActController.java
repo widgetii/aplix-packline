@@ -258,8 +258,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			public Void call() throws Exception {
 				try {
 					getAction().carryOutOrder();
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;
@@ -316,8 +316,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			public Void call() throws Exception {
 				try {
 					getAction().deleteOrder();
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;
@@ -418,8 +418,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			public Void call() throws Exception {
 				try {
 					getAction().deleteIncoming(incoming);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;
@@ -491,8 +491,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			public Boolean call() throws Exception {
 				try {
 					return getAction().processBarcode(value);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 			}

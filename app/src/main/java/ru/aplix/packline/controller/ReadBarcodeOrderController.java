@@ -94,8 +94,8 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 				try {
 					Tag tag = getAction().processBarcode(value);
 					return tag;
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 			}

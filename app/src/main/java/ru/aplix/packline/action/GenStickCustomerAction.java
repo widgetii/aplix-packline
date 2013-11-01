@@ -1,13 +1,11 @@
 package ru.aplix.packline.action;
 
-import java.util.List;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.GenStickCustomerController;
 import ru.aplix.packline.post.Customer;
 import ru.aplix.packline.post.PackingLinePortType;
-import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.post.TagList;
 
 public class GenStickCustomerAction extends CommonAction<GenStickCustomerController> {
 
@@ -20,6 +18,10 @@ public class GenStickCustomerAction extends CommonAction<GenStickCustomerControl
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		Customer result = postServicePort.getCustomer(code);
+		if (result == null || result.getId() == null) {
+			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+		}
+
 		return result;
 	}
 
@@ -30,8 +32,8 @@ public class GenStickCustomerAction extends CommonAction<GenStickCustomerControl
 
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		List<Tag> tags = postServicePort.generateTagsForIncomings(customerCode, count);
-		if (tags == null) {
+		TagList tagList = postServicePort.generateTagsForIncomings(customerCode, count);
+		if (tagList == null) {
 			throw new PackLineException(getResources().getString("error.post.generate.tags"));
 		}
 

@@ -1,5 +1,6 @@
 package ru.aplix.packline.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -19,6 +20,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.PrintFormsAction;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintForm;
@@ -88,7 +90,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			assignButton(reprintButton3, 2, forms);
 			assignButton(reprintButton4, 3, forms);
 		} catch (Exception e) {
-			LOG.error(e);
+			LOG.error(null, e);
 		}
 	}
 
@@ -164,25 +166,47 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 		@Override
 		public Void call() throws Exception {
-			try {
-				long t = System.currentTimeMillis();
-				for (Button button : buttons) {
-					printLikeButton(button);
+			long t = System.currentTimeMillis();
+
+			List<Throwable> exceptions = new ArrayList<Throwable>();
+			boolean printedAtLeastOne = false;
+			for (Button button : buttons) {
+				try {
+					if (printLikeButton(button)) {
+						printedAtLeastOne = true;
+					}
+				} catch (Throwable e) {
+					LOG.error(null, e);
+					exceptions.add(e);
 				}
-				t = System.currentTimeMillis() - t;
-				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
-			} catch (Exception e) {
-				LOG.error(e);
-				throw e;
 			}
+
+			t = System.currentTimeMillis() - t;
+			if (printedAtLeastOne) {
+				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
+			}
+
+			if (exceptions.size() == 1) {
+				throw new PackLineException(exceptions.get(0));
+			} else if (exceptions.size() > 1) {
+				StringBuffer sb = new StringBuffer();
+				for (Throwable e : exceptions) {
+					sb.append(e.getMessage());
+					sb.append("\n");
+				}
+				throw new PackLineException(sb.toString());
+			}
+
 			return null;
 		}
 
-		private void printLikeButton(Button button) throws Exception {
+		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
 			if (printForm != null && (printForm.getAutoPrint() || skipAutoPrint)) {
 				getAction().printForms(container.getId(), printForm);
+				return true;
 			}
+			return false;
 		}
 
 		@Override

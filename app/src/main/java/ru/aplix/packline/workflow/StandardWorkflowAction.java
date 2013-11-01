@@ -92,7 +92,7 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 				stage.show();
 			}
 		} catch (IOException e) {
-			LOG.error(e);
+			LOG.error(null, e);
 		} catch (SkipActionException sae) {
 			done();
 		}

@@ -101,7 +101,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 					photoCamera.removeImageListener(this);
 				}
 			} catch (Exception e) {
-				LOG.error(e);
+				LOG.error(null, e);
 			}
 			return null;
 		}

@@ -126,7 +126,7 @@ public class ShutdownDialogController {
 		try {
 			Runtime.getRuntime().exec(shutdownCommand);
 		} catch (IOException e) {
-			LOG.error(e);
+			LOG.error(null, e);
 		}
 		return true;
 	}

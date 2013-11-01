@@ -122,7 +122,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		default:
 			throw new IllegalArgumentException();
 		}
-		if (tag == null || !tagId.equals(tag.getId())) {
+		if (tag == null || tag.getId() == null) {
 			if (nested) {
 				throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 			} else {

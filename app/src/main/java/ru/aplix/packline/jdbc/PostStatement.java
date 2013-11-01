@@ -6,15 +6,14 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 
-import ru.aplix.packline.post.Field;
+import ru.aplix.packline.post.FieldList;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.StringList;
 
 public class PostStatement implements Statement {
 
@@ -50,16 +49,21 @@ public class PostStatement implements Statement {
 		// Parse query parameters
 		String containerId = queryMatcher.group(2);
 		String allColumns = queryMatcher.group(1).replace(",", " ");
-		List<String> parameters = Arrays.asList(StringUtils.split(allColumns));
+
+		StringList parameters = new StringList();
+		String[] sArr = StringUtils.split(allColumns);
+		for (String s : sArr) {
+			parameters.getItems().add(s);
+		}
 
 		// Call remote post service
-		List<Field> fields = postServicePort.gatherInfo(containerId, parameters);
-		if (fields == null) {
+		FieldList fieldList = postServicePort.gatherInfo(containerId, parameters);
+		if (fieldList == null) {
 			throw new SQLException("Invalid response from post service");
 		}
 
 		// Return result set with data
-		lastResultSet = new PostResultSet(this, fields);
+		lastResultSet = new PostResultSet(this, fieldList.getItems());
 		lastQuery = sql;
 		return lastResultSet;
 	}

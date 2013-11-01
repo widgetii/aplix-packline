@@ -112,8 +112,8 @@ public class UserActivityMonitor extends Service<Void> {
 			if (postServicePort != null) {
 				postServicePort.setOperatorActivity(value);
 			}
-		} catch (Exception e) {
-			LOG.error(e);
+		} catch (Throwable e) {
+			LOG.error(null, e);
 		}
 	}
 

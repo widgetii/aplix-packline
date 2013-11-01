@@ -76,8 +76,8 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 			public Void call() throws Exception {
 				try {
 					getAction().process();
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;

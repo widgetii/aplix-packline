@@ -154,8 +154,8 @@ public class GenStickController extends StandardController<GenStickAction> imple
 			public Void call() throws Exception {
 				try {
 					getAction().generateAndPrint(count != null ? count : 0, boxTypeId);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;
@@ -217,8 +217,8 @@ public class GenStickController extends StandardController<GenStickAction> imple
 				try {
 					BoxType boxType = getAction().processBarcode(value);
 					return boxType;
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 			}

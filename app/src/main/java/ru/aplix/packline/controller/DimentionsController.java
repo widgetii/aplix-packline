@@ -107,8 +107,8 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 			public Void call() throws Exception {
 				try {
 					getAction().processBarcode(value, length, height, width);
-				} catch (Exception e) {
-					LOG.error(e);
+				} catch (Throwable e) {
+					LOG.error(null, e);
 					throw e;
 				}
 				return null;

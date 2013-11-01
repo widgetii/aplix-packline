@@ -1,445 +1,1136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine/1.0/ws"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:model="http://www.aplix.ru/PackingLine/1.0/ws/model" xmlns:msg="http://www.aplix.ru/PackingLine/1.0/ws/messages"
-	name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine/1.0/ws">
-
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.aplix.ru/PackingLine" name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine">
 	<types>
-		<xsd:schema>
-			<xsd:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/model" schemaLocation="PackingLine.1cws_schema1.xsd" />
-		</xsd:schema>
-		<xsd:schema>
-			<xsd:import namespace="http://www.aplix.ru/PackingLine/1.0/ws/messages" schemaLocation="PackingLine.1cws_schema2.xsd" />
-		</xsd:schema>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.aplix.ru/PackingLine" targetNamespace="http://www.aplix.ru/PackingLine" attributeFormDefault="unqualified" elementFormDefault="qualified">
+			<xs:complexType name="Address">
+				<xs:sequence>
+					<xs:element name="Index" type="xs:string" nillable="true"/>
+					<xs:element name="Region" type="xs:string" nillable="true"/>
+					<xs:element name="District" type="xs:string" nillable="true"/>
+					<xs:element name="City" type="xs:string" nillable="true"/>
+					<xs:element name="Locality" type="xs:string" nillable="true"/>
+					<xs:element name="Street" type="xs:string" nillable="true"/>
+					<xs:element name="Home" type="xs:string" nillable="true"/>
+					<xs:element name="Housing" type="xs:string" nillable="true"/>
+					<xs:element name="Apartment" type="xs:string" nillable="true"/>
+					<xs:element name="AdditionalInformation" type="xs:string" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="BankingDetails">
+				<xs:sequence>
+					<xs:element name="BIK" type="xs:string"/>
+					<xs:element name="BankName" type="xs:string"/>
+					<xs:element name="CorrespondentAccount" type="xs:string"/>
+					<xs:element name="CurrentAccount" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="BoxType">
+				<xs:sequence>
+					<xs:element name="packingSize" type="tns:PackingSize"/>
+					<xs:element name="id" type="xs:string"/>
+					<xs:element name="supplierName" type="xs:string"/>
+					<xs:element name="cardboardGrade" type="xs:string"/>
+					<xs:element name="emptyWeight" type="xs:float"/>
+					<xs:element name="cost" type="xs:float"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Container">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="packingSize" type="tns:PackingSize"/>
+							<xs:element name="postId" type="xs:string"/>
+							<xs:element name="boxTypeId" type="xs:string"/>
+							<xs:element name="packingType" type="tns:PackingType"/>
+							<xs:element name="totalWeight" type="xs:float"/>
+							<xs:element name="date" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="Customer">
+				<xs:sequence>
+					<xs:element name="id" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Field">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="value" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="FieldList">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:Field" maxOccurs="2147483647"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Incoming">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="orderId" type="xs:string"/>
+							<xs:element name="photoId" type="xs:string" nillable="true"/>
+							<xs:element name="date" type="xs:dateTime"/>
+							<xs:element name="weight" type="xs:float"/>
+							<xs:element name="contentDescription" type="xs:string"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="Operator">
+				<xs:sequence>
+					<xs:element name="id" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Order">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="2147483647"/>
+							<xs:element name="post" type="tns:Post" minOccurs="0" maxOccurs="2147483647"/>
+							<xs:element name="clientName" type="xs:string"/>
+							<xs:element name="deliveryMethod" type="xs:string"/>
+							<xs:element name="deliveryAddress" type="xs:string"/>
+							<xs:element name="customerName" type="xs:string"/>
+							<xs:element name="date" type="xs:dateTime"/>
+							<xs:element name="totalIncomings" type="xs:int"/>
+							<xs:element name="carriedOutAndClosed" type="xs:boolean"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="PackingSize">
+				<xs:sequence>
+					<xs:element name="length" type="xs:float"/>
+					<xs:element name="height" type="xs:float"/>
+					<xs:element name="width" type="xs:float"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="PackingType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="BOX"/>
+					<xs:enumeration value="PACKET"/>
+					<xs:enumeration value="PAPER"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="ParcelInfo">
+				<xs:sequence>
+					<xs:element name="Recipient" type="tns:Recipient" nillable="true"/>
+					<xs:element name="Shipper" type="tns:Shipper" nillable="true"/>
+					<xs:element name="BarCode" type="xs:string" nillable="true"/>
+					<xs:element name="PostOffice" type="xs:string" nillable="true"/>
+					<xs:element name="DeclaredCost" type="xs:float" nillable="true"/>
+					<xs:element name="AmountToBePaid" type="xs:float" nillable="true"/>
+					<xs:element name="Weight" type="xs:float" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Post">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="container" type="tns:Container"/>
+							<xs:element name="incoming" type="tns:Incoming" maxOccurs="2147483647"/>
+							<xs:element name="postType" type="tns:PostType"/>
+							<xs:element name="orderId" type="xs:string"/>
+							<xs:element name="date" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:simpleType name="PostType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="FIRSTCLASS"/>
+					<xs:enumeration value="PARCEL"/>
+					<xs:enumeration value="BOOKPOST"/>
+					<xs:enumeration value="LETTER"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="Recipient">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string"/>
+					<xs:element name="Address" type="tns:Address"/>
+					<xs:element name="Phone"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Shipper">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string"/>
+					<xs:element name="Address" type="tns:Address"/>
+					<xs:element name="BankingDetails" type="tns:BankingDetails"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="StringList">
+				<xs:sequence>
+					<xs:element name="Items" type="xs:string" maxOccurs="2147483647"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Tag">
+				<xs:sequence>
+					<xs:element name="id" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="TagList">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:Tag" maxOccurs="2147483647"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="TagType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="INCOMING"/>
+					<xs:enumeration value="ORDER"/>
+					<xs:enumeration value="POST"/>
+					<xs:enumeration value="CONTAINER"/>
+					<xs:enumeration value="UNKNOWN"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="Echo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Text" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EchoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SetOperatorActivity">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="isActive" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SetOperatorActivityResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetParcelInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Marker" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetParcelInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:ParcelInfo" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOperator">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOperatorResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Operator"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindTag">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tagId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindTagResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:TagType" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetCustomer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Customer"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindIncoming">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="incomingId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindIncomingResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="orderId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Order"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindPost">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="postId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindPostResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Post"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindContainer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindContainerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Container"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddIncomingToOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="orderId" type="xs:string"/>
+						<xs:element name="incoming" type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddIncomingToOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteIncomingFromOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="orderId" type="xs:string"/>
+						<xs:element name="incoming" type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteIncomingFromOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="orderId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="orderId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddContainer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="container" type="tns:Container"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddContainerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="UpdateContainer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="container" type="tns:Container"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="UpdateContainerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddBoxContainers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="boxTypeId" type="xs:string"/>
+						<xs:element name="tag" type="tns:TagList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddBoxContainersResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxType">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="boxTypeId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxTypeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:BoxType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxCount">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="boxTypeId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxCountResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GenerateTagsForContainers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="count" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GenerateTagsForContainersResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:TagList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GenerateTagsForIncomings">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customerCode" type="xs:string"/>
+						<xs:element name="count" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GenerateTagsForIncomingsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:TagList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GatherInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="field" type="tns:StringList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GatherInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:FieldList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
 	</types>
-
-	<message name="GetOperatorRequest">
-		<part name="parameters" element="msg:GetOperator"></part>
+	<message name="EchoRequestMessage">
+		<part name="parameters" element="tns:Echo"/>
 	</message>
-	<message name="GetOperatorResponse">
-		<part name="parameters" element="msg:GetOperatorResponse"></part>
+	<message name="EchoResponseMessage">
+		<part name="parameters" element="tns:EchoResponse"/>
 	</message>
-	<message name="GetCustomerRequest">
-		<part name="parameters" element="msg:GetCustomer"></part>
+	<message name="SetOperatorActivityRequestMessage">
+		<part name="parameters" element="tns:SetOperatorActivity"/>
 	</message>
-	<message name="GetCustomerResponse">
-		<part name="parameters" element="msg:GetCustomerResponse"></part>
+	<message name="SetOperatorActivityResponseMessage">
+		<part name="parameters" element="tns:SetOperatorActivityResponse"/>
 	</message>
-	<message name="SetOperatorActivityRequest">
-		<part name="parameters" element="msg:SetOperatorActivity"></part>
+	<message name="GetParcelInfoRequestMessage">
+		<part name="parameters" element="tns:GetParcelInfo"/>
 	</message>
-	<message name="FindTagRequest">
-		<part name="parameters" element="msg:FindTag"></part>
+	<message name="GetParcelInfoResponseMessage">
+		<part name="parameters" element="tns:GetParcelInfoResponse"/>
 	</message>
-	<message name="FindTagResponse">
-		<part name="parameters" element="msg:FindTagResponse"></part>
+	<message name="GetOperatorRequestMessage">
+		<part name="parameters" element="tns:GetOperator"/>
 	</message>
-	<message name="FindIncomingRequest">
-		<part name="FindIncomingRequest" element="msg:FindIncoming"></part>
+	<message name="GetOperatorResponseMessage">
+		<part name="parameters" element="tns:GetOperatorResponse"/>
 	</message>
-	<message name="FindIncomingResponse">
-		<part name="parameters" element="msg:FindIncomingResponse"></part>
+	<message name="FindTagRequestMessage">
+		<part name="parameters" element="tns:FindTag"/>
 	</message>
-	<message name="FindOrderRequest">
-		<part name="FindOrderRequest" element="msg:FindOrder"></part>
+	<message name="FindTagResponseMessage">
+		<part name="parameters" element="tns:FindTagResponse"/>
 	</message>
-	<message name="FindOrderResponse">
-		<part name="parameters" element="msg:FindOrderResponse"></part>
+	<message name="GetCustomerRequestMessage">
+		<part name="parameters" element="tns:GetCustomer"/>
 	</message>
-	<message name="FindPostRequest">
-		<part name="FindPostRequest" element="msg:FindPost"></part>
+	<message name="GetCustomerResponseMessage">
+		<part name="parameters" element="tns:GetCustomerResponse"/>
 	</message>
-	<message name="FindPostResponse">
-		<part name="parameters" element="msg:FindPostResponse"></part>
+	<message name="FindIncomingRequestMessage">
+		<part name="parameters" element="tns:FindIncoming"/>
 	</message>
-	<message name="FindContainerRequest">
-		<part name="FindContainerRequest" element="msg:FindContainer"></part>
+	<message name="FindIncomingResponseMessage">
+		<part name="parameters" element="tns:FindIncomingResponse"/>
 	</message>
-	<message name="FindContainerResponse">
-		<part name="parameters" element="msg:FindContainerResponse"></part>
+	<message name="FindOrderRequestMessage">
+		<part name="parameters" element="tns:FindOrder"/>
 	</message>
-	<message name="AddIncomingToOrderRequest">
-		<part name="parameters" element="msg:AddIncomingToOrder"></part>
+	<message name="FindOrderResponseMessage">
+		<part name="parameters" element="tns:FindOrderResponse"/>
 	</message>
-	<message name="AddIncomingToOrderResponse">
-		<part name="parameters" element="msg:AddIncomingToOrderResponse"></part>
+	<message name="FindPostRequestMessage">
+		<part name="parameters" element="tns:FindPost"/>
 	</message>
-	<message name="DeleteIncomingFromOrderRequest">
-		<part name="parameters" element="msg:DeleteIncomingFromOrder"></part>
+	<message name="FindPostResponseMessage">
+		<part name="parameters" element="tns:FindPostResponse"/>
 	</message>
-	<message name="DeleteIncomingFromOrderResponse">
-		<part name="parameters" element="msg:DeleteIncomingFromOrderResponse"></part>
+	<message name="FindContainerRequestMessage">
+		<part name="parameters" element="tns:FindContainer"/>
 	</message>
-	<message name="CarryOutOrderRequest">
-		<part name="parameters" element="msg:CarryOutOrder"></part>
+	<message name="FindContainerResponseMessage">
+		<part name="parameters" element="tns:FindContainerResponse"/>
 	</message>
-	<message name="CarryOutOrderResponse">
-		<part name="parameters" element="msg:CarryOutOrderResponse"></part>
+	<message name="AddIncomingToOrderRequestMessage">
+		<part name="parameters" element="tns:AddIncomingToOrder"/>
 	</message>
-	<message name="DeleteOrderRequest">
-		<part name="parameters" element="msg:DeleteOrder"></part>
+	<message name="AddIncomingToOrderResponseMessage">
+		<part name="parameters" element="tns:AddIncomingToOrderResponse"/>
 	</message>
-	<message name="DeleteOrderResponse">
-		<part name="parameters" element="msg:DeleteOrderResponse"></part>
+	<message name="DeleteIncomingFromOrderRequestMessage">
+		<part name="parameters" element="tns:DeleteIncomingFromOrder"/>
 	</message>
-	<message name="AddContainerRequest">
-		<part name="parameters" element="msg:AddContainer"></part>
+	<message name="DeleteIncomingFromOrderResponseMessage">
+		<part name="parameters" element="tns:DeleteIncomingFromOrderResponse"/>
 	</message>
-	<message name="AddContainerResponse">
-		<part name="parameters" element="msg:AddContainerResponse"></part>
+	<message name="CarryOutOrderRequestMessage">
+		<part name="parameters" element="tns:CarryOutOrder"/>
 	</message>
-	<message name="UpdateContainerRequest">
-		<part name="parameters" element="msg:UpdateContainer"></part>
+	<message name="CarryOutOrderResponseMessage">
+		<part name="parameters" element="tns:CarryOutOrderResponse"/>
 	</message>
-	<message name="UpdateContainerResponse">
-		<part name="parameters" element="msg:UpdateContainerResponse"></part>
+	<message name="DeleteOrderRequestMessage">
+		<part name="parameters" element="tns:DeleteOrder"/>
 	</message>
-	<message name="AddBoxContainersRequest">
-		<part name="parameters" element="msg:AddBoxContainers"></part>
+	<message name="DeleteOrderResponseMessage">
+		<part name="parameters" element="tns:DeleteOrderResponse"/>
 	</message>
-	<message name="AddBoxContainersResponse">
-		<part name="parameters" element="msg:AddBoxContainersResponse"></part>
+	<message name="AddContainerRequestMessage">
+		<part name="parameters" element="tns:AddContainer"/>
 	</message>
-	<message name="GetBoxTypeRequest">
-		<part name="parameters" element="msg:GetBoxType"></part>
+	<message name="AddContainerResponseMessage">
+		<part name="parameters" element="tns:AddContainerResponse"/>
 	</message>
-	<message name="GetBoxTypeResponse">
-		<part name="parameters" element="msg:GetBoxTypeResponse"></part>
+	<message name="UpdateContainerRequestMessage">
+		<part name="parameters" element="tns:UpdateContainer"/>
 	</message>
-	<message name="GetBoxCountRequest">
-		<part name="parameters" element="msg:GetBoxCount"></part>
+	<message name="UpdateContainerResponseMessage">
+		<part name="parameters" element="tns:UpdateContainerResponse"/>
 	</message>
-	<message name="GetBoxCountResponse">
-		<part name="parameters" element="msg:GetBoxCountResponse"></part>
+	<message name="AddBoxContainersRequestMessage">
+		<part name="parameters" element="tns:AddBoxContainers"/>
 	</message>
-	<message name="GenerateTagsForContainersRequest">
-		<part name="parameters" element="msg:GenerateTagsForContainers"></part>
+	<message name="AddBoxContainersResponseMessage">
+		<part name="parameters" element="tns:AddBoxContainersResponse"/>
 	</message>
-	<message name="GenerateTagsForContainersResponse">
-		<part name="parameters" element="msg:GenerateTagsForContainersResponse"></part>
+	<message name="GetBoxTypeRequestMessage">
+		<part name="parameters" element="tns:GetBoxType"/>
 	</message>
-	<message name="GenerateTagsForIncomingsRequest">
-		<part name="parameters" element="msg:GenerateTagsForIncomings"></part>
+	<message name="GetBoxTypeResponseMessage">
+		<part name="parameters" element="tns:GetBoxTypeResponse"/>
 	</message>
-	<message name="GenerateTagsForIncomingsResponse">
-		<part name="parameters" element="msg:GenerateTagsForIncomingsResponse"></part>
+	<message name="GetBoxCountRequestMessage">
+		<part name="parameters" element="tns:GetBoxCount"/>
 	</message>
-	<message name="GatherInfoRequest">
-		<part name="parameters" element="msg:GatherInfo"></part>
+	<message name="GetBoxCountResponseMessage">
+		<part name="parameters" element="tns:GetBoxCountResponse"/>
 	</message>
-	<message name="GatherInfoResponse">
-		<part name="parameters" element="msg:GatherInfoResponse"></part>
+	<message name="GenerateTagsForContainersRequestMessage">
+		<part name="parameters" element="tns:GenerateTagsForContainers"/>
+	</message>
+	<message name="GenerateTagsForContainersResponseMessage">
+		<part name="parameters" element="tns:GenerateTagsForContainersResponse"/>
+	</message>
+	<message name="GenerateTagsForIncomingsRequestMessage">
+		<part name="parameters" element="tns:GenerateTagsForIncomings"/>
+	</message>
+	<message name="GenerateTagsForIncomingsResponseMessage">
+		<part name="parameters" element="tns:GenerateTagsForIncomingsResponse"/>
+	</message>
+	<message name="GatherInfoRequestMessage">
+		<part name="parameters" element="tns:GatherInfo"/>
+	</message>
+	<message name="GatherInfoResponseMessage">
+		<part name="parameters" element="tns:GatherInfoResponse"/>
 	</message>
 	<portType name="PackingLinePortType">
-		<documentation>Основной порт веб-сервиса, способный выполнять следующие операции</documentation>
-
-		<operation name="GetOperator">
-			<documentation>Возвращает фамилию и инициалы оператора, который вошел в систему</documentation>			<input message="tns:GetOperatorRequest"></input>			<output message="tns:GetOperatorResponse" />
+		<operation name="Echo">
+			<input message="tns:EchoRequestMessage"/>
+			<output message="tns:EchoResponseMessage"/>
 		</operation>
-
-		<operation name="GetCustomer">
-			<documentation>Возвращает фамилию и инициалы заказчика</documentation>
-			<input message="tns:GetCustomerRequest"></input>
-			<output message="tns:GetCustomerResponse" />
-		</operation>
-
 		<operation name="SetOperatorActivity">
-			<documentation>Отмечает текущее время как рабочее или время простоя. Программа упаковочной лини должна вызывать этот метод каждые 5 мин после входа оператора
-				в систему, чтобы подтвердить присутствие на рабочем месте. Если вызов пропущен по причины сбоя программы или недоступности сервиса, то статус оператора
-				должен переключиться на &quot;простой&quot; автоматически.</documentation>
-			<input message="tns:SetOperatorActivityRequest"></input>		</operation>
-
+			<input message="tns:SetOperatorActivityRequestMessage"/>
+			<output message="tns:SetOperatorActivityResponseMessage"/>
+		</operation>
+		<operation name="GetParcelInfo">
+			<input message="tns:GetParcelInfoRequestMessage"/>
+			<output message="tns:GetParcelInfoResponseMessage"/>
+		</operation>
+		<operation name="GetOperator">
+			<input message="tns:GetOperatorRequestMessage"/>
+			<output message="tns:GetOperatorResponseMessage"/>
+		</operation>
 		<operation name="FindTag">
-			<documentation>По заданному идентификатору находит и возвращает тип объекта: Поступление, Заказ, Отправление, Контейнер.</documentation>			<input message="tns:FindTagRequest"></input>			<output message="tns:FindTagResponse"></output>
+			<input message="tns:FindTagRequestMessage"/>
+			<output message="tns:FindTagResponseMessage"/>
 		</operation>
-
+		<operation name="GetCustomer">
+			<input message="tns:GetCustomerRequestMessage"/>
+			<output message="tns:GetCustomerResponseMessage"/>
+		</operation>
 		<operation name="FindIncoming">
-			<documentation>По заданному идентификатору находит и возвращает Поступление.</documentation>
-			<input message="tns:FindIncomingRequest"></input>
-			<output message="tns:FindIncomingResponse"></output>
+			<input message="tns:FindIncomingRequestMessage"/>
+			<output message="tns:FindIncomingResponseMessage"/>
 		</operation>
-
 		<operation name="FindOrder">
-			<documentation>По заданному идентификатору находит и возвращает Заказ.</documentation>
-			<input message="tns:FindOrderRequest"></input>
-			<output message="tns:FindOrderResponse"></output>
+			<input message="tns:FindOrderRequestMessage"/>
+			<output message="tns:FindOrderResponseMessage"/>
 		</operation>
-
 		<operation name="FindPost">
-			<documentation>По заданному идентификатору находит и возвращает Отправление.</documentation>
-			<input message="tns:FindPostRequest"></input>
-			<output message="tns:FindPostResponse"></output>
+			<input message="tns:FindPostRequestMessage"/>
+			<output message="tns:FindPostResponseMessage"/>
 		</operation>
-
 		<operation name="FindContainer">
-			<documentation>По заданному идентификатору находит и возвращает Контейнер.</documentation>
-			<input message="tns:FindContainerRequest"></input>
-			<output message="tns:FindContainerResponse"></output>
+			<input message="tns:FindContainerRequestMessage"/>
+			<output message="tns:FindContainerResponseMessage"/>
 		</operation>
-
 		<operation name="AddIncomingToOrder">
-			<documentation>Добавляет поступление в спискок поступлений заказа</documentation>
-			<input message="tns:AddIncomingToOrderRequest"></input>
-			<output message="tns:AddIncomingToOrderResponse"></output>
+			<input message="tns:AddIncomingToOrderRequestMessage"/>
+			<output message="tns:AddIncomingToOrderResponseMessage"/>
 		</operation>
-
 		<operation name="DeleteIncomingFromOrder">
-			<documentation>Удаляет поступление из списка поступлений заказа</documentation>
-			<input message="tns:DeleteIncomingFromOrderRequest"></input>
-			<output message="tns:DeleteIncomingFromOrderResponse"></output>
+			<input message="tns:DeleteIncomingFromOrderRequestMessage"/>
+			<output message="tns:DeleteIncomingFromOrderResponseMessage"/>
 		</operation>
-
 		<operation name="CarryOutOrder">
-			<documentation>Проводит и сохраняет заказ (акт)</documentation>
-			<input message="tns:CarryOutOrderRequest"></input>
-			<output message="tns:CarryOutOrderResponse"></output>
+			<input message="tns:CarryOutOrderRequestMessage"/>
+			<output message="tns:CarryOutOrderResponseMessage"/>
 		</operation>
-
 		<operation name="DeleteOrder">
-			<documentation>Удаляет заказ из системы</documentation>
-			<input message="tns:DeleteOrderRequest"></input>
-			<output message="tns:DeleteOrderResponse"></output>
+			<input message="tns:DeleteOrderRequestMessage"/>
+			<output message="tns:DeleteOrderResponseMessage"/>
 		</operation>
-
 		<operation name="AddContainer">
-			<documentation>Добавляет новый контейнер к отправлению</documentation>
-			<input message="tns:AddContainerRequest"></input>
-			<output message="tns:AddContainerResponse"></output>
+			<input message="tns:AddContainerRequestMessage"/>
+			<output message="tns:AddContainerResponseMessage"/>
 		</operation>
-
 		<operation name="UpdateContainer">
-			<documentation>Обновляет параметры контейнера</documentation>
-			<input message="tns:UpdateContainerRequest"></input>
-			<output message="tns:UpdateContainerResponse"></output>
+			<input message="tns:UpdateContainerRequestMessage"/>
+			<output message="tns:UpdateContainerResponseMessage"/>
 		</operation>
-
 		<operation name="AddBoxContainers">
-			<documentation>Сопоставляет размеры коробки со спиком штрих кодов</documentation>
-			<input message="tns:AddBoxContainersRequest"></input>
-			<output message="tns:AddBoxContainersResponse"></output>
+			<input message="tns:AddBoxContainersRequestMessage"/>
+			<output message="tns:AddBoxContainersResponseMessage"/>
 		</operation>
-
 		<operation name="GetBoxType">
-			<documentation>Возвращает размеры коробки по штрих коду</documentation>
-			<input message="tns:GetBoxTypeRequest"></input>
-			<output message="tns:GetBoxTypeResponse"></output>
+			<input message="tns:GetBoxTypeRequestMessage"/>
+			<output message="tns:GetBoxTypeResponseMessage"/>
 		</operation>
-
 		<operation name="GetBoxCount">
-			<documentation>Возвращает количество коробок заданного размера в зоне упаковки</documentation>
-			<input message="tns:GetBoxCountRequest"></input>
-			<output message="tns:GetBoxCountResponse"></output>
+			<input message="tns:GetBoxCountRequestMessage"/>
+			<output message="tns:GetBoxCountResponseMessage"/>
 		</operation>
-
 		<operation name="GenerateTagsForContainers">
-			<documentation>Генерирует маркеры для резерва контейнеров</documentation>
-			<input message="tns:GenerateTagsForContainersRequest"></input>
-			<output message="tns:GenerateTagsForContainersResponse"></output>
+			<input message="tns:GenerateTagsForContainersRequestMessage"/>
+			<output message="tns:GenerateTagsForContainersResponseMessage"/>
 		</operation>
-
 		<operation name="GenerateTagsForIncomings">
-			<documentation>Генерирует маркеры для новых поступлений</documentation>
-			<input message="tns:GenerateTagsForIncomingsRequest"></input>
-			<output message="tns:GenerateTagsForIncomingsResponse"></output>
+			<input message="tns:GenerateTagsForIncomingsRequestMessage"/>
+			<output message="tns:GenerateTagsForIncomingsResponseMessage"/>
 		</operation>
-
 		<operation name="GatherInfo">
-			<documentation>Возвращает данные для печати форм и этикеток</documentation>
-			<input message="tns:GatherInfoRequest"></input>
-			<output message="tns:GatherInfoResponse"></output>
+			<input message="tns:GatherInfoRequestMessage"/>
+			<output message="tns:GatherInfoResponseMessage"/>
 		</operation>
 	</portType>
-
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
-		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-		<operation name="GetOperator">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetOperator" />
+		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Echo">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:Echo"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
-			</output>
-		</operation>
-		<operation name="GetCustomer">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetCustomer" />
-			<input>
-				<soapbind:body use="literal" />
-			</input>
-			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="SetOperatorActivity">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/SetOperatorActivity" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
 			<input>
-				<soapbind:body use="literal" />
-			</input>
-		</operation>
-		<operation name="FindTag">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindTag" />
-			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetParcelInfo">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetParcelInfo"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOperator">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindTag">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetCustomer">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="FindIncoming">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindIncoming" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="FindOrder">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindOrder" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindOrder"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="FindPost">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindPost" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="FindContainer">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/FindContainer" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="AddIncomingToOrder">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddIncomingToOrder" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToOrder"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="DeleteIncomingFromOrder">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/DeleteIncomingFromOrder" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromOrder"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="CarryOutOrder">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/CarryOutOrder" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutOrder"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="DeleteOrder">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/DeleteOrder" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteOrder"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="AddContainer">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddContainer" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="UpdateContainer">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/UpdateContainer" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="AddBoxContainers">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/AddBoxContainers" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="GetBoxType">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxType" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="GetBoxCount">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GetBoxCount" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="GenerateTagsForContainers">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTagsForContainers" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="GenerateTagsForIncomings">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GenerateTagsForIncomings" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 		<operation name="GatherInfo">
-			<soapbind:operation soapAction="http://www.aplix.ru/PackingLine/1.0/ws/GatherInfo" />
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
 			<input>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal" />
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 	</binding>
-
+	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
+		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Echo">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:Echo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SetOperatorActivity">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetParcelInfo">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetParcelInfo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOperator">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindTag">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetCustomer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindIncoming">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindOrder">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindPost">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindContainer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddIncomingToOrder">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteIncomingFromOrder">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CarryOutOrder">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteOrder">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddContainer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UpdateContainer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddBoxContainers">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetBoxType">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetBoxCount">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GenerateTagsForContainers">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GenerateTagsForIncomings">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GatherInfo">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
 	<service name="PackingLine">
-		<documentation>Сервис обеспечивает взаимодействие программы упаковочной линии с удаленным операционным центром, отвечающим за обработку почты и обмен с
-			корневой системой управления предприятием. Веб-сервис доступен только после аутентификации пользователя, которая оуществляется по методу HTTP Basic
-			authentication (BA), т.е. клиент предоставляется имя пользователя (логин) и пароль в заголовке HTTP запроса.
-		</documentation>
 		<port name="PackingLineSoap" binding="tns:PackingLineSoapBinding">
-			<documentation>
-				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+			<documentation> 
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="http://localhost/post/ws/PackingLine.1cws" />
-		</port>	</service>
-
+			<soapbind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
+		</port>
+		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
+			<soap12bind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
+		</port>
+	</service>
 </definitions>

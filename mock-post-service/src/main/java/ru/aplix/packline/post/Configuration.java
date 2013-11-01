@@ -10,35 +10,35 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "configuration", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+@XmlRootElement(name = "configuration", namespace = "http://www.aplix.ru/PackingLine")
 public class Configuration {
 
-	@XmlElementWrapper(name = "customers", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "customer", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "customers", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "customer", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Customer> customers;
 
-	@XmlElementWrapper(name = "operators", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "operator", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "operators", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "operator", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Operator> operators;
 
-	@XmlElementWrapper(name = "orders", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "order", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "orders", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "order", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Order> orders;
 
-	@XmlElementWrapper(name = "incomings", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "incoming", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "incomings", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "incoming", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Incoming> incomings;
 
-	@XmlElementWrapper(name = "posts", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "post", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "posts", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "post", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Post> posts;
 
-	@XmlElementWrapper(name = "containers", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "container", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "containers", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "container", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Container> containers;
 
-	@XmlElementWrapper(name = "boxTypes", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
-	@XmlElement(name = "boxType", namespace = "http://www.aplix.ru/PackingLine/1.0/ws/model")
+	@XmlElementWrapper(name = "boxTypes", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "boxType", namespace = "http://www.aplix.ru/PackingLine")
 	private List<BoxType> boxTypes;
 
 	public List<Customer> getCustomers() {
