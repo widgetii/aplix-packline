@@ -75,7 +75,7 @@
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
         <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
-        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="INDEXTO"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
         <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="MASS"/>
         <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="TRANSTYPEID"/>
         <Variable Name="Variable8" Type="expression" Content="f:choose([Variable7] = 2, 'АВИА', '')"/>
