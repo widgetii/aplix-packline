@@ -47,6 +47,7 @@
 			<id>008001</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 		</incoming>
@@ -54,6 +55,7 @@
 			<id>008002</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 		</incoming>
@@ -61,6 +63,7 @@
 			<id>008003</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 		</incoming>
@@ -68,6 +71,7 @@
 			<id>008004</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Подарочный набор Eleganci.</contentDescription>
 		</incoming>
@@ -75,6 +79,7 @@
 			<id>008005</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 		</incoming>
@@ -82,6 +87,7 @@
 			<id>008006</id>
 			<orderId>987654321</orderId>
 			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<weight>0.0</weight>
 			<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 		</incoming>
@@ -100,11 +106,13 @@
 				<boxTypeId>180001</boxTypeId>
 				<packingType>BOX</packingType>
 				<totalWeight>0.0</totalWeight>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			</container>
 			<incoming>
 				<id>008001</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 			</incoming>
@@ -112,6 +120,7 @@
 				<id>008002</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 			</incoming>
@@ -125,6 +134,7 @@
 				<id>008003</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 			</incoming>
@@ -132,6 +142,7 @@
 				<id>008004</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Подарочный набор Eleganci.</contentDescription>
 			</incoming>
@@ -139,6 +150,7 @@
 				<id>008005</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
@@ -152,6 +164,7 @@
 				<id>008006</id>
 				<orderId>987654321</orderId>
 				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 				<weight>0.0</weight>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 			</incoming>
@@ -172,6 +185,7 @@
 			<boxTypeId>180001</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 		</container>
 		<container>
 			<id>70001793</id>
@@ -183,6 +197,7 @@
 			<boxTypeId>180001</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 		</container>
 		<container>
 			<id>70001794</id>
@@ -194,6 +209,7 @@
 			<boxTypeId>180002</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 		</container>
 		<container>
 			<id>70001795</id>
@@ -205,6 +221,7 @@
 			<boxTypeId>180002</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 		</container>
 	</containers>
 	<boxTypes>

@@ -43,7 +43,7 @@
 							<xs:element name="boxTypeId" type="xs:string"/>
 							<xs:element name="packingType" type="tns:PackingType"/>
 							<xs:element name="totalWeight" type="xs:float"/>
-							<xs:element name="date" type="xs:dateTime"/>
+							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -57,7 +57,7 @@
 			<xs:complexType name="Field">
 				<xs:sequence>
 					<xs:element name="name" type="xs:string"/>
-					<xs:element name="value" type="xs:string"/>
+					<xs:element name="value" type="xs:string" nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="FieldList">
@@ -71,8 +71,8 @@
 						<xs:sequence>
 							<xs:element name="orderId" type="xs:string"/>
 							<xs:element name="photoId" type="xs:string" nillable="true"/>
-							<xs:element name="date" type="xs:dateTime"/>
-							<xs:element name="weight" type="xs:float"/>
+							<xs:element name="date" type="xs:dateTime" nillable="true"/>
+							<xs:element name="weight" type="xs:float" nillable="true"/>
 							<xs:element name="contentDescription" type="xs:string"/>
 						</xs:sequence>
 					</xs:extension>
@@ -131,10 +131,10 @@
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
 							<xs:element name="container" type="tns:Container"/>
-							<xs:element name="incoming" type="tns:Incoming" maxOccurs="2147483647"/>
-							<xs:element name="postType" type="tns:PostType"/>
+							<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="2147483647"/>
+							<xs:element name="postType" type="tns:PostType" nillable="true"/>
 							<xs:element name="orderId" type="xs:string"/>
-							<xs:element name="date" type="xs:dateTime"/>
+							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -145,6 +145,7 @@
 					<xs:enumeration value="PARCEL"/>
 					<xs:enumeration value="BOOKPOST"/>
 					<xs:enumeration value="LETTER"/>
+					<xs:enumeration value="EMS"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="Recipient">
@@ -263,7 +264,7 @@
 			<xs:element name="GetCustomerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Customer"/>
+						<xs:element name="return" type="tns:Customer" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -277,7 +278,7 @@
 			<xs:element name="FindIncomingResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Incoming"/>
+						<xs:element name="return" type="tns:Incoming" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -291,7 +292,7 @@
 			<xs:element name="FindOrderResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Order"/>
+						<xs:element name="return" type="tns:Order" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -305,7 +306,7 @@
 			<xs:element name="FindPostResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Post"/>
+						<xs:element name="return" type="tns:Post" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -319,7 +320,7 @@
 			<xs:element name="FindContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Container"/>
+						<xs:element name="return" type="tns:Container" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -492,7 +493,7 @@
 			<xs:element name="GatherInfoResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:FieldList"/>
+						<xs:element name="return" type="tns:FieldList" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
