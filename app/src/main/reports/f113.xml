@@ -751,10 +751,9 @@
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView197" Left="87.95849" Top="67.89321" Width="1.4323364" Height="1.5873017" BoundLeft="87.89337" BoundTop="63.165623" BoundWidth="1.5625488" BoundHeight="1.5628608" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
                         </MemoView>
-                        <PictureView Centered="false" KeepRatio="true" Name="PictureView2" Left="8.008062" Top="73.809525" Width="15.495276" Height="17.171719" BoundLeft="7.9429574" BoundTop="68.5054" BoundWidth="15.625488" BoundHeight="15.628609" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable13]
-</Memo>
-                        </PictureView>
+                        <BarCodeView BarCodeType="datamatrix" DataMatrixEncoding="cp1251" Angle="0" Name="PictureView2" Left="8.008062" Top="73.809525" Width="15.495276" Height="17.171719" BoundLeft="7.9429574" BoundTop="68.5054" BoundWidth="15.625488" BoundHeight="15.628609" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable13]</Memo>
+                        </BarCodeView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView198" Left="48.89476" Top="47.8355" Width="1.4323364" Height="1.5873017" BoundLeft="48.82965" BoundTop="45.06249" BoundWidth="1.5625488" BoundHeight="1.5628608" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable15]
 </Memo>
@@ -867,10 +866,16 @@
         <Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
         <Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
         <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
-        <Variable Name="Variable13" Type="expression" Content="DinamicPictureDSHK32"/>
+        <Variable Name="Variable13" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!!' + [Variable5] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable14] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!!!' + [Variable18] + '!' + [Variable12] + '!' + [Variable9] + [Variable10] + [Variable11] + '!' + [Variable6] + '!'"/>
         <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="INN"/>
         <Variable Name="Variable15" Type="expression" Content="f:copy([Variable14],11,1)"/>
         <Variable Name="Variable16" Type="expression" Content="f:copy([Variable14],12,1)"/>
+        <Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+        <Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
+        <Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="telefon" />
+        <Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="bik" />
+        <Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="rs" />
+        <Variable Name="Variable22" Type="db-field" Dataset="PostDataSet" Content="ks" />
     </Variables>
     <Datasets>
         <Dataset Name="PostDataSet">
@@ -891,6 +896,9 @@
                     <Column Name="Variable14"/>
                     <Column Name="Variable15"/>
                     <Column Name="Variable16"/>
+                    <Column Name="Variable17"/>
+                    <Column Name="Variable18"/>
+                    <Column Name="Variable19"/>
                 </Row>
             </Rows>
         </Dataset>
