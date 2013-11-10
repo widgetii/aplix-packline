@@ -30,4 +30,12 @@ public final class Const {
 
 	public static final String POST_DATABASE_NAME = "PackLine Post Database";
 	public static final String CONTAINER_ID_PARAM = "containerId";
+	public static final String CUSTOMER_CODE_PARAM = "customerCode";
+	public static final String COUNT_PARAM = "count";
+
+	public static final String PRINT_MODE_VARIABLE = "PrintMode";
+
+	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
+	public static final String FOP_CONF_FILE = "/conf/fop.xconf";
+	public static final String REPORT_FILE_TEMPLATE = "/reports/%s.xml";
 }

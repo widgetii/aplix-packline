@@ -15,7 +15,13 @@ public enum PrintMode {
 	POSTSCRIPT,
 
 	@XmlEnumValue("PCL")
-	PCL;
+	PCL,
+
+	@XmlEnumValue("EZPL")
+	EZPL,
+
+	@XmlEnumValue("ZPL2")
+	ZPL2;
 
 	public String value() {
 		return name();

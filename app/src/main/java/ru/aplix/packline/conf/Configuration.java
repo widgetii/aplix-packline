@@ -33,16 +33,15 @@ public class Configuration {
 	@XmlElement(name = "PostService")
 	private PostService postService;
 
-	@XmlElementWrapper(name = "Stickers")
-	@XmlElement(name = "Quantity")
-	private List<Integer> stickersQuantity;
-
 	@XmlElement(name = "EmptyBoxThreshold")
 	private Integer emptyBoxThreshold;
 
 	@XmlElementWrapper(name = "Printing")
 	@XmlElement(name = "Form", type = PrintForm.class)
 	private List<PrintForm> printForms;
+
+	@XmlElement(name = "Stickers")
+	private StickersContainer stickersContainer;
 
 	private Configuration() {
 
@@ -65,6 +64,12 @@ public class Configuration {
 			Printer printer = getHardwareConfiguration().lookupPrinter(form.getPrinterId());
 			form.setPrinter(printer);
 		}
+
+		Printer printer = getHardwareConfiguration().lookupPrinter(getStickers().getForContainers().getPrinterId());
+		getStickers().getForContainers().setPrinter(printer);
+
+		printer = getHardwareConfiguration().lookupPrinter(getStickers().getForCustomers().getPrinterId());
+		getStickers().getForCustomers().setPrinter(printer);
 	}
 
 	public static String getConfigFileName() {
@@ -111,17 +116,6 @@ public class Configuration {
 		this.postService = postService;
 	}
 
-	public List<Integer> getStickersQuantity() {
-		if (stickersQuantity == null) {
-			stickersQuantity = new ArrayList<Integer>();
-		}
-		return stickersQuantity;
-	}
-
-	public void setStickersQuantity(List<Integer> stickersQuantity) {
-		this.stickersQuantity = stickersQuantity;
-	}
-
 	public Integer getEmptyBoxThreshold() {
 		return emptyBoxThreshold;
 	}
@@ -139,5 +133,16 @@ public class Configuration {
 
 	public void setPrintForms(List<PrintForm> printForms) {
 		this.printForms = printForms;
+	}
+
+	public StickersContainer getStickers() {
+		if (stickersContainer == null) {
+			stickersContainer = new StickersContainer();
+		}
+		return stickersContainer;
+	}
+
+	public void setStickers(StickersContainer stickersContainer) {
+		this.stickersContainer = stickersContainer;
 	}
 }

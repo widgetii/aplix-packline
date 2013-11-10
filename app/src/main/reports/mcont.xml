@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report FileVersion="1100">
+	<Pages>
+		<Page>
+			<Views>
+				<BarCodeView />
+			</Views>
+		</Page>
+	</Pages>
+	<Variables>
+		<Variable Name="PrintMode" Type="not-assigned" />
+		<Variable Name="Variable1" Type="db-field" Dataset="MarkersForContainersDataSet" Content="Tag" />
+	</Variables>
+	<Datasets>
+		<Dataset Name="MarkersForContainersDataSet">
+			<Rows>
+				<Row>
+					<Column Name="Variable1" />
+				</Row>
+			</Rows>
+		</Dataset>
+	</Datasets>
+</Report>

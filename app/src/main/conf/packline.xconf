@@ -15,7 +15,7 @@
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesUniversal" enabled="true" >
+		<Scales name="MeraScalesUniversal" enabled="false" >
 			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
 			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
 			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
@@ -27,7 +27,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="true" >
+		<PhotoCamera name="RaspberryCamera" enabled="false" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost:9080" />
@@ -41,13 +41,14 @@
 			<!-- "port" 		- printer port number  (required for printMode="POSTSCRIPT / PCL")		-->
 			<!-- "printMode" 	- print mode, defined values are: JAVA2D, POSTSCRIPT, PCL           	-->
 			<Printer id="printer1" name="Adobe PDF" ipAddress="127.0.0.1" port="9100" printMode="JAVA2D"/>
+			<Printer id="printer2" name="Codex EZ1000 Plus" ipAddress="127.0.0.1" port="9100" printMode="EZPL"/>
 		</Printers>
 	</Hardware>
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<_ServiceAddress>http://localhost:8080/mock-post-service-0.1/PackingLine?WSDL</_ServiceAddress>
-		<ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</ServiceAddress>
+		<ServiceAddress>http://localhost:8080/mock-post-service-0.1/PackingLine?WSDL</ServiceAddress>
+		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 	</PostService>
 	
@@ -63,12 +64,29 @@
 		<Form name="Ф.116" file="f116" printerId="printer1" autoPrint="false"/>		
 	</Printing>
 
-	<!-- Quantity of sticker to print -->
+	<!-- Settings for generation and printing stickers -->
 	<Stickers>
-		<Quantity>5</Quantity>
-		<Quantity>50</Quantity>
-		<Quantity>500</Quantity>
-		<Quantity>5000</Quantity>
+		<!-- Stickers for containers -->
+		<!-- 	"printerId"    - printer identifier, references hardware configuration, see above	-->
+		<!-- 	"barCodeType"  - type of barcode to print										 	-->
+		<ForContainers printerId="printer2" barCodeType="ean-8" >
+			<!-- Quantity of sticker to print, maximum 4 items -->
+			<Quantity>5</Quantity>
+			<Quantity>50</Quantity>
+			<Quantity>500</Quantity>
+			<Quantity>5000</Quantity>
+		</ForContainers>
+		
+		<!-- Stickers for customers -->
+		<!-- 	"printerId"    - printer identifier, references hardware configuration, see above	-->
+		<!-- 	"barCodeType"  - type of barcode to print										 	-->
+		<ForCustomers printerId="printer2" barCodeType="code39" >
+			<!-- Quantity of sticker to print, maximum 4 items -->
+			<Quantity>5</Quantity>
+			<Quantity>50</Quantity>
+			<Quantity>500</Quantity>
+			<Quantity>5000</Quantity>
+		</ForCustomers>
 	</Stickers>
 	
 	<!-- Time in seconds to lock the app, if there are no user activity -->

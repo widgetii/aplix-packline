@@ -7,8 +7,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.xml.ws.BindingProvider;
@@ -47,22 +45,13 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 	private static final int BUFFER_SIZE = 10240;
 
-	private static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
-	private static final String FOP_CONF_FILE = "/conf/fop.xconf";
-	private static final String REPORT_FILE_TEMPLATE = "/reports/%s.xml";
-	private static final String OUTPUT_FILE_TEMPLATE = "/reports/%s.pdf";
-
 	private ru.aplix.converters.fr2afop.fr.Configuration configuration = null;
-	private List<Parameter> containerIdParams;
+	private Parameter containerIdParam = null;
 
 	private String jarFolder = null;
 	private File r2afopConfigFile;
 	private String fr2afopConfigFileName;
 	private String fopConfigFileName;
-
-	public PrintFormsAction() {
-		containerIdParams = new ArrayList<Parameter>();
-	}
 
 	@Override
 	protected String getFormName() {
@@ -78,20 +67,19 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			if (jarFolder == null) {
 				File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
 				jarFolder = confFolder != null ? confFolder.getParent() : "";
-				fr2afopConfigFileName = jarFolder + FR2AFOP_CONF_FILE;
-				fopConfigFileName = jarFolder + FOP_CONF_FILE;
+				fr2afopConfigFileName = jarFolder + Const.FR2AFOP_CONF_FILE;
+				fopConfigFileName = jarFolder + Const.FOP_CONF_FILE;
 			}
 
-			String reportFileName = jarFolder + String.format(REPORT_FILE_TEMPLATE, printForm.getFile());
-			String outputFileName = jarFolder + String.format(OUTPUT_FILE_TEMPLATE, printForm.getFile());
-			printForm(containerId, reportFileName, outputFileName, printForm.getPrinter());
+			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
+			printForm(containerId, reportFileName, printForm.getPrinter());
 		} catch (Throwable e) {
 			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
 			throw ple;
 		}
 	}
 
-	public void printForm(String containerId, final String reportFileName, String outputFileName, Printer printer) throws Exception {
+	public void printForm(String containerId, final String reportFileName, Printer printer) throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -109,8 +97,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}, null, configuration);
 
 		// Select data from datasets
-		for (Parameter parameter : containerIdParams) {
-			parameter.setValue(containerId);
+		if (containerIdParam != null) {
+			containerIdParam.setValue(containerId);
 		}
 		ValueResolver vr = new ValueResolver();
 		vr.resolve(report, configuration);
@@ -175,6 +163,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 							return memoryBuffer;
 						}
 					});
+				} else {
+					throw new Exception(String.format(getResources().getString("error.print.mode.invalid"), printer.getPrintMode()));
 				}
 
 				// Go!
@@ -244,9 +234,11 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		// Get reference to container Id parameter
 		for (Dataset dataset : configuration.getDatasets()) {
-			for (Parameter parameter : dataset.getParameters()) {
-				if (Const.CONTAINER_ID_PARAM.equals(parameter.getName())) {
-					containerIdParams.add(parameter);
+			if ("PostDataSet".equals(dataset.getName())) {
+				for (Parameter parameter : dataset.getParameters()) {
+					if (Const.CONTAINER_ID_PARAM.equals(parameter.getName())) {
+						containerIdParam = parameter;
+					}
 				}
 			}
 		}

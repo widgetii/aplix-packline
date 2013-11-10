@@ -122,7 +122,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		default:
 			throw new IllegalArgumentException();
 		}
-		if (tag == null || tag.getId() == null) {
+		if (tag == null || tag.getId() == null || tag.getId().length() == 0) {
 			if (nested) {
 				throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 			} else {
@@ -160,7 +160,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	private void checkContainer(Container container) throws PackLineException {
-		if (container.getPostId() == null) {
+		if (container.getPostId() == null || container.getPostId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.post.container.empty"));
 		}
 	}

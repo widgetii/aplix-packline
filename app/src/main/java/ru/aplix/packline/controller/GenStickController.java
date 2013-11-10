@@ -125,7 +125,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 
 	private void setCount(ToggleButton toggleButton, int index) {
 		try {
-			List<Integer> quantity = Configuration.getInstance().getStickersQuantity();
+			List<Integer> quantity = Configuration.getInstance().getStickers().getForContainers().getQuantity();
 			Integer value = quantity.get(index - 1);
 
 			toggleButton.setText(value.toString());

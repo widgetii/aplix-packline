@@ -21,22 +21,20 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ru.aplix.packline.post.Field;
+import ru.aplix.packline.post.Tag;
 
-public class PostResultSet implements ResultSet {
+public class MarkerResultSet implements ResultSet {
 
 	private Statement statement;
-	private List<Field> fields;
-	private Map<String, Integer> indexes;
+	private List<Tag> tags;
 	private int position;
 
-	public PostResultSet(Statement statement, List<Field> fields) {
+	public MarkerResultSet(Statement statement, List<Tag> tags) {
 		this.statement = statement;
-		this.fields = fields;
+		this.tags = tags;
 		position = -1;
 	}
 
@@ -47,7 +45,7 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public ResultSetMetaData getMetaData() throws SQLException {
-		return new PostResultSetMetaData(fields);
+		return new MarkerResultSetMetaData();
 	}
 
 	@Override
@@ -56,10 +54,10 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public boolean next() throws SQLException {
-		if (position < 1) {
+		if (position < tags.size()) {
 			position++;
 		}
-		return (position == 0);
+		return position >= 0 && position < tags.size();
 	}
 
 	@Override
@@ -67,17 +65,17 @@ public class PostResultSet implements ResultSet {
 		if (position >= 0) {
 			position--;
 		}
-		return (position == 0);
+		return position >= 0 && position < tags.size();
 	}
 
 	@Override
 	public boolean isBeforeFirst() throws SQLException {
-		return (position < 0);
+		return (position == -1) && (tags.size() > 0);
 	}
 
 	@Override
 	public boolean isAfterLast() throws SQLException {
-		return (position > 0);
+		return (position >= tags.size());
 	}
 
 	@Override
@@ -87,7 +85,7 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public boolean isLast() throws SQLException {
-		return (position == 0);
+		return (position == tags.size() - 1);
 	}
 
 	@Override
@@ -97,19 +95,27 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public void afterLast() throws SQLException {
-		position = 1;
+		position = tags.size();
 	}
 
 	@Override
 	public boolean first() throws SQLException {
-		position = 0;
-		return true;
+		if (tags.size() > 0) {
+			position = 0;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean last() throws SQLException {
-		position = 0;
-		return true;
+		if (tags.size() > 0) {
+			position = tags.size() - 1;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -124,12 +130,12 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int getRow() throws SQLException {
-		return 1;
+		return position + 1;
 	}
 
-	private Field getColumn(int column) throws SQLException {
+	private Tag getColumn(int column) throws SQLException {
 		try {
-			return fields.get(column - 1);
+			return tags.get(position);
 		} catch (IndexOutOfBoundsException ioobe) {
 			throw new SQLException(ioobe);
 		}
@@ -137,20 +143,12 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int findColumn(String columnLabel) throws SQLException {
-		if (indexes == null) {
-			indexes = new HashMap<String, Integer>();
-			int index = 0;
-			for (Field field : fields) {
-				index++;
-				indexes.put(field.getName(), index);
-			}
-		}
-		return indexes.get(columnLabel);
+		return 1;
 	}
 
 	@Override
 	public String getString(int columnIndex) throws SQLException {
-		return getColumn(columnIndex).getValue();
+		return getColumn(columnIndex).getId();
 	}
 
 	@Override

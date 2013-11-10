@@ -124,7 +124,7 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 
 	private void setCount(ToggleButton toggleButton, int index) {
 		try {
-			List<Integer> quantity = Configuration.getInstance().getStickersQuantity();
+			List<Integer> quantity = Configuration.getInstance().getStickers().getForCustomers().getQuantity();
 			Integer value = quantity.get(index - 1);
 
 			toggleButton.setText(value.toString());

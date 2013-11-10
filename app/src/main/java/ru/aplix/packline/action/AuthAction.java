@@ -26,7 +26,7 @@ public class AuthAction extends WorkflowActionWithUserActivityMonitor<AuthContro
 		}
 
 		Operator result = postServicePort.getOperator();
-		if (result == null || result.getId() == null) {
+		if (result == null || result.getId() == null || result.getId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 

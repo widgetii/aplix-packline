@@ -18,7 +18,7 @@
 	<Datasets>		
 		<Dataset Name="PostDataSet" Database="PackLine Post Database">
 			<Parameters>
-				<Parameter Name="containerId">1</Parameter>
+				<Parameter Name="containerId" />
 			</Parameters>
 			<Query><![CDATA[
 				SELECT 
@@ -32,6 +32,33 @@
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}';
+			]]>
+			</Query>			
+		</Dataset>
+		<Dataset Name="MarkersForCustomersDataSet" Database="PackLine Post Database">
+			<Parameters>
+				<Parameter Name="count" />
+				<Parameter Name="customerCode" />
+			</Parameters>
+			<Query><![CDATA[
+				SELECT 
+					TAG_ID 
+				FROM MARKERS
+				WHERE 
+					CUSTOMER_CODE = '${customerCode}'
+				LIMIT ${count};
+			]]>
+			</Query>			
+		</Dataset>
+		<Dataset Name="MarkersForContainersDataSet" Database="PackLine Post Database">
+			<Parameters>
+				<Parameter Name="count" />
+			</Parameters>
+			<Query><![CDATA[
+				SELECT 
+					TAG_ID 
+				FROM MARKERS
+				LIMIT ${count};
 			]]>
 			</Query>			
 		</Dataset>

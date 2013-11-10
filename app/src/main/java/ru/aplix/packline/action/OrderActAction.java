@@ -28,7 +28,7 @@ public class OrderActAction extends CommonAction<OrderActController> {
 			throw new PackLineException(getResources().getString("error.post.not.incoming"));
 		}
 		final Incoming incoming = postServicePort.findIncoming(code);
-		if (incoming == null || incoming.getId() == null) {
+		if (incoming == null || incoming.getId() == null || incoming.getId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 		if (!order.getId().equals(incoming.getOrderId())) {

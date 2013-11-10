@@ -45,7 +45,6 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 57 EZPL language, print markers
 // TODO 60 scales stabilizing event
 // TODO 90 styles of act-table, menu and quantity buttons
 // FIXME Byte9 scales hand up

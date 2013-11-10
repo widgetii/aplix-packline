@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,36 +16,84 @@ import org.apache.commons.lang.StringUtils;
 import ru.aplix.packline.post.FieldList;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.StringList;
+import ru.aplix.packline.post.TagList;
 
 public class PostStatement implements Statement {
 
+	private static final int ERROR_CODE_INVALID_SQL_STATEMENT = 0x9876;
+
 	private Connection connection;
 	private PackingLinePortType postServicePort;
-	private String lastQuery;
+	private Map<String, ResultSet> lastQueries;
 	private ResultSet lastResultSet;
-	private Pattern queryPattern;
+	private Pattern queryPostPattern;
+	private Pattern queryMarkerCustPattern;
+	private Pattern queryMarkerContPattern;
 
 	public PostStatement(Connection connection, PackingLinePortType postServicePort) {
 		this.connection = connection;
 		this.postServicePort = postServicePort;
 
-		queryPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+		lastQueries = new HashMap<String, ResultSet>();
+
+		queryPostPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+		queryMarkerCustPattern = Pattern
+				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+		queryMarkerContPattern = Pattern.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 	}
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
-		if (sql != null && sql.equals(lastQuery)) {
-			ResultSet resultSet = getResultSet();
-			if (resultSet != null) {
-				resultSet.first();
+		if (sql != null && lastQueries.containsKey(sql)) {
+			lastResultSet = lastQueries.get(sql);
+			if (lastResultSet != null) {
+				lastResultSet.beforeFirst();
 			}
-			return resultSet;
+			return lastResultSet;
 		}
 
+		int i = 0;
+		ResultSet resultSet = null;
+		boolean cachable = false;
+		while (resultSet == null) {
+			i++;
+			try {
+				switch (i) {
+				case 1:
+					resultSet = executePostQuery(sql);
+					cachable = true;
+					break;
+				case 2:
+					resultSet = executeMarkerCustQuery(sql);
+					cachable = false;
+					break;
+				case 3:
+					resultSet = executeMarkerContQuery(sql);
+					cachable = false;
+					break;
+				default:
+					throw new SQLException("Invalid SQL statement");
+				}
+			} catch (SQLException sqle) {
+				if (sqle.getErrorCode() != ERROR_CODE_INVALID_SQL_STATEMENT) {
+					throw sqle;
+				}
+			}
+		}
+
+		// Return result set with data
+		lastResultSet = resultSet;
+		if (cachable) {
+			lastQueries.put(sql, lastResultSet);
+		}
+		return lastResultSet;
+	}
+
+	private ResultSet executePostQuery(String sql) throws SQLException {
 		// Validate query
-		Matcher queryMatcher = queryPattern.matcher(sql);
+		Matcher queryMatcher = queryPostPattern.matcher(sql);
 		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
-			throw new SQLException("Invalid SQL statement");
+			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
 		}
 
 		// Parse query parameters
@@ -63,9 +113,48 @@ public class PostStatement implements Statement {
 		}
 
 		// Return result set with data
-		lastResultSet = new PostResultSet(this, fieldList.getItems());
-		lastQuery = sql;
-		return lastResultSet;
+		return new PostResultSet(this, fieldList.getItems());
+	}
+
+	private ResultSet executeMarkerCustQuery(String sql) throws SQLException {
+		// Validate query
+		Matcher queryMatcher = queryMarkerCustPattern.matcher(sql);
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
+			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
+		}
+
+		// Parse query parameters
+		String customerCode = queryMatcher.group(1);
+		String count = queryMatcher.group(2);
+
+		// Call remote post service
+		TagList tagList = postServicePort.generateTagsForIncomings(customerCode, Integer.parseInt(count));
+		if (tagList == null) {
+			throw new SQLException("Invalid response from post service");
+		}
+
+		// Return result set with data
+		return new MarkerResultSet(this, tagList.getItems());
+	}
+
+	private ResultSet executeMarkerContQuery(String sql) throws SQLException {
+		// Validate query
+		Matcher queryMatcher = queryMarkerContPattern.matcher(sql);
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 1) {
+			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
+		}
+
+		// Parse query parameters
+		String count = queryMatcher.group(1);
+
+		// Call remote post service
+		TagList tagList = postServicePort.generateTagsForContainers(Integer.parseInt(count));
+		if (tagList == null) {
+			throw new SQLException("Invalid response from post service");
+		}
+
+		// Return result set with data
+		return new MarkerResultSet(this, tagList.getItems());
 	}
 
 	@Override

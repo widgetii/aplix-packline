@@ -24,7 +24,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
 		}
 		Container emptyBox = postServicePort.findContainer(code);
-		if (emptyBox == null || emptyBox.getId() == null) {
+		if (emptyBox == null || emptyBox.getId() == null || emptyBox.getId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 		if (!PackingType.BOX.equals(emptyBox.getPackingType())) {
