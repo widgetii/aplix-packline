@@ -30,7 +30,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 		if (!PackingType.BOX.equals(emptyBox.getPackingType())) {
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
 		}
-		if (emptyBox.getPostId() != null) {
+		if (emptyBox.getPostId() != null && emptyBox.getPostId().length() > 0) {
 			throw new PackLineException(getResources().getString("error.post.container.incorrect.post"));
 		}
 
