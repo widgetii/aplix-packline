@@ -39,7 +39,7 @@
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
 							<xs:element name="packingSize" type="tns:PackingSize"/>
-							<xs:element name="postId" type="xs:string"/>
+							<xs:element name="postId" type="xs:string" nillable="true"/>
 							<xs:element name="boxTypeId" type="xs:string"/>
 							<xs:element name="packingType" type="tns:PackingType"/>
 							<xs:element name="totalWeight" type="xs:float"/>

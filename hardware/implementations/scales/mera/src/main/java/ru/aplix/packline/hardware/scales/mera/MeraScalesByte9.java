@@ -359,11 +359,11 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 		}
 
 		private final byte calcCRC() {
-			byte result = 0;
+			int result = 0;
 			for (int i = 0; i < 7; ++i) {
-				result = (byte) (result + this.packet[i]);
+				result += this.packet[i];
 			}
-			return result;
+			return (byte) (result & 0xFF);
 		}
 
 		public final int getSignedValue() {

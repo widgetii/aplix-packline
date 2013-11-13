@@ -16,6 +16,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.mera.message.MeraConsumer;
+import ru.aplix.mera.scales.LoadHandle;
+import ru.aplix.mera.scales.LoadMessage;
 import ru.aplix.mera.scales.ScalesErrorHandle;
 import ru.aplix.mera.scales.ScalesErrorMessage;
 import ru.aplix.mera.scales.ScalesPort;
@@ -105,6 +107,7 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 							handle = port.subscribe(new StatusListener());
 							handle.listenForErrors(new ErrorListener());
 							handle.requestWeight(new WeightListener());
+							handle.requestLoad(new LoadListener());
 						}
 
 						if (isConnected) {
@@ -271,7 +274,9 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 			} else if (ScalesStatus.SCALES_ERROR.equals(message.getScalesStatus())) {
 				wasError = true;
 
-				LOG.error(String.format("Error in %s '%s'\n%s", getName(), configuration.getPortName(), message.getScalesError()));
+				LOG.error(String.format("Error in %s '%s': %s", getName(), configuration.getPortName(), message.getScalesError()));
+
+				disconnect();
 			}
 		}
 	}
@@ -280,8 +285,6 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 	 * 
 	 */
 	private class ErrorListener implements MeraConsumer<ScalesErrorHandle, ScalesErrorMessage> {
-
-		private boolean wasError = false;
 
 		@Override
 		public void consumerSubscribed(ScalesErrorHandle handle) {
@@ -293,13 +296,7 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		@Override
 		public void messageReceived(ScalesErrorMessage message) {
-			if (!wasError) {
-				wasError = true;
-
-				LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), message.getCause());
-
-				disconnect();
-			}
+			LOG.error(String.format("Error in %s '%s': %s", getName(), configuration.getPortName(), message.getErrorMessage()), message.getCause());
 		}
 	}
 
@@ -318,6 +315,28 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		@Override
 		public void messageReceived(WeightMessage message) {
+			for (MeasurementListener listener : listeners) {
+				float w = message.getWeight() / 1000f;
+				listener.onMeasure(w);
+			}
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private class LoadListener implements MeraConsumer<LoadHandle, LoadMessage> {
+
+		@Override
+		public void consumerSubscribed(LoadHandle handle) {
+		}
+
+		@Override
+		public void consumerUnsubscribed(LoadHandle handle) {
+		}
+
+		@Override
+		public void messageReceived(LoadMessage message) {
 			for (MeasurementListener listener : listeners) {
 				float w = message.getWeight() / 1000f;
 				listener.onMeasure(w);

@@ -194,6 +194,7 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180001</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
@@ -206,6 +207,7 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180002</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
@@ -218,6 +220,7 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180002</boxTypeId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
