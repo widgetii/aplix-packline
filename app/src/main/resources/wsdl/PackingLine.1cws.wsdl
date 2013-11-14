@@ -214,23 +214,11 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetParcelInfo">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Marker" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetParcelInfoResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:ParcelInfo" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
 			<xs:element name="GetOperator">
 				<xs:complexType>
-					<xs:sequence/>
+					<xs:sequence>
+						<xs:element name="machineId" type="xs:string"/>
+					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOperatorResponse">
@@ -511,12 +499,6 @@
 	<message name="SetOperatorActivityResponseMessage">
 		<part name="parameters" element="tns:SetOperatorActivityResponse"/>
 	</message>
-	<message name="GetParcelInfoRequestMessage">
-		<part name="parameters" element="tns:GetParcelInfo"/>
-	</message>
-	<message name="GetParcelInfoResponseMessage">
-		<part name="parameters" element="tns:GetParcelInfoResponse"/>
-	</message>
 	<message name="GetOperatorRequestMessage">
 		<part name="parameters" element="tns:GetOperator"/>
 	</message>
@@ -640,10 +622,6 @@
 			<input message="tns:SetOperatorActivityRequestMessage"/>
 			<output message="tns:SetOperatorActivityResponseMessage"/>
 		</operation>
-		<operation name="GetParcelInfo">
-			<input message="tns:GetParcelInfoRequestMessage"/>
-			<output message="tns:GetParcelInfoResponseMessage"/>
-		</operation>
 		<operation name="GetOperator">
 			<input message="tns:GetOperatorRequestMessage"/>
 			<output message="tns:GetOperatorResponseMessage"/>
@@ -734,15 +712,6 @@
 		</operation>
 		<operation name="SetOperatorActivity">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetParcelInfo">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetParcelInfo"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -935,15 +904,6 @@
 		</operation>
 		<operation name="SetOperatorActivity">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetParcelInfo">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetParcelInfo"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

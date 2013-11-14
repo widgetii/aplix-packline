@@ -20,7 +20,7 @@ import org.apache.commons.lang.RandomStringUtils;
 public class MockService implements PackingLinePortType {
 
 	@Override
-	public synchronized Operator getOperator() {
+	public synchronized Operator getOperator(String machineId) {
 		Random random = new Random();
 		int max = getConfig().getOperators().size();
 		if (max == 0) {
@@ -536,11 +536,6 @@ public class MockService implements PackingLinePortType {
 	@Override
 	public String echo(String text) {
 		return text;
-	}
-
-	@Override
-	public ParcelInfo getParcelInfo(String marker) {
-		return null;
 	}
 
 	@Resource
