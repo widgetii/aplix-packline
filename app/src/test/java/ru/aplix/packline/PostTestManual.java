@@ -32,7 +32,7 @@ public class PostTestManual extends TestCase {
 			requestContext.put(BindingProvider.PASSWORD_PROPERTY, psConf.getPassword());
 		}
 
-		Operator operator = postServicePort.getOperator("");
+		Operator operator = postServicePort.getOperator("00-00-00-00-00-00-00-00");
 		assertNotNull(operator);
 		assertTrue(psConf.getUserName().equals(operator.getId()));
 		assertTrue(operator.getName() != null && operator.getName().length() > 0);
