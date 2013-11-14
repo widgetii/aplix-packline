@@ -40,6 +40,8 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 	private List<MeasurementListener> listeners;
 	private List<ScalesConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
+	
+	private static final int MERA_SCALES_PORT_SPEED = 115200;
 
 	public MeraScalesAuto() {
 		configuration = new RS232Configuration();
@@ -91,6 +93,9 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 							connectLatch = new CountDownLatch(1);
 
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
+							serialPort.setSerialPortParams(MERA_SCALES_PORT_SPEED, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+							serialPort.enableReceiveTimeout(configuration.getTimeout());
 
 							portListener = new AutoPortEventListener();
 
