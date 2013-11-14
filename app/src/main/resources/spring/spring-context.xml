@@ -38,6 +38,7 @@
 	<bean id="action7" class="ru.aplix.packline.action.PackTypeAction">
 		<property name="barcodeAction" ref="action8" />
 		<property name="dimentionAction" ref="action9" />
+		<property name="nextAction" ref="action2" />
 	</bean>
 
 	<bean id="action8" class="ru.aplix.packline.action.ReadBarcodeBoxAction">

@@ -45,11 +45,13 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 60 scales stabilizing event
+// TODO 20 Inspect Print Forms for correct parameters
+// TODO 30 Selecting of printer bin according to paper size (or in settings)
+// TODO 40 Drivers list and registry
 // TODO 90 styles of act-table, menu and quantity buttons
-// FIXME Byte9 scales hand up
 // FIXME logout doesn't work in ubuntu
 // FIXME error checker should hide error message after 5s even though barcode scanner is turned off
+// FIXME f116: vertical lines shifting 
 
 public class App extends Application implements IdleListener {
 

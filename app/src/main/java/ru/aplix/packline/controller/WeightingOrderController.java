@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import ru.aplix.packline.Const;
@@ -26,6 +27,8 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	private Label customerLabel;
 	@FXML
 	private Label weightLabel;
+	@FXML
+	private Button nextButton;
 
 	private float measure = 0f;
 
@@ -44,7 +47,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-
+		
 		Order order = (Order) context.getAttribute(Const.ORDER);
 		if (order != null) {
 			clientLabel.setText(order.getClientName());
@@ -52,10 +55,9 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 			customerLabel.setText(order.getCustomerName());
 		}
 
-		updateMeasure(0f);
-
 		scales = (Scales<?>) context.getAttribute(Const.SCALES);
 		if (scales != null) {
+			updateMeasure(scales.getLastMeasurement());
 			scales.addMeasurementListener(this);
 			scalesChecker.playFromStart();
 		} else {
@@ -85,9 +87,20 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 			}
 		});
 	}
+	
+	@Override
+	public void onWeightStabled(final Float value) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				updateMeasure(value);
+				nextButton.fire();
+			}
+		});
+	}
 
 	private void updateMeasure(Float value) {
-		measure = value;
+		measure = value != null ? value : 0f;
 		weightLabel.setText(String.format("%.3f", measure));
 	}
 

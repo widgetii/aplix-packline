@@ -42,6 +42,7 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 	private final ScalesService scalesService;
 	private ScalesPortHandle handle = null;
 	private volatile boolean isConnected = false;
+	private volatile Float lastMeasurement;
 
 	private MeraScalesConfiguration configuration;
 	private List<MeasurementListener> listeners;
@@ -315,9 +316,9 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		@Override
 		public void messageReceived(WeightMessage message) {
+			lastMeasurement = message.getWeight() / 1000f;
 			for (MeasurementListener listener : listeners) {
-				float w = message.getWeight() / 1000f;
-				listener.onMeasure(w);
+				listener.onMeasure(lastMeasurement);
 			}
 		}
 	}
@@ -337,10 +338,20 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		@Override
 		public void messageReceived(LoadMessage message) {
+			boolean firstMeasure = lastMeasurement == null;
+			lastMeasurement = message.getWeight() / 1000f;
 			for (MeasurementListener listener : listeners) {
-				float w = message.getWeight() / 1000f;
-				listener.onMeasure(w);
+				if (!firstMeasure && message.isLoaded()) {
+					listener.onWeightStabled(lastMeasurement);
+				} else {
+					listener.onMeasure(lastMeasurement);
+				}
 			}
 		}
+	}
+
+	@Override
+	public Float getLastMeasurement() {
+		return lastMeasurement;
 	}
 }

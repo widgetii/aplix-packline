@@ -2,6 +2,8 @@ package ru.aplix.packline;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Map;
 
 import javax.xml.bind.JAXBException;
@@ -13,10 +15,11 @@ import ru.aplix.packline.conf.PostService;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.PackingLine;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.utils.Utils;
 
 public class PostTestManual extends TestCase {
 
-	public void testService() throws FileNotFoundException, MalformedURLException, JAXBException {
+	public void testService() throws FileNotFoundException, MalformedURLException, JAXBException, UnknownHostException, SocketException {
 		PostService psConf = Configuration.getInstance().getPostService();
 
 		PackingLine postService = new PackingLine();
@@ -32,9 +35,8 @@ public class PostTestManual extends TestCase {
 			requestContext.put(BindingProvider.PASSWORD_PROPERTY, psConf.getPassword());
 		}
 
-		Operator operator = postServicePort.getOperator("00-00-00-00-00-00-00-00");
+		Operator operator = postServicePort.getOperator(Utils.getMACAddress());
 		assertNotNull(operator);
-		assertTrue(psConf.getUserName().equals(operator.getId()));
 		assertTrue(operator.getName() != null && operator.getName().length() > 0);
 	}
 }

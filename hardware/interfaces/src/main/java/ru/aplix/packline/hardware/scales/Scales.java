@@ -23,4 +23,6 @@ public interface Scales<C extends ScalesConfiguration> extends Connectable {
     void addConnectionListener(ScalesConnectionListener connectionListener);
 
     void removeConnectionListener(ScalesConnectionListener connectionListener);
+    
+    Float getLastMeasurement();
 }

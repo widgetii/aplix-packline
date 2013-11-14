@@ -35,6 +35,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 	private CountDownLatch connectLatch = null;
 	private SerialPort serialPort;
 	private volatile boolean isConnected = false;
+	private volatile Float lastMeasurement;
 
 	private RS232Configuration configuration;
 	private List<MeasurementListener> listeners;
@@ -381,6 +382,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 		}
 
 		private void onMeasure(Float value) {
+			lastMeasurement = value;
 			synchronized (listeners) {
 				for (MeasurementListener listener : listeners) {
 					listener.onMeasure(value);
@@ -421,5 +423,10 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 		synchronized (connectionListeners) {
 			connectionListeners.remove(connectionListener);
 		}
+	}
+
+	@Override
+	public Float getLastMeasurement() {
+		return lastMeasurement;
 	}
 }

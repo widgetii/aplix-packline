@@ -80,6 +80,11 @@ public class MeraScalesTestManual {
 					}
 				}
 
+				@Override
+				public void onWeightStabled(Float value) {
+					onMeasure(value);
+				}
+
 				private void print(String value) {
 					for (int i = 0; i < textLength; i++) {
 						System.out.print("\b");

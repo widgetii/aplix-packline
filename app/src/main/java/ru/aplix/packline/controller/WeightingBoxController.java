@@ -90,10 +90,9 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			}
 		}
 
-		updateMeasure(0f);
-
 		scales = (Scales<?>) context.getAttribute(Const.SCALES);
 		if (scales != null) {
+			updateMeasure(scales.getLastMeasurement());
 			scales.addMeasurementListener(this);
 			scalesChecker.playFromStart();
 		} else {
@@ -179,8 +178,19 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 		});
 	}
 
+	@Override
+	public void onWeightStabled(final Float value) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				updateMeasure(value);
+				nextButton.fire();
+			}
+		});
+	}
+
 	private void updateMeasure(Float value) {
-		measure = value;
+		measure = value != null ? value : 0f;
 		weightLabel.setText(String.format("%.3f", measure));
 	}
 

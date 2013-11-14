@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.NetworkInterface;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.GregorianCalendar;
 
 import javafx.application.Application;
@@ -150,5 +154,26 @@ public final class Utils {
 		} finally {
 			socket.close();
 		}
+	}
+
+	public static String getMACAddress() throws UnknownHostException, SocketException {
+		InetAddress ip = InetAddress.getLocalHost();
+		if (ip == null) {
+			return "";
+		}
+		NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+		if (network == null) {
+			return "";
+		}
+		byte[] mac = network.getHardwareAddress();
+		if (mac == null) {
+			return "";
+		}
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < mac.length; i++) {
+			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
+		}
+		return sb.toString();
 	}
 }
