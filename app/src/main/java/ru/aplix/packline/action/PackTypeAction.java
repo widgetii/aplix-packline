@@ -17,6 +17,7 @@ public class PackTypeAction extends CommonAction<PhotoController> {
 
 	private WorkflowAction barcodeAction;
 	private WorkflowAction dimentionAction;
+	private WorkflowAction closeAction;
 
 	public WorkflowAction getBarcodeAction() {
 		return barcodeAction;
@@ -32,6 +33,14 @@ public class PackTypeAction extends CommonAction<PhotoController> {
 
 	public void setDimentionAction(WorkflowAction dimentionAction) {
 		this.dimentionAction = dimentionAction;
+	}
+
+	public WorkflowAction getCloseAction() {
+		return closeAction;
+	}
+
+	public void setCloseAction(WorkflowAction closeAction) {
+		this.closeAction = closeAction;
 	}
 
 	@Override
@@ -90,7 +99,11 @@ public class PackTypeAction extends CommonAction<PhotoController> {
 		container.setBoxTypeId(emptyBox.getBoxTypeId());
 		container.setDate(Utils.now());
 
-		setNextAction(getNextAction());
+		if (!postServicePort.addContainer(container)) {
+			throw new PackLineException(getResources().getString("error.post.container.add"));
+		}
+
+		setNextAction(getCloseAction());
 		return true;
 	}
 }
