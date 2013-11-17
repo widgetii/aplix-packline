@@ -40,7 +40,7 @@
 						<xs:sequence>
 							<xs:element name="packingSize" type="tns:PackingSize"/>
 							<xs:element name="postId" type="xs:string" nillable="true"/>
-							<xs:element name="boxTypeId" type="xs:string"/>
+							<xs:element name="boxTypeId" type="xs:string" nillable="true"/>
 							<xs:element name="packingType" type="tns:PackingType"/>
 							<xs:element name="totalWeight" type="xs:float"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
@@ -224,7 +224,7 @@
 			<xs:element name="GetOperatorResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Operator"/>
+						<xs:element name="return" type="tns:Operator" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

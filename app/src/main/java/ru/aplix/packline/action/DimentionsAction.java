@@ -26,6 +26,7 @@ public class DimentionsAction extends CommonAction<DimentionsController> {
 		ps.setLength(length);
 		ps.setWidth(width);
 		ps.setHeight(height);
+		container.setPackingSize(ps);
 
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));

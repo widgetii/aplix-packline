@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.fop.apps.MimeConstants;
 
 import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
@@ -47,15 +48,21 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 	private ru.aplix.converters.fr2afop.fr.Configuration configuration = null;
 	private Parameter containerIdParam = null;
+	private Parameter queryIdParam = null;
 
 	private String jarFolder = null;
 	private File r2afopConfigFile;
 	private String fr2afopConfigFileName;
 	private String fopConfigFileName;
+	private String queryId;
 
 	@Override
 	protected String getFormName() {
 		return "printing";
+	}
+
+	public void updateQueryId() {
+		queryId = RandomStringUtils.randomAlphanumeric(15);
 	}
 
 	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
@@ -99,6 +106,9 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		// Select data from datasets
 		if (containerIdParam != null) {
 			containerIdParam.setValue(containerId);
+		}
+		if (queryIdParam != null) {
+			queryIdParam.setValue(queryId);
 		}
 		ValueResolver vr = new ValueResolver();
 		vr.resolve(report, configuration);
@@ -238,6 +248,9 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				for (Parameter parameter : dataset.getParameters()) {
 					if (Const.CONTAINER_ID_PARAM.equals(parameter.getName())) {
 						containerIdParam = parameter;
+					}
+					if (Const.QUERY_ID_PARAM.equals(parameter.getName())) {
+						queryIdParam = parameter;
 					}
 				}
 			}

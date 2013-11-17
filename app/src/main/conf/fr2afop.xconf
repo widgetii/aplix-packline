@@ -19,6 +19,7 @@
 		<Dataset Name="PostDataSet" Database="PackLine Post Database">
 			<Parameters>
 				<Parameter Name="containerId" />
+				<Parameter Name="queryId" />
 			</Parameters>
 			<Query><![CDATA[
 				SELECT 
@@ -31,7 +32,7 @@
 					io_std, io_prost, POSTTYPE
 				FROM POST
 				WHERE 
-					CONTAINER_ID = '${containerId}';
+					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';
 			]]>
 			</Query>			
 		</Dataset>

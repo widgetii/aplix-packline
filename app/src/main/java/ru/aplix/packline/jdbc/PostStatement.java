@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +22,8 @@ public class PostStatement implements Statement {
 
 	private static final int ERROR_CODE_INVALID_SQL_STATEMENT = 0x9876;
 
+	private static final int MAX_QUERIES = 10;
+
 	private Connection connection;
 	private PackingLinePortType postServicePort;
 	private Map<String, ResultSet> lastQueries;
@@ -30,13 +32,19 @@ public class PostStatement implements Statement {
 	private Pattern queryMarkerCustPattern;
 	private Pattern queryMarkerContPattern;
 
+	@SuppressWarnings("serial")
 	public PostStatement(Connection connection, PackingLinePortType postServicePort) {
 		this.connection = connection;
 		this.postServicePort = postServicePort;
 
-		lastQueries = new HashMap<String, ResultSet>();
+		lastQueries = new LinkedHashMap<String, ResultSet>() {
+			@Override
+			protected boolean removeEldestEntry(java.util.Map.Entry<String, ResultSet> eldest) {
+				return size() > MAX_QUERIES;
+			}
+		};
 
-		queryPostPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+		queryPostPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
 		queryMarkerCustPattern = Pattern
 				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 		queryMarkerContPattern = Pattern.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
@@ -92,7 +100,7 @@ public class PostStatement implements Statement {
 	private ResultSet executePostQuery(String sql) throws SQLException {
 		// Validate query
 		Matcher queryMatcher = queryPostPattern.matcher(sql);
-		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 3) {
 			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
 		}
 

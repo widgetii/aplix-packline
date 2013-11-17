@@ -66,6 +66,8 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
+		getAction().updateQueryId();
+
 		assignButtons();
 
 		reprintContainer.setDisable(true);
