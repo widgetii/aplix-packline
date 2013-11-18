@@ -1,8 +1,12 @@
 package ru.aplix.packline.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -23,6 +27,9 @@ public class Printer {
 
 	@XmlAttribute(name = "printMode")
 	private PrintMode printMode;
+
+	@XmlElement(name = "MediaAttribute")
+	private List<String> mediaAttributes;
 
 	public String getId() {
 		return id;
@@ -62,5 +69,16 @@ public class Printer {
 
 	public void setPrintMode(PrintMode printMode) {
 		this.printMode = printMode;
+	}
+
+	public List<String> getMediaAttributes() {
+		if (mediaAttributes == null) {
+			mediaAttributes = new ArrayList<String>();
+		}
+		return mediaAttributes;
+	}
+
+	public void setMediaAttributes(List<String> mediaAttributes) {
+		this.mediaAttributes = mediaAttributes;
 	}
 }

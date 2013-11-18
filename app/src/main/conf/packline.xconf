@@ -35,12 +35,15 @@
 	
 		<!-- List of available printers -->
 		<Printers>
-			<!-- "id"          	- printer identifier to specify in print forms later			  		-->
-			<!-- "name"      	- printer system name (required for printMode="JAVA2D")					-->
-			<!-- "ipAddress"    - printer IP address (required for printMode="POSTSCRIPT / PCL")		-->
-			<!-- "port" 		- printer port number  (required for printMode="POSTSCRIPT / PCL")		-->
-			<!-- "printMode" 	- print mode, defined values are: JAVA2D, POSTSCRIPT, PCL           	-->
-			<Printer id="printer1" name="Adobe PDF" ipAddress="127.0.0.1" port="9100" printMode="JAVA2D"/>
+			<!-- "id"          		- printer identifier to specify in print forms later			  		-->
+			<!-- "name"      		- printer system name (required for printMode="JAVA2D")					-->
+			<!-- "ipAddress"    	- printer IP address (required for printMode="POSTSCRIPT / PCL")		-->
+			<!-- "port" 			- printer port number  (required for printMode="POSTSCRIPT / PCL")		-->
+			<!-- "printMode" 		- print mode, defined values are: JAVA2D, POSTSCRIPT, PCL          		-->
+			<Printer id="printer1" name="Adobe PDF" ipAddress="127.0.0.1" port="9100" printMode="JAVA2D">
+				<!-- List of media attributes (optional, only for printMode="JAVA2D") 	-->
+				<MediaAttribute>Form-Source</MediaAttribute>
+			</Printer>
 			<Printer id="printer2" name="Codex EZ1000 Plus" ipAddress="127.0.0.1" port="9100" printMode="EZPL"/>
 		</Printers>
 	</Hardware>

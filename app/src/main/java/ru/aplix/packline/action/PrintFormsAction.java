@@ -7,12 +7,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
+import javax.print.DocFlavor;
+import javax.print.PrintService;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Media;
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.fop.apps.MimeConstants;
 
 import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
@@ -25,6 +35,7 @@ import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
 import ru.aplix.converters.fr2afop.reader.InputStreamOpener;
 import ru.aplix.converters.fr2afop.reader.ReportReader;
 import ru.aplix.converters.fr2afop.reader.XMLReportReader;
+import ru.aplix.converters.fr2afop.utils.PrintAttributesResolver;
 import ru.aplix.converters.fr2afop.writer.OutputStreamOpener;
 import ru.aplix.converters.fr2afop.writer.ReportWriter;
 import ru.aplix.converters.fr2afop.writer.XMLReportWriter;
@@ -40,6 +51,8 @@ import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.utils.Utils;
 
 public class PrintFormsAction extends CommonAction<PrintFormsController> {
+
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	private static final int[] REPORT_TYPE_ZEBRA = { 105 };
 	private static final int[] REPORT_TYPE_FRF = { 21, 22, 23 };
@@ -123,7 +136,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	private void printUsingApacheFop(Report report, Printer printer) throws Exception {
+	private void printUsingApacheFop(Report report, final Printer printer) throws Exception {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
 			// Convert report to XMl
@@ -151,6 +164,12 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				if (PrintMode.JAVA2D.equals(printer.getPrintMode())) {
 					rxto.setOutputFileName(printer.getName());
 					rxto.setOutputFormat(MimeConstants.MIME_FOP_PRINT);
+					rxto.setPrintAttributesResolver(new PrintAttributesResolver() {
+						@Override
+						public PrintRequestAttributeSet createPrintAttributes(PrintService printService) {
+							return createPrintAttributesFromList(printService, printer.getMediaAttributes());
+						}
+					});
 				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
 					final ByteArrayOutputStream memoryBuffer = new ByteArrayOutputStream(BUFFER_SIZE);
 					baos2 = memoryBuffer;
@@ -255,5 +274,64 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				}
 			}
 		}
+	}
+
+	private PrintRequestAttributeSet createPrintAttributesFromList(PrintService printService, List<String> attrNames) {
+		// Checking input array
+		if (attrNames == null || attrNames.size() == 0) {
+			return null;
+		}
+
+		// Create return object
+		PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
+
+		// Get list of supported attributes
+		Object o = printService.getSupportedAttributeValues(Media.class, DocFlavor.SERVICE_FORMATTED.PAGEABLE, null);
+		if (o != null && o.getClass().isArray()) {
+			Media[] medias = (Media[]) o;
+
+			// Sort list of attributes
+			Arrays.sort(medias, new Comparator<Media>() {
+				@Override
+				public int compare(Media o1, Media o2) {
+					int res = o1.getClass().getSimpleName().compareTo(o2.getClass().getSimpleName());
+					if (res != 0) {
+						return res;
+					}
+					res = Integer.compare(o1.getValue(), o2.getValue());
+					if (res != 0) {
+						return res;
+					}
+					return o1.toString().compareTo(o2.toString());
+				}
+			});
+
+			// Find attribute by name and add it to result set
+			for (String attrName : attrNames) {
+				boolean added = false;
+				for (Media media : medias) {
+					if (media.toString().equals(attrName)) {
+						attributes.add((Media) media.clone());
+						added = true;
+					}
+				}
+
+				// If attribute not found, notify about that
+				if (!added) {
+					LOG.warn(String.format("Attribute \"%s\" is not supported by \"%s\"", attrName, printService.getName()));
+				}
+			}
+
+			// If at least one attribute was not added,
+			// then list all of them for info
+			if (attributes.size() != attrNames.size()) {
+				LOG.info(String.format("Enumerating supported attributes for \"%s\":", printService.getName()));
+				for (Media media : medias) {
+					LOG.info(String.format("  %s: %s", media.getClass().getSimpleName(), media));
+				}
+			}
+		}
+
+		return attributes;
 	}
 }
