@@ -45,7 +45,6 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 20 Inspect Print Forms for correct parameters
 // TODO 30 Selecting of printer bin according to paper size (or in settings)
 // TODO 35 Scales weight stable algorithm
 // TODO 40 Drivers list and registry
