@@ -34,7 +34,7 @@
                         </ImageView>
                         <VBox id="VBox" alignment="CENTER" prefHeight="412.0" prefWidth="443.0" spacing="5.0">
                           <children>
-                            <GridPane fx:id="reprintContainer" prefHeight="235.0" prefWidth="443.0">
+                            <GridPane fx:id="reprintContainer" prefHeight="277.0" prefWidth="443.0">
                               <children>
                                 <Button fx:id="reprintButton1" mnemonicParsing="false" onAction="#reprintClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                 <Button fx:id="reprintButton2" mnemonicParsing="false" onAction="#reprintClick" prefHeight="70.0" prefWidth="200.0" styleClass="blue-button" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -50,9 +50,13 @@
                                 <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" valignment="CENTER" vgrow="SOMETIMES" />
                               </rowConstraints>
                             </GridPane>
+                            <Button fx:id="weightingButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#weightingClick" prefHeight="64.0" prefWidth="184.0" styleClass="red-button" text="%button.reweight" textAlignment="CENTER" wrapText="true">
+                              <VBox.margin>
+                                <Insets />
+                              </VBox.margin>
+                            </Button>
                           </children>
                         </VBox>
-                        <Button fx:id="nextButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
                       </children>
                     </HBox>
                   </children>

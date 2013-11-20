@@ -104,9 +104,11 @@
 				</packingSize>
 				<postId>010931</postId>
 				<boxTypeId>180001</boxTypeId>
+				<trackingId>RR1234567890RU</trackingId>
 				<packingType>BOX</packingType>
 				<totalWeight>0.0</totalWeight>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<shipped>false</shipped>
 			</container>
 			<incoming>
 				<id>008001</id>
@@ -183,9 +185,11 @@
 			</packingSize>
 			<postId>010931</postId>
 			<boxTypeId>180001</boxTypeId>
+			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<shipped>false</shipped>
 		</container>
 		<container>
 			<id>70001793</id>
@@ -196,9 +200,11 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180001</boxTypeId>
+			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<shipped>false</shipped>
 		</container>
 		<container>
 			<id>70001794</id>
@@ -209,9 +215,11 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180002</boxTypeId>
+			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<shipped>false</shipped>
 		</container>
 		<container>
 			<id>70001795</id>
@@ -222,9 +230,11 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 			<boxTypeId>180002</boxTypeId>
+			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<shipped>false</shipped>
 		</container>
 	</containers>
 	<boxTypes>

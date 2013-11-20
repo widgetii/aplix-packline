@@ -35,6 +35,7 @@ public final class Const {
 	public static final String COUNT_PARAM = "count";
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
+	public static final String CANCEL_PRINT_VARIABLE = "CancelPrinting";
 
 	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";

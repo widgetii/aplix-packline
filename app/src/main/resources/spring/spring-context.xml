@@ -13,6 +13,7 @@
 	</bean>
 
 	<bean id="action2" class="ru.aplix.packline.action.ReadBarcodeOrderAction">
+		<property name="resetWorkAction" ref="action1" />
 		<property name="acceptanceAction" ref="action3" />
 		<property name="orderActAction" ref="action6" />
 		<property name="packingAction" ref="action7" />
@@ -54,7 +55,8 @@
 	</bean>
 
 	<bean id="action11" class="ru.aplix.packline.action.PrintFormsAction">
-		<property name="nextAction" ref="action2" />
+		<property name="weightingAction" ref="action10" />
+		<property name="normalAction" ref="action2" />
 	</bean>
 
 	<bean id="genStickAction" class="ru.aplix.packline.action.GenStickAction">

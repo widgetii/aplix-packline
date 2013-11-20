@@ -86,6 +86,9 @@ public class PackTypeAction extends CommonAction<PhotoController> {
 		if (emptyBox.getPostId() != null && emptyBox.getPostId().length() > 0) {
 			throw new PackLineException(getResources().getString("error.post.container.incorrect.post"));
 		}
+		if (emptyBox.isShipped()) {
+			throw new PackLineException(getResources().getString("error.post.container.shipped"));
+		}
 
 		Container container = new Container();
 

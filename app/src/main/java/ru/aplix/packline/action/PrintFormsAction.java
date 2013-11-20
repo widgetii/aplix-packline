@@ -19,6 +19,8 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Media;
 import javax.xml.ws.BindingProvider;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.logging.Log;
@@ -28,6 +30,7 @@ import org.apache.fop.apps.MimeConstants;
 import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
 import ru.aplix.converters.fr2afop.database.ValueResolver;
 import ru.aplix.converters.fr2afop.fr.Report;
+import ru.aplix.converters.fr2afop.fr.Variable;
 import ru.aplix.converters.fr2afop.fr.dataset.Connection;
 import ru.aplix.converters.fr2afop.fr.dataset.Database;
 import ru.aplix.converters.fr2afop.fr.dataset.Dataset;
@@ -47,12 +50,17 @@ import ru.aplix.packline.conf.PrintMode;
 import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
+import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.utils.Utils;
+import ru.aplix.packline.workflow.WorkflowAction;
 
 public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 	private final Log LOG = LogFactory.getLog(getClass());
+
+	private WorkflowAction weightingAction;
+	private WorkflowAction normalAction;
 
 	private static final int[] REPORT_TYPE_ZEBRA = { 105 };
 	private static final int[] REPORT_TYPE_FRF = { 21, 22, 23 };
@@ -69,13 +77,45 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 	private String fopConfigFileName;
 	private String queryId;
 
+	public WorkflowAction getWeightingAction() {
+		return weightingAction;
+	}
+
+	public void setWeightingAction(WorkflowAction weightingAction) {
+		this.weightingAction = weightingAction;
+	}
+
+	public WorkflowAction getNormalAction() {
+		return normalAction;
+	}
+
+	public void setNormalAction(WorkflowAction normalAction) {
+		this.normalAction = normalAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "printing";
 	}
 
-	public void updateQueryId() {
+	public void prepare() {
+		// updateQueryId
 		queryId = RandomStringUtils.randomAlphanumeric(15);
+	}
+
+	public boolean processBarcode(String code) throws PackLineException {
+		Container container = (Container) getContext().getAttribute(Const.TAG);
+
+		boolean match = container != null && code != null && code.equals(container.getTrackingId());
+		if (match) {
+			PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+			if (!postServicePort.markPostAsShipped(container.getId())) {
+				throw new PackLineException(getResources().getString("error.post.container.mark.shipped"));
+			}
+
+			setNextAction(getNormalAction());
+		}
+		return match;
 	}
 
 	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
@@ -125,6 +165,11 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 		ValueResolver vr = new ValueResolver();
 		vr.resolve(report, configuration);
+
+		// Check if the report determined to cancel printing
+		if (cancelPrinting(report)) {
+			return;
+		}
 
 		// Render report
 		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
@@ -333,5 +378,15 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 
 		return attributes;
+	}
+
+	private boolean cancelPrinting(Report report) {
+		Variable variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return Const.CANCEL_PRINT_VARIABLE.equals(((Variable) item).getName());
+			}
+		});
+		return variable != null && Boolean.valueOf(variable.getValue());
 	}
 }

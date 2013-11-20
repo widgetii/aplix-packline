@@ -8,6 +8,7 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.ReadBarcodeOrderController;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Post;
@@ -21,6 +22,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	private WorkflowAction packingAction;
 	private WorkflowAction markingAction;
 	private WorkflowAction orderActAction;
+	private WorkflowAction resetWorkAction;
 
 	public WorkflowAction getAcceptanceAction() {
 		return acceptanceAction;
@@ -54,9 +56,29 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		this.orderActAction = orderActAction;
 	}
 
+	public WorkflowAction getResetWorkAction() {
+		return resetWorkAction;
+	}
+
+	public void setResetWorkAction(WorkflowAction resetWorkAction) {
+		this.resetWorkAction = resetWorkAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "barcode-order";
+	}
+
+	public Operator checkOperatorWorkComplete(String code) {
+		Operator operator = (Operator) getContext().getAttribute(Const.OPERATOR);
+		if (operator != null && code != null && code.equals(operator.getId())) {
+			PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+			postServicePort.setOperatorActivity(false);
+
+			setNextAction(getResetWorkAction());
+			return operator;
+		}
+		return null;
 	}
 
 	public Tag processBarcode(String code) throws PackLineException {
@@ -162,6 +184,9 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	private void checkContainer(Container container) throws PackLineException {
 		if (container.getPostId() == null || container.getPostId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.post.container.empty"));
+		}
+		if (container.isShipped()) {
+			throw new PackLineException(getResources().getString("error.post.container.shipped"));
 		}
 	}
 }

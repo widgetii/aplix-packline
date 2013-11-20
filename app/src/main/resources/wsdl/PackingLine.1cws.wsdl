@@ -41,9 +41,11 @@
 							<xs:element name="packingSize" type="tns:PackingSize"/>
 							<xs:element name="postId" type="xs:string" nillable="true"/>
 							<xs:element name="boxTypeId" type="xs:string" nillable="true"/>
+							<xs:element name="trackingId" type="xs:string" nillable="true"/>
 							<xs:element name="packingType" type="tns:PackingType"/>
 							<xs:element name="totalWeight" type="xs:float"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
+							<xs:element name="shipped" type="xs:boolean"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -485,6 +487,20 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="MarkPostAsShipped">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkPostAsShippedResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="EchoRequestMessage">
@@ -613,6 +629,12 @@
 	<message name="GatherInfoResponseMessage">
 		<part name="parameters" element="tns:GatherInfoResponse"/>
 	</message>
+	<message name="MarkPostAsShippedRequestMessage">
+		<part name="parameters" element="tns:MarkPostAsShipped"/>
+	</message>
+	<message name="MarkPostAsShippedResponseMessage">
+		<part name="parameters" element="tns:MarkPostAsShippedResponse"/>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="Echo">
 			<input message="tns:EchoRequestMessage"/>
@@ -697,6 +719,10 @@
 		<operation name="GatherInfo">
 			<input message="tns:GatherInfoRequestMessage"/>
 			<output message="tns:GatherInfoResponseMessage"/>
+		</operation>
+		<operation name="MarkPostAsShipped">
+			<input message="tns:MarkPostAsShippedRequestMessage"/>
+			<output message="tns:MarkPostAsShippedResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -890,6 +916,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="MarkPostAsShipped">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1075,6 +1110,15 @@
 		</operation>
 		<operation name="GatherInfo">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="MarkPostAsShipped">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

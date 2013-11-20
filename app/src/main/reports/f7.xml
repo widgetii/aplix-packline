@@ -17,14 +17,14 @@
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIO" />
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1" />
 		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME" />
-		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="PPS" />
+		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="pps" />
 		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="MASS" />
 		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU" />
 		<Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
 		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="VALUE_" />
 		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="barkod" />
 		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="telefon" />
-		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="DATA_REP" />
+		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="data_rep" />
 		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="REGION" />
 		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="CITY" />
 		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="AREA" />
@@ -45,22 +45,28 @@
 		<Variable Name="Variable63" Type="db-field" Dataset="PostDataSet" Content="io_Zakaz" />
 		<Variable Name="Variable64" Type="db-field" Dataset="PostDataSet" Content="io_std" />
 		<Variable Name="Variable65" Type="db-field" Dataset="PostDataSet" Content="io_prost" />
+		<Variable Name="Variable71" Type="expression" Content="f:copy([Variable10], 1, 6)" />
+		<Variable Name="Variable72" Type="expression" Content="f:copy([Variable10], 7, 2)" />
+		<Variable Name="Variable73" Type="expression" Content="f:copy([Variable10], 9, 5)" />
+		<Variable Name="Variable74" Type="expression" Content="f:copy([Variable10], 14, 1)" />
+		<Variable Name="Variable81" Type="expression" Content="f:copy([Variable12], 9, 2)" />
+		<Variable Name="Variable82" Type="expression" Content="f:copy([Variable12], 6, 2)" />
+		<Variable Name="Variable83" Type="expression" Content="f:copy([Variable12], 1, 4)" />
 
 		<!-- Fields for First Class Post -->
-		<Variable Name="f7a_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7a_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7a_Komu" Type="expression" Content="'.               ' + [Variable2]" />
 		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
-		<Variable Name="f7a_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7a_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7a_ottisk" Type="expression" Content="' ' + [Variable5]" />
-		<Variable Name="f7a_ves" Type="expression" Content="[Variable6]" />
-		<Variable Name="f7a_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7a_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
+		<Variable Name="f7a_Plata" Type="expression" Content="f:trunc([Variable7]) + ' руб ' + f:copy(f:str(f:frac([Variable7]),2), 3, 2) + ' коп'" />
 		<Variable Name="f7a_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
 		<Variable Name="f7a_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
 		<Variable Name="f7a_code2of5" Type="expression" Content="[Variable10]" />
-		<Variable Name="f7a_code_text" Type="expression"
-			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7a_code_text" Type="expression" Content="[Variable71].concat(' ').concat([Variable72]).concat(' ').concat([Variable73]).concat(' ').concat([Variable74])"  />
 		<Variable Name="f7a_telefon" Type="expression" Content="[Variable11]" />
-		<Variable Name="f7a_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7a_data" Type="expression" Content="[Variable81].concat('.').concat([Variable82]).concat('.').concat([Variable83])" />
 		<Variable Name="f7a_region" Type="expression" Content="[Variable13]" />
 		<Variable Name="f7a_index" Type="expression" Content="'$' + [Variable16]" />
 		<Variable Name="f7a_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
@@ -75,30 +81,29 @@
 		<Variable Name="f7a_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
 		<Variable Name="f7a_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
 		<Variable Name="f7a_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
-		<Variable Name="f7a_io_band1kl" Type="expression" Content="f:choose([Variable51] = '1', 'X', '')" />
-		<Variable Name="f7a_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
-		<Variable Name="f7a_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
-		<Variable Name="f7a_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />
-		<Variable Name="f7a_io_prostuved" Type="expression" Content="f:choose([Variable55] = '1', 'X', '')" />
-		<Variable Name="f7a_io_zakazuved" Type="expression" Content="f:choose([Variable56] = '1', 'X', '')" />
-		<Variable Name="f7a_io_pismo1kl" Type="expression" Content="f:choose([Variable57] = '1', 'X', '')" />
-		<Variable Name="f7a_io_std" Type="expression" Content="f:choose([Variable64] = '1', 'X', '')" />
+		<Variable Name="f7a_io_band1kl" Type="expression" Content="f:choose([Variable51] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_nalozh" Type="expression" Content="f:choose([Variable52] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_opis" Type="expression" Content="f:choose([Variable53] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_cennost" Type="expression" Content="f:choose([Variable54] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_prostuved" Type="expression" Content="f:choose([Variable55] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_zakazuved" Type="expression" Content="f:choose([Variable56] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_pismo1kl" Type="expression" Content="f:choose([Variable57] = 'true', 'X', '')" />
+		<Variable Name="f7a_io_std" Type="expression" Content="f:choose([Variable64] = 'true', 'X', '')" />
 
 		<!-- Fields for Parcel Post -->
-		<Variable Name="f7p_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7p_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7p_Komu" Type="expression" Content="'.               ' + [Variable2]" />
 		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
-		<Variable Name="f7p_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7p_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7p_ottisk" Type="expression" Content="' ' + [Variable5]" />
-		<Variable Name="f7p_ves" Type="expression" Content="[Variable6]" />
-		<Variable Name="f7p_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7p_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
+		<Variable Name="f7p_Plata" Type="expression" Content="f:trunc([Variable7]) + ' руб ' + f:copy(f:str(f:frac([Variable7]),2), 3, 2) + ' коп'" />
 		<Variable Name="f7p_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
 		<Variable Name="f7p_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
 		<Variable Name="f7p_code2of5" Type="expression" Content="[Variable10]" />
-		<Variable Name="f7p_code_text" Type="expression"
-			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7p_code_text" Type="expression" Content="[Variable71].concat(' ').concat([Variable72]).concat(' ').concat([Variable73]).concat(' ').concat([Variable74])" />
 		<Variable Name="f7p_telefon" Type="expression" Content="[Variable11]" />
-		<Variable Name="f7p_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7p_data" Type="expression" Content="[Variable81].concat('.').concat([Variable82]).concat('.').concat([Variable83])" />
 		<Variable Name="f7p_region" Type="expression" Content="[Variable13]" />
 		<Variable Name="f7p_index" Type="expression" Content="'$' + [Variable16]" />
 		<Variable Name="f7p_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
@@ -113,31 +118,30 @@
 		<Variable Name="f7p_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
 		<Variable Name="f7p_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
 		<Variable Name="f7p_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
-		<Variable Name="f7p_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
-		<Variable Name="f7p_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
-		<Variable Name="f7p_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />
-		<Variable Name="f7p_io_gabar" Type="expression" Content="f:choose([Variable58] = '1', 'X', '')" />
-		<Variable Name="f7p_io_tyazh" Type="expression" Content="f:choose([Variable59] = '1', 'X', '')" />
-		<Variable Name="f7p_io_uved" Type="expression" Content="f:choose([Variable60] = '1', 'X', '')" />
-		<Variable Name="f7p_io_Nstd" Type="expression" Content="f:choose([Variable61] = '1', 'X', '')" />
-		<Variable Name="f7p_io_obykn" Type="expression" Content="f:choose([Variable62] = '1', 'X', '')" />
-		<Variable Name="f7p_io_std" Type="expression" Content="f:choose([Variable64] = '1', 'X', '')" />
+		<Variable Name="f7p_io_nalozh" Type="expression" Content="f:choose([Variable52] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_opis" Type="expression" Content="f:choose([Variable53] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_cennost" Type="expression" Content="f:choose([Variable54] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_gabar" Type="expression" Content="f:choose([Variable58] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_tyazh" Type="expression" Content="f:choose([Variable59] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_uved" Type="expression" Content="f:choose([Variable60] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_Nstd" Type="expression" Content="f:choose([Variable61] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_obykn" Type="expression" Content="f:choose([Variable62] = 'true', 'X', '')" />
+		<Variable Name="f7p_io_std" Type="expression" Content="f:choose([Variable64] = 'true', 'X', '')" />
 
 		<!-- Fields for Book Post -->
-		<Variable Name="f7b_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7b_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7b_Komu" Type="expression" Content="'.               ' + [Variable2]" />
 		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
-		<Variable Name="f7b_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7b_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7b_ottisk" Type="expression" Content="' ' + [Variable5]" />
-		<Variable Name="f7b_ves" Type="expression" Content="[Variable6]" />
-		<Variable Name="f7b_Plata" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7b_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
+		<Variable Name="f7b_Plata" Type="expression" Content="f:trunc([Variable7]) + ' руб ' + f:copy(f:str(f:frac([Variable7]),2), 3, 2) + ' коп'" />
 		<Variable Name="f7b_nalozh" Type="expression" Content="[Variable8] + ' (' + f:toRoublesRU([Variable8]) + ')'" />
 		<Variable Name="f7b_cennost" Type="expression" Content="[Variable9] + ' (' + f:toRoublesRU([Variable9]) + ')'" />
 		<Variable Name="f7b_code2of5" Type="expression" Content="[Variable10]" />
-		<Variable Name="f7b_code_text" Type="expression"
-			Content="f:copy([Variable10], 1, 6) + ' ' + f:copy([Variable10], 7, 2) + ' ' + f:copy([Variable10], 9, 5) + ' ' + f:copy([Variable10], 14, 1)" />
+		<Variable Name="f7b_code_text" Type="expression" Content="[Variable71].concat(' ').concat([Variable72]).concat(' ').concat([Variable73]).concat(' ').concat([Variable74])" />
 		<Variable Name="f7b_telefon" Type="expression" Content="[Variable11]" />
-		<Variable Name="f7b_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7b_data" Type="expression" Content="[Variable81].concat('.').concat([Variable82]).concat('.').concat([Variable83])" />
 		<Variable Name="f7b_region" Type="expression" Content="[Variable13]" />
 		<Variable Name="f7b_index" Type="expression" Content="'$' + [Variable16]" />
 		<Variable Name="f7b_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />
@@ -152,21 +156,21 @@
 		<Variable Name="f7b_ind_out4" Type="expression" Content="f:copy([Variable17], 4, 1)" />
 		<Variable Name="f7b_ind_out5" Type="expression" Content="f:copy([Variable17], 5, 1)" />
 		<Variable Name="f7b_ind_out6" Type="expression" Content="f:copy([Variable17], 6, 1)" />
-		<Variable Name="f7b_io_nalozh" Type="expression" Content="f:choose([Variable52] = '1', 'X', '')" />
-		<Variable Name="f7b_io_opis" Type="expression" Content="f:choose([Variable53] = '1', 'X', '')" />
-		<Variable Name="f7b_io_cennost" Type="expression" Content="f:choose([Variable54] = '1', 'X', '')" />\
-		<Variable Name="f7b_io_uved" Type="expression" Content="f:choose([Variable60] = '1', 'X', '')" />
-		<Variable Name="f7b_io_Zakaz" Type="expression" Content="f:choose([Variable63] = '1', 'X', '')" />
-		<Variable Name="f7b_io_prost" Type="expression" Content="f:choose([Variable65] = '1', 'X', '')" />
+		<Variable Name="f7b_io_nalozh" Type="expression" Content="f:choose([Variable52] = 'true', 'X', '')" />
+		<Variable Name="f7b_io_opis" Type="expression" Content="f:choose([Variable53] = 'true', 'X', '')" />
+		<Variable Name="f7b_io_cennost" Type="expression" Content="f:choose([Variable54] = 'true', 'X', '')" />\
+		<Variable Name="f7b_io_uved" Type="expression" Content="f:choose([Variable60] = 'true', 'X', '')" />
+		<Variable Name="f7b_io_Zakaz" Type="expression" Content="f:choose([Variable63] = 'true', 'X', '')" />
+		<Variable Name="f7b_io_prost" Type="expression" Content="f:choose([Variable65] = 'true', 'X', '')" />
 
 		<!-- Fields for Letter Post -->
-		<Variable Name="f7l_Kuda" Type="expression" Content="'.             ' + [Variable1] + [Variable14] + [Variable15] + [Variable13]" />
+		<Variable Name="f7l_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7l_Komu" Type="expression" Content="'.               ' + [Variable2]" />
 		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
-		<Variable Name="f7l_ot_kogo" Type="expression" Content="'.               ' + [Variable4]" />
+		<Variable Name="f7l_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7l_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7l_telefon" Type="expression" Content="[Variable11]" />
-		<Variable Name="f7l_data" Type="expression" Content="[Variable12]" />
+		<Variable Name="f7l_data" Type="expression" Content="[Variable81].concat('.').concat([Variable82]).concat('.').concat([Variable83])" />
 		<Variable Name="f7l_region" Type="expression" Content="[Variable13]" />
 		<Variable Name="f7l_index" Type="expression" Content="'$' + [Variable16]" />
 		<Variable Name="f7l_ind_in1" Type="expression" Content="f:copy([Variable16], 1, 1)" />

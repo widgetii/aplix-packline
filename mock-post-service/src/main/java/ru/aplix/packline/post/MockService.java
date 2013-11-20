@@ -534,6 +534,16 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public boolean markPostAsShipped(String containerId) {
+		Container container = findContainer(containerId);
+		if (container != null) {
+			container.setShipped(true);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public String echo(String text) {
 		return text;
 	}

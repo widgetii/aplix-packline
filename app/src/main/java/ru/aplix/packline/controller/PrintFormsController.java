@@ -38,7 +38,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	@FXML
 	private GridPane reprintContainer;
 	@FXML
-	private Button nextButton;
+	private Button weightingButton;
 	@FXML
 	private Button reprintButton1;
 	@FXML
@@ -52,7 +52,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
-	private Task<Void> task;
+	private Task<?> task;
 
 	public PrintFormsController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
@@ -66,12 +66,15 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		getAction().updateQueryId();
+		getAction().prepare();
 
 		assignButtons();
 
 		reprintContainer.setDisable(true);
-		nextButton.setDisable(true);
+		weightingButton.setDisable(true);
+
+		Object scales = context.getAttribute(Const.SCALES);
+		weightingButton.setVisible(scales != null);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -111,7 +114,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	private void setProgress(boolean value) {
 		progressVisibleProperty.set(value);
 		reprintContainer.setDisable(value);
-		nextButton.setDisable(value);
+		weightingButton.setDisable(value);
 	}
 
 	@Override
@@ -131,20 +134,81 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				if (!progressVisibleProperty.get()) {
-					getContext().setAttribute(Const.JUST_SCANNED_BARCODE, value);
-					done();
-				}
+				processBarcode(value);
 			}
 		});
 	}
 
-	public void nextClick(ActionEvent event) {
+	public void weightingClick(ActionEvent event) {
+		getAction().setNextAction(getAction().getWeightingAction());
 		done();
 	}
 
 	public void reprintClick(ActionEvent event) {
 		task = new PrintTask(new Button[] { (Button) event.getSource() }, true);
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+	}
+
+	private void processBarcode(final String value) {
+		if (progressVisibleProperty.get()) {
+			return;
+		}
+
+		task = new Task<Boolean>() {
+			@Override
+			public Boolean call() throws Exception {
+				try {
+					return getAction().processBarcode(value);
+				} catch (Throwable e) {
+					LOG.error(null, e);
+					throw e;
+				}
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = getResources().getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				if (getValue()) {
+					PrintFormsController.this.done();
+				} else {
+					barcodeCheckerEventHandler.reset();
+
+					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
+					errorVisibleProperty.set(true);
+				}
+			}
+		};
+
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
 	}

@@ -18,6 +18,7 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReadBarcodeOrderAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.workflow.WorkflowContext;
 
@@ -29,7 +30,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
-	private Task<Tag> task;
+	private Task<Object> task;
 
 	public ReadBarcodeOrderController() {
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
@@ -88,10 +89,15 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 			return;
 		}
 
-		task = new Task<Tag>() {
+		task = new Task<Object>() {
 			@Override
-			public Tag call() throws Exception {
+			public Object call() throws Exception {
 				try {
+					Operator operator = getAction().checkOperatorWorkComplete(value);
+					if (operator != null) {
+						return operator;
+					}
+
 					Tag tag = getAction().processBarcode(value);
 					return tag;
 				} catch (Throwable e) {

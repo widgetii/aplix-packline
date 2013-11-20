@@ -33,6 +33,9 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 		if (emptyBox.getPostId() != null && emptyBox.getPostId().length() > 0) {
 			throw new PackLineException(getResources().getString("error.post.container.incorrect.post"));
 		}
+		if (emptyBox.isShipped()) {
+			throw new PackLineException(getResources().getString("error.post.container.shipped"));
+		}
 
 		Post post = (Post) getContext().getAttribute(Const.TAG);
 		Container container = post.getContainer();

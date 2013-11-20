@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 import javax.xml.ws.BindingProvider;
+import javax.xml.ws.WebServiceException;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
@@ -28,9 +29,17 @@ public class AuthAction extends WorkflowActionWithUserActivityMonitor<AuthContro
 			requestContext.put(BindingProvider.USERNAME_PROPERTY, code);
 		}
 
-		Operator result = postServicePort.getOperator(Utils.getMACAddress());
+		Operator result = null;
+		try {
+			result = postServicePort.getOperator(Utils.getMACAddress());
+		} catch (WebServiceException wse) {
+			String msg = wse.getMessage() != null ? wse.getMessage() : "";
+			if (msg.indexOf("HTTP status code 401") < 0) {
+				throw wse;
+			}
+		}
 		if (result == null || result.getId() == null || result.getId().length() == 0) {
-			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+			throw new PackLineException(getResources().getString("error.auth.invalid.code"));
 		}
 
 		getContext().setAttribute(Const.OPERATOR, result);

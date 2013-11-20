@@ -1,5 +1,7 @@
 package ru.aplix.packline.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -10,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -52,6 +55,25 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		barcodeChecker = new Timeline();
 		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
 		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		// Add key event filter
+		rootNode.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent keyEvent) {
+				switch (keyEvent.getCode()) {
+				case ENTER:
+					numericKeybordEnterClick(null);
+					break;
+				default:
+					break;
+				}
+			}
+		});
 	}
 
 	@Override

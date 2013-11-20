@@ -47,8 +47,6 @@ import ru.aplix.packline.workflow.WorkflowController;
 
 // TODO 35 Scales weight stable algorithm
 // TODO 40 Drivers list and registry
-// TODO 50 Marking check, scan for track number
-// TODO 60 HTTP 401 check and invalid login message
 // TODO 90 styles of act-table, menu and quantity buttons
 // FIXME logout doesn't work in ubuntu
 // FIXME error checker should hide error message after 5s even though barcode scanner is turned off
