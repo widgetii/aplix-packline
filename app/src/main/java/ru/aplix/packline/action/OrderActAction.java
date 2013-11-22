@@ -9,6 +9,7 @@ import ru.aplix.packline.controller.OrderActController;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.post.TagType;
 
@@ -20,7 +21,7 @@ public class OrderActAction extends CommonAction<OrderActController> {
 	}
 
 	public boolean processBarcode(String code) throws PackLineException {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
+		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		TagType tagType = postServicePort.findTag(code);
@@ -31,11 +32,15 @@ public class OrderActAction extends CommonAction<OrderActController> {
 		if (incoming == null || incoming.getId() == null || incoming.getId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
-		if (!order.getId().equals(incoming.getOrderId())) {
-			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.order"));
+		Order order = postServicePort.getOrder(incoming.getOrderId());
+		if (order == null || order.getId() == null || order.getId().length() == 0) {
+			throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
+		}
+		if (registry.getCustomer() == null || order.getCustomer() == null || !registry.getCustomer().getId().equals(order.getCustomer().getId())) {
+			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.customer"));
 		}
 
-		Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+		Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
 				return incoming.getId().equals(((Tag) item).getId());
@@ -48,32 +53,45 @@ public class OrderActAction extends CommonAction<OrderActController> {
 		return true;
 	}
 
-	public void carryOutOrder() throws PackLineException {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
+	public void carryOutRegistry() throws PackLineException {
+		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.carryOutOrder(order.getId())) {
-			throw new PackLineException(getResources().getString("error.post.order.carryout"));
+		if (!postServicePort.carryOutRegistry(registry.getId())) {
+			throw new PackLineException(getResources().getString("error.post.registry.carryout"));
 		}
 	}
 
-	public void deleteOrder() throws PackLineException {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
+	public void deleteRegistry() throws PackLineException {
+		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.deleteOrder(order.getId())) {
-			throw new PackLineException(getResources().getString("error.post.order.delete"));
+		if (!postServicePort.deleteRegistry(registry.getId())) {
+			throw new PackLineException(getResources().getString("error.post.registry.delete"));
 		}
 	}
 
-	public void deleteIncoming(Incoming incoming) throws PackLineException {
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
+	public void deleteIncoming(final Incoming incoming) throws PackLineException {
+		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.deleteIncomingFromOrder(order.getId(), incoming)) {
-			throw new PackLineException(getResources().getString("error.post.order.incoming.delete"));
+		if (!postServicePort.deleteIncomingFromRegistry(registry.getId(), incoming)) {
+			throw new PackLineException(getResources().getString("error.post.registry.incoming.delete"));
 		}
 
-		order.getIncoming().remove(incoming);
+		// Delete incoming from registry
+		registry.getIncoming().remove(incoming);
+
+		// Delete incoming from order as well
+		Order order = (Order) getContext().getAttribute(Const.ORDER);
+		Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+			@Override
+			public boolean evaluate(Object object) {
+				return incoming.getId().equals(((Incoming) object).getId());
+			}
+		});
+		if (existing != null) {
+			order.getIncoming().remove(existing);
+		}
 	}
 }

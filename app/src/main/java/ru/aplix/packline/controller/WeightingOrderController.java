@@ -52,7 +52,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		if (order != null) {
 			clientLabel.setText(order.getClientName());
 			deliveryLabel.setText(order.getDeliveryMethod());
-			customerLabel.setText(order.getCustomerName());
+			customerLabel.setText(order.getCustomer().getName());
 		}
 
 		scales = (Scales<?>) context.getAttribute(Const.SCALES);

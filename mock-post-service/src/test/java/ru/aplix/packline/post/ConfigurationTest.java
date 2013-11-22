@@ -50,6 +50,7 @@ public class ConfigurationTest extends TestCase {
 		LOG.debug(control);
 
 		XMLUnit.setIgnoreWhitespace(true);
+		XMLUnit.setIgnoreAttributeOrder(true);
 		XMLAssert.assertXMLEqual("Configurations differ.", control, test);
 	}
 }

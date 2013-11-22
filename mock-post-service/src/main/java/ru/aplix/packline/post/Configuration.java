@@ -25,6 +25,10 @@ public class Configuration {
 	@XmlElement(name = "order", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Order> orders;
 
+	@XmlElementWrapper(name = "registries", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "registry", namespace = "http://www.aplix.ru/PackingLine")
+	private List<Registry> registries;
+
 	@XmlElementWrapper(name = "incomings", namespace = "http://www.aplix.ru/PackingLine")
 	@XmlElement(name = "incoming", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Incoming> incomings;
@@ -40,6 +44,14 @@ public class Configuration {
 	@XmlElementWrapper(name = "boxTypes", namespace = "http://www.aplix.ru/PackingLine")
 	@XmlElement(name = "boxType", namespace = "http://www.aplix.ru/PackingLine")
 	private List<BoxType> boxTypes;
+
+	@XmlElementWrapper(name = "routeLists", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "routeList", namespace = "http://www.aplix.ru/PackingLine")
+	private List<RouteList> routeLists;
+
+	@XmlElementWrapper(name = "gatherInfoResponse", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "field", required = true)
+	protected List<Field> gatherInfoFields;
 
 	public List<Customer> getCustomers() {
 		if (customers == null) {
@@ -116,5 +128,38 @@ public class Configuration {
 
 	public void setBoxTypes(List<BoxType> boxTypes) {
 		this.boxTypes = boxTypes;
+	}
+
+	public List<Registry> getRegistries() {
+		if (registries == null) {
+			registries = new ArrayList<Registry>();
+		}
+		return registries;
+	}
+
+	public void setRegistries(List<Registry> registries) {
+		this.registries = registries;
+	}
+
+	public List<RouteList> getRouteLists() {
+		if (routeLists == null) {
+			routeLists = new ArrayList<RouteList>();
+		}
+		return routeLists;
+	}
+
+	public void setRouteLists(List<RouteList> routeLists) {
+		this.routeLists = routeLists;
+	}
+
+	public List<Field> getGatherInfoFields() {
+		if (gatherInfoFields == null) {
+			gatherInfoFields = new ArrayList<Field>();
+		}
+		return gatherInfoFields;
+	}
+
+	public void setGatherInfoFields(List<Field> gatherInfoFields) {
+		this.gatherInfoFields = gatherInfoFields;
 	}
 }

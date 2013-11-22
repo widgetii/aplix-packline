@@ -75,6 +75,7 @@
         <Dataset Name="PostDataSet">
             <Rows>
                 <Row>
+                	<Column Name="PostType"/>
                     <Column Name="Variable1"/>
                     <Column Name="Variable2"/>
                     <Column Name="Variable3"/>

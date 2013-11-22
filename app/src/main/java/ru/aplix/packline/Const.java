@@ -19,6 +19,8 @@ public final class Const {
 	public static final String OPERATOR = "Operator";
 	public static final String TAG = "Tag";
 	public static final String ORDER = "Order";
+	public static final String REGISTRY = "Registry";
+	public static final String ROUTE_LIST = "RouteList";
 	public static final String BARCODE_SCANNER = "BarcodeScanner";
 	public static final String PHOTO_CAMERA = "PhotoCamera";
 	public static final String SCALES = "Scales";

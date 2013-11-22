@@ -23,13 +23,13 @@
 			</Parameters>
 			<Query><![CDATA[
 				SELECT 
-					barkod, data_rep, pps, 
-					FIRM_NAME, ADRES1, index_from, INN, BR_BNAME, bik, rs, ks, telefon,
+					barkod, barkod_espp, data_rep, pps, comment, POSTTYPE, MAILRANK,
+					FIRM_NAME, ADRES1, REGION1, index_from, INN, BR_BNAME, bik, rs, ks, telefon,
 					FIO, ADRES, CITY, AREA, REGION, index_to, TRANSTYPEID, 
 					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop,
 					io_band1kl, io_nalozh, io_opis, io_cennost, io_prostuved, io_zakazuved,
 					io_pismo1kl, io_gabar, io_tyazh, io_uved, io_Nstd, io_obykn, io_Zakaz,
-					io_std, io_prost, POSTTYPE, MAILRANK
+					io_std, io_prost
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';

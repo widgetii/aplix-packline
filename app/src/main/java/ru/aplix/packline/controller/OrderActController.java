@@ -44,7 +44,7 @@ import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Incoming;
-import ru.aplix.packline.post.Order;
+import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class OrderActController extends StandardController<OrderActAction> implements BarcodeListener {
@@ -69,7 +69,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
-	private Order order;
+	private Registry registry;
 
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
@@ -103,17 +103,17 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		order = (Order) context.getAttribute(Const.ORDER);
-		if (order != null) {
-			ObservableList<Incoming> data = FXCollections.observableArrayList(order.getIncoming());
+		registry = (Registry) context.getAttribute(Const.REGISTRY);
+		if (registry != null) {
+			ObservableList<Incoming> data = FXCollections.observableArrayList(registry.getIncoming());
 			ordersTableView.setItems(data);
 
-			Date date = order.getDate() != null ? order.getDate().toGregorianCalendar().getTime() : null;
-			actInfoLabel.setText(String.format(getResources().getString("act.info"), order.getId(), date != null ? dateFormat.format(date) : "",
-					date != null ? timeFormat.format(date) : "", order.getClientName(), order.getDeliveryMethod(), order.getCustomerName()));
+			Date date = registry.getDate() != null ? registry.getDate().toGregorianCalendar().getTime() : null;
+			actInfoLabel.setText(String.format(getResources().getString("act.info"), registry.getId(), date != null ? dateFormat.format(date) : "",
+					date != null ? timeFormat.format(date) : "", registry.getCustomer().getName()));
 
 			totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
-					order.getTotalIncomings()));
+					registry.getTotalIncomings()));
 		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
@@ -241,13 +241,13 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		});
 
 		String orderDateStr = "";
-		if (order.getDate() != null) {
-			Date orderDate = order.getDate().toGregorianCalendar().getTime();
+		if (registry.getDate() != null) {
+			Date orderDate = registry.getDate().toGregorianCalendar().getTime();
 			orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
 		}
 
 		confirmationDialog.centerOnScreen();
-		confirmationDialog.setMessage("confirmation.act.carryOutAndClose", order.getId(), orderDateStr);
+		confirmationDialog.setMessage("confirmation.act.carryOutAndClose", registry.getId(), orderDateStr);
 		confirmationDialog.show();
 	}
 
@@ -257,7 +257,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().carryOutOrder();
+					getAction().carryOutRegistry();
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -315,7 +315,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().deleteOrder();
+					getAction().deleteRegistry();
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -381,13 +381,13 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		});
 
 		String orderDateStr = "";
-		if (order.getDate() != null) {
-			Date orderDate = order.getDate().toGregorianCalendar().getTime();
+		if (registry.getDate() != null) {
+			Date orderDate = registry.getDate().toGregorianCalendar().getTime();
 			orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
 		}
 
 		confirmationDialog.centerOnScreen();
-		confirmationDialog.setMessage("confirmation.act.delete", order.getId(), orderDateStr);
+		confirmationDialog.setMessage("confirmation.act.delete", registry.getId(), orderDateStr);
 		confirmationDialog.show();
 	}
 
@@ -462,7 +462,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 				ordersTableView.getItems().remove(incoming);
 				totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
-						order.getTotalIncomings()));
+						registry.getTotalIncomings()));
 			}
 		};
 

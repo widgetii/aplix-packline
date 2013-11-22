@@ -5,7 +5,7 @@
 	<url>http://git.aplix.ru/mock-post-service</url>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>mock-post-service</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<packaging>war</packaging>
 
 	<properties>

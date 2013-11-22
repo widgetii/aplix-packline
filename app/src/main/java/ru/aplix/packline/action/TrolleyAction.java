@@ -8,6 +8,7 @@ import ru.aplix.packline.controller.TrolleyController;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.utils.Utils;
 
 public class TrolleyAction extends CommonAction<TrolleyController> {
@@ -43,10 +44,13 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
 		order.getIncoming().add(incoming);
 
+		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
+		registry.getIncoming().add(incoming);
+
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		int res = postServicePort.addIncomingToOrder(incoming.getOrderId(), incoming);
+		int res = postServicePort.addIncomingToRegistry(registry.getId(), incoming);
 		if (res <= -1) {
-			throw new PackLineException(getResources().getString("error.post.incoming.order"));
+			throw new PackLineException(getResources().getString("error.post.incoming.registry"));
 		}
 	}
 

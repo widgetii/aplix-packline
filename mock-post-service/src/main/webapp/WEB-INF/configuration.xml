@@ -26,20 +26,24 @@
 			<clientName>Аллагулов Азат Халитович</clientName>
 			<deliveryMethod>Почтовая посылка Почта России (140.7 руб., 7 дня)</deliveryMethod>
 			<deliveryAddress>456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29</deliveryAddress>
-			<customerName>ИП Митрюшкин Сергей Сергеевич</customerName>
+			<customer>
+				<id>11111111</id>
+				<name>ИП Митрюшкин Сергей Сергеевич</name>
+			</customer>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
-			<carriedOutAndClosed>false</carriedOutAndClosed>
 		</order>
 		<order>
 			<id>987654321</id>
 			<clientName>Борис Леонидович Пастернак</clientName>
 			<deliveryMethod>Почтовая посылка Почта России (234.1 руб., 5 дней)</deliveryMethod>
 			<deliveryAddress>142783, Московская область, Одинцовский район, п. Переделкино, ул. Павленко, д. 3</deliveryAddress>
-			<customerName>ИП Сидоров Иванов Иванович</customerName>
+			<customer>
+				<id>11111111</id>
+				<name>ИП Митрюшкин Сергей Сергеевич</name>
+			</customer>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 			<totalIncomings>1</totalIncomings>
-			<carriedOutAndClosed>false</carriedOutAndClosed>
 		</order>
 	</orders>
 	<incomings>
@@ -47,7 +51,7 @@
 			<id>008001</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 		</incoming>
@@ -55,7 +59,7 @@
 			<id>008002</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 		</incoming>
@@ -63,7 +67,7 @@
 			<id>008003</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 		</incoming>
@@ -71,7 +75,7 @@
 			<id>008004</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Подарочный набор Eleganci.</contentDescription>
 		</incoming>
@@ -79,7 +83,7 @@
 			<id>008005</id>
 			<orderId>123456789</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 		</incoming>
@@ -87,7 +91,7 @@
 			<id>008006</id>
 			<orderId>987654321</orderId>
 			<photoId></photoId>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 		</incoming>
@@ -107,14 +111,14 @@
 				<trackingId>RR1234567890RU</trackingId>
 				<packingType>BOX</packingType>
 				<totalWeight>0.0</totalWeight>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<shipped>false</shipped>
 			</container>
 			<incoming>
 				<id>008001</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 			</incoming>
@@ -122,11 +126,11 @@
 				<id>008002</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 			</incoming>
-			<postType>FIRSTCLASS</postType>
+			<postType>PARCEL</postType>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
@@ -136,7 +140,7 @@
 				<id>008003</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 			</incoming>
@@ -144,7 +148,7 @@
 				<id>008004</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Подарочный набор Eleganci.</contentDescription>
 			</incoming>
@@ -152,11 +156,11 @@
 				<id>008005</id>
 				<orderId>123456789</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
-			<postType>PARCEL</postType>
+			<postType>FIRSTCLASS</postType>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
@@ -166,7 +170,7 @@
 				<id>008006</id>
 				<orderId>987654321</orderId>
 				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 			</incoming>
@@ -188,7 +192,7 @@
 			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<shipped>false</shipped>
 		</container>
 		<container>
@@ -198,12 +202,12 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
-			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180001</boxTypeId>
 			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<shipped>false</shipped>
 		</container>
 		<container>
@@ -213,12 +217,12 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
-			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180002</boxTypeId>
 			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<shipped>false</shipped>
 		</container>
 		<container>
@@ -228,12 +232,12 @@
 				<height>20.0</height>
 				<width>90.0</width>
 			</packingSize>
-			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180002</boxTypeId>
 			<trackingId>RR1234567890RU</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
-			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<shipped>false</shipped>
 		</container>
 	</containers>
@@ -263,4 +267,191 @@
 			<cost>0.0</cost>
 		</boxType>
 	</boxTypes>
+	<routeLists>
+		<routeList>
+			<id>RT123MSK</id>
+			<driverName>Fernando Alonso</driverName>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+			<totalRegistries>0</totalRegistries>
+			<carriedOutAndClosed>false</carriedOutAndClosed>
+		</routeList>
+	</routeLists>
+	<gatherInfoResponse>
+		<field>
+			<name>barkod</name>
+			<value>1234567890123</value>
+		</field>
+		<field>
+			<name>barkod_espp</name>
+			<value>4060</value>
+		</field>
+		<field>
+			<name>data_rep</name>
+			<value>2013-11-01T00:00:00</value>
+		</field>
+		<field>
+			<name>comment</name>
+			<value>комментарий</value>
+		</field>
+		<field>
+			<name>pps</name>
+			<value>&#1052;&#1052;&#1055; &#8470;7 &#1055;&#1054;&#1063;&#1058;&#1040; &#1056;&#1054;&#1057;&#1057;&#1048;&#1048; &#1052;&#1054;&#1057;&#1050;&#1042;&#1040; 115127</value>
+		</field>
+		<field>
+			<name>FIRM_NAME</name>
+			<value>ООО "АПЛИКС"</value>
+		</field>
+		<field>
+			<name>ADRES1</name>
+			<value>Москва, Варшавское шоссе, дом 141</value>
+		</field>
+		<field>
+			<name>REGION1</name>
+			<value>Россия</value>
+		</field>
+		<field>
+			<name>index_from</name>
+			<value>117556</value>
+		</field>
+		<field>
+			<name>INN</name>
+			<value>123456789012</value>
+		</field>
+		<field>
+			<name>BR_BNAME</name>
+			<value>Сбербанк</value>
+		</field>
+		<field>
+			<name>bik</name>
+			<value>1234567890</value>
+		</field>
+		<field>
+			<name>rs</name>
+			<value>12345678901234567890</value>
+		</field>
+		<field>
+			<name>ks</name>
+			<value>12345678901234567890</value>
+		</field>
+		<field>
+			<name>telefon</name>
+			<value>322-33-22</value>
+		</field>
+		<field>
+			<name>FIO</name>
+			<value>Пушкин Александр Сергеевич</value>
+		</field>
+		<field>
+			<name>ADRES</name>
+			<value>д.1</value>
+		</field>
+		<field>
+			<name>CITY</name>
+			<value>с. Михайловское</value>
+		</field>
+		<field>
+			<name>AREA</name>
+			<value>Пушкиногорский район</value>
+		</field>
+		<field>
+			<name>REGION</name>
+			<value>Псковская область</value>
+		</field>
+		<field>
+			<name>index_to</name>
+			<value>181370</value>
+		</field>
+		<field>
+			<name>TRANSTYPEID</name>
+			<value>3</value>
+		</field>
+		<field>
+			<name>MASS</name>
+			<value>0.675</value>
+		</field>
+		<field>
+			<name>VALUE_</name>
+			<value>345</value>
+		</field>
+		<field>
+			<name>PAYMENT</name>
+			<value>278</value>
+		</field>
+		<field>
+			<name>ITOGOZAPERESULKU</name>
+			<value>93165</value>
+		</field>
+		<field>
+			<name>MAILRANK</name>
+			<value>1</value>
+		</field>
+		<field>
+			<name>NPRub</name>
+			<value>25</value>
+		</field>
+		<field>
+			<name>NPKop</name>
+			<value>56</value>
+		</field>
+		<field>
+			<name>io_band1kl</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_nalozh</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_opis</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_cennost</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_prostuved</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_zakazuved</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_pismo1kl</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_gabar</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_tyazh</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_uved</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_Nstd</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_obykn</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_Zakaz</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_std</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_prost</name>
+			<value>true</value>
+		</field>
+	</gatherInfoResponse>
 </configuration>

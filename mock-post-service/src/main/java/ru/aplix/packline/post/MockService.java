@@ -1,6 +1,7 @@
 package ru.aplix.packline.post;
 
 import java.io.InputStream;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -8,6 +9,8 @@ import javax.jws.WebService;
 import javax.servlet.ServletContext;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
@@ -18,6 +21,12 @@ import org.apache.commons.lang.RandomStringUtils;
 
 @WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine")
 public class MockService implements PackingLinePortType {
+
+	@Override
+	public synchronized boolean setOperatorActivity(boolean isActive) {
+		// do nothing
+		return true;
+	}
 
 	@Override
 	public synchronized Operator getOperator(String machineId) {
@@ -46,9 +55,33 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized boolean setOperatorActivity(boolean isActive) {
-		// do nothing
-		return true;
+	public synchronized Order getOrder(final String orderId) {
+		if (orderId == null) {
+			return null;
+		}
+
+		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return orderId.equals(((Order) item).getId());
+			}
+		});
+		return order;
+	}
+
+	@Override
+	public Registry getRegistry(final String registryId) {
+		if (registryId == null) {
+			return null;
+		}
+
+		Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return registryId.equals(((Registry) item).getId());
+			}
+		});
+		return registry;
 	}
 
 	@Override
@@ -57,28 +90,32 @@ public class MockService implements PackingLinePortType {
 			return null;
 		}
 
-		Predicate predicate = new Predicate() {
+		final Predicate predicate = new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
 				return tagId.equals(((Tag) item).getId());
 			}
 		};
 
-		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), predicate);
-		if (order != null) {
-			return TagType.ORDER;
-		}
-
 		final Incoming incoming = (Incoming) CollectionUtils.find(getConfig().getIncomings(), predicate);
 		if (incoming != null) {
-			order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
+			Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 				@Override
 				public boolean evaluate(Object item) {
-					return incoming.getOrderId().equals(((Tag) item).getId());
+					return incoming.getOrderId().equals(((Order) item).getId());
 				}
 			});
 
-			if (order != null && order.getTotalIncomings() == 1 && order.isCarriedOutAndClosed()) {
+			Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					Registry registry = (Registry) item;
+					Incoming incoming = (Incoming) CollectionUtils.find(registry.getIncoming(), predicate);
+					return incoming != null;
+				}
+			});
+
+			if (order != null && order.getTotalIncomings() == 1 && registry != null && registry.isCarriedOutAndClosed()) {
 				// go to seeking Post with the same Id
 			} else {
 				return TagType.INCOMING;
@@ -114,21 +151,6 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized Order findOrder(final String orderId) {
-		if (orderId == null) {
-			return null;
-		}
-
-		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return orderId.equals(((Tag) item).getId());
-			}
-		});
-		return order;
-	}
-
-	@Override
 	public synchronized Post findPost(final String postId) {
 		if (postId == null) {
 			return null;
@@ -159,9 +181,56 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized int addIncomingToOrder(final String orderId, final Incoming incoming) {
+	public RouteList findRouteList(final String routeListId) {
+		if (routeListId == null) {
+			return null;
+		}
+
+		RouteList routeList = (RouteList) CollectionUtils.find(getConfig().getRouteLists(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return routeListId.equals(((Tag) item).getId());
+			}
+		});
+		return routeList;
+	}
+
+	@Override
+	public Registry findRegistry(String routeListId, final String incomingId) {
+		Incoming incoming = findIncoming(incomingId);
+		if (incoming == null) {
+			return null;
+		}
+
+		final Order order = getOrder(incoming.getOrderId());
+		if (order == null) {
+			return null;
+		}
+
+		Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return order.getCustomer().getId().equals(((Registry) item).getCustomer().getId());
+			}
+		});
+
+		if (registry == null) {
+			registry = new Registry();
+			registry.setId(RandomStringUtils.randomNumeric(10));
+			registry.setCustomer(getConfig().getCustomers().size() > 0 ? getConfig().getCustomers().get(0) : null);
+			registry.setCarriedOutAndClosed(false);
+			registry.setTotalIncomings(10);
+			registry.setDate(now());
+			getConfig().getRegistries().add(registry);
+		}
+
+		return registry;
+	}
+
+	@Override
+	public synchronized int addIncomingToRegistry(final String registryId, final Incoming incoming) {
 		// Check order and incoming linkage
-		if (orderId == null || incoming == null || !orderId.equals(incoming.getOrderId())) {
+		if (registryId == null || incoming == null || incoming.getOrderId() == null) {
 			return -1;
 		}
 
@@ -169,10 +238,16 @@ public class MockService implements PackingLinePortType {
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
-				return orderId.equals(((Tag) item).getId());
+				return incoming.getOrderId().equals(((Order) item).getId());
 			}
 		});
-		if (order != null) {
+		Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return registryId.equals(((Registry) item).getId());
+			}
+		});
+		if (order != null && registry != null) {
 			// Find incoming in the given order
 			Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
 				@Override
@@ -183,30 +258,29 @@ public class MockService implements PackingLinePortType {
 
 			if (existing == null) {
 				// If there is no such incoming then add a new one
-				Incoming newItem = new Incoming();
-				order.getIncoming().add(newItem);
+				existing = new Incoming();
+				order.getIncoming().add(existing);
+				registry.getIncoming().add(existing);
 
 				// Copy incoming properties
-				newItem.setId(incoming.getId());
-				newItem.setOrderId(incoming.getOrderId());
-				newItem.setPhotoId(incoming.getPhotoId());
-				newItem.setWeight(incoming.getWeight());
-				newItem.setContentDescription(incoming.getContentDescription());
-				newItem.setDate((incoming.getDate() != null) ? (XMLGregorianCalendar) incoming.getDate().clone() : null);
-
-				// Return incoming index in the list
-				return order.getIncoming().indexOf(newItem);
-			} else {
-				return -1;
+				existing.setId(incoming.getId());
+				existing.setOrderId(incoming.getOrderId());
+				existing.setPhotoId(incoming.getPhotoId());
+				existing.setWeight(incoming.getWeight());
+				existing.setContentDescription(incoming.getContentDescription());
+				existing.setDate((incoming.getDate() != null) ? (XMLGregorianCalendar) incoming.getDate().clone() : null);
 			}
+
+			// Return incoming index in the list
+			return registry.getIncoming().indexOf(existing);
 		} else {
 			return -1;
 		}
 	}
 
 	@Override
-	public synchronized boolean deleteIncomingFromOrder(final String orderId, final Incoming incoming) {
-		if (orderId == null || incoming == null || incoming.getId() == null) {
+	public synchronized boolean deleteIncomingFromRegistry(final String registryId, final Incoming incoming) {
+		if (registryId == null || incoming == null || incoming.getOrderId() == null) {
 			return false;
 		}
 
@@ -214,23 +288,29 @@ public class MockService implements PackingLinePortType {
 		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
-				return orderId.equals(((Tag) item).getId());
+				return incoming.getOrderId().equals(((Order) item).getId());
 			}
 		});
-
-		if (order != null) {
+		Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return registryId.equals(((Registry) item).getId());
+			}
+		});
+		if (order != null && registry != null) {
 			// Find incoming in the given order
-			Incoming incoming2 = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+			Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
 				@Override
 				public boolean evaluate(Object object) {
 					Incoming item = (Incoming) object;
-					return incoming.getId().equals(item.getId()) && orderId.equals(item.getOrderId());
+					return incoming.getId().equals(item.getId()) && incoming.getOrderId().equals(item.getOrderId());
 				}
 			});
 
-			if (incoming2 != null) {
+			if (existing != null) {
 				// Remove incoming from list
-				return order.getIncoming().remove(incoming2);
+				order.getIncoming().remove(existing);
+				return registry.getIncoming().remove(existing);
 			} else {
 				return false;
 			}
@@ -240,21 +320,36 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized boolean carryOutOrder(final String orderId) {
-		if (orderId == null) {
+	public synchronized boolean deleteRegistry(final String registryId) {
+		Registry registry = getRegistry(registryId);
+		if (registry != null) {
+			// Delete registered incomings from orders first
+			for (final Incoming incoming : registry.getIncoming()) {
+				for (Order order : getConfig().getOrders()) {
+					Incoming incInOrder = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+						@Override
+						public boolean evaluate(Object item) {
+							return incoming.getId().equals(((Incoming) item).getId());
+						}
+					});
+					if (incInOrder != null) {
+						order.getIncoming().remove(incInOrder);
+					}
+				}
+			}
+
+			// Then delete registry itself
+			return getConfig().getRegistries().remove(registry);
+		} else {
 			return false;
 		}
+	}
 
-		// Find order in global list
-		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return orderId.equals(((Tag) item).getId());
-			}
-		});
-
-		if (order != null) {
-			order.setCarriedOutAndClosed(true);
+	@Override
+	public synchronized boolean carryOutRegistry(String registryId) {
+		Registry registry = getRegistry(registryId);
+		if (registry != null) {
+			registry.setCarriedOutAndClosed(true);
 			return true;
 		} else {
 			return false;
@@ -262,22 +357,24 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public synchronized boolean deleteOrder(final String orderId) {
-		if (orderId == null) {
-			return false;
-		}
-
-		Order order = (Order) CollectionUtils.find(getConfig().getOrders(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return orderId.equals(((Tag) item).getId());
-			}
-		});
-		if (order != null) {
-			return getConfig().getOrders().remove(order);
+	public boolean carryOutRouteList(String routeListId) {
+		RouteList routeList = findRouteList(routeListId);
+		if (routeList != null) {
+			routeList.setCarriedOutAndClosed(true);
+			return true;
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean markPostAsShipped(String containerId) {
+		Container container = findContainer(containerId);
+		if (container != null) {
+			container.setShipped(true);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -518,34 +615,29 @@ public class MockService implements PackingLinePortType {
 		});
 
 		Random r = new Random();
-		for (String name : fields.getItems()) {
+		for (final String name : fields.getItems()) {
 			Field field = new Field();
 			field.setName(name);
 
 			if (PostType.class.getSimpleName().equalsIgnoreCase(name)) {
 				field.setValue(post.getPostType().name().toUpperCase());
 			} else {
-				field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
+				Field existing = (Field) CollectionUtils.find(getConfig().getGatherInfoFields(), new Predicate() {
+					@Override
+					public boolean evaluate(Object object) {
+						return name.equals(((Field) object).getName());
+					}
+				});
+				if (existing != null) {
+					field.setValue(existing.getValue());
+				} else {
+					field.setValue(RandomStringUtils.randomAlphanumeric(10 + r.nextInt(20)));
+				}
 			}
 			resultList.getItems().add(field);
 		}
 
 		return resultList;
-	}
-
-	@Override
-	public boolean markPostAsShipped(String containerId) {
-		Container container = findContainer(containerId);
-		if (container != null) {
-			container.setShipped(true);
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public String echo(String text) {
-		return text;
 	}
 
 	@Resource
@@ -592,4 +684,15 @@ public class MockService implements PackingLinePortType {
 		};
 	}; */
 	// @formatter:on
+
+	private static XMLGregorianCalendar now() {
+		XMLGregorianCalendar xmlGC = null;
+		try {
+			GregorianCalendar gcal = new GregorianCalendar();
+			xmlGC = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+		}
+		return xmlGC;
+	}
 }

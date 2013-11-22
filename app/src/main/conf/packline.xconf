@@ -15,7 +15,7 @@
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesUniversal" enabled="true" >
+		<Scales name="MeraScalesUniversal" enabled="false" >
 			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
 			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
 			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
@@ -27,7 +27,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="true" >
+		<PhotoCamera name="RaspberryCamera" enabled="false" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost:9080" />
@@ -50,7 +50,7 @@
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<ServiceAddress>http://localhost:8080/mock-post-service-0.1/PackingLine?WSDL</ServiceAddress>
+		<ServiceAddress>http://localhost:8080/mock-post-service-0.2/PackingLine?WSDL</ServiceAddress>
 		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 	</PostService>

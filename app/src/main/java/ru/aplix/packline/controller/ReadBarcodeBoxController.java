@@ -58,7 +58,7 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		if (order != null) {
 			clientLabel.setText(order.getClientName());
 			deliveryLabel.setText(order.getDeliveryMethod());
-			customerLabel.setText(order.getCustomerName());
+			customerLabel.setText(order.getCustomer().getName());
 		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
