@@ -1,5 +1,7 @@
 package ru.aplix.packline.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
@@ -8,6 +10,12 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
@@ -16,9 +24,13 @@ import org.apache.commons.logging.LogFactory;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReadBarcodeOrderAction;
+import ru.aplix.packline.dialog.ConfirmationDialog;
+import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Operator;
+import ru.aplix.packline.post.Registry;
+import ru.aplix.packline.post.RouteList;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.workflow.WorkflowContext;
 
@@ -26,13 +38,33 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
+	@FXML
+	private Label routeListInfoLabel;
+	@FXML
+	private Label totalRegistriesLabel;
+	@FXML
+	private Pane routeListContainer;
+	@FXML
+	private Button closeRouteListButton;
+	@FXML
+	private Button saveRouteListButton;
+
 	private BarcodeScanner<?> barcodeScanner = null;
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
-	private Task<Object> task;
+	private ConfirmationDialog confirmationDialog = null;
+	private Task<?> task;
+
+	private DateFormat dateFormat;
+	private DateFormat timeFormat;
+
+	private RouteList routeList;
 
 	public ReadBarcodeOrderController() {
+		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+		timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
 		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
 
 		barcodeChecker = new Timeline();
@@ -44,12 +76,32 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
+		// Display route list info
+		routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
+		routeListContainer.setVisible(routeList != null);
+		routeListContainer.prefWidthProperty().bind(((AnchorPane) rootNode).widthProperty().multiply(routeListContainer.isVisible() ? 0.25f : 0f));
+		if (routeList != null) {
+			Date date = routeList.getDate() != null ? routeList.getDate().toGregorianCalendar().getTime() : null;
+			routeListInfoLabel.setText(String.format(getResources().getString("routeList.info"), routeList.getId(),
+					date != null ? dateFormat.format(date) : "", date != null ? timeFormat.format(date) : "", routeList.getDriverName()));
+
+			int closedCound = 0;
+			for (Registry registry : routeList.getRegistry()) {
+				if (registry.isCarriedOutAndClosed()) {
+					closedCound++;
+				}
+			}
+			totalRegistriesLabel.setText(String.format(getResources().getString("routeList.registries.total"), closedCound, routeList.getRegistry().size()));
+		}
+
+		// Initialize bar-code scanner
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
 			barcodeChecker.playFromStart();
 		}
 
+		// If bar-code has been read already, then process it
 		final String barcode = (String) getContext().getAttribute(Const.JUST_SCANNED_BARCODE);
 		if (barcode != null) {
 			getContext().setAttribute(Const.JUST_SCANNED_BARCODE, null);
@@ -85,7 +137,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	}
 
 	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get()) {
+		if (progressVisibleProperty.get() || confirmationDialog != null) {
 			return;
 		}
 
@@ -110,14 +162,14 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 			protected void running() {
 				super.running();
 
-				progressVisibleProperty.set(true);
+				setProgress(true);
 			}
 
 			@Override
 			protected void failed() {
 				super.failed();
 
-				progressVisibleProperty.set(false);
+				setProgress(false);
 
 				barcodeCheckerEventHandler.reset();
 
@@ -136,7 +188,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 			protected void succeeded() {
 				super.succeeded();
 
-				progressVisibleProperty.set(false);
+				setProgress(false);
 
 				Object result = getValue();
 				if (result != null) {
@@ -152,6 +204,97 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	public void saveRouteListClick(ActionEvent event) {
+		getAction().saveRouteList();
+		done();
+	}
+
+	public void closeRouteListClick(ActionEvent event) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.carryOutAndClose", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				doCloseAct();
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		String orderDateStr = "";
+		if (routeList.getDate() != null) {
+			Date orderDate = routeList.getDate().toGregorianCalendar().getTime();
+			orderDateStr = String.format("%s %s", dateFormat.format(orderDate), timeFormat.format(orderDate));
+		}
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.routeList.carryOutAndClose", routeList.getId(), orderDateStr);
+		confirmationDialog.show();
+	}
+
+	private void doCloseAct() {
+		task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().carryOutRouteList();
+				} catch (Throwable e) {
+					LOG.error(null, e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				setProgress(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				setProgress(false);
+
+				barcodeCheckerEventHandler.reset();
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = getResources().getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				setProgress(false);
+
+				ReadBarcodeOrderController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+	}
+
+	private void setProgress(boolean value) {
+		progressVisibleProperty.set(value);
+		closeRouteListButton.setDisable(value);
+		saveRouteListButton.setDisable(value);
 	}
 
 	/**

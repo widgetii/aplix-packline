@@ -83,6 +83,23 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		return null;
 	}
 
+	public void carryOutRouteList() throws PackLineException {
+		RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+
+		if (!postServicePort.carryOutRouteList(routeList.getId())) {
+			throw new PackLineException(getResources().getString("error.post.routeList.carryout"));
+		}
+
+		getContext().setAttribute(Const.ROUTE_LIST, null);
+		setNextAction(this);
+	}
+
+	public void saveRouteList() {
+		getContext().setAttribute(Const.ROUTE_LIST, null);
+		setNextAction(this);
+	}
+
 	public Tag processBarcode(String code) throws PackLineException {
 		Registry registry;
 		Order order;
@@ -121,6 +138,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			registry = null;
 		} else if (TagType.ROUTELIST.equals(tagType)) {
 			RouteList routeList = findAndValidateTag(postServicePort, TagType.ROUTELIST, code, RouteList.class, false);
+			checkRouteList(routeList);
 
 			setNextAction(this);
 			result = routeList;
@@ -226,6 +244,12 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		}
 		if (container.isShipped()) {
 			throw new PackLineException(getResources().getString("error.post.container.shipped"));
+		}
+	}
+
+	private void checkRouteList(RouteList routeList) throws PackLineException {
+		if (routeList.isCarriedOutAndClosed()) {
+			throw new PackLineException(getResources().getString("error.post.routeList.already.closed"));
 		}
 	}
 }

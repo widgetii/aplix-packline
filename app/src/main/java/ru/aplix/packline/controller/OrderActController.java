@@ -252,7 +252,6 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	}
 
 	private void doCloseAct() {
-
 		Task<?> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {

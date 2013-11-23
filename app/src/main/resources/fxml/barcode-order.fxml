@@ -19,19 +19,50 @@
           <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
               <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="590.0" styleClass="action-label" text="%barcode.order.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
-                <StackPane id="StackPane" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0">
-                  <children>
-                    <ImageView fitHeight="215.0109100341797" fitWidth="453.52502026457546" pickOnBounds="true" preserveRatio="true">
-                      <effect>
-                        <InnerShadow />
-                      </effect>
-                      <image>
-                        <Image url="@../images/img-barcode-order.png" preserveRatio="false" smooth="false" />
-                      </image>
-                    </ImageView>
-                  </children>
-                </StackPane>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <center>
+                    <StackPane id="StackPane" prefHeight="352.0" prefWidth="478.0">
+                      <children>
+                        <ImageView fitHeight="215.0109100341797" fitWidth="453.52502026457546" pickOnBounds="true" preserveRatio="true">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/img-barcode-order.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </children>
+                      <BorderPane.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </BorderPane.margin>
+                    </StackPane>
+                  </center>
+                  <right>
+                    <VBox id="VBox" fx:id="routeListContainer" alignment="TOP_CENTER" prefHeight="325.0" prefWidth="340.0" spacing="20.0" BorderPane.margin="$x1">
+                      <children>
+                        <AnchorPane id="orderInfoContainer" prefHeight="267.0" prefWidth="237.0" VBox.vgrow="ALWAYS">
+                          <children>
+                            <Label id="actInfo" fx:id="routeListInfoLabel" alignment="TOP_LEFT" prefHeight="151.0" prefWidth="197.0" text="Act Info, Customer Info" wrapText="true" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                            <Label id="ordersTotal" fx:id="totalRegistriesLabel" prefHeight="60.0" prefWidth="197.0" text="Total Number of Orders" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane id="AnchorPane" prefHeight="70.0" prefWidth="340.0">
+                          <children>
+                            <HBox id="HBox" alignment="CENTER" prefHeight="57.0" prefWidth="340.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <Button fx:id="closeRouteListButton" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeRouteListClick" prefWidth="100.0" styleClass="green-button" text="%button.routeList.close" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="saveRouteListButton" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveRouteListClick" prefWidth="100.0" styleClass="blue-button" text="%button.routeList.save" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </children>
+                    </VBox>
+                  </right>
+                  <top>
+                    <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="590.0" styleClass="action-label" text="%barcode.order.info" textAlignment="CENTER" wrapText="true" />
+                  </top>
+                </BorderPane>
               </children>
             </AnchorPane>
             <fx:include source="error-container.fxml" />

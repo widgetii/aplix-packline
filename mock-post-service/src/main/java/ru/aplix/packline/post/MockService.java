@@ -131,6 +131,11 @@ public class MockService implements PackingLinePortType {
 		if (container != null) {
 			return TagType.CONTAINER;
 		}
+		
+		RouteList routeList = (RouteList) CollectionUtils.find(getConfig().getRouteLists(), predicate);
+		if (routeList != null) {
+			return TagType.ROUTELIST;
+		}
 
 		return null;
 	}
