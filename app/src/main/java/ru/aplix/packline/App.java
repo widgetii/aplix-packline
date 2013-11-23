@@ -80,7 +80,7 @@ public class App extends Application implements IdleListener {
 	}
 
 	private void initWindow(final Stage stage, final Rectangle2D screenBounds) {
-		stage.setTitle("Aplix Pack Line");
+		stage.setTitle(Const.APP_NAME);
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setResizable(false);
 

@@ -207,17 +207,38 @@ public class MockService implements PackingLinePortType {
 			return null;
 		}
 
+		// First try to find registry with this incoming
 		Registry registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
-				return order.getCustomer().getId().equals(((Registry) item).getCustomer().getId());
+				Registry registry = (Registry) item;
+				Incoming incoming = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+					@Override
+					public boolean evaluate(Object item) {
+						return incomingId.equals(((Tag) item).getId());
+					}
+				});
+				return incoming != null;
+			}
+		});
+		if (registry != null) {
+			return registry;
+		}
+
+		// Then try to find registry with the same customer id
+		registry = (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				Registry regItem = (Registry) item;
+				return order.getCustomer().getId().equals(regItem.getCustomer().getId()) && !regItem.isCarriedOutAndClosed();
 			}
 		});
 
+		// If no registry found, create a new one
 		if (registry == null) {
 			registry = new Registry();
 			registry.setId(RandomStringUtils.randomNumeric(10));
-			registry.setCustomer(getConfig().getCustomers().size() > 0 ? getConfig().getCustomers().get(0) : null);
+			registry.setCustomer(getCustomer(order.getCustomer().getId()));
 			registry.setCarriedOutAndClosed(false);
 			registry.setTotalIncomings(10);
 			registry.setDate(now());

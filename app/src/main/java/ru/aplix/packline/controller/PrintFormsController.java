@@ -269,8 +269,9 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
 			if (printForm != null && (printForm.getAutoPrint() || skipAutoPrint)) {
-				getAction().printForms(container.getId(), printForm);
-				return true;
+				boolean printed = getAction().printForms(container.getId(), printForm);
+				button.setDisable(!printed);
+				return printed;
 			}
 			return false;
 		}

@@ -61,10 +61,10 @@
 		<!-- "file"      	- print form file name, related to /reports path							-->
 		<!-- "printerId"    - printer identifier, references hardware configuration, see above			-->
 		<!-- "autoPrint" 	- whether to print a form automatically, when printing procedure started	-->		
-		<Form name="Ф.2" file="f2" printerId="printer1" autoPrint="false"/>
-		<Form name="Ф.7" file="f7" printerId="printer1" autoPrint="false"/>		
-		<Form name="Ф.113" file="f113" printerId="printer1" autoPrint="false"/>
-		<Form name="Ф.116" file="f116" printerId="printer1" autoPrint="false"/>		
+		<Form name="ф-2" file="f2" printerId="printer1" autoPrint="false"/>
+		<Form name="ф-7" file="f7" printerId="printer1" autoPrint="false"/>		
+		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false"/>
+		<Form name="ф-116" file="f116" printerId="printer1" autoPrint="false"/>		
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->

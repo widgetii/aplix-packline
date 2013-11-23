@@ -5,6 +5,10 @@
 			<id>11111111</id>
 			<name>ИП Митрюшкин Сергей Сергеевич</name>
 		</customer>
+		<customer>
+			<id>22222222</id>
+			<name>УП "БОНЖУР"</name>
+		</customer>
 	</customers>
 	<operators>
 		<operator>
@@ -39,8 +43,8 @@
 			<deliveryMethod>Почтовая посылка Почта России (234.1 руб., 5 дней)</deliveryMethod>
 			<deliveryAddress>142783, Московская область, Одинцовский район, п. Переделкино, ул. Павленко, д. 3</deliveryAddress>
 			<customer>
-				<id>11111111</id>
-				<name>ИП Митрюшкин Сергей Сергеевич</name>
+				<id>22222222</id>
+				<name>УП "БОНЖУР"</name>
 			</customer>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 			<totalIncomings>1</totalIncomings>
@@ -108,7 +112,7 @@
 				</packingSize>
 				<postId>010931</postId>
 				<boxTypeId>180001</boxTypeId>
-				<trackingId>RR1234567890RU</trackingId>
+				<trackingId>1234567890123</trackingId>
 				<packingType>BOX</packingType>
 				<totalWeight>0.0</totalWeight>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
@@ -189,7 +193,7 @@
 			</packingSize>
 			<postId>010931</postId>
 			<boxTypeId>180001</boxTypeId>
-			<trackingId>RR1234567890RU</trackingId>
+			<trackingId>1234567890123</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
@@ -204,7 +208,7 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180001</boxTypeId>
-			<trackingId>RR1234567890RU</trackingId>
+			<trackingId>1234567890123</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
@@ -219,7 +223,7 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180002</boxTypeId>
-			<trackingId>RR1234567890RU</trackingId>
+			<trackingId>1234567890123</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
@@ -234,7 +238,7 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180002</boxTypeId>
-			<trackingId>RR1234567890RU</trackingId>
+			<trackingId>1234567890123</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
@@ -319,7 +323,7 @@
 		</field>
 		<field>
 			<name>BR_BNAME</name>
-			<value>Сбербанк</value>
+			<value>Сбербанк России</value>
 		</field>
 		<field>
 			<name>bik</name>
@@ -371,15 +375,15 @@
 		</field>
 		<field>
 			<name>VALUE_</name>
-			<value>345</value>
+			<value>345.27</value>
 		</field>
 		<field>
 			<name>PAYMENT</name>
-			<value>278</value>
+			<value>2.78</value>
 		</field>
 		<field>
 			<name>ITOGOZAPERESULKU</name>
-			<value>93165</value>
+			<value>9.32</value>
 		</field>
 		<field>
 			<name>MAILRANK</name>

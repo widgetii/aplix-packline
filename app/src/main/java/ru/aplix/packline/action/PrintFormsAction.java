@@ -10,12 +10,14 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.print.DocFlavor;
 import javax.print.PrintService;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.JobName;
 import javax.print.attribute.standard.Media;
 import javax.xml.ws.BindingProvider;
 
@@ -118,7 +120,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return match;
 	}
 
-	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
+	public boolean printForms(String containerId, PrintForm printForm) throws PackLineException {
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(getResources().getString("error.printer.not.assigned"));
 		}
@@ -132,14 +134,14 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			}
 
 			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
-			printForm(containerId, reportFileName, printForm.getPrinter());
+			return printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName());
 		} catch (Throwable e) {
 			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
 			throw ple;
 		}
 	}
 
-	public void printForm(String containerId, final String reportFileName, Printer printer) throws Exception {
+	public boolean printForm(String containerId, final String reportFileName, Printer printer, String formName) throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -168,20 +170,22 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		// Check if the report determined to cancel printing
 		if (cancelPrinting(report)) {
-			return;
+			return false;
 		}
 
 		// Render report
 		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
-			printUsingApacheFop(report, printer);
+			printUsingApacheFop(report, printer, formName);
 		} else if (ArrayUtils.contains(REPORT_TYPE_ZEBRA, report.getFileVersion())) {
 			printOnZebraPrepared(report, printer);
 		} else {
 			throw new PackLineException(getResources().getString("error.report.invalid.type"));
 		}
+
+		return true;
 	}
 
-	private void printUsingApacheFop(Report report, final Printer printer) throws Exception {
+	private void printUsingApacheFop(Report report, final Printer printer, final String formName) throws Exception {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
 			// Convert report to XMl
@@ -212,7 +216,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 					rxto.setPrintAttributesResolver(new PrintAttributesResolver() {
 						@Override
 						public PrintRequestAttributeSet createPrintAttributes(PrintService printService) {
-							return createPrintAttributesFromList(printService, printer.getMediaAttributes());
+							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName);
 						}
 					});
 				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
@@ -321,7 +325,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	private PrintRequestAttributeSet createPrintAttributesFromList(PrintService printService, List<String> attrNames) {
+	private PrintRequestAttributeSet createPrintAttributesFromList(PrintService printService, List<String> attrNames, String formName) {
 		// Checking input array
 		if (attrNames == null || attrNames.size() == 0) {
 			return null;
@@ -329,6 +333,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		// Create return object
 		PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
+		attributes.add(new JobName(String.format("%s - %s", Const.APP_NAME, formName), Locale.getDefault()));
+		int oldAttrSize = attributes.size();
 
 		// Get list of supported attributes
 		Object o = printService.getSupportedAttributeValues(Media.class, DocFlavor.SERVICE_FORMATTED.PAGEABLE, null);
@@ -369,7 +375,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 			// If at least one attribute was not added,
 			// then list all of them for info
-			if (attributes.size() != attrNames.size()) {
+			if ((attributes.size() - oldAttrSize) != attrNames.size()) {
 				LOG.info(String.format("Enumerating supported attributes for \"%s\":", printService.getName()));
 				for (Media media : medias) {
 					LOG.info(String.format("  %s: %s", media.getClass().getSimpleName(), media));

@@ -5,6 +5,8 @@ public final class Const {
 	private Const() {
 
 	}
+	
+	public static final String APP_NAME = "Aplix Pack Line";
 
 	public static final String FIRST_WORKFLOW_ACTION_BEAN_NAME = "firstWorkflowAction";
 	public static final String START_WORKFLOW_ACTION_BEAN_NAME = "startWorkflowAction";
