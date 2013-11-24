@@ -82,7 +82,11 @@ public class MeraScalesTestManual {
 
 				@Override
 				public void onWeightStabled(Float value) {
-					onMeasure(value);
+					if (PRINT_IN_ONE_LINE) {
+						print(String.format("%.3f kg of steady weight", value));
+					} else {
+						System.out.println(String.format("%.3f kg of steady weight", value));
+					}
 				}
 
 				private void print(String value) {

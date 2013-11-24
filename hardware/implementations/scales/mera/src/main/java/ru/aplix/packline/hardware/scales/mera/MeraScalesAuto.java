@@ -31,14 +31,16 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
+	public static final int STEADY_DETECTOR_SIZE = 50;
+
 	private ReentrantLock connectionLock;
 	private CountDownLatch connectLatch = null;
 	private SerialPort serialPort;
 	private volatile boolean isConnected = false;
 	private volatile Float lastMeasurement;
 
+	private WeightSteadinessDetector weightSteadinessDetector;
 	private RS232Configuration configuration;
-	private List<MeasurementListener> listeners;
 	private List<ScalesConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
 
@@ -47,7 +49,8 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 	public MeraScalesAuto() {
 		configuration = new RS232Configuration();
 
-		listeners = new Vector<MeasurementListener>();
+		weightSteadinessDetector = new WeightSteadinessDetector(STEADY_DETECTOR_SIZE);
+
 		connectionListeners = new Vector<ScalesConnectionListener>();
 
 		connectionLock = new ReentrantLock();
@@ -321,12 +324,8 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 			if (m.matches() && m.groupCount() == 3) {
 				try {
 					Float f = Float.parseFloat(m.group(2));
-					boolean stabled = m.group(3).equalsIgnoreCase("s");
-					if (stabled) {
-						onWeightStabled(f);
-					} else {
-						onMeasure(f);
-					}
+					// boolean stabled = m.group(3).equalsIgnoreCase("s");
+					onMeasure(f);
 					invalidFormat = false;
 				} catch (NumberFormatException nfe) {
 				}
@@ -338,42 +337,20 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 
 		private void onMeasure(Float value) {
 			lastMeasurement = value;
-			synchronized (listeners) {
-				for (MeasurementListener listener : listeners) {
-					listener.onMeasure(value);
-				}
-			}
-		}
-
-		private void onWeightStabled(Float value) {
-			boolean firstMeasure = lastMeasurement == null;
-			lastMeasurement = value;
-			synchronized (listeners) {
-				for (MeasurementListener listener : listeners) {
-					if (firstMeasure) {
-						listener.onMeasure(value);
-					} else {
-						listener.onWeightStabled(value);
-					}
-				}
-			}
+			weightSteadinessDetector.measure(value);
 		}
 	}
 
 	public void addMeasurementListener(MeasurementListener listener) {
-		synchronized (listeners) {
-			listeners.add(listener);
-		}
+		weightSteadinessDetector.addMeasurementListener(listener);
 
-		if (connectOnDemand && (listeners.size() > 0) && !isConnected()) {
+		if (connectOnDemand && weightSteadinessDetector.hasMeasurementListeners() && !isConnected()) {
 			connect();
 		}
 	}
 
 	public void removeMeasurementListener(MeasurementListener listener) {
-		synchronized (listeners) {
-			listeners.remove(listener);
-		}
+		weightSteadinessDetector.removeMeasurementListener(listener);
 	}
 
 	public void addConnectionListener(ScalesConnectionListener connectionListener) {

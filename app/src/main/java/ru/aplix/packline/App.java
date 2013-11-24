@@ -45,7 +45,7 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 35 Scales weight stable algorithm
+// TODO 35 Scales weight stable algorithm in Universal driver
 // TODO 90 styles of act-table, menu and quantity buttons
 // FIXME logout doesn't work in ubuntu
 // FIXME error checker should hide error message after 5s even though barcode scanner is turned off
