@@ -104,6 +104,8 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			PrintForm form = forms.get(formIndex);
 			button.setUserData(form);
 			button.setText(String.format(getResources().getString("button.reprint.form"), form.getName()));
+			button.setDisable(false);
+			button.setVisible(true);
 		} else {
 			button.setUserData(null);
 			button.setDisable(true);
