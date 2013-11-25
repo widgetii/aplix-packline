@@ -42,7 +42,7 @@
 			</xs:complexType>
 			<xs:complexType name="FieldList">
 				<xs:sequence>
-					<xs:element name="Items" type="tns:Field" maxOccurs="2147483647"/>
+					<xs:element name="items" type="tns:Field" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Incoming">
@@ -72,7 +72,7 @@
 					<xs:element name="clientName" type="xs:string"/>
 					<xs:element name="deliveryMethod" type="xs:string"/>
 					<xs:element name="deliveryAddress" type="xs:string"/>
-					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="2147483647"/>
+					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="totalIncomings" type="xs:int"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -95,7 +95,7 @@
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
 							<xs:element name="container" type="tns:Container"/>
-							<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="2147483647"/>
+							<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 							<xs:element name="postType" type="tns:PostType" nillable="true"/>
 							<xs:element name="orderId" type="xs:string"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
@@ -115,7 +115,7 @@
 			<xs:complexType name="Registry">
 				<xs:sequence>
 					<xs:element name="id" type="xs:string"/>
-					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="2147483647"/>
+					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="customer" type="tns:Customer"/>
 					<xs:element name="date" type="xs:dateTime"/>
 					<xs:element name="totalIncomings" type="xs:int"/>
@@ -137,7 +137,7 @@
 			</xs:complexType>
 			<xs:complexType name="StringList">
 				<xs:sequence>
-					<xs:element name="Items" type="xs:string" maxOccurs="2147483647"/>
+					<xs:element name="items" type="xs:string" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Tag">
@@ -147,7 +147,7 @@
 			</xs:complexType>
 			<xs:complexType name="TagList">
 				<xs:sequence>
-					<xs:element name="Items" type="tns:Tag" maxOccurs="2147483647"/>
+					<xs:element name="items" type="tns:Tag" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="TagType">
