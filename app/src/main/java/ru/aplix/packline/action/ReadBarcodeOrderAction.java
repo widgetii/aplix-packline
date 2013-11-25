@@ -248,8 +248,8 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	private void checkRouteList(RouteList routeList) throws PackLineException {
-		if (routeList.isCarriedOutAndClosed()) {
+		/*if (routeList.isCarriedOutAndClosed()) {
 			throw new PackLineException(getResources().getString("error.post.routeList.already.closed"));
-		}
+		}*/
 	}
 }

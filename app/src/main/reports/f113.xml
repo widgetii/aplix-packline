@@ -362,7 +362,7 @@
                             <Memo>(шифр и подпись)</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView116" Left="50.32709" Top="62.08499" Width="26.563332" Height="2.5232406" BoundLeft="50.261993" BoundTop="61.21205" BoundWidth="26.693544" BoundHeight="2.6047683" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable1]</Memo>
+                            <Memo>[Variable35]</Memo>
                         </MemoView>
                         <BarCodeView CheckSum="true" ShowText="false" BarCodeType="intl2of5" Angle="0" Name="MemoView117" Left="50.32709" Top="57.30412" Width="26.563332" Height="4.6480746" BoundLeft="50.261993" BoundTop="56.523468" BoundWidth="26.693544" BoundHeight="4.6885824" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable1]</Memo>
@@ -392,7 +392,7 @@
                             <Memo>Адрес отправителя:</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView126" Left="34.701607" Top="73.771576" Width="57.293457" Height="3.054449" BoundLeft="34.6365" BoundTop="72.67303" BoundWidth="57.423668" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable9] [Variable10] [Variable11] [Variable12]</Memo>
+                            <Memo>[Variable9], [Variable10], [Variable11], [Variable12]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView127" Left="34.831818" Top="79.48206" Width="56.90282" Height="12.350597" BoundLeft="34.76671" BoundTop="78.27328" BoundWidth="57.03303" BoundHeight="12.24241" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
@@ -618,8 +618,8 @@
     <Variables>
     	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable13]) > 0, 'false', 'true')"/>
         <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [Variable9] + [Variable10] + [Variable11] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [Variable5] + '!' + [Variable6] + '!!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
-        <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '4060', [barcod2D_body], '')" />
-        <Variable Name="barkod_espp" Type="expression" Content="f:choose([Variable2] = '4060', [Variable2], '')" />
+        <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
+        <Variable Name="barkod_espp" Type="expression" Content="f:choose([Variable2] = '', '', [Variable2])" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
         <Variable Name="bik_1" Type="expression" Content="f:copy([Variable20],1,1)"/>
         <Variable Name="bik_2" Type="expression" Content="f:copy([Variable20],2,1)"/>
@@ -716,6 +716,11 @@
         <Variable Name="Variable22" Type="db-field" Dataset="PostDataSet" Content="ks" />
         <Variable Name="Variable23" Type="db-field" Dataset="PostDataSet" Content="comment" />
         <Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable1], 1, 6)" />
+		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable1], 7, 2)" />
+		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable1], 9, 5)" />
+		<Variable Name="Variable34" Type="expression" Content="f:copy([Variable1], 14, 1)" />
+		<Variable Name="Variable35" Type="expression" Content="[Variable31].concat(' ').concat([Variable32]).concat(' ').concat([Variable33]).concat(' ').concat([Variable34])"  />
     </Variables>
     <Datasets>
         <Dataset Name="PostDataSet">
@@ -745,6 +750,11 @@
                     <Column Name="Variable22"/>
                     <Column Name="Variable23"/>
                     <Column Name="Variable24"/>
+					<Column Name="Variable31"/>
+					<Column Name="Variable32"/>
+					<Column Name="Variable33"/>
+					<Column Name="Variable34"/>
+					<Column Name="Variable35"/>
                 </Row>
             </Rows>
         </Dataset>
