@@ -221,7 +221,6 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 
 		private static final byte BYTE9_DEVICE_ID_REQUEST = 0x01;
 		private static final byte BYTE9_WEIGHT_REQUEST = 0x10;
-		private static final byte BYTE9_DEVICE_ID = (byte) 0xc8;
 		private static final byte BYTE9_ERROR_RETURN = 0x0f;
 
 		private static final int NO_DATA_COUNT = 3;
@@ -279,9 +278,6 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 					ok = sendPacket(BYTE9_DEVICE_ID_REQUEST);
 					if (!ok) {
 						throw new Exception(String.format("%s: No response.", getName()));
-					}
-					if (packet[4] != BYTE9_DEVICE_ID) {
-						throw new Exception("Invalid device type");
 					}
 
 					firstCall = false;
