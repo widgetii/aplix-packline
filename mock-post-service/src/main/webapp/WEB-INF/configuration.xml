@@ -178,7 +178,7 @@
 				<weight>0.0</weight>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 			</incoming>
-			<postType>LETTER</postType>
+			<postType>IML</postType>
 			<orderId>987654321</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>

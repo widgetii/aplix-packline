@@ -47,8 +47,6 @@
         </Page>
     </Pages>
     <Variables>       
-    	<Variable Name="PostType" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE"/> 
-    	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([PostType] = 'PARCEL', 'false', 'true')"/> 
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
@@ -75,7 +73,6 @@
         <Dataset Name="PostDataSet">
             <Rows>
                 <Row>
-                	<Column Name="PostType"/>
                     <Column Name="Variable1"/>
                     <Column Name="Variable2"/>
                     <Column Name="Variable3"/>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Adobe PDF" FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="70.0" Height="97.0" MarginLeft="0.0" MarginTop="0.0" MarginRight="0.0" MarginBottom="0.0" Orientation="portrait" UseMargins="true">
+            <Views>
+                <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView1" Left="2.9297783" Top="3.524493" Width="50.78282" Height="5.0752697" BoundLeft="2.7344599" BoundTop="3.3835132" BoundWidth="51.173466" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable1]</Memo>
+				</MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="top" Rotate="false" Name="MemoView4" Left="56.447063" Top="3.524493" Width="41.0169" Height="5.0752697" BoundLeft="56.251747" BoundTop="3.3835132" BoundWidth="41.40754" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable2]</Memo>
+                </MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView7" Left="2.5391412" Top="10.291519" Width="94.924835" Height="5.0752697" BoundLeft="2.3438227" BoundTop="10.150539" BoundWidth="95.31546" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable4]</Memo>
+                </MemoView>               
+                <BarCodeView CheckSum="true" ShowText="false" BarCodeType="code39" ModuleWidth="0.25" Angle="0" Name="MemoView2" Left="2.5391412" Top="17.058546" Width="94.924835" Height="9.868581" BoundLeft="2.3438227" BoundTop="16.917566" BoundWidth="95.31546" BoundHeight="10.150539" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable8]</Memo>
+                </BarCodeView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView8" Left="2.5391412" Top="26.491045" Width="94.924835" Height="4.2293916" BoundLeft="2.3438227" BoundTop="26.350065" BoundWidth="95.31546" BoundHeight="4.5113506" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable25]</Memo>
+                </MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView5" Left="2.5391412" Top="32.566315" Width="94.924835" Height="13.252093" BoundLeft="2.3438227" BoundTop="32.425335" BoundWidth="95.31546" BoundHeight="13.534053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable7], [Variable6], [Variable5], [Variable4], [Variable3]&#13;&#10;[Variable9] [Variable10]</Memo>
+                </MemoView>
+                <BarCodeView CheckSum="true" ShowText="false" BarCodeType="qr" ModuleWidth="1.0" Angle="0" Name="MemoView3" Left="16.60208" Top="47.228207" Width="66.01768" Height="47.651146" BoundLeft="16.40676" BoundTop="47.087227" BoundWidth="66.40832" BoundHeight="47.9331" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable12]</Memo>
+                </BarCodeView>
+                <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="true" Name="MemoView6" Left="4.882964" Top="58.788544" Width="7.4221053" Height="21.992836" BoundLeft="4.6876454" BoundTop="58.64756" BoundWidth="7.812742" BoundHeight="22.274797" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable11]</Memo>
+                </MemoView>                
+            </Views>
+        </Page>
+    </Pages>
+    <Variables>       
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
+        <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+        <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
+        <Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="telefon"/>
+		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="DELIVERY"/>
+		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="URL"/>
+		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable8], 1, 6)" />
+		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable8], 7, 2)" />
+		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable8], 9, 5)" />
+		<Variable Name="Variable24" Type="expression" Content="f:copy([Variable8], 14, 1)" />
+		<Variable Name="Variable25" Type="expression" Content="[Variable21].concat(' ').concat([Variable22]).concat(' ').concat([Variable23]).concat(' ').concat([Variable24])"  />
+    </Variables>
+    <Datasets>        
+        <Dataset Name="PostDataSet">
+            <Rows>
+                <Row>
+                    <Column Name="Variable1"/>
+                    <Column Name="Variable2"/>
+                    <Column Name="Variable3"/>
+                    <Column Name="Variable4"/>
+                    <Column Name="Variable5"/>
+                    <Column Name="Variable6"/>
+                    <Column Name="Variable7"/>
+                    <Column Name="Variable8"/>
+                    <Column Name="Variable9"/>
+					<Column Name="Variable10"/>
+					<Column Name="Variable11"/>
+					<Column Name="Variable12"/>
+					<Column Name="Variable21"/>
+					<Column Name="Variable22"/>
+					<Column Name="Variable23"/>
+					<Column Name="Variable24"/>
+					<Column Name="Variable25"/>
+                </Row>								
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

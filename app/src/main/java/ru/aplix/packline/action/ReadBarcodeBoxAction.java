@@ -21,7 +21,7 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 
 		TagType tagType = postServicePort.findTag(code);
 		if (!TagType.CONTAINER.equals(tagType)) {
-			throw new PackLineException(getResources().getString("error.post.not.box.container"));
+			throw new PackLineException(getResources().getString("error.post.not.container"));
 		}
 		Container emptyBox = postServicePort.findContainer(code);
 		if (emptyBox == null || emptyBox.getId() == null || emptyBox.getId().length() == 0) {

@@ -101,6 +101,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	public Tag processBarcode(String code) throws PackLineException {
+		Post post;
 		Registry registry;
 		Order order;
 		Tag result;
@@ -119,8 +120,9 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 				setNextAction(getAcceptanceAction());
 			}
 			result = incoming;
+			post = null;
 		} else if (TagType.POST.equals(tagType)) {
-			Post post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
+			post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
 			checkPost(post);
 			order = findOrder(postServicePort, post.getOrderId());
 
@@ -130,7 +132,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		} else if (TagType.CONTAINER.equals(tagType)) {
 			Container container = findAndValidateTag(postServicePort, TagType.CONTAINER, code, Container.class, false);
 			checkContainer(container);
-			Post post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
+			post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
 			order = findOrder(postServicePort, post.getOrderId());
 
 			setNextAction(getMarkingAction());
@@ -144,14 +146,17 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			result = routeList;
 			order = null;
 			registry = null;
+			post = null;
 		} else {
 			order = null;
 			result = null;
 			registry = null;
+			post = null;
 		}
 
 		getContext().setAttribute(Const.REGISTRY, registry);
 		getContext().setAttribute(Const.ORDER, order);
+		getContext().setAttribute(Const.POST, post);
 		if (result instanceof RouteList) {
 			getContext().setAttribute(Const.ROUTE_LIST, result);
 			getContext().setAttribute(Const.TAG, null);

@@ -341,8 +341,6 @@
         </Page>
     </Pages>
     <Variables>    
-		<Variable Name="PostType" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE"/> 
-    	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([PostType] = 'PARCEL', 'false', 'true')"/> 
         <Variable Name="index_from_1" Type="expression" Content="f:copy([Variable10],1,1)"/>
         <Variable Name="index_from_2" Type="expression" Content="f:copy([Variable10],2,1)"/>
         <Variable Name="index_from_3" Type="expression" Content="f:copy([Variable10],3,1)"/>
@@ -386,7 +384,6 @@
         <Dataset Name="PostDataSet">
             <Rows>
                 <Row>
-					<Column Name="PostType"/>
                     <Column Name="Variable1"/>
                     <Column Name="Variable2"/>
                     <Column Name="Variable3"/>

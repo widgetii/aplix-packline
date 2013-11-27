@@ -27,6 +27,7 @@ import ru.aplix.packline.conf.PrintForm;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.Post;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class PrintFormsController extends StandardController<PrintFormsAction> implements BarcodeListener {
@@ -65,7 +66,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-
 		getAction().prepare();
 
 		assignButtons();
@@ -89,19 +89,29 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 	private void assignButtons() {
 		try {
+			Post post = (Post) getContext().getAttribute(Const.POST);
+
+			Button[] buttons = new Button[] { reprintButton1, reprintButton2, reprintButton3, reprintButton4 };
 			List<PrintForm> forms = Configuration.getInstance().getPrintForms();
-			assignButton(reprintButton1, 0, forms);
-			assignButton(reprintButton2, 1, forms);
-			assignButton(reprintButton3, 2, forms);
-			assignButton(reprintButton4, 3, forms);
+
+			int buttonIndex = 0;
+			for (PrintForm form : forms) {
+				if ((form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType())) && (buttonIndex < buttons.length)) {
+					assignButton(buttons[buttonIndex], form);
+					buttonIndex++;
+				}
+			}
+
+			for (; buttonIndex < buttons.length; buttonIndex++) {
+				assignButton(buttons[buttonIndex], null);
+			}
 		} catch (Exception e) {
 			LOG.error(null, e);
 		}
 	}
 
-	private void assignButton(Button button, int formIndex, List<PrintForm> forms) {
-		if (formIndex < forms.size()) {
-			PrintForm form = forms.get(formIndex);
+	private void assignButton(Button button, PrintForm form) {
+		if (form != null) {
 			button.setUserData(form);
 			button.setText(String.format(getResources().getString("button.reprint.form"), form.getName()));
 			button.setDisable(false);

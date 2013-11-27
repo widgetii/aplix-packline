@@ -1,10 +1,17 @@
 package ru.aplix.packline.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import ru.aplix.packline.post.PostType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Form")
@@ -18,6 +25,9 @@ public class PrintForm {
 	private String printerId;
 	@XmlAttribute(name = "autoPrint")
 	private Boolean autoPrint;
+	@XmlElementWrapper(name = "PostTypeRestriction")
+	@XmlElement(name = "PostType", type = PostType.class)
+	private List<PostType> postTypes;
 
 	@XmlTransient
 	private Printer printer;
@@ -60,5 +70,16 @@ public class PrintForm {
 
 	public void setAutoPrint(Boolean autoPrint) {
 		this.autoPrint = autoPrint;
+	}
+
+	public List<PostType> getPostTypes() {
+		if (postTypes == null) {
+			postTypes = new ArrayList<PostType>();
+		}
+		return postTypes;
+	}
+
+	public void setPostTypes(List<PostType> postTypes) {
+		this.postTypes = postTypes;
 	}
 }

@@ -33,9 +33,9 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	@FXML
 	private TextField lengthEdit;
 	@FXML
-	private TextField heightEdit;
-	@FXML
 	private TextField widthEdit;
+	@FXML
+	private TextField heightEdit;
 	@FXML
 	private Pane buttonsContainer;
 
@@ -44,8 +44,8 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private Float length = Float.NaN;
-	private Float height = Float.NaN;
 	private Float width = Float.NaN;
+	private Float height = Float.NaN;
 
 	private Task<Void> task;
 
@@ -85,6 +85,8 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		lengthEdit.setText(null);
 		heightEdit.setText(null);
 		widthEdit.setText(null);
+		
+		lengthEdit.requestFocus();
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -183,19 +185,19 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		String error = null;
 
 		try {
-			width = Float.valueOf(widthEdit.getText());
-		} catch (Exception e) {
-			width = Float.NaN;
-			error = "error.dimentions.width";
-			widthEdit.requestFocus();
-		}
-
-		try {
 			height = Float.valueOf(heightEdit.getText());
 		} catch (Exception e) {
 			height = Float.NaN;
 			error = "error.dimentions.height";
 			heightEdit.requestFocus();
+		}
+
+		try {
+			width = Float.valueOf(widthEdit.getText());
+		} catch (Exception e) {
+			width = Float.NaN;
+			error = "error.dimentions.width";
+			widthEdit.requestFocus();
 		}
 
 		try {
@@ -218,10 +220,10 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	private TextField getFocusedEdit() {
 		if (lengthEdit.isFocused()) {
 			return lengthEdit;
-		} else if (heightEdit.isFocused()) {
-			return heightEdit;
 		} else if (widthEdit.isFocused()) {
 			return widthEdit;
+		} else if (heightEdit.isFocused()) {
+			return heightEdit;
 		} else {
 			lengthEdit.requestFocus();
 			return null;
@@ -240,10 +242,10 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 
 	public void numericKeybordEnterClick(ActionEvent event) {
 		if (lengthEdit.isFocused()) {
-			heightEdit.requestFocus();
-			return;
-		} else if (heightEdit.isFocused()) {
 			widthEdit.requestFocus();
+			return;
+		} else if (widthEdit.isFocused()) {
+			heightEdit.requestFocus();
 			return;
 		} else {
 			lengthEdit.requestFocus();

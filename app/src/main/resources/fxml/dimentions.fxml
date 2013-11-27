@@ -27,11 +27,11 @@
                         <Pane fx:id="buttonsContainer" prefHeight="499.0" prefWidth="879.0">
                           <children>
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="163.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.length" />
-                            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="237.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.height" />
-                            <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="312.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.width" />
+                            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="237.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.width" />
+                            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="312.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.height" />
                             <TextField fx:id="lengthEdit" layoutX="190.0" layoutY="163.0" prefHeight="49.94140625" prefWidth="150.0" />
-                            <TextField fx:id="heightEdit" layoutX="190.0" layoutY="238.0" prefHeight="49.94140625" prefWidth="150.0" />
-                            <TextField fx:id="widthEdit" layoutX="190.0" layoutY="312.0" prefHeight="49.94140625" prefWidth="150.0" />
+                            <TextField fx:id="widthEdit" layoutX="190.0" layoutY="238.0" prefHeight="49.94140625" prefWidth="150.0" />
+                            <TextField fx:id="heightEdit" layoutX="190.0" layoutY="312.0" prefHeight="49.94140625" prefWidth="150.0" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="395.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord7Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="7" textAlignment="CENTER" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="504.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord8Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="8" textAlignment="CENTER" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="613.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybord9Click" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button" text="9" textAlignment="CENTER" />
@@ -46,6 +46,7 @@
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="262.0" mnemonicParsing="false" onAction="#numericKeybordEnterClick" prefHeight="210.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.enter" textAlignment="CENTER" wrapText="true" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybordClearClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.clear" textAlignment="CENTER" wrapText="true" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybordBackClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.back" textAlignment="CENTER" wrapText="true" />
+                            <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="31.0" layoutY="392.0" prefHeight="81.0" prefWidth="309.0" text="%dimentions.measurements" textAlignment="CENTER" wrapText="true" />
                           </children>
                         </Pane>
                       </children>
