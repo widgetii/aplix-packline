@@ -390,6 +390,18 @@
 			<value>1</value>
 		</field>
 		<field>
+			<name>ORDER</name>
+			<value>А/13/13203</value>
+		</field>
+		<field>
+			<name>DELIVERY</name>
+			<value>2/СДЭК</value>
+		</field>
+		<field>
+			<name>URL</name>
+			<value>http://www.aplix.ru/o-kompanii/kontakty/</value>
+		</field>
+		<field>
 			<name>NPRub</name>
 			<value>25</value>
 		</field>

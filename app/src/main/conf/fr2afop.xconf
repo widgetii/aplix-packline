@@ -29,7 +29,8 @@
 					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop,
 					io_band1kl, io_nalozh, io_opis, io_cennost, io_prostuved, io_zakazuved,
 					io_pismo1kl, io_gabar, io_tyazh, io_uved, io_Nstd, io_obykn, io_Zakaz,
-					io_std, io_prost
+					io_std, io_prost,
+					ORDER, DELIVERY, URL
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';
