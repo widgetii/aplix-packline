@@ -17,8 +17,10 @@ import javax.print.DocFlavor;
 import javax.print.PrintService;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
 import javax.print.attribute.standard.JobName;
 import javax.print.attribute.standard.Media;
+import javax.print.attribute.standard.MultipleDocumentHandling;
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -134,14 +136,14 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			}
 
 			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
-			return printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName());
+			return printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
 		} catch (Throwable e) {
 			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
 			throw ple;
 		}
 	}
 
-	public boolean printForm(String containerId, final String reportFileName, Printer printer, String formName) throws Exception {
+	public boolean printForm(String containerId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -175,9 +177,9 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		// Render report
 		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
-			printUsingApacheFop(report, printer, formName);
+			printUsingApacheFop(report, printer, formName, copies);
 		} else if (ArrayUtils.contains(REPORT_TYPE_ZEBRA, report.getFileVersion())) {
-			printOnZebraPrepared(report, printer);
+			printOnZebraPrepared(report, printer, copies);
 		} else {
 			throw new PackLineException(getResources().getString("error.report.invalid.type"));
 		}
@@ -185,7 +187,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return true;
 	}
 
-	private void printUsingApacheFop(Report report, final Printer printer, final String formName) throws Exception {
+	private void printUsingApacheFop(Report report, final Printer printer, final String formName, final Integer copies) throws Exception {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
 			// Convert report to XMl
@@ -216,7 +218,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 					rxto.setPrintAttributesResolver(new PrintAttributesResolver() {
 						@Override
 						public PrintRequestAttributeSet createPrintAttributes(PrintService printService) {
-							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName);
+							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName, copies);
 						}
 					});
 				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
@@ -251,7 +253,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 				// If we rendered in memory buffer, then the contents
 				// of this buffer should be sent to printer directly
 				if (baos2 != null) {
-					Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos2.toByteArray());
+					Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos2.toByteArray(), copies);
 				}
 			} finally {
 				if (baos2 != null) {
@@ -265,7 +267,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	private void printOnZebraPrepared(Report report, Printer printer) throws Exception {
+	private void printOnZebraPrepared(Report report, Printer printer, Integer copies) throws Exception {
 		File xsltFileAfter = null;
 		if (configuration.getReplacementFile().getAfter() != null) {
 			xsltFileAfter = new File(configuration.getReplacementFile().getAfter());
@@ -285,7 +287,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			});
 
 			// Send xml to printer directly
-			Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos.toByteArray());
+			Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos.toByteArray(), copies);
 		} finally {
 			baos.close();
 		}
@@ -325,7 +327,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	private PrintRequestAttributeSet createPrintAttributesFromList(PrintService printService, List<String> attrNames, String formName) {
+	private PrintRequestAttributeSet createPrintAttributesFromList(PrintService printService, List<String> attrNames, String formName, Integer copies) {
 		// Checking input array
 		if (attrNames == null || attrNames.size() == 0) {
 			return null;
@@ -334,6 +336,10 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		// Create return object
 		PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
 		attributes.add(new JobName(String.format("%s - %s", Const.APP_NAME, formName), Locale.getDefault()));
+		if (copies != null && copies > 0) {
+			attributes.add(new Copies(copies));
+			attributes.add(MultipleDocumentHandling.SINGLE_DOCUMENT);
+		}
 		int oldAttrSize = attributes.size();
 
 		// Get list of supported attributes

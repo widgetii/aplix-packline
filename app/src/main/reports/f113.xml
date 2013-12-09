@@ -616,7 +616,7 @@
         </Page>
     </Pages>
     <Variables>
-    	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable13]) > 0, 'false', 'true')"/>
+    	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable13] > 0, 'false', 'true')"/>
         <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [Variable9] + [Variable10] + [Variable11] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [Variable5] + '!' + [Variable6] + '!!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
         <Variable Name="barkod_espp" Type="expression" Content="f:choose([Variable2] = '', '', [Variable2])" />

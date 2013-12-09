@@ -155,7 +155,7 @@ public abstract class BaseStickAction<Controller extends StandardWorkflowControl
 			});
 
 			// Send xml to printer directly
-			Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos.toByteArray());
+			Utils.sendDataToSocket(printer.getIpAddress(), printer.getPort(), baos.toByteArray(), null);
 		} finally {
 			baos.close();
 		}

@@ -25,6 +25,8 @@ public class PrintForm {
 	private String printerId;
 	@XmlAttribute(name = "autoPrint")
 	private Boolean autoPrint;
+	@XmlAttribute(name = "copies")
+	private Integer copies;
 	@XmlElementWrapper(name = "PostTypeRestriction")
 	@XmlElement(name = "PostType", type = PostType.class)
 	private List<PostType> postTypes;
@@ -70,6 +72,14 @@ public class PrintForm {
 
 	public void setAutoPrint(Boolean autoPrint) {
 		this.autoPrint = autoPrint;
+	}
+	
+	public Integer getCopies() {
+		return copies;
+	}
+
+	public void setCopies(Integer copies) {
+		this.copies = copies;
 	}
 
 	public List<PostType> getPostTypes() {

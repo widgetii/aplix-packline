@@ -60,7 +60,8 @@
 		<!-- "name"        	- print form name (appears on print button) 			  					-->
 		<!-- "file"      	- print form file name, related to /reports path							-->
 		<!-- "printerId"    - printer identifier, references hardware configuration, see above			-->
-		<!-- "autoPrint" 	- whether to print a form automatically, when printing procedure started	-->		
+		<!-- "autoPrint" 	- whether to print a form automatically, when printing procedure started	-->
+		<!-- "copies" 		- number of copies to print (optional, default is 1)						-->		
 		<!-- "PostTypeRestriction" 	- the form will be printer only for listed post types (optional)	-->
 		<Form name="ф-7" file="f7" printerId="printer1" autoPrint="false">			
 			<PostTypeRestriction>
@@ -86,7 +87,12 @@
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false"/>	
+		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false"/>
+		<Form name="EMS" file="ems" printerId="printer1" autoPrint="false" copies="4">
+			<PostTypeRestriction>
+				<PostType>EMS</PostType>
+			</PostTypeRestriction>
+		</Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->

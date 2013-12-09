@@ -134,7 +134,7 @@
 				<weight>0.0</weight>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 			</incoming>
-			<postType>PARCEL</postType>
+			<postType>EMS</postType>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>

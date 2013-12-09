@@ -141,13 +141,16 @@ public final class Utils {
 		return xmlGC;
 	}
 
-	public static void sendDataToSocket(String host, int port, byte[] data) throws IOException {
+	public static void sendDataToSocket(String host, int port, byte[] data, Integer copies) throws IOException {
 		Socket socket = new Socket(host, port);
 		try {
 			OutputStream os = socket.getOutputStream();
 			try {
-				os.write(data);
-				os.flush();
+				int count = (copies != null && copies > 0) ? copies : 1;
+				for (int i = 0; i < count; i++) {
+					os.write(data);
+					os.flush();
+				}
 			} finally {
 				os.close();
 			}
