@@ -87,7 +87,15 @@
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false"/>
+		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false">
+			<PostTypeRestriction>
+				<PostType>FIRSTCLASS</PostType>
+				<PostType>PARCEL</PostType>
+				<PostType>BOOKPOST</PostType>
+				<PostType>LETTER</PostType>
+				<PostType>EMS</PostType>
+			</PostTypeRestriction>
+		</Form>
 		<Form name="EMS" file="ems" printerId="printer1" autoPrint="false" copies="4">
 			<PostTypeRestriction>
 				<PostType>EMS</PostType>

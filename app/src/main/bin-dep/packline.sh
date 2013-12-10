@@ -53,7 +53,7 @@ do
     fi
 done 
 
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS" -Xms1024m -Xmx1024m
 
 #--------------------------------------------
 #  gather command line arguments

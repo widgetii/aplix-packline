@@ -35,7 +35,7 @@ set RXTX_LIBS=%RESOLVED_APP_HOME%\lib\rxtx\%ARCH%
 
 for %%l in ("%JARFILE%" "%LIBDIR%"\*.jar) do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
 
-set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path="%RXTX_LIBS%"
+set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path="%RXTX_LIBS%" -Xms1024m -Xmx1024m
 
 @rem --------------------------------------------
 @rem  gather command line arguments
