@@ -10,10 +10,13 @@
                     <Memo>[Variable2]</Memo>
                 </MemoView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView7" Left="2.5391412" Top="10.291519" Width="94.924835" Height="5.0752697" BoundLeft="2.3438227" BoundTop="10.150539" BoundWidth="95.31546" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>[Variable4]</Memo>
+                    <Memo>[Variable26]</Memo>
                 </MemoView>               
                 <BarCodeView CheckSum="true" ShowText="false" BarCodeType="code39" ModuleWidth="0.25" Angle="0" Name="MemoView2" Left="2.5391412" Top="17.058546" Width="94.924835" Height="9.868581" BoundLeft="2.3438227" BoundTop="16.917566" BoundWidth="95.31546" BoundHeight="10.150539" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>[Variable8]</Memo>
+                    <Memo>[Variable27]</Memo>
+                </BarCodeView>
+				<BarCodeView CheckSum="true" ShowText="false" BarCodeType="ean-13" ModuleWidth="0.25" Angle="0" Name="MemoView22" Left="2.5391412" Top="17.058546" Width="94.924835" Height="9.868581" BoundLeft="2.3438227" BoundTop="16.917566" BoundWidth="95.31546" BoundHeight="10.150539" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable28]</Memo>
                 </BarCodeView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView8" Left="2.5391412" Top="26.491045" Width="94.924835" Height="4.2293916" BoundLeft="2.3438227" BoundTop="26.350065" BoundWidth="95.31546" BoundHeight="4.5113506" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable25]</Memo>
@@ -30,7 +33,7 @@
             </Views>
         </Page>
     </Pages>
-    <Variables>       
+    <Variables> 
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
@@ -43,11 +46,15 @@
 		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="telefon"/>
 		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="DELIVERY"/>
 		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="URL"/>
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable8], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable8], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable8], 9, 5)" />
 		<Variable Name="Variable24" Type="expression" Content="f:copy([Variable8], 14, 1)" />
-		<Variable Name="Variable25" Type="expression" Content="[Variable21].concat(' ').concat([Variable22]).concat(' ').concat([Variable23]).concat(' ').concat([Variable24])"  />
+		<Variable Name="Variable25" Type="expression" Content="[Variable21].concat(' ').concat([Variable22]).concat(' ').concat([Variable23]).concat(' ').concat([Variable24])"  />		
+		<Variable Name="Variable26" Type="expression" Content="f:choose(([Variable6] = 'Санкт-Петербург г' or [Variable6] = 'Москва г') and ([Variable4] = ''), [Variable6], [Variable4])" />
+		<Variable Name="Variable27" Type="expression" Content="f:choose([Variable13] = 'PACKAGE', [Variable8], '')" />
+		<Variable Name="Variable28" Type="expression" Content="f:choose([Variable13] = 'IML', [Variable8], '')" />
     </Variables>
     <Datasets>        
         <Dataset Name="PostDataSet">
@@ -65,11 +72,15 @@
 					<Column Name="Variable10"/>
 					<Column Name="Variable11"/>
 					<Column Name="Variable12"/>
+					<Column Name="Variable13"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>
 					<Column Name="Variable24"/>
 					<Column Name="Variable25"/>
+					<Column Name="Variable26"/>
+					<Column Name="Variable27"/>
+					<Column Name="Variable28"/>
                 </Row>								
             </Rows>
         </Dataset>

@@ -164,7 +164,7 @@
 				<weight>0.0</weight>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
-			<postType>FIRSTCLASS</postType>
+			<postType>PARCEL</postType>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
@@ -178,7 +178,7 @@
 				<weight>0.0</weight>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 			</incoming>
-			<postType>IML</postType>
+			<postType>PACKAGE</postType>
 			<orderId>987654321</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
@@ -283,7 +283,7 @@
 	<gatherInfoResponse>
 		<field>
 			<name>barkod</name>
-			<value>1234567890123</value>
+			<value>12345678901234</value>
 		</field>
 		<field>
 			<name>barkod_espp</name>
@@ -307,7 +307,11 @@
 		</field>
 		<field>
 			<name>ADRES1</name>
-			<value>Москва, Варшавское шоссе, дом 141</value>
+			<value>Варшавское шоссе, дом 141</value>
+		</field>
+		<field>
+			<name>FIRM_CITY</name>
+			<value>Москва</value>
 		</field>
 		<field>
 			<name>REGION1</name>
@@ -316,6 +320,10 @@
 		<field>
 			<name>index_from</name>
 			<value>117556</value>
+		</field>
+		<field>
+			<name>FIRM_PRED</name>
+			<value>Ильин Д.В.</value>
 		</field>
 		<field>
 			<name>INN</name>
@@ -340,6 +348,10 @@
 		<field>
 			<name>telefon</name>
 			<value>322-33-22</value>
+		</field>
+		<field>
+			<name>FIRM_TEL</name>
+			<value>677-88-99</value>
 		</field>
 		<field>
 			<name>FIO</name>
@@ -400,6 +412,10 @@
 		<field>
 			<name>URL</name>
 			<value>http://www.aplix.ru/o-kompanii/kontakty/</value>
+		</field>
+		<field>
+			<name>DOGOVOR</name>
+			<value>98765432</value>
 		</field>
 		<field>
 			<name>NPRub</name>
@@ -467,6 +483,18 @@
 		</field>
 		<field>
 			<name>io_prost</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_oplata_dogovor</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_saturday</name>
+			<value>true</value>
+		</field>
+		<field>
+			<name>io_sunday</name>
 			<value>true</value>
 		</field>
 	</gatherInfoResponse>

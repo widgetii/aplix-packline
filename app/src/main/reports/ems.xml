@@ -2315,10 +2315,10 @@
 							<Memo>[Variable5]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo24" Left="55.493076" Top="34.93284" Width="35.75482" Height="1.8730745" BoundLeft="55.426617" BoundTop="34.839188" BoundWidth="35.887737" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-							<Memo>[Variable11], [Variable12]</Memo>
+							<Memo>[Variable12]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo25" Left="63.335217" Top="32.31053" Width="27.912685" Height="1.8730745" BoundLeft="63.26875" BoundTop="32.21688" BoundWidth="28.045603" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-							<Memo>[Variable10]</Memo>
+							<Memo>[Variable10], [Variable11]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo26" Left="62.803543" Top="27.065928" Width="28.444355" Height="1.8730745" BoundLeft="62.737083" BoundTop="26.972273" BoundWidth="28.57727" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
 							<Memo>[Variable9]</Memo>

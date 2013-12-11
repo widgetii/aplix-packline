@@ -45,7 +45,7 @@
                     <Memo>(подпись отправителя)</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView13" Left="7.113292" Top="47.471897" Width="87.94617" Height="3.516437" BoundLeft="7.020912" BoundTop="47.40678" BoundWidth="88.13092" BoundHeight="3.646675" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>                 [Variable1]</Memo>
+                    <Memo>                 [Variable16], [Variable1]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView14" Left="6.9285316" Top="77.68721" Width="88.31568" Height="15.368131" BoundLeft="6.6513906" BoundTop="77.49185" BoundWidth="88.86997" BoundHeight="15.758846" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="3.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo></Memo>
@@ -125,13 +125,13 @@
                     <Memo>(сумма объявленной ценности)</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView38" Left="7.113292" Top="21.033503" Width="60.97108" Height="3.516437" BoundLeft="7.020912" BoundTop="20.968382" BoundWidth="61.155838" BoundHeight="3.646675" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="#F8F8F8" Visible="true">
-                    <Memo>[Variable2] ([sobcennost])</Memo>
+                    <Memo>[value] ([sobcennost])</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView39" Left="7.113292" Top="30.540907" Width="60.97108" Height="1.6930991" BoundLeft="7.020912" BoundTop="30.475786" BoundWidth="61.155838" BoundHeight="1.8233376" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>(сумма наложенного платежа)</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView40" Left="7.113292" Top="26.763994" Width="60.97108" Height="3.516437" BoundLeft="7.020912" BoundTop="26.698872" BoundWidth="61.155838" BoundHeight="3.646675" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="#F8F8F8" Visible="true">
-                    <Memo>[Variable12] ([nalplat])</Memo>
+                    <Memo>[natplatsum] ([nalplat])</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView41" Left="69.74722" Top="26.633755" Width="7.205673" Height="1.6930991" BoundLeft="69.65484" BoundTop="26.568634" BoundWidth="7.3904343" BoundHeight="1.8233376" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>Вес</Memo>
@@ -374,6 +374,7 @@
         <Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="index_to"/> 
         <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU"/>
         <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="MAILRANK"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable9], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable9], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable9], 9, 5)" />
@@ -399,6 +400,7 @@
                     <Column Name="Variable13"/>
                     <Column Name="Variable14"/>
                     <Column Name="Variable15"/>
+					<Column Name="Variable16"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>

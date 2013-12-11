@@ -131,7 +131,7 @@ public class MockService implements PackingLinePortType {
 		if (container != null) {
 			return TagType.CONTAINER;
 		}
-		
+
 		RouteList routeList = (RouteList) CollectionUtils.find(getConfig().getRouteLists(), predicate);
 		if (routeList != null) {
 			return TagType.ROUTELIST;
@@ -647,6 +647,8 @@ public class MockService implements PackingLinePortType {
 
 			if (PostType.class.getSimpleName().equalsIgnoreCase(name)) {
 				field.setValue(post.getPostType().name().toUpperCase());
+			} else if ("POST_DESCRIPTION".equalsIgnoreCase(name) && post.getIncoming().size() > 0) {
+				field.setValue(post.getIncoming().get(0).getContentDescription());
 			} else {
 				Field existing = (Field) CollectionUtils.find(getConfig().getGatherInfoFields(), new Predicate() {
 					@Override

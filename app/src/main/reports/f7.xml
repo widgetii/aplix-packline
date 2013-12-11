@@ -30,6 +30,7 @@
 		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="AREA" />
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="index_to" />
 		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from" />
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="Variable51" Type="db-field" Dataset="PostDataSet" Content="io_band1kl" />
 		<Variable Name="Variable52" Type="db-field" Dataset="PostDataSet" Content="io_nalozh" />
 		<Variable Name="Variable53" Type="db-field" Dataset="PostDataSet" Content="io_opis" />
@@ -56,7 +57,7 @@
 		<!-- Fields for First Class Post -->
 		<Variable Name="f7a_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7a_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
 		<Variable Name="f7a_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7a_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7a_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -93,7 +94,7 @@
 		<!-- Fields for Parcel Post -->
 		<Variable Name="f7p_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7p_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
 		<Variable Name="f7p_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7p_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7p_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -131,7 +132,7 @@
 		<!-- Fields for Book Post -->
 		<Variable Name="f7b_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7b_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
 		<Variable Name="f7b_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7b_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7b_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -166,7 +167,7 @@
 		<!-- Fields for Letter Post -->
 		<Variable Name="f7l_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
 		<Variable Name="f7l_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [Variable3]" />
+		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
 		<Variable Name="f7l_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7l_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7l_telefon" Type="expression" Content="[Variable11]" />

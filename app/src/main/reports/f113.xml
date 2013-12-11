@@ -27,10 +27,10 @@
                             <Memo></Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView8" Left="7.226789" Top="11.752989" Width="22.136108" Height="2.5232406" BoundLeft="7.161682" BoundTop="11.851695" BoundWidth="22.266321" BoundHeight="2.6047683" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[barkod_espp]</Memo>
+                            <Memo>[Variable2]</Memo>
                         </MemoView>
-                        <BarCodeView CheckSum="true" ShowText="false" BarCodeType="intl2of5" Angle="0" Name="MemoView9" Left="7.226789" Top="6.8393097" Width="22.005896" Height="5.179283" BoundLeft="7.161682" BoundTop="7.032874" BoundWidth="22.136108" BoundHeight="5.2095366" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[barkod_espp]</Memo>
+                        <BarCodeView CheckSum="true" ShowText="false" BarCodeType="intl2of5" ModuleWidth="0.3" Angle="0" Name="MemoView9" Left="7.226789" Top="6.8393097" Width="22.005896" Height="5.179283" BoundLeft="7.161682" BoundTop="7.032874" BoundWidth="22.136108" BoundHeight="5.2095366" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable2]</Memo>
                         </BarCodeView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView10" Left="5.534027" Top="5.112882" Width="88.67465" Height="-0.13280213" BoundLeft="5.468921" BoundTop="5.3397746" BoundWidth="88.804855" BoundHeight="0.0" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
@@ -82,10 +82,10 @@
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView24" Left="68.16619" Top="25.962814" Width="7.6825323" Height="1.4608235" BoundLeft="68.10109" BoundTop="25.787205" BoundWidth="7.812744" BoundHeight="1.5628608" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable4]</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView25" Left="34.831818" Top="37.782204" Width="57.423668" Height="3.054449" BoundLeft="34.76671" BoundTop="37.378426" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>                 [Variable5]</Memo>
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView25" Left="34.831818" Top="37.782204" Width="57.423668" Height="3.054449" BoundLeft="34.76671" BoundTop="37.378426" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>                 [kuda]</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView26" Left="34.831818" Top="32.73572" Width="57.423668" Height="3.054449" BoundLeft="34.76671" BoundTop="32.42936" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView26" Left="34.831818" Top="32.73572" Width="57.423668" Height="3.054449" BoundLeft="34.76671" BoundTop="32.42936" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>                 [Variable6]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView27" Left="34.831818" Top="27.689243" Width="57.423668" Height="3.054449" BoundLeft="34.76671" BoundTop="27.480305" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="transparent" FillColor="#F8F8F8" Visible="true">
@@ -251,7 +251,7 @@
                             <Memo>Наименование банка:</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView79" Left="49.545822" Top="50.39841" Width="41.928394" Height="1.4608235" BoundLeft="49.480717" BoundTop="49.751072" BoundWidth="42.05861" BoundHeight="1.5628608" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable7]</Memo>
+                            <Memo>[bank]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView80" Left="35.743305" Top="53.851257" Width="1.4323364" Height="1.4608235" BoundLeft="35.6782" BoundTop="53.137268" BoundWidth="1.5625488" BoundHeight="1.5628608" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[rs_1]</Memo>
@@ -349,10 +349,10 @@
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView111" Left="88.08869" Top="25.962814" Width="3.7761598" Height="1.4608235" BoundLeft="88.02358" BoundTop="25.787205" BoundWidth="3.906372" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>коп.</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView112" Left="34.831818" Top="32.73572" Width="6.3804073" Height="1.4608235" BoundLeft="34.76671" BoundTop="32.42936" BoundWidth="6.5106196" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView112" Left="34.831818" Top="32.73572" Width="6.3804073" Height="1.4608235" BoundLeft="34.76671" BoundTop="32.42936" BoundWidth="6.5106196" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Кому:</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView113" Left="34.831818" Top="37.6494" Width="6.3804073" Height="1.5936255" BoundLeft="34.76671" BoundTop="37.248184" BoundWidth="6.5106196" BoundHeight="1.6930991" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView113" Left="34.831818" Top="37.6494" Width="6.3804073" Height="1.5936255" BoundLeft="34.76671" BoundTop="37.248184" BoundWidth="6.5106196" BoundHeight="1.6930991" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Куда:</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView114" Left="77.15085" Top="57.30412" Width="15.495276" Height="3.054449" BoundLeft="77.08575" BoundTop="56.523468" BoundWidth="15.625488" BoundHeight="3.1257217" Stretched="false" FrameType="bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
@@ -364,7 +364,7 @@
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView116" Left="50.32709" Top="62.08499" Width="26.563332" Height="2.5232406" BoundLeft="50.261993" BoundTop="61.21205" BoundWidth="26.693544" BoundHeight="2.6047683" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable35]</Memo>
                         </MemoView>
-                        <BarCodeView CheckSum="true" ShowText="false" BarCodeType="intl2of5" Angle="0" Name="MemoView117" Left="50.32709" Top="57.30412" Width="26.563332" Height="4.6480746" BoundLeft="50.261993" BoundTop="56.523468" BoundWidth="26.693544" BoundHeight="4.6885824" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <BarCodeView CheckSum="true" ShowText="false" BarCodeType="intl2of5" ModuleWidth="0.34" Angle="0" Name="MemoView117" Left="50.32709" Top="57.30412" Width="26.563332" Height="4.6480746" BoundLeft="50.261993" BoundTop="56.523468" BoundWidth="26.693544" BoundHeight="4.6885824" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable1]</Memo>
                         </BarCodeView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView118" Left="34.571396" Top="57.30412" Width="15.495276" Height="3.054449" BoundLeft="34.506287" BoundTop="56.523468" BoundWidth="15.625488" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
@@ -379,19 +379,19 @@
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView121" Left="34.310966" Top="64.741035" Width="58.204945" Height="1.7264274" BoundLeft="34.245865" BoundTop="63.816822" BoundWidth="58.335155" BoundHeight="1.8233376" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Обведенное линией заполняется отправителем перевода</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView122" Left="34.571396" Top="66.99867" Width="6.3804073" Height="1.4608235" BoundLeft="34.506287" BoundTop="66.03087" BoundWidth="6.5106196" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView122" Left="34.571396" Top="66.99867" Width="6.3804073" Height="1.4608235" BoundLeft="34.506287" BoundTop="66.03087" BoundWidth="6.5106196" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>От кого:</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView123" Left="34.571396" Top="68.725105" Width="57.423668" Height="3.054449" BoundLeft="34.506287" BoundTop="67.72397" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView123" Left="34.571396" Top="68.725105" Width="57.423668" Height="3.054449" BoundLeft="34.506287" BoundTop="67.72397" BoundWidth="57.553886" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable8]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView124" Left="61.916" Top="66.99867" Width="14.193151" Height="1.4608235" BoundLeft="61.850895" BoundTop="66.03087" BoundWidth="14.323364" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>ИНН при его наличии:</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView125" Left="34.701607" Top="72.04515" Width="15.755701" Height="1.4608235" BoundLeft="34.6365" BoundTop="70.979935" BoundWidth="15.885915" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView125" Left="34.701607" Top="72.04515" Width="15.755701" Height="1.4608235" BoundLeft="34.6365" BoundTop="70.979935" BoundWidth="15.885915" BoundHeight="1.5628608" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Адрес отправителя:</Memo>
                         </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView126" Left="34.701607" Top="73.771576" Width="57.293457" Height="3.054449" BoundLeft="34.6365" BoundTop="72.67303" BoundWidth="57.423668" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView126" Left="34.701607" Top="73.771576" Width="57.293457" Height="3.054449" BoundLeft="34.6365" BoundTop="72.67303" BoundWidth="57.423668" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable9], [Variable10], [Variable11], [Variable12]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView127" Left="34.831818" Top="79.48206" Width="56.90282" Height="12.350597" BoundLeft="34.76671" BoundTop="78.27328" BoundWidth="57.03303" BoundHeight="12.24241" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
@@ -617,83 +617,84 @@
     </Pages>
     <Variables>
     	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable13] > 0, 'false', 'true')"/>
-        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [Variable9] + [Variable10] + [Variable11] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [Variable5] + '!' + [Variable6] + '!!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
+        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [Variable25] + ', ' + [Variable5] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [Variable11] + ', ' + [Variable10] + ', ' + [Variable9] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
-        <Variable Name="barkod_espp" Type="expression" Content="f:choose([Variable2] = '', '', [Variable2])" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
-        <Variable Name="bik_1" Type="expression" Content="f:copy([Variable20],1,1)"/>
-        <Variable Name="bik_2" Type="expression" Content="f:copy([Variable20],2,1)"/>
-        <Variable Name="bik_3" Type="expression" Content="f:copy([Variable20],3,1)"/>
-        <Variable Name="bik_4" Type="expression" Content="f:copy([Variable20],4,1)"/>
-        <Variable Name="bik_5" Type="expression" Content="f:copy([Variable20],5,1)"/>
-        <Variable Name="bik_6" Type="expression" Content="f:copy([Variable20],6,1)"/>
-        <Variable Name="bik_7" Type="expression" Content="f:copy([Variable20],7,1)"/>
-        <Variable Name="bik_8" Type="expression" Content="f:copy([Variable20],8,1)"/>
-        <Variable Name="bik_9" Type="expression" Content="f:copy([Variable20],9,1)"/>
-        <Variable Name="index_from_1" Type="expression" Content="f:copy([Variable17],1,1)"/>
-        <Variable Name="index_from_2" Type="expression" Content="f:copy([Variable17],2,1)"/>
-        <Variable Name="index_from_3" Type="expression" Content="f:copy([Variable17],3,1)"/>
-        <Variable Name="index_from_4" Type="expression" Content="f:copy([Variable17],4,1)"/>
-        <Variable Name="index_from_5" Type="expression" Content="f:copy([Variable17],5,1)"/>
-        <Variable Name="index_from_6" Type="expression" Content="f:copy([Variable17],6,1)"/>
+		<Variable Name="bank" Type="expression" Content="f:choose([Variable2] = '', [Variable7], '')"/>
+		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [Variable25] + ', ' + [Variable5], '125956 Федеральный клиент ' + [Variable6])"/>
+        <Variable Name="bik_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],1,1), '')"/>
+        <Variable Name="bik_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],2,1), '')"/>
+        <Variable Name="bik_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],3,1), '')"/>
+        <Variable Name="bik_4" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],4,1), '')"/>
+        <Variable Name="bik_5" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],5,1), '')"/>
+        <Variable Name="bik_6" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],6,1), '')"/>
+        <Variable Name="bik_7" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],7,1), '')"/>
+        <Variable Name="bik_8" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],8,1), '')"/>
+        <Variable Name="bik_9" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],9,1), '')"/>
+        <Variable Name="index_from_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],1,1), '')"/>
+        <Variable Name="index_from_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],2,1), '')"/>
+        <Variable Name="index_from_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],3,1), '')"/>
+        <Variable Name="index_from_4" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],4,1), '')"/>
+        <Variable Name="index_from_5" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],5,1), '')"/>
+        <Variable Name="index_from_6" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable17],6,1), '')"/>
         <Variable Name="index_to_1" Type="expression" Content="f:copy([Variable18],1,1)"/>
         <Variable Name="index_to_2" Type="expression" Content="f:copy([Variable18],2,1)"/>
         <Variable Name="index_to_3" Type="expression" Content="f:copy([Variable18],3,1)"/>
         <Variable Name="index_to_4" Type="expression" Content="f:copy([Variable18],4,1)"/>
         <Variable Name="index_to_5" Type="expression" Content="f:copy([Variable18],5,1)"/>
         <Variable Name="index_to_6" Type="expression" Content="f:copy([Variable18],6,1)"/>
-        <Variable Name="inn_1" Type="expression" Content="f:copy([Variable14],1,1)"/>
-        <Variable Name="inn_2" Type="expression" Content="f:copy([Variable14],2,1)"/>
-        <Variable Name="inn_3" Type="expression" Content="f:copy([Variable14],3,1)"/>
-        <Variable Name="inn_4" Type="expression" Content="f:copy([Variable14],4,1)"/>
-        <Variable Name="inn_5" Type="expression" Content="f:copy([Variable14],5,1)"/>
-        <Variable Name="inn_6" Type="expression" Content="f:copy([Variable14],6,1)"/>
-        <Variable Name="inn_7" Type="expression" Content="f:copy([Variable14],7,1)"/>
-        <Variable Name="inn_8" Type="expression" Content="f:copy([Variable14],8,1)"/>
-        <Variable Name="inn_9" Type="expression" Content="f:copy([Variable14],9,1)"/>
-        <Variable Name="inn_10" Type="expression" Content="f:copy([Variable14],10,1)"/>
-        <Variable Name="inn_11" Type="expression" Content="f:copy([Variable14],11,1)"/>
-        <Variable Name="inn_12" Type="expression" Content="f:copy([Variable14],12,1)"/>
-        <Variable Name="ks_1" Type="expression" Content="f:copy([Variable22],1,1)"/>
-        <Variable Name="ks_2" Type="expression" Content="f:copy([Variable22],2,1)"/>
-        <Variable Name="ks_3" Type="expression" Content="f:copy([Variable22],3,1)"/>
-        <Variable Name="ks_4" Type="expression" Content="f:copy([Variable22],4,1)"/>
-        <Variable Name="ks_5" Type="expression" Content="f:copy([Variable22],5,1)"/>
-        <Variable Name="ks_6" Type="expression" Content="f:copy([Variable22],6,1)"/>
-        <Variable Name="ks_7" Type="expression" Content="f:copy([Variable22],7,1)"/>
-        <Variable Name="ks_8" Type="expression" Content="f:copy([Variable22],8,1)"/>
-        <Variable Name="ks_9" Type="expression" Content="f:copy([Variable22],9,1)"/>
-        <Variable Name="ks_10" Type="expression" Content="f:copy([Variable22],10,1)"/>
-        <Variable Name="ks_11" Type="expression" Content="f:copy([Variable22],11,1)"/>
-        <Variable Name="ks_12" Type="expression" Content="f:copy([Variable22],12,1)"/>
-        <Variable Name="ks_13" Type="expression" Content="f:copy([Variable22],13,1)"/>
-        <Variable Name="ks_14" Type="expression" Content="f:copy([Variable22],14,1)"/>
-        <Variable Name="ks_15" Type="expression" Content="f:copy([Variable22],15,1)"/>
-        <Variable Name="ks_16" Type="expression" Content="f:copy([Variable22],16,1)"/>
-        <Variable Name="ks_17" Type="expression" Content="f:copy([Variable22],17,1)"/>
-        <Variable Name="ks_18" Type="expression" Content="f:copy([Variable22],18,1)"/>
-        <Variable Name="ks_19" Type="expression" Content="f:copy([Variable22],19,1)"/>
-        <Variable Name="ks_20" Type="expression" Content="f:copy([Variable22],20,1)"/>
-        <Variable Name="rs_1" Type="expression" Content="f:copy([Variable21],1,1)"/>
-        <Variable Name="rs_2" Type="expression" Content="f:copy([Variable21],2,1)"/>
-        <Variable Name="rs_3" Type="expression" Content="f:copy([Variable21],3,1)"/>
-        <Variable Name="rs_4" Type="expression" Content="f:copy([Variable21],4,1)"/>
-        <Variable Name="rs_5" Type="expression" Content="f:copy([Variable21],5,1)"/>
-        <Variable Name="rs_6" Type="expression" Content="f:copy([Variable21],6,1)"/>
-        <Variable Name="rs_7" Type="expression" Content="f:copy([Variable21],7,1)"/>
-        <Variable Name="rs_8" Type="expression" Content="f:copy([Variable21],8,1)"/>
-        <Variable Name="rs_9" Type="expression" Content="f:copy([Variable21],9,1)"/>
-        <Variable Name="rs_10" Type="expression" Content="f:copy([Variable21],10,1)"/>
-        <Variable Name="rs_11" Type="expression" Content="f:copy([Variable21],11,1)"/>
-        <Variable Name="rs_12" Type="expression" Content="f:copy([Variable21],12,1)"/>
-        <Variable Name="rs_13" Type="expression" Content="f:copy([Variable21],13,1)"/>
-        <Variable Name="rs_14" Type="expression" Content="f:copy([Variable21],14,1)"/>
-        <Variable Name="rs_15" Type="expression" Content="f:copy([Variable21],15,1)"/>
-        <Variable Name="rs_16" Type="expression" Content="f:copy([Variable21],16,1)"/>
-        <Variable Name="rs_17" Type="expression" Content="f:copy([Variable21],17,1)"/>
-        <Variable Name="rs_18" Type="expression" Content="f:copy([Variable21],18,1)"/>
-        <Variable Name="rs_19" Type="expression" Content="f:copy([Variable21],19,1)"/>
-        <Variable Name="rs_20" Type="expression" Content="f:copy([Variable21],20,1)"/>
+        <Variable Name="inn_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],1,1), '')"/>
+        <Variable Name="inn_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],2,1), '')"/>
+        <Variable Name="inn_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],3,1), '')"/>
+        <Variable Name="inn_4" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],4,1), '')"/>
+        <Variable Name="inn_5" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],5,1), '')"/>
+        <Variable Name="inn_6" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],6,1), '')"/>
+        <Variable Name="inn_7" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],7,1), '')"/>
+        <Variable Name="inn_8" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],8,1), '')"/>
+        <Variable Name="inn_9" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],9,1), '')"/>
+        <Variable Name="inn_10" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],10,1), '')"/>
+        <Variable Name="inn_11" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],11,1), '')"/>
+        <Variable Name="inn_12" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable14],12,1), '')"/>
+        <Variable Name="ks_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],1,1), '')"/>
+        <Variable Name="ks_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],2,1), '')"/>
+        <Variable Name="ks_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],3,1), '')"/>
+        <Variable Name="ks_4" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],4,1), '')"/>
+        <Variable Name="ks_5" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],5,1), '')"/>
+        <Variable Name="ks_6" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],6,1), '')"/>
+        <Variable Name="ks_7" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],7,1), '')"/>
+        <Variable Name="ks_8" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],8,1), '')"/>
+        <Variable Name="ks_9" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],9,1), '')"/>
+        <Variable Name="ks_10" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],10,1), '')"/>
+        <Variable Name="ks_11" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],11,1), '')"/>
+        <Variable Name="ks_12" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],12,1), '')"/>
+        <Variable Name="ks_13" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],13,1), '')"/>
+        <Variable Name="ks_14" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],14,1), '')"/>
+        <Variable Name="ks_15" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],15,1), '')"/>
+        <Variable Name="ks_16" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],16,1), '')"/>
+        <Variable Name="ks_17" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],17,1), '')"/>
+        <Variable Name="ks_18" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],18,1), '')"/>
+        <Variable Name="ks_19" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],19,1), '')"/>
+        <Variable Name="ks_20" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable22],20,1), '')"/>
+        <Variable Name="rs_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],1,1), '')"/>
+        <Variable Name="rs_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],2,1), '')"/>
+        <Variable Name="rs_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],3,1), '')"/>
+        <Variable Name="rs_4" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],4,1), '')"/>
+        <Variable Name="rs_5" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],5,1), '')"/>
+        <Variable Name="rs_6" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],6,1), '')"/>
+        <Variable Name="rs_7" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],7,1), '')"/>
+        <Variable Name="rs_8" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],8,1), '')"/>
+        <Variable Name="rs_9" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],9,1), '')"/>
+        <Variable Name="rs_10" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],10,1), '')"/>
+        <Variable Name="rs_11" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],11,1), '')"/>
+        <Variable Name="rs_12" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],12,1), '')"/>
+        <Variable Name="rs_13" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],13,1), '')"/>
+        <Variable Name="rs_14" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],14,1), '')"/>
+        <Variable Name="rs_15" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],15,1), '')"/>
+        <Variable Name="rs_16" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],16,1), '')"/>
+        <Variable Name="rs_17" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],17,1), '')"/>
+        <Variable Name="rs_18" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],18,1), '')"/>
+        <Variable Name="rs_19" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],19,1), '')"/>
+        <Variable Name="rs_20" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable21],20,1), '')"/>
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="barkod_espp"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="NPKop"/>
@@ -716,6 +717,8 @@
         <Variable Name="Variable22" Type="db-field" Dataset="PostDataSet" Content="ks" />
         <Variable Name="Variable23" Type="db-field" Dataset="PostDataSet" Content="comment" />
         <Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+		<Variable Name="Variable25" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable26" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL" />
 		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable1], 1, 6)" />
 		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable1], 7, 2)" />
 		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable1], 9, 5)" />
@@ -750,7 +753,9 @@
                     <Column Name="Variable22"/>
                     <Column Name="Variable23"/>
                     <Column Name="Variable24"/>
-					<Column Name="Variable31"/>
+					<Column Name="Variable25"/>
+					<Column Name="Variable26"/>
+					<Column Name="Variable31"/>					
 					<Column Name="Variable32"/>
 					<Column Name="Variable33"/>
 					<Column Name="Variable34"/>
