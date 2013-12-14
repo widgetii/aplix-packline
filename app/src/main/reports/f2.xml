@@ -30,7 +30,7 @@
                             <Memo>ф. 2</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView9" Left="12.695705" Top="29.8494" Width="78.9087" Height="17.46988" BoundLeft="12.500389" BoundTop="28.759861" BoundWidth="79.29934" BoundHeight="16.635605" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable1], [Variable2], [Variable3], [Variable4], [Variable5]</Memo>
+                            <Memo>[kuda_full_address]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="9" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView10" Left="20.50845" Top="88.10241" Width="57.423656" Height="5.4216866" BoundLeft="20.31313" BoundTop="87.971344" BoundWidth="57.8143" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Вес_______________кг.</Memo>
@@ -47,6 +47,10 @@
         </Page>
     </Pages>
     <Variables>       
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable1] = '', [Variable2], f:choose([Variable2] = '', [Variable1], [Variable1] + ', ' + [Variable2]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable3] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable3], [kuda_city_adres] + ', ' + [Variable3]))"/>
+		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable4] = '', [kuda_area_city], f:choose([kuda_area_city] = '', [Variable4], [kuda_area_city] + ', ' + [Variable4]))"/>		
+		<Variable Name="kuda_full_address" Type="expression" Content="f:choose([Variable5] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable5], [kuda_region_area] + ', ' + [Variable5]))"/>		
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="AREA"/>

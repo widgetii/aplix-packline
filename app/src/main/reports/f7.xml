@@ -53,11 +53,14 @@
 		<Variable Name="Variable81" Type="expression" Content="f:copy([Variable12], 9, 2)" />
 		<Variable Name="Variable82" Type="expression" Content="f:copy([Variable12], 6, 2)" />
 		<Variable Name="Variable83" Type="expression" Content="f:copy([Variable12], 1, 4)" />
+		<Variable Name="otkuda_adres" Type="expression" Content="f:choose([Variable18] = '', [Variable3], f:choose([Variable3] = '', [Variable18], [Variable18] + ', ' + [Variable3]))"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable14] = '', [Variable1], f:choose([Variable1] = '', [Variable14], [Variable1] + ', ' + [Variable14]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable15] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable15], [kuda_city_adres] + ', ' + [Variable15]))"/>
 
 		<!-- Fields for First Class Post -->
-		<Variable Name="f7a_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
+		<Variable Name="f7a_Kuda" Type="expression" Content="'.                ' + [kuda_area_city]" />
 		<Variable Name="f7a_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
+		<Variable Name="f7a_ot_kuda" Type="expression" Content="'.                 ' + [otkuda_adres]" />
 		<Variable Name="f7a_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7a_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7a_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -92,9 +95,9 @@
 		<Variable Name="f7a_io_std" Type="expression" Content="f:choose([Variable64] = 'true', 'X', '')" />
 
 		<!-- Fields for Parcel Post -->
-		<Variable Name="f7p_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
+		<Variable Name="f7p_Kuda" Type="expression" Content="'.                ' + [kuda_area_city]" />
 		<Variable Name="f7p_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
+		<Variable Name="f7p_ot_kuda" Type="expression" Content="'.                 ' + [otkuda_adres]" />
 		<Variable Name="f7p_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7p_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7p_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -130,9 +133,9 @@
 		<Variable Name="f7p_io_std" Type="expression" Content="f:choose([Variable64] = 'true', 'X', '')" />
 
 		<!-- Fields for Book Post -->
-		<Variable Name="f7b_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
+		<Variable Name="f7b_Kuda" Type="expression" Content="'.                ' + [kuda_area_city]" />
 		<Variable Name="f7b_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
+		<Variable Name="f7b_ot_kuda" Type="expression" Content="'.                 ' + [otkuda_adres]" />
 		<Variable Name="f7b_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7b_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7b_ves" Type="expression" Content="f:trunc([Variable6]) + ' кг ' + f:copy(f:str(f:frac([Variable6]),3), 3, 3) + ' г'" />
@@ -165,9 +168,9 @@
 		<Variable Name="f7b_io_prost" Type="expression" Content="f:choose([Variable65] = 'true', 'X', '')" />
 
 		<!-- Fields for Letter Post -->
-		<Variable Name="f7l_Kuda" Type="expression" Content="'.                ' + [Variable1] + ', ' + [Variable14] + ', ' + [Variable15]" />
+		<Variable Name="f7l_Kuda" Type="expression" Content="'.                ' + [kuda_area_city]" />
 		<Variable Name="f7l_Komu" Type="expression" Content="'.               ' + [Variable2]" />
-		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [Variable18] + ', ' + [Variable3]" />
+		<Variable Name="f7l_ot_kuda" Type="expression" Content="'.                 ' + [otkuda_adres]" />
 		<Variable Name="f7l_ot_kogo" Type="expression" Content="'.                  ' + [Variable4]" />
 		<Variable Name="f7l_ottisk" Type="expression" Content="' ' + [Variable5]" />
 		<Variable Name="f7l_telefon" Type="expression" Content="[Variable11]" />

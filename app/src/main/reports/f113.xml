@@ -392,7 +392,7 @@
                             <Memo>Адрес отправителя:</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="italic" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView126" Left="34.701607" Top="73.771576" Width="57.293457" Height="3.054449" BoundLeft="34.6365" BoundTop="72.67303" BoundWidth="57.423668" BoundHeight="3.1257217" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable9], [Variable10], [Variable11], [Variable12]</Memo>
+                            <Memo>[otkuda_full_adres]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView127" Left="34.831818" Top="79.48206" Width="56.90282" Height="12.350597" BoundLeft="34.76671" BoundTop="78.27328" BoundWidth="57.03303" BoundHeight="12.24241" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
@@ -617,11 +617,15 @@
     </Pages>
     <Variables>
     	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable13] > 0, 'false', 'true')"/>
-        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [Variable25] + ', ' + [Variable5] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [Variable11] + ', ' + [Variable10] + ', ' + [Variable9] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
+        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_adres] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
 		<Variable Name="bank" Type="expression" Content="f:choose([Variable2] = '', [Variable7], '')"/>
-		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [Variable25] + ', ' + [Variable5], '125956 Федеральный клиент ' + [Variable6])"/>
+		<Variable Name="kuda_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable25], f:choose([Variable25] = '', [Variable5], [Variable25] + ', ' + [Variable5]))"/>
+		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [kuda_adres], '125956 Федеральный клиент ' + [Variable6])"/>
+		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
+		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable11] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable11], [otkuda_city_adres] + ', ' + [Variable11]))"/>
+		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable12] = '', [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable12], [otkuda_area_city] + ', ' + [Variable12]))"/>		
         <Variable Name="bik_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],1,1), '')"/>
         <Variable Name="bik_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],2,1), '')"/>
         <Variable Name="bik_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],3,1), '')"/>

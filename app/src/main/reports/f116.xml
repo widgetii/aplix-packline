@@ -45,7 +45,7 @@
                     <Memo>(подпись отправителя)</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView13" Left="7.113292" Top="47.471897" Width="87.94617" Height="3.516437" BoundLeft="7.020912" BoundTop="47.40678" BoundWidth="88.13092" BoundHeight="3.646675" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>                 [Variable16], [Variable1]</Memo>
+                    <Memo>                 [otkuda_adres]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView14" Left="6.9285316" Top="77.68721" Width="88.31568" Height="15.368131" BoundLeft="6.6513906" BoundTop="77.49185" BoundWidth="88.86997" BoundHeight="15.758846" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="3.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo></Memo>
@@ -69,10 +69,10 @@
                     <Memo>                 [Variable4]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView21" Left="7.113292" Top="36.271397" Width="60.97108" Height="5.3397746" BoundLeft="7.020912" BoundTop="36.206276" BoundWidth="61.155838" BoundHeight="5.4700127" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>                 [Variable5], [Variable6], [Variable7], [Variable8]</Memo>
+                    <Memo>                 [kuda_full_adres]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView22" Left="7.113292" Top="85.37128" Width="87.94617" Height="5.3397746" BoundLeft="7.020912" BoundTop="85.30615" BoundWidth="88.13092" BoundHeight="5.4700127" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>                 [Variable5], [Variable6], [Variable7], [Variable8]</Memo>
+                    <Memo>                 [kuda_full_adres]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView23" Left="51.825417" Top="75.34292" Width="43.60356" Height="1.8233376" BoundLeft="51.733036" BoundTop="75.2778" BoundWidth="43.788322" BoundHeight="1.9535761" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable25]</Memo>
@@ -341,6 +341,10 @@
         </Page>
     </Pages>
     <Variables>    
+		<Variable Name="otkuda_adres" Type="expression" Content="f:choose([Variable16] = '', [Variable1], f:choose([Variable1] = '', [Variable16], [Variable16] + ', ' + [Variable1]))"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable6], f:choose([Variable6] = '', [Variable5], [Variable5] + ', ' + [Variable6]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable7] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable7], [kuda_city_adres] + ', ' + [Variable7]))"/>
+		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable8] = '', [kuda_area_city], f:choose([kuda_area_city] = '', [Variable8], [kuda_area_city] + ', ' + [Variable8]))"/>		
         <Variable Name="index_from_1" Type="expression" Content="f:copy([Variable10],1,1)"/>
         <Variable Name="index_from_2" Type="expression" Content="f:copy([Variable10],2,1)"/>
         <Variable Name="index_from_3" Type="expression" Content="f:copy([Variable10],3,1)"/>

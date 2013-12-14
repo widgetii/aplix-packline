@@ -22,7 +22,7 @@
                     <Memo>[Variable25]</Memo>
                 </MemoView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView5" Left="2.5391412" Top="32.566315" Width="94.924835" Height="13.252093" BoundLeft="2.3438227" BoundTop="32.425335" BoundWidth="95.31546" BoundHeight="13.534053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>[Variable7], [Variable6], [Variable5], [Variable4], [Variable3]&#13;&#10;[Variable9] [Variable10]</Memo>
+                    <Memo>[kuda_full_address]&#13;&#10;[Variable9] [Variable10]</Memo>
                 </MemoView>
                 <BarCodeView CheckSum="true" ShowText="false" BarCodeType="qr" ModuleWidth="1.0" Angle="0" Name="MemoView3" Left="16.60208" Top="47.228207" Width="66.01768" Height="47.651146" BoundLeft="16.40676" BoundTop="47.087227" BoundWidth="66.40832" BoundHeight="47.9331" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable12]</Memo>
@@ -34,6 +34,10 @@
         </Page>
     </Pages>
     <Variables> 
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable3] = '', [Variable4], f:choose([Variable4] = '', [Variable3], [Variable4] + ', ' + [Variable3]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable5] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable5], [Variable5] + ', ' + [kuda_city_adres]))"/>
+		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable6] = '', [kuda_area_city], f:choose([kuda_area_city] = '', [Variable6], [Variable6] + ', ' + [kuda_area_city]))"/>		
+		<Variable Name="kuda_full_address" Type="expression" Content="f:choose([Variable7] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable7], [Variable7] + ', ' + [kuda_region_area]))"/>		
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
