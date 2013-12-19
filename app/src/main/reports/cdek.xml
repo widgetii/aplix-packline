@@ -276,7 +276,7 @@
 		<Variable Name="total" Type="expression" Content="f:count([VarIncomingIndex])" />
 		<Variable Name="total_cost" Type="expression" Content="f:sum([VarIncomingCost])" />
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
-		<Variable Name="itogo" Type="expression" Content="[total_cost] + [Variable18]" />
+		<Variable Name="itogo" Type="expression" Content="[total_cost] + f:choose([Variable18] = '', 0, [Variable18])" />
 		<Variable Name="itogo_rub" Type="expression" Content="f:str([itogo], 2)" />
 		<Variable Name="itogo_text" Type="expression" Content="f:toRoublesRU([itogo])" />
 		<Variable Name="date" Type="function" Function="date"/>
