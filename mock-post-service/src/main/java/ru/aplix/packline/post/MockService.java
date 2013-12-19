@@ -649,6 +649,8 @@ public class MockService implements PackingLinePortType {
 				field.setValue(post.getPostType().name().toUpperCase());
 			} else if ("POST_DESCRIPTION".equalsIgnoreCase(name) && post.getIncoming().size() > 0) {
 				field.setValue(post.getIncoming().get(0).getContentDescription());
+			} else if ("CONTAINER_ID".equalsIgnoreCase(name)) {
+				field.setValue(containerId);
 			} else {
 				Field existing = (Field) CollectionUtils.find(getConfig().getGatherInfoFields(), new Predicate() {
 					@Override

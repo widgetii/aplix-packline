@@ -625,7 +625,7 @@
 		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [kuda_adres], '125956 Федеральный клиент ' + [Variable6])"/>
 		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
 		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable11] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable11], [otkuda_city_adres] + ', ' + [Variable11]))"/>
-		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable12] = '', [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable12], [otkuda_area_city] + ', ' + [Variable12]))"/>		
+		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable10], [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable12], [otkuda_area_city] + ', ' + [Variable12]))"/>		
         <Variable Name="bik_1" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],1,1), '')"/>
         <Variable Name="bik_2" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],2,1), '')"/>
         <Variable Name="bik_3" Type="expression" Content="f:choose([Variable2] = '', f:copy([Variable20],3,1), '')"/>

@@ -5,7 +5,7 @@ public final class Const {
 	private Const() {
 
 	}
-	
+
 	public static final String APP_NAME = "Aplix Pack Line";
 
 	public static final String FIRST_WORKFLOW_ACTION_BEAN_NAME = "firstWorkflowAction";
@@ -41,6 +41,14 @@ public final class Const {
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
 	public static final String CANCEL_PRINT_VARIABLE = "CancelPrinting";
+
+	public static final String INCOMINGS_DATASET = "IncomingsDataSet";
+	public static final String INCOMING_COLUMN_INDEX = "VarIncomingIndex";
+	public static final String INCOMING_COLUMN_ID = "VarIncomingId";
+	public static final String INCOMING_COLUMN_DATE = "VarIncomingDate";
+	public static final String INCOMING_COLUMN_WEIGHT = "VarIncomingWeight";
+	public static final String INCOMING_COLUMN_COST = "VarIncomingCost";
+	public static final String INCOMING_COLUMN_DESCRIPTION = "VarIncomingDescription";
 
 	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";

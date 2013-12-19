@@ -49,6 +49,18 @@
 			<date>2013-10-07T23:06:18.039+03:00</date>
 			<totalIncomings>1</totalIncomings>
 		</order>
+		<order>
+			<id>12349876</id>
+			<clientName>Анатолий Тимофеев</clientName>
+			<deliveryMethod>Почтовая посылка Почта России (138.1 руб., 4 дня)</deliveryMethod>
+			<deliveryAddress>123455, Московская область, Столбцовский район, п. Медведево, ул. Малинина, д. 20</deliveryAddress>
+			<customer>
+				<id>22222222</id>
+				<name>УП "БОНЖУР"</name>
+			</customer>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+			<totalIncomings>2</totalIncomings>
+		</order>
 	</orders>
 	<incomings>
 		<incoming>
@@ -57,6 +69,7 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 		</incoming>
 		<incoming>
@@ -65,6 +78,7 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 		</incoming>
 		<incoming>
@@ -73,6 +87,7 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 		</incoming>
 		<incoming>
@@ -81,6 +96,7 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Подарочный набор Eleganci.</contentDescription>
 		</incoming>
 		<incoming>
@@ -89,6 +105,7 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 		</incoming>
 		<incoming>
@@ -97,7 +114,26 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
+			<cost>0.0</cost>
 			<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008007</id>
+			<orderId>12349876</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<cost>2655.0</cost>
+			<contentDescription>Мультиварка Bosch BR-546.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008008</id>
+			<orderId>12349876</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<cost>1576.2</cost>
+			<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
 		</incoming>
 	</incomings>
 	<posts>
@@ -124,6 +160,7 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 			</incoming>
 			<incoming>
@@ -132,6 +169,7 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 			</incoming>
 			<postType>EMS</postType>
@@ -146,6 +184,7 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 			</incoming>
 			<incoming>
@@ -154,6 +193,7 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Подарочный набор Eleganci.</contentDescription>
 			</incoming>
 			<incoming>
@@ -162,6 +202,7 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
 			<postType>PARCEL</postType>
@@ -176,10 +217,35 @@
 				<photoId></photoId>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<weight>0.0</weight>
+				<cost>0.0</cost>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 			</incoming>
 			<postType>PACKAGE</postType>
 			<orderId>987654321</orderId>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+		</post>
+		<post>
+			<id>010933</id>
+			<incoming>
+				<id>008007</id>
+				<orderId>12349876</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<cost>2655.0</cost>
+				<contentDescription>Мультиварка Bosch BR-546.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>008008</id>
+				<orderId>12349876</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<cost>1576.2</cost>
+				<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
+			</incoming>
+			<postType>SDEK</postType>
+			<orderId>12349876</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
 	</posts>
@@ -231,6 +297,21 @@
 		</container>
 		<container>
 			<id>70001795</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<boxTypeId>180002</boxTypeId>
+			<trackingId>1234567890123</trackingId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<shipped>false</shipped>
+		</container>
+		<container>
+			<id>70001796</id>
 			<packingSize>
 				<length>100.0</length>
 				<height>20.0</height>
@@ -412,6 +493,22 @@
 		<field>
 			<name>URL</name>
 			<value>http://www.aplix.ru/o-kompanii/kontakty/</value>
+		</field>
+		<field>
+			<name>site</name>
+			<value>www.vardex.ru</value>
+		</field>
+		<field>
+			<name>cartons</name>
+			<value>1</value>
+		</field>
+		<field>
+			<name>delivery_type</name>
+			<value>D</value>
+		</field>
+		<field>
+			<name>delivery_cost</name>
+			<value>428.5</value>
 		</field>
 		<field>
 			<name>DOGOVOR</name>

@@ -101,6 +101,11 @@
 				<PostType>EMS</PostType>
 			</PostTypeRestriction>
 		</Form>
+		<Form name="СДЭК" file="cdek" printerId="printer1" autoPrint="false" copies="2">
+			<PostTypeRestriction>
+				<PostType>SDEK</PostType>
+			</PostTypeRestriction>
+		</Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->

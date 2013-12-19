@@ -35,10 +35,12 @@ import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
 import ru.aplix.converters.fr2afop.database.ValueResolver;
 import ru.aplix.converters.fr2afop.fr.Report;
 import ru.aplix.converters.fr2afop.fr.Variable;
+import ru.aplix.converters.fr2afop.fr.dataset.Column;
 import ru.aplix.converters.fr2afop.fr.dataset.Connection;
 import ru.aplix.converters.fr2afop.fr.dataset.Database;
 import ru.aplix.converters.fr2afop.fr.dataset.Dataset;
 import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
+import ru.aplix.converters.fr2afop.fr.dataset.Row;
 import ru.aplix.converters.fr2afop.reader.InputStreamOpener;
 import ru.aplix.converters.fr2afop.reader.ReportReader;
 import ru.aplix.converters.fr2afop.reader.XMLReportReader;
@@ -55,7 +57,9 @@ import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.Post;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
@@ -168,6 +172,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			queryIdParam.setValue(queryId);
 		}
 		ValueResolver vr = new ValueResolver();
+		addIncomingsDataSet(report);
 		vr.resolve(report, configuration);
 
 		// Check if the report determined to cancel printing
@@ -400,5 +405,44 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			}
 		});
 		return variable != null && Boolean.valueOf(variable.getValue());
+	}
+
+	private void addIncomingsDataSet(Report report) {
+		Dataset dataset = (Dataset) CollectionUtils.find(report.getDatasets(), new Predicate() {
+			@Override
+			public boolean evaluate(Object object) {
+				Dataset item = (Dataset) object;
+				return Const.INCOMINGS_DATASET.equals(item.getName());
+			}
+		});
+
+		if (dataset == null) {
+			dataset = new Dataset();
+			dataset.setName(Const.INCOMINGS_DATASET);
+			report.getDatasets().add(dataset);
+		}
+
+		dataset.getRows().clear();
+
+		Post post = (Post) getContext().getAttribute(Const.POST);
+		Integer index = 1;
+		for (Incoming incoming : post.getIncoming()) {
+			Row row = new Row();
+			addColumn(row, Const.INCOMING_COLUMN_INDEX, index);
+			addColumn(row, Const.INCOMING_COLUMN_ID, incoming.getId());
+			addColumn(row, Const.INCOMING_COLUMN_DESCRIPTION, incoming.getContentDescription());
+			addColumn(row, Const.INCOMING_COLUMN_DATE, incoming.getDate() != null ? incoming.getDate().toXMLFormat() : null);
+			addColumn(row, Const.INCOMING_COLUMN_WEIGHT, incoming.getWeight());
+			addColumn(row, Const.INCOMING_COLUMN_COST, incoming.getCost());
+			dataset.getRows().add(row);
+			index++;
+		}
+	}
+
+	private void addColumn(Row row, String columnName, Object columnValue) {
+		Column column = new Column();
+		column.setName(columnName);
+		column.setValue(columnValue != null ? "" + columnValue : "");
+		row.getColumns().add(column);
 	}
 }

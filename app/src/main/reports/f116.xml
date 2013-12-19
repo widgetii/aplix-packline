@@ -344,7 +344,7 @@
 		<Variable Name="otkuda_adres" Type="expression" Content="f:choose([Variable16] = '', [Variable1], f:choose([Variable1] = '', [Variable16], [Variable16] + ', ' + [Variable1]))"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable6], f:choose([Variable6] = '', [Variable5], [Variable5] + ', ' + [Variable6]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable7] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable7], [kuda_city_adres] + ', ' + [Variable7]))"/>
-		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable8] = '', [kuda_area_city], f:choose([kuda_area_city] = '', [Variable8], [kuda_area_city] + ', ' + [Variable8]))"/>		
+		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable8] = '' or [Variable8] = [Variable6], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable8], [kuda_area_city] + ', ' + [Variable8]))"/>		
         <Variable Name="index_from_1" Type="expression" Content="f:copy([Variable10],1,1)"/>
         <Variable Name="index_from_2" Type="expression" Content="f:copy([Variable10],2,1)"/>
         <Variable Name="index_from_3" Type="expression" Content="f:copy([Variable10],3,1)"/>

@@ -110,38 +110,37 @@
 		<xsl:param name="bar-code-type" />
 
 		<xsl:result-document method="text" indent="no" encoding="ASCII">
-			<!-- Setup and Control Commands -->
-			<xsl:value-of select="concat('^Q20,3', $newline)" />
-			<xsl:value-of select="concat('^W30', $newline)" />
-			<xsl:value-of select="concat('^H10', $newline)" />
-			<xsl:value-of select="concat('^P1', $newline)" />
-			<xsl:value-of select="concat('^S4', $newline)" />
-			<xsl:value-of select="concat('^AD', $newline)" />
-			<xsl:value-of select="concat('^C1', $newline)" />
-			<xsl:value-of select="concat('^R0', $newline)" />
-			<xsl:value-of select="concat('~Q+0', $newline)" />
-			<xsl:value-of select="concat('^O0', $newline)" />
-			<xsl:value-of select="concat('^D0', $newline)" />
-			<xsl:value-of select="concat('^E25', $newline)" />
-			<xsl:value-of select="concat('~R200', $newline)" />
-
 			<!-- Print bar codes -->
 			<xsl:for-each select="//Column">
+				<!-- Setup and Control Commands -->
+				<xsl:value-of select="concat('^Q20,3', $newline)" />
+				<xsl:value-of select="concat('^W30', $newline)" />
+				<xsl:value-of select="concat('^H10', $newline)" />
+				<xsl:value-of select="concat('^P1', $newline)" />
+				<xsl:value-of select="concat('^S4', $newline)" />
+				<xsl:value-of select="concat('^AT', $newline)" />
+				<xsl:value-of select="concat('^C1', $newline)" />
+				<xsl:value-of select="concat('^R0', $newline)" />
+				<xsl:value-of select="concat('~Q+0', $newline)" />
+				<xsl:value-of select="concat('^O0', $newline)" />
+				<xsl:value-of select="concat('^D0', $newline)" />
+				<xsl:value-of select="concat('^E0', $newline)" />
+				<xsl:value-of select="concat('~R200', $newline)" />
 				<xsl:value-of select="concat('^L', $newline)" />
 				<xsl:value-of select="concat('Dy2-me-dd', $newline)" />
 				<xsl:value-of select="concat('Th:m:s', $newline)" />
-
+				<xsl:value-of select="$newline" />
 				<xsl:choose>
 					<xsl:when test="$bar-code-type = 'code39'">
 						<xsl:text>BA3,4,20,2,5,82,0,3,</xsl:text>
 						<xsl:value-of select="concat(current(), $newline)" />
 					</xsl:when>
 					<xsl:when test="$bar-code-type = 'ean-8'">
-						<xsl:text>BB,0,14,3,7,100,0,1,</xsl:text>
+						<xsl:text>BB,24,22,4,10,160,0,3,</xsl:text>
 						<xsl:value-of select="concat(current(), $newline)" />
 					</xsl:when>
 				</xsl:choose>
-
+				<xsl:value-of select="$newline" />
 				<xsl:value-of select="concat('E', $newline)" />
 			</xsl:for-each>
 		</xsl:result-document>

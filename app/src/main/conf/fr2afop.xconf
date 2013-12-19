@@ -25,13 +25,14 @@
 				SELECT 
 					barkod, barkod_espp, data_rep, pps, comment, POSTTYPE, MAILRANK,
 					FIRM_NAME, ADRES1, REGION1, index_from, INN, BR_BNAME, bik, rs, ks, telefon,
-					FIO, ADRES, CITY, AREA, REGION, index_to, TRANSTYPEID, 
+					FIO, ADRES, CITY, AREA, REGION, index_to, TRANSTYPEID, 					
 					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, NPRub, NPKop,
 					io_band1kl, io_nalozh, io_opis, io_cennost, io_prostuved, io_zakazuved,
 					io_pismo1kl, io_gabar, io_tyazh, io_uved, io_Nstd, io_obykn, io_Zakaz,
 					io_std, io_prost, io_saturday, io_sunday, io_oplata_otpr, io_oplata_poluch, 
 					io_oplata_dogovor,
-					ORDER, DELIVERY, URL, FIRM_PRED, FIRM_TEL, FIRM_CITY, POST_DESCRIPTION, DOGOVOR
+					ORDER, DELIVERY, URL, FIRM_PRED, FIRM_TEL, FIRM_CITY, POST_DESCRIPTION, DOGOVOR,
+					CONTAINER_ID, site, cartons, delivery_type, delivery_cost
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';

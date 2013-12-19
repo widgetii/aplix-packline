@@ -49,7 +49,7 @@
     <Variables>       
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable1] = '', [Variable2], f:choose([Variable2] = '', [Variable1], [Variable1] + ', ' + [Variable2]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable3] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable3], [kuda_city_adres] + ', ' + [Variable3]))"/>
-		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable4] = '', [kuda_area_city], f:choose([kuda_area_city] = '', [Variable4], [kuda_area_city] + ', ' + [Variable4]))"/>		
+		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable4] = '' or [Variable4] = [Variable2], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable4], [kuda_area_city] + ', ' + [Variable4]))"/>		
 		<Variable Name="kuda_full_address" Type="expression" Content="f:choose([Variable5] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable5], [kuda_region_area] + ', ' + [Variable5]))"/>		
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="CITY"/>

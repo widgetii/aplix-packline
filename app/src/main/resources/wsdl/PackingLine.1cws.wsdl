@@ -53,6 +53,7 @@
 							<xs:element name="photoId" type="xs:string" nillable="true"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 							<xs:element name="weight" type="xs:float" nillable="true"/>
+							<xs:element name="cost" type="xs:float" nillable="true"/>
 							<xs:element name="contentDescription" type="xs:string"/>
 						</xs:sequence>
 					</xs:extension>
@@ -113,6 +114,7 @@
 					<xs:enumeration value="PACKAGE"/>
 					<xs:enumeration value="SDEK"/>
 					<xs:enumeration value="IML"/>
+					<xs:enumeration value="APLIX"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="Registry">
