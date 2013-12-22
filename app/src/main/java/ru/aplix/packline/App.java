@@ -297,6 +297,8 @@ public class App extends Application implements IdleListener {
 			requestContext.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, psConf.getServiceAddress());
 			requestContext.put(BindingProvider.USERNAME_PROPERTY, psConf.getUserName());
 			requestContext.put(BindingProvider.PASSWORD_PROPERTY, psConf.getPassword());
+			requestContext.put(Const.PROPERTY_CONNECT_TIMEOUT, Const.POST_CONNECT_TIMEOUT);
+			requestContext.put(Const.PROPERTY_REQUEST_TIMEOUT, Const.POST_REQUEST_TIMEOUT);
 		}
 
 		workflowContext.setAttribute(Const.POST_SERVICE_PORT, postServicePort);

@@ -241,7 +241,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 
 		task = new Task<BoxType>() {
 
-			private int lastPrintedTagIndex;
+			private int lastPrintedTagIndex = -1;
 
 			@Override
 			public BoxType call() throws Exception {
@@ -318,12 +318,14 @@ public class GenStickController extends StandardController<GenStickAction> imple
 			@Override
 			protected void cancelled() {
 				super.cancelled();
-				
+
 				setProgress(false);
 				errorMessageProperty.set(null);
 				errorVisibleProperty.set(false);
 
-				continuePrinting(value, lastPrintedTagIndex);
+				if (lastPrintedTagIndex > -1) {
+					continuePrinting(value, lastPrintedTagIndex);
+				}
 			}
 		};
 

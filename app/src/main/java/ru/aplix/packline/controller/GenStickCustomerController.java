@@ -220,7 +220,7 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 
 		task = new Task<Customer>() {
 
-			private int lastPrintedTagIndex;
+			private int lastPrintedTagIndex = -1;
 
 			@Override
 			public Customer call() throws Exception {
@@ -289,12 +289,14 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 			@Override
 			protected void cancelled() {
 				super.cancelled();
-				
+
 				setProgress(false);
 				errorMessageProperty.set(null);
 				errorVisibleProperty.set(false);
 
-				continuePrinting(value, lastPrintedTagIndex);
+				if (lastPrintedTagIndex > -1) {
+					continuePrinting(value, lastPrintedTagIndex);
+				}
 			}
 		};
 

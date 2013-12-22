@@ -33,6 +33,11 @@ public final class Const {
 
 	public static final int ERROR_DISPLAY_DELAY = 5;
 
+	public static final String PROPERTY_CONNECT_TIMEOUT = "com.sun.xml.internal.ws.connect.timeout";
+	public static final String PROPERTY_REQUEST_TIMEOUT = "com.sun.xml.internal.ws.request.timeout";
+	public static final int POST_CONNECT_TIMEOUT = 60000;
+	public static final int POST_REQUEST_TIMEOUT = 60000;
+
 	public static final String POST_DATABASE_NAME = "PackLine Post Database";
 	public static final String QUERY_ID_PARAM = "queryId";
 	public static final String CONTAINER_ID_PARAM = "containerId";

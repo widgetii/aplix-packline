@@ -24,6 +24,7 @@ import java.util.concurrent.Executor;
 
 import javax.xml.ws.BindingProvider;
 
+import ru.aplix.packline.Const;
 import ru.aplix.packline.post.PackingLine;
 import ru.aplix.packline.post.PackingLinePortType;
 
@@ -53,6 +54,9 @@ public class PostConnection implements Connection {
 				String password = (String) info.get(PROPERTY_PASSWORD);
 				requestContext.put(BindingProvider.PASSWORD_PROPERTY, password);
 			}
+
+			requestContext.put(Const.PROPERTY_CONNECT_TIMEOUT, Const.POST_CONNECT_TIMEOUT);
+			requestContext.put(Const.PROPERTY_REQUEST_TIMEOUT, Const.POST_REQUEST_TIMEOUT);
 		}
 	}
 
