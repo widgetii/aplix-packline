@@ -43,13 +43,14 @@
 			<Parameters>
 				<Parameter Name="count" />
 				<Parameter Name="customerCode" />
+				<Parameter Name="queryId" />
 			</Parameters>
 			<Query><![CDATA[
 				SELECT 
 					TAG_ID 
 				FROM MARKERS
 				WHERE 
-					CUSTOMER_CODE = '${customerCode}'
+					CUSTOMER_CODE = '${customerCode}' AND QUERY_ID = '${queryId}'
 				LIMIT ${count};
 			]]>
 			</Query>			
@@ -57,11 +58,14 @@
 		<Dataset Name="MarkersForContainersDataSet" Database="PackLine Post Database">
 			<Parameters>
 				<Parameter Name="count" />
+				<Parameter Name="queryId" />
 			</Parameters>
 			<Query><![CDATA[
 				SELECT 
 					TAG_ID 
 				FROM MARKERS
+				WHERE
+					QUERY_ID = '${queryId}'
 				LIMIT ${count};
 			]]>
 			</Query>			

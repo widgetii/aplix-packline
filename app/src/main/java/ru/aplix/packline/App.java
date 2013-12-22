@@ -47,9 +47,9 @@ import ru.aplix.packline.workflow.WorkflowController;
 
 // TODO 35 Scales weight stable algorithm in Universal driver
 // TODO 90 styles of act-table, menu and quantity buttons
+// TODO 100 write readme file
 // FIXME logout doesn't work in ubuntu
 // FIXME error checker should hide error message after 5s even though barcode scanner is turned off
-// FIXME f116: vertical lines shifting 
 
 public class App extends Application implements IdleListener {
 

@@ -19,6 +19,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
@@ -28,6 +29,8 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.GenStickCustomerAction;
 import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.dialog.ConfirmationDialog;
+import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Customer;
@@ -59,6 +62,7 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
+	private ConfirmationDialog confirmationDialog = null;
 	private Task<?> task;
 
 	public GenStickCustomerController() {
@@ -146,13 +150,21 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	}
 
 	public void generateClick(ActionEvent event) {
+		generateAndPrintStickers(-1);
+	}
+
+	public void completeClick(ActionEvent event) {
+		done();
+	}
+
+	private void generateAndPrintStickers(final int offset) {
 		final Integer count = (Integer) countGroup.getSelectedToggle().getUserData();
 
 		task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().generateAndPrint(count != null ? count : 0, customerCode);
+					getAction().generateAndPrint(offset, count != null ? count : 0, customerCode);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -201,19 +213,24 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 		executor.submit(task);
 	}
 
-	public void completeClick(ActionEvent event) {
-		done();
-	}
-
 	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get()) {
+		if (progressVisibleProperty.get() || confirmationDialog != null) {
 			return;
 		}
 
 		task = new Task<Customer>() {
+
+			private int lastPrintedTagIndex;
+
 			@Override
 			public Customer call() throws Exception {
 				try {
+					lastPrintedTagIndex = getAction().findPrintedTag(value);
+					if (lastPrintedTagIndex > -1) {
+						cancel();
+						return null;
+					}
+
 					Customer customer = getAction().processBarcode(value);
 					return customer;
 				} catch (Throwable e) {
@@ -268,10 +285,42 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 					errorVisibleProperty.set(true);
 				}
 			}
+
+			@Override
+			protected void cancelled() {
+				super.cancelled();
+				
+				setProgress(false);
+				errorMessageProperty.set(null);
+				errorVisibleProperty.set(false);
+
+				continuePrinting(value, lastPrintedTagIndex);
+			}
 		};
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	private void continuePrinting(String lastPrintedTagId, final int lastPrintedTagIndex) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				generateAndPrintStickers(lastPrintedTagIndex);
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.stickers.continue", lastPrintedTagId);
+		confirmationDialog.show();
 	}
 
 	/**

@@ -18,10 +18,8 @@ import ru.aplix.packline.post.PackingLinePortType;
 
 public class GenStickCustomerAction extends BaseStickAction<GenStickCustomerController, Customer> {
 
-	private int count;
 	private String customerCode;
 	private Parameter customerCodeParam = null;
-	private Parameter countParam = null;
 
 	@Override
 	protected String getFormName() {
@@ -39,6 +37,11 @@ public class GenStickCustomerAction extends BaseStickAction<GenStickCustomerCont
 	}
 
 	@Override
+	protected String getDatesetName() {
+		return "MarkersForCustomersDataSet";
+	}
+
+	@Override
 	public Customer processBarcode(String code) throws PackLineException {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
@@ -47,29 +50,29 @@ public class GenStickCustomerAction extends BaseStickAction<GenStickCustomerCont
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 
+		if (getLastTagList() != null) {
+			setLastTagList(null);
+		}
+		
 		return result;
 	}
 
-	public void generateAndPrint(int count, String customerCode) throws PackLineException {
-		this.count = count;
+	public void generateAndPrint(int offset, int count, String customerCode) throws PackLineException {
 		this.customerCode = customerCode;
-		
+
 		if (customerCode == null) {
 			throw new PackLineException(getResources().getString("error.customer.not.selected"));
 		}
 
-		generateAndPrint();
+		generateAndPrint(offset, count);
 	}
-	
+
 	@Override
 	protected void beforeResolving(Report report) throws Exception {
 		super.beforeResolving(report);
-		
+
 		if (customerCodeParam != null) {
 			customerCodeParam.setValue(customerCode);
-		}
-		if (countParam != null) {
-			countParam.setValue("" + count);
 		}
 	}
 
@@ -79,12 +82,10 @@ public class GenStickCustomerAction extends BaseStickAction<GenStickCustomerCont
 
 		// Get reference to container Id parameter
 		for (Dataset dataset : configuration.getDatasets()) {
-			if ("MarkersForCustomersDataSet".equals(dataset.getName())) {
+			if (getDatesetName().equals(dataset.getName())) {
 				for (Parameter parameter : dataset.getParameters()) {
 					if (Const.CUSTOMER_CODE_PARAM.equals(parameter.getName())) {
 						customerCodeParam = parameter;
-					} else if (Const.COUNT_PARAM.equals(parameter.getName())) {
-						countParam = parameter;
 					}
 				}
 			}

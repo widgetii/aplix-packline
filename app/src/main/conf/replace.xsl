@@ -154,16 +154,31 @@
 		<xsl:param name="bar-code-type" />
 
 		<xsl:result-document method="text" indent="no" encoding="ASCII">
+			<!-- Setup and Control Commands -->
+			<xsl:value-of select="concat('^CT~~CD,~CC^~CT~', $newline)" />
+			<xsl:value-of select="concat('^XA~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR3,3~SD10^JUS^LRN^CI0^XZ', $newline)" />
 			<!-- Print bar codes -->
 			<xsl:for-each select="//Column">
+				<xsl:value-of select="concat('^XA', $newline)" />
+				<xsl:value-of select="concat('^MMT', $newline)" />
+				<xsl:value-of select="concat('^PW354', $newline)" />
+				<xsl:value-of select="concat('^LL0295', $newline)" />
+				<xsl:value-of select="concat('^LS0', $newline)" />
 				<xsl:choose>
 					<xsl:when test="$bar-code-type = 'code39'">
-						<xsl:value-of select="concat(current(), $newline)" />
+						<xsl:value-of select="concat('^FT47,236^A0N,50,69^FH\^FD', current())" />
+						<xsl:value-of select="concat('^FS', $newline)" />
+						<xsl:value-of select="concat('^BY2,3,144^FT16,171^B3N,N,,N,N', $newline)" />
+						<xsl:value-of select="concat('^FD', current())" />
+						<xsl:value-of select="concat('^FS', $newline)" />
 					</xsl:when>
 					<xsl:when test="$bar-code-type = 'ean-8'">
-						<xsl:value-of select="concat(current(), $newline)" />
+						<xsl:value-of select="concat('^BY4,2,235^FT44,252^B8N,,Y,N', $newline)" />
+						<xsl:value-of select="concat('^FD', current())" />
+						<xsl:value-of select="concat('^FS', $newline)" />
 					</xsl:when>
 				</xsl:choose>
+				<xsl:value-of select="concat('^PQ1,0,1,Y^XZ', $newline)" />
 			</xsl:for-each>
 		</xsl:result-document>
 	</xsl:template>

@@ -46,8 +46,8 @@ public class PostStatement implements Statement {
 
 		queryPostPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
 		queryMarkerCustPattern = Pattern
-				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
-		queryMarkerContPattern = Pattern.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+		queryMarkerContPattern = Pattern.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 	}
 
 	@Override
@@ -73,11 +73,11 @@ public class PostStatement implements Statement {
 					break;
 				case 2:
 					resultSet = executeMarkerCustQuery(sql);
-					cachable = false;
+					cachable = true;
 					break;
 				case 3:
 					resultSet = executeMarkerContQuery(sql);
-					cachable = false;
+					cachable = true;
 					break;
 				default:
 					throw new SQLException("Invalid SQL statement");
@@ -127,13 +127,13 @@ public class PostStatement implements Statement {
 	private ResultSet executeMarkerCustQuery(String sql) throws SQLException {
 		// Validate query
 		Matcher queryMatcher = queryMarkerCustPattern.matcher(sql);
-		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 3) {
 			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
 		}
 
 		// Parse query parameters
 		String customerCode = queryMatcher.group(1);
-		String count = queryMatcher.group(2);
+		String count = queryMatcher.group(3);
 
 		// Call remote post service
 		TagList tagList = postServicePort.generateTagsForIncomings(customerCode, Integer.parseInt(count));
@@ -148,12 +148,12 @@ public class PostStatement implements Statement {
 	private ResultSet executeMarkerContQuery(String sql) throws SQLException {
 		// Validate query
 		Matcher queryMatcher = queryMarkerContPattern.matcher(sql);
-		if (!queryMatcher.matches() || queryMatcher.groupCount() != 1) {
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
 			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
 		}
 
 		// Parse query parameters
-		String count = queryMatcher.group(1);
+		String count = queryMatcher.group(2);
 
 		// Call remote post service
 		TagList tagList = postServicePort.generateTagsForContainers(Integer.parseInt(count));

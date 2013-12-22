@@ -19,6 +19,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
@@ -28,6 +29,8 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.GenStickAction;
 import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.dialog.ConfirmationDialog;
+import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.BoxType;
@@ -60,6 +63,7 @@ public class GenStickController extends StandardController<GenStickAction> imple
 	private Timeline barcodeChecker;
 	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
+	private ConfirmationDialog confirmationDialog = null;
 	private Task<?> task;
 
 	public GenStickController() {
@@ -147,13 +151,41 @@ public class GenStickController extends StandardController<GenStickAction> imple
 	}
 
 	public void generateClick(ActionEvent event) {
+		if (boxTypeId == null) {
+			Window owner = rootNode.getScene().getWindow();
+			confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", "confirmation.stickers.without.container", new ConfirmationListener() {
+
+				@Override
+				public void onAccept() {
+					confirmationDialog = null;
+					generateAndPrintStickers(-1);
+				}
+
+				@Override
+				public void onDecline() {
+					confirmationDialog = null;
+				}
+			});
+
+			confirmationDialog.centerOnScreen();
+			confirmationDialog.show();
+		} else {
+			generateAndPrintStickers(-1);
+		}
+	}
+
+	public void completeClick(ActionEvent event) {
+		done();
+	}
+
+	private void generateAndPrintStickers(final int offset) {
 		final Integer count = (Integer) countGroup.getSelectedToggle().getUserData();
 
 		task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().generateAndPrint(count != null ? count : 0, boxTypeId);
+					getAction().generateAndPrint(offset, count != null ? count : 0, boxTypeId);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -202,19 +234,24 @@ public class GenStickController extends StandardController<GenStickAction> imple
 		executor.submit(task);
 	}
 
-	public void completeClick(ActionEvent event) {
-		done();
-	}
-
 	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get()) {
+		if (progressVisibleProperty.get() || confirmationDialog != null) {
 			return;
 		}
 
 		task = new Task<BoxType>() {
+
+			private int lastPrintedTagIndex;
+
 			@Override
 			public BoxType call() throws Exception {
 				try {
+					lastPrintedTagIndex = getAction().findPrintedTag(value);
+					if (lastPrintedTagIndex > -1) {
+						cancel();
+						return null;
+					}
+
 					BoxType boxType = getAction().processBarcode(value);
 					return boxType;
 				} catch (Throwable e) {
@@ -277,10 +314,42 @@ public class GenStickController extends StandardController<GenStickAction> imple
 					errorVisibleProperty.set(true);
 				}
 			}
+
+			@Override
+			protected void cancelled() {
+				super.cancelled();
+				
+				setProgress(false);
+				errorMessageProperty.set(null);
+				errorVisibleProperty.set(false);
+
+				continuePrinting(value, lastPrintedTagIndex);
+			}
 		};
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	private void continuePrinting(String lastPrintedTagId, final int lastPrintedTagIndex) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				generateAndPrintStickers(lastPrintedTagIndex);
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.stickers.continue", lastPrintedTagId);
+		confirmationDialog.show();
 	}
 
 	/**

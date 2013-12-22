@@ -6,19 +6,25 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.RandomStringUtils;
 
 import ru.aplix.converters.fr2afop.database.ValueResolver;
 import ru.aplix.converters.fr2afop.fr.Page;
 import ru.aplix.converters.fr2afop.fr.Report;
 import ru.aplix.converters.fr2afop.fr.Variable;
+import ru.aplix.converters.fr2afop.fr.dataset.Column;
 import ru.aplix.converters.fr2afop.fr.dataset.Connection;
 import ru.aplix.converters.fr2afop.fr.dataset.Database;
+import ru.aplix.converters.fr2afop.fr.dataset.Dataset;
+import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
+import ru.aplix.converters.fr2afop.fr.dataset.Row;
 import ru.aplix.converters.fr2afop.fr.type.BarCodeType;
 import ru.aplix.converters.fr2afop.fr.view.BarCodeView;
 import ru.aplix.converters.fr2afop.fr.view.View;
@@ -35,6 +41,8 @@ import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.conf.Stickers;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.post.TagList;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.StandardWorkflowController;
 
@@ -48,23 +56,93 @@ public abstract class BaseStickAction<Controller extends StandardWorkflowControl
 	private File r2afopConfigFile;
 	private String fr2afopConfigFileName;
 
+	private Parameter queryIdParam = null;
+	private Parameter countParam = null;
+	private String queryId;
+	private Boolean lastGenerateSucceded = null;
+	private TagList lastTagList;
+	private int offset;
+	private int count;
+
 	protected abstract Stickers getStickers() throws Exception;
 
 	protected abstract String getReportName();
 
+	protected abstract String getDatesetName();
+
 	public abstract T processBarcode(String code) throws PackLineException;
 
-	protected void beforeResolving(Report report) throws Exception {
+	public int findPrintedTag(final String code) {
+		int result = -1;
+		if (lastTagList != null && code != null) {
+			int i = 0;
+			List<Tag> list = lastTagList.getItems();
+			while (result == -1 && i < list.size()) {
+				Tag item = list.get(i);
+				if (code.equals(item.getId())) {
+					result = i;
+				}
+				i++;
+			}
+		}
+		return result;
+	}
 
+	protected void setLastTagList(TagList value) {
+		lastTagList = value;
+	}
+
+	protected TagList getLastTagList() {
+		return lastTagList;
+	}
+
+	protected void beforeResolving(Report report) throws Exception {
+		if (queryIdParam != null) {
+			queryIdParam.setValue(queryId);
+		}
+		if (countParam != null) {
+			countParam.setValue("" + count);
+		}
 	}
 
 	protected void afterResolving(Report report) throws Exception {
+		// Set variables values
 		setVariableValue(report, Const.PRINT_MODE_VARIABLE, getStickers().getPrinter().getPrintMode());
 		setBarCodeViewValue(report, getStickers().getBarCodeType());
+
+		if (offset < 0) {
+			// Store last tag list
+			lastTagList = new TagList();
+			for (Dataset dataset : report.getDatasets()) {
+				for (Row row : dataset.getRows()) {
+					for (Column column : row.getColumns()) {
+						Tag tag = new Tag();
+						tag.setId(column.getValue());
+						lastTagList.getItems().add(tag);
+					}
+				}
+			}
+		} else {
+			// Remove the beginning of list
+			for (Dataset dataset : report.getDatasets()) {
+				List<Row> newRows = dataset.getRows().subList(offset + 1, dataset.getRows().size());
+				dataset.setRows(newRows);
+			}
+		}
 	}
 
-	protected void generateAndPrint() throws PackLineException {
+	protected void generateAndPrint(int offset, int count) throws PackLineException {
+		this.offset = offset;
+		this.count = offset < 0 ? count : lastTagList != null ? lastTagList.getItems().size() : count;
+
 		try {
+			// updateQueryId
+			if ((lastGenerateSucceded == null || lastGenerateSucceded.booleanValue()) && offset < 0) {
+				queryId = RandomStringUtils.randomAlphanumeric(15);
+				lastGenerateSucceded = false;
+			}
+
+			// Resolve configuration
 			Printer printer = getStickers().getPrinter();
 			if (printer == null) {
 				throw new PackLineException(getResources().getString("error.printer.not.assigned"));
@@ -103,6 +181,8 @@ public abstract class BaseStickAction<Controller extends StandardWorkflowControl
 
 			// Load XSL transform
 			printPrepared(report, printer);
+
+			lastGenerateSucceded = true;
 		} catch (Throwable e) {
 			if (e instanceof PackLineException) {
 				throw (PackLineException) e;
@@ -176,6 +256,20 @@ public abstract class BaseStickAction<Controller extends StandardWorkflowControl
 					connection.setUrl((String) requestContext.get(BindingProvider.ENDPOINT_ADDRESS_PROPERTY));
 					connection.setUserName((String) requestContext.get(BindingProvider.USERNAME_PROPERTY));
 					connection.setPassword((String) requestContext.get(BindingProvider.PASSWORD_PROPERTY));
+				}
+			}
+		}
+
+		// Get reference to container Id parameter
+		for (Dataset dataset : configuration.getDatasets()) {
+			if (getDatesetName().equals(dataset.getName())) {
+				for (Parameter parameter : dataset.getParameters()) {
+					if (Const.QUERY_ID_PARAM.equals(parameter.getName())) {
+						queryIdParam = parameter;
+					}
+					if (Const.COUNT_PARAM.equals(parameter.getName())) {
+						countParam = parameter;
+					}
 				}
 			}
 		}
