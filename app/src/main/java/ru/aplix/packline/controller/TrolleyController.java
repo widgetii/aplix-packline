@@ -16,6 +16,9 @@ import org.apache.commons.logging.LogFactory;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.TrolleyAction;
+import ru.aplix.packline.action.TrolleyAction.TrolleyType;
+import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class TrolleyController extends StandardController<TrolleyAction> {
@@ -29,6 +32,8 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 	@FXML
 	private Button nextButton;
 
+	private TrolleyType trolleyType;
+
 	private Task<?> task;
 
 	@Override
@@ -37,7 +42,8 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 		nextButton.setDisable(false);
 
-		switch (getAction().getTrolleyMessage()) {
+		trolleyType = getAction().getTrolleyMessage();
+		switch (trolleyType) {
 		case PACK:
 			infoLabel.setText(getResources().getString("trolley.pack.info"));
 			Image image = new Image(getClass().getResource("/resources/images/img-trolley-red.png").toExternalForm());
@@ -47,11 +53,17 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 			infoLabel.setText(getResources().getString("trolley.keep.info"));
 			image = new Image(getClass().getResource("/resources/images/img-trolley-green.png").toExternalForm());
 			imageView.setImage(image);
+			if (trolleyPackAutoClose()) {
+				Utils.playSound(Utils.SOUND_WARNING);
+			}
 			break;
 		case JOIN:
 			infoLabel.setText(getResources().getString("trolley.join.info"));
 			image = new Image(getClass().getResource("/resources/images/img-trolley-blue.png").toExternalForm());
 			imageView.setImage(image);
+			if (trolleyPackAutoClose()) {
+				Utils.playSound(Utils.SOUND_WARNING);
+			}
 			break;
 		}
 
@@ -118,10 +130,23 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 				errorMessageProperty.set(null);
 				errorVisibleProperty.set(false);
+
+				if (trolleyType == TrolleyType.PACK && trolleyPackAutoClose()) {
+					TrolleyController.this.done();
+				}
 			}
 		};
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	private boolean trolleyPackAutoClose() {
+		try {
+			return Configuration.getInstance().getTrolleyPackAutoClose();
+		} catch (Exception e) {
+			LOG.error(null, e);
+		}
+		return false;
 	}
 }

@@ -36,6 +36,12 @@ public class Configuration {
 	@XmlElement(name = "EmptyBoxThreshold")
 	private Integer emptyBoxThreshold;
 
+	@XmlElement(name = "Sounds")
+	private Boolean soundsEnabled;
+
+	@XmlElement(name = "TrolleyPackAutoClose")
+	private Boolean trolleyPackAutoClose;
+
 	@XmlElementWrapper(name = "Printing")
 	@XmlElement(name = "Form", type = PrintForm.class)
 	private List<PrintForm> printForms;
@@ -144,5 +150,21 @@ public class Configuration {
 
 	public void setStickers(StickersContainer stickersContainer) {
 		this.stickersContainer = stickersContainer;
+	}
+
+	public Boolean getSoundsEnabled() {
+		return soundsEnabled != null ? soundsEnabled : false;
+	}
+
+	public void setSoundsEnabled(Boolean soundsEnabled) {
+		this.soundsEnabled = soundsEnabled;
+	}
+
+	public Boolean getTrolleyPackAutoClose() {
+		return trolleyPackAutoClose != null ? trolleyPackAutoClose : false;
+	}
+
+	public void setTrolleyPackAutoClose(Boolean trolleyPackAutoClose) {
+		this.trolleyPackAutoClose = trolleyPackAutoClose;
 	}
 }

@@ -136,6 +136,12 @@
 	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleTreshold="600" />
 	
+	<!-- Enable sounds in application -->
+	<Sounds>false</Sounds>
+	
+	<!-- Automatically close message "Put incoming into packing trolley" -->
+	<TrolleyPackAutoClose>false</TrolleyPackAutoClose>
+	
 	<!-- Specifies threshold, below which the app will show -->
 	<!-- notification to replenish the stock of boxes -->
 	<EmptyBoxThreshold>10</EmptyBoxThreshold>

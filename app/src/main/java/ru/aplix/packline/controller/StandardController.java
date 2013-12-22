@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.post.Operator;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.StandardWorkflowController;
 import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
@@ -67,6 +68,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				errorLabel.setVisible(newValue != null);
 				warningLabel.setVisible(newValue == null);
+
+				if (newValue != null) {
+					Utils.playSound(Utils.SOUND_ERROR);
+				}
 			}
 		});
 		warningMessageProperty.addListener(new ChangeListener<String>() {
@@ -74,6 +79,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				warningLabel.setVisible(newValue != null);
 				errorLabel.setVisible(newValue == null);
+
+				if (newValue != null) {
+					Utils.playSound(Utils.SOUND_WARNING);
+				}
 			}
 		});
 
@@ -112,6 +121,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		}
 
 		errorMessageProperty.set(null);
+		warningMessageProperty.set(null);
 		errorVisibleProperty.set(false);
 		progressVisibleProperty.set(false);
 	}

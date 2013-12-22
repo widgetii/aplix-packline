@@ -11,10 +11,12 @@ import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.GregorianCalendar;
 
 import javafx.application.Application;
+import javafx.scene.media.AudioClip;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,12 +26,18 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.xml.sax.InputSource;
+
+import ru.aplix.packline.conf.Configuration;
 
 /**
  * Utilities.
  */
 public final class Utils {
+
+	private static final Log LOG = LogFactory.getLog(Utils.class);
 
 	/**
 	 * Hidden constructor.
@@ -178,5 +186,33 @@ public final class Utils {
 			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
 		}
 		return sb.toString();
+	}
+
+	public static final int SOUND_ERROR = 0x01;
+	public static final int SOUND_WARNING = 0x02;
+
+	public static void playSound(int soundType) {
+		try {
+			if (!Configuration.getInstance().getSoundsEnabled()) {
+				return;
+			}
+
+			URL url = null;
+			switch (soundType) {
+			case SOUND_ERROR:
+				url = Utils.class.getResource("/resources/sounds/error.mp3");
+				break;
+			case SOUND_WARNING:
+				url = Utils.class.getResource("/resources/sounds/warning.mp3");
+				break;
+			}
+
+			if (url != null) {
+				AudioClip plonkSound = new AudioClip(url.toExternalForm());
+				plonkSound.play();
+			}
+		} catch (Exception e) {
+			LOG.error(null, e);
+		}
 	}
 }
