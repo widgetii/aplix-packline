@@ -51,10 +51,16 @@
 	</bean>
 
 	<bean id="action10" class="ru.aplix.packline.action.WeightingBoxAction">
-		<property name="nextAction" ref="action11" />
+		<property name="overweightAction" ref="action11" />
+		<property name="printingAction" ref="action12" />
+	</bean>
+	
+	<bean id="action11" class="ru.aplix.packline.action.OverweightAction">
+		<property name="weightingAction" ref="action10" />
+		<property name="normalAction" ref="action2" />
 	</bean>
 
-	<bean id="action11" class="ru.aplix.packline.action.PrintFormsAction">
+	<bean id="action12" class="ru.aplix.packline.action.PrintFormsAction">
 		<property name="weightingAction" ref="action10" />
 		<property name="normalAction" ref="action2" />
 	</bean>

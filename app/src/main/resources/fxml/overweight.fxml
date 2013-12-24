@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1032.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.OverweightController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%overweight.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+                  <children>
+                    <HBox id="HBox" alignment="CENTER" prefWidth="930.0" spacing="50.0">
+                      <children>
+                        <ImageView fitHeight="352.9490797893342" fitWidth="378.9330749511719" pickOnBounds="true" preserveRatio="true">
+                          <effect>
+                            <InnerShadow height="3.367021276595744" radius="1.183510638297872" width="3.367021276595744" />
+                          </effect>
+                          <image>
+                            <Image url="@../images/img-overweight.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <VBox id="VBox" alignment="CENTER" prefHeight="412.0" prefWidth="443.0" spacing="100.0">
+                          <children>
+                            <Button fx:id="nextButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
+                            <Button fx:id="weightingButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#weightingClick" prefHeight="64.0" prefWidth="184.0" styleClass="red-button" text="%button.reweight" textAlignment="CENTER" wrapText="true" />
+                          </children>
+                        </VBox>
+                      </children>
+                    </HBox>
+                  </children>
+                </StackPane>
+              </children>
+            </AnchorPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

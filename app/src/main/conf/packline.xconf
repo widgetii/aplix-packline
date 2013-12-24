@@ -23,7 +23,7 @@
 			<!-- "commandRetries"    - maximum number of times to retry to send the command (optional), default 1                   -->
 			<!-- "responseTimeout"   - timeout in milliseconds to wait for response after sending request (optional), default 1000  -->
 			<!-- "dataDelay"         - the delay in milliseconds between the sending of address and data (optional), default 200    -->
-			<Configuration portName="COM9" protocolName="Byte9"/>
+			<Configuration portName="COM10" protocolName="Byte9"/>
 		</Scales>
 		
 		<!-- Photo Camera driver -->
@@ -132,6 +132,17 @@
 			<Quantity>5000</Quantity>
 		</ForCustomers>
 	</Stickers>
+	
+	<!-- Weighting restrictions by post types -->
+	<Weighting>
+		<Restriction postType="FIRSTCLASS" maxWeight="2.5"/>
+		<Restriction postType="PARCEL" maxWeight="20"/>
+		<Restriction postType="BOOKPOST" maxWeight="2"/>
+		<Restriction postType="LETTER" maxWeight="0.1"/>
+		<Restriction postType="EMS" maxWeight="31.5"/>
+		<Restriction postType="SDEK" maxWeight="30"/>
+		<Restriction postType="IML" maxWeight="20"/>
+	</Weighting>
 	
 	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleTreshold="600" />

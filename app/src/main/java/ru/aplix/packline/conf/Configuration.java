@@ -49,6 +49,10 @@ public class Configuration {
 	@XmlElement(name = "Stickers")
 	private StickersContainer stickersContainer;
 
+	@XmlElementWrapper(name = "Weighting")
+	@XmlElement(name = "Restriction", type = WeightingRestriction.class)
+	private List<WeightingRestriction> weightingRestrictions;
+
 	private Configuration() {
 
 	}
@@ -166,5 +170,16 @@ public class Configuration {
 
 	public void setTrolleyPackAutoClose(Boolean trolleyPackAutoClose) {
 		this.trolleyPackAutoClose = trolleyPackAutoClose;
+	}
+
+	public List<WeightingRestriction> getWeightingRestrictions() {
+		if (weightingRestrictions == null) {
+			weightingRestrictions = new ArrayList<WeightingRestriction>();
+		}
+		return weightingRestrictions;
+	}
+
+	public void setWeightingRestrictions(List<WeightingRestriction> weightingRestrictions) {
+		this.weightingRestrictions = weightingRestrictions;
 	}
 }

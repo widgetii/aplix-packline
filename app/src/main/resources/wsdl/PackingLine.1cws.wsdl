@@ -520,6 +520,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="MarkAsProblem">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="problemStatus" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkAsProblemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AddBoxContainersRequestMessage">
@@ -672,6 +687,12 @@
 	<message name="UpdateContainerResponseMessage">
 		<part name="parameters" element="tns:UpdateContainerResponse"/>
 	</message>
+	<message name="MarkAsProblemRequest">
+		<part name="parameters" element="tns:MarkAsProblem"></part>
+	</message>
+	<message name="MarkAsProblemResponse">
+		<part name="parameters" element="tns:MarkAsProblemResponse"></part>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
@@ -772,6 +793,10 @@
 		<operation name="UpdateContainer">
 			<input message="tns:UpdateContainerRequestMessage"/>
 			<output message="tns:UpdateContainerResponseMessage"/>
+		</operation>
+		<operation name="MarkAsProblem">
+			<input message="tns:MarkAsProblemRequest"></input>
+			<output message="tns:MarkAsProblemResponse"></output>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1001,6 +1026,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="MarkAsProblem">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1222,6 +1256,15 @@
 		</operation>
 		<operation name="UpdateContainer">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="MarkAsProblem">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

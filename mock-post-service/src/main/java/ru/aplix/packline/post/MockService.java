@@ -670,6 +670,11 @@ public class MockService implements PackingLinePortType {
 		return resultList;
 	}
 
+	@Override
+	public boolean markAsProblem(String containerId, String problemStatus) {
+		return true;
+	}
+
 	@Resource
 	private WebServiceContext wsContext;
 
