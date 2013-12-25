@@ -53,8 +53,8 @@
 							<xs:element name="photoId" type="xs:string" nillable="true"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 							<xs:element name="weight" type="xs:float" nillable="true"/>
-							<xs:element name="cost" type="xs:float" nillable="true"/>
 							<xs:element name="contentDescription" type="xs:string"/>
+							<xs:element name="cost" type="xs:float" nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -112,7 +112,7 @@
 					<xs:enumeration value="LETTER"/>
 					<xs:enumeration value="EMS"/>
 					<xs:enumeration value="PACKAGE"/>
-					<xs:enumeration value="SDEK"/>
+					<xs:enumeration value="CDEK"/>
 					<xs:enumeration value="IML"/>
 					<xs:enumeration value="APLIX"/>
 				</xs:restriction>
@@ -687,11 +687,11 @@
 	<message name="UpdateContainerResponseMessage">
 		<part name="parameters" element="tns:UpdateContainerResponse"/>
 	</message>
-	<message name="MarkAsProblemRequest">
-		<part name="parameters" element="tns:MarkAsProblem"></part>
+	<message name="MarkAsProblemRequestMessage">
+		<part name="parameters" element="tns:MarkAsProblem"/>
 	</message>
-	<message name="MarkAsProblemResponse">
-		<part name="parameters" element="tns:MarkAsProblemResponse"></part>
+	<message name="MarkAsProblemResponseMessage">
+		<part name="parameters" element="tns:MarkAsProblemResponse"/>
 	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
@@ -795,8 +795,8 @@
 			<output message="tns:UpdateContainerResponseMessage"/>
 		</operation>
 		<operation name="MarkAsProblem">
-			<input message="tns:MarkAsProblemRequest"></input>
-			<output message="tns:MarkAsProblemResponse"></output>
+			<input message="tns:MarkAsProblemRequestMessage"/>
+			<output message="tns:MarkAsProblemResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">

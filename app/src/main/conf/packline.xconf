@@ -103,7 +103,7 @@
 		</Form>
 		<Form name="СДЭК" file="cdek" printerId="printer1" autoPrint="false" copies="2">
 			<PostTypeRestriction>
-				<PostType>SDEK</PostType>
+				<PostType>CDEK</PostType>
 			</PostTypeRestriction>
 		</Form>
 	</Printing>
@@ -140,7 +140,7 @@
 		<Restriction postType="BOOKPOST" maxWeight="2"/>
 		<Restriction postType="LETTER" maxWeight="0.1"/>
 		<Restriction postType="EMS" maxWeight="31.5"/>
-		<Restriction postType="SDEK" maxWeight="30"/>
+		<Restriction postType="CDEK" maxWeight="30"/>
 		<Restriction postType="IML" maxWeight="20"/>
 	</Weighting>
 	
