@@ -1,9 +1,13 @@
 package ru.aplix.packline.action;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.bind.JAXBException;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,9 +24,12 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.dialog.ManualInputDialog;
 import ru.aplix.packline.dialog.ManualInputListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
@@ -31,6 +38,8 @@ import ru.aplix.packline.workflow.StandardWorkflowController;
 import ru.aplix.packline.workflow.WorkflowAction;
 
 public abstract class CommonAction<Controller extends StandardWorkflowController<?>> extends WorkflowActionWithUserActivityMonitor<Controller> {
+
+	protected final Log LOG = LogFactory.getLog(getClass());
 
 	private Timeline logoImageMousePressedTimeline;
 	private int logoImageMousePressedCount;
@@ -68,10 +77,14 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 						return;
 					}
 
-					if (contextMenu == null) {
-						contextMenu = createContextMenu(resources);
+					try {
+						if (contextMenu == null) {
+							contextMenu = createContextMenu(resources);
+						}
+						contextMenu.show(logoImage, Side.BOTTOM, 0, 0);
+					} catch (FileNotFoundException | MalformedURLException | JAXBException e) {
+						LOG.error(null, e);
 					}
-					contextMenu.show(logoImage, Side.BOTTOM, 0, 0);
 				}
 			});
 			logoImage.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -97,7 +110,7 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 	}
 
-	private ContextMenu createContextMenu(ResourceBundle resources) {
+	private ContextMenu createContextMenu(ResourceBundle resources) throws FileNotFoundException, MalformedURLException, JAXBException {
 		String allMenuStyles = null;
 		try {
 			allMenuStyles = IOUtils.toString(getClass().getResourceAsStream("/resources/styles/menu.css"));
@@ -129,26 +142,34 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
-		MenuItem itemMarkersForContainers = new MenuItem(resources.getString("menu.markers.container"));
-		itemMarkersForContainers.setStyle(menuItemStyle2);
-		itemMarkersForContainers.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				generateStickersForContainer();
-			}
-		});
+		MenuItem itemMarkersForContainers = null;
+		MenuItem itemMarkersForCustomer = null;
+		if (Configuration.getInstance().getRoles().getGluing()) {
+			itemMarkersForContainers = new MenuItem(resources.getString("menu.markers.container"));
+			itemMarkersForContainers.setStyle(menuItemStyle2);
+			itemMarkersForContainers.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					generateStickersForContainer();
+				}
+			});
 
-		MenuItem itemMarkersForCustomer = new MenuItem(resources.getString("menu.markers.customer"));
-		itemMarkersForCustomer.setStyle(menuItemStyle2);
-		itemMarkersForCustomer.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				generateStickersForCustomer();
-			}
-		});
+			itemMarkersForCustomer = new MenuItem(resources.getString("menu.markers.customer"));
+			itemMarkersForCustomer.setStyle(menuItemStyle2);
+			itemMarkersForCustomer.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					generateStickersForCustomer();
+				}
+			});
+		}
 
 		Menu subMenu = new Menu(resources.getString("menu.sub.operations"));
 		subMenu.setStyle(menuItemStyle2);
-		subMenu.getItems().add(itemMarkersForContainers);
-		subMenu.getItems().add(itemMarkersForCustomer);
+		if (itemMarkersForContainers != null) {
+			subMenu.getItems().add(itemMarkersForContainers);
+		}
+		if (itemMarkersForCustomer != null) {
+			subMenu.getItems().add(itemMarkersForCustomer);
+		}
 
 		result.getItems().add(itemBegin);
 		if (itemBarcode != null) {

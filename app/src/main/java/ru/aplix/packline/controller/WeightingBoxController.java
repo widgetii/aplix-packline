@@ -96,6 +96,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			scales.addMeasurementListener(this);
 			scalesChecker.playFromStart();
 		} else {
+			getAction().setNextAction(getAction().getPrintingAction());
 			throw new SkipActionException();
 		}
 	}

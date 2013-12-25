@@ -15,7 +15,7 @@
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesByte9" enabled="false" >
+		<Scales name="MeraScalesByte9" enabled="true" >
 			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
 			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
 			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
@@ -27,7 +27,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="false" >
+		<PhotoCamera name="RaspberryCamera" enabled="true" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost:9080" />
@@ -143,6 +143,9 @@
 		<Restriction postType="CDEK" maxWeight="30"/>
 		<Restriction postType="IML" maxWeight="20"/>
 	</Weighting>
+	
+	<!-- Application Roles -->
+	<Roles acceptance="true" packing="true" labeling="true" gluing="true" />
 	
 	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleTreshold="600" />

@@ -1,10 +1,16 @@
 package ru.aplix.packline.action;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+
+import javax.xml.bind.JAXBException;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.controller.ReadBarcodeOrderController;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Incoming;
@@ -100,7 +106,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 		setNextAction(this);
 	}
 
-	public Tag processBarcode(String code) throws PackLineException {
+	public Tag processBarcode(String code) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
 		Post post;
 		Registry registry;
 		Order order;
@@ -109,6 +115,10 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 
 		TagType tagType = postServicePort.findTag(code);
 		if (TagType.INCOMING.equals(tagType)) {
+			if (!Configuration.getInstance().getRoles().getAcceptance()) {
+				throw new PackLineException(getResources().getString("error.roles.acceptance"));
+			}
+
 			Incoming incoming = findAndValidateTag(postServicePort, TagType.INCOMING, code, Incoming.class, false);
 			order = findOrder(postServicePort, incoming.getOrderId());
 			registry = findRegistry(postServicePort, incoming.getId());
@@ -122,6 +132,10 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			result = incoming;
 			post = null;
 		} else if (TagType.POST.equals(tagType)) {
+			if (!Configuration.getInstance().getRoles().getPacking()) {
+				throw new PackLineException(getResources().getString("error.roles.packing"));
+			}
+
 			post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
 			checkPost(post);
 			order = findOrder(postServicePort, post.getOrderId());
@@ -130,6 +144,10 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			result = post;
 			registry = null;
 		} else if (TagType.CONTAINER.equals(tagType)) {
+			if (!Configuration.getInstance().getRoles().getLabeling()) {
+				throw new PackLineException(getResources().getString("error.roles.labeling"));
+			}
+
 			Container container = findAndValidateTag(postServicePort, TagType.CONTAINER, code, Container.class, false);
 			checkContainer(container);
 			post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
@@ -139,6 +157,10 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			result = container;
 			registry = null;
 		} else if (TagType.ROUTELIST.equals(tagType)) {
+			if (!Configuration.getInstance().getRoles().getAcceptance()) {
+				throw new PackLineException(getResources().getString("error.roles.acceptance"));
+			}
+
 			RouteList routeList = findAndValidateTag(postServicePort, TagType.ROUTELIST, code, RouteList.class, false);
 			checkRouteList(routeList);
 
@@ -253,8 +275,10 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 	}
 
 	private void checkRouteList(RouteList routeList) throws PackLineException {
-		/*if (routeList.isCarriedOutAndClosed()) {
-			throw new PackLineException(getResources().getString("error.post.routeList.already.closed"));
-		}*/
+		/*
+		 * if (routeList.isCarriedOutAndClosed()) { throw new
+		 * PackLineException(getResources
+		 * ().getString("error.post.routeList.already.closed")); }
+		 */
 	}
 }

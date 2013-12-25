@@ -33,6 +33,9 @@ public class Configuration {
 	@XmlElement(name = "PostService")
 	private PostService postService;
 
+	@XmlElement(name = "Roles")
+	private Roles roles;
+
 	@XmlElement(name = "EmptyBoxThreshold")
 	private Integer emptyBoxThreshold;
 
@@ -181,5 +184,16 @@ public class Configuration {
 
 	public void setWeightingRestrictions(List<WeightingRestriction> weightingRestrictions) {
 		this.weightingRestrictions = weightingRestrictions;
+	}
+
+	public Roles getRoles() {
+		if (roles == null) {
+			roles = new Roles();
+		}
+		return roles;
+	}
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 }
