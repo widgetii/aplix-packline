@@ -20,6 +20,7 @@ import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.WeightingRestriction;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Post;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class OverweightController extends StandardController<OverweightAction> {
@@ -55,6 +56,8 @@ public class OverweightController extends StandardController<OverweightAction> {
 
 			infoLabel.setText(String.format(getResources().getString("overweight.info"), String.format("%.3f", container.getTotalWeight()),
 					String.format("%.3f", wr.getMaxWeight())));
+			
+			Utils.playSound(Utils.SOUND_WARNING);
 		} catch (Exception e) {
 			LOG.error(null, e);
 		}
@@ -62,6 +65,8 @@ public class OverweightController extends StandardController<OverweightAction> {
 
 	@Override
 	public void terminate() {
+		super.terminate();
+		
 		if (task != null) {
 			task.cancel(false);
 			task = null;

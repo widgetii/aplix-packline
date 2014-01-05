@@ -2,15 +2,11 @@ package ru.aplix.packline.controller;
 
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
@@ -38,18 +34,8 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 	private Label customerLabel;
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private Task<Boolean> task;
-
-	public PackTypeController() {
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -65,14 +51,14 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 	}
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -142,8 +128,6 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 
 				progressVisibleProperty.set(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -171,39 +155,15 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 		executor.submit(task);
 	}
 
-	/**
-	 * 
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
 
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = PackTypeController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
+			return false;
 		}
 	}
 }

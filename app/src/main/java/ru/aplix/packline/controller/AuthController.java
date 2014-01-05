@@ -2,13 +2,8 @@ package ru.aplix.packline.controller;
 
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,18 +21,8 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private Task<Operator> task;
-
-	public AuthController() {
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -47,14 +32,14 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 	}
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -103,8 +88,6 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 				progressVisibleProperty.set(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -126,8 +109,6 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 				if (result != null) {
 					AuthController.this.done();
 				} else {
-					barcodeCheckerEventHandler.reset();
-
 					errorMessageProperty.set(getResources().getString("error.auth.invalid.code"));
 					errorVisibleProperty.set(true);
 				}
@@ -138,39 +119,15 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		executor.submit(task);
 	}
 
-	/**
-	 *
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
 
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = AuthController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
+			return false;
 		}
 	}
 }

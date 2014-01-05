@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.concurrent.Task;
@@ -20,7 +18,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Window;
-import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -59,19 +56,9 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private ConfirmationDialog confirmationDialog = null;
 	private Task<?> task;
-
-	public GenStickCustomerController() {
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -100,14 +87,14 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 	}
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -185,8 +172,6 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 
 				setProgress(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -252,8 +237,6 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 
 				setProgress(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -279,8 +262,6 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 					customerCode = result.getId();
 					customerInfoLabel.setText(String.format(getResources().getString("customer.info"), result.getId(), result.getName()));
 				} else {
-					barcodeCheckerEventHandler.reset();
-
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
 				}
@@ -325,39 +306,15 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 		confirmationDialog.show();
 	}
 
-	/**
-	 *
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
 
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = GenStickCustomerController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
+			return false;
 		}
 	}
 

@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -50,18 +46,8 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	private Button reprintButton4;
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private Task<?> task;
-
-	public PrintFormsController() {
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -79,7 +65,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 
 		task = new PrintTask(new Button[] { reprintButton1, reprintButton2, reprintButton3, reprintButton4 }, false);
@@ -131,8 +116,9 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -191,8 +177,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 				setProgress(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -213,8 +197,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 				if (getValue()) {
 					PrintFormsController.this.done();
 				} else {
-					barcodeCheckerEventHandler.reset();
-
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
 				}
@@ -223,6 +205,18 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
+
+			return false;
+		}
 	}
 
 	/**
@@ -265,7 +259,12 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			}
 
 			if (exceptions.size() == 1) {
-				throw new PackLineException(exceptions.get(0));
+				Throwable item = exceptions.get(0);
+				if (item instanceof Exception) {
+					throw (Exception) item;
+				} else {
+					throw new PackLineException(item);
+				}
 			} else if (exceptions.size() > 1) {
 				StringBuffer sb = new StringBuffer();
 				for (Throwable e : exceptions) {
@@ -302,8 +301,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			setProgress(false);
 
-			barcodeCheckerEventHandler.reset();
-
 			String error = getException().getMessage() != null ? getException().getMessage() : getException().getClass().getSimpleName();
 			errorMessageProperty.set(error);
 			errorVisibleProperty.set(true);
@@ -317,40 +314,4 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			setProgress(false);
 		}
 	};
-
-	/**
-	 *
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
-
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = PrintFormsController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
-		}
-	}
 }

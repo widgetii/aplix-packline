@@ -41,6 +41,8 @@ public class PhotoController extends StandardController<PhotoAction> {
 
 	@Override
 	public void terminate() {
+		super.terminate();
+		
 		if (photoTask != null) {
 			photoTask.cancel(false);
 			photoTask = null;

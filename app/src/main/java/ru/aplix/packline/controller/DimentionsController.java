@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -14,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,22 +37,12 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	private Pane buttonsContainer;
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private Float length = Float.NaN;
 	private Float width = Float.NaN;
 	private Float height = Float.NaN;
 
 	private Task<Void> task;
-
-	public DimentionsController() {
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -85,20 +72,20 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		lengthEdit.setText(null);
 		heightEdit.setText(null);
 		widthEdit.setText(null);
-		
+
 		lengthEdit.requestFocus();
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 	}
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -152,8 +139,6 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 
 				progressVisibleProperty.set(false);
 				buttonsContainer.setDisable(false);
-
-				barcodeCheckerEventHandler.reset();
 
 				String errorStr;
 				if (getException() instanceof PackLineException) {
@@ -209,7 +194,6 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		}
 
 		if (error != null) {
-			barcodeCheckerEventHandler.reset();
 			errorMessageProperty.set(getResources().getString(error));
 			errorVisibleProperty.set(true);
 		}
@@ -316,39 +300,15 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		addSymbol("9");
 	}
 
-	/**
-	 *
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
 
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = DimentionsController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
+			return false;
 		}
 	}
 }

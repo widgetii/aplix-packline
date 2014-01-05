@@ -4,19 +4,15 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Window;
-import javafx.util.Duration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -50,8 +46,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	private Button saveRouteListButton;
 
 	private BarcodeScanner<?> barcodeScanner = null;
-	private Timeline barcodeChecker;
-	private BarcodeCheckerEventHandler barcodeCheckerEventHandler;
 
 	private ConfirmationDialog confirmationDialog = null;
 	private Task<?> task;
@@ -62,14 +56,10 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	private RouteList routeList;
 
 	public ReadBarcodeOrderController() {
+		super();
+
 		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
-
-		barcodeCheckerEventHandler = new BarcodeCheckerEventHandler();
-
-		barcodeChecker = new Timeline();
-		barcodeChecker.setCycleCount(Timeline.INDEFINITE);
-		barcodeChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), barcodeCheckerEventHandler));
 	}
 
 	@Override
@@ -98,7 +88,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
-			barcodeChecker.playFromStart();
 		}
 
 		// If bar-code has been read already, then process it
@@ -116,8 +105,9 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 	@Override
 	public void terminate() {
+		super.terminate();
+
 		if (barcodeScanner != null) {
-			barcodeChecker.stop();
 			barcodeScanner.removeBarcodeListener(this);
 		}
 
@@ -171,8 +161,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 				setProgress(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -194,8 +182,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 				if (result != null) {
 					ReadBarcodeOrderController.this.done();
 				} else {
-					barcodeCheckerEventHandler.reset();
-
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
 				}
@@ -264,8 +250,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 				setProgress(false);
 
-				barcodeCheckerEventHandler.reset();
-
 				String errorStr;
 				if (getException() instanceof PackLineException) {
 					errorStr = getException().getMessage();
@@ -297,39 +281,15 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 		saveRouteListButton.setDisable(value);
 	}
 
-	/**
-	 *
-	 */
-	private class BarcodeCheckerEventHandler implements EventHandler<ActionEvent> {
+	@Override
+	protected boolean checkNoError() {
+		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+			return true;
+		} else {
+			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorVisibleProperty.set(true);
 
-		private int delayCount;
-		private String errorStr;
-
-		public BarcodeCheckerEventHandler() {
-			reset();
-		}
-
-		@Override
-		public void handle(ActionEvent event) {
-			if (delayCount <= 1) {
-				if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
-					errorMessageProperty.set(null);
-					errorVisibleProperty.set(false);
-				} else {
-					if (errorStr == null) {
-						errorStr = ReadBarcodeOrderController.this.getResources().getString("error.barcode.scanner");
-					}
-
-					errorMessageProperty.set(errorStr);
-					errorVisibleProperty.set(true);
-				}
-			} else {
-				delayCount--;
-			}
-		}
-
-		public void reset() {
-			delayCount = Const.ERROR_DISPLAY_DELAY;
+			return false;
 		}
 	}
 }

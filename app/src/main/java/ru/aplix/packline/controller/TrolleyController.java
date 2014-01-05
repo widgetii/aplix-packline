@@ -72,6 +72,8 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 	@Override
 	public void terminate() {
+		super.terminate();
+		
 		if (task != null) {
 			task.cancel(false);
 			task = null;

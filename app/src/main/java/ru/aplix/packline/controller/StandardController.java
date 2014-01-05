@@ -3,6 +3,8 @@ package ru.aplix.packline.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -10,6 +12,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.utils.Utils;
@@ -38,6 +42,17 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 	private ResourceBundle resources;
 	private WorkflowContext context;
+
+	private Timeline errorChecker;
+	private ErrorCheckerEventHandler errorCheckerEventHandler;
+
+	public StandardController() {
+		errorCheckerEventHandler = new ErrorCheckerEventHandler();
+
+		errorChecker = new Timeline();
+		errorChecker.setCycleCount(Timeline.INDEFINITE);
+		errorChecker.getKeyFrames().add(new KeyFrame(Duration.seconds(1), errorCheckerEventHandler));
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -71,6 +86,8 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 				if (newValue != null) {
 					Utils.playSound(Utils.SOUND_ERROR);
+
+					errorCheckerEventHandler.reset();
 				}
 			}
 		});
@@ -82,6 +99,8 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 				if (newValue != null) {
 					Utils.playSound(Utils.SOUND_WARNING);
+
+					errorCheckerEventHandler.reset();
 				}
 			}
 		});
@@ -124,6 +143,14 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		warningMessageProperty.set(null);
 		errorVisibleProperty.set(false);
 		progressVisibleProperty.set(false);
+
+		errorCheckerEventHandler.reset();
+		errorChecker.playFromStart();
+	}
+
+	@Override
+	public void terminate() {
+		errorChecker.stop();
 	}
 
 	protected String getTitleResourceName() {
@@ -136,5 +163,38 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 	protected WorkflowContext getContext() {
 		return context;
+	}
+
+	protected boolean checkNoError() {
+		return true;
+	}
+
+	/**
+	 *
+	 */
+	private class ErrorCheckerEventHandler implements EventHandler<ActionEvent> {
+
+		private int delayCount;
+
+		public ErrorCheckerEventHandler() {
+			reset();
+		}
+
+		@Override
+		public void handle(ActionEvent event) {
+			if (delayCount <= 0) {
+				if (checkNoError()) {
+					errorMessageProperty.set(null);
+					warningMessageProperty.set(null);
+					errorVisibleProperty.set(false);
+				}
+			} else {
+				delayCount--;
+			}
+		}
+
+		public void reset() {
+			delayCount = Const.ERROR_DISPLAY_DELAY;
+		}
 	}
 }
