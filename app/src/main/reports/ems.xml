@@ -2440,6 +2440,7 @@
         </Page>
     </Pages>
 	<Variables>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
 		<Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable27])"/>
 		<Variable Name="nalplat_kop" Type="expression" Content="f:str(f:frac([Variable27]) * 100, 0)"/>
 		<Variable Name="nalplat_rub" Type="expression" Content="f:str(f:trunc([Variable27]), 0)"/>

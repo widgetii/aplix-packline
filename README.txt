@@ -59,5 +59,5 @@ to hide console, launch run.bat instead of packline.bat.
 RELEASE NOTES
 -------------
 
-Version 0.1.
+Version 1.0
 

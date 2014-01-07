@@ -47,8 +47,6 @@ import ru.aplix.packline.workflow.WorkflowController;
 
 // TODO 35 Scales weight stable algorithm in Universal driver
 // TODO 90 styles of act-table, menu and quantity buttons
-// TODO 100 write readme file
-// FIXME logout doesn't work in ubuntu
 
 public class App extends Application implements IdleListener {
 

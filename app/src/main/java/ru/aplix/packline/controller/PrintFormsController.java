@@ -1,13 +1,16 @@
 package ru.aplix.packline.controller;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -16,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.ContainerProblemException;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.PrintFormsAction;
 import ru.aplix.packline.conf.Configuration;
@@ -32,6 +36,10 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 	@FXML
 	private Label infoLabel;
+	@FXML
+	private Parent printingContainer;
+	@FXML
+	private Parent problemContainer;
 	@FXML
 	private GridPane reprintContainer;
 	@FXML
@@ -53,6 +61,9 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 		getAction().prepare();
+
+		printingContainer.setVisible(true);
+		problemContainer.setVisible(false);
 
 		assignButtons();
 
@@ -149,7 +160,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	}
 
 	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get()) {
+		if (progressVisibleProperty.get() || !printingContainer.isVisible()) {
 			return;
 		}
 
@@ -209,7 +220,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 	@Override
 	protected boolean checkNoError() {
-		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
 			return true;
 		} else {
 			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
@@ -217,6 +228,11 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			return false;
 		}
+	}
+
+	public void nextClick(ActionEvent event) {
+		getAction().setNextAction(getAction().getNormalAction());
+		done();
 	}
 
 	/**
@@ -240,26 +256,59 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		public Void call() throws Exception {
 			long t = System.currentTimeMillis();
 
-			List<Throwable> exceptions = new ArrayList<Throwable>();
+			Set<Throwable> exceptions = new TreeSet<Throwable>(createSetComparator());
+			Set<ContainerProblemException> problems = new TreeSet<ContainerProblemException>(createSetComparator());
+
+			// Print all forms
 			boolean printedAtLeastOne = false;
 			for (Button button : buttons) {
 				try {
 					if (printLikeButton(button)) {
 						printedAtLeastOne = true;
 					}
+				} catch (ContainerProblemException cpe) {
+					LOG.error(null, cpe);
+					problems.add(cpe);
+					exceptions.add(cpe);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					exceptions.add(e);
 				}
 			}
 
+			// Log printing time
 			t = System.currentTimeMillis() - t;
 			if (printedAtLeastOne) {
 				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
 			}
 
+			// Mark problems
+			if (problems.size() > 0) {
+				final StringBuffer sb = new StringBuffer();
+				for (ContainerProblemException problem : problems) {
+					sb.append(problem.getMessage());
+					sb.append("\n");
+
+					try {
+						getAction().markAsProblem(problem.getCode());
+					} catch (Throwable e) {
+						LOG.error(null, e);
+						exceptions.add(e);
+					}
+				}
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						infoLabel.setText(sb.toString());
+						printingContainer.setVisible(false);
+						problemContainer.setVisible(true);
+					}
+				});
+			}
+
+			// Throw single exception
 			if (exceptions.size() == 1) {
-				Throwable item = exceptions.get(0);
+				Throwable item = exceptions.iterator().next();
 				if (item instanceof Exception) {
 					throw (Exception) item;
 				} else {
@@ -312,6 +361,26 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			infoLabel.setText(getResources().getString("printing.info2"));
 			setProgress(false);
+		}
+
+		private Comparator<Throwable> createSetComparator() {
+			return new Comparator<Throwable>() {
+				@Override
+				public int compare(Throwable o1, Throwable o2) {
+					int res = o1.getClass().getSimpleName().compareTo(o2.getClass().getSimpleName());
+					if (res != 0) {
+						return res;
+					}
+
+					if (o1.getMessage() == null && o2.getMessage() == null) {
+						return 0;
+					} else if (o1.getMessage() == null) {
+						return 1;
+					} else {
+						return o1.getMessage().compareTo(o2.getMessage());
+					}
+				}
+			};
 		}
 	};
 }

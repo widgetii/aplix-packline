@@ -308,7 +308,7 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 
 	@Override
 	protected boolean checkNoError() {
-		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
 			return true;
 		} else {
 			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));

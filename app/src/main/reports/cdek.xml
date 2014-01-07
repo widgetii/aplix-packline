@@ -262,7 +262,8 @@
             </Views>
         </Page>
     </Pages>
-    <Variables>   
+    <Variables>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable9] = '', 'ReceiverAddress', '')"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>
 		<Variable Name="otmetki" Type="expression" Content="f:choose([Variable4] = '', '-', [Variable4])"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>

@@ -11,7 +11,7 @@
 		<Variable Name="f7l__FORMAT" Type="not-assigned" Content="E:F7L.ZPL" />
 		<Variable Name="_JOBNAME" Type="not-assigned" Content="LBL101" />
 
-		<!-- Fields retrieved from the database -->
+		<!-- Fields retrieved from the database -->		
 		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES" />
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIO" />
@@ -56,6 +56,7 @@
 		<Variable Name="otkuda_adres" Type="expression" Content="f:choose([Variable18] = '', [Variable3], f:choose([Variable3] = '', [Variable18], [Variable18] + ', ' + [Variable3]))"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable14] = '', [Variable1], f:choose([Variable1] = '', [Variable14], [Variable1] + ', ' + [Variable14]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable15] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable15], [kuda_city_adres] + ', ' + [Variable15]))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable3] = '', 'SenderAddress', f:choose([Variable1] = '', 'ReceiverAddress', ''))"/>
 
 		<!-- Fields for First Class Post -->
 		<Variable Name="f7a_Kuda" Type="expression" Content="'.                ' + [kuda_area_city]" />
@@ -195,6 +196,8 @@
 			<Rows>
 				<Row>
 					<Column Name="POSTTYPE" />
+					<Column Name="Variable1" />
+					<Column Name="Variable3" />
 
 					<!-- Fields for First Class Post -->
 					<Column Name="f7a_code2of5" />

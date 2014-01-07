@@ -27,6 +27,8 @@ public class PrintForm {
 	private Boolean autoPrint;
 	@XmlAttribute(name = "copies")
 	private Integer copies;
+	@XmlAttribute(name = "weight")
+	private Float weight;
 	@XmlElementWrapper(name = "PostTypeRestriction")
 	@XmlElement(name = "PostType", type = PostType.class)
 	private List<PostType> postTypes;
@@ -73,13 +75,21 @@ public class PrintForm {
 	public void setAutoPrint(Boolean autoPrint) {
 		this.autoPrint = autoPrint;
 	}
-	
+
 	public Integer getCopies() {
 		return copies;
 	}
 
 	public void setCopies(Integer copies) {
 		this.copies = copies;
+	}
+
+	public Float getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Float weight) {
+		this.weight = weight;
 	}
 
 	public List<PostType> getPostTypes() {

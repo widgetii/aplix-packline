@@ -49,6 +49,7 @@ import ru.aplix.converters.fr2afop.writer.OutputStreamOpener;
 import ru.aplix.converters.fr2afop.writer.ReportWriter;
 import ru.aplix.converters.fr2afop.writer.XMLReportWriter;
 import ru.aplix.packline.Const;
+import ru.aplix.packline.ContainerProblemException;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintForm;
@@ -111,6 +112,15 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		queryId = RandomStringUtils.randomAlphanumeric(15);
 	}
 
+	public void markAsProblem(String code) throws PackLineException {
+		Container container = (Container) getContext().getAttribute(Const.TAG);
+
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+		if (!postServicePort.markAsProblem(container.getId(), code)) {
+			throw new PackLineException(getResources().getString("error.post.mark.problem"));
+		}
+	}
+
 	public boolean processBarcode(String code) throws PackLineException {
 		Container container = (Container) getContext().getAttribute(Const.TAG);
 
@@ -141,6 +151,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
 			return printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
+		} catch (PackLineException ple) {
+			throw ple;
 		} catch (Throwable e) {
 			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
 			throw ple;
@@ -249,7 +261,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 						}
 					});
 				} else {
-					throw new Exception(String.format(getResources().getString("error.print.mode.invalid"), printer.getPrintMode()));
+					throw new PackLineException(String.format(getResources().getString("error.print.mode.invalid"), printer.getPrintMode()));
 				}
 
 				// Go!
@@ -397,14 +409,34 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return attributes;
 	}
 
-	private boolean cancelPrinting(Report report) {
+	private boolean cancelPrinting(Report report) throws PackLineException {
+		// Check container problem
 		Variable variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return Const.CONTAINER_PROBLEM_VARIABLE.equals(((Variable) item).getName());
+			}
+		});
+
+		if (variable != null && variable.getValue() != null && variable.getValue().length() > 0) {
+			if ("SenderAddress".equalsIgnoreCase(variable.getValue())) {
+				throw new ContainerProblemException(getResources().getString("error.post.container.problem.address.sender"), variable.getValue());
+			} else if ("ReceiverAddress".equalsIgnoreCase(variable.getValue())) {
+				throw new ContainerProblemException(getResources().getString("error.post.container.problem.address.receiver"), variable.getValue());
+			} else {
+				throw new ContainerProblemException(String.format(getResources().getString("error.post.container.problem.other"), variable.getValue()),
+						variable.getValue());
+			}
+		}
+
+		// Check whether this form not need to be printed
+		variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
 				return Const.CANCEL_PRINT_VARIABLE.equals(((Variable) item).getName());
 			}
 		});
-		return variable != null && Boolean.valueOf(variable.getValue());
+		return variable != null && variable.getValue() != null && Boolean.valueOf(variable.getValue());
 	}
 
 	private void addIncomingsDataSet(Report report) {

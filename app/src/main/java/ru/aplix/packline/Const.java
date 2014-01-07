@@ -46,6 +46,7 @@ public final class Const {
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
 	public static final String CANCEL_PRINT_VARIABLE = "CancelPrinting";
+	public static final String CONTAINER_PROBLEM_VARIABLE = "ContainerProblem";
 
 	public static final String INCOMINGS_DATASET = "IncomingsDataSet";
 	public static final String INCOMING_COLUMN_INDEX = "VarIncomingIndex";

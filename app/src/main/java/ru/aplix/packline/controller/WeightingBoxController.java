@@ -181,7 +181,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 
 	@Override
 	protected boolean checkNoError() {
-		if ((scales != null) && scales.isConnected()) {
+		if ((scales == null) || scales.isConnected()) {
 			return true;
 		} else {
 			errorMessageProperty.set(getResources().getString("error.scales"));

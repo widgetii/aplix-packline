@@ -92,7 +92,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 
 	@Override
 	protected boolean checkNoError() {
-		if ((scales != null) && scales.isConnected()) {
+		if ((scales == null) || scales.isConnected()) {
 			return true;
 		} else {
 			errorMessageProperty.set(getResources().getString("error.scales"));

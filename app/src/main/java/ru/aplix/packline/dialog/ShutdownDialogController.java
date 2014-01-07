@@ -1,6 +1,7 @@
 package ru.aplix.packline.dialog;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,6 @@ import org.apache.commons.lang.SystemUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 public class ShutdownDialogController {
 
@@ -102,10 +102,23 @@ public class ShutdownDialogController {
 	private static final int CMD_POWEROFF = 0x03;
 
 	public boolean shutdown(int cmd, int timeInSeconds) {
-		String shutdownCommand = null;
-		if (SystemUtils.IS_OS_LINUX || SystemUtils.IS_OS_MAC || SystemUtils.IS_OS_MAC_OSX || SystemUtils.IS_OS_UNIX) {
+		if (SystemUtils.IS_OS_MAC || SystemUtils.IS_OS_MAC_OSX) {
 			if (cmd == CMD_LOGOFF) {
-				shutdownCommand = "logout";
+				try {
+					String[] shutdownCommand = { "osascript", "-e", "tell application \"System Events\" to log out" };
+					LOG.info("Executing command: " + Arrays.toString(shutdownCommand));
+					Runtime.getRuntime().exec(shutdownCommand);
+				} catch (IOException e) {
+					LOG.error(null, e);
+				}
+				return true;
+			}
+		}
+
+		String shutdownCommand = null;
+		if (SystemUtils.IS_OS_LINUX || SystemUtils.IS_OS_UNIX) {
+			if (cmd == CMD_LOGOFF) {
+				shutdownCommand = "gnome-session-quit --logout --no-prompt";
 			} else {
 				long timeInMinutes = timeInSeconds * DateUtils.MILLIS_PER_SECOND / DateUtils.MILLIS_PER_MINUTE;
 				String t = (timeInMinutes == 0) ? "now" : String.valueOf(timeInMinutes);
@@ -123,11 +136,15 @@ public class ShutdownDialogController {
 		} else
 			return false;
 
-		try {
-			Runtime.getRuntime().exec(shutdownCommand);
-		} catch (IOException e) {
-			LOG.error(null, e);
+		if (shutdownCommand != null) {
+			try {
+				LOG.info("Executing command: " + shutdownCommand);
+				Runtime.getRuntime().exec(shutdownCommand);
+			} catch (IOException e) {
+				LOG.error(null, e);
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 }

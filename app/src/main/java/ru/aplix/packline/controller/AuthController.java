@@ -121,7 +121,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 	@Override
 	protected boolean checkNoError() {
-		if ((barcodeScanner != null) && barcodeScanner.isConnected()) {
+		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
 			return true;
 		} else {
 			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));

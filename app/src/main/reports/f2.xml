@@ -46,7 +46,8 @@
             </Views>
         </Page>
     </Pages>
-    <Variables>       
+    <Variables>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable1] = '', 'ReceiverAddress', '')"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable1] = '', [Variable2], f:choose([Variable2] = '', [Variable1], [Variable1] + ', ' + [Variable2]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable3] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable3], [kuda_city_adres] + ', ' + [Variable3]))"/>
 		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable4] = '' or [Variable4] = [Variable2], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable4], [kuda_area_city] + ', ' + [Variable4]))"/>		
