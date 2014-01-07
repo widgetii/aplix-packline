@@ -263,7 +263,7 @@
         </Page>
     </Pages>
     <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable9] = '', 'ReceiverAddress', '')"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>
 		<Variable Name="otmetki" Type="expression" Content="f:choose([Variable4] = '', '-', [Variable4])"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
@@ -300,6 +300,7 @@
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="CONTAINER_ID"/>
 		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="delivery_type"/>
 		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="delivery_cost"/>
+		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="VarIncomingIndex" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_INDEX"/>
 		<Variable Name="VarIncomingId" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_ID"/>
 		<Variable Name="VarIncomingDate" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_DATE"/>
@@ -329,6 +330,7 @@
 					<Column Name="Variable16"/>
 					<Column Name="Variable17"/>
 					<Column Name="Variable18"/>
+					<Column Name="Variable19"/>
                 </Row>               
             </Rows>
         </Dataset>

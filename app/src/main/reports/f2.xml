@@ -47,7 +47,7 @@
         </Page>
     </Pages>
     <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable1] = '', 'ReceiverAddress', '')"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable13] = '', 'SenderAddress', f:choose([Variable1] = '', 'ReceiverAddress', ''))"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable1] = '', [Variable2], f:choose([Variable2] = '', [Variable1], [Variable1] + ', ' + [Variable2]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable3] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable3], [kuda_city_adres] + ', ' + [Variable3]))"/>
 		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable4] = '' or [Variable4] = [Variable2], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable4], [kuda_area_city] + ', ' + [Variable4]))"/>		
@@ -64,6 +64,7 @@
 		<Variable Name="Variable10" Type="expression" Content="f:str([Variable6],3)" />
 		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="data_rep" />
 		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="pps" />
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable9], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable9], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable9], 9, 5)" />
@@ -90,6 +91,7 @@
 					<Column Name="Variable10"/>
 					<Column Name="Variable11"/>
 					<Column Name="Variable12"/>
+					<Column Name="Variable13"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>

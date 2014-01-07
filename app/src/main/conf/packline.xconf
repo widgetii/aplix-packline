@@ -151,7 +151,7 @@
 	<ActivityMonitor idleTreshold="600" />
 	
 	<!-- Enable sounds in application -->
-	<Sounds>false</Sounds>
+	<Sounds>true</Sounds>
 	
 	<!-- Automatically close message "Put incoming into packing trolley" -->
 	<TrolleyPackAutoClose>false</TrolleyPackAutoClose>

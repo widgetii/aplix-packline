@@ -160,7 +160,7 @@ public class Configuration {
 	}
 
 	public Boolean getSoundsEnabled() {
-		return soundsEnabled != null ? soundsEnabled : false;
+		return soundsEnabled != null ? soundsEnabled : true;
 	}
 
 	public void setSoundsEnabled(Boolean soundsEnabled) {
