@@ -72,4 +72,8 @@
 	<bean id="genStickCustomerAction" class="ru.aplix.packline.action.GenStickCustomerAction">
 		<property name="nextAction" ref="action2" />
 	</bean>
+	
+	<bean id="zebraTestAction" class="ru.aplix.packline.action.ZebraTestAction">
+		<property name="nextAction" ref="action2" />
+	</bean>
 </beans>

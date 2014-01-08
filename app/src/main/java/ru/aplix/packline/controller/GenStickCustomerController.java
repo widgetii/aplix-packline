@@ -80,6 +80,8 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+		
+		setProgress(false);
 
 		customerCode = null;
 		customerInfoLabel.setText(getResources().getString("sticking.no.customer.selected"));

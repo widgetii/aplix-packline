@@ -93,6 +93,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+		
+		setProgress(false);
 
 		registry = (Registry) context.getAttribute(Const.REGISTRY);
 		if (registry != null) {

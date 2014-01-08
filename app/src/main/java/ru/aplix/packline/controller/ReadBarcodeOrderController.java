@@ -65,6 +65,8 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+		
+		setProgress(false);
 
 		// Display route list info
 		routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);

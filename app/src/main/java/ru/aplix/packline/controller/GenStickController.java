@@ -81,6 +81,8 @@ public class GenStickController extends StandardController<GenStickAction> imple
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+		
+		setProgress(false);
 
 		boxTypeId = null;
 		boxInfoLabel.setText(getResources().getString("sticking.no.box.selected"));

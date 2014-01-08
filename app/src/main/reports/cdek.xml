@@ -47,7 +47,7 @@
                             <Memo>Продавец:</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="9" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView14" Left="11.430848" Top="37.7907" Width="24.332335" Height="5.4263563" BoundLeft="11.364002" BoundTop="23.602455" BoundWidth="24.466028" BoundHeight="2.878348" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[Variable6]</Memo>
+                            <Memo>[Variable6], г. [Variable20]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="9" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView15" Left="11.430848" Top="43.99225" Width="24.332335" Height="5.4263563" BoundLeft="11.364002" BoundTop="26.672691" BoundWidth="24.466028" BoundHeight="2.878348" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[Variable7]</Memo>
@@ -301,6 +301,7 @@
 		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="delivery_type"/>
 		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="delivery_cost"/>
 		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="VarIncomingIndex" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_INDEX"/>
 		<Variable Name="VarIncomingId" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_ID"/>
 		<Variable Name="VarIncomingDate" Type="db-field" Dataset="IncomingsDataSet" Content="INCOMING_DATE"/>
@@ -331,6 +332,7 @@
 					<Column Name="Variable17"/>
 					<Column Name="Variable18"/>
 					<Column Name="Variable19"/>
+					<Column Name="Variable20"/>
                 </Row>               
             </Rows>
         </Dataset>

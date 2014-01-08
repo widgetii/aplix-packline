@@ -162,6 +162,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemZebraTest = null;
+		if (Configuration.getInstance().getRoles().getLabeling()) {
+			itemZebraTest = new MenuItem(resources.getString("menu.zebra.test"));
+			itemZebraTest.setStyle(menuItemStyle2);
+			itemZebraTest.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					testZebraPrinter();
+				}
+			});
+		}
+
 		Menu subMenu = new Menu(resources.getString("menu.sub.operations"));
 		subMenu.setStyle(menuItemStyle2);
 		if (itemMarkersForContainers != null) {
@@ -169,6 +180,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemMarkersForCustomer != null) {
 			subMenu.getItems().add(itemMarkersForCustomer);
+		}
+		if (itemZebraTest != null) {
+			subMenu.getItems().add(itemZebraTest);
 		}
 
 		result.getItems().add(itemBegin);
@@ -203,6 +217,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void generateStickersForCustomer() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_CUSTOMER_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void testZebraPrinter() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ZEBRA_TEST_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 

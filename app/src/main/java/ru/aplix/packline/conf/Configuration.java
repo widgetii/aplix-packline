@@ -56,6 +56,9 @@ public class Configuration {
 	@XmlElement(name = "Restriction", type = WeightingRestriction.class)
 	private List<WeightingRestriction> weightingRestrictions;
 
+	@XmlElement(name = "ZebraTest")
+	private ZebraTest zebraTest;
+
 	private Configuration() {
 
 	}
@@ -83,6 +86,9 @@ public class Configuration {
 
 		printer = getHardwareConfiguration().lookupPrinter(getStickers().getForCustomers().getPrinterId());
 		getStickers().getForCustomers().setPrinter(printer);
+
+		printer = getHardwareConfiguration().lookupPrinter(getZebraTest().getPrinterId());
+		getZebraTest().setPrinter(printer);
 	}
 
 	public static String getConfigFileName() {
@@ -195,5 +201,16 @@ public class Configuration {
 
 	public void setRoles(Roles roles) {
 		this.roles = roles;
+	}
+
+	public ZebraTest getZebraTest() {
+		if (zebraTest == null) {
+			zebraTest = new ZebraTest();
+		}
+		return zebraTest;
+	}
+
+	public void setZebraTest(ZebraTest zebraTest) {
+		this.zebraTest = zebraTest;
 	}
 }

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE labels
+  SYSTEM "label.dtd">
+<labels _FORMAT="E:F7P.ZPL" _QUANTITY="1" _PRINTERNAME="Printer 1" _JOBNAME="LBL101">
+   <label>
+      <variable name="code2of5">12345678901234</variable>
+      <variable name="io_gabar">X</variable>
+      <variable name="io_tyazh">X</variable>
+      <variable name="io_nalozh">X</variable>
+      <variable name="io_opis">X</variable>
+      <variable name="io_cennost">X</variable>
+      <variable name="io_uved">X</variable>
+      <variable name="io_Nstd">X</variable>
+      <variable name="io_obykn">X</variable>
+      <variable name="io_std">X</variable>
+      <variable name="Kuda">.                д.1, с. Михайловское, Пушкиногорский район</variable>
+      <variable name="code_text">123456 78 90123 4</variable>
+      <variable name="ottisk"> ММП №7 ПОЧТА РОССИИ МОСКВА 115127</variable>
+      <variable name="Komu">.               Пушкин Александр Сергеевич</variable>
+      <variable name="ot_kuda">.                 Москва, Варшавское шоссе, дом 141</variable>
+      <variable name="ot_kogo">.                  ООО "АПЛИКС"</variable>
+      <variable name="ind_out1">1</variable>
+      <variable name="ind_out2">1</variable>
+      <variable name="ind_out3">7</variable>
+      <variable name="ind_out4">5</variable>
+      <variable name="ind_out5">5</variable>
+      <variable name="ind_out6">6</variable>
+      <variable name="ves">0 кг 675 г</variable>
+      <variable name="Plata">9 руб 32 коп</variable>
+      <variable name="index">$181370</variable>
+      <variable name="nalozh">2.78 (два рубля семьдесят восемь копеек)</variable>
+      <variable name="cennost">345.27 (триста сорок пять рублей двадцать семь копеек)</variable>
+      <variable name="ind_in1">1</variable>
+      <variable name="ind_in2">8</variable>
+      <variable name="ind_in3">1</variable>
+      <variable name="ind_in4">3</variable>
+      <variable name="ind_in5">7</variable>
+      <variable name="ind_in6">0</variable>
+      <variable name="region">Псковская область</variable>
+      <variable name="telefon">322-33-22</variable>
+      <variable name="data">01.11.2013</variable>
+   </label>
+  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE labels
+  SYSTEM "label.dtd">
+<labels _FORMAT="E:F7A.ZPL" _QUANTITY="1" _PRINTERNAME="Printer 1" _JOBNAME="LBL101">
+   <label>
+      <variable name="code2of5">12345678901234</variable>
+      <variable name="io_band1kl">X</variable>
+      <variable name="io_nalozh">X</variable>
+      <variable name="io_opis">X</variable>
+      <variable name="io_cennost">X</variable>
+      <variable name="io_prostuved">X</variable>
+      <variable name="io_zakazuved">X</variable>
+      <variable name="io_pismo1kl">X</variable>
+      <variable name="io_std">X</variable>
+      <variable name="Kuda">.                д.1, с. Михайловское, Пушкиногорский район</variable>
+      <variable name="code_text">123456 78 90123 4</variable>
+      <variable name="ottisk"> ММП №7 ПОЧТА РОССИИ МОСКВА 115127</variable>
+      <variable name="Komu">.               Пушкин Александр Сергеевич</variable>
+      <variable name="ot_kuda">.                 Москва, Варшавское шоссе, дом 141</variable>
+      <variable name="ot_kogo">.                  ООО "АПЛИКС"</variable>
+      <variable name="ind_out1">1</variable>
+      <variable name="ind_out2">1</variable>
+      <variable name="ind_out3">7</variable>
+      <variable name="ind_out4">5</variable>
+      <variable name="ind_out5">5</variable>
+      <variable name="ind_out6">6</variable>
+      <variable name="ves">0 кг 675 г</variable>
+      <variable name="Plata">9 руб 32 коп</variable>
+      <variable name="index">$181370</variable>
+      <variable name="nalozh">2.78 (два рубля семьдесят восемь копеек)</variable>
+      <variable name="cennost">345.27 (триста сорок пять рублей двадцать семь копеек)</variable>
+      <variable name="ind_in1">1</variable>
+      <variable name="ind_in2">8</variable>
+      <variable name="ind_in3">1</variable>
+      <variable name="ind_in4">3</variable>
+      <variable name="ind_in5">7</variable>
+      <variable name="ind_in6">0</variable>
+      <variable name="region">Псковская область</variable>
+      <variable name="telefon">322-33-22</variable>
+      <variable name="data">01.11.2013</variable>
+   </label>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE labels
+  SYSTEM "label.dtd">
+<labels _FORMAT="E:F7B.ZPL" _QUANTITY="1" _PRINTERNAME="Printer 1" _JOBNAME="LBL101">
+   <label>
+      <variable name="code2of5">12345678901234</variable>
+      <variable name="io_nalozh">X</variable>
+      <variable name="io_opis">X</variable>
+      <variable name="io_cennost">X</variable>
+      <variable name="io_uved">X</variable>
+      <variable name="io_Zakaz">X</variable>
+      <variable name="io_prost">X</variable>
+      <variable name="Kuda">.                д.1, с. Михайловское, Пушкиногорский район</variable>
+      <variable name="code_text">123456 78 90123 4</variable>
+      <variable name="ottisk"> ММП №7 ПОЧТА РОССИИ МОСКВА 115127</variable>
+      <variable name="Komu">.               Пушкин Александр Сергеевич</variable>
+      <variable name="ot_kuda">.                 Москва, Варшавское шоссе, дом 141</variable>
+      <variable name="ot_kogo">.                  ООО "АПЛИКС"</variable>
+      <variable name="ind_out1">1</variable>
+      <variable name="ind_out2">1</variable>
+      <variable name="ind_out3">7</variable>
+      <variable name="ind_out4">5</variable>
+      <variable name="ind_out5">5</variable>
+      <variable name="ind_out6">6</variable>
+      <variable name="ves">0 кг 675 г</variable>
+      <variable name="Plata">9 руб 32 коп</variable>
+      <variable name="index">$181370</variable>
+      <variable name="nalozh">2.78 (два рубля семьдесят восемь копеек)</variable>
+      <variable name="cennost">345.27 (триста сорок пять рублей двадцать семь копеек)</variable>
+      <variable name="ind_in1">1</variable>
+      <variable name="ind_in2">8</variable>
+      <variable name="ind_in3">1</variable>
+      <variable name="ind_in4">3</variable>
+      <variable name="ind_in5">7</variable>
+      <variable name="ind_in6">0</variable>
+      <variable name="region">Псковская область</variable>
+      <variable name="telefon">322-33-22</variable>
+      <variable name="data">01.11.2013</variable>
+   </label>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE labels
+  SYSTEM "label.dtd">
+<labels _FORMAT="E:F7L.ZPL" _QUANTITY="1" _PRINTERNAME="Printer 1" _JOBNAME="LBL101">
+   <label>
+      <variable name="Kuda">.                д.1, с. Михайловское, Пушкиногорский район</variable>
+      <variable name="ottisk"> ММП №7 ПОЧТА РОССИИ МОСКВА 115127</variable>
+      <variable name="Komu">.               Пушкин Александр Сергеевич</variable>
+      <variable name="ot_kuda">.                 Москва, Варшавское шоссе, дом 141</variable>
+      <variable name="ot_kogo">.                  ООО "АПЛИКС"</variable>
+      <variable name="ind_out1">1</variable>
+      <variable name="ind_out2">1</variable>
+      <variable name="ind_out3">7</variable>
+      <variable name="ind_out4">5</variable>
+      <variable name="ind_out5">5</variable>
+      <variable name="ind_out6">6</variable>
+      <variable name="index">$181370</variable>
+      <variable name="ind_in1">1</variable>
+      <variable name="ind_in2">8</variable>
+      <variable name="ind_in3">1</variable>
+      <variable name="ind_in4">3</variable>
+      <variable name="ind_in5">7</variable>
+      <variable name="ind_in6">0</variable>
+      <variable name="region">Псковская область</variable>
+      <variable name="telefon">322-33-22</variable>
+      <variable name="data">01.11.2013</variable>
+   </label>

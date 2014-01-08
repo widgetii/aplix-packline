@@ -159,4 +159,7 @@
 	<!-- Specifies threshold, below which the app will show -->
 	<!-- notification to replenish the stock of boxes -->
 	<EmptyBoxThreshold>10</EmptyBoxThreshold>
+	
+	<!-- Select a printer for Zebra test -->
+	<ZebraTest printerId="printer1"></ZebraTest>
 </packline>
