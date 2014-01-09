@@ -8,7 +8,6 @@ import gnu.io.SerialPortEventListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.locks.ReentrantLock;
@@ -77,10 +76,12 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 				try {
 					try {
 						if (!isConnected()) {
-							CommPortIdentifier portId = findPort(configuration.getPortName());
+							CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(configuration.getPortName());
 							if (portId == null) {
 								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
 							}
+
+							Thread.sleep(1000);
 
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
 							serialPort.addEventListener(new BarcodeSerialPortEventListener());
@@ -150,19 +151,6 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 
 	public boolean getConnectOnDemand() {
 		return connectOnDemand;
-	}
-
-	@SuppressWarnings({ "unchecked" })
-	private CommPortIdentifier findPort(String portName) {
-		CommPortIdentifier result = null;
-		Enumeration<CommPortIdentifier> portList = CommPortIdentifier.getPortIdentifiers();
-		while (result == null && portList.hasMoreElements()) {
-			CommPortIdentifier portId = portList.nextElement();
-			if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL && portId.getName().equals(portName)) {
-				result = portId;
-			}
-		}
-		return result;
 	}
 
 	private class BarcodeSerialPortEventListener implements SerialPortEventListener {
