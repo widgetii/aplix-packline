@@ -81,8 +81,6 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
 							}
 
-							Thread.sleep(1000);
-
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
 							serialPort.addEventListener(new BarcodeSerialPortEventListener());
 							serialPort.notifyOnDataAvailable(true);

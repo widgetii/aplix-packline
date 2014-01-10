@@ -93,8 +93,6 @@ public class MeraScalesAuto implements Scales<RS232Configuration> {
 								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
 							}
 
-							Thread.sleep(1000);
-
 							connectLatch = new CountDownLatch(1);
 
 							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
