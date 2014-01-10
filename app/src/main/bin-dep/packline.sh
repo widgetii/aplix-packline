@@ -53,7 +53,9 @@ do
     fi
 done 
 
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS -Xms1024m -Xmx1024m"
+RXTX_PORTS=/dev/ttyS0:/dev/ttyS1:/dev/ttyS2:/dev/ttyS3:/dev/ttyACM0:/dev/ttyACM1:/dev/ttyACM2:/dev/ttyACM3:/dev/ttyUSB0:/dev/ttyUSB1:/dev/ttyUSB2:/dev/ttyUSB3:/dev/rfcomm0:/dev/rfcomm1:/dev/rfcomm2:/dev/rfcomm3
+
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS -Dgnu.io.rxtx.SerialPorts=$RXTX_PORTS -Xms1024m -Xmx1024m"
 
 #--------------------------------------------
 #  gather command line arguments

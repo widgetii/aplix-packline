@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 
 import javafx.application.Application;
@@ -168,24 +168,23 @@ public final class Utils {
 	}
 
 	public static String getMACAddress() throws UnknownHostException, SocketException {
-		InetAddress ip = InetAddress.getLocalHost();
-		if (ip == null) {
-			return "";
-		}
-		NetworkInterface network = NetworkInterface.getByInetAddress(ip);
-		if (network == null) {
-			return "";
-		}
-		byte[] mac = network.getHardwareAddress();
-		if (mac == null) {
-			return "";
-		}
+		String result = "";
+		Enumeration<NetworkInterface> nis = NetworkInterface.getNetworkInterfaces();
+		while ((result == null || result.length() == 0) && nis.hasMoreElements()) {
+			NetworkInterface ni = nis.nextElement();
 
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < mac.length; i++) {
-			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
+			byte[] mac = ni.getHardwareAddress();
+			if (mac == null || mac.length == 0) {
+				continue;
+			}
+
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < mac.length; i++) {
+				sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
+			}
+			result = sb.toString();
 		}
-		return sb.toString();
+		return result;
 	}
 
 	public static final int SOUND_ERROR = 0x01;
