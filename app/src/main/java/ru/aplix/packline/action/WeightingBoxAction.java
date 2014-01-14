@@ -55,7 +55,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 			boolean postTypeRestriction = (form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType()));
 			boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
 
-			if (postTypeRestriction && paymentMethodRestriction) {
+			if (postTypeRestriction && paymentMethodRestriction && form.getWeight() != null) {
 				value += form.getWeight();
 			}
 		}
