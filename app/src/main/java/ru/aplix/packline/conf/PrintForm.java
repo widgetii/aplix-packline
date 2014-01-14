@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import ru.aplix.packline.post.PaymentFlags;
 import ru.aplix.packline.post.PostType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -32,6 +33,9 @@ public class PrintForm {
 	@XmlElementWrapper(name = "PostTypeRestriction")
 	@XmlElement(name = "PostType", type = PostType.class)
 	private List<PostType> postTypes;
+	@XmlElementWrapper(name = "PaymentFlagsRestriction")
+	@XmlElement(name = "PaymentFlags", type = PaymentFlags.class)
+	private List<PaymentFlags> paymentFlags;
 
 	@XmlTransient
 	private Printer printer;
@@ -101,5 +105,16 @@ public class PrintForm {
 
 	public void setPostTypes(List<PostType> postTypes) {
 		this.postTypes = postTypes;
+	}
+
+	public List<PaymentFlags> getPaymentFlags() {
+		if (paymentFlags == null) {
+			paymentFlags = new ArrayList<PaymentFlags>();
+		}
+		return paymentFlags;
+	}
+
+	public void setPaymentFlags(List<PaymentFlags> paymentFlags) {
+		this.paymentFlags = paymentFlags;
 	}
 }

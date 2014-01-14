@@ -34,6 +34,14 @@
 					<xs:element name="name" type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="Enclosure">
+				<xs:sequence>
+					<xs:element name="postId" type="xs:string"/>
+					<xs:element name="contentDescription" type="xs:string"/>
+					<xs:element name="cost" type="xs:float"/>
+					<xs:element name="quantity" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Field">
 				<xs:sequence>
 					<xs:element name="name" type="xs:string"/>
@@ -54,7 +62,6 @@
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 							<xs:element name="weight" type="xs:float" nillable="true"/>
 							<xs:element name="contentDescription" type="xs:string"/>
-							<xs:element name="cost" type="xs:float" nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -91,15 +98,22 @@
 					<xs:enumeration value="PAPER"/>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:simpleType name="PaymentFlags">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="CASH_ON_DELIVERY"/>
+					<xs:enumeration value="OTHER"/>
+				</xs:restriction>
+			</xs:simpleType>
 			<xs:complexType name="Post">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
 							<xs:element name="container" type="tns:Container"/>
-							<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="enclosure" type="tns:Enclosure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 							<xs:element name="postType" type="tns:PostType" nillable="true"/>
 							<xs:element name="orderId" type="xs:string"/>
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
+							<xs:element name="paymentFlags" type="tns:PaymentFlags" nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
@@ -1278,10 +1292,10 @@
 			<documentation> 
 				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
+			<soapbind:address location="http://z.aplix.ru/post.psv/ws/PackingLine.1cws"/>
 		</port>
 		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
-			<soap12bind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
+			<soap12bind:address location="http://z.aplix.ru/post.psv/ws/PackingLine.1cws"/>
 		</port>
 	</service>
 </definitions>

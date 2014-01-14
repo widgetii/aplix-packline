@@ -69,7 +69,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 		</incoming>
 		<incoming>
@@ -78,7 +77,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 		</incoming>
 		<incoming>
@@ -87,7 +85,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 		</incoming>
 		<incoming>
@@ -96,7 +93,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Подарочный набор Eleganci.</contentDescription>
 		</incoming>
 		<incoming>
@@ -105,7 +101,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 		</incoming>
 		<incoming>
@@ -114,7 +109,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>0.0</cost>
 			<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 		</incoming>
 		<incoming>
@@ -123,7 +117,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>2655.0</cost>
 			<contentDescription>Мультиварка Bosch BR-546.</contentDescription>
 		</incoming>
 		<incoming>
@@ -132,7 +125,6 @@
 			<photoId></photoId>
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
-			<cost>1576.2</cost>
 			<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
 		</incoming>
 	</incomings>
@@ -154,97 +146,77 @@
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<shipped>false</shipped>
 			</container>
-			<incoming>
-				<id>008001</id>
-				<orderId>123456789</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+			<enclosure>
+				<postId>010931</postId>
+				<cost>2340.78</cost>
+				<quantity>1</quantity>
 				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
-			</incoming>
-			<incoming>
-				<id>008002</id>
-				<orderId>123456789</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+			</enclosure>
+			<enclosure>
+				<postId>010931</postId>
+				<cost>1000.4</cost>
+				<quantity>4</quantity>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
-			</incoming>
+			</enclosure>
 			<postType>EMS</postType>
+			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
 		<post>
 			<id>010932</id>
-			<incoming>
-				<id>008003</id>
-				<orderId>123456789</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+			<enclosure>
+				<postId>010932</postId>
+				<cost>23.8</cost>
 				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
-			</incoming>
-			<incoming>
-				<id>008004</id>
-				<orderId>123456789</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+				<quantity>10</quantity>
+			</enclosure>
+			<enclosure>
+				<postId>010932</postId>
+				<cost>234.9</cost>
 				<contentDescription>Подарочный набор Eleganci.</contentDescription>
-			</incoming>
-			<incoming>
-				<id>008005</id>
-				<orderId>123456789</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+				<quantity>1</quantity>
+			</enclosure>
+			<enclosure>
+				<postId>010932</postId>
+				<cost>500.0</cost>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
-			</incoming>
+				<quantity>3</quantity>
+			</enclosure>
 			<postType>PARCEL</postType>
+			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>123456789</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
 		<post>
 			<id>008006</id>
-			<incoming>
-				<id>008006</id>
-				<orderId>987654321</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>0.0</cost>
+			<enclosure>
+				<postId>008006</postId>
+				<cost>200.0</cost>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
-			</incoming>
+				<quantity>4</quantity>
+			</enclosure>
 			<postType>PACKAGE</postType>
+			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>987654321</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
 		<post>
 			<id>010933</id>
-			<incoming>
-				<id>008007</id>
-				<orderId>12349876</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>2655.0</cost>
+			<enclosure>
+				<postId>010933</postId>
+				<cost>1234.5</cost>
 				<contentDescription>Мультиварка Bosch BR-546.</contentDescription>
-			</incoming>
-			<incoming>
-				<id>008008</id>
-				<orderId>12349876</orderId>
-				<photoId></photoId>
-				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-				<weight>0.0</weight>
-				<cost>1576.2</cost>
+				<quantity>2</quantity>
+			</enclosure>
+			<enclosure>
+				<postId>010933</postId>
+				<cost>2344.8</cost>
 				<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
-			</incoming>
+				<quantity>1</quantity>
+			</enclosure>
 			<postType>CDEK</postType>
+			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>12349876</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>

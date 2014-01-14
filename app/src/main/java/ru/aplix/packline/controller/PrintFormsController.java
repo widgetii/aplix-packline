@@ -92,7 +92,10 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			int buttonIndex = 0;
 			for (PrintForm form : forms) {
-				if ((form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType())) && (buttonIndex < buttons.length)) {
+				boolean postTypeRestriction = (form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType()));
+				boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
+
+				if (postTypeRestriction && paymentMethodRestriction && (buttonIndex < buttons.length)) {
 					assignButton(buttons[buttonIndex], form);
 					buttonIndex++;
 				}
@@ -329,9 +332,8 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
 			if (printForm != null && (printForm.getAutoPrint() || skipAutoPrint)) {
-				boolean printed = getAction().printForms(container.getId(), printForm);
-				button.setDisable(!printed);
-				return printed;
+				getAction().printForms(container.getId(), printForm);
+				return true;
 			}
 			return false;
 		}

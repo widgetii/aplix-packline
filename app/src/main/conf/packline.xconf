@@ -95,6 +95,9 @@
 				<PostType>LETTER</PostType>
 				<PostType>EMS</PostType>
 			</PostTypeRestriction>
+			<PaymentFlagsRestriction>
+				<PaymentFlags>CASH_ON_DELIVERY</PaymentFlags>
+			</PaymentFlagsRestriction>
 		</Form>
 		<Form name="EMS" file="ems" printerId="printer1" autoPrint="false" copies="4" weight="0.015">
 			<PostTypeRestriction>

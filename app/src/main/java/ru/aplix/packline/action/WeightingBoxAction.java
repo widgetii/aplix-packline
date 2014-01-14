@@ -2,6 +2,7 @@ package ru.aplix.packline.action;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
@@ -11,6 +12,7 @@ import org.apache.commons.collections.Predicate;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.conf.PrintForm;
 import ru.aplix.packline.conf.WeightingRestriction;
 import ru.aplix.packline.controller.WeightingBoxController;
 import ru.aplix.packline.post.Container;
@@ -45,16 +47,29 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 	}
 
 	public void processMeasure(Float value) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
+		final Post post = (Post) getContext().getAttribute(Const.POST);
+
+		// Add print form weight to the measured value
+		List<PrintForm> forms = Configuration.getInstance().getPrintForms();
+		for (PrintForm form : forms) {
+			boolean postTypeRestriction = (form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType()));
+			boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
+
+			if (postTypeRestriction && paymentMethodRestriction) {
+				value += form.getWeight();
+			}
+		}
+
+		// Update container weight
 		Container container = (Container) getContext().getAttribute(Const.TAG);
 		container.setTotalWeight(value);
 
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-
 		if (!postServicePort.updateContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.update"));
 		}
 
-		final Post post = (Post) getContext().getAttribute(Const.POST);
+		// Check weighting restriction
 		WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeightingRestrictions(), new Predicate() {
 			@Override
 			public boolean evaluate(Object object) {

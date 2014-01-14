@@ -58,7 +58,7 @@ import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.Container;
-import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Enclosure;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.utils.Utils;
@@ -136,7 +136,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return match;
 	}
 
-	public boolean printForms(String containerId, PrintForm printForm) throws PackLineException {
+	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(getResources().getString("error.printer.not.assigned"));
 		}
@@ -150,7 +150,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			}
 
 			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
-			return printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
+			printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
 		} catch (PackLineException ple) {
 			throw ple;
 		} catch (Throwable e) {
@@ -159,7 +159,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	public boolean printForm(String containerId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
+	public void printForm(String containerId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -188,9 +188,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		vr.resolve(report, configuration);
 
 		// Check if the report determined to cancel printing
-		if (cancelPrinting(report)) {
-			return false;
-		}
+		checkPrintingStatus(report);
 
 		// Render report
 		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
@@ -200,8 +198,6 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		} else {
 			throw new PackLineException(getResources().getString("error.report.invalid.type"));
 		}
-
-		return true;
 	}
 
 	private void printUsingApacheFop(Report report, final Printer printer, final String formName, final Integer copies) throws Exception {
@@ -409,7 +405,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return attributes;
 	}
 
-	private boolean cancelPrinting(Report report) throws PackLineException {
+	private void checkPrintingStatus(Report report) throws PackLineException {
 		// Check container problem
 		Variable variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
 			@Override
@@ -428,15 +424,6 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 						variable.getValue());
 			}
 		}
-
-		// Check whether this form not need to be printed
-		variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return Const.CANCEL_PRINT_VARIABLE.equals(((Variable) item).getName());
-			}
-		});
-		return variable != null && variable.getValue() != null && Boolean.valueOf(variable.getValue());
 	}
 
 	private void addIncomingsDataSet(Report report) {
@@ -444,13 +431,13 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			@Override
 			public boolean evaluate(Object object) {
 				Dataset item = (Dataset) object;
-				return Const.INCOMINGS_DATASET.equals(item.getName());
+				return Const.ENCLOSURES_DATASET.equals(item.getName());
 			}
 		});
 
 		if (dataset == null) {
 			dataset = new Dataset();
-			dataset.setName(Const.INCOMINGS_DATASET);
+			dataset.setName(Const.ENCLOSURES_DATASET);
 			report.getDatasets().add(dataset);
 		}
 
@@ -458,14 +445,13 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		Post post = (Post) getContext().getAttribute(Const.POST);
 		Integer index = 1;
-		for (Incoming incoming : post.getIncoming()) {
+		for (Enclosure enclosure : post.getEnclosure()) {
 			Row row = new Row();
-			addColumn(row, Const.INCOMING_COLUMN_INDEX, index);
-			addColumn(row, Const.INCOMING_COLUMN_ID, incoming.getId());
-			addColumn(row, Const.INCOMING_COLUMN_DESCRIPTION, incoming.getContentDescription());
-			addColumn(row, Const.INCOMING_COLUMN_DATE, incoming.getDate() != null ? incoming.getDate().toXMLFormat() : null);
-			addColumn(row, Const.INCOMING_COLUMN_WEIGHT, incoming.getWeight());
-			addColumn(row, Const.INCOMING_COLUMN_COST, incoming.getCost());
+			addColumn(row, Const.ENCLOSURE_COLUMN_INDEX, index);
+			addColumn(row, Const.ENCLOSURE_COLUMN_DESCRIPTION, enclosure.getContentDescription());
+			addColumn(row, Const.ENCLOSURE_COLUMN_COST, enclosure.getCost());
+			addColumn(row, Const.ENCLOSURE_COLUMN_QUANTITY, enclosure.getQuantity());
+			addColumn(row, Const.ENCLOSURE_COLUMN_PAYMENT, enclosure.getQuantity() * enclosure.getCost());
 			dataset.getRows().add(row);
 			index++;
 		}

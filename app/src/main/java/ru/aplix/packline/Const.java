@@ -46,16 +46,14 @@ public final class Const {
 	public static final String COUNT_PARAM = "count";
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
-	public static final String CANCEL_PRINT_VARIABLE = "CancelPrinting";
 	public static final String CONTAINER_PROBLEM_VARIABLE = "ContainerProblem";
 
-	public static final String INCOMINGS_DATASET = "IncomingsDataSet";
-	public static final String INCOMING_COLUMN_INDEX = "VarIncomingIndex";
-	public static final String INCOMING_COLUMN_ID = "VarIncomingId";
-	public static final String INCOMING_COLUMN_DATE = "VarIncomingDate";
-	public static final String INCOMING_COLUMN_WEIGHT = "VarIncomingWeight";
-	public static final String INCOMING_COLUMN_COST = "VarIncomingCost";
-	public static final String INCOMING_COLUMN_DESCRIPTION = "VarIncomingDescription";
+	public static final String ENCLOSURES_DATASET = "EnclosuresDataSet";
+	public static final String ENCLOSURE_COLUMN_INDEX = "VarEnclosureIndex";
+	public static final String ENCLOSURE_COLUMN_DESCRIPTION = "VarEnclosureDescription";
+	public static final String ENCLOSURE_COLUMN_COST = "VarEnclosureCost";
+	public static final String ENCLOSURE_COLUMN_QUANTITY = "VarEnclosureQuantity";
+	public static final String ENCLOSURE_COLUMN_PAYMENT = "VarEnclosurePayment";
 
 	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";
