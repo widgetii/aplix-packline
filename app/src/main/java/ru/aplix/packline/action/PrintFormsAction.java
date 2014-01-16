@@ -69,7 +69,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 	private WorkflowAction normalAction;
 
 	private static final int[] REPORT_TYPE_ZEBRA = { 105 };
-	private static final int[] REPORT_TYPE_FRF = { 21, 22, 23 };
+	private static final int[] REPORT_TYPE_FRF = { 21, 22, 23, 172 };
 
 	private static final int BUFFER_SIZE = 10240;
 
@@ -205,10 +205,18 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 	}
 
 	private void printUsingApacheFop(Report report, final Printer printer, final String formName, final Integer copies) throws Exception {
+		File xsltFileAfter = null;
+		if (configuration.getReplacementFile().getAfter() != null) {
+			xsltFileAfter = new File(configuration.getReplacementFile().getAfter());
+			if (xsltFileAfter == null || !xsltFileAfter.exists()) {
+				xsltFileAfter = new File(r2afopConfigFile.getParent(), configuration.getReplacementFile().getAfter());
+			}
+		}
+
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
 		try {
 			// Convert report to XMl
-			ReportWriter reportWriter = new XMLReportWriter();
+			ReportWriter reportWriter = new XMLReportWriter(xsltFileAfter);
 			reportWriter.writeToStream(report, new OutputStreamOpener() {
 				@Override
 				public OutputStream openStream() throws IOException {

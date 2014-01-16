@@ -11,6 +11,52 @@
 		</xsl:copy>
 	</xsl:template>
 
+	<!-- ============== -->
+	<!-- template: CDEK -->
+	<!-- ============== -->
+	<xsl:template match="Report[@FileVersion = '172']">
+		<!-- Determine appropriate page size -->
+		<xsl:variable name="pageSize">
+			<xsl:choose>
+				<xsl:when test="count(//Dataset[@Name = 'EnclosuresDataSet']/Rows/Row) &lt;= 3">
+					<xsl:value-of select="'A5'" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="'A4'" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<xsl:copy>
+			<!-- Copy all attributes from current node -->
+			<xsl:apply-templates select="@*" />
+
+			<!-- Enumerate all child node -->
+			<xsl:for-each select="node()">
+				<xsl:choose>
+					<!-- Copy only specific page -->
+					<xsl:when test="name() = 'Pages'">
+						<xsl:copy>
+							<xsl:for-each select="Page">
+								<xsl:if test="$pageSize = concat('A', @Size)">
+									<xsl:copy>
+										<xsl:apply-templates select="@*|node()" />
+									</xsl:copy>
+								</xsl:if>
+							</xsl:for-each>
+						</xsl:copy>
+					</xsl:when>
+					<!-- Copy all other nodes without changes -->
+					<xsl:otherwise>
+						<xsl:copy>
+							<xsl:apply-templates select="@*|node()" />
+						</xsl:copy>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
+		</xsl:copy>
+	</xsl:template>
+
 	<!-- =============================== -->
 	<!-- template: zebra-prepared-report -->
 	<!-- =============================== -->
