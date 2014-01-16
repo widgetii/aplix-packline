@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 
 import ru.aplix.packline.post.FieldList;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.StringList;
 import ru.aplix.packline.post.TagList;
 
@@ -29,6 +30,7 @@ public class PostStatement implements Statement {
 	private Map<String, ResultSet> lastQueries;
 	private ResultSet lastResultSet;
 	private Pattern queryPostPattern;
+	private Pattern queryEnclosuresPattern;
 	private Pattern queryMarkerCustPattern;
 	private Pattern queryMarkerContPattern;
 
@@ -44,10 +46,14 @@ public class PostStatement implements Statement {
 			}
 		};
 
-		queryPostPattern = Pattern.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+		queryPostPattern = Pattern
+				.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+		queryEnclosuresPattern = Pattern
+				.compile("\\s*SELECT\\s+\\*\\s+FROM\\s+ENCLOSURES\\s+WHERE\\s+POST_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
 		queryMarkerCustPattern = Pattern
 				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
-		queryMarkerContPattern = Pattern.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+		queryMarkerContPattern = Pattern
+				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 	}
 
 	@Override
@@ -72,10 +78,14 @@ public class PostStatement implements Statement {
 					cachable = true;
 					break;
 				case 2:
-					resultSet = executeMarkerCustQuery(sql);
+					resultSet = executeEnclosuresQuery(sql);
 					cachable = true;
 					break;
 				case 3:
+					resultSet = executeMarkerCustQuery(sql);
+					cachable = true;
+					break;
+				case 4:
 					resultSet = executeMarkerContQuery(sql);
 					cachable = true;
 					break;
@@ -122,6 +132,26 @@ public class PostStatement implements Statement {
 
 		// Return result set with data
 		return new PostResultSet(this, fieldList.getItems());
+	}
+
+	private ResultSet executeEnclosuresQuery(String sql) throws SQLException {
+		// Validate query
+		Matcher queryMatcher = queryEnclosuresPattern.matcher(sql);
+		if (!queryMatcher.matches() || queryMatcher.groupCount() != 2) {
+			throw new SQLException("Invalid SQL statement", null, ERROR_CODE_INVALID_SQL_STATEMENT);
+		}
+
+		// Parse query parameters
+		String postId = queryMatcher.group(1);
+
+		// Call remote post service
+		Post post = postServicePort.findPost(postId);
+		if (post == null || post.getEnclosure() == null) {
+			throw new SQLException("Invalid response from post service");
+		}
+
+		// Return result set with data
+		return new EnclosureResultSet(this, post.getEnclosure());
 	}
 
 	private ResultSet executeMarkerCustQuery(String sql) throws SQLException {

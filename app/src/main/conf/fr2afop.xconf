@@ -39,6 +39,19 @@
 			]]>
 			</Query>			
 		</Dataset>
+		<Dataset Name="EnclosuresDataSet" Database="PackLine Post Database">
+			<Parameters>
+				<Parameter Name="postId" />
+				<Parameter Name="queryId" />
+			</Parameters>
+			<Query><![CDATA[
+				SELECT * 
+				FROM ENCLOSURES
+				WHERE 
+					POST_ID = '${postId}' AND QUERY_ID = '${queryId}';
+			]]>
+			</Query>			
+		</Dataset>
 		<Dataset Name="MarkersForCustomersDataSet" Database="PackLine Post Database">
 			<Parameters>
 				<Parameter Name="count" />

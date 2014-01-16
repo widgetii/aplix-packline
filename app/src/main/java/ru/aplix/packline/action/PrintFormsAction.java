@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -35,12 +36,10 @@ import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
 import ru.aplix.converters.fr2afop.database.ValueResolver;
 import ru.aplix.converters.fr2afop.fr.Report;
 import ru.aplix.converters.fr2afop.fr.Variable;
-import ru.aplix.converters.fr2afop.fr.dataset.Column;
 import ru.aplix.converters.fr2afop.fr.dataset.Connection;
 import ru.aplix.converters.fr2afop.fr.dataset.Database;
 import ru.aplix.converters.fr2afop.fr.dataset.Dataset;
 import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
-import ru.aplix.converters.fr2afop.fr.dataset.Row;
 import ru.aplix.converters.fr2afop.reader.InputStreamOpener;
 import ru.aplix.converters.fr2afop.reader.ReportReader;
 import ru.aplix.converters.fr2afop.reader.XMLReportReader;
@@ -58,9 +57,7 @@ import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsController;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.Container;
-import ru.aplix.packline.post.Enclosure;
 import ru.aplix.packline.post.PackingLinePortType;
-import ru.aplix.packline.post.Post;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
@@ -78,13 +75,18 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 	private ru.aplix.converters.fr2afop.fr.Configuration configuration = null;
 	private Parameter containerIdParam = null;
-	private Parameter queryIdParam = null;
+	private Parameter postIdParam = null;
+	private List<Parameter> queryIdParams = null;
 
 	private String jarFolder = null;
 	private File r2afopConfigFile;
 	private String fr2afopConfigFileName;
 	private String fopConfigFileName;
 	private String queryId;
+
+	public PrintFormsAction() {
+		queryIdParams = new ArrayList<Parameter>();
+	}
 
 	public WorkflowAction getWeightingAction() {
 		return weightingAction;
@@ -136,7 +138,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		return match;
 	}
 
-	public void printForms(String containerId, PrintForm printForm) throws PackLineException {
+	public void printForms(String containerId, String postId, PrintForm printForm) throws PackLineException {
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(getResources().getString("error.printer.not.assigned"));
 		}
@@ -150,7 +152,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			}
 
 			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
-			printForm(containerId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
+			printForm(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
 		} catch (PackLineException ple) {
 			throw ple;
 		} catch (Throwable e) {
@@ -159,7 +161,7 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		}
 	}
 
-	public void printForm(String containerId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
+	public void printForm(String containerId, String postId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -180,11 +182,13 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 		if (containerIdParam != null) {
 			containerIdParam.setValue(containerId);
 		}
-		if (queryIdParam != null) {
+		if (postIdParam != null) {
+			postIdParam.setValue(postId);
+		}
+		for (Parameter queryIdParam : queryIdParams) {
 			queryIdParam.setValue(queryId);
 		}
 		ValueResolver vr = new ValueResolver();
-		addIncomingsDataSet(report);
 		vr.resolve(report, configuration);
 
 		// Check if the report determined to cancel printing
@@ -327,13 +331,26 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 
 		// Get reference to container Id parameter
 		for (Dataset dataset : configuration.getDatasets()) {
-			if ("PostDataSet".equals(dataset.getName())) {
+			if (Const.POST_DATASET.equals(dataset.getName())) {
 				for (Parameter parameter : dataset.getParameters()) {
 					if (Const.CONTAINER_ID_PARAM.equals(parameter.getName())) {
 						containerIdParam = parameter;
 					}
 					if (Const.QUERY_ID_PARAM.equals(parameter.getName())) {
-						queryIdParam = parameter;
+						if (!queryIdParams.contains(parameter)) {
+							queryIdParams.add(parameter);
+						}
+					}
+				}
+			} else if (Const.ENCLOSURE_DATASET.equals(dataset.getName())) {
+				for (Parameter parameter : dataset.getParameters()) {
+					if (Const.POST_ID_PARAM.equals(parameter.getName())) {
+						postIdParam = parameter;
+					}
+					if (Const.QUERY_ID_PARAM.equals(parameter.getName())) {
+						if (!queryIdParams.contains(parameter)) {
+							queryIdParams.add(parameter);
+						}
 					}
 				}
 			}
@@ -424,43 +441,5 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 						variable.getValue());
 			}
 		}
-	}
-
-	private void addIncomingsDataSet(Report report) {
-		Dataset dataset = (Dataset) CollectionUtils.find(report.getDatasets(), new Predicate() {
-			@Override
-			public boolean evaluate(Object object) {
-				Dataset item = (Dataset) object;
-				return Const.ENCLOSURES_DATASET.equals(item.getName());
-			}
-		});
-
-		if (dataset == null) {
-			dataset = new Dataset();
-			dataset.setName(Const.ENCLOSURES_DATASET);
-			report.getDatasets().add(dataset);
-		}
-
-		dataset.getRows().clear();
-
-		Post post = (Post) getContext().getAttribute(Const.POST);
-		Integer index = 1;
-		for (Enclosure enclosure : post.getEnclosure()) {
-			Row row = new Row();
-			addColumn(row, Const.ENCLOSURE_COLUMN_INDEX, index);
-			addColumn(row, Const.ENCLOSURE_COLUMN_DESCRIPTION, enclosure.getContentDescription());
-			addColumn(row, Const.ENCLOSURE_COLUMN_COST, enclosure.getCost());
-			addColumn(row, Const.ENCLOSURE_COLUMN_QUANTITY, enclosure.getQuantity());
-			addColumn(row, Const.ENCLOSURE_COLUMN_PAYMENT, enclosure.getQuantity() * enclosure.getCost());
-			dataset.getRows().add(row);
-			index++;
-		}
-	}
-
-	private void addColumn(Row row, String columnName, Object columnValue) {
-		Column column = new Column();
-		column.setName(columnName);
-		column.setValue(columnValue != null ? "" + columnValue : "");
-		row.getColumns().add(column);
 	}
 }

@@ -133,27 +133,27 @@
                 </BandView>
                 <BandView Type="master-data" Dataset="EnclosuresDataSet" Name="BandView2" Left="-1.3369414" Top="60.637196" Width="102.81079" Height="3.4540176" BoundLeft="-1.3369414" BoundTop="60.637196" BoundWidth="102.81079" BoundHeight="3.4540176" Stretched="false" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <ChildViews>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView1" Left="48.865208" Top="2.7777348" Width="9.893367" Height="94.44444" BoundLeft="48.798363" BoundTop="60.637196" BoundWidth="10.02706" BoundHeight="3.4540176" Stretched="false" FrameType="top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[VarEnclosureCost]</Memo>
-                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView37" Left="2.0722592" Top="2.7777348" Width="3.609742" Height="94.44444" BoundLeft="2.0054119" BoundTop="60.637196" BoundWidth="3.7434359" BoundHeight="3.4540176" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarEnclosureIndex]</Memo>
+                        </MemoView>                        
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="middle" Rotate="false" Name="MemoView32" Left="5.8156953" Top="2.7777348" Width="42.91582" Height="94.44444" BoundLeft="5.748848" BoundTop="60.637196" BoundWidth="43.049515" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[VarEnclosureDescription]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView1" Left="48.865208" Top="2.7777348" Width="9.893367" Height="94.44444" BoundLeft="48.798363" BoundTop="60.637196" BoundWidth="10.02706" BoundHeight="3.4540176" Stretched="false" FrameType="top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[enclosure_cost]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView33" Left="58.89227" Top="2.7777348" Width="9.091202" Height="94.44444" BoundLeft="58.82542" BoundTop="60.637196" BoundWidth="9.2248955" BoundHeight="3.4540176" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[VarEnclosureQuantity]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView34" Left="68.25086" Top="2.7777348" Width="9.759672" Height="94.44444" BoundLeft="68.184006" BoundTop="60.637196" BoundWidth="9.893367" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[VarEnclosurePayment]</Memo>
+                            <Memo>[enclosure_total_cost]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView35" Left="78.277916" Top="2.7777348" Width="11.765084" Height="94.44444" BoundLeft="78.211075" BoundTop="60.637196" BoundWidth="11.898778" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>[VarEnclosurePayment]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView36" Left="90.31039" Top="2.7777348" Width="7.6205654" Height="94.44444" BoundLeft="90.243546" BoundTop="60.637196" BoundWidth="7.75426" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
-                        </MemoView>
-                        <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView37" Left="2.0722592" Top="2.7777348" Width="3.609742" Height="94.44444" BoundLeft="2.0054119" BoundTop="60.637196" BoundWidth="3.7434359" BoundHeight="3.4540176" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[VarEnclosureIndex]</Memo>
-                        </MemoView>
+                        </MemoView>                        
                     </ChildViews>
                 </BandView>
                 <BandView Type="master-footer" Name="BandView3" Left="-1.3369414" Top="70.23169" Width="102.81079" Height="38.95364" BoundLeft="-1.3369414" BoundTop="70.23169" BoundWidth="102.81079" BoundHeight="38.95364" Stretched="false" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
@@ -165,7 +165,7 @@
                             <Memo>[total_rub]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView40" Left="78.277916" Top="0.24631143" Width="11.765084" Height="8.374385" BoundLeft="78.211075" BoundTop="70.23169" BoundWidth="11.898778" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>[total_rub]</Memo>
+                            <Memo>[total_payment]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView41" Left="90.31039" Top="0.24631143" Width="7.6205654" Height="8.374385" BoundLeft="90.243546" BoundTop="70.23169" BoundWidth="7.75426" BoundHeight="3.4540176" Stretched="false" FrameType="right|top|bottom" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo></Memo>
@@ -263,7 +263,7 @@
         </Page>
     </Pages>
     <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '' and [Variable17] != 'C', 'ReceiverAddress', ''))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '' and [Variable17] = 'D', 'ReceiverAddress', ''))"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>
 		<Variable Name="otmetki" Type="expression" Content="f:choose([Variable4] = '', '-', [Variable4])"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
@@ -272,13 +272,18 @@
 		<Variable Name="ves" Type="expression" Content="f:str([Variable15],3)" />
 		<Variable Name="adres" Type="expression" Content="f:choose([Variable17] = 'C', 'ПВЗ', 'Адрес')" />
 		<Variable Name="tariff" Type="expression" Content="f:choose([Variable17] = 'C', 'Посылка склад-склад', f:choose([Variable17] = 'D', 'Посылка склад-дверь', '-'))" />
+		
+		<Variable Name="enclosure_cost" Type="expression" Content="f:str([VarEnclosureCost], 2)" />
+		<Variable Name="enclosure_total_cost" Type="expression" Content="f:str([VarEnclosureTotalCost], 2)" />
+		
 		<Variable Name="delivery" Type="expression" Content="f:choose([Variable17] = 'C', 'С', f:choose([Variable17] = 'D', 'Д', ''))" />
 		<Variable Name="delivery_cost" Type="expression" Content="f:str([Variable18], 2)" />
 		<Variable Name="total" Type="expression" Content="f:count([VarEnclosureIndex])" />
-		<Variable Name="total_cost" Type="expression" Content="f:sum([VarEnclosurePayment])" />
+		<Variable Name="total_cost" Type="expression" Content="f:sum([VarEnclosureTotalCost])" />
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
+		<Variable Name="total_payment" Type="expression" Content="f:choose([Variable21] > 0, [total_rub], '0')" />
 		<Variable Name="itogo" Type="expression" Content="[total_cost] + f:choose([Variable18] = '', 0, [Variable18])" />
-		<Variable Name="itogo_rub" Type="expression" Content="f:str([itogo], 2)" />
+		<Variable Name="itogo_rub" Type="expression" Content="f:str([Variable21], 2)" />
 		<Variable Name="itogo_text" Type="expression" Content="f:toRoublesRU([itogo])" />
 		<Variable Name="date" Type="function" Function="date"/>
 		<Variable Name="year" Type="expression" Content="'20'.concat(f:copy([date], [date].getValue().length()-1, 2))" />
@@ -302,11 +307,13 @@
 		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="delivery_cost"/>
 		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
-		<Variable Name="VarEnclosureIndex" Type="db-field" Dataset="EnclosuresDataSet" Content="ENCLOSURE_INDEX"/>
-		<Variable Name="VarEnclosureDescription" Type="db-field" Dataset="EnclosuresDataSet" Content="ENCLOSURE_DESCRIPTION"/>
-		<Variable Name="VarEnclosureCost" Type="db-field" Dataset="EnclosuresDataSet" Content="ENCLOSURE_COST"/>
-		<Variable Name="VarEnclosureQuantity" Type="db-field" Dataset="EnclosuresDataSet" Content="ENCLOSURE_QUANTITY"/>
-		<Variable Name="VarEnclosurePayment" Type="db-field" Dataset="EnclosuresDataSet" Content="ENCLOSURE_PAYMENT"/>
+		<Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="PAYMENT"/>
+		<Variable Name="VarEnclosureIndex" Type="db-field" Dataset="EnclosuresDataSet" Content="INDEX"/>
+		<Variable Name="VarEnclosureDescription" Type="db-field" Dataset="EnclosuresDataSet" Content="DESCRIPTION"/>
+		<Variable Name="VarEnclosureCost" Type="db-field" Dataset="EnclosuresDataSet" Content="COST"/>
+		<Variable Name="VarEnclosureQuantity" Type="db-field" Dataset="EnclosuresDataSet" Content="QUANTITY"/>
+		<Variable Name="VarEnclosureTotalCost" Type="db-field" Dataset="EnclosuresDataSet" Content="TOTAL_COST"/>
+		<Variable Name="VarEnclosurePayment" Type="expression" Content="f:choose([Variable21] > 0, [enclosure_total_cost], 0)"/>
     </Variables>
     <Datasets>
         <Dataset Name="PostDataSet">            
@@ -332,9 +339,23 @@
 					<Column Name="Variable18"/>
 					<Column Name="Variable19"/>
 					<Column Name="Variable20"/>
+					<Column Name="Variable21"/>
                 </Row>               
             </Rows>
         </Dataset>
-        <Dataset Name="EnclosuresDataSet" />
+        <Dataset Name="EnclosuresDataSet">
+			<Rows>               
+                <Row>                    
+                    <Column Name="VarEnclosureIndex"/>
+					<Column Name="VarEnclosureDescription"/>
+					<Column Name="VarEnclosureCost"/>
+					<Column Name="VarEnclosureQuantity"/>
+					<Column Name="VarEnclosureTotalCost"/>
+					<Column Name="VarEnclosurePayment"/>
+					<Column Name="enclosure_cost"/>
+					<Column Name="enclosure_total_cost"/>
+                </Row>               
+            </Rows>
+		</Dataset>
     </Datasets>
 </Report>

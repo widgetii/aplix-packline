@@ -133,7 +133,7 @@ public class MarkerResultSet implements ResultSet {
 		return position + 1;
 	}
 
-	private Tag getColumn(int column) throws SQLException {
+	private Tag getCurrentItem() throws SQLException {
 		try {
 			return tags.get(position);
 		} catch (IndexOutOfBoundsException ioobe) {
@@ -148,7 +148,7 @@ public class MarkerResultSet implements ResultSet {
 
 	@Override
 	public String getString(int columnIndex) throws SQLException {
-		return getColumn(columnIndex).getId();
+		return getCurrentItem().getId();
 	}
 
 	@Override
@@ -298,22 +298,22 @@ public class MarkerResultSet implements ResultSet {
 
 	@Override
 	public Date getDate(int columnIndex, Calendar cal) throws SQLException {
-		return getDate(columnIndex, cal);
+		throw new SQLFeatureNotSupportedException();
 	}
 
 	@Override
 	public Time getTime(int columnIndex, Calendar cal) throws SQLException {
-		return getTime(columnIndex, cal);
+		throw new SQLFeatureNotSupportedException();
 	}
 
 	@Override
 	public Timestamp getTimestamp(int columnIndex, Calendar cal) throws SQLException {
-		return getTimestamp(columnIndex, cal);
+		throw new SQLFeatureNotSupportedException();
 	}
 
 	@Override
 	public URL getURL(int columnIndex) throws SQLException {
-		return getURL(columnIndex);
+		throw new SQLFeatureNotSupportedException();
 	}
 
 	@Override
@@ -520,7 +520,7 @@ public class MarkerResultSet implements ResultSet {
 
 	@Override
 	public int getFetchSize() throws SQLException {
-		return 1;
+		return tags.size();
 	}
 
 	@Override

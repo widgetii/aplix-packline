@@ -35,7 +35,7 @@ public class GenStickAction extends BaseStickAction<GenStickCustomerController, 
 
 	@Override
 	protected String getDatesetName() {
-		return "MarkersForContainersDataSet";
+		return Const.MARKERS_FOR_CONTAINERS_DATASET;
 	}
 
 	@Override

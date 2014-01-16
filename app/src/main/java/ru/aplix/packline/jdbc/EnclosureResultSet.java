@@ -21,22 +21,20 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ru.aplix.packline.post.Field;
+import ru.aplix.packline.post.Enclosure;
 
-public class PostResultSet implements ResultSet {
+public class EnclosureResultSet implements ResultSet {
 
 	private Statement statement;
-	private List<Field> fields;
-	private Map<String, Integer> indexes;
+	private List<Enclosure> enclosures;
 	private int position;
 
-	public PostResultSet(Statement statement, List<Field> fields) {
+	public EnclosureResultSet(Statement statement, List<Enclosure> enclosures) {
 		this.statement = statement;
-		this.fields = fields;
+		this.enclosures = enclosures;
 		position = -1;
 	}
 
@@ -47,7 +45,7 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public ResultSetMetaData getMetaData() throws SQLException {
-		return new PostResultSetMetaData(fields);
+		return new EnclosureResultSetMetaData();
 	}
 
 	@Override
@@ -56,10 +54,10 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public boolean next() throws SQLException {
-		if (position < 1) {
+		if (position < enclosures.size()) {
 			position++;
 		}
-		return (position == 0);
+		return position >= 0 && position < enclosures.size();
 	}
 
 	@Override
@@ -67,17 +65,17 @@ public class PostResultSet implements ResultSet {
 		if (position >= 0) {
 			position--;
 		}
-		return (position == 0);
+		return position >= 0 && position < enclosures.size();
 	}
 
 	@Override
 	public boolean isBeforeFirst() throws SQLException {
-		return (position < 0);
+		return (position == -1) && (enclosures.size() > 0);
 	}
 
 	@Override
 	public boolean isAfterLast() throws SQLException {
-		return (position > 0);
+		return (position >= enclosures.size());
 	}
 
 	@Override
@@ -87,7 +85,7 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public boolean isLast() throws SQLException {
-		return (position == 0);
+		return (position == enclosures.size() - 1);
 	}
 
 	@Override
@@ -97,19 +95,27 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public void afterLast() throws SQLException {
-		position = 1;
+		position = enclosures.size();
 	}
 
 	@Override
 	public boolean first() throws SQLException {
-		position = 0;
-		return true;
+		if (enclosures.size() > 0) {
+			position = 0;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean last() throws SQLException {
-		position = 0;
-		return true;
+		if (enclosures.size() > 0) {
+			position = enclosures.size() - 1;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -124,12 +130,12 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int getRow() throws SQLException {
-		return 1;
+		return position + 1;
 	}
 
-	private Field getColumn(int column) throws SQLException {
+	private Enclosure getCurrentItem() throws SQLException {
 		try {
-			return fields.get(column - 1);
+			return enclosures.get(position);
 		} catch (IndexOutOfBoundsException ioobe) {
 			throw new SQLException(ioobe);
 		}
@@ -137,20 +143,38 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int findColumn(String columnLabel) throws SQLException {
-		if (indexes == null) {
-			indexes = new HashMap<String, Integer>();
-			int index = 0;
-			for (Field field : fields) {
-				index++;
-				indexes.put(field.getName(), index);
-			}
+		if ("INDEX".equals(columnLabel)) {
+			return 1;
+		} else if ("DESCRIPTION".equals(columnLabel)) {
+			return 2;
+		} else if ("COST".equals(columnLabel)) {
+			return 3;
+		} else if ("QUANTITY".equals(columnLabel)) {
+			return 4;
+		} else if ("TOTAL_COST".equals(columnLabel)) {
+			return 5;
+		} else {
+			throw new SQLException();
 		}
-		return indexes.get(columnLabel);
 	}
 
 	@Override
 	public String getString(int columnIndex) throws SQLException {
-		return getColumn(columnIndex).getValue();
+		Enclosure item = getCurrentItem();
+		switch (columnIndex) {
+		case 1:
+			return "" + (position + 1);
+		case 2:
+			return item.getContentDescription();
+		case 3:
+			return "" + item.getCost();
+		case 4:
+			return "" + item.getQuantity();
+		case 5:
+			return "" + (item.getCost() * item.getQuantity());
+		default:
+			throw new SQLException(new IndexOutOfBoundsException());
+		}
 	}
 
 	@Override
@@ -170,22 +194,50 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int getInt(int columnIndex) throws SQLException {
-		return Integer.parseInt(getString(columnIndex));
+		Enclosure item = getCurrentItem();
+		switch (columnIndex) {
+		case 1:
+			return position + 1;
+		case 2:
+			return Integer.valueOf(item.getContentDescription());
+		case 3:
+			return Math.round(item.getCost());
+		case 4:
+			return item.getQuantity();
+		case 5:
+			return Math.round(item.getCost() * item.getQuantity());
+		default:
+			throw new SQLException(new IndexOutOfBoundsException());
+		}
 	}
 
 	@Override
 	public long getLong(int columnIndex) throws SQLException {
-		return Long.parseLong(getString(columnIndex));
+		return getInt(columnIndex);
 	}
 
 	@Override
 	public float getFloat(int columnIndex) throws SQLException {
-		return Float.parseFloat(getString(columnIndex));
+		Enclosure item = getCurrentItem();
+		switch (columnIndex) {
+		case 1:
+			return position + 1;
+		case 2:
+			return Float.valueOf(item.getContentDescription());
+		case 3:
+			return item.getCost();
+		case 4:
+			return item.getQuantity();
+		case 5:
+			return item.getCost() * item.getQuantity();
+		default:
+			throw new SQLException(new IndexOutOfBoundsException());
+		}
 	}
 
 	@Override
 	public double getDouble(int columnIndex) throws SQLException {
-		return Double.parseDouble(getString(columnIndex));
+		return getFloat(columnIndex);
 	}
 
 	@Override
@@ -522,7 +574,7 @@ public class PostResultSet implements ResultSet {
 
 	@Override
 	public int getFetchSize() throws SQLException {
-		return 1;
+		return enclosures.size();
 	}
 
 	@Override

@@ -244,6 +244,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	private class PrintTask extends Task<Void> {
 
 		private Container container;
+		private Post post;
 		private Button[] buttons;
 		private boolean skipAutoPrint;
 
@@ -253,6 +254,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			this.skipAutoPrint = skipAutoPrint;
 
 			container = (Container) getContext().getAttribute(Const.TAG);
+			post = (Post) getContext().getAttribute(Const.POST);
 		}
 
 		@Override
@@ -332,7 +334,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
 			if (printForm != null && (printForm.getAutoPrint() || skipAutoPrint)) {
-				getAction().printForms(container.getId(), printForm);
+				getAction().printForms(container.getId(), post.getId(), printForm);
 				return true;
 			}
 			return false;
