@@ -15,6 +15,7 @@
 		<module>hardware/implementations/scales/mera</module>
 		<module>app</module>
 		<module>mock-post-service</module>
+		<module>controller</module>
 	</modules>
 
 </project>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+<Configure id="packline-controllere-wac" class="org.eclipse.jetty.webapp.WebAppContext">
+
+<!-- 
+	Copy these nodes in \etc\jetty.xml configuration file.
+	Edit 'value' attribute of 'cmdStartPackLine' and 'cmdStopPackLine' parameters.
+ -->
+
+    <New id="packline-controller-start-cmd" class="org.eclipse.jetty.plus.jndi.Resource">
+   		<Arg>
+        </Arg>
+        <Arg>cmdStartPackLine</Arg>
+        <Arg>
+            <New class="java.lang.String">
+                <Arg>start packline</Arg>
+            </New>
+        </Arg>
+    </New>
+	
+	<New id="packline-controller-stop-cmd" class="org.eclipse.jetty.plus.jndi.Resource">
+   		<Arg>
+        </Arg>
+        <Arg>cmdStopPackLine</Arg>
+        <Arg>
+            <New class="java.lang.String">
+                <Arg>stop packline</Arg>
+            </New>
+        </Arg>
+    </New>
+    
+    <New id="packline-controller-stale-timeout" class="org.eclipse.jetty.plus.jndi.Resource">
+   		<Arg>
+        </Arg>
+        <Arg>ParcelStaleTimeout</Arg>
+        <Arg>
+            <New class="java.lang.Integer">
+                <Arg>60000</Arg>
+            </New>
+        </Arg>
+    </New>
+
+</Configure>

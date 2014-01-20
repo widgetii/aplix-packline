@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	1. Put the .war file outside of the designated 'appBase' for the Host, or you'll deploy the app twice.
+	
+	2. Specify the right place for .war file in 'docBase' attribute.
+	
+	3. Edit 'value' attribute of 'cmdStartPackLine' and 'cmdStopPackLine' parameters.
+	
+	4. Copy this .xml file to \tomcat\conf\Catalina\localhost folder.
+	
+	5. Start Tomcat. 
+ -->
+<Context docBase="${project.build.directory}${file.separator}${project.artifactId}-${project.version}">
+
+	<Environment name="cmdStartPackLine" type="java.lang.String" value="start packline" />
+	<Environment name="cmdStopPackLine" type="java.lang.String" value="stop packline" />
+	<Environment name="ParcelStaleTimeout" type="java.lang.Integer" value="60000" />
+
+</Context>

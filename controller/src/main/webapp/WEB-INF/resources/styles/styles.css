@@ -1,0 +1,13 @@
+body {
+	margin: 3em;
+	background-image: url('../images/bg_pattern.png');
+	background-repeat: repeat;
+}
+
+p {
+	font-family: sans-serif;
+	font-size: medium;
+	font-weight: normal;
+	color: white;
+	text-shadow: black;
+}

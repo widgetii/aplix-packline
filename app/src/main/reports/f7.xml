@@ -30,7 +30,7 @@
 		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="AREA" />
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="index_to" />
 		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from" />
-		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
 		<Variable Name="Variable51" Type="db-field" Dataset="PostDataSet" Content="io_band1kl" />
 		<Variable Name="Variable52" Type="db-field" Dataset="PostDataSet" Content="io_nalozh" />
 		<Variable Name="Variable53" Type="db-field" Dataset="PostDataSet" Content="io_opis" />

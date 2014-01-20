@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>PackLine Hardware Interfaces</name>
-	<url>http://git.aplix.ru/packline-hardware-interfaces</url>
+	<url>http://git.aplix.ru/packline/hardware-interfaces</url>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>hardware-interfaces</artifactId>
 	<version>0.1</version>

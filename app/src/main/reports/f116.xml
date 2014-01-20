@@ -379,7 +379,7 @@
         <Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="index_to"/> 
         <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU"/>
         <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="MAILRANK"/>
-		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable9], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable9], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable9], 9, 5)" />

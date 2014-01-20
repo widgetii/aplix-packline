@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>PackLine Hardware Camera Raspberry</name>
-	<url>http://git.aplix.ru/packline-hardware-camera-raspberry</url>
+	<url>http://git.aplix.ru/packline/hardware/camera-raspberry</url>
 	<groupId>ru.aplix.packline.hardware.camera</groupId>
 	<artifactId>raspberry</artifactId>
 	<version>0.1</version>

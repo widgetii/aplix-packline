@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>PackLine Hardware Scales Mera</name>
-	<url>http://git.aplix.ru/packline-hardware-scales-mera</url>
+	<url>http://git.aplix.ru/packline/hardware/scales-mera</url>
 	<groupId>ru.aplix.packline.hardware.scales</groupId>
 	<artifactId>mera</artifactId>
 	<version>0.1</version>

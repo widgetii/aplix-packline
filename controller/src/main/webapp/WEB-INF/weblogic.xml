@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+
+    <context-root>packline/controller</context-root>
+</weblogic-web-app>
