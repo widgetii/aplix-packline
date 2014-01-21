@@ -463,6 +463,14 @@
 			<value>2/СДЭК</value>
 		</field>
 		<field>
+			<name>DELIVERY_DATE</name>
+			<value>2014-01-22T00:00:00</value>
+		</field>
+		<field>
+			<name>DELIVERY_TIME</name>
+			<value>10-14</value>
+		</field>
+		<field>
 			<name>URL</name>
 			<value>http://www.aplix.ru/o-kompanii/kontakty/</value>
 		</field>

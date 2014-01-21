@@ -35,7 +35,7 @@
         <Arg>ParcelStaleTimeout</Arg>
         <Arg>
             <New class="java.lang.Integer">
-                <Arg>60000</Arg>
+                <Arg>600000</Arg>
             </New>
         </Arg>
     </New>

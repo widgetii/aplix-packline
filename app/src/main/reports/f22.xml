@@ -27,8 +27,11 @@
                 <BarCodeView CheckSum="true" ShowText="false" BarCodeType="qr" ModuleWidth="1.0" Angle="0" Name="MemoView3" Left="16.60208" Top="47.228207" Width="66.01768" Height="47.651146" BoundLeft="16.40676" BoundTop="47.087227" BoundWidth="66.40832" BoundHeight="47.9331" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable12]</Memo>
                 </BarCodeView>
-                <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="true" Name="MemoView6" Left="4.882964" Top="58.788544" Width="7.4221053" Height="21.992836" BoundLeft="4.6876454" BoundTop="58.64756" BoundWidth="7.812742" BoundHeight="22.274797" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="true" Name="MemoView6" Left="4.882964" Top="47.228207" Width="7.4221053" Height="47.651146" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable11]</Memo>
+                </MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="true" Name="MemoView6" Left="87.6949307" Top="47.228207" Width="7.4221053" Height="47.651146" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable34]  [Variable16]</Memo>
                 </MemoView>                
             </Views>
         </Page>
@@ -53,6 +56,8 @@
 		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="URL"/>
 		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE"/>
 		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_DATE"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_TIME"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable8], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable8], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable8], 9, 5)" />
@@ -61,6 +66,10 @@
 		<Variable Name="Variable26" Type="expression" Content="f:choose(([Variable6] = 'Санкт-Петербург г' or [Variable6] = 'Москва г') and ([Variable4] = ''), [Variable6], [Variable4])" />
 		<Variable Name="Variable27" Type="expression" Content="f:choose([Variable13] = 'PACKAGE', [Variable8], '')" />
 		<Variable Name="Variable28" Type="expression" Content="f:choose([Variable13] = 'IML', [Variable8], '')" />
+		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable15], 9, 2)" />
+		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable15], 6, 2)" />
+		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable15], 1, 4)" />
+		<Variable Name="Variable34" Type="expression" Content="[Variable31].concat('.').concat([Variable32]).concat('.').concat([Variable33])" />
     </Variables>
     <Datasets>        
         <Dataset Name="PostDataSet">
@@ -80,6 +89,8 @@
 					<Column Name="Variable12"/>
 					<Column Name="Variable13"/>
 					<Column Name="Variable14"/>
+					<Column Name="Variable15"/>
+					<Column Name="Variable16"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>
@@ -88,6 +99,10 @@
 					<Column Name="Variable26"/>
 					<Column Name="Variable27"/>
 					<Column Name="Variable28"/>
+					<Column Name="Variable31"/>
+					<Column Name="Variable32"/>
+					<Column Name="Variable33"/>
+					<Column Name="Variable34"/>
                 </Row>								
             </Rows>
         </Dataset>

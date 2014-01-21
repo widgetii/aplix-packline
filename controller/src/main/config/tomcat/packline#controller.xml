@@ -14,6 +14,6 @@
 
 	<Environment name="cmdStartPackLine" type="java.lang.String" value="start packline" />
 	<Environment name="cmdStopPackLine" type="java.lang.String" value="stop packline" />
-	<Environment name="ParcelStaleTimeout" type="java.lang.Integer" value="60000" />
+	<Environment name="ParcelStaleTimeout" type="java.lang.Integer" value="600000" />
 
 </Context>

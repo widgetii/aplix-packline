@@ -18,7 +18,7 @@
 			<bindings>
 				<simple name="cmdStartPackLine" type="java.lang.String" value="start packline" />
 				<simple name="cmdStopPackLine" type="java.lang.String" value="stop packline" />
-				<simple name="ParcelStaleTimeout" type="java.lang.Integer" value="60000" />
+				<simple name="ParcelStaleTimeout" type="java.lang.Integer" value="600000" />
 			</bindings>
 		</subsystem>
 		<!-- ... -->
