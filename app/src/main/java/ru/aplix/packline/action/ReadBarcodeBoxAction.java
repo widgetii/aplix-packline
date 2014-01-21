@@ -9,7 +9,7 @@ import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.TagType;
 
-public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController> {
+public class ReadBarcodeBoxAction extends NotificationAction<ReadBarcodeBoxController> {
 
 	@Override
 	protected String getFormName() {
@@ -48,6 +48,8 @@ public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController>
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
 
+		notifyAboutIncomingParcel(container.getId());
+		
 		return postServicePort.getBoxCount(container.getBoxTypeId());
 	}
 }

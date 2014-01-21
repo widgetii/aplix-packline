@@ -46,11 +46,16 @@
 			</Printer>
 			<Printer id="printer2" name="Codex EZ1000 Plus" ipAddress="127.0.0.1" port="9100" printMode="EZPL"/>
 		</Printers>
+		
+		<!-- PackLine Controller -->
+		<Controller enabled="false">
+			<Url>http://localhost:8080/packline/controller</Url>
+		</Controller>
 	</Hardware>
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<ServiceAddress>http://localhost:8080/mock-post-service-0.2/PackingLine?WSDL</ServiceAddress>
+		<ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</ServiceAddress>
 		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 	</PostService>

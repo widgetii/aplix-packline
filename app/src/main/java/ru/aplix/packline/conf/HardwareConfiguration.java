@@ -33,6 +33,9 @@ public class HardwareConfiguration {
 	@XmlElement(name = "Printer", type = Printer.class)
 	private List<Printer> printers;
 
+	@XmlElement(name = "Controller")
+	private Controller controller;
+
 	public int getReconnectInterval() {
 		return reconnectInterval;
 	}
@@ -96,5 +99,16 @@ public class HardwareConfiguration {
 			}
 		});
 		return printer;
+	}
+
+	public Controller getController() {
+		if (controller == null) {
+			controller = new Controller();
+		}
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 }

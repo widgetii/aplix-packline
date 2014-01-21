@@ -13,7 +13,7 @@ import ru.aplix.packline.post.TagType;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
-public class PackTypeAction extends CommonAction<PhotoController> {
+public class PackTypeAction extends NotificationAction<PhotoController> {
 
 	private WorkflowAction barcodeAction;
 	private WorkflowAction dimentionAction;
@@ -105,6 +105,8 @@ public class PackTypeAction extends CommonAction<PhotoController> {
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
+		
+		notifyAboutIncomingParcel(container.getId());
 
 		setNextAction(getCloseAction());
 		return true;

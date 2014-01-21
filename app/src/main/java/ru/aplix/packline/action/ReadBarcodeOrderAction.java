@@ -24,7 +24,7 @@ import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.post.TagType;
 import ru.aplix.packline.workflow.WorkflowAction;
 
-public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderController> {
+public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderController> {
 
 	private WorkflowAction acceptanceAction;
 	private WorkflowAction packingAction;
@@ -154,6 +154,7 @@ public class ReadBarcodeOrderAction extends CommonAction<ReadBarcodeOrderControl
 			order = findOrder(postServicePort, post.getOrderId());
 
 			setNextAction(getMarkingAction());
+			notifyAboutOutgoingParcel(container.getId());
 			result = container;
 			registry = null;
 		} else if (TagType.ROUTELIST.equals(tagType)) {

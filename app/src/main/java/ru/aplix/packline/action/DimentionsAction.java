@@ -9,7 +9,7 @@ import ru.aplix.packline.post.PackingSize;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.TagType;
 
-public class DimentionsAction extends CommonAction<DimentionsController> {
+public class DimentionsAction extends NotificationAction<DimentionsController> {
 
 	@Override
 	protected String getFormName() {
@@ -47,5 +47,7 @@ public class DimentionsAction extends CommonAction<DimentionsController> {
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
+		
+		notifyAboutIncomingParcel(container.getId());
 	}
 }

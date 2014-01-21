@@ -33,12 +33,12 @@
 	<form action="./ctrl" method="post">
 		<table>
 			<tr>
-				<td><button type="submit" name="action" value="start"
-						${(lineState == 'running') ? 'disabled' : ''}>
+				<td><button class="startButton" type="submit" name="action"
+						value="start" ${(lineState == 'running') ? 'disabled' : ''}>
 						<spring:message code="button.start" />
 					</button></td>
-				<td><button type="submit" name="action" value="stop"
-						${(lineState == 'running') ? '' : 'disabled'}>
+				<td><button class="stopButton" type="submit" name="action"
+						value="stop" ${(lineState == 'running') ? '' : 'disabled'}>
 						<spring:message code="button.stop" />
 					</button></td>
 			</tr>
