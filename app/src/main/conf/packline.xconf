@@ -156,7 +156,7 @@
 	<Roles acceptance="true" packing="true" labeling="true" gluing="true" />
 	
 	<!-- Time in seconds to lock the app, if there are no user activity -->
-	<ActivityMonitor idleTreshold="600" />
+	<ActivityMonitor idleShortTreshold="600" idleLongTreshold="1800" />
 	
 	<!-- Enable sounds in application -->
 	<Sounds>true</Sounds>

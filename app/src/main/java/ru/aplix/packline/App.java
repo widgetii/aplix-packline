@@ -112,7 +112,7 @@ public class App extends Application implements IdleListener {
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.FIRST_WORKFLOW_ACTION_BEAN_NAME);
 		wa.execute(workflowContext);
 
-		UserActivityMonitor.setTreshold(Configuration.getInstance().getActivityMonitorConfiguration().getIdleTresholdInMillis());
+		UserActivityMonitor.setTreshold(Configuration.getInstance().getActivityMonitorConfiguration().getIdleShortTresholdInMillis());
 		UserActivityMonitor.getInstance().setIdleListener(this);
 		UserActivityMonitor.getInstance().setWorkflowContext(workflowContext);
 		UserActivityMonitor.getInstance().start();
