@@ -371,6 +371,10 @@
 			<value>Россия</value>
 		</field>
 		<field>
+			<name>AREA1</name>
+			<value>Московская обл.</value>
+		</field>
+		<field>
 			<name>index_from</name>
 			<value>117556</value>
 		</field>

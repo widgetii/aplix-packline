@@ -2309,7 +2309,7 @@
 							<Memo>[Variable20]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo22" Left="20.801596" Top="32.31053" Width="28.311438" Height="1.8730745" BoundLeft="20.735138" BoundTop="32.21688" BoundWidth="28.444355" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-							<Memo>[Variable4]</Memo>
+							<Memo>[otkuda_city_area]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo23" Left="20.269926" Top="27.065928" Width="28.843107" Height="1.8730745" BoundLeft="20.203466" BoundTop="26.972273" BoundWidth="28.976027" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
 							<Memo>[Variable5]</Memo>
@@ -2318,7 +2318,7 @@
 							<Memo>[Variable12]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo25" Left="63.335217" Top="32.31053" Width="27.912685" Height="1.8730745" BoundLeft="63.26875" BoundTop="32.21688" BoundWidth="28.045603" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-							<Memo>[city_area]</Memo>
+							<Memo>[kuda_city_area]</Memo>
 						</MemoView>
 						<MemoView FontName="Arial" FontColor="#000000" FontSize="6" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="Memo26" Left="62.803543" Top="27.065928" Width="28.444355" Height="1.8730745" BoundLeft="62.737083" BoundTop="26.972273" BoundWidth="28.57727" BoundHeight="2.060382" Stretched="true" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
 							<Memo>[Variable9]</Memo>
@@ -2492,7 +2492,8 @@
 		<Variable Name="flag_oplata_otpr" Type="expression" Content="f:choose([Variable23] = 'true', 'x', '')" />
 		<Variable Name="flag_oplata_poluch" Type="expression" Content="f:choose([Variable24] = 'true', 'x', '')" />
 		<Variable Name="flag_oplata_dogovor" Type="expression" Content="f:choose([Variable25] = 'true', 'x', '')" />
-		<Variable Name="city_area" Type="expression" Content="f:choose([Variable11] = '', [Variable10], f:choose([Variable10] = '', [Variable11], [Variable10] + ', ' + [Variable11]))"/>
+		<Variable Name="kuda_city_area" Type="expression" Content="f:choose([Variable11] = '', [Variable10], f:choose([Variable10] = '', [Variable11], [Variable10] + ', ' + [Variable11]))"/>
+		<Variable Name="otkuda_city_area" Type="expression" Content="f:choose([Variable4] = '', [Variable30], f:choose([Variable30] = '', [Variable4], [Variable4] + ', ' + [Variable30]))"/>
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIRM_PRED"/>
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL"/>
@@ -2522,6 +2523,7 @@
 		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
 		<Variable Name="Variable28" Type="db-field" Dataset="PostDataSet" Content="VALUE_" />   
 		<Variable Name="Variable29" Type="db-field" Dataset="PostDataSet" Content="MASS" />
+		<Variable Name="Variable30" Type="db-field" Dataset="PostDataSet" Content="AREA1" />
 	</Variables>
 	<Datasets>
         <Dataset Name="PostDataSet">
@@ -2556,6 +2558,7 @@
 					<Column Name="Variable27"/>
 					<Column Name="Variable28"/>
 					<Column Name="Variable29"/>
+					<Column Name="Variable30"/>
 				 </Row>
             </Rows>
         </Dataset>

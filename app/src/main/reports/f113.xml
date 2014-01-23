@@ -617,12 +617,14 @@
     </Pages>
     <Variables>
 		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
-        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_adres] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
+        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_area_city] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
 		<Variable Name="bank" Type="expression" Content="f:choose([Variable2] = '', [Variable7], '')"/>
-		<Variable Name="kuda_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable24], f:choose([Variable24] = '', [Variable5], [Variable24] + ', ' + [Variable5]))"/>
-		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [kuda_adres], '125956 Федеральный клиент ' + [Variable6])"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable25], f:choose([Variable25] = '', [Variable5], [Variable5] + ', ' + [Variable25]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable27] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable27], [kuda_city_adres] + ', ' + [Variable27]))"/>
+		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable24] = '' or [Variable24] = [Variable25], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable24], [kuda_area_city] + ', ' + [Variable24]))"/>		
+		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [kuda_full_adres], '125956 Федеральный клиент ' + [Variable6])"/>
 		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
 		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable11] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable11], [otkuda_city_adres] + ', ' + [Variable11]))"/>
 		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable10], [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable12], [otkuda_area_city] + ', ' + [Variable12]))"/>		
@@ -723,6 +725,7 @@
         <Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
 		<Variable Name="Variable25" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="Variable26" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL" />
+		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="AREA1" />
 		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable1], 1, 6)" />
 		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable1], 7, 2)" />
 		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable1], 9, 5)" />
@@ -759,6 +762,7 @@
                     <Column Name="Variable24"/>
 					<Column Name="Variable25"/>
 					<Column Name="Variable26"/>
+					<Column Name="Variable27"/>
 					<Column Name="Variable31"/>					
 					<Column Name="Variable32"/>
 					<Column Name="Variable33"/>

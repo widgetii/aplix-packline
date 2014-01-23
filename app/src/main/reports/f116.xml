@@ -45,7 +45,7 @@
                     <Memo>(подпись отправителя)</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView13" Left="7.113292" Top="47.471897" Width="87.94617" Height="3.516437" BoundLeft="7.020912" BoundTop="47.40678" BoundWidth="88.13092" BoundHeight="3.646675" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>                 [otkuda_adres]</Memo>
+                    <Memo>                 [otkuda_full_adres]</Memo>
                 </MemoView>
                 <MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView14" Left="6.9285316" Top="77.68721" Width="88.31568" Height="15.368131" BoundLeft="6.6513906" BoundTop="77.49185" BoundWidth="88.86997" BoundHeight="15.758846" Stretched="false" FrameType="all" FrameStyle="solid" FrameWidth="3.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo></Memo>
@@ -342,10 +342,12 @@
     </Pages>
     <Variables>    
 		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable1] = '', 'SenderAddress', f:choose([Variable5] = '', 'ReceiverAddress', ''))"/>
-		<Variable Name="otkuda_adres" Type="expression" Content="f:choose([Variable16] = '', [Variable1], f:choose([Variable1] = '', [Variable16], [Variable16] + ', ' + [Variable1]))"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable6], f:choose([Variable6] = '', [Variable5], [Variable5] + ', ' + [Variable6]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable7] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable7], [kuda_city_adres] + ', ' + [Variable7]))"/>
 		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable8] = '' or [Variable8] = [Variable6], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable8], [kuda_area_city] + ', ' + [Variable8]))"/>		
+		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable1] = '', [Variable18], f:choose([Variable18] = '', [Variable1], [Variable1] + ', ' + [Variable18]))"/>
+		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable17] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable17], [otkuda_city_adres] + ', ' + [Variable17]))"/>
+		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable16] = '' or [Variable16] = [Variable18], [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable16], [otkuda_area_city] + ', ' + [Variable16]))"/>		
         <Variable Name="index_from_1" Type="expression" Content="f:copy([Variable10],1,1)"/>
         <Variable Name="index_from_2" Type="expression" Content="f:copy([Variable10],2,1)"/>
         <Variable Name="index_from_3" Type="expression" Content="f:copy([Variable10],3,1)"/>
@@ -380,6 +382,8 @@
         <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU"/>
         <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="MAILRANK"/>
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="AREA1"/>
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable9], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable9], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable9], 9, 5)" />
@@ -406,6 +410,8 @@
                     <Column Name="Variable14"/>
                     <Column Name="Variable15"/>
 					<Column Name="Variable16"/>
+					<Column Name="Variable17"/>
+					<Column Name="Variable18"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>
