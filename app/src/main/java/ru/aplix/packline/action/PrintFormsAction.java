@@ -40,6 +40,7 @@ import ru.aplix.converters.fr2afop.fr.dataset.Connection;
 import ru.aplix.converters.fr2afop.fr.dataset.Database;
 import ru.aplix.converters.fr2afop.fr.dataset.Dataset;
 import ru.aplix.converters.fr2afop.fr.dataset.Parameter;
+import ru.aplix.converters.fr2afop.fr.type.VariableType;
 import ru.aplix.converters.fr2afop.reader.InputStreamOpener;
 import ru.aplix.converters.fr2afop.reader.ReportReader;
 import ru.aplix.converters.fr2afop.reader.XMLReportReader;
@@ -456,7 +457,8 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 			variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
 				@Override
 				public boolean evaluate(Object item) {
-					return Const.CONTAINER_TRACKING_ID_VARIABLE.equals(((Variable) item).getName());
+					Variable v = (Variable) item;
+					return VariableType.DB_FIELD.equals(v.getType()) && Const.CONTAINER_TRACKING_ID_VARIABLE.equals(v.getContent());
 				}
 			});
 
