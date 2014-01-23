@@ -449,5 +449,20 @@ public class PrintFormsAction extends CommonAction<PrintFormsController> {
 						variable.getValue());
 			}
 		}
+
+		// Check container tracking Id
+		Container container = (Container) getContext().getAttribute(Const.TAG);
+		if (container.getTrackingId() == null || container.getTrackingId().length() == 0) {
+			variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return Const.CONTAINER_TRACKING_ID_VARIABLE.equals(((Variable) item).getName());
+				}
+			});
+
+			if (variable != null && variable.getValue() != null && variable.getValue().length() > 0) {
+				container.setTrackingId(variable.getValue());
+			}
+		}
 	}
 }

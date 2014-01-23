@@ -53,6 +53,7 @@ public final class Const {
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
 	public static final String CONTAINER_PROBLEM_VARIABLE = "ContainerProblem";
+	public static final String CONTAINER_TRACKING_ID_VARIABLE = "barkod";
 
 	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";
