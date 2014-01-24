@@ -58,7 +58,7 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 			// Terminate current action(controller) if exists
 			StandardWorkflowAction<?> currentAction = (StandardWorkflowAction<?>) context.getAttribute(Const.CURRENT_WORKFLOW_ACTION);
 			if (currentAction != null && currentAction.controller != null) {
-				currentAction.controller.terminate();
+				currentAction.controller.terminate(false);
 			}
 
 			// Load form, controoler and create scene

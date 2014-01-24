@@ -64,8 +64,8 @@ public class OverweightController extends StandardController<OverweightAction> {
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 		
 		if (task != null) {
 			task.cancel(false);

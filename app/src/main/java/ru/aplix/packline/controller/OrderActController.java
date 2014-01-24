@@ -198,8 +198,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (barcodeScanner != null) {
 			barcodeScanner.removeBarcodeListener(this);

@@ -93,8 +93,8 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (barcodeScanner != null) {
 			barcodeScanner.removeBarcodeListener(this);

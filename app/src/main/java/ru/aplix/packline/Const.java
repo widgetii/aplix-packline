@@ -28,6 +28,7 @@ public final class Const {
 	public static final String POST = "Post";
 	public static final String BARCODE_SCANNER = "BarcodeScanner";
 	public static final String PHOTO_CAMERA = "PhotoCamera";
+	public static final String DVR_CAMERA = "DVRCamera";
 	public static final String SCALES = "Scales";
 	public static final String JUST_SCANNED_BARCODE = "JustScannedBarcode";
 	public static final String POST_SERVICE_PORT = "PostServicePort";

@@ -82,8 +82,8 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (barcodeScanner != null) {
 			barcodeScanner.removeBarcodeListener(this);

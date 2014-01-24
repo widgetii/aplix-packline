@@ -55,8 +55,8 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (barcodeScanner != null) {
 			barcodeScanner.removeBarcodeListener(this);

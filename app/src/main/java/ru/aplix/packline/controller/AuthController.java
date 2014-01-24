@@ -13,14 +13,17 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.AuthAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.hardware.camera.DVRCamera;
+import ru.aplix.packline.hardware.camera.RecorderListener;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.workflow.WorkflowContext;
 
-public class AuthController extends StandardController<AuthAction> implements BarcodeListener {
+public class AuthController extends StandardController<AuthAction> implements BarcodeListener, RecorderListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private BarcodeScanner<?> barcodeScanner = null;
+	private DVRCamera<?> dvrCamera = null;
 
 	private Task<Operator> task;
 
@@ -33,14 +36,28 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
 		}
+
+		dvrCamera = (DVRCamera<?>) context.getAttribute(Const.DVR_CAMERA);
+		if (dvrCamera != null) {
+			dvrCamera.addRecorderListener(this);
+			dvrCamera.disableRecording();
+		}
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (barcodeScanner != null) {
 			barcodeScanner.removeBarcodeListener(this);
+		}
+
+		if (dvrCamera != null) {
+			dvrCamera.removeRecorderListener(this);
+
+			if (!appIsStopping) {
+				dvrCamera.enableRecording();
+			}
 		}
 
 		if (task != null) {
@@ -122,12 +139,31 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	@Override
 	protected boolean checkNoError() {
 		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
-			return true;
+			if ((dvrCamera == null) || dvrCamera.isConnected()) {
+				return true;
+			} else {
+				errorMessageProperty.set(getResources().getString("error.dvr.camera"));
+				errorVisibleProperty.set(true);
+
+				return false;
+			}
 		} else {
 			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
 			errorVisibleProperty.set(true);
 
 			return false;
 		}
+	}
+
+	@Override
+	public void onRecordingStarted() {
+	}
+
+	@Override
+	public void onRecordingStopped() {
+	}
+
+	@Override
+	public void onRecordingFailed() {
 	}
 }

@@ -173,6 +173,12 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 							if (connectLatch != null) {
 								connectLatch.countDown();
 							}
+						} else {
+							synchronized (connectionListeners) {
+								for (ScalesConnectionListener listener : connectionListeners) {
+									listener.onDisconnected();
+								}
+							}
 						}
 					} catch (Exception e) {
 						LOG.error(String.format("Error in %s '%s'", getName(), configuration.getPortName()), e);

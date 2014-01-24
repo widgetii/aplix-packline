@@ -19,7 +19,5 @@ and map it to "c:\python27\python.exe %s %s" path.
 and map it to "c:\python27\python.exe %s.py %s" path.
 
 4. Invoke from browser: 
-http://localhost/py/take.py?1234567890
-or
-http://localhost/py/take?1234567890,
+http://localhost/py/take/1234567890,
 remove py/ if you used the path of default IIS web site.

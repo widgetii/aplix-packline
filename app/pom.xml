@@ -3,7 +3,7 @@
 
 	<name>PackLine App</name>
 	<url>http://git.aplix.ru/packline</url>
-	<version>0.8</version>
+	<version>0.9</version>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>packline</artifactId>
 	<packaging>jar</packaging>
@@ -86,6 +86,11 @@
 		<dependency>
 			<groupId>ru.aplix.packline.hardware.camera</groupId>
 			<artifactId>raspberry</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.aplix.packline.hardware.camera</groupId>
+			<artifactId>flussonic</artifactId>
 			<version>0.1</version>
 		</dependency>
 		<dependency>

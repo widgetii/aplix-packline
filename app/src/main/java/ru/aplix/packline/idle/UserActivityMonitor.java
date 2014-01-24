@@ -106,8 +106,8 @@ public class UserActivityMonitor extends Service<Void> {
 	private void logStateChange(boolean value) {
 		try {
 			LOG.debug(String.format("Logging operator activity: %s", value ? "active" : "inactive"));
-
 			lastActivityLogTime = System.currentTimeMillis();
+			
 			PackingLinePortType postServicePort = (PackingLinePortType) workflowContext.getAttribute(Const.POST_SERVICE_PORT);
 			if (postServicePort != null) {
 				postServicePort.setOperatorActivity(value);

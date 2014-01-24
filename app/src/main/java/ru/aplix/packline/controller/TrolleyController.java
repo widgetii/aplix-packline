@@ -71,8 +71,8 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 		
 		if (task != null) {
 			task.cancel(false);

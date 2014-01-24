@@ -30,6 +30,9 @@ import ru.aplix.packline.hardware.Connectable;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerConnectionListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerFactory;
+import ru.aplix.packline.hardware.camera.DVRCamera;
+import ru.aplix.packline.hardware.camera.DVRCameraConnectionListener;
+import ru.aplix.packline.hardware.camera.DVRCameraFactory;
 import ru.aplix.packline.hardware.camera.PhotoCamera;
 import ru.aplix.packline.hardware.camera.PhotoCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
@@ -125,7 +128,7 @@ public class App extends Application implements IdleListener {
 		// Terminate current action(controller) if exists
 		WorkflowController currentController = (WorkflowController) workflowContext.getAttribute(Const.CURRENT_WORKFLOW_CONTROLLER);
 		if (currentController != null) {
-			currentController.terminate();
+			currentController.terminate(true);
 		}
 
 		shutdownScheduler();
@@ -187,6 +190,29 @@ public class App extends Application implements IdleListener {
 			workflowContext.setAttribute(Const.PHOTO_CAMERA, pc);
 		}
 
+		// Create DVR camera instance
+		if (configuration.getDVRCamera().isEnabled()) {
+			final DVRCamera<?> dc = DVRCameraFactory.createInstance(configuration.getDVRCamera().getName());
+			dc.setConnectOnDemand(true);
+			dc.setConfiguration(configuration.getDVRCamera().getConfiguration());
+			dc.addConnectionListener(new DVRCameraConnectionListener() {
+				@Override
+				public void onConnected() {
+				}
+
+				@Override
+				public void onDisconnected() {
+					postConnectToHardware(Const.DVR_CAMERA);
+				}
+
+				@Override
+				public void onConnectionFailed() {
+					postConnectToHardware(Const.DVR_CAMERA);
+				}
+			});
+			workflowContext.setAttribute(Const.DVR_CAMERA, dc);
+		}
+
 		// Create scales instance
 		if (configuration.getScales().isEnabled()) {
 			final Scales<?> sc = ScalesFactory.createInstance(configuration.getScales().getName());
@@ -222,6 +248,13 @@ public class App extends Application implements IdleListener {
 		PhotoCamera<?> pc = (PhotoCamera<?>) workflowContext.getAttribute(Const.PHOTO_CAMERA);
 		if (pc != null) {
 			pc.disconnect();
+		}
+
+		// Stop DVR camera
+		DVRCamera<?> dc = (DVRCamera<?>) workflowContext.getAttribute(Const.DVR_CAMERA);
+		if (dc != null) {
+			dc.disableRecording();
+			dc.disconnect();
 		}
 
 		// Stop scales

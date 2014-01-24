@@ -163,6 +163,12 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 							if (connectLatch != null) {
 								connectLatch.countDown();
 							}
+						} else {
+							synchronized (connectionListeners) {
+								for (BarcodeScannerConnectionListener listener : connectionListeners) {
+									listener.onDisconnected();
+								}
+							}
 						}
 					} finally {
 						connectionLock.unlock();

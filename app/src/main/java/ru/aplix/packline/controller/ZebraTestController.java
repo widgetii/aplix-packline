@@ -33,8 +33,8 @@ public class ZebraTestController extends StandardController<ZebraTestAction> {
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (task != null) {
 			task.cancel(false);

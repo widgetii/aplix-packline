@@ -149,7 +149,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	}
 
 	@Override
-	public void terminate() {
+	public void terminate(boolean appIsStopping) {
 		errorChecker.stop();
 	}
 

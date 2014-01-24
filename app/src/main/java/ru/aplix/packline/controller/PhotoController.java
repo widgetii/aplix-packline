@@ -40,8 +40,8 @@ public class PhotoController extends StandardController<PhotoAction> {
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 		
 		if (photoTask != null) {
 			photoTask.cancel(false);
@@ -91,7 +91,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 							@Override
 							public void run() {
 								progressVisibleProperty.set(false);
-								errorMessageProperty.set(getResources().getString("error.camera"));
+								errorMessageProperty.set(getResources().getString("error.photo.camera"));
 								errorVisibleProperty.set(true);
 							}
 						});

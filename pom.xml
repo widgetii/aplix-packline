@@ -12,6 +12,7 @@
 		<module>hardware/interfaces</module>
 		<module>hardware/implementations/bacode/basic-rs-232</module>
 		<module>hardware/implementations/camera/raspberry</module>
+		<module>hardware/implementations/camera/flussonic</module>
 		<module>hardware/implementations/scales/mera</module>
 		<module>app</module>
 		<module>mock-post-service</module>

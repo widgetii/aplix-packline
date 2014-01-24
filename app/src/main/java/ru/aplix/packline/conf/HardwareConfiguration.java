@@ -29,6 +29,9 @@ public class HardwareConfiguration {
 	@XmlElement(name = "PhotoCamera", type = Driver.class)
 	private Driver photoCamera;
 
+	@XmlElement(name = "DVRCamera", type = Driver.class)
+	private Driver dvrCamera;
+
 	@XmlElementWrapper(name = "Printers")
 	@XmlElement(name = "Printer", type = Printer.class)
 	private List<Printer> printers;
@@ -75,6 +78,17 @@ public class HardwareConfiguration {
 
 	public void setPhotoCamera(Driver photoCamera) {
 		this.photoCamera = photoCamera;
+	}
+
+	public Driver getDVRCamera() {
+		if (dvrCamera == null) {
+			dvrCamera = new Driver();
+		}
+		return dvrCamera;
+	}
+
+	public void setDVRCamera(Driver dvrCamera) {
+		this.dvrCamera = dvrCamera;
 	}
 
 	public List<Printer> getPrinters() {

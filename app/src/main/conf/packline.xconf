@@ -32,6 +32,14 @@
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost:9080" />
 		</PhotoCamera>
+		
+		<!-- DVR Camera driver -->
+		<DVRCamera name="FlussonicCamera" enabled="false" >
+			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
+			<!-- "streamName" - name of video stream, for example "Stream1"      					-->
+			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
+			<Configuration hostName="localhost:9080" streamName="Stream1" />
+		</DVRCamera>
 	
 		<!-- List of available printers -->
 		<Printers>

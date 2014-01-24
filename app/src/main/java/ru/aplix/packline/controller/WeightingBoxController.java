@@ -87,8 +87,8 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	}
 
 	@Override
-	public void terminate() {
-		super.terminate();
+	public void terminate(boolean appIsStopping) {
+		super.terminate(appIsStopping);
 
 		if (scales != null) {
 			scales.removeMeasurementListener(this);
