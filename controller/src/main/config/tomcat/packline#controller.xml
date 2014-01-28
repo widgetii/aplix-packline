@@ -10,7 +10,7 @@
 	
 	5. Start Tomcat. 
  -->
-<Context docBase="${project.build.directory}${file.separator}${project.artifactId}-${project.version}">
+<Context docBase="${project.build.directory}${file.separator}${project.artifactId}-${project.version}.war">
 
 	<Environment name="cmdStartPackLine" type="java.lang.String" value="start packline" />
 	<Environment name="cmdStopPackLine" type="java.lang.String" value="stop packline" />

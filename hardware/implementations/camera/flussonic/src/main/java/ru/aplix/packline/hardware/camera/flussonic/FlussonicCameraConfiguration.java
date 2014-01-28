@@ -15,11 +15,17 @@ public class FlussonicCameraConfiguration implements DVRCameraConfiguration {
 	private String streamName;
 	@XmlAttribute(name = "hostName")
 	private String hostName;
+	@XmlAttribute(name = "userName")
+	private String userName;
+	@XmlAttribute(name = "password")
+	private String password;
 	@XmlAttribute(name = "timeout")
 	private int timeout;
 
 	public FlussonicCameraConfiguration() {
 		streamName = "";
+		userName = "";
+		password = "";
 		hostName = "localhost";
 		timeout = 20000;
 	}
@@ -38,6 +44,22 @@ public class FlussonicCameraConfiguration implements DVRCameraConfiguration {
 
 	public void setHostName(String hostName) {
 		this.hostName = hostName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getTimeout() {

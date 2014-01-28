@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -303,6 +304,9 @@ public class FlussonicCamera implements DVRCamera<FlussonicCameraConfiguration> 
 
 			URL obj = new URL(url);
 			HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+			String authorization = configuration.getUserName() + ":" + configuration.getPassword();
+			String encoded = Base64.encodeBase64String(authorization.getBytes());
+			connection.setRequestProperty("Authorization", "Basic " + encoded);
 			connection.setConnectTimeout(configuration.getTimeout());
 			if (HttpURLConnection.HTTP_OK != connection.getResponseCode()) {
 				throw new Exception(connection.getResponseMessage());
