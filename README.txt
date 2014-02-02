@@ -1,6 +1,6 @@
 ========================================================================
 
-							PackLine
+				PackLine
 
 ========================================================================
 
@@ -34,7 +34,7 @@ This Maven project is aggregate project which is intended for compiling all
 nested sub-projects. To build all projects you need to navigate to the root 
 folder of aggregate project and run:
 
-	mvn clean install
+	build.* (bat or sh. depending on your OS)
 	
 Maven will read project specification in pom.xml file, will download all 
 dependencies, will compile all projects and installs them in local repository. 
@@ -53,7 +53,7 @@ the app, navigate to /packline-vX.X/bin/ folder and run packline.bat or
 packline.sh script.
 
 On Windows the app is running by default with opened console window. In order 
-to hide console, launch run.bat instead of packline.bat.
+to hide console, launch run.vbs instead of packline.bat.
 
 
 RELEASE NOTES

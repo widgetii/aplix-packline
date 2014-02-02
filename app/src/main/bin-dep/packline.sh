@@ -14,7 +14,7 @@ else
 # Absolute path to this script
 SCRIPT="${BASH_SOURCE[0]}"
 # Absolute path this script is in
-SCRIPTDIR="$(cd "$(dirname "${SCRIPT}")" ; pwd)"
+SCRIPTDIR="$(cd $(dirname ${SCRIPT}) ; pwd)"
 fi
 # echo "Script path: ${SCRIPTDIR}/$(basename "${SCRIPT}")"
 # Change dir to script dir
@@ -40,22 +40,27 @@ LIBDIR=$RESOLVED_APP_HOME/lib/*.jar
 APP_CONFIG=$RESOLVED_APP_HOME/conf/packline.xconf
 RXTX_LIBS=$RESOLVED_APP_HOME/lib/rxtx/$ARCH
 
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
 LOCALCLASSPATH=$JARFILE
-for i in ${LIBDIR}
+for i in $LIBDIR
 do
     # if the directory is empty, then it will return the input string this is stupid, so case for it
-    if [ "$i" != "${LIBDIR}" ] ; then
+    if [ "$i" != "$LIBDIR" ] ; then
       if [ -z "$LOCALCLASSPATH" ] ; then
         LOCALCLASSPATH=$i
       else
-        LOCALCLASSPATH="$i":$LOCALCLASSPATH
+        LOCALCLASSPATH=$i:$LOCALCLASSPATH
       fi
     fi
 done 
 
+IFS=$SAVEIFS
+
 RXTX_PORTS=/dev/ttyS0:/dev/ttyS1:/dev/ttyS2:/dev/ttyS3:/dev/ttyACM0:/dev/ttyACM1:/dev/ttyACM2:/dev/ttyACM3:/dev/ttyUSB0:/dev/ttyUSB1:/dev/ttyUSB2:/dev/ttyUSB3:/dev/rfcomm0:/dev/rfcomm1:/dev/rfcomm2:/dev/rfcomm3
 
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path=$RXTX_LIBS -Dgnu.io.rxtx.SerialPorts=$RXTX_PORTS -Xms1024m -Xmx1024m"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true \"-Djava.library.path=$RXTX_LIBS\" -Dgnu.io.rxtx.SerialPorts=$RXTX_PORTS -Xms1024m -Xmx1024m"
 
 #--------------------------------------------
 #  gather command line arguments

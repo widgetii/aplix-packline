@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.5+" codebase="*" href="installer.jnlp">
+	<information>
+		<title>${manifest.application.name}</title>
+		<vendor>Aplix</vendor>
+		<description>This app will install PackLine main application or will perform an upgrade</description>
+		<icon href="*" />
+	</information>
+	<security>
+		<all-permissions />
+	</security>
+	<resources>
+		<j2se version="1.7+" />
+		<jar href="packline-installer.jar" main="true" />
+		<jar href="packline-distributive-package.jar" />
+	</resources>
+	<resources os="Windows">
+		<property name="app.execute" value="bin/packline.bat" />
+	</resources>
+	<resources os="Linux">
+		<property name="app.execute" value="bin/packline.sh" />
+	</resources>
+	<resources os="Mac OS">
+		<property name="app.execute" value="bin/packline.sh" />
+	</resources>
+	<installer-desc main-class="${manifest.main.class}" />
+</jnlp>

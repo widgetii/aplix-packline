@@ -97,7 +97,7 @@
 			<groupId>ru.aplix.packline.hardware.scales</groupId>
 			<artifactId>mera</artifactId>
 			<version>0.1</version>
-		</dependency>	
+		</dependency>
 		<dependency>
 			<groupId>ru.aplix.converters</groupId>
 			<artifactId>fr2afop</artifactId>
@@ -108,7 +108,7 @@
 					<artifactId>jaybird-full</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>            
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -209,59 +209,100 @@
 							</descriptors>
 						</configuration>
 					</execution>
+					<execution>
+						<id>create-distributive-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>${project.artifactId}-distributive-package</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<attach>false</attach>
+							<outputDirectory>${project.build.directory}/dist-pack</outputDirectory>
+							<descriptors>
+								<descriptor>${basedir}/src/main/assemblies/dist-pack.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
-                <groupId>org.jvnet.jax-ws-commons</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                        	<xnocompile>true</xnocompile>
-                        	<wsdlLocation>/resources/wsdl/PackingLine.1cws.wsdl</wsdlLocation>
-                            <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
-                            <wsdlFiles>
-                                <wsdlFile>PackingLine.1cws.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName>ru.aplix.packline.post</packageName>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.3.1</version>
+				<executions>
+					<execution>
+						<id>sign-jars</id>
+						<phase>package</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<archiveDirectory>${project.build.directory}</archiveDirectory>
+							<includes>
+								<include>dist/*.jar</include>
+								<include>dist-pack/*.jar</include>
+							</includes>
+							<keystore>${basedir}/src/main/keystore/aplix.keystore</keystore>
+							<alias>Aplix</alias>
+							<storepass>qwerty</storepass>
+							<keypass>qwerty</keypass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jax-ws-commons</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<xnocompile>true</xnocompile>
+							<wsdlLocation>/resources/wsdl/PackingLine.1cws.wsdl</wsdlLocation>
+							<wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+							<wsdlFiles>
+								<wsdlFile>PackingLine.1cws.wsdl</wsdlFile>
+							</wsdlFiles>
+							<packageName>ru.aplix.packline.post</packageName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-		 
+
 		<pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.jvnet.jax-ws-commons</groupId>
-                                        <artifactId>jaxws-maven-plugin</artifactId>
-                                        <versionRange>[2.2.0,)</versionRange>
-                                        <goals>
-                                            <goal>wsimport</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jvnet.jax-ws-commons</groupId>
+										<artifactId>jaxws-maven-plugin</artifactId>
+										<versionRange>[2.2.0,)</versionRange>
+										<goals>
+											<goal>wsimport</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

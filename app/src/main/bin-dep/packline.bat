@@ -8,7 +8,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 set SCRIPTDIR=%~dp0
 pushd %SCRIPTDIR%..
-set "RESOLVED_APP_HOME=%CD%"
+set RESOLVED_APP_HOME=%CD%
 popd
 
 @rem --------------------------------------------
@@ -28,14 +28,14 @@ echo Processor architecture is "%ARCH%"
 @rem  set parameters
 @rem --------------------------------------------
 
-set JARFILE=%RESOLVED_APP_HOME%\bin\packline.jar
+set JARFILE=%RESOLVED_APP_HOME%\bin
 set LIBDIR=%RESOLVED_APP_HOME%\lib
 set APP_CONFIG=%RESOLVED_APP_HOME%\conf\packline.xconf
 set RXTX_LIBS=%RESOLVED_APP_HOME%\lib\rxtx\%ARCH%
 
-for %%l in ("%JARFILE%" "%LIBDIR%"\*.jar) do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
+for %%l in ("%JARFILE%\*.jar" "%LIBDIR%\*.jar") do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
 
-set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true -Djava.library.path="%RXTX_LIBS%" -Xms1024m -Xmx1024m
+set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true "-Djava.library.path=%RXTX_LIBS%" -Xms1024m -Xmx1024m
 
 @rem --------------------------------------------
 @rem  gather command line arguments

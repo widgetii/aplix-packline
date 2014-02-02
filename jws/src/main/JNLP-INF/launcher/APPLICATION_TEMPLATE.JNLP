@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.5+" codebase="*" href="launcher.jnlp">
+	<information>
+		<title>${manifest.application.name}</title>
+		<vendor>Aplix</vendor>
+		<description>This app will launch PackLine main application</description>
+		<icon href="*" />
+		<shortcut online="true">
+			<desktop />
+		</shortcut>
+		<offline-allowed />
+	</information>
+	<security>
+		<all-permissions />
+	</security>
+	<resources>
+		<j2se version="1.7+" />
+		<jar href="packline-launcher.jar" main="true" />
+		<extension href="installer.jnlp" />
+	</resources>
+	<application-desc main-class="${manifest.main.class}" />
+</jnlp>

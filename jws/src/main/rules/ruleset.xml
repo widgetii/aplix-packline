@@ -1,0 +1,8 @@
+<ruleset version="1.0+">
+	<rule>
+		<id>
+			<certificate hash="806CA5930874D748C4484A3EA6086613D42EF56B53026F1CB1C9B82B70326CE7" />
+		</id>
+		<action permission="run" />
+	</rule>
+</ruleset>
