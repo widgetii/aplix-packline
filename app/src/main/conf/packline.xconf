@@ -73,13 +73,13 @@
 	
 	<!-- Printing Settings -->
 	<Printing>
-		<!-- "name"        	- print form name (appears on print button) 			  					-->
-		<!-- "file"      	- print form file name, related to /reports path							-->
-		<!-- "printerId"    - printer identifier, references hardware configuration, see above			-->
-		<!-- "autoPrint" 	- whether to print a form automatically, when printing procedure started	-->
-		<!-- "copies" 		- number of copies to print (optional, default is 1)						-->		
-		<!-- "PostTypeRestriction" 	- the form will be printer only for listed post types (optional)	-->
-		<Form name="ф-7" file="f7" printerId="printer1" autoPrint="false" weight="0.002">			
+		<!-- "name"        	- print form name (appears on print button) 			  						-->
+		<!-- "file"      	- print form file name, related to /reports path								-->
+		<!-- "printerId"    - printer identifier, references hardware configuration, see above				-->
+		<!-- "whenPrint" 	- when a form should be printed: MANUALLY, BEFORE-WEIGHTING, AFTER-WEIGHTING	-->
+		<!-- "copies" 		- number of copies to print (optional, default is 1)							-->		
+		<!-- "PostTypeRestriction" 	- the form will be printer only for listed post types (optional)		-->
+		<Form name="ф-7" file="f7" printerId="printer1" whenPrint="MANUALLY" weight="0.002">			
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
@@ -87,23 +87,23 @@
 				<PostType>LETTER</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-2" file="f2" printerId="printer1" autoPrint="false" weight="0.002">
+		<Form name="ф-2" file="f2" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
 			<PostTypeRestriction>
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-22" file="f22" printerId="printer1" autoPrint="false" weight="0.002">
+		<Form name="ф-22" file="f22" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
 			<PostTypeRestriction>
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-116" file="f116" printerId="printer1" autoPrint="false" weight="0.008">
+		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
 			<PostTypeRestriction>
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-113" file="f113" printerId="printer1" autoPrint="false" weight="0.009">
+		<Form name="ф-113" file="f113" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
@@ -115,12 +115,12 @@
 				<PaymentFlags>CASH_ON_DELIVERY</PaymentFlags>
 			</PaymentFlagsRestriction>
 		</Form>
-		<Form name="EMS" file="ems" printerId="printer1" autoPrint="false" copies="4" weight="0.015">
+		<Form name="EMS" file="ems" printerId="printer1" whenPrint="MANUALLY" copies="4" weight="0.015">
 			<PostTypeRestriction>
 				<PostType>EMS</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="СДЭК" file="cdek" printerId="printer1" autoPrint="false" copies="2" weight="0.015">
+		<Form name="СДЭК" file="cdek" printerId="printer1" whenPrint="MANUALLY" copies="2" weight="0.015">
 			<PostTypeRestriction>
 				<PostType>CDEK</PostType>
 			</PostTypeRestriction>

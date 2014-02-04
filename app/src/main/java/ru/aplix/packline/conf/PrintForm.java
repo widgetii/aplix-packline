@@ -24,8 +24,8 @@ public class PrintForm {
 	private String file;
 	@XmlAttribute(name = "printerId")
 	private String printerId;
-	@XmlAttribute(name = "autoPrint")
-	private Boolean autoPrint;
+	@XmlAttribute(name = "whenPrint")
+	private WhenPrint whenPrint;
 	@XmlAttribute(name = "copies")
 	private Integer copies;
 	@XmlAttribute(name = "weight")
@@ -72,12 +72,12 @@ public class PrintForm {
 		this.printer = printer;
 	}
 
-	public Boolean getAutoPrint() {
-		return autoPrint;
+	public WhenPrint getWhenPrint() {
+		return whenPrint;
 	}
 
-	public void setAutoPrint(Boolean autoPrint) {
-		this.autoPrint = autoPrint;
+	public void setWhenPrint(WhenPrint whenPrint) {
+		this.whenPrint = whenPrint;
 	}
 
 	public Integer getCopies() {

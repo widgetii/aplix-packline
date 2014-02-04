@@ -24,6 +24,7 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.PrintFormsAction;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintForm;
+import ru.aplix.packline.conf.WhenPrint;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Container;
@@ -65,13 +66,13 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		printingContainer.setVisible(true);
 		problemContainer.setVisible(false);
 
-		assignButtons();
+		Object scales = context.getAttribute(Const.SCALES);
+		weightingButton.setVisible(scales != null);
+
+		assignButtons(scales != null);
 
 		reprintContainer.setDisable(true);
 		weightingButton.setDisable(true);
-
-		Object scales = context.getAttribute(Const.SCALES);
-		weightingButton.setVisible(scales != null);
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -83,7 +84,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		executor.submit(task);
 	}
 
-	private void assignButtons() {
+	private void assignButtons(boolean weightingEnabled) {
 		try {
 			Post post = (Post) getContext().getAttribute(Const.POST);
 
@@ -92,6 +93,10 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			int buttonIndex = 0;
 			for (PrintForm form : forms) {
+				if (weightingEnabled && WhenPrint.BEFORE_WEIGHTING.equals(form.getWhenPrint())) {
+					continue;
+				}
+
 				boolean postTypeRestriction = (form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType()));
 				boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
 
@@ -333,7 +338,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
-			if (printForm != null && (printForm.getAutoPrint() || skipAutoPrint)) {
+			if (printForm != null && (!WhenPrint.MANUALLY.equals(printForm.getWhenPrint()) || skipAutoPrint)) {
 				getAction().printForms(container.getId(), post.getId(), printForm);
 				return true;
 			}
