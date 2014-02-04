@@ -16,8 +16,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.mera.message.MeraConsumer;
-import ru.aplix.mera.scales.LoadHandle;
-import ru.aplix.mera.scales.LoadMessage;
 import ru.aplix.mera.scales.ScalesErrorHandle;
 import ru.aplix.mera.scales.ScalesErrorMessage;
 import ru.aplix.mera.scales.ScalesPort;
@@ -30,6 +28,7 @@ import ru.aplix.mera.scales.WeightHandle;
 import ru.aplix.mera.scales.WeightMessage;
 import ru.aplix.mera.scales.byte9.Byte9Protocol;
 import ru.aplix.mera.scales.config.ScalesConfig;
+import ru.aplix.mera.scales.config.WeightSteadinessPolicy;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
@@ -108,7 +107,6 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 							handle = port.subscribe(new StatusListener());
 							handle.listenForErrors(new ErrorListener());
 							handle.requestWeight(new WeightListener());
-							handle.requestLoad(new LoadListener());
 						}
 
 						if (isConnected) {
@@ -175,6 +173,10 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 	private ScalesConfig updateConfig(ScalesConfig scalesConfig) {
 		if (configuration.getWeighingPeriod() != null) {
 			scalesConfig = scalesConfig.setWeighingPeriod(configuration.getWeighingPeriod());
+		}
+		if (configuration.getSteadyWeightSamples() != null) {
+			WeightSteadinessPolicy wsp = new ImprovedWeightSteadinessPolicy(configuration.getSteadyWeightSamples());
+			scalesConfig = scalesConfig.setWeightSteadinessPolicy(wsp);
 		}
 
 		if (configuration.getConnectionTimeout() != null) {
@@ -316,32 +318,10 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		@Override
 		public void messageReceived(WeightMessage message) {
-			lastMeasurement = message.getWeight() / 1000f;
-			for (MeasurementListener listener : listeners) {
-				listener.onMeasure(lastMeasurement);
-			}
-		}
-	}
-
-	/**
-	 * 
-	 */
-	private class LoadListener implements MeraConsumer<LoadHandle, LoadMessage> {
-
-		@Override
-		public void consumerSubscribed(LoadHandle handle) {
-		}
-
-		@Override
-		public void consumerUnsubscribed(LoadHandle handle) {
-		}
-
-		@Override
-		public void messageReceived(LoadMessage message) {
 			boolean firstMeasure = lastMeasurement == null;
 			lastMeasurement = message.getWeight() / 1000f;
 			for (MeasurementListener listener : listeners) {
-				if (!firstMeasure && message.isLoaded()) {
+				if (!firstMeasure && message.getWeight() > 0) {
 					listener.onWeightStabled(lastMeasurement);
 				} else {
 					listener.onMeasure(lastMeasurement);

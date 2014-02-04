@@ -21,19 +21,22 @@ public class MeraScalesConfiguration implements ScalesConfiguration {
 	private Long connectionTimeout;
 	@XmlAttribute(name = "commandRetries")
 	private Long commandRetries;
-	@XmlAttribute(name = "responseTimeout")
+	@XmlAttribute(name = "receiveTimeout")
 	private Long responseTimeout;
 	@XmlAttribute(name = "dataDelay")
 	private Long dataDelay;
+	@XmlAttribute(name = "steadyWeightSamples")
+	private Integer steadyWeightSamples;
 
 	public MeraScalesConfiguration() {
 		portName = "COM1";
 		protocolName = "Byte9";
-		weighingPeriod = null;
+		weighingPeriod = 1L;
 		connectionTimeout = null;
 		commandRetries = null;
 		responseTimeout = null;
 		dataDelay = null;
+		steadyWeightSamples = 5;
 	}
 
 	public String getPortName() {
@@ -90,5 +93,13 @@ public class MeraScalesConfiguration implements ScalesConfiguration {
 
 	public void setDataDelay(Long dataDelay) {
 		this.dataDelay = dataDelay;
+	}
+
+	public Integer getSteadyWeightSamples() {
+		return steadyWeightSamples;
+	}
+
+	public void setSteadyWeightSamples(Integer steadyWeightSamples) {
+		this.steadyWeightSamples = steadyWeightSamples;
 	}
 }

@@ -16,13 +16,14 @@
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
 		<Scales name="MeraScalesByte9" enabled="false" >
-			<!-- "portName"          - port name, for example "COM1" or "/dev/tty0"                                                 -->
-			<!-- "protocolName"      - protocol name for universal driver: "Auto", "Byte9"                                          -->
-			<!-- "weighingPeriod"    - the period in milliseconds of weight measurements (optional), default 2000                   -->
-			<!-- "connectionTimeout" - serial port connection timeout (optional), default 2000                                      -->
-			<!-- "commandRetries"    - maximum number of times to retry to send the command (optional), default 1                   -->
-			<!-- "responseTimeout"   - timeout in milliseconds to wait for response after sending request (optional), default 1000  -->
-			<!-- "dataDelay"         - the delay in milliseconds between the sending of address and data (optional), default 200    -->
+			<!-- "portName"            - port name, for example "COM1" or "/dev/tty0"                                                 					-->
+			<!-- "receiveTimeout"      - timeout in milliseconds to wait for response after sending request, default 200								-->
+			<!-- "protocolName"        - protocol name: "Auto", "Byte9" (only for MeraScalesUniversal), default Byte9                 					-->
+			<!-- "weighingPeriod"      - the period in milliseconds of weight measurements (only for MeraScalesUniversal), default 1  					-->
+			<!-- "connectionTimeout"   - serial port connection timeout (only for MeraScalesUniversal), default 2000                                  	-->
+			<!-- "commandRetries"      - maximum number of times to retry to send the command (only for MeraScalesUniversal), default 1               	-->			
+			<!-- "dataDelay"           - the delay in milliseconds between the sending of address and data (only for MeraScalesUniversal), default 200	-->
+			<!-- "steadyWeightSamples" - number of samples to aquire for steady weight calculation (only for MeraScalesUniversal), default 5			-->
 			<Configuration portName="COM10" protocolName="Byte9"/>
 		</Scales>
 		

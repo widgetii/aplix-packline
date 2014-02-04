@@ -48,7 +48,6 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 35 Scales weight stable algorithm in Universal driver
 // TODO 90 styles of act-table, menu and quantity buttons
 
 public class App extends Application implements IdleListener {

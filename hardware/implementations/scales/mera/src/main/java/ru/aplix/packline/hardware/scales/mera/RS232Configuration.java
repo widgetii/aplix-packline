@@ -13,7 +13,7 @@ public class RS232Configuration implements ScalesConfiguration {
 
 	@XmlAttribute(name = "portName")
 	private String portName;
-	@XmlAttribute(name = "timeout")
+	@XmlAttribute(name = "receiveTimeout")
 	private int timeout;
 
 	public RS232Configuration() {
