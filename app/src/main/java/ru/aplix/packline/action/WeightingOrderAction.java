@@ -12,6 +12,7 @@ public class WeightingOrderAction extends CommonAction<WeightingOrderController>
 	}
 
 	public void processMeasure(Float value) {
+		value = Math.max(value, 0);
 		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
 		incoming.setWeight(value);
 	}

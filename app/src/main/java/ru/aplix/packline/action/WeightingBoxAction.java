@@ -47,6 +47,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 	}
 
 	public void processMeasure(Float value) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
+		value = Math.max(value, 0);
 		final Post post = (Post) getContext().getAttribute(Const.POST);
 
 		// Add print form weight to the measured value
