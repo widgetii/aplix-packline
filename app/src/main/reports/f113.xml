@@ -617,7 +617,7 @@
     </Pages>
     <Variables>
 		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
-        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_area_city] + '!' + [Variable6] + '!' + [Variable26] + '!!!!!!!!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
+        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_area_city] + '!' + [Variable6] + '!' + [Variable26] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', [barcod2D_body])" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
 		<Variable Name="bank" Type="expression" Content="f:choose([Variable2] = '', [Variable7], '')"/>
