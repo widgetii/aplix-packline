@@ -463,6 +463,10 @@
 			<value>А/13/13203</value>
 		</field>
 		<field>
+			<name>PostNumber</name>
+			<value>4558</value>
+		</field>
+		<field>
 			<name>DELIVERY</name>
 			<value>2/СДЭК</value>
 		</field>

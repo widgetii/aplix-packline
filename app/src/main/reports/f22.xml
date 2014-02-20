@@ -43,7 +43,7 @@
 		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable6] = '' or [Variable6] = [Variable4], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable6], [Variable6] + ', ' + [kuda_area_city]))"/>		
 		<Variable Name="kuda_full_address" Type="expression" Content="f:choose([Variable7] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable7], [Variable7] + ', ' + [kuda_region_area]))"/>		
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
-		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="PostNumber"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
         <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
         <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
