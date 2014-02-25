@@ -12,6 +12,12 @@
 					<xs:element name="cost" type="xs:float"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="CheckAddressResult">
+				<xs:sequence>
+					<xs:element name="result" type="xs:boolean"/>
+					<xs:element name="msg" type="xs:string" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Container">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
@@ -549,6 +555,20 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="CheckAddress">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CheckAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:CheckAddressResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AddBoxContainersRequestMessage">
@@ -707,6 +727,12 @@
 	<message name="MarkAsProblemResponseMessage">
 		<part name="parameters" element="tns:MarkAsProblemResponse"/>
 	</message>
+	<message name="CheckAddressRequestMessage">
+		<part name="parameters" element="tns:CheckAddress"/>
+	</message>
+	<message name="CheckAddressResponseMessage">
+		<part name="parameters" element="tns:CheckAddressResponse"/>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
@@ -811,6 +837,10 @@
 		<operation name="MarkAsProblem">
 			<input message="tns:MarkAsProblemRequestMessage"/>
 			<output message="tns:MarkAsProblemResponseMessage"/>
+		</operation>
+		<operation name="CheckAddress">
+			<input message="tns:CheckAddressRequestMessage"/>
+			<output message="tns:CheckAddressResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1042,6 +1072,15 @@
 		</operation>
 		<operation name="MarkAsProblem">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CheckAddress">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1286,16 +1325,25 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="CheckAddress">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<service name="PackingLine">
 		<port name="PackingLineSoap" binding="tns:PackingLineSoapBinding">
 			<documentation> 
 				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="http://z.aplix.ru/post.psv/ws/PackingLine.1cws"/>
+			<soapbind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
 		</port>
 		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
-			<soap12bind:address location="http://z.aplix.ru/post.psv/ws/PackingLine.1cws"/>
+			<soap12bind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
 		</port>
 	</service>
 </definitions>

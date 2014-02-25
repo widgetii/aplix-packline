@@ -142,6 +142,16 @@
 	-fx-text-fill: red;
 }
 
+.back-button {
+	-fx-graphic: url('../images/btn-back.png');
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+}
+
+.back-button:pressed:hover {
+	-fx-text-fill: red;
+}
+
 .numpad-button {
 	-fx-font-size: 1.9em;
 	-fx-font-weight: bold;

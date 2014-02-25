@@ -675,6 +675,14 @@ public class MockService implements PackingLinePortType {
 		return true;
 	}
 
+	@Override
+	public CheckAddressResult checkAddress(String containerId) {
+		CheckAddressResult result = new CheckAddressResult();
+		result.result = true;
+		result.msg = null;
+		return result;
+	}
+
 	@Resource
 	private WebServiceContext wsContext;
 

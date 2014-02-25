@@ -12,6 +12,7 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.controller.ReadBarcodeOrderController;
+import ru.aplix.packline.post.CheckAddressResult;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Operator;
@@ -273,13 +274,27 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		if (container.isShipped()) {
 			throw new PackLineException(getResources().getString("error.post.container.shipped"));
 		}
+
+		// Check address
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+		CheckAddressResult checkResult = postServicePort.checkAddress(container.getId());
+		if (!checkResult.isResult()) {
+			if (checkResult.getMsg() != null && checkResult.getMsg().length() > 0) {
+				throw new PackLineException(checkResult.getMsg());
+			} else {
+				throw new PackLineException(getResources().getString("error.post.container.check.address"));
+			}
+		}
+		getContext().setAttribute(Const.WARNING_MESSAGE, checkResult.getMsg());
 	}
 
 	private void checkRouteList(RouteList routeList) throws PackLineException {
+		// @formatter:off
 		/*
-		 * if (routeList.isCarriedOutAndClosed()) { throw new
-		 * PackLineException(getResources
-		 * ().getString("error.post.routeList.already.closed")); }
-		 */
+		if (routeList.isCarriedOutAndClosed()) {
+			throw new PackLineException(getResources().getString("error.post.routeList.already.closed"));
+		}
+		*/
+		// @formatter:on		
 	}
 }
