@@ -155,6 +155,12 @@
 		<xsl:param name="newline" />
 		<xsl:param name="bar-code-type" />
 
+		<!-- Change resolution according to used printer -->
+		<!-- Defined values: 203, 300 -->
+		<xsl:variable name="resolution">
+			<xsl:text>300</xsl:text>
+		</xsl:variable>
+
 		<xsl:result-document method="text" indent="no" encoding="ASCII">
 			<!-- Print bar codes -->
 			<xsl:for-each select="//Column">
@@ -178,12 +184,28 @@
 				<xsl:value-of select="$newline" />
 				<xsl:choose>
 					<xsl:when test="$bar-code-type = 'code39'">
-						<xsl:text>BA3,4,20,2,5,82,0,3,</xsl:text>
-						<xsl:value-of select="concat(current(), $newline)" />
+						<xsl:choose>
+							<xsl:when test="$resolution = '203'">
+								<xsl:text>BA3,2,15,2,3,55,0,1,</xsl:text>
+								<xsl:value-of select="concat(current(), $newline)" />
+							</xsl:when>
+							<xsl:when test="$resolution = '300'">
+								<xsl:text>BA3,4,20,2,5,82,0,3,</xsl:text>
+								<xsl:value-of select="concat(current(), $newline)" />
+							</xsl:when>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="$bar-code-type = 'ean-8'">
-						<xsl:text>BB,24,22,4,10,160,0,3,</xsl:text>
-						<xsl:value-of select="concat(current(), $newline)" />
+						<xsl:choose>
+							<xsl:when test="$resolution = '203'">
+								<xsl:text>BB,00,14,3,07,100,0,1,</xsl:text>
+								<xsl:value-of select="concat(current(), $newline)" />
+							</xsl:when>
+							<xsl:when test="$resolution = '300'">
+								<xsl:text>BB,24,22,4,10,160,0,3,</xsl:text>
+								<xsl:value-of select="concat(current(), $newline)" />
+							</xsl:when>
+						</xsl:choose>
 					</xsl:when>
 				</xsl:choose>
 				<xsl:value-of select="$newline" />
