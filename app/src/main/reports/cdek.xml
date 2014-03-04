@@ -174,7 +174,7 @@
                             <Memo>Итого: </Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView50" Left="2.2059534" Top="9.60591" Width="91.84787" Height="7.881774" BoundLeft="2.139106" BoundTop="73.877594" BoundWidth="91.981575" BoundHeight="3.2621276" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>Стоимость доставки: [delivery_cost] руб.</Memo>
+                            <Memo>[delivery_cost_msg]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView51" Left="2.2059534" Top="17.980303" Width="91.84787" Height="7.881774" BoundLeft="2.139106" BoundTop="77.139725" BoundWidth="91.981575" BoundHeight="3.2621276" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Итого к оплате при вручении с учетом доставки: [itogo_rub] руб.</Memo>
@@ -434,7 +434,7 @@
                             <Memo>Итого: </Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView50" Left="2.2059534" Top="9.605904" Width="91.84787" Height="7.8817735" BoundLeft="2.139106" BoundTop="36.11901" BoundWidth="91.981575" BoundHeight="1.5948653" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                            <Memo>Стоимость доставки: [delivery_cost] руб.</Memo>
+                            <Memo>[delivery_cost_msg]</Memo>
                         </MemoView>
                         <MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="right" VerticalAlign="middle" Rotate="false" Name="MemoView51" Left="2.2059534" Top="17.98028" Width="91.84787" Height="7.8817735" BoundLeft="2.139106" BoundTop="37.713875" BoundWidth="91.981575" BoundHeight="1.5948653" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                             <Memo>Итого к оплате при вручении с учетом доставки: [itogo_rub] руб.</Memo>
@@ -538,6 +538,7 @@
 		
 		<Variable Name="delivery" Type="expression" Content="f:choose([Variable17] = 'C', 'С', f:choose([Variable17] = 'D', 'Д', ''))" />
 		<Variable Name="delivery_cost" Type="expression" Content="f:str([Variable18], 2)" />
+		<Variable Name="delivery_cost_msg" Type="expression" Content="f:choose([Variable18] > 0, 'Стоимость доставки: ' + [delivery_cost] + ' руб.', 'Стоимость доставки включена в заказ')" />
 		<Variable Name="total" Type="expression" Content="f:count([VarEnclosureIndex])" />
 		<Variable Name="total_cost" Type="expression" Content="f:sum([VarEnclosureTotalCost])" />
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
