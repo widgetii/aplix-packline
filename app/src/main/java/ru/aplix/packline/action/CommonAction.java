@@ -7,8 +7,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.bind.JAXBException;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -22,6 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Window;
 import javafx.util.Duration;
+
+import javax.xml.bind.JAXBException;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -162,6 +162,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemWarrantyCard = null;
+		if (Configuration.getInstance().getRoles().getWarranty()) {
+			itemWarrantyCard = new MenuItem(resources.getString("menu.warranty.card"));
+			itemWarrantyCard.setStyle(menuItemStyle2);
+			itemWarrantyCard.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					fillWarrantyCard();
+				}
+			});
+		}
+
 		MenuItem itemZebraTest = null;
 		if (Configuration.getInstance().getRoles().getLabeling()) {
 			itemZebraTest = new MenuItem(resources.getString("menu.zebra.test"));
@@ -180,6 +191,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemMarkersForCustomer != null) {
 			subMenu.getItems().add(itemMarkersForCustomer);
+		}
+		if (itemWarrantyCard != null) {
+			subMenu.getItems().add(itemWarrantyCard);
 		}
 		if (itemZebraTest != null) {
 			subMenu.getItems().add(itemZebraTest);
@@ -208,24 +222,6 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		wa.execute(getContext());
 	}
 
-	private void generateStickersForContainer() {
-		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
-		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_ACTION_BEAN_NAME);
-		wa.execute(getContext());
-	}
-
-	private void generateStickersForCustomer() {
-		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
-		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_CUSTOMER_ACTION_BEAN_NAME);
-		wa.execute(getContext());
-	}
-
-	private void testZebraPrinter() {
-		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
-		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ZEBRA_TEST_ACTION_BEAN_NAME);
-		wa.execute(getContext());
-	}
-
 	private void manualBarcodeInput() {
 		Window owner = rootNode.getScene().getWindow();
 		ManualInputDialog mid = new ManualInputDialog(owner, new ManualInputListener() {
@@ -239,5 +235,29 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		});
 		mid.centerOnScreen();
 		mid.show();
+	}
+
+	private void generateStickersForContainer() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void generateStickersForCustomer() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.GEN_STICK_CUSTOMER_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void fillWarrantyCard() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.WARRANTY_CARD_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void testZebraPrinter() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ZEBRA_TEST_ACTION_BEAN_NAME);
+		wa.execute(getContext());
 	}
 }

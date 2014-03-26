@@ -2,6 +2,8 @@ package ru.aplix.packline;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -54,6 +56,8 @@ public class App extends Application implements IdleListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
+	private static App instance = null;
+
 	private ApplicationContext applicationContext;
 	private WorkflowContext workflowContext;
 
@@ -61,12 +65,23 @@ public class App extends Application implements IdleListener {
 	private boolean shutdownExecutor;
 	private ScheduledExecutorService executor;
 
+	private List<Runnable> postStopActions = new ArrayList<Runnable>();
+
 	public static void main(String[] args) throws Exception {
 		launch(args);
 	}
 
+	public static App getInstance() {
+		if (instance == null) {
+			throw new IllegalStateException();
+		}
+		return instance;
+	}
+
 	@Override
 	public void init() throws FileNotFoundException, MalformedURLException, JAXBException {
+		instance = this;
+
 		applicationContext = new ClassPathXmlApplicationContext("/resources/spring/spring-context.xml");
 
 		Configuration.setConfigFileName(getParameters().getNamed().get("config"));
@@ -132,6 +147,7 @@ public class App extends Application implements IdleListener {
 
 		shutdownScheduler();
 		deinitializeHardware();
+		executePostStopActions();
 	}
 
 	@Override
@@ -331,5 +347,17 @@ public class App extends Application implements IdleListener {
 		}
 
 		workflowContext.setAttribute(Const.POST_SERVICE_PORT, postServicePort);
+	}
+
+	public List<Runnable> getPostStopActions() {
+		return postStopActions;
+	}
+
+	private void executePostStopActions() {
+		if (postStopActions != null) {
+			for (Runnable r : postStopActions) {
+				r.run();
+			}
+		}
 	}
 }

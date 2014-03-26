@@ -164,7 +164,7 @@
 	</Weighting>
 	
 	<!-- Application Roles -->
-	<Roles acceptance="true" packing="true" labeling="true" gluing="true" />
+	<Roles acceptance="true" packing="true" labeling="true" gluing="true" warranty="true"/>
 	
 	<!-- Time in seconds to lock the app, if there are no user activity -->
 	<ActivityMonitor idleShortTreshold="600" idleLongTreshold="1800" />

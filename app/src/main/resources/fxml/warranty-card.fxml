@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="976.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.WarrantyCardController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="173.0" prefWidth="856.0" styleClass="action-label" text="%warranty.card.info1" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <StackPane prefHeight="381.0" prefWidth="936.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="198.0">
+                  <children>
+                    <HBox id="HBox" fx:id="orderBarcodeContainer" alignment="CENTER" prefWidth="930.0" spacing="50.0" visible="false">
+                      <children>
+                        <ImageView fitHeight="336.5" fitWidth="484.1726689440139" pickOnBounds="true" preserveRatio="true">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/img-warranty.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </children>
+                    </HBox>
+                    <HBox id="HBox" fx:id="barcodeContainer" alignment="CENTER" spacing="80.0" visible="false">
+                      <children>
+                        <ImageView fitHeight="191.2635955810547" fitWidth="403.4345832457877" pickOnBounds="true" preserveRatio="true">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/img-barcode-order.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <Button fx:id="withoutBarcodeBtn" mnemonicParsing="false" onAction="#nobarcodeClick" prefHeight="70.0" prefWidth="300.0" styleClass="blue-button" text="%button.wcard.nobarcode" />
+                      </children>
+                    </HBox>
+                    <HBox id="HBox" fx:id="wcardContainer" alignment="CENTER" spacing="80.0">
+                      <children>
+                        <VBox alignment="CENTER" prefHeight="381.0" prefWidth="446.0" HBox.hgrow="ALWAYS">
+                          <children>
+                            <ImageView fitHeight="177.272721862793" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                              <effect>
+                                <InnerShadow />
+                              </effect>
+                              <image>
+                                <Image url="@../images/img-stamp.png" preserveRatio="false" smooth="false" />
+                              </image>
+                            </ImageView>
+                            <HBox alignment="CENTER" prefHeight="233.0" prefWidth="936.0" spacing="80.0">
+                              <children>
+                                <Button fx:id="wcardFilledBtn" mnemonicParsing="false" onAction="#wcardFilledClick" prefHeight="70.0" prefWidth="300.0" styleClass="green-button" text="%button.wcard.filled" />
+                                <Button fx:id="wcardAbsentBtn" mnemonicParsing="false" onAction="#wcardAbsentClick" prefHeight="70.0" prefWidth="300.0" styleClass="red-button" text="%button.wcard.absent" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </VBox>
+                      </children>
+                    </HBox>
+                  </children>
+                </StackPane>
+              </children>
+            </AnchorPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

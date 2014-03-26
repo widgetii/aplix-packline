@@ -682,6 +682,16 @@ public class MockService implements PackingLinePortType {
 		result.msg = null;
 		return result;
 	}
+	
+	@Override
+	public boolean startFillingWarrantyCard(String incomingId, String shipmentId) {
+		return true;
+	}
+
+	@Override
+	public boolean stopFillingWarrantyCard(String incomingId, String shipmentId, boolean filled) {
+		return true;
+	}
 
 	@Resource
 	private WebServiceContext wsContext;

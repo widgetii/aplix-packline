@@ -181,6 +181,7 @@ http://aplix.corp/packline/updates/10-BF-48-09-53-32/packline-v0.9/conf/packline
 	.xconf		text/xml
 	.bat		application/bat
 	.*			application/octet-stream
+	.			application/octet-stream
 
 В Apache2 ничего более настраивать не надо.
 

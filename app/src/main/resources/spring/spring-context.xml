@@ -111,4 +111,9 @@
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>
+	
+	<bean id="warrantyCardAction" class="ru.aplix.packline.action.WarrantyCardAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
 </beans>

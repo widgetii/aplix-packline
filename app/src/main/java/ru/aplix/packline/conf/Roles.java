@@ -21,6 +21,9 @@ public class Roles {
 	@XmlAttribute(name = "gluing")
 	private Boolean gluing;
 
+	@XmlAttribute(name = "warranty")
+	private Boolean warranty;
+
 	public Boolean getAcceptance() {
 		return acceptance != null ? acceptance : true;
 	}
@@ -51,5 +54,13 @@ public class Roles {
 
 	public void setGluing(Boolean gluing) {
 		this.gluing = gluing;
+	}
+
+	public Boolean getWarranty() {
+		return warranty != null ? warranty : true;
+	}
+
+	public void setWarranty(Boolean warranty) {
+		this.warranty = warranty;
 	}
 }
