@@ -18,7 +18,7 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.WarrantyCardAction;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class WarrantyCardController extends StandardController<WarrantyCardAction> implements BarcodeListener {
@@ -44,7 +44,7 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 	@FXML
 	private Button wcardAbsentBtn;
 
-	private Incoming incoming;
+	private Tag tag;
 	private String barcode;
 	private OperationState operationState;
 	private BarcodeScanner<?> barcodeScanner = null;
@@ -54,7 +54,7 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		incoming = null;
+		tag = null;
 		barcode = null;
 		setOperationState(OperationState.WAITING_ORDER_BARCODE);
 		setProgress(false);
@@ -99,8 +99,8 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 			findIncoming(value);
 			break;
 		case WAITING_BARCODE:
-			if (incoming.getId().equals(value)) {
-				incoming = null;
+			if (tag.getId().equals(value)) {
+				tag = null;
 				barcode = null;
 				setOperationState(OperationState.WAITING_ORDER_BARCODE);
 			} else {
@@ -126,11 +126,11 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 	}
 
 	private void findIncoming(final String value) {
-		task = new Task<Incoming>() {
+		task = new Task<Tag>() {
 			@Override
-			public Incoming call() throws Exception {
+			public Tag call() throws Exception {
 				try {
-					return getAction().findIncoming(value);
+					return getAction().findTag(value);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -167,9 +167,9 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 
 				setProgress(false);
 
-				Incoming result = getValue();
+				Tag result = getValue();
 				if (result != null) {
-					incoming = result;
+					tag = result;
 					setOperationState(OperationState.WAITING_BARCODE);
 				} else {
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
@@ -187,7 +187,7 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().startFillingWarrantyCard(incoming, barcode);
+					getAction().startFillingWarrantyCard(tag, barcode);
 					return null;
 				} catch (Throwable e) {
 					LOG.error(null, e);
@@ -238,7 +238,7 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().stopFillingWarrantyCard(incoming, barcode, filled);
+					getAction().stopFillingWarrantyCard(tag, barcode, filled);
 					return null;
 				} catch (Throwable e) {
 					LOG.error(null, e);
@@ -306,7 +306,7 @@ public class WarrantyCardController extends StandardController<WarrantyCardActio
 				orderBarcodeContainer.setVisible(false);
 				barcodeContainer.setVisible(true);
 				wcardContainer.setVisible(false);
-				infoLabel.setText(String.format(getResources().getString("warranty.card.info2"), incoming.getId()));
+				infoLabel.setText(String.format(getResources().getString("warranty.card.info2"), tag.getId()));
 				break;
 			case WCARD_FILLING:
 				orderBarcodeContainer.setVisible(false);
