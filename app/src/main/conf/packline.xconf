@@ -96,6 +96,7 @@
 			<PostTypeRestriction>
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
+				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
@@ -161,6 +162,7 @@
 		<Restriction postType="EMS" maxWeight="31.5"/>
 		<Restriction postType="CDEK" maxWeight="30"/>
 		<Restriction postType="IML" maxWeight="20"/>
+		<Restriction postType="DPD" maxWeight="80"/>
 	</Weighting>
 	
 	<!-- Application Roles -->
