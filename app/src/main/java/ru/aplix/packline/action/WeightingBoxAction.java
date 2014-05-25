@@ -16,6 +16,7 @@ import ru.aplix.packline.conf.PrintForm;
 import ru.aplix.packline.conf.WeightingRestriction;
 import ru.aplix.packline.controller.WeightingBoxController;
 import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.workflow.WorkflowAction;
@@ -24,6 +25,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 
 	private WorkflowAction printingAction;
 	private WorkflowAction overweightAction;
+	private WorkflowAction underweightAction;
 
 	public WorkflowAction getPrintingAction() {
 		return printingAction;
@@ -41,6 +43,14 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 		this.overweightAction = overweightAction;
 	}
 
+	public WorkflowAction getUnderweightAction() {
+		return underweightAction;
+	}
+
+	public void setUnderweightAction(WorkflowAction underweightAction) {
+		this.underweightAction = underweightAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "weighting-box";
@@ -49,6 +59,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 	public void processMeasure(Float value) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
 		value = Math.max(value, 0);
 		final Post post = (Post) getContext().getAttribute(Const.POST);
+		Order order = (Order) getContext().getAttribute(Const.ORDER);
 
 		// Add print form weight to the measured value
 		List<PrintForm> forms = Configuration.getInstance().getPrintForms();
@@ -80,6 +91,8 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 
 		if (wr != null && container.getTotalWeight() > wr.getMaxWeight()) {
 			setNextAction(getOverweightAction());
+		} else if (order.getIncoming() != null && (order.getIncoming().size() == 1) && (container.getTotalWeight() < order.getIncoming().get(0).getWeight())) {
+			setNextAction(getUnderweightAction());
 		} else {
 			setNextAction(getPrintingAction());
 		}

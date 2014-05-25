@@ -76,7 +76,8 @@
 	<bean id="action11" class="ru.aplix.packline.action.WeightingBoxAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="overweightAction" ref="action12" />
-		<property name="printingAction" ref="action13" />
+		<property name="underweightAction" ref="action13" />
+		<property name="printingAction" ref="action14" />
 	</bean>
 
 	<bean id="action12" class="ru.aplix.packline.action.OverweightAction">
@@ -84,14 +85,20 @@
 		<property name="weightingAction" ref="action11" />
 		<property name="normalAction" ref="action2" />
 	</bean>
-
-	<bean id="action13" class="ru.aplix.packline.action.WarningAction">
+	
+	<bean id="action13" class="ru.aplix.packline.action.UnderweightAction">
 		<property name="idleTimeout" value="SHORT" />
+		<property name="weightingAction" ref="action11" />
 		<property name="normalAction" ref="action14" />
+	</bean>
+
+	<bean id="action14" class="ru.aplix.packline.action.WarningAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="normalAction" ref="action15" />
 		<property name="backAction" ref="action2" />
 	</bean>
 
-	<bean id="action14" class="ru.aplix.packline.action.PrintFormsAction">
+	<bean id="action15" class="ru.aplix.packline.action.PrintFormsAction">
 		<property name="idleTimeout" value="LONG" />
 		<property name="weightingAction" ref="action11" />
 		<property name="normalAction" ref="action2" />
