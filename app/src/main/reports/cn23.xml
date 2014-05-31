@@ -1,0 +1,3403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="210.0" Height="148.0" MarginLeft="0.0" MarginTop="0.0" MarginRight="0.0" MarginBottom="0.0" Orientation="landscape" UseMargins="true">
+            <Views>
+                <BandView Type="master-data" Dataset="PostDataSet" Name="BandView1" Left="0.0" Top="0.0" Width="100.0" Height="100.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>						
+						<PictureView Centered="true" KeepRatio="true" Name="PictureView1" Left="0.75" Top="1.2" Width="98.5" Height="97.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <SVGImage Mime="image/svg+xml">
+                                <Content><![CDATA[
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="744.15002"
+   height="526.20001"
+   xml:space="preserve"
+   sodipodi:docname="cn23_2.svg"><metadata
+     id="metadata2991"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs2989"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2999"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3001"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3009"><path
+         d="m 21.36,797.52 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3011"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3017"><path
+         d="m 21.36,790.56 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3019"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3025"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3027"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3033"><path
+         d="m 21.36,726.82 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3035"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3041"><path
+         d="m 21.36,719.86 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3043"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3049"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3051"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3057"><path
+         d="m 21.36,664.18 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3059"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3065"><path
+         d="m 323.71,570.07 69.72,0 0,14.664 -69.72,0 0,-14.664 z"
+         clip-rule="evenodd"
+         id="path3067"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3073"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3075"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3081"><path
+         d="m 21.36,548.59 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3083"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3089"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3091"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3097"><path
+         d="m 21.36,534.67 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3099"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3105"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3107"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3113"><path
+         d="m 21.36,520.75 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3115"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3121"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3123"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3129"><path
+         d="m 21.36,443.35 552.6,0 0,6 -552.6,0 0,-6 z"
+         clip-rule="evenodd"
+         id="path3131"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3137"><path
+         d="m 21.36,23.88 552.6,0 0,802.92 -552.6,0 0,-802.92 z"
+         clip-rule="evenodd"
+         id="path3139"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3145"><path
+         d="m 21.36,364.25 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3147"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3153"><path
+         d="m 21.36,355.73 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3155"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3161"><path
+         d="m 21.36,338.69 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3163"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3169"><path
+         d="m 21.36,330.17 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3171"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3177"><path
+         d="m 21.36,315.17 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3179"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3185"><path
+         d="m 21.36,306.65 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3187"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3193"><path
+         d="m 21.36,298.13 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3195"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3201"><path
+         d="m 21.36,283.61 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3203"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3209"><path
+         d="m 21.36,275.09 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3211"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3217"><path
+         d="m 21.36,266.57 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3219"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3225"><path
+         d="m 21.36,258.05 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3227"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3233"><path
+         d="m 21.36,249.53 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3235"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3241"><path
+         d="m 21.36,241.01 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3243"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3249"><path
+         d="m 21.36,228.53 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3251"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3257"><path
+         d="m 21.36,219.98 552.6,0 0,7.584 -552.6,0 0,-7.584 z"
+         clip-rule="evenodd"
+         id="path3259"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3265"><path
+         d="m 21.36,205.46 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3267"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3273"><path
+         d="m 21.36,191.42 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3275"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3281"><path
+         d="m 21.36,182.9 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3283"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3289"><path
+         d="m 21.36,169.94 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3291"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3297"><path
+         d="m 21.36,152.9 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3299"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3305"><path
+         d="m 21.36,144.38 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3307"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3313"><path
+         d="m 21.36,135.86 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3315"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3321"><path
+         d="m 21.36,127.34 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3323"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3329"><path
+         d="m 21.36,110.3 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3331"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3337"><path
+         d="m 21.36,93.264 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3339"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3345"><path
+         d="m 21.36,76.224 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3347"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3353"><path
+         d="m 21.36,67.704 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3355"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3361"><path
+         d="m 21.36,50.664 552.6,0 0,7.56 -552.6,0 0,-7.56 z"
+         clip-rule="evenodd"
+         id="path3363"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3369"><path
+         d="m 21.36,42.12 552.6,0 0,7.584 -552.6,0 0,-7.584 z"
+         clip-rule="evenodd"
+         id="path3371"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3377"><path
+         d="m 21.36,24.84 552.6,0 0,7.8 -552.6,0 0,-7.8 z"
+         clip-rule="evenodd"
+         id="path3379"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3385"><path
+         d="m 533.86,804 39.624,0 0,22.8 -39.624,0 0,-22.8 z"
+         clip-rule="evenodd"
+         id="path3387"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3393"><path
+         d="m 115.34,790.08 135.26,0 0,13.92 -135.26,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3395"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3401"><path
+         d="m 250.61,775.08 58.68,0 0,28.92 -58.68,0 0,-28.92 z"
+         clip-rule="evenodd"
+         id="path3403"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3409"><path
+         d="m 533.86,705.46 39.624,0 0,91.584 -39.624,0 0,-91.584 z"
+         clip-rule="evenodd"
+         id="path3411"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3417"><path
+         d="m 115.34,761.16 193.94,0 0,13.92 -193.94,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3419"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3425"><path
+         d="m 162.5,747.22 146.78,0 0,13.944 -146.78,0 0,-13.944 z"
+         clip-rule="evenodd"
+         id="path3427"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3433"><path
+         d="m 115.34,733.3 193.94,0 0,13.92 -193.94,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3435"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3441"><path
+         d="m 393.91,646.54 179.57,0 0,17.16 -179.57,0 0,-17.16 z"
+         clip-rule="evenodd"
+         id="path3443"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3449"><path
+         d="m 393.91,629.38 91.824,0 0,17.16 -91.824,0 0,-17.16 z"
+         clip-rule="evenodd"
+         id="path3451"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3457"><path
+         d="m 485.74,629.38 87.744,0 0,17.16 -87.744,0 0,-17.16 z"
+         clip-rule="evenodd"
+         id="path3459"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3465"><path
+         d="m 115.34,719.38 193.94,0 0,13.92 -193.94,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3467"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3473"><path
+         d="m 115.34,691.54 193.94,0 0,13.92 -193.94,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3475"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3481"><path
+         d="m 309.29,691.54 264.19,0 0,13.92 -264.19,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3483"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3489"><path
+         d="m 162.5,677.62 146.78,0 0,13.92 -146.78,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3491"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3497"><path
+         d="m 309.29,670.66 264.19,0 0,13.92 -264.19,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3499"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3505"><path
+         d="m 115.34,663.7 193.94,0 0,13.92 -193.94,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3507"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3513"><path
+         d="m 40.32,629.38 161.45,0 0,34.32 -161.45,0 0,-34.32 z"
+         clip-rule="evenodd"
+         id="path3515"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3521"><path
+         d="m 201.77,629.38 48.84,0 0,34.32 -48.84,0 0,-34.32 z"
+         clip-rule="evenodd"
+         id="path3523"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3529"><path
+         d="m 250.61,629.38 72.624,0 0,34.32 -72.624,0 0,-34.32 z"
+         clip-rule="evenodd"
+         id="path3531"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3537"><path
+         d="m 40.32,618.34 161.45,0 0,11.04 -161.45,0 0,-11.04 z"
+         clip-rule="evenodd"
+         id="path3539"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3545"><path
+         d="m 201.77,618.34 48.84,0 0,11.04 -48.84,0 0,-11.04 z"
+         clip-rule="evenodd"
+         id="path3547"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3553"><path
+         d="m 323.23,618.34 70.68,0 0,11.04 -70.68,0 0,-11.04 z"
+         clip-rule="evenodd"
+         id="path3555"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3561"><path
+         d="m 323.23,629.38 70.68,0 0,34.32 -70.68,0 0,-34.32 z"
+         clip-rule="evenodd"
+         id="path3563"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3569"><path
+         d="m 40.32,456.79 353.59,0 0,63.48 -353.59,0 0,-63.48 z"
+         clip-rule="evenodd"
+         id="path3571"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3577"><path
+         d="m 393.91,456.79 179.57,0 0,55.44 -179.57,0 0,-55.44 z"
+         clip-rule="evenodd"
+         id="path3579"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3585"><path
+         d="m 393.91,548.11 179.57,0 0,13.92 -179.57,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3587"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3593"><path
+         d="m 250.61,569.59 72.624,0 0,15.624 -72.624,0 0,-15.624 z"
+         clip-rule="evenodd"
+         id="path3595"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3601"><path
+         d="m 393.91,569.59 179.57,0 0,15.624 -179.57,0 0,-15.624 z"
+         clip-rule="evenodd"
+         id="path3603"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3609"><path
+         d="m 40.32,372.29 533.16,0 0,8.52 -533.16,0 0,-8.52 z"
+         clip-rule="evenodd"
+         id="path3611"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3617"><path
+         d="m 40.32,534.19 17.04,0 0,13.92 -17.04,0 0,-13.92 z"
+         clip-rule="evenodd"
+         id="path3619"
+         inkscape:connector-curvature="0" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3625"><path
+         d="m 19.44,21.84 556.56,0 0,806.88 -556.56,0 0,-806.88 z"
+         clip-rule="evenodd"
+         id="path3627"
+         inkscape:connector-curvature="0" /></clipPath></defs><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     id="namedview2987"
+     showgrid="false"
+     inkscape:zoom="0.78"
+     inkscape:cx="372.07501"
+     inkscape:cy="210.05621"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2993" /><g
+     id="g2993"
+     inkscape:groupmode="layer"
+     inkscape:label="cn23"
+     transform="matrix(1.25,0,0,-1.25,0,526.19994)"><g
+       id="g2995"
+       transform="matrix(1,0,0,0.49520508,0,-2.9856258)"><g
+         id="g2997"
+         clip-path="url(#clipPath2999)"><path
+           d="m 20.88,24.24 552.72,0 0,803.04 -552.72,0 0,-803.04 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3003"
+           inkscape:connector-curvature="0" /></g></g><g
+       id="g3005"
+       transform="translate(0,-420.35006)"><g
+         id="g3007"
+         clip-path="url(#clipPath3009)" /></g><g
+       id="g3013"
+       transform="translate(0,-420.35006)"><g
+         id="g3015"
+         clip-path="url(#clipPath3017)" /></g><g
+       id="g3021"
+       transform="translate(0,-420.35006)"><g
+         id="g3023"
+         clip-path="url(#clipPath3025)" /></g><g
+       id="g3029"
+       transform="translate(0,-420.35006)"><g
+         id="g3031"
+         clip-path="url(#clipPath3033)" /></g><g
+       id="g3037"
+       transform="translate(0,-420.35006)"><g
+         id="g3039"
+         clip-path="url(#clipPath3041)" /></g><g
+       id="g3045"
+       transform="translate(0,-420.35006)"><g
+         id="g3047"
+         clip-path="url(#clipPath3049)" /></g><g
+       id="g3053"
+       transform="translate(0,-420.35006)"><g
+         id="g3055"
+         clip-path="url(#clipPath3057)" /></g><g
+       id="g3061"
+       transform="translate(0,-420.35006)"><g
+         id="g3063"
+         clip-path="url(#clipPath3065)" /></g><g
+       id="g3069"
+       transform="translate(0,-420.35006)"><g
+         id="g3071"
+         clip-path="url(#clipPath3073)" /></g><g
+       id="g3077"
+       transform="translate(0,-420.35006)"><g
+         id="g3079"
+         clip-path="url(#clipPath3081)" /></g><g
+       id="g3085"
+       transform="translate(0,-420.35006)"><g
+         id="g3087"
+         clip-path="url(#clipPath3089)" /></g><g
+       id="g3093"
+       transform="translate(0,-420.35006)"><g
+         id="g3095"
+         clip-path="url(#clipPath3097)" /></g><g
+       id="g3101"
+       transform="translate(0,-420.35006)"><g
+         id="g3103"
+         clip-path="url(#clipPath3105)" /></g><g
+       id="g3109"
+       transform="translate(0,-420.35006)"><g
+         id="g3111"
+         clip-path="url(#clipPath3113)" /></g><g
+       id="g3117"
+       transform="translate(0,-420.35006)"><g
+         id="g3119"
+         clip-path="url(#clipPath3121)" /></g><g
+       id="g3125"
+       transform="translate(0,-420.35006)"><g
+         id="g3127"
+         clip-path="url(#clipPath3129)" /></g><g
+       id="g3133"
+       transform="translate(0,-420.35006)"><g
+         id="g3135"
+         clip-path="url(#clipPath3137)" /></g><g
+       id="g3141"
+       transform="translate(0,-420.35006)"><g
+         id="g3143"
+         clip-path="url(#clipPath3145)" /></g><g
+       id="g3149"
+       transform="translate(0,-420.35006)"><g
+         id="g3151"
+         clip-path="url(#clipPath3153)" /></g><g
+       id="g3157"
+       transform="translate(0,-420.35006)"><g
+         id="g3159"
+         clip-path="url(#clipPath3161)" /></g><g
+       id="g3165"
+       transform="translate(0,-420.35006)"><g
+         id="g3167"
+         clip-path="url(#clipPath3169)" /></g><g
+       id="g3173"
+       transform="translate(0,-420.35006)"><g
+         id="g3175"
+         clip-path="url(#clipPath3177)" /></g><g
+       id="g3181"
+       transform="translate(0,-420.35006)"><g
+         id="g3183"
+         clip-path="url(#clipPath3185)" /></g><g
+       id="g3189"
+       transform="translate(0,-420.35006)"><g
+         id="g3191"
+         clip-path="url(#clipPath3193)" /></g><g
+       id="g3197"
+       transform="translate(0,-420.35006)"><g
+         id="g3199"
+         clip-path="url(#clipPath3201)" /></g><g
+       id="g3205"
+       transform="translate(0,-420.35006)"><g
+         id="g3207"
+         clip-path="url(#clipPath3209)" /></g><g
+       id="g3213"
+       transform="translate(0,-420.35006)"><g
+         id="g3215"
+         clip-path="url(#clipPath3217)" /></g><g
+       id="g3221"
+       transform="translate(0,-420.35006)"><g
+         id="g3223"
+         clip-path="url(#clipPath3225)" /></g><g
+       id="g3229"
+       transform="translate(0,-420.35006)"><g
+         id="g3231"
+         clip-path="url(#clipPath3233)" /></g><g
+       id="g3237"
+       transform="translate(0,-420.35006)"><g
+         id="g3239"
+         clip-path="url(#clipPath3241)" /></g><g
+       id="g3245"
+       transform="translate(0,-420.35006)"><g
+         id="g3247"
+         clip-path="url(#clipPath3249)" /></g><g
+       id="g3253"
+       transform="translate(0,-420.35006)"><g
+         id="g3255"
+         clip-path="url(#clipPath3257)" /></g><g
+       id="g3261"
+       transform="translate(0,-420.35006)"><g
+         id="g3263"
+         clip-path="url(#clipPath3265)" /></g><g
+       id="g3269"
+       transform="translate(0,-420.35006)"><g
+         id="g3271"
+         clip-path="url(#clipPath3273)" /></g><g
+       id="g3277"
+       transform="translate(0,-420.35006)"><g
+         id="g3279"
+         clip-path="url(#clipPath3281)" /></g><g
+       id="g3285"
+       transform="translate(0,-420.35006)"><g
+         id="g3287"
+         clip-path="url(#clipPath3289)" /></g><g
+       id="g3293"
+       transform="translate(0,-420.35006)"><g
+         id="g3295"
+         clip-path="url(#clipPath3297)" /></g><g
+       id="g3301"
+       transform="translate(0,-420.35006)"><g
+         id="g3303"
+         clip-path="url(#clipPath3305)" /></g><g
+       id="g3309"
+       transform="translate(0,-420.35006)"><g
+         id="g3311"
+         clip-path="url(#clipPath3313)" /></g><g
+       id="g3317"
+       transform="translate(0,-420.35006)"><g
+         id="g3319"
+         clip-path="url(#clipPath3321)" /></g><g
+       id="g3325"
+       transform="translate(0,-420.35006)"><g
+         id="g3327"
+         clip-path="url(#clipPath3329)" /></g><g
+       id="g3333"
+       transform="translate(0,-420.35006)"><g
+         id="g3335"
+         clip-path="url(#clipPath3337)" /></g><g
+       id="g3341"
+       transform="translate(0,-420.35006)"><g
+         id="g3343"
+         clip-path="url(#clipPath3345)" /></g><g
+       id="g3349"
+       transform="translate(0,-420.35006)"><g
+         id="g3351"
+         clip-path="url(#clipPath3353)" /></g><g
+       id="g3357"
+       transform="translate(0,-420.35006)"><g
+         id="g3359"
+         clip-path="url(#clipPath3361)" /></g><g
+       id="g3365"
+       transform="translate(0,-420.35006)"><g
+         id="g3367"
+         clip-path="url(#clipPath3369)" /></g><g
+       id="g3373"
+       transform="translate(0,-420.35006)"><g
+         id="g3375"
+         clip-path="url(#clipPath3377)" /></g><g
+       id="g3381"
+       transform="translate(0,-420.35006)"><g
+         id="g3383"
+         clip-path="url(#clipPath3385)" /></g><g
+       id="g3389"
+       transform="translate(0,-420.35006)"><g
+         id="g3391"
+         clip-path="url(#clipPath3393)" /></g><g
+       id="g3397"
+       transform="translate(0,-420.35006)"><g
+         id="g3399"
+         clip-path="url(#clipPath3401)" /></g><g
+       id="g3405"
+       transform="translate(0,-420.35006)"><g
+         id="g3407"
+         clip-path="url(#clipPath3409)" /></g><g
+       id="g3413"
+       transform="translate(0,-420.35006)"><g
+         id="g3415"
+         clip-path="url(#clipPath3417)" /></g><g
+       id="g3421"
+       transform="translate(0,-420.35006)"><g
+         id="g3423"
+         clip-path="url(#clipPath3425)" /></g><g
+       id="g3429"
+       transform="translate(0,-420.35006)"><g
+         id="g3431"
+         clip-path="url(#clipPath3433)" /></g><g
+       id="g3437"
+       transform="translate(0,-420.35006)"><g
+         id="g3439"
+         clip-path="url(#clipPath3441)" /></g><g
+       id="g3445"
+       transform="translate(0,-420.35006)"><g
+         id="g3447"
+         clip-path="url(#clipPath3449)" /></g><g
+       id="g3453"
+       transform="translate(0,-420.35006)"><g
+         id="g3455"
+         clip-path="url(#clipPath3457)" /></g><g
+       id="g3461"
+       transform="translate(0,-420.35006)"><g
+         id="g3463"
+         clip-path="url(#clipPath3465)" /></g><g
+       id="g3469"
+       transform="translate(0,-420.35006)"><g
+         id="g3471"
+         clip-path="url(#clipPath3473)" /></g><g
+       id="g3477"
+       transform="translate(0,-420.35006)"><g
+         id="g3479"
+         clip-path="url(#clipPath3481)" /></g><g
+       id="g3485"
+       transform="translate(0,-420.35006)"><g
+         id="g3487"
+         clip-path="url(#clipPath3489)" /></g><g
+       id="g3493"
+       transform="translate(0,-420.35006)"><g
+         id="g3495"
+         clip-path="url(#clipPath3497)" /></g><g
+       id="g3501"
+       transform="translate(0,-420.35006)"><g
+         id="g3503"
+         clip-path="url(#clipPath3505)" /></g><g
+       id="g3509"
+       transform="translate(0,-420.35006)"><g
+         id="g3511"
+         clip-path="url(#clipPath3513)" /></g><g
+       id="g3517"
+       transform="translate(0,-420.35006)"><g
+         id="g3519"
+         clip-path="url(#clipPath3521)" /></g><g
+       id="g3525"
+       transform="translate(0,-420.35006)"><g
+         id="g3527"
+         clip-path="url(#clipPath3529)" /></g><g
+       id="g3533"
+       transform="translate(0,-420.35006)"><g
+         id="g3535"
+         clip-path="url(#clipPath3537)" /></g><g
+       id="g3541"
+       transform="translate(0,-420.35006)"><g
+         id="g3543"
+         clip-path="url(#clipPath3545)" /></g><g
+       id="g3549"
+       transform="translate(0,-420.35006)"><g
+         id="g3551"
+         clip-path="url(#clipPath3553)" /></g><g
+       id="g3557"
+       transform="translate(0,-420.35006)"><g
+         id="g3559"
+         clip-path="url(#clipPath3561)" /></g><g
+       id="g3565"
+       transform="translate(0,-420.35006)"><g
+         id="g3567"
+         clip-path="url(#clipPath3569)" /></g><g
+       id="g3573"
+       transform="translate(0,-420.35006)"><g
+         id="g3575"
+         clip-path="url(#clipPath3577)" /></g><g
+       id="g3581"
+       transform="translate(0,-420.35006)"><g
+         id="g3583"
+         clip-path="url(#clipPath3585)" /></g><g
+       id="g3589"
+       transform="translate(0,-420.35006)"><g
+         id="g3591"
+         clip-path="url(#clipPath3593)" /></g><g
+       id="g3597"
+       transform="translate(0,-420.35006)"><g
+         id="g3599"
+         clip-path="url(#clipPath3601)" /></g><g
+       id="g3605"
+       transform="translate(0,-420.35006)"><g
+         id="g3607"
+         clip-path="url(#clipPath3609)" /></g><g
+       id="g3613"
+       transform="translate(0,-420.35006)"><g
+         id="g3615"
+         clip-path="url(#clipPath3617)" /></g><g
+       id="g3621"
+       transform="translate(0,-420.35006)"><g
+         id="g3623"
+         clip-path="url(#clipPath3625)"><path
+           d="m 250.37,774.72 0.6,0 0,28.92 -0.6,0 0,-28.92 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3629"
+           inkscape:connector-curvature="0" /><path
+           d="m 20.88,663.34 372.43,0 0,0.6 -372.43,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3631"
+           inkscape:connector-curvature="0" /><path
+           d="m 573.24,664.3 0.6,0 0,40.8 -0.6,0 0,-40.8 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3633"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,629.02 352.63,0 0,0.6 -352.63,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3635"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,617.98 352.63,0 0,0.6 -352.63,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3637"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,606.94 352.63,0 0,0.6 -352.63,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3639"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,595.9 352.63,0 0,0.6 -352.63,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3641"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,584.86 352.63,0 0,0.6 -352.63,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3643"
+           inkscape:connector-curvature="0" /><path
+           d="m 393.31,584.5 1.32,0 0,79.8 -1.32,0 0,-79.8 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3645"
+           inkscape:connector-curvature="0" /><path
+           d="m 572.88,584.5 1.32,0 0,78.48 -1.32,0 0,-78.48 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3647"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,547.75 17.04,0 0,0.6 -17.04,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3649"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,533.83 17.04,0 0,0.6 -17.04,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3651"
+           inkscape:connector-curvature="0" /><path
+           d="m 57.12,519.91 0.6,0 0,27.84 -0.6,0 0,-27.84 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3653"
+           inkscape:connector-curvature="0" /><path
+           d="m 144.5,519.91 0.6,0 0,41.76 -0.6,0 0,-41.76 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3655"
+           inkscape:connector-curvature="0" /><path
+           d="m 162.26,519.91 0.6,0 0,41.76 -0.6,0 0,-41.76 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3657"
+           inkscape:connector-curvature="0" /><path
+           d="m 250.37,561.67 0.6,0 0,101.66 -0.6,0 0,-101.66 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3659"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,442.51 17.04,0 0,0.6 -17.04,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3661"
+           inkscape:connector-curvature="0" /><path
+           d="m 145.1,442.51 17.76,0 0,0.6 -17.76,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3663"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.08,428.59 0.6,0 0,375.05 -0.6,0 0,-375.05 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3665"
+           inkscape:connector-curvature="0" /><path
+           d="m 250.37,428.59 0.6,0 0,27.84 -0.6,0 0,-27.84 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3667"
+           inkscape:connector-curvature="0" /><path
+           d="m 309.05,663.34 0.6,0 0,140.3 -0.6,0 0,-140.3 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3669"
+           inkscape:connector-curvature="0" /><path
+           d="m 573.24,428.59 0.6,0 0,155.9 -0.6,0 0,-155.9 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3673"
+           inkscape:connector-curvature="0" /><path
+           d="m 201.53,561.67 0.6,0 0,101.66 -0.6,0 0,-101.66 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3675"
+           inkscape:connector-curvature="0" /><path
+           d="m 322.99,561.67 0.6,0 0,101.66 -0.6,0 0,-101.66 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3677"
+           inkscape:connector-curvature="0" /><path
+           d="m 393.67,428.59 0.6,0 0,155.9 -0.6,0 0,-155.9 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3679"
+           inkscape:connector-curvature="0" /><path
+           d="m 485.5,585.82 0.6,0 0,60.36 -0.6,0 0,-60.36 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3681"
+           inkscape:connector-curvature="0" /><path
+           d="m 144.5,428.59 0.6,0 0,27.84 -0.6,0 0,-27.84 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3683"
+           inkscape:connector-curvature="0" /><path
+           d="m 162.26,442.51 0.6,0 0,13.92 -0.6,0 0,-13.92 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3685"
+           inkscape:connector-curvature="0" /><path
+           d="m 57.12,442.51 0.6,0 0,13.92 -0.6,0 0,-13.92 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3687"
+           inkscape:connector-curvature="0" /><path
+           d="m 269.81,442.51 0.6,0 0,13.92 -0.6,0 0,-13.92 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3689"
+           inkscape:connector-curvature="0" /><path
+           d="m 20.88,826.92 552.72,0 0,0.6 -552.72,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3691"
+           inkscape:connector-curvature="0" /><path
+           d="m 20.88,803.64 288.77,0 0,0.6 -288.77,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3693"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,789.72 210.29,0 0,0.6 -210.29,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3695"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,774.72 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3697"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,760.8 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3699"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,746.86 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3701"
+           inkscape:connector-curvature="0" /><path
+           d="m 20.88,732.94 288.77,0 0,0.6 -288.77,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3703"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,719.02 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3705"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,705.1 533.16,0 0,0.6 -533.16,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3707"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,691.18 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3709"
+           inkscape:connector-curvature="0" /><path
+           d="m 309.65,684.22 264.19,0 0,0.6 -264.19,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3711"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,677.26 268.97,0 0,0.6 -268.97,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3713"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,662.98 179.57,0 0,1.32 -179.57,0 0,-1.32 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3715"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,646.18 178.25,0 0,0.6 -178.25,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3717"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,629.02 178.25,0 0,0.6 -178.25,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3719"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,617.98 178.25,0 0,0.6 -178.25,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3721"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,606.94 178.25,0 0,0.6 -178.25,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3723"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,595.9 178.25,0 0,0.6 -178.25,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3725"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.63,584.5 179.57,0 0,1.32 -179.57,0 0,-1.32 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3727"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,561.67 533.16,0 0,0.6 -533.16,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3729"
+           inkscape:connector-curvature="0" /><path
+           d="m 145.1,547.75 17.76,0 0,0.6 -17.76,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3731"
+           inkscape:connector-curvature="0" /><path
+           d="m 145.1,533.83 17.76,0 0,0.6 -17.76,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3733"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,519.91 353.59,0 0,0.6 -353.59,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3735"
+           inkscape:connector-curvature="0" /><path
+           d="m 394.27,511.87 179.57,0 0,0.6 -179.57,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3737"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,456.43 533.16,0 0,0.6 -533.16,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3739"
+           inkscape:connector-curvature="0" /><path
+           d="m 250.97,442.51 19.44,0 0,0.6 -19.44,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3741"
+           inkscape:connector-curvature="0" /><path
+           d="m 40.68,428.59 533.16,0 0,0.6 -533.16,0 0,-0.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path3743"
+           inkscape:connector-curvature="0" /></g></g></g></svg>
+]]></Content>
+                            </SVGImage>
+                        </PictureView>
+						<MemoView BoundHeight="4.8699937" BoundLeft="8.373805" BoundTop="4.8699937"
+                      BoundWidth="43.464043"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="4.6826863"
+                      Left="8.440265"
+                      Name="Memo1"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="4.9636474"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="43.33112">
+               <Memo>(Почтовая администрация)
+(Administration des postes)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="6.743068" BoundLeft="42.400696" BoundTop="9.927295"
+                      BoundWidth="9.437146"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.555761"
+                      Left="42.467155"
+                      Name="Memo2"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.020949"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="9.304229">
+               <Memo>Таможенная ссылка отправителя (если имеется)
+Reference en douane de l'expediteur (si elle existe)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="9.927295"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo3"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.020949"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Фамилия
+Nom</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="9.927295"
+                      BoundWidth="23.792242"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo4"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.020949"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="23.659323">
+               <Memo>[Variable2]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="13.29883"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo5"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="13.392483"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Компания/Фирма
+Societe/Firme</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="13.29883"
+                      BoundWidth="23.792242"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo6"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="13.392483"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="23.659323">
+               <Memo>[Variable6]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="16.670364"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo7"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="16.764017"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Улица
+Rue</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="16.670364"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo8"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="16.764017"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo>[Variable5]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="19.85459"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo9"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="19.948244"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Почтовый индекс
+Code postal</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="19.85459"
+                      BoundWidth="7.8421354"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo10"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="19.948244"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.709218">
+               <Memo>[Variable17]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="23.038818"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo11"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="23.132471"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Страна
+Pays</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="23.038818"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo12"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="23.132471"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo>[from_country]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="26.223043"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo13"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="26.316696"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Фамилия
+Nom</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="26.223043"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo14"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="26.316696"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo>[Variable8]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="29.407269"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo15"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="29.500925"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Компания/Фирма
+Societe/Firme</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="29.407269"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo16"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="29.500925"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="32.5915"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo17"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="32.68515"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Улица
+Rue</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="32.5915"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo18"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="32.68515"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo>[Variable9]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="35.775723"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo19"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="35.869377"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Почтовый индекс
+Code postal</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="35.775723"
+                      BoundWidth="7.8421354"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo20"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="35.969377"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.709218">
+               <Memo>[Variable18]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="38.95995"
+                      BoundWidth="9.835899"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo21"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="39.053604"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="9.702981">
+               <Memo>Страна
+Pays</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="18.34262" BoundTop="38.95995"
+                      BoundWidth="33.3623"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="18.40908"
+                      Name="Memo22"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="39.053604"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="33.229385">
+               <Memo>[Variable15]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="26.317675" BoundTop="19.85459"
+                      BoundWidth="4.5191965"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="26.384132"
+                      Name="Memo23"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="19.948244"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="4.3862796">
+               <Memo>Город
+Ville</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="30.96979" BoundTop="19.85459"
+                      BoundWidth="20.735138"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="31.036245"
+                      Name="Memo24"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="19.948244"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="20.60222">
+               <Memo>[Variable4]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="26.317675" BoundTop="35.775723"
+                      BoundWidth="4.5191965"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="26.384132"
+                      Name="Memo25"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="35.869377"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="4.3862796">
+               <Memo>Город
+Ville</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="30.96979" BoundTop="35.775723"
+                      BoundWidth="20.735138"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="31.036245"
+                      Name="Memo26"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="35.869377"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="20.60222">
+               <Memo>[Variable10]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="6.930376" BoundLeft="5.316702" BoundTop="10.30191"
+                      BoundWidth="2.7912686"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.743068"
+                      Left="5.383161"
+                      Name="Memo27"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.395563"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="2.658351">
+               <Memo>Из
+De</Memo>
+            </MemoView>
+            <MemoView BoundHeight="6.930376" BoundLeft="5.316702" BoundTop="26.41035"
+                      BoundWidth="2.7912686"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.743068"
+                      Left="5.383161"
+                      Name="Memo28"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="26.504004"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="2.658351">
+               <Memo>В
+A</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.120764" BoundLeft="52.10368" BoundTop="11.238447"
+                      BoundWidth="17.810953"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9334564"
+                      Left="52.17014"
+                      Name="Memo29"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="11.332101"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="17.678034">
+               <Memo>№ отправления (штриховой код, если имеется)
+№ de l'envoi (code a barres, s'il existe)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.120764" BoundLeft="70.18047" BoundTop="11.238447"
+                      BoundWidth="15.950106"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="left"
+                      FrameWidth="0.5"
+                      Height="2.9334564"
+                      Left="70.246925"
+                      Name="Memo30"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="11.332101"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="15.817187">
+               <Memo> Может быть вскрыто в служебном порядке
+ Peut etre ouvert d'office</Memo>
+            </MemoView>
+            <MemoView BoundHeight="13.111522" BoundLeft="87.19391" BoundTop="11.238447"
+                      BoundWidth="7.709218"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="12.924215"
+                      Left="87.26037"
+                      Name="Memo31"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="11.332101"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="7.5763">
+               <Memo>Внимание! 
+Инструкции на обратной стороне
+Important!
+Voir instructions au verso</Memo>
+            </MemoView>
+            <MemoView BoundHeight="4.8699937" BoundLeft="51.97076" BoundTop="4.8699937"
+                      BoundWidth="24.323912"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="4.6826863"
+                      Left="52.03722"
+                      Name="Memo32"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="4.9636474"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="24.190994">
+               <Memo>ТАМОЖЕННАЯ ДЕКЛАРАЦИЯ
+DECLARATION EN DOUANE</Memo>
+            </MemoView>
+            <MemoView BoundHeight="4.8699937" BoundLeft="85.33306" BoundTop="5.244609"
+                      BoundWidth="8.905477"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="14"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="4.6826863"
+                      Left="85.39953"
+                      Name="Memo33"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="right"
+                      TextDecoration="none"
+                      Top="5.3382626"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="8.772559">
+               <Memo>CN23</Memo>
+            </MemoView>
+			<BarCodeView CheckSum="true" ShowText="false" BarCodeType="code39" ModuleWidth="0.25" Angle="0" Name="BarCodeView1" Left="52.17014" Top="15.82748" Width="33.893974" Height="12.29575" BoundHeight="16.483055" BoundLeft="52.10368" BoundTop="15.733826"
+                         BoundWidth="30.026894" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+				<Memo>[Variable1]</Memo>
+			</BarCodeView>  
+			<MemoView Left="52.17014" Top="28.3" Width="33.893974" Height="3.0" BoundHeight="3.0" BoundLeft="52.10368" BoundTop="15.733826"
+                      BoundWidth="30.026894"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Name="BarCodeText1"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      VerticalAlign="middle"
+                      Visible="true">
+               <Memo>[Variable45]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="52.10368" BoundTop="32.6915"
+                      BoundWidth="42.400696"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="52.17014"
+                      Name="Memo34"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="32.78515"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="42.26778">
+               <Memo>Реквизиты импортера (если имеются) (ИНН/№НДС/индекс импортера) (факультативно) 
+Reference de l'importateur (si elle existe) (code fiscal/no de TVA/code de l'importateur) (facultatif)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="52.10368" BoundTop="37.46149"
+                      BoundWidth="42.400696"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="52.17014"
+                      Name="Memo35"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="37.555145"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="42.26778">
+               <Memo>№ телефона/факса/e-mail импортера (если известен)   
+№ de telephone/fax/e-mail/ de l'importateur (si connus) </Memo>
+            </MemoView>
+			<MemoView BoundHeight="7.1176834" BoundLeft="8.506723" BoundTop="42.7061"
+                      BoundWidth="25.653088"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.930376"
+                      Left="8.573181"
+                      Name="Memo36"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="42.79975"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="25.52017">
+               <Memo>  Подробное описание вложения (1)
+  Description detaillee du contenu (1)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.1176834" BoundLeft="34.691483" BoundTop="42.7061"
+                      BoundWidth="7.310466"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.930376"
+                      Left="34.757935"
+                      Name="Memo37"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="42.79975"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.1775475">
+               <Memo> Количество (2)
+ Quantite (2)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.1176834" BoundLeft="42.533615" BoundTop="42.7061"
+                      BoundWidth="11.297992"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.930376"
+                      Left="42.600075"
+                      Name="Memo38"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="42.79975"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.165074">
+               <Memo> Вес нетто (в кг) (3)
+ Poids net (en kg) (3)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.1176834" BoundLeft="54.230362" BoundTop="42.7061"
+                      BoundWidth="10.899239"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="6.930376"
+                      Left="54.29682"
+                      Name="Memo39"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="42.79975"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="10.766322">
+               <Memo> Стоимость (5)
+ Valeur (5) </Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.371534" BoundLeft="65.9271" BoundTop="42.518795"
+                      BoundWidth="28.444355"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.184227"
+                      Left="65.99357"
+                      Name="Memo40"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="42.61245"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="28.311438">
+               <Memo>Только для коммерческих отправлений
+Pour les envois commerciaux seulement</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.371534" BoundLeft="65.9271" BoundTop="46.452248"
+                      BoundWidth="14.355095"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.184227"
+                      Left="65.99357"
+                      Name="Memo41"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="46.545906"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="14.2221775">
+               <Memo>Код ТНВЭД (7)
+№ tarifaire du SH (7)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.371534" BoundLeft="80.813866" BoundTop="46.452248"
+                      BoundWidth="13.5575905"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="4"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.184227"
+                      Left="80.88033"
+                      Name="Memo42"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="46.545906"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.424672">
+               <Memo>Страна происхождения товаров(8)
+Pays d'origine des marchandises (8)</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.746149" BoundLeft="42.533615" BoundTop="60.500313"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.5588417"
+                      Left="42.600075"
+                      Name="Memo43"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="60.593964"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo>Общий вес брутто (4)
+ Poids brut total (4)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.746149" BoundLeft="54.363274" BoundTop="60.500313"
+                      BoundWidth="11.032156"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.5588417"
+                      Left="54.429733"
+                      Name="Memo44"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="60.593964"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="10.899239">
+               <Memo> Общая стоимость (6)
+ Valeur totale (6)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.746149" BoundLeft="65.79418" BoundTop="60.500313"
+                      BoundWidth="28.71019"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.5588417"
+                      Left="65.86065"
+                      Name="Memo45"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="60.593964"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="28.57727">
+               <Memo> Почтовые сборы/Расходы (9)
+ Frais de port/Frais (9)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.746149" BoundLeft="65.79418" BoundTop="65.93222"
+                      BoundWidth="28.71019"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.5588417"
+                      Left="65.86065"
+                      Name="Memo46"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="66.02588"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="28.57727">
+               <Memo>Учреждение подачи/Дата подачи
+Bureau d'origine/Date de depot</Memo>
+            </MemoView>
+            <MemoView BoundHeight="5.244609" BoundLeft="65.79418" BoundTop="90.28219"
+                      BoundWidth="28.57727"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="5.0573015"
+                      Left="65.86065"
+                      Name="Memo47"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="90.37585"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="28.444355">
+               <Memo> Дата и подпись отправителя (15)
+ Date et signature de l'expediteur (15)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="11.987678" BoundLeft="65.79418" BoundTop="77.35798"
+                      BoundWidth="28.71019"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="11.800369"
+                      Left="65.86065"
+                      Name="Memo48"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="77.45164"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="28.57727">
+               <Memo>Я подтверждаю, что указанные в настоящей таможенной декларации сведения являются достоверными, и что в этом отправлении не содержится никаких опасных или запрещенных законодательством или почтовой или таможенной регламентацией предметов
+Je certife que les renseignements donnes dans la presente declaration en douane sont exacts et que cet envoi ne contient aucun objet dangereux ou interdit par la legislation ou la reglementation postale ou douaniere</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.5588417" BoundLeft="8.373805" BoundTop="75.48491"
+                      BoundWidth="57.02163"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="3.371534"
+                      Left="8.440265"
+                      Name="Memo49"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="75.57856"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="56.88871">
+               <Memo> Примечания (11): (напр., товар, подлежащий карантину/санитарному, фитосанитарному контролю или попадающий под другие ограничения)
+ Observations (11): (p.ex. marchandise soumise a la quarantaine/a des controles sanitaires, phytosanitaires ou a d'autres restrictions)</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="65.74491"
+                      BoundWidth="16.74761"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo50"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="65.83857"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="16.614693">
+               <Memo>Категория отправления (10)
+Categorie de l'envoi (10)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="28.178518" BoundTop="65.74491"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="28.244978"
+                      Name="Memo51"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="65.83857"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo> Коммерческий образец
+ Echantillon commercial</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="42.400696" BoundTop="65.74491"
+                      BoundWidth="23.127655"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="42.467155"
+                      Name="Memo52"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="65.83857"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="22.994736">
+               <Memo>Пояснение :
+Explication:</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="11.032156" BoundTop="68.92914"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="11.098616"
+                      Name="Memo53"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="69.0228"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo> Подарок
+ Cadeau</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="11.032156" BoundTop="72.11337"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="11.098616"
+                      Name="Memo54"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="72.20702"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo> Документ
+ Document</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="28.178518" BoundTop="68.92914"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="28.244978"
+                      Name="Memo55"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="69.0228"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo> Возврат товара
+ Retour de marchandise</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="28.178518" BoundTop="72.11337"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="28.244978"
+                      Name="Memo56"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="72.20702"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo> Прочее
+ Autre</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.184227" BoundLeft="11.165074" BoundTop="90.09489"
+                      BoundWidth="13.956343"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="11.231533"
+                      Name="Memo57"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="90.18854"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.823424">
+               <Memo>Лицензия (12)
+Licence (12)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="8.373805" BoundTop="93.27911"
+                      BoundWidth="16.74761"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="8.440265"
+                      Name="Memo58"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="93.372765"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="16.614693">
+               <Memo>№ лицензии (-ий)
+№ de la/des licences</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="28.178518" BoundTop="90.09489"
+                      BoundWidth="14.089259"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="28.244978"
+                      Name="Memo59"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="90.18854"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="13.956343">
+               <Memo>Сертификат (13)
+Certificat (13)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="25.38725" BoundTop="93.27911"
+                      BoundWidth="16.88053"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="25.45371"
+                      Name="Memo60"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="93.372765"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="16.74761">
+               <Memo>№ сертификата (-ов)
+№ du/des certificats</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="45.59072" BoundTop="90.09489"
+                      BoundWidth="19.937632"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="45.657177"
+                      Name="Memo61"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="90.18854"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="19.804714">
+               <Memo>Счет (14)
+Facture (14)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.184227" BoundLeft="42.533615" BoundTop="93.27911"
+                      BoundWidth="22.994736"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.9969194"
+                      Left="42.600075"
+                      Name="Memo62"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="93.372765"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="22.861818">
+               <Memo>№ счета
+№ de la facture</Memo>
+            </MemoView>
+			 <MemoView BoundHeight="2.8096118" BoundLeft="8.373805" BoundTop="69.116455"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.6223044"
+                      Left="8.440265"
+                      Name="Memo63"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="69.210106"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[flag_gift]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.8096118" BoundLeft="8.373805" BoundTop="72.30068"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.6223044"
+                      Left="8.440265"
+                      Name="Memo64"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="72.39433"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[flag_document]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.8096118" BoundLeft="25.38725" BoundTop="65.93222"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.6223044"
+                      Left="25.45371"
+                      Name="Memo65"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="66.02588"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[flag_commercial]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.8096118" BoundLeft="25.38725" BoundTop="69.116455"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.6223044"
+                      Left="25.45371"
+                      Name="Memo66"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="69.210106"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[flag_return]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.8096118" BoundLeft="25.38725" BoundTop="72.30068"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.6223044"
+                      Left="25.45371"
+                      Name="Memo67"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="72.39433"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[flag_other]</Memo>
+            </MemoView>
+			<MemoView BoundHeight="2.4349968" BoundLeft="8.373805" BoundTop="50.1984"
+                      BoundWidth="25.918922"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="8.440265"
+                      Name="Memo68"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="50.29205"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="25.786003">
+               <Memo>[Variable13]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="8.373805" BoundTop="52.8207"
+                      BoundWidth="25.918922"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="8.440265"
+                      Name="Memo69"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="52.914356"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="25.786003">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="8.373805" BoundTop="55.44301"
+                      BoundWidth="25.918922"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="8.440265"
+                      Name="Memo70"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="55.536663"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="25.786003">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="8.373805" BoundTop="57.878006"
+                      BoundWidth="25.918922"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="8.440265"
+                      Name="Memo71"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="57.971657"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="25.786003">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="34.558563" BoundTop="50.1984"
+                      BoundWidth="7.709218"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="34.625023"
+                      Name="Memo72"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="50.29205"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.5763">
+               <Memo>1</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="34.558563" BoundTop="52.8207"
+                      BoundWidth="7.709218"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="34.625023"
+                      Name="Memo73"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="52.914356"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.5763">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="34.558563" BoundTop="55.44301"
+                      BoundWidth="7.709218"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="34.625023"
+                      Name="Memo74"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="55.536663"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.5763">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="34.558563" BoundTop="57.878006"
+                      BoundWidth="7.709218"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="34.625023"
+                      Name="Memo75"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="57.971657"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="7.5763">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="42.533615" BoundTop="50.1984"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="42.600075"
+                      Name="Memo76"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="50.29205"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo>[ves]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="42.533615" BoundTop="52.8207"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="42.600075"
+                      Name="Memo77"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="52.914356"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="42.533615" BoundTop="55.44301"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="42.600075"
+                      Name="Memo78"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="55.536663"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="42.533615" BoundTop="57.878006"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="42.600075"
+                      Name="Memo79"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="57.971657"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="54.230362" BoundTop="50.1984"
+                      BoundWidth="11.165074"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="54.29682"
+                      Name="Memo80"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="50.29205"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.032156">
+               <Memo>[cost]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="54.230362" BoundTop="52.8207"
+                      BoundWidth="11.165074"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="54.29682"
+                      Name="Memo81"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="52.914356"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.032156">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="54.230362" BoundTop="55.44301"
+                      BoundWidth="11.165074"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="54.29682"
+                      Name="Memo82"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="55.536663"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.032156">
+               <Memo></Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.4349968" BoundLeft="54.230362" BoundTop="57.878006"
+                      BoundWidth="11.165074"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="2.2476895"
+                      Left="54.29682"
+                      Name="Memo83"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="57.971657"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="11.032156">
+               <Memo></Memo>
+            </MemoView>
+			<MemoView BoundHeight="2.060382" BoundLeft="42.66653" BoundTop="63.684536"
+                      BoundWidth="11.430909"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="1.8730745"
+                      Left="42.73299"
+                      Name="Memo84"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="63.778187"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="11.297992">
+               <Memo>[ves]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.060382" BoundLeft="54.363274" BoundTop="63.684536"
+                      BoundWidth="11.165074"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="5"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="transparent"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="1.0"
+                      Height="1.8730745"
+                      Left="54.429733"
+                      Name="Memo85"
+                      Rotate="false"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="63.778187"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="11.032156">
+               <Memo>[cost]</Memo>
+            </MemoView>
+                    </ChildViews>
+                </BandView>
+            </Views>
+        </Page>
+		<Page Size="9" Width="210.0" Height="148.0" MarginLeft="0.0" MarginTop="0.0" MarginRight="0.0" MarginBottom="0.0" Orientation="landscape" UseMargins="true">
+            <Views>
+                <BandView Type="master-data" Dataset="PostDataSet" Name="BandView1" Left="0.0" Top="0.0" Width="100.0" Height="100.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>
+						<MemoView FontName="Arial" FontColor="#333399" FontSize="10" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView1" Left="6" Top="4.5" Width="88" Height="3" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Указания</Memo>
+						</MemoView> 
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="false" Name="MemoView1" Left="6" Top="9" Width="88" Height="87" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>Таможенная декларация и прилагаемые к ней документы прочно прикрепляются к отправлению снаружи или, что предпочтительнее, вкладываются в прозрачный самоклеящийся конверт. Если эта декларация не четко видна снаружи или если Вы предпочитаете ее вложить в отправление, Вы должны приклеить на внешней стороне ярлык с указанием о наличии таможенной декларации.
+
+Для ускорения таможенной обработки таможенная декларация составляется на французском, английском или каком-либо другом языке, принятом в стране назначения.
+
+Для таможенного досмотра Вашего отправления таможня страны назначения должна точно знать его вложение. Поэтому Вы должны заполнить декларацию полно и четко. В противном случае это может привести к задержкам в пересылке отправления, а также к другим неудобствам для получателя. Любая ложная или неясная декларация может привести к штрафу или конфискации отправления.
+						
+Ваши товары могут подпадать под ограничения. Поэтому Вам следует осведомиться о возможностях ввоза и вывоза (запрещения, ограничения, такие как карантин, ограничения, касающиеся фармацевтических продуктов, и т.д.) и справиться о документах (товарный счет, сертификат о происхождении, санитарный сертификат, лицензия, разрешение на товар, подлежащий карантину (продукты животного, растительного происхождения, пищевые продукты и т.д.)), которые могут потребоваться в стране назначения. Под коммерческим отправлением подразумевается любой экспортируемый или импортируемый в рамках какой-либо сделки товар независимо от того, продается ли он за какую-нибудь сумму или обменивается без обеспечения денежной массы.
+	
+(1) Должно быть представлено подробное описание каждого предмета, содержащегося в отправлении (например, «мужские рубашки из хлопка»). Не допускаются указания общего характера, такие как «запасные детали», «образцы», «пищевые продукты» и т.д.
+	
+(2) Укажите количество каждого предмета и уточните используемую единицу измерения.
+			
+(3) и (4) Укажите чистый вес каждого предмета (в кг) и общий вес отправления с упаковкой (в кг) при его взвешивании на почте в момент подачи.
+
+(5) и (6) Укажите стоимость каждого предмета и общую стоимость, уточнив валюту (например, шв. фр. для швейцарских франков).
+
+(7) и (8) Код ТНВЭД (индекс из шести цифр) определяется по гармонизированной системе описания и кодирования товаров, разработанной Международной таможенной организацией. Термин «страна происхождения» обозначает страну происхождения товаров (например, страна, где они были произведены, изготовлены или укомплектованы). Отправителям коммерческих отправлений рекомендуется указывать эти данные, так как это может оказать содействие при обработке этих отправлений таможней.
+										
+(9) Укажите сумму тарифа, оплаченного за отправление на почте. Отдельно укажите любые другие сборы (например, страховой сбор).
+
+(10) Зачеркните клеточку или клеточки, указав категорию отправления.
+
+(11) Просим уточнить, если вложение (продукты животного, растительного происхождения, пищевые продукты и т.д.) подлежит карантину или подпадает под другие ограничения.
+
+(12), (13) и (14) Если Ваше отправление сопровождается лицензией или сертификатом, зачеркните соответствующую клеточку и укажите номер. Вы должны прикладывать счет ко всем коммерческим отправлениям.
+						
+(15) Ваша подпись и дата являются подтверждением Вашей ответственности за отправление.</Memo>
+                        </MemoView> 
+					</ChildViews>
+                </BandView>
+            </Views>
+        </Page>	
+    </Pages>
+	<Variables>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIRM_PRED"/>		
+		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="io_gift" />
+		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+        <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>        
+		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="io_document" />
+        <Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+        <Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="POST_DESCRIPTION"/>			
+		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_FROM"/>
+        <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_TO"/>  
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="io_commercial" />
+        <Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+        <Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="index_to"/>        
+		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="io_return" />
+		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>		
+		<Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="io_other" />
+		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
+		<Variable Name="Variable28" Type="db-field" Dataset="PostDataSet" Content="VALUE_" />   
+		<Variable Name="Variable29" Type="db-field" Dataset="PostDataSet" Content="MASS" />
+		<Variable Name="Variable30" Type="db-field" Dataset="PostDataSet" Content="AREA1" />
+		<Variable Name="Variable41" Type="expression" Content="f:copy([Variable1], 1, 6)" />
+		<Variable Name="Variable42" Type="expression" Content="f:copy([Variable1], 7, 2)" />
+		<Variable Name="Variable43" Type="expression" Content="f:copy([Variable1], 9, 5)" />
+		<Variable Name="Variable44" Type="expression" Content="f:copy([Variable1], 14, 1)" />
+		<Variable Name="Variable45" Type="expression" Content="[Variable41].concat(' ').concat([Variable42]).concat(' ').concat([Variable43]).concat(' ').concat([Variable44])"  />		
+		<Variable Name="ves" Type="expression" Content="f:str([Variable29], 3)"/>
+		<Variable Name="cost" Type="expression" Content="'$'.concat(f:str([Variable27], 2))"/>
+		<Variable Name="from_country" Type="expression" Content="f:choose([Variable14] = '', 'Russian Federation', [Variable14])"/>
+		<Variable Name="flag_gift" Type="expression" Content="f:choose([Variable3] = 'true', 'x', '')" />
+		<Variable Name="flag_document" Type="expression" Content="f:choose([Variable7] = 'true', 'x', '')" />
+		<Variable Name="flag_commercial" Type="expression" Content="f:choose([Variable16] = 'true', 'x', '')" />
+		<Variable Name="flag_return" Type="expression" Content="f:choose([Variable19] = 'true', 'x', '')" />
+		<Variable Name="flag_other" Type="expression" Content="f:choose([Variable21] = 'true', 'x', '')" />
+	</Variables>
+	<Datasets>
+        <Dataset Name="PostDataSet">
+            <Rows>
+                <Row>
+					<Column Name="Variable1"/>
+					<Column Name="Variable2"/>
+					<Column Name="Variable3"/>
+					<Column Name="Variable4"/>
+                    <Column Name="Variable5"/>
+                    <Column Name="Variable6"/>
+					<Column Name="Variable7"/>
+                    <Column Name="Variable8"/>
+                    <Column Name="Variable9"/>
+                    <Column Name="Variable10"/>
+                    <Column Name="Variable11"/>
+                    <Column Name="Variable12"/>
+					<Column Name="Variable13"/>
+					<Column Name="Variable14"/>
+					<Column Name="Variable15"/>
+					<Column Name="Variable16"/>
+                    <Column Name="Variable17"/>
+                    <Column Name="Variable18"/>
+                    <Column Name="Variable19"/>
+					<Column Name="Variable20"/>
+					<Column Name="Variable21"/>
+					<Column Name="Variable27"/>
+					<Column Name="Variable28"/>
+					<Column Name="Variable29"/>
+					<Column Name="Variable30"/>
+					<Column Name="Variable41"/>
+					<Column Name="Variable42"/>
+					<Column Name="Variable43"/>
+					<Column Name="Variable44"/>
+					<Column Name="Variable45"/>
+				 </Row>
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

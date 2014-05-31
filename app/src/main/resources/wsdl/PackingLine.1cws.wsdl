@@ -136,6 +136,7 @@
 					<xs:enumeration value="IML"/>
 					<xs:enumeration value="APLIX"/>
 					<xs:enumeration value="DPD"/>
+					<xs:enumeration value="FORPARCEL"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="Registry">

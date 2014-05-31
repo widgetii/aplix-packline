@@ -126,6 +126,16 @@
 				<PostType>CDEK</PostType>
 			</PostTypeRestriction>
 		</Form>
+		<Form name="CN23" file="cn23" printerId="printer1" whenPrint="MANUALLY" weight="0.015">
+			<PostTypeRestriction>
+				<PostType>FORPARCEL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="CP71" file="cp71" printerId="printer1" whenPrint="MANUALLY" weight="0.015">
+			<PostTypeRestriction>
+				<PostType>FORPARCEL</PostType>
+			</PostTypeRestriction>
+		</Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->
