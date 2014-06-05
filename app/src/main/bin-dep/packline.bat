@@ -33,7 +33,7 @@ set LIBDIR=%RESOLVED_APP_HOME%\lib
 set APP_CONFIG=%RESOLVED_APP_HOME%\conf\packline.xconf
 set RXTX_LIBS=%RESOLVED_APP_HOME%\lib\rxtx\%ARCH%
 
-for %%l in ("%JARFILE%\*.jar" "%LIBDIR%\*.jar") do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
+for %%l in ("%LIBDIR%\*.jar" "%JARFILE%\*.jar") do set LOCALCLASSPATH=%%l;!LOCALCLASSPATH!
 
 set JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger -Dprism.verbose=true "-Djava.library.path=%RXTX_LIBS%" -Xms1024m -Xmx1024m
 
@@ -50,6 +50,8 @@ set CMD_LINE_ARGS=%CMD_LINE_ARGS% %1
 shift
 goto setupArgs
 :doneStart
+
+@rem set CMD_LINE_ARGS=%CMD_LINE_ARGS% "--debug=true"
 
 @rem --------------------------------------------
 @rem  run program

@@ -55,6 +55,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	private Button reprintButton4;
 
 	private BarcodeScanner<?> barcodeScanner = null;
+	private boolean weightingEnabled;
 
 	private Task<?> task;
 
@@ -67,9 +68,10 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		problemContainer.setVisible(false);
 
 		Object scales = context.getAttribute(Const.SCALES);
-		weightingButton.setVisible(scales != null);
+		weightingEnabled = (scales != null);
+		weightingButton.setVisible(weightingEnabled);
 
-		assignButtons(scales != null);
+		assignButtons();
 
 		reprintContainer.setDisable(true);
 		weightingButton.setDisable(true);
@@ -84,7 +86,7 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		executor.submit(task);
 	}
 
-	private void assignButtons(boolean weightingEnabled) {
+	private void assignButtons() {
 		try {
 			Post post = (Post) getContext().getAttribute(Const.POST);
 
@@ -93,10 +95,6 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			int buttonIndex = 0;
 			for (PrintForm form : forms) {
-				if (weightingEnabled && WhenPrint.BEFORE_WEIGHTING.equals(form.getWhenPrint())) {
-					continue;
-				}
-
 				boolean postTypeRestriction = (form.getPostTypes().size() == 0 || form.getPostTypes().contains(post.getPostType()));
 				boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
 
@@ -338,7 +336,9 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 		private boolean printLikeButton(Button button) throws Exception {
 			PrintForm printForm = (PrintForm) button.getUserData();
-			if (printForm != null && (!WhenPrint.MANUALLY.equals(printForm.getWhenPrint()) || skipAutoPrint)) {
+			if (printForm != null
+					&& (WhenPrint.AFTER_WEIGHTING.equals(printForm.getWhenPrint()) || skipAutoPrint || (!weightingEnabled && WhenPrint.BEFORE_WEIGHTING
+							.equals(printForm.getWhenPrint())))) {
 				getAction().printForms(container.getId(), post.getId(), printForm);
 				return true;
 			}

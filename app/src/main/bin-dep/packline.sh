@@ -1,6 +1,8 @@
 #!/bin/bash
 # BASHMODE="readlink"
 
+# set -x #echo on
+
 #--------------------------------------------
 #  set parameters
 #--------------------------------------------
@@ -43,7 +45,7 @@ RXTX_LIBS=$RESOLVED_APP_HOME/lib/rxtx/$ARCH
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
-LOCALCLASSPATH=$JARFILE
+LOCALCLASSPATH=""
 for i in $LIBDIR
 do
     # if the directory is empty, then it will return the input string this is stupid, so case for it
@@ -54,7 +56,8 @@ do
         LOCALCLASSPATH=$i:$LOCALCLASSPATH
       fi
     fi
-done 
+done
+LOCALCLASSPATH=$JARFILE:$LOCALCLASSPATH
 
 IFS=$SAVEIFS
 
@@ -70,6 +73,8 @@ CMD_LINE_ARGS=
 for ARG in "$@" ; do
   CMD_LINE_ARGS="$CMD_LINE_ARGS \"$ARG\""
 done 
+
+# CMD_LINE_ARGS="$CMD_LINE_ARGS \"--debug=true\""
 
 #--------------------------------------------
 #  run program

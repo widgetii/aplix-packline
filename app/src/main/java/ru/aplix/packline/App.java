@@ -22,6 +22,8 @@ import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -81,6 +83,11 @@ public class App extends Application implements IdleListener {
 	@Override
 	public void init() throws FileNotFoundException, MalformedURLException, JAXBException {
 		instance = this;
+
+		if ("true".equalsIgnoreCase(getParameters().getNamed().get("debug"))) {
+			Logger.getRootLogger().setLevel(Level.DEBUG);
+			Logger.getRootLogger().info("Debug mode enabled.");
+		}
 
 		applicationContext = new ClassPathXmlApplicationContext("/resources/spring/spring-context.xml");
 
