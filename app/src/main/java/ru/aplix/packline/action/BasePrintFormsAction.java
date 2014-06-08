@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -103,8 +104,12 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				fopConfigFileName = jarFolder + Const.FOP_CONF_FILE;
 			}
 
-			String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
-			printForm(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
+			if (printForm.getFile() == null) {
+				downloadAndPrintForm(containerId, printForm.getPrinter());
+			} else {
+				String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
+				printFormFromFile(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
+			}
 		} catch (PackLineException ple) {
 			throw ple;
 		} catch (Throwable e) {
@@ -113,7 +118,8 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		}
 	}
 
-	private void printForm(String containerId, String postId, final String reportFileName, Printer printer, String formName, Integer copies) throws Exception {
+	private void printFormFromFile(String containerId, String postId, final String reportFileName, Printer printer, String formName, Integer copies)
+			throws Exception {
 		// Get config file
 		if (configuration == null) {
 			r2afopConfigFile = new File(fr2afopConfigFileName);
@@ -417,5 +423,32 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				container.setTrackingId(variable.getValue());
 			}
 		}
+	}
+
+	private void downloadAndPrintForm(String containerId, Printer printer) throws Exception {
+		// Download label from server
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+		byte[] labelData = postServicePort.getLabel(containerId);
+		if (labelData == null || labelData.length == 0) {
+			throw new PackLineException(getResources().getString("error.post.label.empty"));
+		}
+
+		// Save it in temp file
+		File tempFile = File.createTempFile(containerId, ".pdf");
+		LOG.debug(String.format("Saving label temporary to '%s'...", tempFile.getAbsolutePath()));
+		tempFile.deleteOnExit();
+		OutputStream os = new FileOutputStream(tempFile);
+		try {
+			os.write(labelData);
+			os.flush();
+		} finally {
+			os.close();
+		}
+
+		// Invoke pdf printer
+		String command = String.format("\"%s%s%s\" -p \"%s\" \"%s\"", jarFolder, File.separatorChar, Const.PDF_PRINTER_FILE, printer.getName(),
+				tempFile.getAbsolutePath());
+		LOG.debug("Executing command: " + command);
+		Runtime.getRuntime().exec(command);
 	}
 }

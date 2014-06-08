@@ -61,4 +61,5 @@ public final class Const {
 	public static final String FR2AFOP_CONF_FILE = "/conf/fr2afop.xconf";
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";
 	public static final String REPORT_FILE_TEMPLATE = "/reports/%s.xml";
+	public static final String PDF_PRINTER_FILE = "/bin/pdfprinter.exe";
 }

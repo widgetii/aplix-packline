@@ -96,7 +96,6 @@
 			<PostTypeRestriction>
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
-				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
@@ -134,6 +133,11 @@
 		<Form name="CP71" file="cp71" printerId="printer1" whenPrint="MANUALLY" weight="0.015">
 			<PostTypeRestriction>
 				<PostType>FORPARCEL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="DPD" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
 	</Printing>

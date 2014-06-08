@@ -76,6 +76,10 @@
 				<targetPath>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/wsdl</targetPath>
 				<filtering>false</filtering>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
 		</resources>
 		<testResources>
 			<testResource>

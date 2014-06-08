@@ -1,5 +1,6 @@
 package ru.aplix.packline.post;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -17,6 +18,7 @@ import javax.xml.ws.handler.MessageContext;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
 
 @WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine")
@@ -682,7 +684,7 @@ public class MockService implements PackingLinePortType {
 		result.msg = null;
 		return result;
 	}
-	
+
 	@Override
 	public boolean startFillingWarrantyCard(String incomingId, String shipmentId) {
 		return true;
@@ -691,6 +693,20 @@ public class MockService implements PackingLinePortType {
 	@Override
 	public boolean stopFillingWarrantyCard(String incomingId, String shipmentId, boolean filled) {
 		return true;
+	}
+
+	@Override
+	public Post findTrackNumber(String trackId) {
+		return null;
+	}
+
+	@Override
+	public byte[] getLabel(String containerId) {
+		try {
+			return IOUtils.toByteArray(getClass().getResourceAsStream("/getLabelResponse.bin"));
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 	@Resource

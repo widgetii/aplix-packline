@@ -602,6 +602,34 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="FindTrackNumber">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="trackId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindTrackNumberResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Post" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetLabel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetLabelResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:base64Binary" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AddBoxContainersRequestMessage">
@@ -778,6 +806,18 @@
 	<message name="StopFillingWarrantyCardResponseMessage">
 		<part name="parameters" element="tns:StopFillingWarrantyCardResponse"/>
 	</message>
+	<message name="FindTrackNumberRequestMessage">
+		<part name="parameters" element="tns:FindTrackNumber"/>
+	</message>
+	<message name="FindTrackNumberResponseMessage">
+		<part name="parameters" element="tns:FindTrackNumberResponse"/>
+	</message>
+	<message name="GetLabelRequestMessage">
+		<part name="parameters" element="tns:GetLabel"/>
+	</message>
+	<message name="GetLabelResponseMessage">
+		<part name="parameters" element="tns:GetLabelResponse"/>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
@@ -894,6 +934,14 @@
 		<operation name="StopFillingWarrantyCard">
 			<input message="tns:StopFillingWarrantyCardRequestMessage"/>
 			<output message="tns:StopFillingWarrantyCardResponseMessage"/>
+		</operation>
+		<operation name="FindTrackNumber">
+			<input message="tns:FindTrackNumberRequestMessage"/>
+			<output message="tns:FindTrackNumberResponseMessage"/>
+		</operation>
+		<operation name="GetLabel">
+			<input message="tns:GetLabelRequestMessage"/>
+			<output message="tns:GetLabelResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1159,6 +1207,24 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="FindTrackNumber">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetLabel">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1416,6 +1482,24 @@
 		</operation>
 		<operation name="StopFillingWarrantyCard">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StopFillingWarrantyCard"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindTrackNumber">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetLabel">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

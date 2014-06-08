@@ -61,6 +61,18 @@
 			<date>2013-10-07T23:06:18.039+03:00</date>
 			<totalIncomings>2</totalIncomings>
 		</order>
+		<order>
+			<id>4444455555</id>
+			<clientName>Вячеслав Иванович</clientName>
+			<deliveryMethod>Почтовая посылка Почта России (138.1 руб., 4 дня)</deliveryMethod>
+			<deliveryAddress>678333, Саратовская область, Саратов г., ул. Комсомольская, д. 100</deliveryAddress>
+			<customer>
+				<id>22222222</id>
+				<name>УП "БОНЖУР"</name>
+			</customer>
+			<date>2013-12-17T13:16:12.039+03:00</date>
+			<totalIncomings>2</totalIncomings>
+		</order>
 	</orders>
 	<incomings>
 		<incoming>
@@ -126,6 +138,14 @@
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>008009</id>
+			<orderId>4444455555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Пылесос Samsung VC1600</contentDescription>
 		</incoming>
 	</incomings>
 	<posts>
@@ -220,6 +240,19 @@
 			<orderId>12349876</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
 		</post>
+		<post>
+			<id>010934</id>
+			<enclosure>
+				<postId>008009</postId>
+				<cost>22200.0</cost>
+				<contentDescription>Пылесос Samsung VC1600</contentDescription>
+				<quantity>1</quantity>
+			</enclosure>
+			<postType>DPD</postType>
+			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
+			<orderId>4444455555</orderId>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+		</post>
 	</posts>
 	<containers>
 		<container>
@@ -291,6 +324,21 @@
 			</packingSize>
 			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<boxTypeId>180002</boxTypeId>
+			<trackingId>1234567890123</trackingId>
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<shipped>false</shipped>
+		</container>
+		<container>
+			<id>70001797</id>
+			<packingSize>
+				<length>100.0</length>
+				<height>20.0</height>
+				<width>90.0</width>
+			</packingSize>
+			<postId>010934</postId>
+			<boxTypeId>180001</boxTypeId>
 			<trackingId>1234567890123</trackingId>
 			<packingType>BOX</packingType>
 			<totalWeight>0.0</totalWeight>
