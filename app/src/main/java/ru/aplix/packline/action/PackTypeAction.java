@@ -83,6 +83,9 @@ public class PackTypeAction extends NotificationAction<PhotoController> {
 		if (!PackingType.BOX.equals(emptyBox.getPackingType())) {
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
 		}
+		if (Utils.isPackingSizeEmpty(emptyBox.getPackingSize())) {
+			throw new PackLineException(String.format(getResources().getString("error.post.box.invalid.size"), code));
+		}
 		if (emptyBox.getPostId() != null && emptyBox.getPostId().length() > 0) {
 			throw new PackLineException(getResources().getString("error.post.container.incorrect.post"));
 		}
@@ -97,7 +100,7 @@ public class PackTypeAction extends NotificationAction<PhotoController> {
 
 		container.setId(code);
 		container.setPostId(post.getId());
-		container.setPackingType(PackingType.BOX);
+		container.setPackingType(emptyBox.getPackingType());
 		container.setPackingSize(emptyBox.getPackingSize());
 		container.setBoxTypeId(emptyBox.getBoxTypeId());
 		container.setDate(Utils.now());
@@ -105,7 +108,7 @@ public class PackTypeAction extends NotificationAction<PhotoController> {
 		if (!postServicePort.addContainer(container)) {
 			throw new PackLineException(getResources().getString("error.post.container.add"));
 		}
-		
+
 		notifyAboutIncomingParcel(container.getId());
 
 		setNextAction(getCloseAction());

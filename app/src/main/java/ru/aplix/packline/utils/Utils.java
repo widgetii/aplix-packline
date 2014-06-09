@@ -31,6 +31,7 @@ import org.apache.commons.logging.LogFactory;
 import org.xml.sax.InputSource;
 
 import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.post.PackingSize;
 
 /**
  * Utilities.
@@ -213,5 +214,19 @@ public final class Utils {
 		} catch (Exception e) {
 			LOG.error(null, e);
 		}
+	}
+
+	public static boolean isPackingSizeEmpty(PackingSize ps) {
+		if (ps != null) {
+			return !(isValid(ps.getHeight()) && isValid(ps.getWidth()) && isValid(ps.getLength()));
+		} else {
+			return true;
+		}
+	}
+
+	private final static double EPSILON = 1E-5;
+
+	private static boolean isValid(float a) {
+		return !Float.isInfinite(a) && !Float.isNaN(a) && a > EPSILON;
 	}
 }

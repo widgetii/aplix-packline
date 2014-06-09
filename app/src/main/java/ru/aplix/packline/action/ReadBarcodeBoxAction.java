@@ -8,6 +8,7 @@ import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.TagType;
+import ru.aplix.packline.utils.Utils;
 
 public class ReadBarcodeBoxAction extends NotificationAction<ReadBarcodeBoxController> {
 
@@ -29,6 +30,9 @@ public class ReadBarcodeBoxAction extends NotificationAction<ReadBarcodeBoxContr
 		}
 		if (!PackingType.BOX.equals(emptyBox.getPackingType())) {
 			throw new PackLineException(getResources().getString("error.post.not.box.container"));
+		}
+		if (Utils.isPackingSizeEmpty(emptyBox.getPackingSize())) {
+			throw new PackLineException(String.format(getResources().getString("error.post.box.invalid.size"), code));
 		}
 		if (emptyBox.getPostId() != null && emptyBox.getPostId().length() > 0) {
 			throw new PackLineException(getResources().getString("error.post.container.incorrect.post"));

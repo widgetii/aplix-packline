@@ -345,6 +345,21 @@
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<shipped>false</shipped>
 		</container>
+		<container>
+			<id>70001798</id>
+			<packingSize>
+                <length>0.0</length>
+                <height>0.0</height>
+                <width>0.0</width>
+            </packingSize>
+			<postId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<boxTypeId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<trackingId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<packingType>BOX</packingType>
+			<totalWeight>0.0</totalWeight>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<shipped>false</shipped>
+		</container>
 	</containers>
 	<boxTypes>
 		<boxType>
