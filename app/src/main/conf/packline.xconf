@@ -140,6 +140,16 @@
 				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
+		<Form name="QIWI" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>QIWIPOST</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="PickPoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>PICKPOINT</PostType>
+			</PostTypeRestriction>
+		</Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->
@@ -176,7 +186,6 @@
 		<Restriction postType="EMS" maxWeight="31.5"/>
 		<Restriction postType="CDEK" maxWeight="30"/>
 		<Restriction postType="IML" maxWeight="20"/>
-		<Restriction postType="DPD" maxWeight="80"/>
 	</Weighting>
 	
 	<!-- Application Roles -->

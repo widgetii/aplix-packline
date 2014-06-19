@@ -132,7 +132,6 @@ public class RaspberryCamera implements PhotoCamera<RaspberryCameraConfiguration
 
 	public void setConnectOnDemand(boolean value) {
 		this.connectOnDemand = value;
-
 	}
 
 	public boolean getConnectOnDemand() {

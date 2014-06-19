@@ -1,0 +1,7 @@
+1) Generate a Java keystore and key pair:
+
+keytool -genkey -alias Aplix -keyalg RSA -keystore aplix.keystore -keysize 1024 -validity 36500 -storepass qwerty -keypass qwerty -dname "O=Aplix, L=Moscow, C=RU"
+
+2) Generate a certificate signing request (CSR) for an existing Java keystore
+
+keytool -export -alias Aplix -keystore aplix.keystore -storepass qwerty -file aplix.cer

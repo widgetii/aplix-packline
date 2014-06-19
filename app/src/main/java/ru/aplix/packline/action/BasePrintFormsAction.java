@@ -105,7 +105,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 			}
 
 			if (printForm.getFile() == null) {
-				downloadAndPrintForm(containerId, printForm.getPrinter());
+				downloadAndPrintForm(containerId, printForm.getName(), printForm.getPrinter());
 			} else {
 				String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
 				printFormFromFile(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
@@ -425,12 +425,12 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		}
 	}
 
-	private void downloadAndPrintForm(String containerId, Printer printer) throws Exception {
+	private void downloadAndPrintForm(String containerId, String formName, Printer printer) throws Exception {
 		// Download label from server
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 		byte[] labelData = postServicePort.getLabel(containerId);
 		if (labelData == null || labelData.length == 0) {
-			throw new PackLineException(getResources().getString("error.post.label.empty"));
+			throw new PackLineException(String.format(getResources().getString("error.post.label.empty"), formName, containerId));
 		}
 
 		// Save it in temp file

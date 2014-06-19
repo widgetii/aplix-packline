@@ -64,7 +64,7 @@
 		<Variable Name="Variable24" Type="expression" Content="f:copy([Variable8], 14, 1)" />
 		<Variable Name="Variable25" Type="expression" Content="[Variable21].concat(' ').concat([Variable22]).concat(' ').concat([Variable23]).concat(' ').concat([Variable24])"  />		
 		<Variable Name="Variable26" Type="expression" Content="f:choose(([Variable6] = 'Санкт-Петербург г' or [Variable6] = 'Москва г') and ([Variable4] = ''), [Variable6], [Variable4])" />
-		<Variable Name="Variable27" Type="expression" Content="f:choose([Variable13] = 'PACKAGE' or [Variable13] = 'DPD', [Variable8], '')" />
+		<Variable Name="Variable27" Type="expression" Content="f:choose([Variable13] = 'PACKAGE', [Variable8], '')" />
 		<Variable Name="Variable28" Type="expression" Content="f:choose([Variable13] = 'IML', [Variable8], '')" />
 		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable15], 9, 2)" />
 		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable15], 6, 2)" />

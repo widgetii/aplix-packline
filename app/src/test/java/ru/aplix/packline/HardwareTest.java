@@ -9,6 +9,8 @@ import ru.aplix.packline.hardware.camera.PhotoCamera;
 import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.hardware.scales.ScalesFactory;
+import ru.aplix.packline.hardware.scanner.ImageScanner;
+import ru.aplix.packline.hardware.scanner.ImageScannerFactory;
 
 public class HardwareTest extends TestCase {
 
@@ -26,6 +28,14 @@ public class HardwareTest extends TestCase {
 
 		pc = PhotoCameraFactory.createInstance(pc.getName());
 		assertNotNull(pc);
+	}
+
+	public void testImageScannerFactoty() throws ClassNotFoundException {
+		ImageScanner<?> is = ImageScannerFactory.createAnyInstance();
+		assertNotNull(is);
+
+		is = ImageScannerFactory.createInstance(is.getName());
+		assertNotNull(is);
 	}
 
 	public void testDVRCameraFactoty() throws ClassNotFoundException {
