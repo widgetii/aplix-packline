@@ -11,6 +11,7 @@ public class UnderweightAction extends CommonAction<UnderweightController> {
 
 	private WorkflowAction weightingAction;
 	private WorkflowAction normalAction;
+	private WorkflowAction backAction;
 
 	public WorkflowAction getWeightingAction() {
 		return weightingAction;
@@ -28,6 +29,14 @@ public class UnderweightAction extends CommonAction<UnderweightController> {
 		this.normalAction = normalAction;
 	}
 
+	public WorkflowAction getBackAction() {
+		return backAction;
+	}
+
+	public void setBackAction(WorkflowAction backAction) {
+		this.backAction = backAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "underweight";
@@ -41,6 +50,6 @@ public class UnderweightAction extends CommonAction<UnderweightController> {
 			throw new PackLineException(getResources().getString("error.post.mark.problem"));
 		}
 
-		setNextAction(getNormalAction());
+		setNextAction(getBackAction());
 	}
 }

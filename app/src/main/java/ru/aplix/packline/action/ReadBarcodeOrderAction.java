@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.StringUtils;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
@@ -285,7 +286,13 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 				throw new PackLineException(getResources().getString("error.post.container.check.address"));
 			}
 		}
-		getContext().setAttribute(Const.WARNING_MESSAGE, checkResult.getMsg());
+		if (!StringUtils.isEmpty(checkResult.getMsg())) {
+			getContext().setAttribute(Const.WARNING_MESSAGE, checkResult.getMsg());
+			getContext().setAttribute(Const.WARNING_CODE, "ReceiverAddress");
+		} else {
+			getContext().setAttribute(Const.WARNING_MESSAGE, null);
+			getContext().setAttribute(Const.WARNING_CODE, null);
+		}
 	}
 
 	private void checkRouteList(RouteList routeList) throws PackLineException {

@@ -28,6 +28,8 @@ public class UnderweightController extends StandardController<UnderweightAction>
 	@FXML
 	private Button nextButton;
 	@FXML
+	private Button cancelButton;
+	@FXML
 	private Button weightingButton;
 
 	private Task<?> task;
@@ -37,6 +39,7 @@ public class UnderweightController extends StandardController<UnderweightAction>
 		super.prepare(context);
 
 		nextButton.setDisable(false);
+		cancelButton.setDisable(false);
 		weightingButton.setDisable(false);
 
 		try {
@@ -67,6 +70,11 @@ public class UnderweightController extends StandardController<UnderweightAction>
 	}
 
 	public void nextClick(ActionEvent event) {
+		getAction().setNextAction(getAction().getNormalAction());
+		done();
+	}
+	
+	public void backClick(ActionEvent event) {
 		doAction();
 	}
 
@@ -94,6 +102,7 @@ public class UnderweightController extends StandardController<UnderweightAction>
 
 				progressVisibleProperty.set(true);
 				nextButton.setDisable(true);
+				cancelButton.setDisable(true);
 				weightingButton.setDisable(true);
 			}
 
@@ -103,6 +112,7 @@ public class UnderweightController extends StandardController<UnderweightAction>
 
 				progressVisibleProperty.set(false);
 				nextButton.setDisable(false);
+				cancelButton.setDisable(false);
 				weightingButton.setDisable(false);
 
 				String errorStr;
@@ -122,6 +132,7 @@ public class UnderweightController extends StandardController<UnderweightAction>
 
 				progressVisibleProperty.set(false);
 				nextButton.setDisable(false);
+				cancelButton.setDisable(false);
 				weightingButton.setDisable(false);
 
 				errorMessageProperty.set(null);

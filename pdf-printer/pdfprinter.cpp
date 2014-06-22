@@ -11,6 +11,7 @@ LPCTSTR DDE_CMD_PRINT = TEXT("[FilePrintSilent(\"%s\")]");
 LPCTSTR DDE_CMD_EXIT= TEXT("[AppExit()]");
 LPCTSTR ACRO_DDESERVER = TEXT("acroview");
 LPCTSTR ACRO_DDETOPIC = TEXT("control");
+LPCTSTR ACRO_DRIVER_NAME_REG_EXP = TEXT("Adobe\\s+PDF");
 
 const DWORD CONNECT_TIMEOUT_SHORT = 1000;
 const DWORD CONNECT_TIMEOUT_LONG = 5000;
@@ -24,6 +25,7 @@ HDDEDATA CALLBACK DDE_ProcessMessage (UINT uType, UINT uFmt, HCONV hconv, HSZ hs
 DWORD runAcrobatServer();
 HCONV connectToDDEServer(DWORD id, bool startServer, DWORD timeout);
 BOOL getPrinterName(LPTSTR *printerName);
+BOOL canCloseAcrobat(LPTSTR printerName);
 void waitForPrintJobComplete(HANDLE hChange, PRINTER_NOTIFY_OPTIONS pnOptions, LPCTSTR documentName);
 
 /*
@@ -70,6 +72,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		LPTSTR defaultPrinterName = NULL;
 		getPrinterName(&defaultPrinterName);
 		BOOL printerChanged = FALSE;
+		LPTSTR prinerName = defaultPrinterName;
 
 		// Set default printer
 		for (int i = 1; i < argc; i++) {
@@ -81,6 +84,10 @@ int _tmain(int argc, _TCHAR* argv[])
 					if (_tcscmp(defaultPrinterName, argv[i]) != 0) 
 					{
 						printerChanged = SetDefaultPrinter(argv[i]);
+						if (printerChanged) 
+						{
+							prinerName = argv[i];
+						}
 					}
 				}
 			}		
@@ -160,6 +167,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		// CLose printer descriptor
 		//ClosePrinter(hPrinter);
 
+		// Stop running Acrobat
+		if (canCloseAcrobat(prinerName))
+		{
+			_tcscpy_s(ddeCmdBuf, DDE_CMD_EXIT);
+			HDDEDATA transaction = DdeClientTransaction((LPBYTE)ddeCmdBuf, (DWORD)_tcslen(ddeCmdBuf), hConversation,
+								0L, CF_TEXT, XTYP_EXECUTE, INFINITE-1, NULL);
+		}
+
 		// Close DDE connection
 		DdeDisconnect(hConversation);
 
@@ -167,6 +182,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (printerChanged == TRUE) 
 		{
 			SetDefaultPrinter(defaultPrinterName);
+		}
+
+		// Free allocated memory
+		if (defaultPrinterName != NULL)
+		{
+			free(defaultPrinterName);
 		}
 	}
 	__finally {
@@ -262,6 +283,37 @@ BOOL getPrinterName(LPTSTR *printerName)
 	}
 
 	return FALSE;
+}
+
+BOOL canCloseAcrobat(LPTSTR printerName)
+{
+	BOOL result = TRUE;
+	HANDLE hPrinter;
+	if (OpenPrinter(printerName, &hPrinter, NULL))
+	{
+		DWORD pcbNeeded;
+		if (!GetPrinter(hPrinter, 2, NULL, 0, &pcbNeeded))
+		{
+			DWORD cbBuf = pcbNeeded;
+			LPPRINTER_INFO_2 pPrinterInfo = (LPPRINTER_INFO_2)malloc(pcbNeeded);			
+			if (GetPrinter(hPrinter, 2, (LPBYTE) pPrinterInfo, cbBuf, &pcbNeeded))
+			{
+				std::string target(printerName);
+				std::regex rx(ACRO_DRIVER_NAME_REG_EXP);
+				if (std::regex_match(target.cbegin(), target.cend(), rx)) 
+				{
+					// Prevent closing acrobat if we are printing on virtual PDF printer
+					// because it will likely open the printed PDF file 
+					result = FALSE;
+				}
+			}
+			free(pPrinterInfo);
+		}
+
+		ClosePrinter(hPrinter);
+	}
+
+	return result;
 }
 
 void waitForPrintJobComplete(HANDLE hChange, PRINTER_NOTIFY_OPTIONS pnOptions, LPCTSTR documentName)

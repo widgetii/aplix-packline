@@ -35,6 +35,7 @@ public final class Const {
 	public static final String POST_SERVICE_PORT = "PostServicePort";
 	public static final String EXECUTOR = "Executor";
 	public static final String WARNING_MESSAGE = "WarningMessage";
+	public static final String WARNING_CODE = "WarningCode";
 
 	public static final int ERROR_DISPLAY_DELAY = 5;
 

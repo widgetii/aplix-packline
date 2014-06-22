@@ -95,6 +95,7 @@
 	<bean id="action14" class="ru.aplix.packline.action.UnderweightAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="weightingAction" ref="action12" />
+		<property name="backAction" ref="action2" />
 		<property name="normalAction" ref="action15" />
 	</bean>
 

@@ -22,8 +22,14 @@
                 <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%underweight.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
                 <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                   <children>
-                    <HBox id="HBox" alignment="CENTER" prefWidth="930.0" spacing="50.0">
+                    <HBox id="HBox" alignment="CENTER" prefWidth="930.0" spacing="20.0">
                       <children>
+                        <VBox id="VBox" alignment="CENTER" prefHeight="412.0" prefWidth="443.0" spacing="100.0">
+                          <children>
+                            <Button fx:id="cancelButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#backClick" prefHeight="88.0" prefWidth="102.0" styleClass="back-button" text="%button.cancel" />
+                            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#weightingClick" prefHeight="64.0" prefWidth="184.0" textAlignment="CENTER" visible="false" wrapText="true" />
+                          </children>
+                        </VBox>
                         <ImageView fitHeight="352.9490797893342" fitWidth="378.9330749511719" pickOnBounds="true" preserveRatio="true">
                           <effect>
                             <InnerShadow height="3.367021276595744" radius="1.183510638297872" width="3.367021276595744" />
