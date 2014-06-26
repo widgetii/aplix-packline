@@ -73,7 +73,111 @@
 			<date>2013-12-17T13:16:12.039+03:00</date>
 			<totalIncomings>2</totalIncomings>
 		</order>
+		<order>
+			<id>12345678955555</id>
+			<clientName>Аллагулов Азат Халитович</clientName>
+			<deliveryMethod>Почтовая посылка Почта России (140.7 руб., 7 дня)</deliveryMethod>
+			<deliveryAddress>456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29</deliveryAddress>
+			<customer>
+				<id>11111111</id>
+				<name>ИП Митрюшкин Сергей Сергеевич</name>
+			</customer>
+			<date>2013-10-07T23:06:18.039+03:00</date>
+			<incoming>
+				<id>009001</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009002</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009003</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009004</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Подарочный набор Eleganci.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009005</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
+			</incoming>
+			<totalIncomings>5</totalIncomings>
+		</order>
 	</orders>
+	<registries>
+		<registry>
+			<id>9887766554433221</id>
+			<incoming>
+				<id>009001</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009002</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009003</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009004</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Подарочный набор Eleganci.</contentDescription>
+			</incoming>
+			<incoming>
+				<id>009005</id>
+				<orderId>12345678955555</orderId>
+				<photoId></photoId>
+				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+				<weight>0.0</weight>
+				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
+			</incoming>
+			<customer>
+				<id>33333333</id>
+				<name>ИП Митрюшкин Сергей Сергеевич</name>
+			</customer>
+			<date>2013-12-17T13:16:12.039+03:00</date>
+			<totalIncomings>5</totalIncomings>
+			<carriedOutAndClosed>false</carriedOutAndClosed>
+		</registry>
+	</registries>
 	<incomings>
 		<incoming>
 			<id>008001</id>

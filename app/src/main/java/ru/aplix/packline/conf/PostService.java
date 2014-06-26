@@ -15,11 +15,14 @@ public class PostService {
 	private String userName;
 	@XmlElement(name = "Password")
 	private String password;
+	@XmlElement(name = "RemoteStoragePath")
+	private String remoteStoragePath;
 
 	public PostService() {
 		serviceAddress = "";
 		userName = "";
 		password = "";
+		remoteStoragePath = "";
 	}
 
 	public String getServiceAddress() {
@@ -44,5 +47,13 @@ public class PostService {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRemoteStoragePath() {
+		return remoteStoragePath;
+	}
+
+	public void setRemoteStoragePath(String remoteStoragePath) {
+		this.remoteStoragePath = remoteStoragePath;
 	}
 }

@@ -355,3 +355,13 @@
     -fx-text-fill: black;
     -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
 }
+
+#imageFlowContainer {
+	-fx-background-color: linear-gradient(#ffffff,#f3f3f4);
+	-fx-border-width: 1 1 1 1;
+    -fx-border-color:  white #b4b4b4  white #b4b4b4;
+}
+
+.table-row-cell {
+    -fx-cell-size: 5em;
+}

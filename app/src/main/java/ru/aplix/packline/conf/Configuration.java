@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -23,6 +25,8 @@ public class Configuration {
 
 	private static transient String configFileName = null;
 	private static transient Configuration instance = null;
+
+	private static transient Pattern pathPattern = Pattern.compile("\\s*\\$\\s*\\((.+)\\)\\s*", Pattern.CASE_INSENSITIVE);
 
 	@XmlElement(name = "Hardware")
 	private HardwareConfiguration hardwareConfiguration;
@@ -89,6 +93,20 @@ public class Configuration {
 
 		printer = getHardwareConfiguration().lookupPrinter(getZebraTest().getPrinterId());
 		getZebraTest().setPrinter(printer);
+
+		// Resolve path settings
+		getPostService().setRemoteStoragePath(resolvePath(getPostService().getRemoteStoragePath()));
+	}
+
+	private String resolvePath(String value) {
+		Matcher matcher = pathPattern.matcher(value);
+		if (matcher.matches()) {
+			String property = matcher.group(1).trim();
+			String result = System.getProperty(property);
+			return result != null ? result : value;
+		} else {
+			return value;
+		}
 	}
 
 	public static String getConfigFileName() {

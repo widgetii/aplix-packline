@@ -1,6 +1,6 @@
 package ru.aplix.packline.hardware.scanner.morena;
 
-import java.awt.Image;
+import java.io.File;
 import java.util.concurrent.CountDownLatch;
 
 import ru.aplix.packline.hardware.scanner.ImageListener;
@@ -45,10 +45,10 @@ public class MorenaScannerTestManual {
 			scanner.addImageListener(new ImageListener() {
 
 				@Override
-				public void onImageAcquired(Image value) {
+				public void onImageAcquired(File imageFile) {
 					System.out.println("Image acquired");
 				}
-				
+
 				@Override
 				public void onImageAcquisitionCompleted() {
 					photoLatch.countDown();

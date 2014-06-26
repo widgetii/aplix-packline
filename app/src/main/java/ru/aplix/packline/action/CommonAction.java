@@ -184,6 +184,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemControlReturns = null;
+		if (Configuration.getInstance().getRoles().getReturns()) {
+			itemControlReturns = new MenuItem(resources.getString("menu.control.returns"));
+			itemControlReturns.setStyle(menuItemStyle2);
+			itemControlReturns.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					controlReturns();
+				}
+			});
+		}
+
 		Menu subMenu = new Menu(resources.getString("menu.sub.operations"));
 		subMenu.setStyle(menuItemStyle2);
 		if (itemMarkersForContainers != null) {
@@ -197,6 +208,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemZebraTest != null) {
 			subMenu.getItems().add(itemZebraTest);
+		}
+		if (itemControlReturns != null) {
+			subMenu.getItems().add(itemControlReturns);
 		}
 
 		result.getItems().add(itemBegin);
@@ -258,6 +272,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void testZebraPrinter() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ZEBRA_TEST_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void controlReturns() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.CONTROL_RETURNS_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 }

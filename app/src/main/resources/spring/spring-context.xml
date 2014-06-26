@@ -15,6 +15,7 @@
 	<!-- Workflow actions -->
 	<alias alias="firstWorkflowAction" name="action1" />
 	<alias alias="startWorkflowAction" name="action2" />
+	<alias alias="controlReturnsAction" name="action16" />
 
 	<bean id="action1" class="ru.aplix.packline.action.AuthAction">
 		<property name="idleTimeout" value="SHORT" />
@@ -73,8 +74,7 @@
 		<property name="backAction" ref="action2" />
 	</bean>
 
-	<bean id="action11"
-		class="ru.aplix.packline.action.PrintFormsBeforeWeightingAction">
+	<bean id="action11"	class="ru.aplix.packline.action.PrintFormsBeforeWeightingAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action12" />
 	</bean>
@@ -103,6 +103,38 @@
 		<property name="idleTimeout" value="LONG" />
 		<property name="weightingAction" ref="action12" />
 		<property name="normalAction" ref="action2" />
+	</bean>
+	
+	<bean id="action16" class="ru.aplix.packline.action.ReturnRegistryCarrierAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action17" />
+	</bean>
+	
+	<bean id="action17" class="ru.aplix.packline.action.ReturnRegistryScanAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="viewAction" ref="action18" />
+		<property name="backAction" ref="action2" />
+	</bean>
+	
+	<bean id="action18" class="ru.aplix.packline.action.ReturnRegistryViewAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="backAction" ref="action2" />
+		<property name="weightingAction" ref="action19" />
+	</bean>
+	
+	<bean id="action19" class="ru.aplix.packline.action.WeightingOrderAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action20" />
+	</bean>
+
+	<bean id="action20" class="ru.aplix.packline.action.PhotoAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action21" />
+	</bean>
+	
+	<bean id="action21" class="ru.aplix.packline.action.ReturnRegistryDeleteAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action18" />
 	</bean>
 
 	<bean id="genStickAction" class="ru.aplix.packline.action.GenStickAction">

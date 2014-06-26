@@ -1,11 +1,11 @@
 package ru.aplix.packline.hardware.scanner;
 
-import java.awt.Image;
+import java.io.File;
 
 public interface ImageListener {
 
-	void onImageAcquired(Image value);
-	
+	void onImageAcquired(File imageFile);
+
 	void onImageAcquisitionCompleted();
 
 	void onImageAcquisitionFailed();

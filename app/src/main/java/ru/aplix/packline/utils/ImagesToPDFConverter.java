@@ -27,11 +27,11 @@ import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.xml.sax.SAXException;
 
-import ru.aplix.converters.fr2afop.utils.Utils;
+import ru.aplix.packline.Const;
+import ru.aplix.packline.conf.Configuration;
 
 public class ImagesToPDFConverter {
 
-	public static final String CONF_FILE = "/conf/fop.xconf";
 	public static final String XSLT_FILE = "/resources/xsl/images-to-pdf.xsl";
 	private static final String outputFormat = MimeConstants.MIME_PDF;
 
@@ -40,7 +40,14 @@ public class ImagesToPDFConverter {
 
 	private FopFactory getFopFactory() throws SAXException, IOException {
 		if (fopFactory == null) {
-			String configFileName = Utils.getJarFolder(getClass()) + CONF_FILE;
+			String jarFolder;
+			if (Configuration.getConfigFileName() != null) {
+				File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
+				jarFolder = confFolder != null ? confFolder.getParent() : "";
+			} else {
+				jarFolder = Utils.getJarFolder(getClass());
+			}
+			String configFileName = jarFolder + Const.FOP_CONF_FILE;
 			fopFactory = FopFactory.newInstance(new File(configFileName));
 		}
 		return fopFactory;

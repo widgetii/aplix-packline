@@ -339,6 +339,13 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="FindRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="FindRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
@@ -632,6 +639,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="FileUpload">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="fileId" type="xs:string"/>
+						<xs:element name="path" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FileUploadResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AddBoxContainersRequestMessage">
@@ -696,6 +718,9 @@
 	</message>
 	<message name="FindRegistryRequestMessage">
 		<part name="parameters" element="tns:FindRegistry"/>
+	</message>
+	<message name="FindRegistry2RequestMessage">
+		<part name="parameters" element="tns:FindRegistry2"/>
 	</message>
 	<message name="FindRegistryResponseMessage">
 		<part name="parameters" element="tns:FindRegistryResponse"/>
@@ -820,6 +845,12 @@
 	<message name="GetLabelResponseMessage">
 		<part name="parameters" element="tns:GetLabelResponse"/>
 	</message>
+	<message name="FileUploadRequestMessage">
+		<part name="parameters" element="tns:FileUpload"/>
+	</message>
+	<message name="FileUploadResponseMessage">
+		<part name="parameters" element="tns:FileUploadResponse"/>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
@@ -863,6 +894,10 @@
 		</operation>
 		<operation name="FindRegistry">
 			<input message="tns:FindRegistryRequestMessage"/>
+			<output message="tns:FindRegistryResponseMessage"/>
+		</operation>
+		<operation name="FindRegistry2">
+			<input message="tns:FindRegistry2RequestMessage"/>
 			<output message="tns:FindRegistryResponseMessage"/>
 		</operation>
 		<operation name="FindRouteList">
@@ -944,6 +979,10 @@
 		<operation name="GetLabel">
 			<input message="tns:GetLabelRequestMessage"/>
 			<output message="tns:GetLabelResponseMessage"/>
+		</operation>
+		<operation name="FileUpload">
+			<input message="tns:FileUploadRequestMessage"/>
+			<output message="tns:FileUploadResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1040,6 +1079,15 @@
 		</operation>
 		<operation name="FindRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1227,6 +1275,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="FileUpload">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1322,6 +1379,15 @@
 		</operation>
 		<operation name="FindRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1507,6 +1573,15 @@
 			</input>
 			<output>
 				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FileUpload">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 	</binding>

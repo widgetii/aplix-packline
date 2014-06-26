@@ -43,6 +43,9 @@ import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
 import ru.aplix.packline.hardware.scales.ScalesFactory;
+import ru.aplix.packline.hardware.scanner.ImageScanner;
+import ru.aplix.packline.hardware.scanner.ImageScannerConnectionListener;
+import ru.aplix.packline.hardware.scanner.ImageScannerFactory;
 import ru.aplix.packline.idle.IdleListener;
 import ru.aplix.packline.idle.UserActivityMonitor;
 import ru.aplix.packline.post.PackingLine;
@@ -257,6 +260,29 @@ public class App extends Application implements IdleListener {
 			});
 			workflowContext.setAttribute(Const.SCALES, sc);
 		}
+
+		// Create scales instance
+		if (configuration.getImageScanner().isEnabled()) {
+			final ImageScanner<?> is = ImageScannerFactory.createInstance(configuration.getImageScanner().getName());
+			is.setConnectOnDemand(true);
+			is.setConfiguration(configuration.getImageScanner().getConfiguration());
+			is.addConnectionListener(new ImageScannerConnectionListener() {
+				@Override
+				public void onConnected() {
+				}
+
+				@Override
+				public void onDisconnected() {
+					postConnectToHardware(Const.IMAGE_SCANNER);
+				}
+
+				@Override
+				public void onConnectionFailed() {
+					postConnectToHardware(Const.IMAGE_SCANNER);
+				}
+			});
+			workflowContext.setAttribute(Const.IMAGE_SCANNER, is);
+		}
 	}
 
 	private void deinitializeHardware() {
@@ -283,6 +309,12 @@ public class App extends Application implements IdleListener {
 		Scales<?> sc = (Scales<?>) workflowContext.getAttribute(Const.SCALES);
 		if (sc != null) {
 			sc.disconnect();
+		}
+
+		// Stop scales
+		ImageScanner<?> is = (ImageScanner<?>) workflowContext.getAttribute(Const.IMAGE_SCANNER);
+		if (is != null) {
+			is.disconnect();
 		}
 	}
 

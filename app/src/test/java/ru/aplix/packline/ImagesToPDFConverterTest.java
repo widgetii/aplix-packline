@@ -15,11 +15,14 @@ public class ImagesToPDFConverterTest extends TestCase {
 		imageFiles.add(new File(getClass().getResource("/resources/images/img-barcode-order.png").getFile()));
 
 		File pdfFile = File.createTempFile("sample", ".pdf");
-		pdfFile.deleteOnExit();
+		try {
 
-		ImagesToPDFConverter itpc = new ImagesToPDFConverter();
-		itpc.convert(imageFiles, pdfFile.getAbsolutePath());
+			ImagesToPDFConverter itpc = new ImagesToPDFConverter();
+			itpc.convert(imageFiles, pdfFile.getAbsolutePath());
 
-		assertTrue(pdfFile.exists());
+			assertTrue(pdfFile.exists());
+		} finally {
+			assertTrue(pdfFile.delete());
+		}
 	}
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="953.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.ReturnRegistryViewController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <center>
+                <TableView id="ordersTableView" fx:id="incomingsTableView" prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane.margin>
+                    <Insets top="10.0" fx:id="x1" />
+                  </BorderPane.margin>
+                </TableView>
+              </center>
+              <right>
+                <AnchorPane fx:id="registryInfoContainer" prefHeight="459.0" prefWidth="300.0" BorderPane.margin="$x1">
+                  <children>
+                    <VBox id="VBox" alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane id="orderInfoContainer" prefHeight="267.0" prefWidth="237.0" VBox.vgrow="ALWAYS">
+                          <children>
+                            <Label fx:id="registryInfoLabel" alignment="TOP_LEFT" prefHeight="151.0" prefWidth="197.0" text="Registry Info, Carrier Info" wrapText="true" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                            <Label fx:id="totalIncomingsLabel" prefHeight="60.0" prefWidth="197.0" text="Total Number of Incomings" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane id="AnchorPane" prefHeight="175.0" prefWidth="280.0">
+                          <children>
+                            <Button fx:id="closeRegistryButton" mnemonicParsing="false" onAction="#closeRegistryClick" prefHeight="70.0" prefWidth="260.0" styleClass="green-button" text="%button.registry.close" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                            <HBox id="HBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="260.0" spacing="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                              <children>
+                                <Button fx:id="saveRegistryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveRegistryClick" prefHeight="70.0" prefWidth="126.0" styleClass="blue-button" text="%button.registry.save" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="deleteRegistryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteRegistryClick" prefHeight="70.0" prefWidth="126.0" styleClass="red-button" text="%button.registry.delete" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </children>
+                    </VBox>
+                  </children>
+                  <padding>
+                    <Insets left="20.0" />
+                  </padding>
+                </AnchorPane>
+              </right>
+              <top>
+                <AnchorPane prefHeight="120.0" prefWidth="817.0">
+                  <children>
+                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="action-label" text="%return.registry.view.info" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </top>
+            </BorderPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

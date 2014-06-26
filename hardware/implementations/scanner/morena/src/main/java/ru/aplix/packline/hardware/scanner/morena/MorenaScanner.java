@@ -1,15 +1,12 @@
 package ru.aplix.packline.hardware.scanner.morena;
 
-import java.awt.Image;
 import java.io.File;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 
-import javax.imageio.ImageIO;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -33,6 +30,7 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 	private MorenaScannerConfiguration configuration;
 	private List<ImageListener> listeners;
 	private List<ImageScannerConnectionListener> connectionListeners;
+	private ImageTransferHandler currentImageTransferHandler;
 	private boolean connectOnDemand;
 	private boolean isConnected;
 
@@ -104,6 +102,9 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 				for (ImageScannerConnectionListener listener : connectionListeners) {
 					listener.onConnectionFailed();
 				}
+
+				Exception e = new Exception("Scanner not found");
+				LOG.error(String.format("Error in %s '%s'", getName(), configuration.getName()), e);
 			}
 		}
 	}
@@ -189,18 +190,21 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 	public void acquireImage() {
 		try {
 			if (device != null) {
-				FunctionalUnit selectedFunctionalUnit = null;
-				if (device instanceof Scanner) {
-					Scanner scanner = (Scanner) device;
-					configureScanner(scanner);
+				if (currentImageTransferHandler == null) {
+					FunctionalUnit selectedFunctionalUnit = null;
+					if (device instanceof Scanner) {
+						Scanner scanner = (Scanner) device;
+						configureScanner(scanner);
 
-					if (Integer.compare(scanner.getFunctionalUnit(), scanner.getFeederFunctionalUnit()) == 0) {
-						selectedFunctionalUnit = FunctionalUnit.FEEDER;
-					} else {
-						selectedFunctionalUnit = FunctionalUnit.FLATBED;
+						if (Integer.compare(scanner.getFunctionalUnit(), scanner.getFeederFunctionalUnit()) == 0) {
+							selectedFunctionalUnit = FunctionalUnit.FEEDER;
+						} else {
+							selectedFunctionalUnit = FunctionalUnit.FLATBED;
+						}
 					}
+					currentImageTransferHandler = new ImageTransferHandler(selectedFunctionalUnit);
+					device.startTransfer(currentImageTransferHandler);
 				}
-				device.startTransfer(new ImageTransferHandler(selectedFunctionalUnit));
 			} else {
 				for (ImageListener listener : listeners) {
 					listener.onImageAcquisitionFailed();
@@ -240,13 +244,14 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 		@Override
 		public void transferDone(File file) {
+			currentImageTransferHandler = null;
+
 			if (file != null) {
 				try {
 					LOG.debug(String.format("Reading acquired image from '%s'", file.getAbsolutePath()));
-					Image image = ImageIO.read(file);
 
 					for (ImageListener listener : listeners) {
-						listener.onImageAcquired(image);
+						listener.onImageAcquired(file);
 					}
 
 					if (!FunctionalUnit.FEEDER.equals(currentFunctionalUnit)) {
@@ -254,7 +259,7 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 							listener.onImageAcquisitionCompleted();
 						}
 					}
-				} catch (IOException e) {
+				} catch (Exception e) {
 					LOG.error(String.format("Error in %s '%s'", getName(), configuration.getName()), e);
 				}
 			}
@@ -262,6 +267,8 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 		@Override
 		public void transferFailed(int code, String error) {
+			currentImageTransferHandler = null;
+
 			if (FunctionalUnit.FEEDER.equals(currentFunctionalUnit)) {
 				if (pattern.matcher(error).find()) {
 					for (ImageListener listener : listeners) {

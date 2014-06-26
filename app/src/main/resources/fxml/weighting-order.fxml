@@ -31,12 +31,12 @@
                         </AnchorPane>
                         <AnchorPane fx:id="orderInfoContainer" prefHeight="200.0" prefWidth="755.0">
                           <children>
-                            <Label alignment="CENTER_RIGHT" layoutY="33.0" prefWidth="140.0" text="%order.info.client" AnchorPane.leftAnchor="40.0" />
-                            <Label alignment="CENTER_RIGHT" layoutY="82.0" prefWidth="140.0" text="%order.info.delivery" AnchorPane.leftAnchor="40.0" />
-                            <Label alignment="CENTER_RIGHT" layoutY="133.0" prefWidth="140.0" text="%order.info.customer" AnchorPane.leftAnchor="40.0" />
-                            <Label fx:id="clientLabel" layoutY="33.0" prefWidth="570.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
-                            <Label fx:id="deliveryLabel" layoutY="82.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
-                            <Label fx:id="customerLabel" layoutY="133.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                            <Label fx:id="label1Caption" alignment="CENTER_RIGHT" layoutY="33.0" prefWidth="140.0" AnchorPane.leftAnchor="40.0" />
+                            <Label fx:id="label2Caption" alignment="CENTER_RIGHT" layoutY="82.0" prefWidth="140.0" AnchorPane.leftAnchor="40.0" />
+                            <Label fx:id="label3Caption" alignment="CENTER_RIGHT" layoutY="133.0" prefWidth="140.0" AnchorPane.leftAnchor="40.0" />
+                            <Label fx:id="label1Value" layoutY="33.0" prefWidth="570.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                            <Label fx:id="label2Value" layoutY="82.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
+                            <Label fx:id="label3Value" layoutY="133.0" prefWidth="549.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" />
                           </children>
                         </AnchorPane>
                       </children>

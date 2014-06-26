@@ -32,6 +32,9 @@ public class HardwareConfiguration {
 	@XmlElement(name = "DVRCamera", type = Driver.class)
 	private Driver dvrCamera;
 
+	@XmlElement(name = "ImageScanner", type = Driver.class)
+	private Driver imageScanner;
+
 	@XmlElementWrapper(name = "Printers")
 	@XmlElement(name = "Printer", type = Printer.class)
 	private List<Printer> printers;
@@ -89,6 +92,17 @@ public class HardwareConfiguration {
 
 	public void setDVRCamera(Driver dvrCamera) {
 		this.dvrCamera = dvrCamera;
+	}
+
+	public Driver getImageScanner() {
+		if (imageScanner == null) {
+			imageScanner = new Driver();
+		}
+		return imageScanner;
+	}
+
+	public void setImageScanner(Driver imageScanner) {
+		this.imageScanner = imageScanner;
 	}
 
 	public List<Printer> getPrinters() {

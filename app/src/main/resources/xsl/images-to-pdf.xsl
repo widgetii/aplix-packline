@@ -2,6 +2,9 @@
 <xsl:stylesheet version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" omit-xml-declaration="no" indent="yes" />
 
+	<xsl:variable name="pageWidth">210mm</xsl:variable>
+	<xsl:variable name="pageHeight">297mm</xsl:variable>
+
 	<!-- ============ -->
 	<!-- root element -->
 	<!-- ============ -->
@@ -11,11 +14,18 @@
 				<xsl:call-template name="page-master" />
 			</fo:layout-master-set>
 
-			<xsl:for-each select="file">
-				<xsl:call-template name="page-sequence">
-					<xsl:with-param name="fileName" select="current()" />
-				</xsl:call-template>
-			</xsl:for-each>
+			<xsl:choose>
+				<xsl:when test="count(file) = 0">
+					<xsl:call-template name="page-sequence" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:for-each select="file">
+						<xsl:call-template name="page-sequence">
+							<xsl:with-param name="fileName" select="current()" />
+						</xsl:call-template>
+					</xsl:for-each>
+				</xsl:otherwise>
+			</xsl:choose>
 		</fo:root>
 	</xsl:template>
 
@@ -25,8 +35,8 @@
 	<xsl:template name="page-master">
 		<fo:simple-page-master master-name="page">
 			<!-- Width/Height -->
-			<xsl:attribute name="page-width">210mm</xsl:attribute>
-			<xsl:attribute name="page-height">297mm</xsl:attribute>
+			<xsl:attribute name="page-width"><xsl:value-of select="$pageWidth" /></xsl:attribute>
+			<xsl:attribute name="page-height"><xsl:value-of select="$pageHeight" /></xsl:attribute>
 
 			<!-- Margins -->
 			<xsl:attribute name="margin-top">0mm</xsl:attribute>
@@ -43,7 +53,7 @@
 	<!-- template: page-sequence -->
 	<!-- ======================= -->
 	<xsl:template name="page-sequence">
-		<xsl:param name="fileName" />
+		<xsl:param name="fileName" required="no" />
 
 		<fo:page-sequence master-reference="page">
 			<fo:flow flow-name="xsl-region-body">
@@ -64,16 +74,18 @@
 						<xsl:attribute name="font-size">0</xsl:attribute>
 						<xsl:attribute name="text-align">center</xsl:attribute>
 
-						<fo:external-graphic>
-							<xsl:attribute name="scaling">uniform</xsl:attribute>
-							<xsl:attribute name="content-width">100%</xsl:attribute>
-							<xsl:attribute name="content-height">100%</xsl:attribute>
-							<xsl:attribute name="src">
+						<xsl:if test="$fileName">
+							<fo:external-graphic>
+								<xsl:attribute name="scaling">uniform</xsl:attribute>
+								<xsl:attribute name="content-width"><xsl:value-of select="$pageWidth" /></xsl:attribute>
+								<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight" /></xsl:attribute>
+								<xsl:attribute name="src">
 								<xsl:text>url('</xsl:text>
 								<xsl:value-of select="$fileName" />
 								<xsl:text>')</xsl:text>
 							</xsl:attribute>
-						</fo:external-graphic>
+							</fo:external-graphic>
+						</xsl:if>
 					</fo:block>
 				</fo:block-container>
 			</fo:flow>

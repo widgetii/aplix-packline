@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="896.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.ReturnRegistryCarrierController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="345.0" styleClass="action-label" text="%return.registry.carrier.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="160.0">
+                  <children>
+                    <GridPane alignment="CENTER">
+                      <children>
+                        <ImageView fx:id="logoAplix" fitHeight="109.0" fitWidth="163.5" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-aplix.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoCDEK" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-cdek.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoDHL" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-dhl.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoDPD" fitHeight="99.69231069464432" fitWidth="162.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                          <effect>
+                            <InnerShadow fx:id="x1" />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-dpd.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoEMS" effect="$x1" fitHeight="80.99995040893555" fitWidth="253.12484820422182" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                          <image>
+                            <Image url="@../images/logo-ems.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoIML" effect="$x1" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                          <image>
+                            <Image url="@../images/logo-iml.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoPickPoint" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow fx:id="x2" />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-pickpoint.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoQIWI" effect="$x2" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <image>
+                            <Image url="@../images/logo-qiwi.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoRussianPost" effect="$x2" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                          <image>
+                            <Image url="@../images/logo-russianpost.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                </StackPane>
+              </children>
+            </AnchorPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

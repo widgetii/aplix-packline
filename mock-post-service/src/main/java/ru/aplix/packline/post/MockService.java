@@ -256,6 +256,21 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public Registry findRegistry2(final String registryId) {
+		if (registryId == null) {
+			return null;
+		}
+
+		return (Registry) CollectionUtils.find(getConfig().getRegistries(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				Registry registry = (Registry) item;
+				return registryId.equals(registry.getId());
+			}
+		});
+	}
+
+	@Override
 	public synchronized int addIncomingToRegistry(final String registryId, final Incoming incoming) {
 		// Check order and incoming linkage
 		if (registryId == null || incoming == null || incoming.getOrderId() == null) {
@@ -338,6 +353,21 @@ public class MockService implements PackingLinePortType {
 			if (existing != null) {
 				// Remove incoming from list
 				order.getIncoming().remove(existing);
+			} else {
+				return false;
+			}
+
+			// Find incoming in the given registry
+			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object object) {
+					Incoming item = (Incoming) object;
+					return incoming.getId().equals(item.getId()) && incoming.getOrderId().equals(item.getOrderId());
+				}
+			});
+
+			if (existing != null) {
+				// Remove incoming from list
 				return registry.getIncoming().remove(existing);
 			} else {
 				return false;
@@ -707,6 +737,11 @@ public class MockService implements PackingLinePortType {
 		} catch (IOException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public boolean fileUpload(String fileId, String path) {
+		return true;
 	}
 
 	@Resource

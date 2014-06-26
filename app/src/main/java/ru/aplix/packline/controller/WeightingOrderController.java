@@ -9,18 +9,26 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.action.WeightingOrderAction;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
+import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
+import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class WeightingOrderController extends StandardController<WeightingOrderAction> implements MeasurementListener {
 
 	@FXML
-	private Label clientLabel;
+	private Label label1Caption;
 	@FXML
-	private Label deliveryLabel;
+	private Label label2Caption;
 	@FXML
-	private Label customerLabel;
+	private Label label3Caption;
+	@FXML
+	private Label label1Value;
+	@FXML
+	private Label label2Value;
+	@FXML
+	private Label label3Value;
 	@FXML
 	private Label weightLabel;
 	@FXML
@@ -34,11 +42,37 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
+		boolean valuesSet = false;
 		Order order = (Order) context.getAttribute(Const.ORDER);
 		if (order != null) {
-			clientLabel.setText(order.getClientName());
-			deliveryLabel.setText(order.getDeliveryMethod());
-			customerLabel.setText(order.getCustomer().getName());
+			label1Caption.setText(getResources().getString("order.info.client"));
+			label2Caption.setText(getResources().getString("order.info.delivery"));
+			label3Caption.setText(getResources().getString("order.info.customer"));
+			label1Value.setText(order.getClientName());
+			label2Value.setText(order.getDeliveryMethod());
+			label3Value.setText(order.getCustomer().getName());
+			valuesSet = true;
+		} else {
+			Registry registry = (Registry) context.getAttribute(Const.REGISTRY);
+			Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
+			if (registry != null && incoming != null) {
+				label1Caption.setText(getResources().getString("incoming.info.id"));
+				label2Caption.setText(getResources().getString("incoming.info.description"));
+				label3Caption.setText(getResources().getString("registry.info.customer"));
+				label1Value.setText(incoming.getId());
+				label2Value.setText(incoming.getContentDescription());
+				label3Value.setText(registry.getCustomer().getName());
+				valuesSet = true;
+			}
+		}
+
+		if (!valuesSet) {
+			label1Caption.setText(null);
+			label2Caption.setText(null);
+			label3Caption.setText(null);
+			label1Value.setText(null);
+			label2Value.setText(null);
+			label3Value.setText(null);
 		}
 
 		scales = (Scales<?>) context.getAttribute(Const.SCALES);
