@@ -1,23 +1,31 @@
 package ru.aplix.packline.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.layout.TilePane;
+import javafx.stage.Window;
 
-import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReadBarcodeBoxAction;
-import ru.aplix.packline.conf.Configuration;
+import ru.aplix.packline.dialog.ConfirmationDialog;
+import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
-import ru.aplix.packline.post.Order;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxAction> implements BarcodeListener {
@@ -25,26 +33,19 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	@FXML
-	private Label clientLabel;
+	private TilePane tilePane;
 	@FXML
-	private Label deliveryLabel;
-	@FXML
-	private Label customerLabel;
+	private Button nextButton;
 
+	private ConfirmationDialog confirmationDialog = null;
 	private BarcodeScanner<?> barcodeScanner = null;
-
 	private Task<Void> task;
 
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		Order order = (Order) context.getAttribute(Const.ORDER);
-		if (order != null) {
-			clientLabel.setText(order.getClientName());
-			deliveryLabel.setText(order.getDeliveryMethod());
-			customerLabel.setText(order.getCustomer().getName());
-		}
+		tilePane.getChildren().clear();
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
@@ -65,38 +66,84 @@ public class ReadBarcodeBoxController extends StandardController<ReadBarcodeBoxA
 		}
 	}
 
+	private void addCodeButton(String value) {
+		for (Node node : tilePane.getChildren()) {
+			if (value.equals(((Button) node).getText())) {
+				errorMessageProperty.set(getResources().getString("error.box.already.added"));
+				errorVisibleProperty.set(true);
+				return;
+			}
+		}
+
+		Button button = new Button();
+		button.getStyleClass().add("custom-box-button");
+		button.setAlignment(Pos.CENTER);
+		button.setContentDisplay(ContentDisplay.TOP);
+		button.setText(value);
+		button.setPrefSize(160, 160);
+
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				confirmDeleteCode(((Button) actionEvent.getSource()).getText());
+			}
+		});
+
+		tilePane.getChildren().add(button);
+	}
+
+	private void confirmDeleteCode(final String code) {
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.delete", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+
+				for (Node node : tilePane.getChildren()) {
+					if (code.equals(((Button) node).getText())) {
+						tilePane.getChildren().remove(node);
+						break;
+					}
+				}
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.box.delete", code);
+		confirmationDialog.show();
+	}
+
 	@Override
 	public void onCatchBarcode(final String value) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				processBarcode(value);
+				if (progressVisibleProperty.get() || confirmationDialog != null) {
+					return;
+				}
+
+				addCodeButton(value);
 			}
 		});
 	}
 
-	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get()) {
-			return;
+	public void nextClick(ActionEvent event) {
+		final List<String> codes = new ArrayList<String>();
+		for (Node node : tilePane.getChildren()) {
+			codes.add(((Button) node).getText());
 		}
 
 		task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				try {
-					final Integer emptyBoxCount = getAction().processBarcode(value);
-					Integer emptyBoxThreshold = Configuration.getInstance().getEmptyBoxThreshold();
-					if ((emptyBoxCount != null) && (emptyBoxThreshold != null) && (Integer.compare(emptyBoxCount, emptyBoxThreshold) < 0)) {
-						Platform.runLater(new Runnable() {
-							@Override
-							public void run() {
-								warningMessageProperty.set(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
-								errorVisibleProperty.set(true);
-							}
-						});
-
-						Thread.sleep(Const.ERROR_DISPLAY_DELAY * DateUtils.MILLIS_PER_SECOND);
-					}
+					getAction().process(codes);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;

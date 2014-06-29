@@ -256,7 +256,7 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public Registry findRegistry2(final String registryId) {
+	public Registry findRegistry2(final String registryId, PostType carrier) {
 		if (registryId == null) {
 			return null;
 		}
@@ -740,8 +740,13 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public boolean fileUpload(String fileId, String path) {
-		return true;
+	public String fileUpload(String fileId, String path) {
+		return null;
+	}
+
+	@Override
+	public String accountContainerCost(StringList containerIds) {
+		return null;
 	}
 
 	@Resource

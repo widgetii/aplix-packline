@@ -60,7 +60,7 @@
 
 	<bean id="action8" class="ru.aplix.packline.action.ReadBarcodeBoxAction">
 		<property name="idleTimeout" value="LONG" />
-		<property name="nextAction" ref="action2" />
+		<property name="nextAction" ref="action9" />
 	</bean>
 
 	<bean id="action9" class="ru.aplix.packline.action.DimentionsAction">

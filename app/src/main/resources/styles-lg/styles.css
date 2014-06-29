@@ -365,3 +365,8 @@
 .table-row-cell {
     -fx-cell-size: 5em;
 }
+
+.custom-box-button {
+	-fx-graphic: url('../images/btn-custom-box.png');
+    -fx-font-weight: bold;
+}

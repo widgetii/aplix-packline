@@ -24,15 +24,15 @@
                   <children>
                     <GridPane alignment="CENTER">
                       <children>
-                        <ImageView fx:id="logoAplix" fitHeight="109.0" fitWidth="163.5" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <ImageView fx:id="logoAplix" fitHeight="81.66666666666667" fitWidth="122.5" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <effect>
                             <InnerShadow />
                           </effect>
                           <image>
                             <Image url="@../images/logo-aplix.png" preserveRatio="false" smooth="false" />
-                          </image>
+                          </image>                          
                         </ImageView>
-                        <ImageView fx:id="logoCDEK" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ImageView fx:id="logoCDEK" fitHeight="80.5" fitWidth="161.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <effect>
                             <InnerShadow />
                           </effect>
@@ -40,7 +40,7 @@
                             <Image url="@../images/logo-cdek.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoDHL" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <ImageView fx:id="logoDHL" fitHeight="80.99996948242188" fitWidth="139.73679405185425" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
                           <effect>
                             <InnerShadow />
                           </effect>
@@ -48,7 +48,7 @@
                             <Image url="@../images/logo-dhl.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoDPD" fitHeight="99.69231069464432" fitWidth="162.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <ImageView fx:id="logoDPD" fitHeight="78.76922984182099" fitWidth="128.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
                           <effect>
                             <InnerShadow fx:id="x1" />
                           </effect>
@@ -56,17 +56,23 @@
                             <Image url="@../images/logo-dpd.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoEMS" effect="$x1" fitHeight="80.99995040893555" fitWidth="253.12484820422182" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fx:id="logoEMS" effect="$x1" fitHeight="64.35995359670342" fitWidth="201.12484741210938" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
                           <image>
                             <Image url="@../images/logo-ems.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoIML" effect="$x1" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <ImageView fx:id="logoIML" effect="$x1" fitHeight="58.79999923706055" fitWidth="183.75000043087695" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
                           <image>
                             <Image url="@../images/logo-iml.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoPickPoint" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <ImageView fx:id="logoPickPoint" fitHeight="66.3701057434082" fitWidth="194.27083386202355" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
                           <effect>
                             <InnerShadow fx:id="x2" />
                           </effect>
@@ -74,14 +80,28 @@
                             <Image url="@../images/logo-pickpoint.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoQIWI" effect="$x2" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fx:id="logoQIWI" effect="$x2" fitHeight="92.0" fitWidth="70.94915454101563" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
                           <image>
                             <Image url="@../images/logo-qiwi.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoRussianPost" effect="$x2" fitHeight="125.0" fitWidth="190.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <ImageView fx:id="logoRussianPost" effect="$x2" fitHeight="77.36263877467105" fitWidth="160.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
                           <image>
                             <Image url="@../images/logo-russianpost.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoSPSR" fitHeight="71.44826965986148" fitWidth="132.6031494140625" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-spsr.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
                       </children>
@@ -91,6 +111,7 @@
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       </columnConstraints>
                       <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />

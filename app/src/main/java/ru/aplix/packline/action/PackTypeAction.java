@@ -69,7 +69,7 @@ public class PackTypeAction extends NotificationAction<PhotoController> {
 		}
 	}
 
-	public boolean processBarcode(String code) throws PackLineException, DatatypeConfigurationException {
+	public int processBarcode(String code) throws PackLineException, DatatypeConfigurationException {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		TagType tagType = postServicePort.findTag(code);
@@ -112,6 +112,6 @@ public class PackTypeAction extends NotificationAction<PhotoController> {
 		notifyAboutIncomingParcel(container.getId());
 
 		setNextAction(getCloseAction());
-		return true;
+		return postServicePort.getBoxCount(container.getBoxTypeId());
 	}
 }

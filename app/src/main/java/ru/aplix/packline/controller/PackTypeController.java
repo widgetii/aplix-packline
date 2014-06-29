@@ -10,12 +10,14 @@ import javafx.scene.control.Label;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.PackTypeAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Order;
@@ -108,11 +110,24 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 			@Override
 			public Boolean call() throws Exception {
 				try {
-					return getAction().processBarcode(value);
+					final Integer emptyBoxCount = getAction().processBarcode(value);
+					Integer emptyBoxThreshold = Configuration.getInstance().getEmptyBoxThreshold();
+					if ((emptyBoxCount != null) && (emptyBoxThreshold != null) && (Integer.compare(emptyBoxCount, emptyBoxThreshold) < 0)) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								warningMessageProperty.set(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
+								errorVisibleProperty.set(true);
+							}
+						});
+
+						Thread.sleep(Const.ERROR_DISPLAY_DELAY * DateUtils.MILLIS_PER_SECOND);
+					}
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
 				}
+				return null;
 			}
 
 			@Override
@@ -145,9 +160,7 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 
 				progressVisibleProperty.set(false);
 
-				if (this.getValue() != null) {
-					PackTypeController.this.done();
-				}
+				PackTypeController.this.done();
 			}
 		};
 

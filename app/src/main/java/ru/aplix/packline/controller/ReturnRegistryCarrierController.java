@@ -25,6 +25,8 @@ public class ReturnRegistryCarrierController extends StandardController<ReturnRe
 	private ImageView logoQIWI;
 	@FXML
 	private ImageView logoRussianPost;
+	@FXML
+	private ImageView logoSPSR;
 
 	public void onImageClicked(MouseEvent mouseEvent) {
 		String value = null;
@@ -46,6 +48,8 @@ public class ReturnRegistryCarrierController extends StandardController<ReturnRe
 			value = "QIWI";
 		} else if (mouseEvent.getSource().equals(logoRussianPost)) {
 			value = "RussianPost";
+		} else if (mouseEvent.getSource().equals(logoSPSR)) {
+			value = "SPSR";
 		}
 
 		getAction().select(value);
