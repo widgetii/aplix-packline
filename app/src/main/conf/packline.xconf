@@ -116,7 +116,7 @@
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-113" file="f113" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
+		<Form name="ф-112ЭК" file="f112" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
