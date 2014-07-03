@@ -19,7 +19,7 @@
                     <Memo>[Variable28]</Memo>
                 </BarCodeView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="false" Name="MemoView8" Left="2.5391412" Top="26.491045" Width="94.924835" Height="4.2293916" BoundLeft="2.3438227" BoundTop="26.350065" BoundWidth="95.31546" BoundHeight="4.5113506" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
-                    <Memo>[Variable25]</Memo>
+                    <Memo>[Variable35]</Memo>
                 </MemoView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="8" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="false" Name="MemoView5" Left="2.5391412" Top="32.566315" Width="94.924835" Height="13.252093" BoundLeft="2.3438227" BoundTop="32.425335" BoundWidth="95.31546" BoundHeight="13.534053" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[kuda_full_address]&#13;&#10;[Variable9] [Variable10]</Memo>
@@ -70,6 +70,7 @@
 		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable15], 6, 2)" />
 		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable15], 1, 4)" />
 		<Variable Name="Variable34" Type="expression" Content="[Variable31].concat('.').concat([Variable32]).concat('.').concat([Variable33])" />
+		<Variable Name="Variable35" Type="expression" Content="f:choose(size([Variable8].toString()) = 14, [Variable25], [Variable8])" />
     </Variables>
     <Datasets>        
         <Dataset Name="PostDataSet">
@@ -103,6 +104,7 @@
 					<Column Name="Variable32"/>
 					<Column Name="Variable33"/>
 					<Column Name="Variable34"/>
+					<Column Name="Variable35"/>
                 </Row>								
             </Rows>
         </Dataset>

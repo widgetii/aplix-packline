@@ -22,7 +22,7 @@ public class Driver {
 	private String configuration;
 
 	public Driver() {
-		name = "n/a";
+		name = "";
 		enabled = true;
 		configuration = null;
 	}

@@ -16,6 +16,7 @@ public final class Const {
 	public static final String WARRANTY_CARD_ACTION_BEAN_NAME = "warrantyCardAction";
 	public static final String CONTROL_RETURNS_ACTION_BEAN_NAME = "controlReturnsAction";
 	public static final String ASYNC_COMMAND_RUNNER = "asyncCommandRunner";
+	public static final String BARCODE_LISTENERS = "barcodeListeners";
 
 	public static final String APPLICATION_CONTEXT = "ApplicationContext";
 	public static final String STAGE = "Stage";
@@ -39,6 +40,8 @@ public final class Const {
 	public static final String WARNING_MESSAGE = "WarningMessage";
 	public static final String WARNING_CODE = "WarningCode";
 	public static final String SELECTED_CARRIER = "SelectedCarrier";
+	public static final String BWL_BARCODE = "BWL-Barcode";
+	public static final String BWL_WEIGHT = "BWL-Wegiht";
 
 	public static final int ERROR_DISPLAY_DELAY = 5;
 

@@ -55,7 +55,7 @@
 				name="WIA on TWAIN sample device" 
 				resolution="300" functionalUnit="flatbed" scanMode="rgb-8" duplex="false"/>
 		</ImageScanner>
-	
+			
 		<!-- List of available printers -->
 		<Printers>
 			<!-- "id"          		- printer identifier to specify in print forms later			  		-->
@@ -116,7 +116,7 @@
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-112ЭК" file="f112" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
+		<Form name="ф-112ЭК" file="f112ek" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
@@ -191,7 +191,7 @@
 	</Stickers>
 	
 	<!-- Weighting restrictions by post types -->
-	<Weighting>
+	<Weighting minStableWeight="0.050">
 		<Restriction postType="FIRSTCLASS" maxWeight="2.5"/>
 		<Restriction postType="PARCEL" maxWeight="20"/>
 		<Restriction postType="BOOKPOST" maxWeight="2"/>

@@ -1,12 +1,27 @@
 package ru.aplix.packline.controller;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.animation.FadeTransitionBuilder;
+import javafx.animation.Timeline;
+import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
+
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.StringUtils;
+
 import ru.aplix.packline.Const;
 import ru.aplix.packline.action.WeightingOrderAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.post.Incoming;
@@ -35,8 +50,25 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	private Button nextButton;
 
 	private float measure = 0f;
+	private float minStableWeight;
 
 	private Scales<?> scales = null;
+
+	private Transition transition;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		try {
+			minStableWeight = Configuration.getInstance().getWeighting().getMinStableWeight();
+		} catch (FileNotFoundException | MalformedURLException | JAXBException e) {
+			e.printStackTrace();
+		}
+
+		transition = FadeTransitionBuilder.create().duration(Duration.millis(200)).node(nextButton).fromValue(1).toValue(0.6).cycleCount(Timeline.INDEFINITE)
+				.autoReverse(true).build();
+	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -82,6 +114,19 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		} else {
 			throw new SkipActionException();
 		}
+
+		// Check whether the weight has been stabilized before
+		// we've get here
+		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
+		String barcode = (String) getContext().getAttribute(Const.BWL_BARCODE);
+		if (StringUtils.equals(incoming.getId(), barcode)) {
+			Float weight = (Float) getContext().getAttribute(Const.BWL_WEIGHT);
+			if (weight != null) {
+				getContext().setAttribute(Const.BWL_WEIGHT, null);
+
+				onWeightStabled(weight);
+			}
+		}
 	}
 
 	@Override
@@ -91,9 +136,18 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		if (scales != null) {
 			scales.removeMeasurementListener(this);
 		}
+
+		transition.stop();
 	}
 
 	public void nextClick(ActionEvent event) {
+		if (measure <= 0) {
+			errorMessageProperty.set(getResources().getString("error.scales.negative.weight"));
+			errorVisibleProperty.set(true);
+
+			return;
+		}
+
 		getAction().processMeasure(measure);
 		done();
 	}
@@ -114,7 +168,12 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 			@Override
 			public void run() {
 				updateMeasure(value);
-				nextButton.fire();
+
+				if (value <= minStableWeight) {
+					transition.play();
+				} else {
+					nextButton.fire();
+				}
 			}
 		});
 	}

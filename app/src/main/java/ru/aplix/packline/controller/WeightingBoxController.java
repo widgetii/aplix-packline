@@ -1,20 +1,32 @@
 package ru.aplix.packline.controller;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
+import javafx.animation.FadeTransitionBuilder;
+import javafx.animation.Timeline;
+import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.WeightingBoxAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.post.Container;
@@ -39,10 +51,27 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	private Button nextButton;
 
 	private float measure = 0f;
+	private float minStableWeight;
 
 	private Scales<?> scales = null;
 
 	private Task<Void> task;
+
+	private Transition transition;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		super.initialize(location, resources);
+
+		try {
+			minStableWeight = Configuration.getInstance().getWeighting().getMinStableWeight();
+		} catch (FileNotFoundException | MalformedURLException | JAXBException e) {
+			e.printStackTrace();
+		}
+
+		transition = FadeTransitionBuilder.create().duration(Duration.millis(200)).node(nextButton).fromValue(1).toValue(0.6).cycleCount(Timeline.INDEFINITE)
+				.autoReverse(true).build();
+	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -84,6 +113,18 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			getAction().setNextAction(getAction().getPrintingAction());
 			throw new SkipActionException();
 		}
+
+		// Check whether the weight has been stabilized before
+		// we've get here
+		String barcode = (String) getContext().getAttribute(Const.BWL_BARCODE);
+		if (StringUtils.equals(container.getId(), barcode)) {
+			Float weight = (Float) getContext().getAttribute(Const.BWL_WEIGHT);
+			if (weight != null) {
+				getContext().setAttribute(Const.BWL_WEIGHT, null);
+
+				onWeightStabled(weight);
+			}
+		}
 	}
 
 	@Override
@@ -94,12 +135,21 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			scales.removeMeasurementListener(this);
 		}
 
+		transition.stop();
+
 		if (task != null) {
 			task.cancel(false);
 		}
 	}
 
 	public void nextClick(ActionEvent event) {
+		if (measure <= 0) {
+			errorMessageProperty.set(getResources().getString("error.scales.negative.weight"));
+			errorVisibleProperty.set(true);
+
+			return;
+		}
+
 		task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
@@ -169,7 +219,12 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			@Override
 			public void run() {
 				updateMeasure(value);
-				nextButton.fire();
+
+				if (value <= minStableWeight) {
+					transition.play();
+				} else {
+					nextButton.fire();
+				}
 			}
 		});
 	}

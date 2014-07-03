@@ -3,6 +3,7 @@ package ru.aplix.packline.action;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -242,8 +243,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			@Override
 			public void onTextInput(String value) {
 				if (getController() instanceof BarcodeListener) {
-					BarcodeListener bl = (BarcodeListener) getController();
-					bl.onCatchBarcode(value);
+					ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+					@SuppressWarnings({ "unchecked" })
+					List<BarcodeListener> list = (List<BarcodeListener>) applicationContext.getBean(Const.BARCODE_LISTENERS);
+					for (BarcodeListener bl : list) {
+						bl.onCatchBarcode(value);
+					}
 				}
 			}
 		});

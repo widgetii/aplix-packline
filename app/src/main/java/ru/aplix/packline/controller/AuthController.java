@@ -15,17 +15,26 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.camera.DVRCamera;
 import ru.aplix.packline.hardware.camera.RecorderListener;
+import ru.aplix.packline.hardware.scales.MeasurementListener;
+import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.workflow.WorkflowContext;
 
-public class AuthController extends StandardController<AuthAction> implements BarcodeListener, RecorderListener {
+public class AuthController extends StandardController<AuthAction> implements BarcodeListener, RecorderListener, MeasurementListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private BarcodeScanner<?> barcodeScanner = null;
 	private DVRCamera<?> dvrCamera = null;
+	private Scales<?> scales = null;
 
 	private Task<Operator> task;
+
+	private BarcodeWeightListener barcodeWeightListener;
+
+	public AuthController() {
+		barcodeWeightListener = new BarcodeWeightListener();
+	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
@@ -35,12 +44,20 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
+			barcodeScanner.addBarcodeListener(barcodeWeightListener);
 		}
 
 		dvrCamera = (DVRCamera<?>) context.getAttribute(Const.DVR_CAMERA);
 		if (dvrCamera != null) {
 			dvrCamera.addRecorderListener(this);
 			dvrCamera.disableRecording();
+		}
+
+		scales = (Scales<?>) context.getAttribute(Const.SCALES);
+		if (scales != null) {
+			updateMeasure(scales.getLastMeasurement());
+			scales.addMeasurementListener(this);
+			scales.addMeasurementListener(barcodeWeightListener);
 		}
 	}
 
@@ -58,6 +75,10 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 			if (!appIsStopping) {
 				dvrCamera.enableRecording();
 			}
+		}
+
+		if (scales != null) {
+			scales.removeMeasurementListener(this);
 		}
 
 		if (task != null) {
@@ -140,7 +161,14 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	protected boolean checkNoError() {
 		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
 			if ((dvrCamera == null) || dvrCamera.isConnected()) {
-				return true;
+				if ((scales == null) || scales.isConnected()) {
+					return true;
+				} else {
+					errorMessageProperty.set(getResources().getString("error.scales"));
+					errorVisibleProperty.set(true);
+
+					return false;
+				}
 			} else {
 				errorMessageProperty.set(getResources().getString("error.dvr.camera"));
 				errorVisibleProperty.set(true);
@@ -165,5 +193,63 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 	@Override
 	public void onRecordingFailed() {
+	}
+
+	@Override
+	public void onMeasure(final Float value) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				updateMeasure(value);
+			}
+		});
+	}
+
+	@Override
+	public void onWeightStabled(final Float value) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				updateMeasure(value);
+			}
+		});
+	}
+
+	private void updateMeasure(Float value) {
+		if (value != null && Math.abs(value) > 1e-6) {
+			errorMessageProperty.set(getResources().getString("error.scales.nonzero.weight"));
+			errorVisibleProperty.set(true);
+		}
+	}
+
+	/**
+	 * 
+	 */
+	class BarcodeWeightListener implements BarcodeListener, MeasurementListener {
+
+		@Override
+		public void onCatchBarcode(final String value) {
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					getContext().setAttribute(Const.BWL_BARCODE, value);
+					getContext().setAttribute(Const.BWL_WEIGHT, null);
+				}
+			});
+		}
+
+		@Override
+		public void onMeasure(Float value) {
+		}
+
+		@Override
+		public void onWeightStabled(final Float value) {
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					getContext().setAttribute(Const.BWL_WEIGHT, value);
+				}
+			});
+		}
 	}
 }

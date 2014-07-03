@@ -47,7 +47,7 @@ public class OverweightController extends StandardController<OverweightAction> {
 			Container container = (Container) getContext().getAttribute(Const.TAG);
 			final Post post = (Post) getContext().getAttribute(Const.POST);
 
-			WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeightingRestrictions(), new Predicate() {
+			WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeighting().getWeightingRestrictions(), new Predicate() {
 				@Override
 				public boolean evaluate(Object object) {
 					return post.getPostType().equals(((WeightingRestriction) object).getPostType());

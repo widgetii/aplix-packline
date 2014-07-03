@@ -1,6 +1,7 @@
 package ru.aplix.packline;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,15 @@ import javafx.stage.StageStyle;
 import javax.xml.bind.JAXBException;
 import javax.xml.ws.BindingProvider;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.springframework.aop.AfterReturningAdvice;
+import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -31,6 +37,7 @@ import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.HardwareConfiguration;
 import ru.aplix.packline.conf.PostService;
 import ru.aplix.packline.hardware.Connectable;
+import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerConnectionListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScannerFactory;
@@ -170,8 +177,16 @@ public class App extends Application implements IdleListener {
 		HardwareConfiguration configuration = Configuration.getInstance().getHardwareConfiguration();
 
 		// Create barcode scanner instance
-		if (configuration.getBarcodeScanner().isEnabled()) {
-			final BarcodeScanner<?> bs = BarcodeScannerFactory.createInstance(configuration.getBarcodeScanner().getName());
+		if (!StringUtils.isEmpty(configuration.getBarcodeScanner().getName()) && configuration.getBarcodeScanner().isEnabled()) {
+			BarcodeScanner<?> bs = BarcodeScannerFactory.createInstance(configuration.getBarcodeScanner().getName());
+
+			// Proxy barcode scanner in order to intercept listener methods
+			ProxyFactory factory = new ProxyFactory(bs);
+			BarcodeListenerStaticMethodMatcherPointcut blsmmp = new BarcodeListenerStaticMethodMatcherPointcut();
+			factory.addAdvisor(new DefaultPointcutAdvisor(blsmmp, blsmmp));
+			bs = (BarcodeScanner<?>) factory.getProxy();
+
+			// Continue with proxied barcode scanner
 			bs.setConnectOnDemand(true);
 			bs.setConfiguration(configuration.getBarcodeScanner().getConfiguration());
 			bs.addConnectionListener(new BarcodeScannerConnectionListener() {
@@ -193,7 +208,7 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create photo camera instance
-		if (configuration.getPhotoCamera().isEnabled()) {
+		if (!StringUtils.isEmpty(configuration.getPhotoCamera().getName()) && configuration.getPhotoCamera().isEnabled()) {
 			final PhotoCamera<?> pc = PhotoCameraFactory.createInstance(configuration.getPhotoCamera().getName());
 			pc.setConnectOnDemand(true);
 			pc.setConfiguration(configuration.getPhotoCamera().getConfiguration());
@@ -216,7 +231,7 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create DVR camera instance
-		if (configuration.getDVRCamera().isEnabled()) {
+		if (!StringUtils.isEmpty(configuration.getDVRCamera().getName()) && configuration.getDVRCamera().isEnabled()) {
 			final DVRCamera<?> dc = DVRCameraFactory.createInstance(configuration.getDVRCamera().getName());
 			dc.setConnectOnDemand(true);
 			dc.setConfiguration(configuration.getDVRCamera().getConfiguration());
@@ -239,7 +254,7 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create scales instance
-		if (configuration.getScales().isEnabled()) {
+		if (!StringUtils.isEmpty(configuration.getScales().getName()) && configuration.getScales().isEnabled()) {
 			final Scales<?> sc = ScalesFactory.createInstance(configuration.getScales().getName());
 			sc.setConnectOnDemand(true);
 			sc.setConfiguration(configuration.getScales().getConfiguration());
@@ -262,7 +277,7 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create scales instance
-		if (configuration.getImageScanner().isEnabled()) {
+		if (!StringUtils.isEmpty(configuration.getImageScanner().getName()) && configuration.getImageScanner().isEnabled()) {
 			final ImageScanner<?> is = ImageScannerFactory.createInstance(configuration.getImageScanner().getName());
 			is.setConnectOnDemand(true);
 			is.setConfiguration(configuration.getImageScanner().getConfiguration());
@@ -399,4 +414,32 @@ public class App extends Application implements IdleListener {
 			}
 		}
 	}
+
+	/**
+	 *
+	 */
+	class BarcodeListenerStaticMethodMatcherPointcut extends StaticMethodMatcherPointcut implements AfterReturningAdvice {
+
+		@Override
+		public boolean matches(Method method, Class<?> cls) {
+			return method.getName().matches("(add|remove)BarcodeListener");
+		}
+
+		@Override
+		public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
+			if (args != null && args.length > 0 && args[0] instanceof BarcodeListener) {
+				BarcodeListener listener = (BarcodeListener) args[0];
+
+				@SuppressWarnings("unchecked")
+				List<BarcodeListener> list = (List<BarcodeListener>) applicationContext.getBean(Const.BARCODE_LISTENERS);
+
+				if (method.getName().startsWith("add")) {
+					list.add(listener);
+				} else {
+					list.remove(listener);
+				}
+			}
+		}
+	}
+
 }
