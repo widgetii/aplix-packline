@@ -3959,6 +3959,7 @@
 		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable24] = '' or [Variable24] = [Variable25], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable24], [kuda_area_city] + ', ' + [Variable24]))"/>		
 		<Variable Name="kuda" Type="expression" Content="f:choose([Variable2] = '', [kuda_full_adres], '125956 Федеральный клиент ' + [Variable6])"/>
 		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable9] + ', ' + [Variable10]))"/>
+		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable11] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable11], [otkuda_city_adres] + ', ' + [Variable11]))"/>
 		<Variable Name="otkuda_area_region" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable10], [Variable11], f:choose([Variable11] = '', [Variable12], [Variable11] + ', ' + [Variable12]))"/>		
         <Variable Name="index_to_1" Type="expression" Content="f:copy([Variable18],1,1)"/>
         <Variable Name="index_to_2" Type="expression" Content="f:copy([Variable18],2,1)"/>

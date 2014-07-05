@@ -68,7 +68,7 @@ public class Roles {
 	}
 
 	public Boolean getReturns() {
-		return returns;
+		return returns != null ? returns : true;
 	}
 
 	public void setReturns(Boolean returns) {
