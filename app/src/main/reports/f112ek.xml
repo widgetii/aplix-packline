@@ -1612,7 +1612,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_1]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1636,7 +1636,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_2]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1660,7 +1660,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_3]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1684,7 +1684,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_4]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1708,7 +1708,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_5]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1732,7 +1732,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_6]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1756,7 +1756,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_7]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1780,7 +1780,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_8]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1804,7 +1804,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_9]</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1828,7 +1828,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.5950106">
-                     <Memo>[phone_10]</Memo>
+                     <Memo></Memo>
                   </MemoView>
 				  <MemoView 
                             FillColor="transparent"
@@ -3980,17 +3980,7 @@
         <Variable Name="track_num_11" Type="expression" Content="f:copy([Variable1],11,1)"/>
         <Variable Name="track_num_12" Type="expression" Content="f:copy([Variable1],12,1)"/>
 		<Variable Name="track_num_13" Type="expression" Content="f:copy([Variable1],13,1)"/>
-		<Variable Name="track_num_14" Type="expression" Content="f:copy([Variable1],14,1)"/>
-		<Variable Name="phone_1" Type="expression" Content="f:copy([Variable19],1,1)"/>
-		<Variable Name="phone_2" Type="expression" Content="f:copy([Variable19],2,1)"/>
-		<Variable Name="phone_3" Type="expression" Content="f:copy([Variable19],3,1)"/>
-		<Variable Name="phone_4" Type="expression" Content="f:copy([Variable19],4,1)"/>
-		<Variable Name="phone_5" Type="expression" Content="f:copy([Variable19],5,1)"/>
-		<Variable Name="phone_6" Type="expression" Content="f:copy([Variable19],6,1)"/>
-		<Variable Name="phone_7" Type="expression" Content="f:copy([Variable19],7,1)"/>
-		<Variable Name="phone_8" Type="expression" Content="f:copy([Variable19],8,1)"/>
-		<Variable Name="phone_9" Type="expression" Content="f:copy([Variable19],9,1)"/>
-		<Variable Name="phone_10" Type="expression" Content="f:copy([Variable19],10,1)"/>
+		<Variable Name="track_num_14" Type="expression" Content="f:copy([Variable1],14,1)"/>		
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="barkod_espp"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="NPKop"/>
