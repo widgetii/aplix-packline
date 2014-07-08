@@ -85,7 +85,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 				warningLabel.setVisible(newValue == null);
 
 				if (newValue != null) {
-					Utils.playSound(Utils.SOUND_ERROR);
+					Object operator = context.getAttribute(Const.OPERATOR);
+					if (operator != null) {
+						Utils.playSound(Utils.SOUND_ERROR);
+					}
 
 					errorCheckerEventHandler.reset();
 				}
@@ -98,7 +101,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 				errorLabel.setVisible(newValue == null);
 
 				if (newValue != null) {
-					Utils.playSound(Utils.SOUND_WARNING);
+					Object operator = context.getAttribute(Const.OPERATOR);
+					if (operator != null) {
+						Utils.playSound(Utils.SOUND_WARNING);
+					}
 
 					errorCheckerEventHandler.reset();
 				}
