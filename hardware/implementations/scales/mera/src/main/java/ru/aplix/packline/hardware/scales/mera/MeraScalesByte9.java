@@ -87,22 +87,24 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 				connectionLock.lock();
 				try {
 					try {
-						if (!isConnected()) {
-							CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(configuration.getPortName());
-							if (portId == null) {
-								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
+						synchronized (CommPortIdentifier.class) {
+							if (!isConnected()) {
+								CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(configuration.getPortName());
+								if (portId == null) {
+									throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
+								}
+
+								connectLatch = new CountDownLatch(1);
+
+								serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
+								serialPort.setSerialPortParams(MERA_SCALES_PORT_SPEED, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+								serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+								serialPort.enableReceiveTimeout(configuration.getTimeout());
+
+								mcspl = new Byte9PortEventListener();
+
+								isConnected = true;
 							}
-
-							connectLatch = new CountDownLatch(1);
-
-							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
-							serialPort.setSerialPortParams(MERA_SCALES_PORT_SPEED, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-							serialPort.enableReceiveTimeout(configuration.getTimeout());
-
-							mcspl = new Byte9PortEventListener();
-
-							isConnected = true;
 						}
 
 						synchronized (connectionListeners) {

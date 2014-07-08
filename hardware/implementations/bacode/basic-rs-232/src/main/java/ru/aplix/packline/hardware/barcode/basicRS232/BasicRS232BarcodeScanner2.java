@@ -75,19 +75,22 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 				connectionLock.lock();
 				try {
 					try {
-						if (!isConnected()) {
-							CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(configuration.getPortName());
-							if (portId == null) {
-								throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
+						synchronized (CommPortIdentifier.class) {
+							if (!isConnected()) {
+								CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(configuration.getPortName());
+								if (portId == null) {
+									throw new RuntimeException(String.format("Port '%s' not found.", configuration.getPortName()));
+								}
+
+								serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
+								serialPort.addEventListener(new BarcodeSerialPortEventListener());
+								serialPort.notifyOnDataAvailable(true);
+								serialPort.setSerialPortParams(configuration.getPortSpeed(), SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+										SerialPort.PARITY_NONE);
+								serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+
+								isConnected = true;
 							}
-
-							serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
-							serialPort.addEventListener(new BarcodeSerialPortEventListener());
-							serialPort.notifyOnDataAvailable(true);
-							serialPort.setSerialPortParams(configuration.getPortSpeed(), SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-							serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-
-							isConnected = true;
 						}
 
 						synchronized (connectionListeners) {
