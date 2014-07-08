@@ -3995,7 +3995,7 @@
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="barkod_espp"/>
         <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="NPKop"/>
         <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="NPRub"/>
-        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES_PEREVOD"/>
         <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
         <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="BR_BNAME"/>
         <Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
@@ -4005,17 +4005,17 @@
         <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
         <Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="PAYMENT"/>
         <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="INN"/>
-        <Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+        <Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_perevod"/>
         <Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
         <Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="telefon" />
         <Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="bik" />
         <Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="rs" />
         <Variable Name="Variable22" Type="db-field" Dataset="PostDataSet" Content="ks" />
         <Variable Name="Variable23" Type="db-field" Dataset="PostDataSet" Content="comment" />
-        <Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+        <Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="REGION_PEREVOD"/>
 		<Variable Name="Variable25" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
 		<Variable Name="Variable26" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL" />
-		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="AREA1" />		
+		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="AREA_PEREVOD" />		
     </Variables>
     <Datasets>
         <Dataset Name="PostDataSet">

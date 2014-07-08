@@ -530,6 +530,10 @@
 			<value>Варшавское шоссе, дом 141</value>
 		</field>
 		<field>
+			<name>ADRES_PEREVOD</name>
+			<value>Симферопольский б-р, 15, корп.5</value>
+		</field>
+		<field>
 			<name>FIRM_CITY</name>
 			<value>Москва</value>
 		</field>
@@ -538,12 +542,24 @@
 			<value>Россия</value>
 		</field>
 		<field>
+			<name>REGION_PEREVOD</name>
+			<value>Москва</value>
+		</field>
+		<field>
 			<name>AREA1</name>
 			<value>Московская обл.</value>
 		</field>
 		<field>
+			<name>AREA_PEREVOD</name>
+			<value></value>
+		</field>		
+		<field>
 			<name>index_from</name>
 			<value>117556</value>
+		</field>
+		<field>
+			<name>index_perevod</name>
+			<value>125956</value>
 		</field>
 		<field>
 			<name>FIRM_PRED</name>
