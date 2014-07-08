@@ -1564,7 +1564,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.0633404">
-                     <Memo>+</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1588,7 +1588,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="1.0633404">
-                     <Memo>7</Memo>
+                     <Memo></Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
