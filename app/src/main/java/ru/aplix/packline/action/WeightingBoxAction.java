@@ -91,7 +91,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 
 		if (wr != null && container.getTotalWeight() > wr.getMaxWeight()) {
 			setNextAction(getOverweightAction());
-		} else if (order.getIncoming() != null && (order.getIncoming().size() == 1) && (container.getTotalWeight() < order.getIncoming().get(0).getWeight())) {
+		} else if (order.getIncoming() != null && (order.getIncoming().size() == 1) && (container.getTotalWeight() - order.getIncoming().get(0).getWeight() < -1e-3)) {
 			setNextAction(getUnderweightAction());
 		} else {
 			setNextAction(getPrintingAction());
