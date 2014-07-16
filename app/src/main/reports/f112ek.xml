@@ -1301,7 +1301,7 @@
                             VerticalAlign="top"
                             Visible="true"
                             Width="5.8483725">
-                     <Memo>[Variable4]</Memo>
+                     <Memo>[nalplat_rub]</Memo>
                   </MemoView>
                   <MemoView 
                             FillColor="transparent"
@@ -1325,7 +1325,7 @@
                             VerticalAlign="top"
                             Visible="true"
                             Width="2.7912686">
-                     <Memo>[Variable3]</Memo>
+                     <Memo>[nalplat_kop]</Memo>
                   </MemoView>
                   <MemoView FillColor="#FFFFFF"
                             FontColor="#000000"
@@ -3951,9 +3951,11 @@
     </Pages>
     <Variables>
 		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
-        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable4] + '.' + [Variable3] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_area_city] + '!' + [Variable6] + '!' + [Variable26] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
+        <Variable Name="barcod2D_body" Type="expression" Content="'!!77!!!3!1!' + [Variable13] + '!3!0!' + [Variable18] + '!' + [Variable12] + '!' + [otkuda_area_city] + '!' + [Variable8] + '!' + [Variable19] + '!!!!!!!!' + [Variable17] + '!' + [Variable24] + '!' + [kuda_area_city] + '!' + [Variable6] + '!' + [Variable26] + '!' + [Variable2] + '!' + [Variable20] + '!' + [Variable21] + '!' + [Variable22] + '!' + [Variable7] + '!' + [Variable1] + '!!!!1'"/>
         <Variable Name="barcod2D" Type="expression" Content="f:choose([Variable2] = '', '', f:upperCase([barcod2D_body]))" />
         <Variable Name="nalplat" Type="expression" Content="f:toRoublesRU([Variable13])"/>
+		<Variable Name="nalplat_kop" Type="expression" Content="f:str(f:frac([Variable13]) * 100, 0)"/>
+		<Variable Name="nalplat_rub" Type="expression" Content="f:str(f:trunc([Variable13]), 0)"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable5] = '', [Variable25], f:choose([Variable25] = '', [Variable5], [Variable5] + ', ' + [Variable25]))"/>
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable27] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable27], [kuda_city_adres] + ', ' + [Variable27]))"/>
 		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable24] = '' or [Variable24] = [Variable25], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable24], [kuda_area_city] + ', ' + [Variable24]))"/>		
@@ -3983,8 +3985,6 @@
 		<Variable Name="track_num_14" Type="expression" Content="f:copy([Variable1],14,1)"/>		
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="barkod_espp"/>
-        <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="NPKop"/>
-        <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="NPRub"/>
         <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES_PEREVOD"/>
         <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
         <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="BR_BNAME"/>
@@ -4013,8 +4013,6 @@
                 <Row>
                     <Column Name="Variable1"/>
                     <Column Name="Variable2"/>
-                    <Column Name="Variable3"/>
-                    <Column Name="Variable4"/>
                     <Column Name="Variable5"/>
                     <Column Name="Variable6"/>
                     <Column Name="Variable7"/>
