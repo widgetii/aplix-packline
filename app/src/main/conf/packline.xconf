@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <packline version="${project.version}">
 
-	<!-- Hardware connection parameters                                                           	-->
-	<!-- 	"reconnect" - the interval in seconds to reconnect to device if connection has failed 	-->
-	<Hardware reconnect="5">
+	<!-- Hardware connection parameters                                                           		-->
+	<!-- 	"reconnect" - the interval in seconds to reconnect to device if connection has failed 		-->
+	<!--	"blockWorkOnDVRCameraError" - the work of the program will be blocked on DVR camera error	-->
+	<Hardware reconnect="5" blockWorkOnDVRCameraError="false">
 
 		<!-- Barcode scanner driver -->
 		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="true" >

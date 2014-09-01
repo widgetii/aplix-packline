@@ -9,9 +9,31 @@
 		</layout>
 	</appender>
 
-	<appender name="FILE-FOR-DVR-CAMERA" class="org.apache.log4j.FileAppender">
-		<param name="file" value="dvr-camera.log" />
-		<param name="append" value="true" />
+	<appender name="FILE" class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
+			<param name="activeFileName" value="./../logs/${project.artifactId}.log" />
+			<param name="fileNamePattern" value="./../logs/${project.artifactId}.%i.log" />
+			<param name="minIndex" value="1" />
+			<param name="maxIndex" value="10" />
+		</rollingPolicy>
+		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+			<param name="maxFileSize" value="512000" />
+		</triggeringPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d | %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE-FOR-DVR-CAMERA" class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
+			<param name="activeFileName" value="./../logs/dvr-camera.log" />
+			<param name="fileNamePattern" value="./../logs/dvr-camera.%i.log" />
+			<param name="minIndex" value="1" />
+			<param name="maxIndex" value="5" />
+		</rollingPolicy>
+		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+			<param name="maxFileSize" value="512000" />
+		</triggeringPolicy>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d | %m%n" />
 		</layout>
@@ -25,6 +47,7 @@
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
 	</root>
 
 </log4j:configuration>

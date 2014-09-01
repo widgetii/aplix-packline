@@ -20,6 +20,9 @@ public class HardwareConfiguration {
 	@XmlAttribute(name = "reconnect")
 	private int reconnectInterval;
 
+	@XmlAttribute(name = "blockWorkOnDVRCameraError")
+	private boolean blockWorkOnDVRCameraError;
+
 	@XmlElement(name = "BarcodeScanner", type = Driver.class)
 	private Driver barcodeScanner;
 
@@ -48,6 +51,14 @@ public class HardwareConfiguration {
 
 	public void setReconnectInterval(int reconnectInterval) {
 		this.reconnectInterval = reconnectInterval;
+	}
+
+	public boolean isBlockWorkOnDVRCameraError() {
+		return blockWorkOnDVRCameraError;
+	}
+
+	public void setBlockWorkOnDVRCameraError(boolean blockWorkOnDVRCameraError) {
+		this.blockWorkOnDVRCameraError = blockWorkOnDVRCameraError;
 	}
 
 	public Driver getBarcodeScanner() {

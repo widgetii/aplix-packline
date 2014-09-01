@@ -1,6 +1,10 @@
 package ru.aplix.packline.controller;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.concurrent.ExecutorService;
+
+import javax.xml.bind.JAXBException;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -11,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.AuthAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.camera.DVRCamera;
@@ -31,6 +36,8 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	private Task<Operator> task;
 
 	private BarcodeWeightListener barcodeWeightListener;
+
+	private boolean blockWorkOnDVRCameraError = false;
 
 	public AuthController() {
 		barcodeWeightListener = new BarcodeWeightListener();
@@ -97,7 +104,7 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 	}
 
 	private void authenticateOperator(final String value) {
-		if (progressVisibleProperty.get()) {
+		if (progressVisibleProperty.get() || blockWorkOnDVRCameraError) {
 			return;
 		}
 
@@ -159,8 +166,8 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 	@Override
 	protected boolean checkNoError() {
-		if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
-			if ((dvrCamera == null) || dvrCamera.isConnected()) {
+		if (((dvrCamera == null) || dvrCamera.isConnected()) && !blockWorkOnDVRCameraError) {
+			if ((barcodeScanner == null) || barcodeScanner.isConnected()) {
 				if ((scales == null) || scales.isConnected()) {
 					return true;
 				} else {
@@ -170,13 +177,13 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 					return false;
 				}
 			} else {
-				errorMessageProperty.set(getResources().getString("error.dvr.camera"));
+				errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
 				errorVisibleProperty.set(true);
 
 				return false;
 			}
 		} else {
-			errorMessageProperty.set(getResources().getString("error.barcode.scanner"));
+			errorMessageProperty.set(getResources().getString("error.dvr.camera"));
 			errorVisibleProperty.set(true);
 
 			return false;
@@ -196,6 +203,13 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
+				try {
+					if (Configuration.getInstance().getHardwareConfiguration().isBlockWorkOnDVRCameraError()) {
+						blockWorkOnDVRCameraError = true;
+					}
+				} catch (FileNotFoundException | MalformedURLException | JAXBException e) {
+				}
+
 				errorMessageProperty.set(getResources().getString("error.dvr.camera"));
 				errorVisibleProperty.set(true);
 			}
