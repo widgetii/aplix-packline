@@ -529,6 +529,17 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public UpdateContainerResponse2 updateContainer2(Container container) {
+		UpdateContainerResponse2 response = new UpdateContainerResponse2();
+		if (updateContainer(container)) {
+			response.setContainer(container);
+		} else {
+			response.setError("Function failed.");
+		}
+		return response;
+	}
+
+	@Override
 	public synchronized boolean addBoxContainers(final String boxTypeId, TagList tagList) {
 		if (tagList == null || boxTypeId == null) {
 			return false;
@@ -746,6 +757,16 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public String accountContainerCost(StringList containerIds) {
+		return null;
+	}
+
+	@Override
+	public PlannedRegistry getPlannedRegistry() {
+		return null;
+	}
+
+	@Override
+	public String carryOutPlannedRegistry(PlannedRegistryCheckoutItems items) {
 		return null;
 	}
 

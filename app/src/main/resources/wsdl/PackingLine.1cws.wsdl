@@ -110,6 +110,43 @@
 					<xs:enumeration value="OTHER"/>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:complexType name="PlannedRegistry">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:PlannedRegistryItem" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PlannedRegistryCheckout">
+				<xs:sequence>
+					<xs:element name="ID" type="xs:string"/>
+					<xs:element name="Container" type="xs:string"/>
+					<xs:element name="Date" type="xs:dateTime"/>
+					<xs:element name="Status" type="xs:string"/>
+					<xs:element name="Comment" type="xs:string"/>
+					<xs:element name="Photos" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Videos" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PlannedRegistryCheckoutItems">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:PlannedRegistryCheckout" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PlannedRegistryItem">
+				<xs:sequence>
+					<xs:element name="ID" type="xs:string"/>
+					<xs:element name="ClientName" type="xs:string"/>
+					<xs:element name="DeliveryMethod" type="xs:string"/>
+					<xs:element name="Products" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PlannedRegistryProduct">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string"/>
+					<xs:element name="Qty" type="xs:int"/>
+					<xs:element name="SKU" type="xs:string" nillable="true"/>
+					<xs:element name="Barcode" type="xs:string" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Post">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
@@ -141,6 +178,9 @@
 					<xs:enumeration value="PICKPOINT"/>
 					<xs:enumeration value="DHL"/>
 					<xs:enumeration value="SPSR"/>
+					<xs:enumeration value="PETITPAQUET"/>
+					<xs:enumeration value="LOGIBOX"/>
+					<xs:enumeration value="HERMES"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="Registry">
@@ -190,6 +230,12 @@
 					<xs:enumeration value="UNKNOWN"/>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:complexType name="UpdateContainerResponse2">
+				<xs:sequence>
+					<xs:element name="container" type="tns:Container"/>
+					<xs:element name="error" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:element name="AddBoxContainers">
 				<xs:complexType>
 					<xs:sequence>
@@ -678,6 +724,46 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="UpdateContainer2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="container" type="tns:Container"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="UpdateContainer2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:UpdateContainerResponse2"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPlannedRegistry">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPlannedRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PlannedRegistry"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutPlannedRegistry">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Items" type="tns:PlannedRegistryCheckoutItems" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutPlannedRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AddBoxContainersRequestMessage">
@@ -884,6 +970,24 @@
 	<message name="AccountContainerCostResponseMessage">
 		<part name="parameters" element="tns:AccountContainerCostResponse"/>
 	</message>
+	<message name="UpdateContainer2RequestMessage">
+		<part name="parameters" element="tns:UpdateContainer2"/>
+	</message>
+	<message name="UpdateContainer2ResponseMessage">
+		<part name="parameters" element="tns:UpdateContainer2Response"/>
+	</message>
+	<message name="GetPlannedRegistryRequestMessage">
+		<part name="parameters" element="tns:GetPlannedRegistry"/>
+	</message>
+	<message name="GetPlannedRegistryResponseMessage">
+		<part name="parameters" element="tns:GetPlannedRegistryResponse"/>
+	</message>
+	<message name="CarryOutPlannedRegistryRequestMessage">
+		<part name="parameters" element="tns:CarryOutPlannedRegistry"/>
+	</message>
+	<message name="CarryOutPlannedRegistryResponseMessage">
+		<part name="parameters" element="tns:CarryOutPlannedRegistryResponse"/>
+	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
@@ -1020,6 +1124,18 @@
 		<operation name="AccountContainerCost">
 			<input message="tns:AccountContainerCostRequestMessage"/>
 			<output message="tns:AccountContainerCostResponseMessage"/>
+		</operation>
+		<operation name="UpdateContainer2">
+			<input message="tns:UpdateContainer2RequestMessage"/>
+			<output message="tns:UpdateContainer2ResponseMessage"/>
+		</operation>
+		<operation name="GetPlannedRegistry">
+			<input message="tns:GetPlannedRegistryRequestMessage"/>
+			<output message="tns:GetPlannedRegistryResponseMessage"/>
+		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<input message="tns:CarryOutPlannedRegistryRequestMessage"/>
+			<output message="tns:CarryOutPlannedRegistryResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1330,6 +1446,33 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="UpdateContainer2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPlannedRegistry">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1632,6 +1775,33 @@
 		</operation>
 		<operation name="AccountContainerCost">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UpdateContainer2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPlannedRegistry">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

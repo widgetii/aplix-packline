@@ -19,6 +19,7 @@ import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Post;
+import ru.aplix.packline.post.UpdateContainerResponse2;
 import ru.aplix.packline.workflow.WorkflowAction;
 
 public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
@@ -77,21 +78,32 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 		container.setTotalWeight(value);
 
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		if (!postServicePort.updateContainer(container)) {
+		UpdateContainerResponse2 response = postServicePort.updateContainer2(container);
+		if (response == null) {
+			throw new PackLineException(getResources().getString("error.post.container.update"));
+		} else if (response.getError() != null && response.getError().length() > 0) {
+			throw new PackLineException(response.getError());
+		} else if (response.getContainer() == null) {
 			throw new PackLineException(getResources().getString("error.post.container.update"));
 		}
 
+		// Update container in our context
+		container = response.getContainer();
+		getContext().setAttribute(Const.TAG, container);
+
 		// Check weighting restriction
-		WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeighting().getWeightingRestrictions(), new Predicate() {
-			@Override
-			public boolean evaluate(Object object) {
-				return post.getPostType().equals(((WeightingRestriction) object).getPostType());
-			}
-		});
+		WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeighting().getWeightingRestrictions(),
+				new Predicate() {
+					@Override
+					public boolean evaluate(Object object) {
+						return post.getPostType().equals(((WeightingRestriction) object).getPostType());
+					}
+				});
 
 		if (wr != null && container.getTotalWeight() > wr.getMaxWeight()) {
 			setNextAction(getOverweightAction());
-		} else if (order.getIncoming() != null && (order.getIncoming().size() == 1) && (container.getTotalWeight() - order.getIncoming().get(0).getWeight() < -1e-3)) {
+		} else if (order.getIncoming() != null && (order.getIncoming().size() == 1)
+				&& (container.getTotalWeight() - order.getIncoming().get(0).getWeight() < -1e-3)) {
 			setNextAction(getUnderweightAction());
 		} else {
 			setNextAction(getPrintingAction());
