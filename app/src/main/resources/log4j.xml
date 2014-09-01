@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE-FOR-DVR-CAMERA" class="org.apache.log4j.FileAppender">
+		<param name="file" value="dvr-camera.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d | %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="ru.aplix.packline.hardware.camera.flussonic" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE-FOR-DVR-CAMERA" />
+	</logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>

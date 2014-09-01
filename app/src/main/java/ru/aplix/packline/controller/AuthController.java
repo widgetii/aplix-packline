@@ -193,6 +193,13 @@ public class AuthController extends StandardController<AuthAction> implements Ba
 
 	@Override
 	public void onRecordingFailed() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				errorMessageProperty.set(getResources().getString("error.dvr.camera"));
+				errorVisibleProperty.set(true);
+			}
+		});
 	}
 
 	@Override

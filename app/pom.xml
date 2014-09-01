@@ -132,14 +132,14 @@
 					<exclude>sounds/*</exclude>
 					<exclude>**/*.class</exclude>
 					<exclude>**/*.bak</exclude>
-					<exclude>log4j.properties</exclude>
+					<exclude>log4j.xml</exclude>
 				</excludes>
 			</resource>
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>log4j.properties</include>
+					<include>log4j.xml</include>
 				</includes>
 			</resource>
 			<resource>

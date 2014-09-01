@@ -311,6 +311,8 @@ public class FlussonicCamera implements DVRCamera<FlussonicCameraConfiguration> 
 			if (HttpURLConnection.HTTP_OK != connection.getResponseCode()) {
 				throw new Exception(connection.getResponseMessage());
 			}
+			
+			LOG.debug("Camera response: " + connection.getResponseMessage());
 
 			result = true;
 		} catch (Exception e) {
