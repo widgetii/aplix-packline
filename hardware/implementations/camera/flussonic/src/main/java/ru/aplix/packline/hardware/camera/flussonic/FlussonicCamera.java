@@ -308,13 +308,14 @@ public class FlussonicCamera implements DVRCamera<FlussonicCameraConfiguration> 
 			String encoded = Base64.encodeBase64String(authorization.getBytes());
 			connection.setRequestProperty("Authorization", "Basic " + encoded);
 			connection.setConnectTimeout(configuration.getTimeout());
-			if (HttpURLConnection.HTTP_OK != connection.getResponseCode()) {
+			int code = connection.getResponseCode();
+			if (HttpURLConnection.HTTP_OK != code && HttpURLConnection.HTTP_PRECON_FAILED != code) {
 				throw new Exception(connection.getResponseMessage());
 			}
-			
+
 			LOG.debug("Camera response: " + connection.getResponseMessage());
 
-			result = true;
+			result = HttpURLConnection.HTTP_OK == code;
 		} catch (Exception e) {
 			LOG.error(String.format("Error in %s '%s'", getName(), configuration.getHostName()), e);
 		}
