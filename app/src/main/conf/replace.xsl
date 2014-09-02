@@ -158,7 +158,7 @@
 		<!-- Change resolution according to used printer -->
 		<!-- Defined values: 203, 300 -->
 		<xsl:variable name="resolution">
-			<xsl:text>300</xsl:text>
+			<xsl:text>203</xsl:text>
 		</xsl:variable>
 
 		<xsl:result-document method="text" indent="no" encoding="ASCII">
