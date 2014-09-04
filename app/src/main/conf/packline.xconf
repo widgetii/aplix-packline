@@ -164,6 +164,31 @@
 				<PostType>PICKPOINT</PostType>
 			</PostTypeRestriction>
 		</Form>
+		<Form name="Logibox" file="f3" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>LOGIBOX</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Авиа накладные" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+			<PostTypeRestriction>
+				<PostType>DHL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Товарный чек" file="dhl-receipt" printerId="printer1" whenPrint="MANUALLY" copies="3" weight="0.008">
+			<PostTypeRestriction>
+				<PostType>DHL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Транспортный документ" file="dhl-transport-document" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+			<PostTypeRestriction>
+				<PostType>DHL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Сервисная наклейка" file="dhl-service-label" printerId="printer1" whenPrint="MANUALLY" weight="0.002">			
+			<PostTypeRestriction>
+				<PostType>DHL</PostType>
+			</PostTypeRestriction>
+		</Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->

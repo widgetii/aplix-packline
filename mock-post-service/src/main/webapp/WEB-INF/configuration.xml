@@ -339,7 +339,7 @@
 				<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
 				<quantity>1</quantity>
 			</enclosure>
-			<postType>CDEK</postType>
+			<postType>DHL</postType>
 			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>12349876</orderId>
 			<date>2013-10-07T23:06:18.039+03:00</date>
@@ -764,6 +764,10 @@
 		<field>
 			<name>io_sunday</name>
 			<value>true</value>
+		</field>
+		<field>
+			<name>BATTERIES</name>
+			<value>965IB</value>
 		</field>
 	</gatherInfoResponse>
 </configuration>

@@ -33,7 +33,7 @@
 					io_oplata_dogovor, PostNumber,
 					ORDER, DELIVERY, URL, FIRM_PRED, FIRM_TEL, FIRM_CITY, POST_DESCRIPTION, DOGOVOR,
 					CONTAINER_ID, site, cartons, delivery_type, delivery_cost, DELIVERY_DATE, DELIVERY_TIME,
-					AREA_PEREVOD, REGION_PEREVOD, ADRES_PEREVOD, index_perevod
+					AREA_PEREVOD, REGION_PEREVOD, ADRES_PEREVOD, index_perevod, BATTERIES
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';

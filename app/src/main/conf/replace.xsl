@@ -88,6 +88,11 @@
 							<xsl:with-param name="post-type-prefix" select="'f7l_'" />
 						</xsl:call-template>
 					</xsl:when>
+					<xsl:when test="$post-type = 'DHL'">
+						<xsl:call-template name="zebra-label">
+							<xsl:with-param name="post-type-prefix" select="'DHL_'" />
+						</xsl:call-template>
+					</xsl:when>
 				</xsl:choose>
 			</labels>
 		</xsl:result-document>

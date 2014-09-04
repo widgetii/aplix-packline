@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Printer 1" FileVersion="105">
+	<Pages>
+		<Page />
+	</Pages>
+	<Variables>
+		<!-- General attributes -->
+		<Variable Name="DHL__FORMAT" Type="not-assigned" Content="E:DHL.ZPL" />
+		<Variable Name="_JOBNAME" Type="not-assigned" Content="LBL101" />
+
+		<!-- Fields retrieved from the database -->		
+		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
+	</Variables>
+	<Datasets>
+		<Dataset Name="PostDataSet">
+			<Rows>
+				<Row>
+					<Column Name="POSTTYPE" />					
+				</Row>
+			</Rows>
+		</Dataset>
+	</Datasets>
+</Report>

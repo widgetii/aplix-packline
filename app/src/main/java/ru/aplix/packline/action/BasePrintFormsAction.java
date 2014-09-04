@@ -150,7 +150,9 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		vr.resolve(report, configuration);
 
 		// Check if the report determined to cancel printing
-		checkPrintingStatus(report);
+		if (!checkPrintingStatus(report)) {
+			return;
+		}
 
 		// Render report
 		if (ArrayUtils.contains(REPORT_TYPE_FRF, report.getFileVersion())) {
@@ -388,9 +390,21 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		return attributes;
 	}
 
-	private void checkPrintingStatus(Report report) throws PackLineException {
-		// Check container problem
+	private boolean checkPrintingStatus(Report report) throws PackLineException {
+		// Cancel printing
 		Variable variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return Const.CANCEL_PRINTING_VARIABLE.equals(((Variable) item).getName());
+			}
+		});
+
+		if (variable != null && variable.getValue() != null && Boolean.valueOf(variable.getValue())) {
+			return false;
+		}
+
+		// Check container problem
+		variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
 			@Override
 			public boolean evaluate(Object item) {
 				return Const.CONTAINER_PROBLEM_VARIABLE.equals(((Variable) item).getName());
@@ -423,6 +437,8 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				container.setTrackingId(variable.getValue());
 			}
 		}
+
+		return true;
 	}
 
 	private void downloadAndPrintForm(String containerId, String formName, Printer printer) throws Exception {

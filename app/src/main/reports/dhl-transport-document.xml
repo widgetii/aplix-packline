@@ -1,0 +1,1917 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Adobe PDF" FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="210.0" Height="297.0" MarginLeft="0" MarginTop="0" MarginRight="0" MarginBottom="0" Orientation="portrait" UseMargins="true">
+            <Views>
+                <BandView Type="master-header" Name="BandView1" Left="0" Top="0" Width="100" Height="100" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>
+						<PictureView Centered="true" KeepRatio="true" Name="PictureView1" Left="0" Top="4" Width="100.0" Height="92.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <SVGImage Mime="image/svg+xml">
+                                <Content><![CDATA[
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="765"
+   height="990"
+   xml:space="preserve"
+   sodipodi:docname="dhl-transport-document.svg"><metadata
+     id="metadata2991"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs2989"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3865"><path
+         d="M 0,792 612,792 612,0 0,0 0,792 z"
+         clip-rule="evenodd"
+         id="path3867" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3873"><path
+         d="m 0,792.03 612,0 0,-792 -612,0 0,792 z"
+         id="path3875" /></clipPath></defs><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     id="namedview2987"
+     showgrid="false"
+     inkscape:zoom="1.25"
+     inkscape:cx="381.7"
+     inkscape:cy="350.82634"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2993" /><g
+     id="g2993"
+     inkscape:groupmode="layer"
+     transform="matrix(1.25,0,0,-1.25,0,990)"><g
+       id="g3023"
+       transform="matrix(36,0,0,34.199997,27,756.06)"><image
+         width="1"
+         height="1"
+         transform="matrix(1,0,0,-1,0,1)"
+         xlink:href="data:image/png;base64,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"
+         id="image3025" /></g><path
+       d="m 57.36,747.6 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3035" /><path
+       d="m 57.36,747.6 506.28,0 0,0.48 -506.28,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3037" /><path
+       d="m 563.16,747.6 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3039" /><path
+       d="m 57.36,729 0.48,0 0,18.6 -0.48,0 0,-18.6 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3041" /><path
+       d="m 563.16,729 0.48,0 0,18.6 -0.48,0 0,-18.6 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3043" /><path
+       d="m 57.36,728.52 506.28,0 0,0.48 -506.28,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3061" /><path
+       d="m 57.36,711.54 0.48,0 0,16.98 -0.48,0 0,-16.98 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3063" /><path
+       d="m 310.26,711.54 0.48,0 0,16.98 -0.48,0 0,-16.98 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3065" /><path
+       d="m 563.16,711.54 0.48,0 0,16.98 -0.48,0 0,-16.98 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3067" /><path
+       d="m 57.36,711.06 506.28,0 0,0.48 -506.28,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3069" /><path
+       d="m 57.36,694.98 0.48,0 0,16.08 -0.48,0 0,-16.08 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3071" /><path
+       d="m 310.26,694.98 0.48,0 0,16.08 -0.48,0 0,-16.08 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3073" /><path
+       d="m 563.16,694.98 0.48,0 0,16.08 -0.48,0 0,-16.08 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3075" /><path
+       d="m 57.36,694.5 506.28,0 0,0.48 -506.28,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3077" /><path
+       d="m 57.36,678.36 0.48,0 0,16.14 -0.48,0 0,-16.14 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3079" /><path
+       d="m 310.26,678.36 0.48,0 0,16.14 -0.48,0 0,-16.14 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3081" /><path
+       d="m 563.16,678.36 0.48,0 0,16.14 -0.48,0 0,-16.14 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3083" /><path
+       d="m 57.36,677.88 506.28,0 0,0.48 -506.28,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3085" /><path
+       d="m 57.36,661.26 0.48,0 0,16.62 -0.48,0 0,-16.62 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3087" /><path
+       d="m 57.36,661.26 252.9,0 0,0.48 -252.9,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3089" /><path
+       d="m 310.26,661.26 0.48,0 0,16.62 -0.48,0 0,-16.62 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3091" /><path
+       d="m 310.74,661.26 252.42,0 0,0.48 -252.42,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3093" /><path
+       d="m 563.16,661.26 0.48,0 0,16.62 -0.48,0 0,-16.62 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3095" /><path
+       d="m 563.16,661.26 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3097" />
+<path
+       d="m 56.7,526.14 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3261" /><path
+       d="m 56.7,526.14 507.54,0 0,0.48 -507.54,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3263" /><path
+       d="m 563.76,526.14 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3265" /><path
+       d="m 56.7,478.26 0.48,0 0,47.88 -0.48,0 0,-47.88 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3267" /><path
+       d="m 308.7,478.26 0.48,0 0,47.88 -0.48,0 0,-47.88 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3269" /><path
+       d="m 563.76,478.26 0.48,0 0,47.88 -0.48,0 0,-47.88 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3271" /><path
+       d="m 56.7,477.78 507.54,0 0,0.48 -507.54,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3381" /><path
+       d="m 56.7,371.94 0.48,0 0,105.84 -0.48,0 0,-105.84 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3383" /><path
+       d="m 308.7,371.94 0.48,0 0,105.84 -0.48,0 0,-105.84 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3385" /><path
+       d="m 563.76,371.94 0.48,0 0,105.84 -0.48,0 0,-105.84 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3387" /><path
+       d="m 56.7,371.46 507.54,0 0,0.48 -507.54,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3521" /><path
+       d="m 56.7,289.98 0.48,0 0,81.48 -0.48,0 0,-81.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3523" /><path
+       d="m 308.7,289.98 0.48,0 0,81.48 -0.48,0 0,-81.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3525" /><path
+       d="m 563.76,289.98 0.48,0 0,81.48 -0.48,0 0,-81.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3527" /><path
+       d="m 56.7,289.5 507.54,0 0,0.48 -507.54,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3649" /><path
+       d="m 56.7,219.96 0.48,0 0,69.54 -0.48,0 0,-69.54 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3651" /><path
+       d="m 308.7,219.96 0.48,0 0,69.54 -0.48,0 0,-69.54 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3653" /><path
+       d="m 563.76,219.96 0.48,0 0,69.54 -0.48,0 0,-69.54 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3655" /><path
+       d="m 56.7,219.48 507.54,0 0,0.48 -507.54,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3713" /><path
+       d="m 56.7,172.44 0.48,0 0,47.04 -0.48,0 0,-47.04 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3715" /><path
+       d="m 56.7,172.44 252,0 0,0.48 -252,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3717" /><path
+       d="m 308.7,172.44 0.48,0 0,47.04 -0.48,0 0,-47.04 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3719" /><path
+       d="m 309.18,172.44 254.58,0 0,0.48 -254.58,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3721" /><path
+       d="m 563.76,172.44 0.48,0 0,47.04 -0.48,0 0,-47.04 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3723" /><path
+       d="m 563.76,172.44 0.48,0 0,0.48 -0.48,0 0,-0.48 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3725" />
+<text
+       transform="matrix(1,0,0,-1,73.693,99.868)"
+       id="text3797"><tspan
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.02;writing-mode:lr;-inkscape-font-specification:ArialMT"
+         x="0 5.57812 11.15624 16.73436 22.31248 27.8906 33.46872 39.04684 44.62496 50.20308 55.7812 61.35932 66.93744 72.51556 78.09368 83.6718 89.24992 94.82804 100.40616 105.98428 111.5624 117.14052 122.71864 128.29676 133.87488 139.453 145.03112 150.60924 156.18736 161.76548 167.3436 172.92172 178.49984 184.07796 189.65608 195.2342 200.81232 206.39044 211.96856 217.54668 223.1248 228.70292 234.28104 239.85916 245.43728 251.0154 256.59352 262.17164 267.74976 273.32788 278.906 284.48412 290.06224 295.64036 301.21848 306.7966 312.37472 317.95284 323.53096 329.10908 334.6872"
+         y="0"
+         sodipodi:role="line"
+         id="tspan3799">____________________________________________________________ </tspan></text>
+<path
+       d="m 320.46,197.76 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3829" /><path
+       d="m 329.46,206.76 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3831" /><path
+       d="m 69.48,197.88 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3833" /><path
+       d="m 78.42,206.88 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3835" /><path
+       d="m 320.46,268.5 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3837" /><path
+       d="m 329.46,277.5 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3839" /><path
+       d="m 69.48,268.62 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3841" /><path
+       d="m 78.42,277.68 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3843" /><path
+       d="m 320.46,355.02 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3845" /><path
+       d="m 329.46,364.02 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3847" /><path
+       d="m 69.48,354.78 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3849" /><path
+       d="m 78.42,363.78 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3851" /><path
+       d="m 69.96,455.28 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3853" /><path
+       d="m 78.96,464.28 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3855" /><path
+       d="m 320.46,455.28 9,0 0,9 -9,0 0,-9 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3857" /><path
+       d="m 329.46,464.28 -9,0 0,-9 9,0 0,9 z m -9,0 z"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+       id="path3859" /><g
+       id="g3861"><g
+         id="g3863"
+         clip-path="url(#clipPath3865)"><g
+           id="g3869"><g
+             id="g3871"
+             clip-path="url(#clipPath3873)"><path
+               d="m 594,791.76 -575.88,0 0,-789.84 575.88,0 0,789.84 z m -575.88,0 z"
+               style="fill:none;stroke:#ff0000;stroke-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+               id="path3877" /></g></g></g></g></g></svg>							
+]]></Content>
+                            </SVGImage>
+                        </PictureView>
+						 <MemoView BoundHeight="3.9202123" BoundLeft="9.437146" BoundTop="19.13437"
+                      BoundWidth="82.67471"
+                      FillColor="transparent"
+                      FontColor="#FF0000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="3.826874"
+                      Left="9.503605"
+                      Name="Memo1"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="19.18104"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="82.541794">
+               <Memo>WARNING/ПРЕДУПРЕЖДЕНИЕ: LITHIUM BATTERIES THAT HAVE BEEN RECALLED BY THE MANUFACTURER FOR SAFETY REASONS MUST NOT BE SHIPPED BY AIR./ ЛИТИЕВЫЕ БАТАРЕИ,КОТОРЫЕ БЫЛИ ОТОЗВАНЫ ПРОИЗВОДИТЕЛЕМ В ЦЕЛЯХ БЕЗОПАСНОСТИ, АВИАТРАНСПОРТОМ НЕ ПЕРЕВОЗЯТСЯ.</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.3067375" BoundLeft="9.437146" BoundTop="23.147923"
+                      BoundWidth="82.67471"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.2133992"
+                      Left="9.503605"
+                      Name="Memo2"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="23.194592"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="82.541794">
+               <Memo>Terminology/Терминология</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.146783" BoundLeft="9.437146" BoundTop="32.295086"
+                      BoundWidth="82.67471"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.0534446"
+                      Left="9.503605"
+                      Name="Memo3"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="32.341755"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="82.541794">
+               <Memo>This package contains lithium cells or batteries in the following configuration (tick applicable box)
+Это отправление содержит литиевые батареи или элементы в следующей конфигурации (нужное поле пометьте галочкой)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.653748" BoundLeft="20.60222" BoundTop="24.547998"
+                      BoundWidth="71.50964"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="7.5604105"
+                      Left="20.668678"
+                      Name="Memo4"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="24.594666"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="71.376724">
+               <Memo>Cell - electrochemical unit, consisting of an anode and a cathode, capable of generating electrical current
+Элемент - электрохимический элемент, состоящий из анода и катода, вырабатывающий электроэнергию
+Battery - assembly of cells
+Батарея - набор элементов
+Lithium ion cells/batteries - rechargeable - includes lithium polymer cells/batteries
+Ионно-литиевые элементы/батареи - перезарежаемые - включая полимерно-литиевые элементы/батареи
+Lithium metal cells/batteries - generally non-rechargeable
+Литий металлические элементы/батареи - неперезарежаемые</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.653748" BoundLeft="15.418436" BoundTop="24.547998"
+                      BoundWidth="4.5191965"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="7.5604105"
+                      Left="15.484895"
+                      Name="Memo5"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="right"
+                      TextDecoration="none"
+                      Top="24.594666"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="4.3862796">
+               <Memo>-
+ 
+-
+ 
+-
+ 
+-
+ </Memo>
+            </MemoView>
+			<MemoView BoundHeight="4.480243" BoundLeft="17.545118" BoundTop="4.480243"
+                      BoundWidth="74.69966"
+                      FillColor="transparent"
+                      FontColor="#FF0000"
+                      FontName="Arial Cyr"
+                      FontSize="14.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="4.3869042"
+                      Left="17.611576"
+                      Name="Memo6"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="4.526912"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="74.56674">
+               <Memo>Transport Document for Lithium Batteries in Section IB and II
+Транспортный Документ для литиевых батарей Раздел II и IB</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.826874" BoundLeft="10.367569" BoundTop="4.480243"
+                      BoundWidth="7.0446296"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="14.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="3.7335358"
+                      Left="10.434027"
+                      Name="Memo7"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="4.526912"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="6.911712">
+               <Memo>CC</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="9.835899" BoundTop="9.613854"
+                      BoundWidth="31.102705"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="9.902357"
+                      Name="Memo8"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="9.660523"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="30.96979">
+               <Memo>Air Waybill / HAWB/№ Авианакладной:</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="9.835899" BoundTop="11.667299"
+                      BoundWidth="31.102705"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="9.902357"
+                      Name="Memo9"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="11.713968"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="30.96979">
+               <Memo>Shipper/Отправитель:</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="51.439095" BoundTop="11.667299"
+                      BoundWidth="31.102705"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="51.505554"
+                      Name="Memo10"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="11.713968"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="30.96979">
+               <Memo>Consignee/Получатель:</Memo>
+            </MemoView>
+			<MemoView BoundHeight="5.22695" BoundLeft="10.101733" BoundTop="34.815224"
+                      BoundWidth="39.875263"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="5.1336117"
+                      Left="10.168193"
+                      Name="Memo11"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="34.861893"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="39.742348">
+               <Memo>Lithium Ion - Maximum of 
+Ионно-литиевые - максимальная мощность
+  - 20 Wh per cell; and/20 Вч на элемент; и
+  - 100 Wh per battery/100 Вч на батарею</Memo>
+            </MemoView>
+            <MemoView BoundHeight="5.22695" BoundLeft="51.306175" BoundTop="34.815224"
+                      BoundWidth="39.875263"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="5.1336117"
+                      Left="51.372635"
+                      Name="Memo12"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="34.861893"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="39.742348">
+               <Memo>Lithium Ion - Maximum of 
+Ионно-литиевые - максимальная мощность
+  - 20 Wh per cell; and/20 Вч на элемент; и
+  - 100 Wh per battery/100 Вч на батарею</Memo>
+            </MemoView>
+			<MemoView BoundHeight="10.4539" BoundLeft="13.823424" BoundTop="41.44225"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="10.360562"
+                      Left="13.889883"
+                      Name="Memo13"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="41.48892"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Cells or batteries only (ICAO/IATA Packing Instruction 965, Section II)/Отдельные элементы/батареи (ИКАО/ИАТА упаковочная инструкция PI965, Раздел II) - Cells or batteries in a package, without electronic equipment - Элементы/батареи, упакованные без оборудования Package Limit/Ограничения: &#x2264;2.7Wh/Вч = 2.5kg; or &gt;2.7Wh/Вч but/но &#x2264; 20Wh/Вч = 8 cells/элементов; or/или &gt;2.7Wh/Вч but/но &#x2264; 100Wh/Вч = 2 batteries/батареи</Memo>
+            </MemoView>
+            <MemoView BoundHeight="10.4539" BoundLeft="54.76203" BoundTop="41.44225"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="10.360562"
+                      Left="54.828487"
+                      Name="Memo14"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="41.48892"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Cells or batteries only (ICAO/IATA Packing Instruction 968, Section II)/Отдельные элементы/батареи (ИКАО/ИАТА упаковочная инструкция PI968, Раздел II) - Cells or batteries in a package, without electronic equipment - Элементы/батареи, упакованные без оборудования Package Limit/Ограничения: &#x2264;0.3g = 2.5kg; or/или &gt;0.3g but &#x2264; 1g = 8 cells/элементов; or/или &gt;0.3g but &#x2264; 2g = 2 batteries/батареи</Memo>
+            </MemoView>
+			<MemoView BoundHeight="8.2137785" BoundLeft="13.823424" BoundTop="53.01621"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="8.1204405"
+                      Left="13.889883"
+                      Name="Memo15"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="53.062874"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Cells or batteries only (ICAO/IATA UN 3480 Packing Instruction 965, Section IB)/Отдельные элементы/батареи (ИКАО/ИАТА UN 3480 упаковочная инструкция PI965, Раздел IB) - Cells or batteries in a package, without electronic equipment - Элементы/батареи, упакованные без оборудования.
+ 
+ 
+        _____ packages/мест x ______ kg gross\брутто</Memo>
+            </MemoView>
+            <MemoView BoundHeight="8.2137785" BoundLeft="54.76203" BoundTop="53.01621"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="8.1204405"
+                      Left="54.828487"
+                      Name="Memo16"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="53.062874"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Cells or batteries only (ICAO/IATA UN 3090 Packing Instruction 968, Section IB)/Отдельные элементы/батареи (ИКАО/ИАТА UN 3090 упаковочная инструкция PI968, Раздел IB) - Cells or batteries in a package, without electronic equipment - Элементы/батареи, упакованные без оборудования
+ 
+ 
+        _____ packages/мест x ______ kg gross\брутто</Memo>
+            </MemoView>
+			<MemoView BoundHeight="7.4670715" BoundLeft="13.823424" BoundTop="62.163372"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="7.373733"
+                      Left="13.889883"
+                      Name="Memo17"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="62.21004"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Packed with equipment (ICAO/IATA Packнing Instruction 966, Section II)/Элементы/батареи упакованные с оборудованием (ИКАО/ИАТА упаковочная инструкция PI 966, Раздел II) - Cells or batteries contained in a package with associated electronic equipment - Элементы/батареи упакованные вместе с оборудованием, но неустановленные в оборудование</Memo>
+            </MemoView>
+            <MemoView BoundHeight="7.4670715" BoundLeft="54.76203" BoundTop="62.163372"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="7.373733"
+                      Left="54.828487"
+                      Name="Memo18"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="62.21004"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Packed with equipment (ICAO/IATA Packing Instruction 969, Section II)/Элементы/батареи упакованные с оборудованием (ИКАО/ИАТА упаковочная инструкция PI 969, Раздел II) - Cells or batteries contained in a package with associated battery-powered equipment - with the batteries not installed in the equipment - Элементы/батареи упакованные вместе с оборудованием, но неустановленные в оборудование</Memo>
+            </MemoView>
+            <MemoView BoundHeight="5.1336117" BoundLeft="13.823424" BoundTop="70.19047"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="5.0402737"
+                      Left="13.889883"
+                      Name="Memo19"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="70.237144"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Contained in equipment (ICAO/IATA Packing Instruction 967, Section II) - Cells or batteries installed in equipment/Элементы/батареи установленные в оборудование или как часть оборудования (ИКАО/ИAТА упаковочная инструкция PI967, Раздел II)</Memo>
+            </MemoView>
+            <MemoView BoundHeight="5.1336117" BoundLeft="54.76203" BoundTop="70.19047"
+                      BoundWidth="36.153572"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="7.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="5.0402737"
+                      Left="54.828487"
+                      Name="Memo20"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="70.237144"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="36.020657">
+               <Memo>Contained in equipment (ICAO/IATA Packing Instruction 970, Section II) - Cells or batteries installed in equipment/Элементы/батареи установленные в оборудование или как часть оборудования (ИКАО/ИAТА упаковочная инструкция PI970, Раздел II)</Memo>
+            </MemoView>
+			<MemoView BoundHeight="7.747087" BoundLeft="9.304229" BoundTop="75.79077"
+                      BoundWidth="82.80763"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="7.653748"
+                      Left="9.3706875"
+                      Name="Memo21"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="75.83745"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="82.67471">
+               <Memo>This package must be handled with care. A flammability hazard exists if the package is damaged./Обрабатывать аккуратно. Огнеопасно, если упаковка повреждена.
+
+If this package is damaged in transportation, it must not be loaded until the condition of the contents can be verified.The batteries contained in this package must be inspected for damage and may only be repacked if they are intact and protected against short circuits./Если упаковка повреждена в процессе транспортировки, груз не может транспортироваться дальше без проверки содержимого на безопасность.
+
+For more information about the batteries contained in this package, call the following telephone number:Для получения дополнительной информации о батареях позвоните по номеру телефона, который указан ниже:</Memo>
+            </MemoView>
+			<MemoView BoundHeight="1.7734295" BoundLeft="12.228415" BoundTop="85.12462"
+                      BoundWidth="68.98421"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.680091"
+                      Left="12.294873"
+                      Name="Memo22"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="85.17129"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="68.851295">
+               <Memo>List telephone number here, including area code and any applicable country code/Номер телефона, включая код города и страны</Memo>
+            </MemoView>
+			<MemoView BoundHeight="2.146783" BoundLeft="23.39349" BoundTop="89.32485"
+                      BoundWidth="37.615665"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="bottom"
+                      FrameWidth="1.0"
+                      Height="2.0534446"
+                      Left="23.459948"
+                      Name="Memo23"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="89.371506"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="37.48275">
+               <Memo/>
+            </MemoView>
+            <MemoView BoundHeight="4.3869042" BoundLeft="7.975053" BoundTop="88.858154"
+                      BoundWidth="15.285518"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="4.293566"
+                      Left="8.041512"
+                      Name="Memo24"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="88.90483"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="15.1526">
+               <Memo>Name / Signature:
+ФИО/Подпись</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.146783" BoundLeft="63.40167" BoundTop="90.164894"
+                      BoundWidth="8.905477"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.0534446"
+                      Left="63.46813"
+                      Name="Memo25"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="right"
+                      TextDecoration="none"
+                      Top="90.21156"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="8.772559">
+               <Memo>Date/Дата</Memo>
+            </MemoView>
+            <MemoView BoundHeight="2.146783" BoundLeft="72.83882" BoundTop="89.32485"
+                      BoundWidth="18.47554"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="6.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="bottom"
+                      FrameWidth="1.0"
+                      Height="2.0534446"
+                      Left="72.90527"
+                      Name="Memo26"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="89.371506"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="18.34262">
+               <Memo/>
+            </MemoView>
+			<MemoView BoundHeight="2.146783" BoundLeft="73.37048" BoundTop="91.84498"
+                      BoundWidth="18.47554"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.0534446"
+                      Left="73.43694"
+                      Name="Memo27"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="right"
+                      TextDecoration="none"
+                      Top="91.891655"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="18.34262">
+               <Memo>V.1.3 Feb 2013</Memo>
+            </MemoView>
+			<MemoView BoundHeight="1.5867528" BoundLeft="41.470276" BoundTop="9.520516"
+                      BoundWidth="50.242836"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="41.53673"
+                      Name="Memo37"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="9.567185"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="50.109917">
+               <Memo>[Variable5]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="10.101733" BoundTop="13.534066"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="10.168193"
+                      Name="Memo38"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="13.580736"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[Variable6]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="10.101733" BoundTop="15.400836"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="10.168193"
+                      Name="Memo39"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="15.447505"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[otkuda_full_adres]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="10.101733" BoundTop="17.360943"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="10.168193"
+                      Name="Memo40"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="17.407612"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[otkuda_city_adres]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="51.572006" BoundTop="13.534066"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="51.638466"
+                      Name="Memo41"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="13.580736"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[Variable8]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="51.572006" BoundTop="15.400836"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="51.638466"
+                      Name="Memo42"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="15.447505"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[kuda_full_adres]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="51.572006" BoundTop="17.360943"
+                      BoundWidth="40.141098"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="9.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="51.638466"
+                      Name="Memo43"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="17.407612"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="40.008183">
+               <Memo>[kuda_city_adres]</Memo>
+            </MemoView>
+			<MemoView BoundHeight="1.5867528" BoundLeft="12.228415" BoundTop="82.51114"
+                      BoundWidth="54.496193"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="12.294873"
+                      Name="Memo44"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="82.55781"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="54.363274">
+               <Memo>[Variable13]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="23.925158" BoundTop="89.79154"
+                      BoundWidth="36.41941"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="23.991617"
+                      Name="Memo45"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="89.8382"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="36.28649">
+               <Memo>[Variable14]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.5867528" BoundLeft="72.83882" BoundTop="89.79154"
+                      BoundWidth="18.34262"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.4934143"
+                      Left="72.90527"
+                      Name="Memo46"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="89.8382"
+                      VerticalAlign="top"
+                      Visible="true"
+                      Width="18.209705">
+               <Memo>[date]</Memo>
+            </MemoView>
+			<MemoView BoundHeight="1.0267223" BoundLeft="11.297992" BoundTop="41.722263"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="11.36445"
+                      Name="Memo48"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="41.768932"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_965II]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="11.297992" BoundTop="53.29622"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="11.36445"
+                      Name="Memo49"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="53.34289"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_965IB]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="11.430909" BoundTop="63.283432"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="11.497368"
+                      Name="Memo50"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="63.330097"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_966]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="11.297992" BoundTop="71.40387"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="11.36445"
+                      Name="Memo51"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="71.45055"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_967]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="52.36952" BoundTop="41.722263"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="52.435978"
+                      Name="Memo52"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="41.768932"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_968II]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="52.36952" BoundTop="53.29622"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="52.435978"
+                      Name="Memo53"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="53.34289"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_968IB]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="52.36952" BoundTop="63.283432"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="52.435978"
+                      Name="Memo54"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="63.330097"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_969]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.0267223" BoundLeft="52.36952" BoundTop="71.49721"
+                      BoundWidth="1.4620931"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="0.93338394"
+                      Left="52.435978"
+                      Name="Memo55"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="71.54388"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="1.3291755">
+               <Memo>[bat_Type_970]</Memo>
+            </MemoView>
+                    </ChildViews>
+                </BandView>
+            </Views> 
+        </Page>
+		<Page Size="9" Width="210.0" Height="297.0" MarginLeft="0" MarginTop="0" MarginRight="0" MarginBottom="0" Orientation="portrait" UseMargins="true">
+            <Views>
+                <BandView Type="master-header" Name="BandView2" Left="0" Top="0" Width="100" Height="100" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>
+						<PictureView Centered="true" KeepRatio="true" Name="PictureView2" Left="0" Top="4" Width="100.0" Height="92.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <SVGImage Mime="image/svg+xml">
+                                <Content><![CDATA[
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3883"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="744.025"
+   height="1052.5"
+   xml:space="preserve"><metadata
+     id="metadata3889"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+     id="defs3887"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3899"><path
+         d="m 0,842 595.02,0 0,-841.86 L 0,0.14 0,842 z"
+         clip-rule="evenodd"
+         id="path3901" /></clipPath><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3907"><path
+         d="m 0,841.98 595.2,0 L 595.2,0 0,0 0,841.98 z"
+         id="path3909" /></clipPath></defs><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     id="namedview3885"
+     showgrid="false"
+     inkscape:zoom="0.69977474"
+     inkscape:cx="372.01251"
+     inkscape:cy="547.41729"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g3891" /><g
+     id="g3891"
+     inkscape:groupmode="layer"
+     transform="matrix(1.25,0,0,-1.25,0,1052.5)"><path
+   d="m 388.14,810.44 178.44,0 0,25.08 -178.44,0 0,-25.08 z"
+   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="path3893" /><g
+   id="g3895"><g
+     id="g3897"
+     clip-path="url(#clipPath3899)"><g
+       id="g3903"><g
+         id="g3905"
+         clip-path="url(#clipPath3907)"><path
+           d="m 566.58,835.52 -178.44,0 0,-25.08 178.44,0 0,25.08 z m -178.44,0 z"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+           id="path3911" /></g></g></g></g>
+
+
+
+
+<path
+   d="m 257.1,652.04 15,0 0,13.8 -15,0 0,-13.8 z"
+   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="path4021" /><g
+   id="g4023"
+   transform="matrix(1.301178,0,0,1.301178,-76.979416,-195.92406)"><path
+     d="m 272.1,665.84 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+     id="path4025" /></g><path
+   d="m 519.18,652.04 15,0 0,13.8 -15,0 0,-13.8 z"
+   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="path4027" /><g
+   id="g4029"
+   transform="matrix(1.132309,0,0,1.132309,-59.239792,-81.451813)"><path
+     d="m 534.12,665.84 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+     id="path4031" /></g><path
+   d="m 257.1,543.02 15,0 0,13.8 -15,0 0,-13.8 z"
+   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="path4057" /><g
+   id="g4059"
+   transform="matrix(1.3012848,0,0,1.2480621,-77.008438,-126.72962)"><path
+     d="m 272.1,556.82 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none"
+     id="path4061"
+     inkscape:connector-curvature="0" /></g><path
+   d="m 522.3,543.02 15,0 0,13.8 -15,0 0,-13.8 z"
+   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="path4063" /><g
+   id="g4065"
+   transform="matrix(1.2125702,0,0,1.2125702,-107.62471,-107.40456)"><path
+     d="m 537.3,556.82 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none"
+     id="path4067" /></g><g
+   id="g4095"
+   transform="matrix(1.3027496,0,0,1.3027496,-86.081752,-74.403168)"><path
+     d="m 277.98,412.1 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none"
+     id="path4097"
+     inkscape:connector-curvature="0" /></g><g
+   id="g4101"
+   transform="matrix(1.3036346,0,0,1.3036346,-151.45289,-77.320068)"><path
+     d="m 534.12,412.1 -15,0 0,-13.8 15,0 0,13.8 z m -15,0 z"
+     style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none"
+     id="path4103"
+     inkscape:connector-curvature="0" /></g></g></svg>
+]]></Content>
+                            </SVGImage>
+                        </PictureView>
+						<MemoView BoundHeight="3.4535208" BoundLeft="8.506723" BoundTop="4.480243"
+                      BoundWidth="54.496193"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="3.360182"
+                      Left="8.573181"
+                      Name="Memo28"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="4.526912"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="54.363274">
+               <Memo>Attachment for TRANSPORT DOCUMENT/AIRWAYBILL
+Приложение к ТРАНСПОРТНОМУ ДОКУМЕНТУ/НАКЛАДНАЯ №</Memo>
+            </MemoView>
+			<MemoView BoundHeight="3.080167" BoundLeft="16.481775" BoundTop="10.4539"
+                      BoundWidth="26.849344"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.9868286"
+                      Left="16.548235"
+                      Name="Memo35"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.500569"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="26.716427">
+               <Memo>ИОННО-ЛИТИЕВЫЕ БАТАРЕИ
+LITHIUM ION BATTERIES</Memo>
+            </MemoView>
+            <MemoView BoundHeight="3.080167" BoundLeft="57.952053" BoundTop="10.4539"
+                      BoundWidth="26.849344"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="bold"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.9868286"
+                      Left="58.018513"
+                      Name="Memo36"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="left"
+                      TextDecoration="none"
+                      Top="10.500569"
+                      VerticalAlign="bottom"
+                      Visible="true"
+                      Width="26.716427">
+               <Memo>ЛИТИЙ МЕТТАЛИЧЕСКИЕ БАТАРЕИ
+LITHIUM METAL BATARIES</Memo>
+            </MemoView>	
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="16.548235" Top="14.234105" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="16.481775" BoundTop="14.187436"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 965</Memo>
+            </BarCodeView>            
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="16.548235" Top="25.434715" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="16.481775" BoundTop="25.388044"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 966</Memo>
+            </BarCodeView>            
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="16.548235" Top="37.008675" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="16.481775" BoundTop="36.962006"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 967</Memo>
+            </BarCodeView>            
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="58.018513" Top="14.234105" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="57.952053" BoundTop="14.187436"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 968</Memo>
+            </BarCodeView>            
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="58.018513" Top="25.434715" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="57.952053" BoundTop="25.388044"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 969</Memo>
+            </BarCodeView>            
+			<BarCodeView CheckSum="true" ShowText="true" ModuleWidth="0.32" BarCodeType="code39" Angle="0" Name="Memo29" Left="58.018513" Top="37.008675" Width="26.450592" Height="10.173884" BoundHeight="10.267223" BoundLeft="57.952053" BoundTop="36.962006"
+                      BoundWidth="26.583511" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                <Memo>CC PI 970</Memo>
+             </BarCodeView>           
+			 <MemoView BoundHeight="2.33346" BoundLeft="64.33209" BoundTop="4.946935"
+                      BoundWidth="26.849344"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="10.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="2.2401216"
+                      Left="64.39855"
+                      Name="Memo47"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="4.993604"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="26.716427">
+               <Memo>[Variable5]</Memo>
+            </MemoView>
+			<MemoView BoundHeight="1.4000759" BoundLeft="43.995712" BoundTop="23.054583"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="44.062164"
+                      Name="Memo56"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="23.101252"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_965]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.4000759" BoundLeft="43.995712" BoundTop="34.16185"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="44.062164"
+                      Name="Memo57"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="34.208523"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_966]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.4000759" BoundLeft="43.862793" BoundTop="45.735817"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="43.929253"
+                      Name="Memo58"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="45.78248"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_967]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.4000759" BoundLeft="85.73182" BoundTop="22.681229"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="85.79828"
+                      Name="Memo59"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="22.7279"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_968]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.4000759" BoundLeft="85.46598" BoundTop="34.16185"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="85.53245"
+                      Name="Memo60"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="34.208523"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_969]</Memo>
+            </MemoView>
+            <MemoView BoundHeight="1.4000759" BoundLeft="85.46598" BoundTop="46.015827"
+                      BoundWidth="2.5254333"
+                      FillColor="transparent"
+                      FontColor="#000000"
+                      FontName="Arial Cyr"
+                      FontSize="8.0"
+                      FontStyle="normal"
+                      FontWeight="normal"
+                      FrameColor="#000000"
+                      FrameStyle="solid"
+                      FrameType="none"
+                      FrameWidth="0.0"
+                      Height="1.3067375"
+                      Left="85.53245"
+                      Name="Memo61"
+                      Rotate="0"
+                      Stretched="true"
+                      TextAlign="center"
+                      TextDecoration="none"
+                      Top="46.062496"
+                      VerticalAlign="middle"
+                      Visible="true"
+                      Width="2.392516">
+               <Memo>[CC_PI_970]</Memo>
+            </MemoView>
+                    </ChildViews>
+                </BandView>
+            </Views> 
+        </Page>		
+    </Pages>
+    <Variables>
+    	<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable16] = '', 'true', 'false')"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable3] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable10], f:choose([Variable10] = '', [Variable9], [Variable10] + ', ' + [Variable9]))"/>		
+		<Variable Name="kuda_area_region" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable10], [Variable11], f:choose([Variable11] = '', [Variable12], [Variable12] + ', ' + [Variable11]))"/>
+		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable4] = '', [kuda_area_region], f:choose([kuda_area_region] = '', [Variable4], [Variable4] + ', ' + [kuda_area_region]))"/>		
+		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable3] = '', [Variable1], f:choose([Variable1] = '', [Variable3], [Variable1] + ', ' + [Variable3]))"/>		
+		<Variable Name="otkuda_area_region" Type="expression" Content="f:choose([Variable2] = '' or [Variable2] = [Variable1], [Variable7], f:choose([Variable7] = '', [Variable2], [Variable2] + ', ' + [Variable7]))"/>
+		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable15] = '', [otkuda_area_region], f:choose([otkuda_area_region] = '', [Variable15], [Variable15] + ', ' + [otkuda_area_region]))"/>		
+		<Variable Name="date" Type="function" Function="date"/>
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+        <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
+		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
+		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="AREA1"/>
+		<Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL"/>		
+		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="FIRM_PRED"/>		
+		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="BATTERIES"/>		
+		<Variable Name="bat_Type_965II" Type="expression" Content="f:choose([Variable16] = '965II', 'x', '')"/>
+		<Variable Name="bat_Type_965IB" Type="expression" Content="f:choose([Variable16] = '965IB', 'x', '')"/>
+		<Variable Name="bat_Type_966" Type="expression" Content="f:choose([Variable16] = '966', 'x', '')"/>
+		<Variable Name="bat_Type_967" Type="expression" Content="f:choose([Variable16] = '967', 'x', '')"/>
+		<Variable Name="bat_Type_968II" Type="expression" Content="f:choose([Variable16] = '968II', 'x', '')"/>
+		<Variable Name="bat_Type_968IB" Type="expression" Content="f:choose([Variable16] = '968IB', 'x', '')"/>
+		<Variable Name="bat_Type_969" Type="expression" Content="f:choose([Variable16] = '969', 'x', '')"/>
+		<Variable Name="bat_Type_970" Type="expression" Content="f:choose([Variable16] = '970', 'x', '')"/>
+		<Variable Name="CC_PI_965" Type="expression" Content="f:choose([Variable16] = '965II' or [Variable16] = '965IB', 'X', '')"/>
+		<Variable Name="CC_PI_966" Type="expression" Content="f:choose([Variable16] = '966', 'X', '')"/>
+		<Variable Name="CC_PI_967" Type="expression" Content="f:choose([Variable16] = '967', 'X', '')"/>
+		<Variable Name="CC_PI_968" Type="expression" Content="f:choose([Variable16] = '968II' or [Variable16] = '968IB', 'X', '')"/>
+		<Variable Name="CC_PI_969" Type="expression" Content="f:choose([Variable16] = '969', 'X', '')"/>
+		<Variable Name="CC_PI_970" Type="expression" Content="f:choose([Variable16] = '970', 'X', '')"/>
+    </Variables>
+    <Datasets>
+         <Dataset Name="PostDataSet">            
+            <Rows>               
+                <Row>                    
+                    <Column Name="Variable1"/>
+					<Column Name="Variable2"/>
+					<Column Name="Variable3"/>
+					<Column Name="Variable4"/>
+					<Column Name="Variable5"/>
+					<Column Name="Variable6"/>
+					<Column Name="Variable7"/>
+					<Column Name="Variable8"/>
+					<Column Name="Variable9"/>
+					<Column Name="Variable10"/>
+					<Column Name="Variable11"/>
+					<Column Name="Variable12"/>
+					<Column Name="Variable13"/>
+					<Column Name="Variable14"/>
+					<Column Name="Variable15"/>
+					<Column Name="Variable16"/>
+                </Row>               
+            </Rows>
+        </Dataset>       
+    </Datasets>
+</Report>

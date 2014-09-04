@@ -62,6 +62,7 @@ public final class Const {
 	public static final String COUNT_PARAM = "count";
 
 	public static final String PRINT_MODE_VARIABLE = "PrintMode";
+	public static final String CANCEL_PRINTING_VARIABLE = "CancelPrinting";
 	public static final String CONTAINER_PROBLEM_VARIABLE = "ContainerProblem";
 	public static final String CONTAINER_TRACKING_ID_VARIABLE = "barkod";
 
