@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Printer 1" FileVersion="105">
+	<Pages>
+		<Page />
+	</Pages>
+	<Variables>
+		<!-- General attributes -->
+		<Variable Name="f7exp__FORMAT" Type="not-assigned" Content="E:F7EXP.ZPL" />
+		<Variable Name="_JOBNAME" Type="not-assigned" Content="LBL101" />
+
+		<!-- Fields retrieved from the database -->		
+		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ADRES" />
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIO" />
+		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1" />
+		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME" />
+		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="index_to" />
+		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
+		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="REGION" />
+		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="CITY" />
+		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="AREA" />
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="AREA1"/>
+		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+		<Variable Name="otkuda_city_adres" Type="expression" Content="f:choose([Variable3] = '', [Variable20], f:choose([Variable20] = '', [Variable3], [Variable3] + ', ' + [Variable20]))"/>
+		<Variable Name="otkuda_area_city" Type="expression" Content="f:choose([Variable19] = '', [otkuda_city_adres], f:choose([otkuda_city_adres] = '', [Variable19], [otkuda_city_adres] + ', ' + [Variable19]))"/>
+		<Variable Name="otkuda_region_area" Type="expression" Content="f:choose([Variable18] = '' or [Variable18] = [Variable20], [otkuda_area_city], f:choose([otkuda_area_city] = '', [Variable18], [otkuda_area_city] + ', ' + [Variable18]))"/>		
+		<Variable Name="otkuda_full_adres" Type="expression" Content="f:choose([Variable21] = '', [otkuda_region_area], f:choose([otkuda_region_area] = '', [Variable21], [otkuda_region_area] + ', ' + [Variable21]))"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable14] = '', [Variable1], f:choose([Variable1] = '', [Variable14], [Variable1] + ', ' + [Variable14]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable15] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable15], [kuda_city_adres] + ', ' + [Variable15]))"/>
+		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable13] = '' or [Variable13] = [Variable14], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable13], [kuda_area_city] + ', ' + [Variable13]))"/>		
+		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable5] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable5], [kuda_region_area] + ', ' + [Variable5]))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable3] = '', 'SenderAddress', f:choose([Variable1] = '', 'ReceiverAddress', ''))"/>
+
+		<!-- Fields for First Class Post -->
+		<Variable Name="f7exp_Kuda" Type="expression" Content="[kuda_full_adres]" />
+		<Variable Name="f7exp_Komu" Type="expression" Content="[Variable2]" />
+		<Variable Name="f7exp_ot_kuda" Type="expression" Content="[otkuda_full_adres]" />
+		<Variable Name="f7exp_ot_kogo" Type="expression" Content="[Variable4]" />
+		<Variable Name="f7exp_rub" Type="expression" Content="f:str(f:trunc([Variable6]), 0)"/>
+		<Variable Name="f7exp_kop" Type="expression" Content="f:str(f:frac([Variable6]) * 100, 0)"/>		
+		<Variable Name="f7exp_XML2" Type="expression" Content="[Variable7]" />
+		<Variable Name="f7exp_petit" Type="expression" Content="f:choose([POSTTYPE] = 'PETITPAQUET', 'PETIT PAQUET RECOMMANDE', '')" />
+	</Variables>
+	<Datasets>
+		<Dataset Name="PostDataSet">
+			<Rows>
+				<Row>
+					<Column Name="POSTTYPE" />	
+					<Column Name="Variable1" />
+					<Column Name="Variable3" />
+			
+					<Column Name="f7exp_Kuda" />
+					<Column Name="f7exp_Komu" />
+					<Column Name="f7exp_ot_kuda" />
+					<Column Name="f7exp_ot_kogo" />
+					<Column Name="f7exp_rub" />
+					<Column Name="f7exp_kop" />
+					<Column Name="f7exp_XML2" />
+					<Column Name="f7exp_petit" />
+				</Row>				
+			</Rows>
+		</Dataset>
+	</Datasets>
+</Report>

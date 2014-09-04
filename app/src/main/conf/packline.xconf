@@ -143,10 +143,21 @@
 			<PostTypeRestriction>
 				<PostType>FORPARCEL</PostType>
 			</PostTypeRestriction>
-		</Form>
+		</Form>		
 		<Form name="CP71" file="cp71" printerId="printer1" whenPrint="MANUALLY" weight="0.015">
 			<PostTypeRestriction>
 				<PostType>FORPARCEL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="CN22" file="cn22" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>PETITPAQUET</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Адресный ярлык" file="f7-exp" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+			<PostTypeRestriction>
+				<PostType>FORPARCEL</PostType>
+				<PostType>PETITPAQUET</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="DPD" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
