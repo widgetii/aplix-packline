@@ -110,6 +110,7 @@
 			<PostTypeRestriction>
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
+				<PostType>SPSR</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
