@@ -582,7 +582,7 @@
                             VerticalAlign="top"
                             Visible="true"
                             Width="26.022778">
-                     <Memo>[itogo_rub] руб.
+                     <Memo>[total_rub] руб.
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="1.989858" BoundLeft="3.0779629" BoundTop="40.19513"

@@ -197,13 +197,14 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				});
 
 				// Select renderer
-				if (PrintMode.JAVA2D.equals(printer.getPrintMode())) {
+				if (PrintMode.JAVA2D.equals(printer.getPrintMode()) || PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode())) {
 					rxto.setOutputFileName(printer.getName());
 					rxto.setOutputFormat(MimeConstants.MIME_FOP_PRINT);
 					rxto.setPrintAttributesResolver(new PrintAttributesResolver() {
 						@Override
 						public PrintRequestAttributeSet createPrintAttributes(PrintService printService) {
-							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName, copies);
+							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName,
+									PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? 1 : copies);
 						}
 					});
 				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
@@ -233,7 +234,10 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				}
 
 				// Go!
-				rxto.execute();
+				int c = PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? copies : 1;
+				for (int i = 1; i <= c; i++) {
+					rxto.execute();
+				}
 
 				// If we rendered in memory buffer, then the contents
 				// of this buffer should be sent to printer directly

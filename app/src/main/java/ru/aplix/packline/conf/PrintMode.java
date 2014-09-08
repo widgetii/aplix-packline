@@ -10,6 +10,9 @@ public enum PrintMode {
 
 	@XmlEnumValue("JAVA2D")
 	JAVA2D,
+	
+	@XmlEnumValue("JAVA2D_WO_COPIES")
+	JAVA2D_WO_COPIES,
 
 	@XmlEnumValue("POSTSCRIPT")
 	POSTSCRIPT,
