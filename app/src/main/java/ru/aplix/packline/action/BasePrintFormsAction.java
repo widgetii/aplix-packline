@@ -204,7 +204,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 						@Override
 						public PrintRequestAttributeSet createPrintAttributes(PrintService printService) {
 							return createPrintAttributesFromList(printService, printer.getMediaAttributes(), formName,
-									PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? 1 : copies);
+									PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? 1 : (copies != null && copies > 0) ? copies : 1);
 						}
 					});
 				} else if (PrintMode.POSTSCRIPT.equals(printer.getPrintMode())) {
@@ -234,7 +234,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				}
 
 				// Go!
-				int c = PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? copies : 1;
+				int c = PrintMode.JAVA2D_WO_COPIES.equals(printer.getPrintMode()) ? ((copies != null && copies > 0) ? copies : 1) : 1;
 				for (int i = 1; i <= c; i++) {
 					rxto.execute();
 				}
