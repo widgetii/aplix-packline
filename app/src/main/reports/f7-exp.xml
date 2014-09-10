@@ -41,7 +41,7 @@
 		<Variable Name="f7exp_rub" Type="expression" Content="f:str(f:trunc([Variable6]), 0)"/>
 		<Variable Name="f7exp_kop" Type="expression" Content="f:str(f:frac([Variable6]) * 100, 0)"/>		
 		<Variable Name="f7exp_XML2" Type="expression" Content="[Variable7]" />
-		<Variable Name="f7exp_petit" Type="expression" Content="f:choose([POSTTYPE] = 'PETITPAQUET', 'PETIT PAQUET RECOMMANDE', '')" />
+		<Variable Name="f7exp_petit" Type="expression" Content="f:choose([POSTTYPE] = 'PETITPAQUET', 'PETIT PAQUET RECOMMANDE', ' ')" />
 	</Variables>
 	<Datasets>
 		<Dataset Name="PostDataSet">
