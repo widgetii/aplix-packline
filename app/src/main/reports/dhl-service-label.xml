@@ -10,12 +10,14 @@
 
 		<!-- Fields retrieved from the database -->		
 		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
+		<Variable Name="DHL_XML1" Type="expression" Content="' '" />
 	</Variables>
 	<Datasets>
 		<Dataset Name="PostDataSet">
 			<Rows>
 				<Row>
-					<Column Name="POSTTYPE" />					
+					<Column Name="POSTTYPE" />
+					<Column Name="DHL_XML1" />	
 				</Row>
 			</Rows>
 		</Dataset>
