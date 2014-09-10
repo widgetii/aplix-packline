@@ -8,7 +8,6 @@
 		<Variable Name="cn22__FORMAT" Type="not-assigned" Content="E:GT800G.ZPL" />
 		<Variable Name="_JOBNAME" Type="not-assigned" Content="LBL101" />
 		
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
 		<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable15] = 'Belarus' or [Variable15] = 'Kazakhstan', 'true', 'false')"/>
 		
 		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />

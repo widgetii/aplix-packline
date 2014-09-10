@@ -32,8 +32,7 @@
 		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable15] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable15], [kuda_city_adres] + ', ' + [Variable15]))"/>
 		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable13] = '' or [Variable13] = [Variable14], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable13], [kuda_area_city] + ', ' + [Variable13]))"/>		
 		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([Variable5] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable5], [kuda_region_area] + ', ' + [Variable5]))"/>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable3] = '', 'SenderAddress', f:choose([Variable1] = '', 'ReceiverAddress', ''))"/>
-
+		
 		<!-- Fields for First Class Post -->
 		<Variable Name="f7exp_Kuda" Type="expression" Content="[kuda_full_adres]" />
 		<Variable Name="f7exp_Komu" Type="expression" Content="[Variable2]" />
