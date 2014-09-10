@@ -99,9 +99,18 @@
 						</xsl:call-template>
 					</xsl:when>
 					<xsl:when test="$post-type = 'PETITPAQUET'">
-						<xsl:call-template name="zebra-label">
-							<xsl:with-param name="post-type-prefix" select="'cn22_'" />
-						</xsl:call-template>
+						<xsl:choose>
+							<xsl:when test="//Variable[@Name = 'f7exp__FORMAT']">
+								<xsl:call-template name="zebra-label">
+									<xsl:with-param name="post-type-prefix" select="'f7exp_'" />
+								</xsl:call-template>
+							</xsl:when>
+							<xsl:otherwise>												
+								<xsl:call-template name="zebra-label">
+									<xsl:with-param name="post-type-prefix" select="'cn22_'" />
+								</xsl:call-template>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 				</xsl:choose>
 			</labels>
