@@ -22,7 +22,7 @@
         <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_TO"/>  
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="io_commercial" />
         <Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="io_other" />
-		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU" />
+		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="ValueInDollars" />
 		<Variable Name="Variable29" Type="db-field" Dataset="PostDataSet" Content="MASS" />
 		
 		<Variable Name="cn22_list_eng" Type="expression" Content="[Variable12]"/>
