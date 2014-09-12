@@ -28,7 +28,7 @@
 		<Variable Name="cn22_list_eng" Type="expression" Content="[Variable12]"/>
 		<Variable Name="cn22_list_rus" Type="expression" Content="[Variable13]"/>
 		<Variable Name="cn22_kg" Type="expression" Content="f:str([Variable29], 3)"/>
-		<Variable Name="cn22_summ" Type="expression" Content="f:str([Variable27], 2)"/>
+		<Variable Name="cn22_summ" Type="expression" Content="'$'.concat(f:str([Variable27], 2))"/>
 		<Variable Name="cn22_country" Type="expression" Content="f:choose([Variable14] = '', 'Russia', [Variable14])"/>
 		<Variable Name="cn22_date" Type="expression" Content="f:formatDate([Variable1], 'dd.MM.yyyy')"/>
 		<Variable Name="cn22_X1" Type="expression" Content="f:choose([Variable3] = 'true', 'x', '')" />
