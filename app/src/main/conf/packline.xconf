@@ -4,7 +4,7 @@
 	<!-- Hardware connection parameters                                                           		-->
 	<!-- 	"reconnect" - the interval in seconds to reconnect to device if connection has failed 		-->
 	<!--	"blockWorkOnDVRCameraError" - the work of the program will be blocked on DVR camera error	-->
-	<Hardware reconnect="5" blockWorkOnDVRCameraError="false">
+	<Hardware reconnect="5" blockWorkOnDVRCameraError="true">
 
 		<!-- Barcode scanner driver -->
 		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="true" >
@@ -32,7 +32,7 @@
 		<PhotoCamera name="RaspberryCamera" enabled="false" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
-			<Configuration hostName="localhost:9080" />
+			<Configuration hostName="localhost" />
 		</PhotoCamera>
 		
 		<!-- DVR Camera driver -->
@@ -42,7 +42,7 @@
 			<!-- "userName" - user name for authentication      									-->
 			<!-- "password" - password for authentication      										-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
-			<Configuration hostName="localhost:9080" streamName="Stream1" userName="admin" password="admin" />
+			<Configuration hostName="localhost:8080" streamName="Stream1" userName="admin" password="admin" />
 		</DVRCamera>
 		
 		<!-- Image Scanner driver -->
@@ -93,7 +93,7 @@
 		<!-- "whenPrint" 	- when a form should be printed: MANUALLY, BEFORE-WEIGHTING, AFTER-WEIGHTING	-->
 		<!-- "copies" 		- number of copies to print (optional, default is 1)							-->		
 		<!-- "PostTypeRestriction" 	- the form will be printer only for listed post types (optional)		-->
-		<Form name="ф-7" file="f7" printerId="printer1" whenPrint="MANUALLY" weight="0.002">			
+		<Form name="ф-7" file="f7" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">			
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
@@ -101,24 +101,24 @@
 				<PostType>LETTER</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-2" file="f2" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+		<Form name="ф-2" file="f2" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0006">
 			<PostTypeRestriction>
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-22" file="f22" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+		<Form name="ф-22" file="f22" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0006">
 			<PostTypeRestriction>
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
 				<PostType>SPSR</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0084">
 			<PostTypeRestriction>
 				<PostType>PARCEL</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="ф-112ЭК" file="f112ek" printerId="printer1" whenPrint="MANUALLY" weight="0.009">
+		<Form name="ф-112ЭК" file="f112ek" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0084">
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
 				<PostType>PARCEL</PostType>
@@ -130,12 +130,12 @@
 				<PaymentFlags>CASH_ON_DELIVERY</PaymentFlags>
 			</PaymentFlagsRestriction>
 		</Form>
-		<Form name="EMS" file="ems" printerId="printer1" whenPrint="MANUALLY" copies="4" weight="0.015">
+		<Form name="EMS" file="ems" printerId="printer1" whenPrint="AFTER-WEIGHTING" copies="4" weight="0.01533">
 			<PostTypeRestriction>
 				<PostType>EMS</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="СДЭК" file="cdek" printerId="printer1" whenPrint="MANUALLY" copies="2" weight="0.015">
+		<Form name="СДЭК" file="cdek" printerId="printer1" whenPrint="AFTER-WEIGHTING" copies="4" weight="0.01533">
 			<PostTypeRestriction>
 				<PostType>CDEK</PostType>
 			</PostTypeRestriction>
@@ -161,12 +161,12 @@
 				<PostType>PETITPAQUET</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="DPD" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+		<Form name="DPD" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
 			<PostTypeRestriction>
 				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="QIWI" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+		<Form name="QIWI" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
 			<PostTypeRestriction>
 				<PostType>QIWIPOST</PostType>
 			</PostTypeRestriction>
