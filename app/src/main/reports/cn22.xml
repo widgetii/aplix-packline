@@ -11,6 +11,7 @@
 		<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable15] = 'Belarus' or [Variable15] = 'Kazakhstan', 'true', 'false')"/>
 		
 		<Variable Name="POSTTYPE" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE" />
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="data_rep" />
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="io_gift" />
 		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
         <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="io_document" />
@@ -21,7 +22,7 @@
         <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_TO"/>  
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="io_commercial" />
         <Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="io_other" />
-		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
+		<Variable Name="Variable27" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU" />
 		<Variable Name="Variable29" Type="db-field" Dataset="PostDataSet" Content="MASS" />
 		
 		<Variable Name="cn22_list_eng" Type="expression" Content="[Variable12]"/>
@@ -29,7 +30,7 @@
 		<Variable Name="cn22_kg" Type="expression" Content="f:str([Variable29], 3)"/>
 		<Variable Name="cn22_summ" Type="expression" Content="f:str([Variable27], 2)"/>
 		<Variable Name="cn22_country" Type="expression" Content="f:choose([Variable14] = '', 'Russia', [Variable14])"/>
-		<Variable Name="cn22_date" Type="function" Function="date"/>
+		<Variable Name="cn22_date" Type="expression" Content="f:formatDate([Variable1], 'dd.MM.yyyy')"/>
 		<Variable Name="cn22_X1" Type="expression" Content="f:choose([Variable3] = 'true', 'x', '')" />
 		<Variable Name="cn22_X2" Type="expression" Content="f:choose([Variable7] = 'true', 'x', '')" />
 		<Variable Name="cn22_X3" Type="expression" Content="f:choose([Variable16] = 'true', 'x', '')" />		
@@ -41,6 +42,7 @@
                 <Row>
 					<Column Name="POSTTYPE" />	
 					
+					<Column Name="Variable1"/>
 					<Column Name="Variable3"/>
 					<Column Name="Variable5"/>
                     <Column Name="Variable7"/>

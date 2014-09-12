@@ -15,7 +15,7 @@
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1" />
 		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME" />
 		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="index_to" />
-		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="PAYMENT" />
+		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="ITOGOZAPERESULKU" />
 		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
 		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="REGION" />
 		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="CITY" />

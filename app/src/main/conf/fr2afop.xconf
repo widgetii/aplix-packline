@@ -30,10 +30,11 @@
 					io_band1kl, io_nalozh, io_opis, io_cennost, io_prostuved, io_zakazuved,
 					io_pismo1kl, io_gabar, io_tyazh, io_uved, io_Nstd, io_obykn, io_Zakaz,
 					io_std, io_prost, io_saturday, io_sunday, io_oplata_otpr, io_oplata_poluch, 
-					io_oplata_dogovor, PostNumber,
+					io_oplata_dogovor, io_gift, io_document, io_commercial, io_return, io_other, PostNumber,
 					ORDER, DELIVERY, URL, FIRM_PRED, FIRM_TEL, FIRM_CITY, POST_DESCRIPTION, POST_DESCRIPTION_ENG, 
 					CONTAINER_ID, site, cartons, delivery_type, delivery_cost, DELIVERY_DATE, DELIVERY_TIME,
-					AREA_PEREVOD, REGION_PEREVOD, ADRES_PEREVOD, index_perevod, BATTERIES, DOGOVOR
+					AREA_PEREVOD, REGION_PEREVOD, ADRES_PEREVOD, index_perevod, BATTERIES, DOGOVOR,
+					COUNTRY_FROM, COUNTRY_TO
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';
