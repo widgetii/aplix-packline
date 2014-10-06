@@ -110,6 +110,10 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
 				printFormFromFile(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
 			}
+
+			if (printForm.getPostPrintDelay() != null) {
+				Thread.sleep(printForm.getPostPrintDelay());
+			}
 		} catch (PackLineException ple) {
 			throw ple;
 		} catch (Throwable e) {

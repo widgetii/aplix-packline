@@ -7,7 +7,7 @@
 	<Hardware reconnect="5" blockWorkOnDVRCameraError="true">
 
 		<!-- Barcode scanner driver -->
-		<BarcodeScanner name="BasicRS232BarcodeScanner" enabled="true" >
+		<BarcodeScanner name="BasicRS232BarcodeScanner2" enabled="true" >
 			<!-- "portName"  - port name, for example "COM1" or "/dev/tty0"                      -->
 			<!-- "portSpeed" - port speed (optional), for example 57600                          -->
 			<!-- "timeout"   - receiver timeout in milliseconds (optional), for example 2000     -->
@@ -87,12 +87,14 @@
 	
 	<!-- Printing Settings -->
 	<Printing>
-		<!-- "name"        	- print form name (appears on print button) 			  						-->
-		<!-- "file"      	- print form file name, related to /reports path								-->
-		<!-- "printerId"    - printer identifier, references hardware configuration, see above				-->
-		<!-- "whenPrint" 	- when a form should be printed: MANUALLY, BEFORE-WEIGHTING, AFTER-WEIGHTING	-->
-		<!-- "copies" 		- number of copies to print (optional, default is 1)							-->		
-		<!-- "PostTypeRestriction" 	- the form will be printer only for listed post types (optional)		-->
+		<!-- "name"        		- print form name (appears on print button) 			  						-->
+		<!-- "file"      		- print form file name, related to /reports path								-->
+		<!-- "printerId"    	- printer identifier, references hardware configuration, see above				-->
+		<!-- "whenPrint" 		- when a form should be printed: MANUALLY, BEFORE-WEIGHTING, AFTER-WEIGHTING	-->
+		<!-- "copies" 			- number of copies to print (optional, default is 1)							-->		
+		<!-- "postPrintDelay" 	- delay in milliseconds after printing (optional)								-->
+		<!-- "PostTypeRestriction" 		- the form will be printer only for listed post types (optional)		-->
+		<!-- "PaymentFlagsRestriction 	- the form will be printer only for listed payment flags (optional)		-->
 		<Form name="ф-7" file="f7" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">			
 			<PostTypeRestriction>
 				<PostType>FIRSTCLASS</PostType>
@@ -161,17 +163,17 @@
 				<PostType>PETITPAQUET</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="DPD" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
+		<Form name="DPD" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="QIWI" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
+		<Form name="QIWI" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>QIWIPOST</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="PickPoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
+		<Form name="PickPoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>PICKPOINT</PostType>
 			</PostTypeRestriction>
@@ -181,7 +183,7 @@
 				<PostType>LOGIBOX</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="Авиа накладные" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+		<Form name="Авиа накладные" printerId="printer1" whenPrint="MANUALLY" weight="0.008" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>DHL</PostType>
 			</PostTypeRestriction>

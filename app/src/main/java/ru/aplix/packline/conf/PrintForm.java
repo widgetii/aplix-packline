@@ -30,6 +30,8 @@ public class PrintForm {
 	private Integer copies;
 	@XmlAttribute(name = "weight")
 	private Float weight;
+	@XmlAttribute(name = "postPrintDelay")
+	private Integer postPrintDelay;
 	@XmlElementWrapper(name = "PostTypeRestriction")
 	@XmlElement(name = "PostType", type = PostType.class)
 	private List<PostType> postTypes;
@@ -94,6 +96,14 @@ public class PrintForm {
 
 	public void setWeight(Float weight) {
 		this.weight = weight;
+	}
+
+	public Integer getPostPrintDelay() {
+		return postPrintDelay;
+	}
+
+	public void setPostPrintDelay(Integer postPrintDelay) {
+		this.postPrintDelay = postPrintDelay;
 	}
 
 	public List<PostType> getPostTypes() {

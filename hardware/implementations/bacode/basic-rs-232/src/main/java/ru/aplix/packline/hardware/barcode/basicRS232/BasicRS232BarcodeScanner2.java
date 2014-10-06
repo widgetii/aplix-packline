@@ -85,6 +85,7 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 								serialPort = (SerialPort) portId.open(getClass().getName(), 2000);
 								serialPort.addEventListener(new BarcodeSerialPortEventListener());
 								serialPort.notifyOnDataAvailable(true);
+								serialPort.notifyOnCarrierDetect(true);
 								serialPort.setSerialPortParams(configuration.getPortSpeed(), SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 										SerialPort.PARITY_NONE);
 								serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
@@ -232,6 +233,11 @@ public class BasicRS232BarcodeScanner2 implements BarcodeScanner<RS232Configurat
 
 					// Wait for another part of data
 
+					break;
+				case SerialPortEvent.CD:
+					if (!event.getNewValue()) {
+						disconnect();
+					}
 					break;
 				default:
 					break;
