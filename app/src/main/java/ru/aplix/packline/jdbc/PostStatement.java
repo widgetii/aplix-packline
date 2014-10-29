@@ -47,13 +47,13 @@ public class PostStatement implements Statement {
 		};
 
 		queryPostPattern = Pattern
-				.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+				.compile("\\s*SELECT\\s+([\\w\\s,]+)\\s+FROM\\s+POST\\s+WHERE\\s+CONTAINER_ID\\s*=\\s*'([^']+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([^']+)'\\s*;\\s*");
 		queryEnclosuresPattern = Pattern
-				.compile("\\s*SELECT\\s+\\*\\s+FROM\\s+ENCLOSURES\\s+WHERE\\s+POST_ID\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s*;\\s*");
+				.compile("\\s*SELECT\\s+\\*\\s+FROM\\s+ENCLOSURES\\s+WHERE\\s+POST_ID\\s*=\\s*'([^']+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([^']+)'\\s*;\\s*");
 		queryMarkerCustPattern = Pattern
-				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([\\w]+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+CUSTOMER_CODE\\s*=\\s*'([^']+)'\\s+AND\\s+QUERY_ID\\s*=\\s*'([^']+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 		queryMarkerContPattern = Pattern
-				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+QUERY_ID\\s*=\\s*'([\\w]+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
+				.compile("\\s*SELECT\\s+[\\w\\s,]+\\s+FROM\\s+MARKERS\\s+WHERE\\s+QUERY_ID\\s*=\\s*'([^']+)'\\s+LIMIT\\s+([\\d]+)\\s*;\\s*");
 	}
 
 	@Override
