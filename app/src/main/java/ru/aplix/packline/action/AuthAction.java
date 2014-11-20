@@ -11,6 +11,7 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.AuthController;
 import ru.aplix.packline.idle.WorkflowActionWithUserActivityMonitor;
+import ru.aplix.packline.post.GetOperatorResponse2;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.utils.Utils;
@@ -29,20 +30,22 @@ public class AuthAction extends WorkflowActionWithUserActivityMonitor<AuthContro
 			requestContext.put(BindingProvider.USERNAME_PROPERTY, code);
 		}
 
-		Operator result = null;
+		GetOperatorResponse2 result = null;
 		try {
-			result = postServicePort.getOperator(Utils.getMACAddress());
+			result = postServicePort.getOperator2(Utils.getMACAddress());
 		} catch (WebServiceException wse) {
 			String msg = wse.getMessage() != null ? wse.getMessage() : "";
 			if (msg.indexOf("HTTP status code 401") < 0) {
 				throw wse;
 			}
 		}
-		if (result == null || result.getId() == null || result.getId().length() == 0) {
+		if (result.getError() != null && result.getError().length() > 0) {
+			throw new PackLineException(result.getError());
+		} else if (result == null || result.getOperator() == null || result.getOperator().getId() == null || result.getOperator().getId().length() == 0) {
 			throw new PackLineException(getResources().getString("error.auth.invalid.code"));
 		}
 
-		getContext().setAttribute(Const.OPERATOR, result);
-		return result;
+		getContext().setAttribute(Const.OPERATOR, result.getOperator());
+		return result.getOperator();
 	}
 }

@@ -59,6 +59,12 @@
 					<xs:element name="items" type="tns:Field" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="GetOperatorResponse2">
+				<xs:sequence>
+					<xs:element name="operator" type="tns:Operator" nillable="true"/>
+					<xs:element name="error" type="xs:string" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Incoming">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
@@ -113,6 +119,7 @@
 			<xs:complexType name="PlannedRegistry">
 				<xs:sequence>
 					<xs:element name="Items" type="tns:PlannedRegistryItem" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ID" type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PlannedRegistryCheckout">
@@ -236,6 +243,20 @@
 					<xs:element name="error" type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:element name="AccountContainerCost">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerIds" type="tns:StringList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AccountContainerCostResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="AddBoxContainers">
 				<xs:complexType>
 					<xs:sequence>
@@ -280,6 +301,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="CarryOutPlannedRegistry">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Items" type="tns:PlannedRegistryCheckoutItems" nillable="true"/>
+						<xs:element name="ID" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutPlannedRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="CarryOutRegistry">
 				<xs:complexType>
 					<xs:sequence>
@@ -305,6 +341,20 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CheckAddress">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CheckAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:CheckAddressResult"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -334,6 +384,21 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FileUpload">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="fileId" type="xs:string"/>
+						<xs:element name="path" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FileUploadResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -394,6 +459,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="FindRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="carrier" type="tns:PostType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindRegistry2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Registry" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="FindRouteList">
 				<xs:complexType>
 					<xs:sequence>
@@ -419,6 +499,20 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:TagType" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindTrackNumber">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="trackId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FindTrackNumberResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Post" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -508,6 +602,20 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="GetLabel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetLabelResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:base64Binary" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="GetOperator">
 				<xs:complexType>
 					<xs:sequence>
@@ -519,6 +627,20 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:Operator" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOperator2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="machineId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOperator2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:GetOperatorResponse2"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -536,6 +658,18 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="GetPlannedRegistry">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPlannedRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PlannedRegistry"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="GetRegistry">
 				<xs:complexType>
 					<xs:sequence>
@@ -547,6 +681,21 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:Registry" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkAsProblem">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="problemStatus" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkAsProblemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -575,49 +724,6 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:boolean"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="UpdateContainer">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="container" type="tns:Container"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="UpdateContainerResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="MarkAsProblem">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-						<xs:element name="problemStatus" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="MarkAsProblemResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="CheckAddress">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="CheckAddressResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:CheckAddressResult"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -652,75 +758,17 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="FindTrackNumber">
+			<xs:element name="UpdateContainer">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="trackId" type="xs:string"/>
+						<xs:element name="container" type="tns:Container"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="FindTrackNumberResponse">
+			<xs:element name="UpdateContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Post" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetLabel">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetLabelResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:base64Binary" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="FindRegistry2">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="carrier" type="tns:PostType"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="FindRegistry2Response">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:Registry" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="FileUpload">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="fileId" type="xs:string"/>
-						<xs:element name="path" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="FileUploadResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="AccountContainerCost">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="containerIds" type="tns:StringList"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="AccountContainerCostResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
+						<xs:element name="return" type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -738,34 +786,14 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetPlannedRegistry">
-				<xs:complexType>
-					<xs:sequence/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetPlannedRegistryResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:PlannedRegistry"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="CarryOutPlannedRegistry">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Items" type="tns:PlannedRegistryCheckoutItems" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="CarryOutPlannedRegistryResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
 		</xs:schema>
 	</types>
+	<message name="AccountContainerCostRequestMessage">
+		<part name="parameters" element="tns:AccountContainerCost"/>
+	</message>
+	<message name="AccountContainerCostResponseMessage">
+		<part name="parameters" element="tns:AccountContainerCostResponse"/>
+	</message>
 	<message name="AddBoxContainersRequestMessage">
 		<part name="parameters" element="tns:AddBoxContainers"/>
 	</message>
@@ -784,6 +812,12 @@
 	<message name="AddIncomingToRegistryResponseMessage">
 		<part name="parameters" element="tns:AddIncomingToRegistryResponse"/>
 	</message>
+	<message name="CarryOutPlannedRegistryRequestMessage">
+		<part name="parameters" element="tns:CarryOutPlannedRegistry"/>
+	</message>
+	<message name="CarryOutPlannedRegistryResponseMessage">
+		<part name="parameters" element="tns:CarryOutPlannedRegistryResponse"/>
+	</message>
 	<message name="CarryOutRegistryRequestMessage">
 		<part name="parameters" element="tns:CarryOutRegistry"/>
 	</message>
@@ -796,6 +830,12 @@
 	<message name="CarryOutRouteListResponseMessage">
 		<part name="parameters" element="tns:CarryOutRouteListResponse"/>
 	</message>
+	<message name="CheckAddressRequestMessage">
+		<part name="parameters" element="tns:CheckAddress"/>
+	</message>
+	<message name="CheckAddressResponseMessage">
+		<part name="parameters" element="tns:CheckAddressResponse"/>
+	</message>
 	<message name="DeleteIncomingFromRegistryRequestMessage">
 		<part name="parameters" element="tns:DeleteIncomingFromRegistry"/>
 	</message>
@@ -807,6 +847,12 @@
 	</message>
 	<message name="DeleteRegistryResponseMessage">
 		<part name="parameters" element="tns:DeleteRegistryResponse"/>
+	</message>
+	<message name="FileUploadRequestMessage">
+		<part name="parameters" element="tns:FileUpload"/>
+	</message>
+	<message name="FileUploadResponseMessage">
+		<part name="parameters" element="tns:FileUploadResponse"/>
 	</message>
 	<message name="FindContainerRequestMessage">
 		<part name="parameters" element="tns:FindContainer"/>
@@ -832,6 +878,12 @@
 	<message name="FindRegistryResponseMessage">
 		<part name="parameters" element="tns:FindRegistryResponse"/>
 	</message>
+	<message name="FindRegistry2RequestMessage">
+		<part name="parameters" element="tns:FindRegistry2"/>
+	</message>
+	<message name="FindRegistry2ResponseMessage">
+		<part name="parameters" element="tns:FindRegistry2Response"/>
+	</message>
 	<message name="FindRouteListRequestMessage">
 		<part name="parameters" element="tns:FindRouteList"/>
 	</message>
@@ -843,6 +895,12 @@
 	</message>
 	<message name="FindTagResponseMessage">
 		<part name="parameters" element="tns:FindTagResponse"/>
+	</message>
+	<message name="FindTrackNumberRequestMessage">
+		<part name="parameters" element="tns:FindTrackNumber"/>
+	</message>
+	<message name="FindTrackNumberResponseMessage">
+		<part name="parameters" element="tns:FindTrackNumberResponse"/>
 	</message>
 	<message name="GatherInfoRequestMessage">
 		<part name="parameters" element="tns:GatherInfo"/>
@@ -880,11 +938,23 @@
 	<message name="GetCustomerResponseMessage">
 		<part name="parameters" element="tns:GetCustomerResponse"/>
 	</message>
+	<message name="GetLabelRequestMessage">
+		<part name="parameters" element="tns:GetLabel"/>
+	</message>
+	<message name="GetLabelResponseMessage">
+		<part name="parameters" element="tns:GetLabelResponse"/>
+	</message>
 	<message name="GetOperatorRequestMessage">
 		<part name="parameters" element="tns:GetOperator"/>
 	</message>
 	<message name="GetOperatorResponseMessage">
 		<part name="parameters" element="tns:GetOperatorResponse"/>
+	</message>
+	<message name="GetOperator2RequestMessage">
+		<part name="parameters" element="tns:GetOperator2"/>
+	</message>
+	<message name="GetOperator2ResponseMessage">
+		<part name="parameters" element="tns:GetOperator2Response"/>
 	</message>
 	<message name="GetOrderRequestMessage">
 		<part name="parameters" element="tns:GetOrder"/>
@@ -892,11 +962,23 @@
 	<message name="GetOrderResponseMessage">
 		<part name="parameters" element="tns:GetOrderResponse"/>
 	</message>
+	<message name="GetPlannedRegistryRequestMessage">
+		<part name="parameters" element="tns:GetPlannedRegistry"/>
+	</message>
+	<message name="GetPlannedRegistryResponseMessage">
+		<part name="parameters" element="tns:GetPlannedRegistryResponse"/>
+	</message>
 	<message name="GetRegistryRequestMessage">
 		<part name="parameters" element="tns:GetRegistry"/>
 	</message>
 	<message name="GetRegistryResponseMessage">
 		<part name="parameters" element="tns:GetRegistryResponse"/>
+	</message>
+	<message name="MarkAsProblemRequestMessage">
+		<part name="parameters" element="tns:MarkAsProblem"/>
+	</message>
+	<message name="MarkAsProblemResponseMessage">
+		<part name="parameters" element="tns:MarkAsProblemResponse"/>
 	</message>
 	<message name="MarkPostAsShippedRequestMessage">
 		<part name="parameters" element="tns:MarkPostAsShipped"/>
@@ -910,24 +992,6 @@
 	<message name="SetOperatorActivityResponseMessage">
 		<part name="parameters" element="tns:SetOperatorActivityResponse"/>
 	</message>
-	<message name="UpdateContainerRequestMessage">
-		<part name="parameters" element="tns:UpdateContainer"/>
-	</message>
-	<message name="UpdateContainerResponseMessage">
-		<part name="parameters" element="tns:UpdateContainerResponse"/>
-	</message>
-	<message name="MarkAsProblemRequestMessage">
-		<part name="parameters" element="tns:MarkAsProblem"/>
-	</message>
-	<message name="MarkAsProblemResponseMessage">
-		<part name="parameters" element="tns:MarkAsProblemResponse"/>
-	</message>
-	<message name="CheckAddressRequestMessage">
-		<part name="parameters" element="tns:CheckAddress"/>
-	</message>
-	<message name="CheckAddressResponseMessage">
-		<part name="parameters" element="tns:CheckAddressResponse"/>
-	</message>
 	<message name="StartFillingWarrantyCardRequestMessage">
 		<part name="parameters" element="tns:StartFillingWarrantyCard"/>
 	</message>
@@ -940,35 +1004,11 @@
 	<message name="StopFillingWarrantyCardResponseMessage">
 		<part name="parameters" element="tns:StopFillingWarrantyCardResponse"/>
 	</message>
-	<message name="FindTrackNumberRequestMessage">
-		<part name="parameters" element="tns:FindTrackNumber"/>
+	<message name="UpdateContainerRequestMessage">
+		<part name="parameters" element="tns:UpdateContainer"/>
 	</message>
-	<message name="FindTrackNumberResponseMessage">
-		<part name="parameters" element="tns:FindTrackNumberResponse"/>
-	</message>
-	<message name="GetLabelRequestMessage">
-		<part name="parameters" element="tns:GetLabel"/>
-	</message>
-	<message name="GetLabelResponseMessage">
-		<part name="parameters" element="tns:GetLabelResponse"/>
-	</message>
-	<message name="FindRegistry2RequestMessage">
-		<part name="parameters" element="tns:FindRegistry2"/>
-	</message>
-	<message name="FindRegistry2ResponseMessage">
-		<part name="parameters" element="tns:FindRegistry2Response"/>
-	</message>
-	<message name="FileUploadRequestMessage">
-		<part name="parameters" element="tns:FileUpload"/>
-	</message>
-	<message name="FileUploadResponseMessage">
-		<part name="parameters" element="tns:FileUploadResponse"/>
-	</message>
-	<message name="AccountContainerCostRequestMessage">
-		<part name="parameters" element="tns:AccountContainerCost"/>
-	</message>
-	<message name="AccountContainerCostResponseMessage">
-		<part name="parameters" element="tns:AccountContainerCostResponse"/>
+	<message name="UpdateContainerResponseMessage">
+		<part name="parameters" element="tns:UpdateContainerResponse"/>
 	</message>
 	<message name="UpdateContainer2RequestMessage">
 		<part name="parameters" element="tns:UpdateContainer2"/>
@@ -976,19 +1016,11 @@
 	<message name="UpdateContainer2ResponseMessage">
 		<part name="parameters" element="tns:UpdateContainer2Response"/>
 	</message>
-	<message name="GetPlannedRegistryRequestMessage">
-		<part name="parameters" element="tns:GetPlannedRegistry"/>
-	</message>
-	<message name="GetPlannedRegistryResponseMessage">
-		<part name="parameters" element="tns:GetPlannedRegistryResponse"/>
-	</message>
-	<message name="CarryOutPlannedRegistryRequestMessage">
-		<part name="parameters" element="tns:CarryOutPlannedRegistry"/>
-	</message>
-	<message name="CarryOutPlannedRegistryResponseMessage">
-		<part name="parameters" element="tns:CarryOutPlannedRegistryResponse"/>
-	</message>
 	<portType name="PackingLinePortType">
+		<operation name="AccountContainerCost">
+			<input message="tns:AccountContainerCostRequestMessage"/>
+			<output message="tns:AccountContainerCostResponseMessage"/>
+		</operation>
 		<operation name="AddBoxContainers">
 			<input message="tns:AddBoxContainersRequestMessage"/>
 			<output message="tns:AddBoxContainersResponseMessage"/>
@@ -1001,6 +1033,10 @@
 			<input message="tns:AddIncomingToRegistryRequestMessage"/>
 			<output message="tns:AddIncomingToRegistryResponseMessage"/>
 		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<input message="tns:CarryOutPlannedRegistryRequestMessage"/>
+			<output message="tns:CarryOutPlannedRegistryResponseMessage"/>
+		</operation>
 		<operation name="CarryOutRegistry">
 			<input message="tns:CarryOutRegistryRequestMessage"/>
 			<output message="tns:CarryOutRegistryResponseMessage"/>
@@ -1009,6 +1045,10 @@
 			<input message="tns:CarryOutRouteListRequestMessage"/>
 			<output message="tns:CarryOutRouteListResponseMessage"/>
 		</operation>
+		<operation name="CheckAddress">
+			<input message="tns:CheckAddressRequestMessage"/>
+			<output message="tns:CheckAddressResponseMessage"/>
+		</operation>
 		<operation name="DeleteIncomingFromRegistry">
 			<input message="tns:DeleteIncomingFromRegistryRequestMessage"/>
 			<output message="tns:DeleteIncomingFromRegistryResponseMessage"/>
@@ -1016,6 +1056,10 @@
 		<operation name="DeleteRegistry">
 			<input message="tns:DeleteRegistryRequestMessage"/>
 			<output message="tns:DeleteRegistryResponseMessage"/>
+		</operation>
+		<operation name="FileUpload">
+			<input message="tns:FileUploadRequestMessage"/>
+			<output message="tns:FileUploadResponseMessage"/>
 		</operation>
 		<operation name="FindContainer">
 			<input message="tns:FindContainerRequestMessage"/>
@@ -1033,6 +1077,10 @@
 			<input message="tns:FindRegistryRequestMessage"/>
 			<output message="tns:FindRegistryResponseMessage"/>
 		</operation>
+		<operation name="FindRegistry2">
+			<input message="tns:FindRegistry2RequestMessage"/>
+			<output message="tns:FindRegistry2ResponseMessage"/>
+		</operation>
 		<operation name="FindRouteList">
 			<input message="tns:FindRouteListRequestMessage"/>
 			<output message="tns:FindRouteListResponseMessage"/>
@@ -1040,6 +1088,10 @@
 		<operation name="FindTag">
 			<input message="tns:FindTagRequestMessage"/>
 			<output message="tns:FindTagResponseMessage"/>
+		</operation>
+		<operation name="FindTrackNumber">
+			<input message="tns:FindTrackNumberRequestMessage"/>
+			<output message="tns:FindTrackNumberResponseMessage"/>
 		</operation>
 		<operation name="GatherInfo">
 			<input message="tns:GatherInfoRequestMessage"/>
@@ -1065,17 +1117,33 @@
 			<input message="tns:GetCustomerRequestMessage"/>
 			<output message="tns:GetCustomerResponseMessage"/>
 		</operation>
+		<operation name="GetLabel">
+			<input message="tns:GetLabelRequestMessage"/>
+			<output message="tns:GetLabelResponseMessage"/>
+		</operation>
 		<operation name="GetOperator">
 			<input message="tns:GetOperatorRequestMessage"/>
 			<output message="tns:GetOperatorResponseMessage"/>
+		</operation>
+		<operation name="GetOperator2">
+			<input message="tns:GetOperator2RequestMessage"/>
+			<output message="tns:GetOperator2ResponseMessage"/>
 		</operation>
 		<operation name="GetOrder">
 			<input message="tns:GetOrderRequestMessage"/>
 			<output message="tns:GetOrderResponseMessage"/>
 		</operation>
+		<operation name="GetPlannedRegistry">
+			<input message="tns:GetPlannedRegistryRequestMessage"/>
+			<output message="tns:GetPlannedRegistryResponseMessage"/>
+		</operation>
 		<operation name="GetRegistry">
 			<input message="tns:GetRegistryRequestMessage"/>
 			<output message="tns:GetRegistryResponseMessage"/>
+		</operation>
+		<operation name="MarkAsProblem">
+			<input message="tns:MarkAsProblemRequestMessage"/>
+			<output message="tns:MarkAsProblemResponseMessage"/>
 		</operation>
 		<operation name="MarkPostAsShipped">
 			<input message="tns:MarkPostAsShippedRequestMessage"/>
@@ -1085,18 +1153,6 @@
 			<input message="tns:SetOperatorActivityRequestMessage"/>
 			<output message="tns:SetOperatorActivityResponseMessage"/>
 		</operation>
-		<operation name="UpdateContainer">
-			<input message="tns:UpdateContainerRequestMessage"/>
-			<output message="tns:UpdateContainerResponseMessage"/>
-		</operation>
-		<operation name="MarkAsProblem">
-			<input message="tns:MarkAsProblemRequestMessage"/>
-			<output message="tns:MarkAsProblemResponseMessage"/>
-		</operation>
-		<operation name="CheckAddress">
-			<input message="tns:CheckAddressRequestMessage"/>
-			<output message="tns:CheckAddressResponseMessage"/>
-		</operation>
 		<operation name="StartFillingWarrantyCard">
 			<input message="tns:StartFillingWarrantyCardRequestMessage"/>
 			<output message="tns:StartFillingWarrantyCardResponseMessage"/>
@@ -1105,41 +1161,26 @@
 			<input message="tns:StopFillingWarrantyCardRequestMessage"/>
 			<output message="tns:StopFillingWarrantyCardResponseMessage"/>
 		</operation>
-		<operation name="FindTrackNumber">
-			<input message="tns:FindTrackNumberRequestMessage"/>
-			<output message="tns:FindTrackNumberResponseMessage"/>
-		</operation>
-		<operation name="GetLabel">
-			<input message="tns:GetLabelRequestMessage"/>
-			<output message="tns:GetLabelResponseMessage"/>
-		</operation>
-		<operation name="FindRegistry2">
-			<input message="tns:FindRegistry2RequestMessage"/>
-			<output message="tns:FindRegistry2ResponseMessage"/>
-		</operation>
-		<operation name="FileUpload">
-			<input message="tns:FileUploadRequestMessage"/>
-			<output message="tns:FileUploadResponseMessage"/>
-		</operation>
-		<operation name="AccountContainerCost">
-			<input message="tns:AccountContainerCostRequestMessage"/>
-			<output message="tns:AccountContainerCostResponseMessage"/>
+		<operation name="UpdateContainer">
+			<input message="tns:UpdateContainerRequestMessage"/>
+			<output message="tns:UpdateContainerResponseMessage"/>
 		</operation>
 		<operation name="UpdateContainer2">
 			<input message="tns:UpdateContainer2RequestMessage"/>
 			<output message="tns:UpdateContainer2ResponseMessage"/>
 		</operation>
-		<operation name="GetPlannedRegistry">
-			<input message="tns:GetPlannedRegistryRequestMessage"/>
-			<output message="tns:GetPlannedRegistryResponseMessage"/>
-		</operation>
-		<operation name="CarryOutPlannedRegistry">
-			<input message="tns:CarryOutPlannedRegistryRequestMessage"/>
-			<output message="tns:CarryOutPlannedRegistryResponseMessage"/>
-		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
 		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="AccountContainerCost">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="AddBoxContainers">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
 			<input>
@@ -1167,6 +1208,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="CarryOutRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
 			<input>
@@ -1185,6 +1235,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="CheckAddress">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="DeleteIncomingFromRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
 			<input>
@@ -1196,6 +1255,15 @@
 		</operation>
 		<operation name="DeleteRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FileUpload">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1239,6 +1307,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="FindRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="FindRouteList">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
 			<input>
@@ -1250,6 +1327,15 @@
 		</operation>
 		<operation name="FindTag">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindTrackNumber">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1311,8 +1397,26 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetLabel">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetOperator">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOperator2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1329,8 +1433,26 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetPlannedRegistry">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="MarkAsProblem">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1356,33 +1478,6 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="UpdateContainer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="MarkAsProblem">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CheckAddress">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
 		<operation name="StartFillingWarrantyCard">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
 			<input>
@@ -1401,44 +1496,8 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="FindTrackNumber">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetLabel">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="FindRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="FileUpload">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="AccountContainerCost">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+		<operation name="UpdateContainer">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1455,27 +1514,18 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="GetPlannedRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CarryOutPlannedRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="AccountContainerCost">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="AddBoxContainers">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
 			<input>
@@ -1503,6 +1553,15 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="CarryOutPlannedRegistry">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="CarryOutRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
 			<input>
@@ -1521,6 +1580,15 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="CheckAddress">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="DeleteIncomingFromRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
 			<input>
@@ -1532,6 +1600,15 @@
 		</operation>
 		<operation name="DeleteRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FileUpload">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1575,6 +1652,15 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="FindRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="FindRouteList">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
 			<input>
@@ -1586,6 +1672,15 @@
 		</operation>
 		<operation name="FindTag">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FindTrackNumber">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1647,8 +1742,26 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetLabel">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetOperator">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOperator2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1665,8 +1778,26 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetPlannedRegistry">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="MarkAsProblem">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1692,33 +1823,6 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="UpdateContainer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="MarkAsProblem">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CheckAddress">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
 		<operation name="StartFillingWarrantyCard">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
 			<input>
@@ -1737,44 +1841,8 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="FindTrackNumber">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetLabel">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="FindRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="FileUpload">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="AccountContainerCost">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+		<operation name="UpdateContainer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1784,24 +1852,6 @@
 		</operation>
 		<operation name="UpdateContainer2">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetPlannedRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CarryOutPlannedRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

@@ -42,6 +42,13 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public GetOperatorResponse2 getOperator2(String machineId) {
+		GetOperatorResponse2 response = new GetOperatorResponse2();
+		response.setOperator(getOperator(machineId));
+		return response;
+	}
+
+	@Override
 	public Customer getCustomer(final String customerId) {
 		if (customerId == null) {
 			return null;
@@ -766,7 +773,7 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public String carryOutPlannedRegistry(PlannedRegistryCheckoutItems items) {
+	public String carryOutPlannedRegistry(PlannedRegistryCheckoutItems items, String id) {
 		return null;
 	}
 
