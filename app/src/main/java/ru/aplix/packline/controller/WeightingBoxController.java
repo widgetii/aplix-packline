@@ -56,6 +56,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	private Scales<?> scales = null;
 
 	private Task<Void> task;
+	private boolean awaitingCompletion;
 
 	private Transition transition;
 
@@ -78,6 +79,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 		super.prepare(context);
 
 		nextButton.setDisable(false);
+		awaitingCompletion = false;
 
 		Container container = (Container) context.getAttribute(Const.TAG);
 		if (container != null) {
@@ -186,6 +188,8 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 
 				errorMessageProperty.set(errorStr);
 				errorVisibleProperty.set(true);
+
+				awaitingCompletion = false;
 			}
 
 			@Override
@@ -201,6 +205,7 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+		awaitingCompletion = true;
 	}
 
 	@Override
@@ -219,6 +224,10 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			@Override
 			public void run() {
 				updateMeasure(value);
+
+				if (awaitingCompletion) {
+					return;
+				}
 
 				if (value <= minStableWeight) {
 					transition.play();

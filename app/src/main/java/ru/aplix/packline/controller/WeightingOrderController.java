@@ -4,11 +4,13 @@ import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
 
 import javafx.animation.FadeTransitionBuilder;
 import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,8 +20,11 @@ import javafx.util.Duration;
 import javax.xml.bind.JAXBException;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
+import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.WeightingOrderAction;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
@@ -31,6 +36,8 @@ import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class WeightingOrderController extends StandardController<WeightingOrderAction> implements MeasurementListener {
+
+	private final Log LOG = LogFactory.getLog(getClass());
 
 	@FXML
 	private Label label1Caption;
@@ -54,6 +61,9 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 
 	private Scales<?> scales = null;
 
+	private Task<Void> task;
+	private boolean awaitingCompletion;
+
 	private Transition transition;
 
 	@Override
@@ -73,6 +83,9 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
+		
+		nextButton.setDisable(false);
+		awaitingCompletion = false;
 
 		boolean valuesSet = false;
 		Order order = (Order) context.getAttribute(Const.ORDER);
@@ -138,6 +151,10 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		}
 
 		transition.stop();
+
+		if (task != null) {
+			task.cancel(false);
+		}
 	}
 
 	public void nextClick(ActionEvent event) {
@@ -148,8 +165,60 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 			return;
 		}
 
-		getAction().processMeasure(measure);
-		done();
+		task = new Task<Void>() {
+			@Override
+			public Void call() throws Exception {
+				try {
+					getAction().processMeasure(measure);
+				} catch (Throwable e) {
+					LOG.error(null, e);
+					throw e;
+				}
+				return null;
+			}
+
+			@Override
+			protected void running() {
+				super.running();
+
+				progressVisibleProperty.set(true);
+				nextButton.setDisable(true);
+			}
+
+			@Override
+			protected void failed() {
+				super.failed();
+
+				progressVisibleProperty.set(false);
+				nextButton.setDisable(false);
+
+				String errorStr;
+				if (getException() instanceof PackLineException) {
+					errorStr = getException().getMessage();
+				} else {
+					errorStr = getResources().getString("error.post.service");
+				}
+
+				errorMessageProperty.set(errorStr);
+				errorVisibleProperty.set(true);
+				
+				awaitingCompletion = false;
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				progressVisibleProperty.set(false);
+				nextButton.setDisable(false);
+
+				WeightingOrderController.this.done();
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
+		awaitingCompletion = true;
 	}
 
 	@Override
@@ -168,6 +237,10 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 			@Override
 			public void run() {
 				updateMeasure(value);
+
+				if (awaitingCompletion) {
+					return;
+				}
 
 				if (value <= minStableWeight) {
 					transition.play();
