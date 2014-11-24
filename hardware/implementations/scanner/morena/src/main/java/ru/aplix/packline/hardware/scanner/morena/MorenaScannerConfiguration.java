@@ -21,6 +21,8 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 	private FunctionalUnit functionalUnit;
 	@XmlAttribute(name = "scanMode")
 	private ScanMode scanMode;
+	@XmlAttribute(name = "tryNextPage")
+	private Boolean tryNextPage;
 
 	public MorenaScannerConfiguration() {
 		name = "";
@@ -28,6 +30,7 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 		duplex = false;
 		functionalUnit = FunctionalUnit.FLATBED;
 		scanMode = ScanMode.RGB_8;
+		tryNextPage = false;
 	}
 
 	public String getName() {
@@ -69,4 +72,13 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 	public void setScanMode(ScanMode scanMode) {
 		this.scanMode = scanMode;
 	}
+
+	public Boolean getTryNextPage() {
+		return tryNextPage;
+	}
+
+	public void setTryNextPage(Boolean tryNextPage) {
+		this.tryNextPage = tryNextPage;
+	}
+
 }

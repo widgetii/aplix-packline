@@ -46,12 +46,13 @@
 		</DVRCamera>
 		
 		<!-- Image Scanner driver -->
-		<ImageScanner name="MorenaScanner" enabled="false" >
+		<ImageScanner name="MorenaScanner" enabled="true" >
 			<!-- "name" 		  - the name of scanner, for example "EPSON XP-200/ME-301"  							-->
 			<!-- "resolution" 	  - scanner's enlargement capability in DPI, for example "300"   						-->
 			<!-- "duplex" 		  - scan front and back sides: "true" or "false"										-->
 			<!-- "functionalUnit" - scanner functional unit: "flatbed" or "feeder"										-->
 			<!-- "scanMode"  	  - image quality, defined values are rgb-8, rgb-16, gray-8, gray-16, black-and-white 	-->
+			<!-- "tryNextPage"	  - continue scanning the next page even though feeder is empty: "true" or "false"		-->
 			<Configuration 
 				name="WIA on TWAIN sample device" 
 				resolution="300" functionalUnit="flatbed" scanMode="rgb-8" duplex="false"/>

@@ -39,16 +39,43 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 	}
 
 	public boolean processBarcode(final String code) throws PackLineException {
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 
-		Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return code.equals(((Tag) item).getId());
+		Incoming existing = null;
+		switch (registry.getActionType()) {
+		case ADD:
+			// Now we should add a new incoming to our registry.
+			// Check that it hasn't been added yet.
+			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return code.equals(((Tag) item).getId());
+				}
+			});
+			if (existing != null) {
+				throw new PackLineException(getResources().getString("error.post.incoming.registered"));
 			}
-		});
-		if (existing == null) {
-			throw new PackLineException(getResources().getString("error.post.incoming.other.registy"));
+
+			existing = postServicePort.findIncoming(code);
+			if (existing == null || existing.getId() == null || existing.getId().length() == 0) {
+				throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+			}
+
+			break;
+		case DELETE:
+			// Now we should delete selected incoming from our registry.
+			// Check that incoming is present in registry first.
+			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return code.equals(((Tag) item).getId());
+				}
+			});
+			if (existing == null) {
+				throw new PackLineException(getResources().getString("error.post.incoming.other.registy"));
+			}
+			break;
 		}
 
 		getContext().setAttribute(Const.ORDER, null);
@@ -61,7 +88,7 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.carryOutRegistry(registry.getId())) {
+		if (!postServicePort.carryOutRegistry2(registry.getId())) {
 			throw new PackLineException(getResources().getString("error.post.registry.carryout"));
 		}
 	}
@@ -70,7 +97,7 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.deleteRegistry(registry.getId())) {
+		if (!postServicePort.deleteRegistry2(registry.getId())) {
 			throw new PackLineException(getResources().getString("error.post.registry.delete"));
 		}
 	}

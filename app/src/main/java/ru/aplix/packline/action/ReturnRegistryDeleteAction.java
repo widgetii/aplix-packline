@@ -19,11 +19,24 @@ public class ReturnRegistryDeleteAction extends CommonAction<ReturnRegistryDelet
 		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.deleteIncomingFromRegistry(registry.getId(), incoming)) {
-			throw new PackLineException(getResources().getString("error.post.registry.incoming.delete"));
-		}
+		switch (registry.getActionType()) {
+		case ADD:
+			// Add incoming to registry
+			int res = postServicePort.addIncomingToRegistry2(registry.getId(), incoming);
+			if (res <= -1) {
+				throw new PackLineException(getResources().getString("error.post.registry.incoming.add"));
+			}
 
-		// Delete incoming from registry
-		registry.getIncoming().remove(incoming);
+			registry.getIncoming().add(incoming);
+			break;
+		case DELETE:
+			// Delete incoming from registry
+			if (!postServicePort.deleteIncomingFromRegistry2(registry.getId(), incoming)) {
+				throw new PackLineException(getResources().getString("error.post.registry.incoming.delete"));
+			}
+
+			registry.getIncoming().remove(incoming);
+			break;
+		}
 	}
 }

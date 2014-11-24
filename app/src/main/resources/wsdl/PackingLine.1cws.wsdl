@@ -2,6 +2,12 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.aplix.ru/PackingLine" name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine">
 	<types>
 		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.aplix.ru/PackingLine" targetNamespace="http://www.aplix.ru/PackingLine" attributeFormDefault="unqualified" elementFormDefault="qualified">
+			<xs:simpleType name="ActionType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Add"/>
+					<xs:enumeration value="Delete"/>
+				</xs:restriction>
+			</xs:simpleType>
 			<xs:complexType name="BoxType">
 				<xs:sequence>
 					<xs:element name="packingSize" type="tns:PackingSize"/>
@@ -40,6 +46,14 @@
 					<xs:element name="name" type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:simpleType name="DocumentType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="INCOMING_REGISTRY"/>
+					<xs:enumeration value="RETURN_REGISTRY"/>
+					<xs:enumeration value="RETURN_CONSIGNMENT"/>
+					<xs:enumeration value="ROUTE_LIST"/>
+				</xs:restriction>
+			</xs:simpleType>
 			<xs:complexType name="Enclosure">
 				<xs:sequence>
 					<xs:element name="postId" type="xs:string"/>
@@ -188,6 +202,8 @@
 					<xs:enumeration value="PETITPAQUET"/>
 					<xs:enumeration value="LOGIBOX"/>
 					<xs:enumeration value="HERMES"/>
+					<xs:enumeration value="PONYEXPRESS"/>
+					<xs:enumeration value="BOXBERRY"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="Registry">
@@ -198,8 +214,16 @@
 					<xs:element name="date" type="xs:dateTime"/>
 					<xs:element name="totalIncomings" type="xs:int"/>
 					<xs:element name="carriedOutAndClosed" type="xs:boolean"/>
+					<xs:element name="registryType" type="tns:RegistryType" nillable="true"/>
+					<xs:element name="actionType" type="tns:ActionType" nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:simpleType name="RegistryType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="INCOMING"/>
+					<xs:enumeration value="RETURN"/>
+				</xs:restriction>
+			</xs:simpleType>
 			<xs:complexType name="RouteList">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
@@ -301,6 +325,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="AddIncomingToRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="incoming" type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddIncomingToRegistry2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="CarryOutPlannedRegistry">
 				<xs:complexType>
 					<xs:sequence>
@@ -324,6 +363,20 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarryOutRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:boolean"/>
@@ -373,6 +426,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="DeleteIncomingFromRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="incoming" type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteIncomingFromRegistry2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="DeleteRegistry">
 				<xs:complexType>
 					<xs:sequence>
@@ -387,11 +455,26 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="DeleteRegistry2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeleteRegistry2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="FileUpload">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="fileId" type="xs:string"/>
 						<xs:element name="path" type="xs:string"/>
+						<xs:element name="document" type="tns:DocumentType" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -812,6 +895,12 @@
 	<message name="AddIncomingToRegistryResponseMessage">
 		<part name="parameters" element="tns:AddIncomingToRegistryResponse"/>
 	</message>
+	<message name="AddIncomingToRegistry2RequestMessage">
+		<part name="parameters" element="tns:AddIncomingToRegistry2"/>
+	</message>
+	<message name="AddIncomingToRegistry2ResponseMessage">
+		<part name="parameters" element="tns:AddIncomingToRegistry2Response"/>
+	</message>
 	<message name="CarryOutPlannedRegistryRequestMessage">
 		<part name="parameters" element="tns:CarryOutPlannedRegistry"/>
 	</message>
@@ -823,6 +912,12 @@
 	</message>
 	<message name="CarryOutRegistryResponseMessage">
 		<part name="parameters" element="tns:CarryOutRegistryResponse"/>
+	</message>
+	<message name="CarryOutRegistry2RequestMessage">
+		<part name="parameters" element="tns:CarryOutRegistry2"/>
+	</message>
+	<message name="CarryOutRegistry2ResponseMessage">
+		<part name="parameters" element="tns:CarryOutRegistry2Response"/>
 	</message>
 	<message name="CarryOutRouteListRequestMessage">
 		<part name="parameters" element="tns:CarryOutRouteList"/>
@@ -842,11 +937,23 @@
 	<message name="DeleteIncomingFromRegistryResponseMessage">
 		<part name="parameters" element="tns:DeleteIncomingFromRegistryResponse"/>
 	</message>
+	<message name="DeleteIncomingFromRegistry2RequestMessage">
+		<part name="parameters" element="tns:DeleteIncomingFromRegistry2"/>
+	</message>
+	<message name="DeleteIncomingFromRegistry2ResponseMessage">
+		<part name="parameters" element="tns:DeleteIncomingFromRegistry2Response"/>
+	</message>
 	<message name="DeleteRegistryRequestMessage">
 		<part name="parameters" element="tns:DeleteRegistry"/>
 	</message>
 	<message name="DeleteRegistryResponseMessage">
 		<part name="parameters" element="tns:DeleteRegistryResponse"/>
+	</message>
+	<message name="DeleteRegistry2RequestMessage">
+		<part name="parameters" element="tns:DeleteRegistry2"/>
+	</message>
+	<message name="DeleteRegistry2ResponseMessage">
+		<part name="parameters" element="tns:DeleteRegistry2Response"/>
 	</message>
 	<message name="FileUploadRequestMessage">
 		<part name="parameters" element="tns:FileUpload"/>
@@ -1033,6 +1140,10 @@
 			<input message="tns:AddIncomingToRegistryRequestMessage"/>
 			<output message="tns:AddIncomingToRegistryResponseMessage"/>
 		</operation>
+		<operation name="AddIncomingToRegistry2">
+			<input message="tns:AddIncomingToRegistry2RequestMessage"/>
+			<output message="tns:AddIncomingToRegistry2ResponseMessage"/>
+		</operation>
 		<operation name="CarryOutPlannedRegistry">
 			<input message="tns:CarryOutPlannedRegistryRequestMessage"/>
 			<output message="tns:CarryOutPlannedRegistryResponseMessage"/>
@@ -1040,6 +1151,10 @@
 		<operation name="CarryOutRegistry">
 			<input message="tns:CarryOutRegistryRequestMessage"/>
 			<output message="tns:CarryOutRegistryResponseMessage"/>
+		</operation>
+		<operation name="CarryOutRegistry2">
+			<input message="tns:CarryOutRegistry2RequestMessage"/>
+			<output message="tns:CarryOutRegistry2ResponseMessage"/>
 		</operation>
 		<operation name="CarryOutRouteList">
 			<input message="tns:CarryOutRouteListRequestMessage"/>
@@ -1053,9 +1168,17 @@
 			<input message="tns:DeleteIncomingFromRegistryRequestMessage"/>
 			<output message="tns:DeleteIncomingFromRegistryResponseMessage"/>
 		</operation>
+		<operation name="DeleteIncomingFromRegistry2">
+			<input message="tns:DeleteIncomingFromRegistry2RequestMessage"/>
+			<output message="tns:DeleteIncomingFromRegistry2ResponseMessage"/>
+		</operation>
 		<operation name="DeleteRegistry">
 			<input message="tns:DeleteRegistryRequestMessage"/>
 			<output message="tns:DeleteRegistryResponseMessage"/>
+		</operation>
+		<operation name="DeleteRegistry2">
+			<input message="tns:DeleteRegistry2RequestMessage"/>
+			<output message="tns:DeleteRegistry2ResponseMessage"/>
 		</operation>
 		<operation name="FileUpload">
 			<input message="tns:FileUploadRequestMessage"/>
@@ -1208,6 +1331,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="AddIncomingToRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="CarryOutPlannedRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
@@ -1219,6 +1351,15 @@
 		</operation>
 		<operation name="CarryOutRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CarryOutRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1253,8 +1394,26 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="DeleteIncomingFromRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="DeleteRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteRegistry2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1553,6 +1712,15 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="AddIncomingToRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="CarryOutPlannedRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
@@ -1564,6 +1732,15 @@
 		</operation>
 		<operation name="CarryOutRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CarryOutRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1598,8 +1775,26 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="DeleteIncomingFromRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="DeleteRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteRegistry2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

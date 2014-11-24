@@ -17,6 +17,7 @@ public final class Const {
 	public static final String CONTROL_RETURNS_ACTION_BEAN_NAME = "controlReturnsAction";
 	public static final String ASYNC_COMMAND_RUNNER = "asyncCommandRunner";
 	public static final String BARCODE_LISTENERS = "barcodeListeners";
+	public static final String MEASUREMENT_LISTENERS = "measurementListeners";
 
 	public static final String APPLICATION_CONTEXT = "ApplicationContext";
 	public static final String STAGE = "Stage";

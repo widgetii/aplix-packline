@@ -47,6 +47,7 @@ import ru.aplix.packline.hardware.camera.DVRCameraFactory;
 import ru.aplix.packline.hardware.camera.PhotoCamera;
 import ru.aplix.packline.hardware.camera.PhotoCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
+import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
 import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
 import ru.aplix.packline.hardware.scales.ScalesFactory;
@@ -255,7 +256,14 @@ public class App extends Application implements IdleListener {
 
 		// Create scales instance
 		if (!StringUtils.isEmpty(configuration.getScales().getName()) && configuration.getScales().isEnabled()) {
-			final Scales<?> sc = ScalesFactory.createInstance(configuration.getScales().getName());
+			Scales<?> sc = ScalesFactory.createInstance(configuration.getScales().getName());
+
+			// Proxy scales in order to intercept listener methods
+			ProxyFactory factory = new ProxyFactory(sc);
+			ScalesListenerStaticMethodMatcherPointcut slsmmp = new ScalesListenerStaticMethodMatcherPointcut();
+			factory.addAdvisor(new DefaultPointcutAdvisor(slsmmp, slsmmp));
+			sc = (Scales<?>) factory.getProxy();
+
 			sc.setConnectOnDemand(true);
 			sc.setConfiguration(configuration.getScales().getConfiguration());
 			sc.addConnectionListener(new ScalesConnectionListener() {
@@ -442,4 +450,30 @@ public class App extends Application implements IdleListener {
 		}
 	}
 
+	/**
+	 *
+	 */
+	class ScalesListenerStaticMethodMatcherPointcut extends StaticMethodMatcherPointcut implements AfterReturningAdvice {
+
+		@Override
+		public boolean matches(Method method, Class<?> cls) {
+			return method.getName().matches("(add|remove)MeasurementListener");
+		}
+
+		@Override
+		public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
+			if (args != null && args.length > 0 && args[0] instanceof MeasurementListener) {
+				MeasurementListener listener = (MeasurementListener) args[0];
+
+				@SuppressWarnings("unchecked")
+				List<MeasurementListener> list = (List<MeasurementListener>) applicationContext.getBean(Const.MEASUREMENT_LISTENERS);
+
+				if (method.getName().startsWith("add")) {
+					list.add(listener);
+				} else {
+					list.remove(listener);
+				}
+			}
+		}
+	}
 }

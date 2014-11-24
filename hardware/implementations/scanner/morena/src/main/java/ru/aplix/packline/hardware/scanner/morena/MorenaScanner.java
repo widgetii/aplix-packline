@@ -237,9 +237,11 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 		private final Pattern pattern = Pattern.compile("feeder.*empty", Pattern.CASE_INSENSITIVE);
 
 		private FunctionalUnit currentFunctionalUnit;
+		private boolean imageAcquired;
 
 		public ImageTransferHandler(FunctionalUnit fu) {
 			currentFunctionalUnit = fu;
+			imageAcquired = false;
 		}
 
 		@Override
@@ -248,6 +250,7 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 			if (file != null) {
 				try {
+					imageAcquired = true;
 					LOG.debug(String.format("Reading acquired image from '%s'", file.getAbsolutePath()));
 
 					for (ImageListener listener : listeners) {
@@ -271,8 +274,18 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 			if (FunctionalUnit.FEEDER.equals(currentFunctionalUnit)) {
 				if (pattern.matcher(error).find()) {
-					for (ImageListener listener : listeners) {
-						listener.onImageAcquisitionCompleted();
+					if (imageAcquired && configuration.getTryNextPage()) {
+						imageAcquired = false;
+
+						try {
+							device.startTransfer();
+						} catch (Exception e) {
+							LOG.error(String.format("Error in %s '%s'", getName(), configuration.getName()), e);
+						}
+					} else {
+						for (ImageListener listener : listeners) {
+							listener.onImageAcquisitionCompleted();
+						}
 					}
 					return;
 				}

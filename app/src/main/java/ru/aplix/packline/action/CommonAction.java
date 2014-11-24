@@ -34,6 +34,7 @@ import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.dialog.ManualInputDialog;
 import ru.aplix.packline.dialog.ManualInputListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
+import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.idle.WorkflowActionWithUserActivityMonitor;
 import ru.aplix.packline.workflow.StandardWorkflowController;
 import ru.aplix.packline.workflow.WorkflowAction;
@@ -143,6 +144,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemWeight = null;
+		if (getController() instanceof MeasurementListener) {
+			itemWeight = new MenuItem(resources.getString("menu.input.weight"));
+			itemWeight.setStyle(menuItemStyle2);
+			itemWeight.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					manualWeightInput();
+				}
+			});
+		}
+
 		MenuItem itemMarkersForContainers = null;
 		MenuItem itemMarkersForCustomer = null;
 		if (Configuration.getInstance().getRoles().getGluing()) {
@@ -218,6 +230,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		if (itemBarcode != null) {
 			result.getItems().add(itemBarcode);
 		}
+		if (itemWeight != null) {
+			result.getItems().add(itemWeight);
+		}
 		result.getItems().add(subMenu);
 		return result;
 	}
@@ -248,6 +263,29 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 					List<BarcodeListener> list = (List<BarcodeListener>) applicationContext.getBean(Const.BARCODE_LISTENERS);
 					for (BarcodeListener bl : list) {
 						bl.onCatchBarcode(value);
+					}
+				}
+			}
+		});
+		mid.centerOnScreen();
+		mid.show();
+	}
+
+	private void manualWeightInput() {
+		Window owner = rootNode.getScene().getWindow();
+		ManualInputDialog mid = new ManualInputDialog(owner, new ManualInputListener() {
+			@Override
+			public void onTextInput(String value) {
+				if (getController() instanceof MeasurementListener) {
+					try {
+						Float floatValue = Float.valueOf(value);
+						ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+						@SuppressWarnings({ "unchecked" })
+						List<MeasurementListener> list = (List<MeasurementListener>) applicationContext.getBean(Const.MEASUREMENT_LISTENERS);
+						for (MeasurementListener ml : list) {
+							ml.onWeightStabled(floatValue);
+						}
+					} catch (NumberFormatException nfe) {
 					}
 				}
 			}

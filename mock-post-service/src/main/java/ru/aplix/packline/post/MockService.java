@@ -422,6 +422,26 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public int addIncomingToRegistry2(String registryId, Incoming incoming) {
+		return addIncomingToRegistry(registryId, incoming);
+	}
+
+	@Override
+	public boolean deleteIncomingFromRegistry2(String registryId, Incoming incoming) {
+		return deleteIncomingFromRegistry(registryId, incoming);
+	}
+
+	@Override
+	public boolean deleteRegistry2(String registryId) {
+		return deleteRegistry(registryId);
+	}
+
+	@Override
+	public boolean carryOutRegistry2(String registryId) {
+		return carryOutRegistry(registryId);
+	}
+
+	@Override
 	public boolean carryOutRouteList(String routeListId) {
 		RouteList routeList = findRouteList(routeListId);
 		if (routeList != null) {
@@ -758,7 +778,7 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public String fileUpload(String fileId, String path) {
+	public String fileUpload(String fileId, String path, DocumentType document) {
 		return null;
 	}
 
@@ -832,4 +852,5 @@ public class MockService implements PackingLinePortType {
 		}
 		return xmlGC;
 	}
+
 }

@@ -12,6 +12,7 @@
 	<bean id="asyncCommandRunner" class="ru.aplix.packline.utils.AsyncCommandRunner" />
 
 	<util:list id="barcodeListeners" value-type="ru.aplix.packline.hardware.barcode.BarcodeListener" list-class="java.util.Vector" />
+	<util:list id="measurementListeners" value-type="ru.aplix.packline.hardware.barcode.MeasurementListener" list-class="java.util.Vector" />
 
 	<!-- Workflow actions -->
 	<alias alias="firstWorkflowAction" name="action1" />
@@ -113,8 +114,7 @@
 
 	<bean id="action17" class="ru.aplix.packline.action.ReturnRegistryScanAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="viewAction" ref="action18" />
-		<property name="backAction" ref="action2" />
+		<property name="nextAction" ref="action18" />
 	</bean>
 
 	<bean id="action18" class="ru.aplix.packline.action.ReturnRegistryViewAction">

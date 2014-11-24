@@ -9,32 +9,13 @@ import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.controller.ReturnRegistryScanController;
+import ru.aplix.packline.post.DocumentType;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PostType;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.utils.ImagesToPDFConverter;
-import ru.aplix.packline.workflow.WorkflowAction;
 
 public class ReturnRegistryScanAction extends CommonAction<ReturnRegistryScanController> {
-
-	private WorkflowAction viewAction;
-	private WorkflowAction backAction;
-
-	public WorkflowAction getViewAction() {
-		return viewAction;
-	}
-
-	public void setViewAction(WorkflowAction viewAction) {
-		this.viewAction = viewAction;
-	}
-
-	public WorkflowAction getBackAction() {
-		return backAction;
-	}
-
-	public void setBackAction(WorkflowAction backAction) {
-		this.backAction = backAction;
-	}
 
 	@Override
 	protected String getFormName() {
@@ -55,12 +36,6 @@ public class ReturnRegistryScanAction extends CommonAction<ReturnRegistryScanCon
 		uploadRegistry(code, images);
 
 		getContext().setAttribute(Const.REGISTRY, registry);
-
-		if (registry.getIncoming() != null && registry.getIncoming().size() > 0) {
-			setNextAction(getViewAction());
-		} else {
-			setNextAction(getBackAction());
-		}
 	}
 
 	private void uploadRegistry(String code, List<File> images) throws PackLineException {
@@ -79,7 +54,7 @@ public class ReturnRegistryScanAction extends CommonAction<ReturnRegistryScanCon
 					FileUtils.copyFile(pdfFile, destFile);
 
 					PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-					String result = postServicePort.fileUpload(code, destFile.getAbsolutePath());
+					String result = postServicePort.fileUpload(code, destFile.getAbsolutePath(), DocumentType.RETURN_REGISTRY);
 					if (result != null && result.length() > 0) {
 						throw new PackLineException(result);
 					}

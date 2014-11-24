@@ -176,6 +176,8 @@
 			<date>2013-12-17T13:16:12.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
 			<carriedOutAndClosed>false</carriedOutAndClosed>
+			<registryType>RETURN</registryType>
+			<actionType>Delete</actionType>
 		</registry>
 	</registries>
 	<incomings>
