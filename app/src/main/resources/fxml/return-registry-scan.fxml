@@ -26,15 +26,12 @@
                       <children>
                         <VBox id="ppaginationContainer" fx:id="paginationContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                           <children>
-                            <HBox id="imageFlowContainer" fx:id="imageContainer" alignment="CENTER" spacing="5.0" VBox.margin="$x1" VBox.vgrow="ALWAYS">
-                              <children>
-                                <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                  <HBox.margin>
-                                    <Insets fx:id="x1" />
-                                  </HBox.margin>
+                            <ScrollPane fx:id="imageContainer" fitToWidth="true" hbarPolicy="NEVER" pannable="true" VBox.vgrow="ALWAYS">
+                              <content>
+                                <ImageView fx:id="imageView" preserveRatio="true">
                                 </ImageView>
-                              </children>
-                            </HBox>
+                              </content>
+                            </ScrollPane>
                           </children>
                         </VBox>
                         <VBox id="VBox" alignment="TOP_CENTER">

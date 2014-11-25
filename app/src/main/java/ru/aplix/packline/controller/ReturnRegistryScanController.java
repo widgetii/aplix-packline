@@ -21,9 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.PaginationBuilder;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Callback;
@@ -53,7 +53,7 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 	@FXML
 	private Button deleteImageButton;
 	@FXML
-	private Pane imageContainer;
+	private ScrollPane imageContainer;
 	@FXML
 	private ImageView imageView;
 	@FXML
@@ -80,11 +80,10 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 
-		imageView.fitWidthProperty().bind(imageContainer.widthProperty().subtract(15));
-		imageView.fitHeightProperty().bind(imageContainer.heightProperty().subtract(15));
-
 		imageProperty = new SimpleObjectProperty<Image>();
 		imageView.imageProperty().bind(imageProperty);
+
+		imageView.fitWidthProperty().bind(imageContainer.widthProperty());
 
 		createPagination();
 	}
@@ -254,7 +253,7 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 			return;
 		}
 
-		Image image = new Image(imageFile.toURI().toString(), true);
+		final Image image = new Image(imageFile.toURI().toString(), true);
 		imageProperty.set(image);
 	}
 

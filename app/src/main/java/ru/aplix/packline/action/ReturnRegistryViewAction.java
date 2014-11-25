@@ -2,6 +2,7 @@ package ru.aplix.packline.action;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.ArrayUtils;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
@@ -68,8 +69,13 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 			// Check that incoming is present in registry first.
 			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
 				@Override
-				public boolean evaluate(Object item) {
-					return code.equals(((Tag) item).getId());
+				public boolean evaluate(Object o) {
+					Incoming item = (Incoming) o;
+					boolean result = code.equals(item.getId());
+					if (!result && item.getBarcodes() != null) {
+						result = ArrayUtils.contains(item.getBarcodes().toArray(), code);
+					}
+					return result;
 				}
 			});
 			if (existing == null) {

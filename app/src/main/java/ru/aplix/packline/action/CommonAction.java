@@ -34,6 +34,7 @@ import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.dialog.ManualInputDialog;
 import ru.aplix.packline.dialog.ManualInputListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
+import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.idle.WorkflowActionWithUserActivityMonitor;
 import ru.aplix.packline.workflow.StandardWorkflowController;
@@ -155,6 +156,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem reconnectBarcode = null;
+		if (getController() instanceof BarcodeListener) {
+			reconnectBarcode = new MenuItem(resources.getString("menu.barcode.reconnect"));
+			reconnectBarcode.setStyle(menuItemStyle2);
+			reconnectBarcode.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					reconnectBarcodeScanner();
+				}
+			});
+		}
+
 		MenuItem itemMarkersForContainers = null;
 		MenuItem itemMarkersForCustomer = null;
 		if (Configuration.getInstance().getRoles().getGluing()) {
@@ -232,6 +244,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemWeight != null) {
 			result.getItems().add(itemWeight);
+		}
+		if (reconnectBarcode != null) {
+			result.getItems().add(reconnectBarcode);
 		}
 		result.getItems().add(subMenu);
 		return result;
@@ -322,5 +337,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.CONTROL_RETURNS_ACTION_BEAN_NAME);
 		wa.execute(getContext());
+	}
+
+	private void reconnectBarcodeScanner() {
+		BarcodeScanner<?> barcodeScanner = (BarcodeScanner<?>) getContext().getAttribute(Const.BARCODE_SCANNER);
+		if (barcodeScanner != null) {
+			barcodeScanner.disconnect();
+		}
 	}
 }

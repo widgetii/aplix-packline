@@ -88,6 +88,7 @@
 							<xs:element name="date" type="xs:dateTime" nillable="true"/>
 							<xs:element name="weight" type="xs:float" nillable="true"/>
 							<xs:element name="contentDescription" type="xs:string"/>
+							<xs:element name="barcodes" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
