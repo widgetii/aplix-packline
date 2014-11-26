@@ -165,6 +165,11 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public Incoming findIncoming2(String incomingId) {
+		return findIncoming(incomingId);
+	}
+
+	@Override
 	public synchronized Post findPost(final String postId) {
 		if (postId == null) {
 			return null;

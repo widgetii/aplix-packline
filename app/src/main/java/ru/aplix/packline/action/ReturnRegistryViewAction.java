@@ -58,7 +58,7 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 				throw new PackLineException(getResources().getString("error.post.incoming.registered"));
 			}
 
-			existing = postServicePort.findIncoming(code);
+			existing = postServicePort.findIncoming2(code);
 			if (existing == null || existing.getId() == null || existing.getId().length() == 0) {
 				throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 			}
