@@ -380,7 +380,7 @@
 			<xs:element name="CarryOutRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return" type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

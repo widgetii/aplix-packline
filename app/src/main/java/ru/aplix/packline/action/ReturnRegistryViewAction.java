@@ -94,8 +94,9 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
-		if (!postServicePort.carryOutRegistry2(registry.getId())) {
-			throw new PackLineException(getResources().getString("error.post.registry.carryout"));
+		String res = postServicePort.carryOutRegistry2(registry.getId());
+		if (res != null && res.length() > 0) {
+			throw new PackLineException(res);
 		}
 	}
 

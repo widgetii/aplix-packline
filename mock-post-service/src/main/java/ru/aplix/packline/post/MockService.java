@@ -442,8 +442,12 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public boolean carryOutRegistry2(String registryId) {
-		return carryOutRegistry(registryId);
+	public String carryOutRegistry2(String registryId) {
+		if (carryOutRegistry(registryId)) {
+			return null;
+		} else {
+			return "Function failed.";
+		}
 	}
 
 	@Override
