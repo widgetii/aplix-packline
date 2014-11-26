@@ -13,7 +13,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,6 +32,8 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Post;
+import ru.aplix.packline.post.PostType;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class PrintFormsController extends StandardController<PrintFormsAction> implements BarcodeListener {
@@ -242,6 +247,22 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 		done();
 	}
 
+	private void showHintForDHL() {
+		Pane errorPane = (Pane) rootNode.lookup("#errorPane");
+		if (errorPane == null) {
+			return;
+		}
+
+		Image image = new Image(getClass().getResource("/resources/images/img-dhl-hint.png").toExternalForm());
+		ImageView imageView = new ImageView();
+		imageView.setImage(image);
+		errorPane.getChildren().add(imageView);
+
+		errorVisibleProperty.set(true);
+
+		Utils.playSound(Utils.SOUND_WARNING);
+	}
+
 	/**
 	 * 
 	 */
@@ -371,6 +392,10 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 
 			infoLabel.setText(getResources().getString("printing.info2"));
 			setProgress(false);
+
+			if (PostType.DHL.equals(post.getPostType())) {
+				showHintForDHL();
+			}
 		}
 
 		private Comparator<Throwable> createSetComparator() {

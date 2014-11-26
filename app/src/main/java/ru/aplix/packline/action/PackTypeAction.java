@@ -4,7 +4,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
-import ru.aplix.packline.controller.PhotoController;
+import ru.aplix.packline.controller.PackTypeController;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PackingType;
@@ -13,7 +13,7 @@ import ru.aplix.packline.post.TagType;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
-public class PackTypeAction extends NotificationAction<PhotoController> {
+public class PackTypeAction extends NotificationAction<PackTypeController> {
 
 	private WorkflowAction barcodeAction;
 	private WorkflowAction dimentionAction;
