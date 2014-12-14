@@ -210,7 +210,7 @@
 					<xsl:when test="$bar-code-type = 'code39'">
 						<xsl:choose>
 							<xsl:when test="$resolution = '203'">
-								<xsl:text>BA3,2,15,2,3,55,0,1,</xsl:text>
+								<xsl:text>BA,16,12,2,4,100,0,3,</xsl:text>
 								<xsl:value-of select="concat(current(), $newline)" />
 							</xsl:when>
 							<xsl:when test="$resolution = '300'">
