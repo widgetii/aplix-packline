@@ -30,7 +30,7 @@
                           </effect>
                           <image>
                             <Image url="@../images/logo-aplix.png" preserveRatio="false" smooth="false" />
-                          </image>                          
+                          </image>
                         </ImageView>
                         <ImageView fx:id="logoCDEK" fitHeight="80.5" fitWidth="161.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <effect>
@@ -48,7 +48,7 @@
                             <Image url="@../images/logo-dhl.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoDPD" fitHeight="78.76922984182099" fitWidth="128.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <ImageView fx:id="logoDPD" fitHeight="78.76922984182099" fitWidth="128.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
                           <effect>
                             <InnerShadow fx:id="x1" />
                           </effect>
@@ -56,39 +56,7 @@
                             <Image url="@../images/logo-dpd.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoEMS" effect="$x1" fitHeight="64.35995359670342" fitWidth="201.12484741210938" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                          <effect>
-                            <InnerShadow />
-                          </effect>
-                          <image>
-                            <Image url="@../images/logo-ems.png" preserveRatio="false" smooth="false" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="logoIML" effect="$x1" fitHeight="58.79999923706055" fitWidth="183.75000043087695" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                          <effect>
-                            <InnerShadow />
-                          </effect>
-                          <image>
-                            <Image url="@../images/logo-iml.png" preserveRatio="false" smooth="false" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="logoPickPoint" fitHeight="66.3701057434082" fitWidth="194.27083386202355" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                          <effect>
-                            <InnerShadow fx:id="x2" />
-                          </effect>
-                          <image>
-                            <Image url="@../images/logo-pickpoint.png" preserveRatio="false" smooth="false" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="logoQIWI" effect="$x2" fitHeight="92.0" fitWidth="70.94915454101563" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                          <effect>
-                            <InnerShadow />
-                          </effect>
-                          <image>
-                            <Image url="@../images/logo-qiwi.png" preserveRatio="false" smooth="false" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="logoRussianPost" effect="$x2" fitHeight="77.36263877467105" fitWidth="160.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <ImageView fx:id="logoRussianPost" fitHeight="77.36263877467105" fitWidth="160.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
                           <effect>
                             <InnerShadow />
                           </effect>
@@ -96,7 +64,31 @@
                             <Image url="@../images/logo-russianpost.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoSPSR" fitHeight="71.44826965986148" fitWidth="132.6031494140625" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <ImageView fx:id="logoQIWI" fitHeight="92.0" fitWidth="70.94915454101563" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-qiwi.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoPickPoint" fitHeight="66.3701057434082" fitWidth="194.27083386202355" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow fx:id="x2" />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-pickpoint.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoEMS" fitHeight="64.35995359670342" fitWidth="201.12484741210938" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-ems.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoSPSR" fitHeight="71.44826965986148" fitWidth="132.6031494140625" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                           <effect>
                             <InnerShadow />
                           </effect>
@@ -104,8 +96,57 @@
                             <Image url="@../images/logo-spsr.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
+                        <ImageView fx:id="logoIML" fitHeight="80.99995422363281" fitWidth="123.3528682356662" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-iml.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoBoxberry" fitHeight="88.99993133544922" fitWidth="112.26127311971958" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-boxberry.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoLogibox" fitHeight="80.9999771118164" fitWidth="121.49997020412086" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-logibox.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoHermes" fitHeight="50.00566927933585" fitWidth="188.39344787597656" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-hermes.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoPonyexpress" fitHeight="80.99998474121094" fitWidth="150.2608469267041" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-ponyexpress.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="logoFirstclass" fitHeight="65.13042449951172" fitWidth="130.26084899902344" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                          <effect>
+                            <InnerShadow />
+                          </effect>
+                          <image>
+                            <Image url="@../images/logo-firstclass.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
                       </children>
                       <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

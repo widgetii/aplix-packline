@@ -89,6 +89,16 @@ public class ReturnRegistryScanAction extends CommonAction<ReturnRegistryScanCon
 			return PostType.PARCEL;
 		} else if ("SPSR".equals(selectedCarrier)) {
 			return PostType.SPSR;
+		} else if ("Logibox".equals(selectedCarrier)) {
+			return PostType.LOGIBOX;
+		} else if ("Boxberry".equals(selectedCarrier)) {
+			return PostType.BOXBERRY;
+		} else if ("Hermes".equals(selectedCarrier)) {
+			return PostType.HERMES;
+		} else if ("Ponyexpress".equals(selectedCarrier)) {
+			return PostType.PONYEXPRESS;
+		} else if ("Firstclass".equals(selectedCarrier)) {
+			return PostType.FIRSTCLASS;
 		} else {
 			throw new PackLineException(String.format(getResources().getString("error.unknown.carrier"), selectedCarrier));
 		}

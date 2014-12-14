@@ -53,9 +53,12 @@
 			<!-- "functionalUnit" - scanner functional unit: "flatbed" or "feeder"										-->
 			<!-- "scanMode"  	  - image quality, defined values are rgb-8, rgb-16, gray-8, gray-16, black-and-white 	-->
 			<!-- "tryNextPage"	  - continue scanning the next page even though feeder is empty: "true" or "false"		-->
+			<!-- "frame"		  - sets area of scanning in pixels														-->
 			<Configuration 
 				name="WIA on TWAIN sample device" 
-				resolution="300" functionalUnit="flatbed" scanMode="rgb-8" duplex="false"/>
+				resolution="300" functionalUnit="flatbed" scanMode="rgb-8" duplex="false">
+				<!--Frame x="0" y="0" width="1000" height="1000"/-->
+			</Configuration>
 		</ImageScanner>
 			
 		<!-- List of available printers -->

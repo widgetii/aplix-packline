@@ -36,6 +36,7 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 	private Manager manager = null;
 	private Device device = null;
+	private boolean availablePrinted = false;
 
 	static {
 		Configuration.setLogLevel(Level.WARNING);
@@ -105,6 +106,14 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 
 				Exception e = new Exception("Scanner not found");
 				LOG.error(String.format("Error in %s '%s'", getName(), configuration.getName()), e);
+
+				if (!availablePrinted) {
+					availablePrinted = true;
+					LOG.info("Enumerating available scanners:");
+					for (Device d : devices) {
+						LOG.info("\t" + d.toString());
+					}
+				}
 			}
 		}
 	}
@@ -150,6 +159,10 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 				scanner.setMode(Scanner.BLACK_AND_WHITE);
 				break;
 			}
+		}
+		if (configuration.getFrame() != null) {
+			Frame frame = configuration.getFrame();
+			scanner.setFrame(frame.getX(), frame.getY(), frame.getWidth(), frame.getHeight());
 		}
 	}
 

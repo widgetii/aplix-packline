@@ -3,6 +3,7 @@ package ru.aplix.packline.hardware.scanner.morena;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.aplix.packline.hardware.scanner.ImageScannerConfiguration;
@@ -23,6 +24,8 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 	private ScanMode scanMode;
 	@XmlAttribute(name = "tryNextPage")
 	private Boolean tryNextPage;
+	@XmlElement(name = "Frame")
+	private Frame frame;
 
 	public MorenaScannerConfiguration() {
 		name = "";
@@ -31,6 +34,7 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 		functionalUnit = FunctionalUnit.FLATBED;
 		scanMode = ScanMode.RGB_8;
 		tryNextPage = false;
+		frame = null;
 	}
 
 	public String getName() {
@@ -79,6 +83,14 @@ public class MorenaScannerConfiguration implements ImageScannerConfiguration {
 
 	public void setTryNextPage(Boolean tryNextPage) {
 		this.tryNextPage = tryNextPage;
+	}
+
+	public Frame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(Frame frame) {
+		this.frame = frame;
 	}
 
 }

@@ -7,6 +7,8 @@ import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -248,16 +250,25 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 	}
 
 	private void showHintForDHL() {
-		Pane errorPane = (Pane) rootNode.lookup("#errorPane");
+		final Pane errorPane = (Pane) rootNode.lookup("#errorPane");
 		if (errorPane == null) {
 			return;
 		}
 
-		Image image = new Image(getClass().getResource("/resources/images/img-dhl-hint.png").toExternalForm());
-		ImageView imageView = new ImageView();
+		final Image image = new Image(getClass().getResource("/resources/images/img-dhl-hint.png").toExternalForm());
+		final ImageView imageView = new ImageView();
 		imageView.setImage(image);
 		errorPane.getChildren().add(imageView);
 
+		errorVisibleProperty.addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if (!newValue) {
+					errorPane.getChildren().remove(imageView);
+					errorVisibleProperty.removeListener(this);
+				}
+			}
+		});
 		errorVisibleProperty.set(true);
 
 		Utils.playSound(Utils.SOUND_WARNING);
