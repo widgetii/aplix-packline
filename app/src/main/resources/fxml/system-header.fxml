@@ -10,12 +10,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="60.0" prefHeight="81.0" prefWidth="731.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.SystemHeaderController">
+<AnchorPane minHeight="60.0" prefHeight="81.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.aplix.packline.controller.SystemHeaderController">
   <children>
-    <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="316.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="0.0">
-      <font>
-        <Font name="Verdana" size="22.0" />
-      </font>
+    <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="316.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
     </Label>
     <VBox alignment="CENTER" prefHeight="71.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -30,10 +27,15 @@
     <Separator prefWidth="731.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
     <ImageView fx:id="logoImage" fitHeight="71.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
-        <Image url="@../images/logo-short.png" preserveRatio="false" smooth="false" />
+        <Image preserveRatio="false" smooth="false" url="@../images/logo-short.png" />
       </image>
     </ImageView>
     <Button contentDisplay="GRAPHIC_ONLY" minHeight="71.0" minWidth="71.0" mnemonicParsing="false" onAction="#shutdownClick" prefHeight="71.0" prefWidth="71.0" styleClass="shutdown-button" text="Button" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <ProgressIndicator fx:id="progressIndicator" layoutY="6.0" AnchorPane.leftAnchor="86.0" />
+      <Label fx:id="postsCountLabel" alignment="CENTER" layoutX="380.0" layoutY="4.0" prefHeight="71.0" prefWidth="70.0" styleClass="posts-count-label" text="0" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
   </children>
 </AnchorPane>

@@ -2,6 +2,10 @@ package ru.aplix.packline.action;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.ArrayUtils;
+
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.TrolleyController;
@@ -38,22 +42,59 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 	}
 
 	public void process() throws PackLineException, DatatypeConfigurationException {
-		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
-		incoming.setDate(Utils.now());
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		order.getIncoming().add(incoming);
-
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
-		registry.getIncoming().add(incoming);
 
-		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		int res = postServicePort.addIncomingToRegistry(registry.getId(), incoming);
-		if (res <= -1) {
-			throw new PackLineException(getResources().getString("error.post.incoming.registry"));
+		final Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
+		incoming.setDate(Utils.now());
+
+		switch (registry.getActionType()) {
+		case ADD:
+			int res = postServicePort.addIncomingToRegistry(registry.getId(), incoming);
+			if (res <= -1) {
+				throw new PackLineException(getResources().getString("error.post.incoming.registry.add"));
+			}
+
+			order.getIncoming().add(incoming);
+			registry.getIncoming().add(incoming);
+			break;
+		case DELETE:
+			// Delete incoming from registry
+			if (!postServicePort.deleteIncomingFromRegistry(registry.getId(), incoming)) {
+				throw new PackLineException(getResources().getString("error.post.incoming.registry.delete"));
+			}
+
+			registry.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object o) {
+					Incoming item = (Incoming) o;
+					boolean result = incoming.getId().equals(item.getId());
+					if (!result && item.getBarcodes() != null) {
+						result = ArrayUtils.contains(item.getBarcodes().toArray(), incoming.getId());
+					}
+					return result;
+				}
+			}));
+			order.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object o) {
+					Incoming item = (Incoming) o;
+					boolean result = incoming.getId().equals(item.getId());
+					if (!result && item.getBarcodes() != null) {
+						result = ArrayUtils.contains(item.getBarcodes().toArray(), incoming.getId());
+					}
+					return result;
+				}
+			}));
+			break;
 		}
 	}
 
+	/**
+	 *
+	 */
 	public static enum TrolleyType {
 		PACK, KEEP, JOIN
 	}

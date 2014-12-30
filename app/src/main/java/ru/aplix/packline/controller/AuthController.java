@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.util.concurrent.ExecutorService;
 
-import javax.xml.bind.JAXBException;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+
+import javax.xml.bind.JAXBException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

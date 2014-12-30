@@ -78,6 +78,8 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
+		getAction().reset();
+
 		nextButton.setDisable(false);
 		awaitingCompletion = false;
 

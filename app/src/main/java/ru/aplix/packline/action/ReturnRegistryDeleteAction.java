@@ -15,9 +15,10 @@ public class ReturnRegistryDeleteAction extends CommonAction<ReturnRegistryDelet
 	}
 
 	public void process() throws PackLineException {
+		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+		
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
-		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
 		switch (registry.getActionType()) {
 		case ADD:

@@ -261,6 +261,8 @@ public class MockService implements PackingLinePortType {
 			registry.setCarriedOutAndClosed(false);
 			registry.setTotalIncomings(10);
 			registry.setDate(now());
+			registry.setRegistryType(RegistryType.INCOMING);
+			registry.setActionType(ActionType.ADD);
 			getConfig().getRegistries().add(registry);
 		}
 
@@ -787,6 +789,13 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public GetLabelResponse2 getLabel2(String containerId) {
+		GetLabelResponse2 response = new GetLabelResponse2();
+		response.setFileContents(getLabel(containerId));
+		return response;
+	}
+
+	@Override
 	public String fileUpload(String fileId, String path, DocumentType document) {
 		return null;
 	}
@@ -794,6 +803,18 @@ public class MockService implements PackingLinePortType {
 	@Override
 	public String accountContainerCost(StringList containerIds) {
 		return null;
+	}
+
+	@Override
+	public int getActivePostsCount() {
+		return getConfig().getPosts().size();
+	}
+
+	@Override
+	public PostList getActivePosts() {
+		PostList result = new PostList();
+		result.getItems().addAll(getConfig().getPosts());
+		return result;
 	}
 
 	@Override
@@ -861,5 +882,4 @@ public class MockService implements PackingLinePortType {
 		}
 		return xmlGC;
 	}
-
 }

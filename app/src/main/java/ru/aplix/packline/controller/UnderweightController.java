@@ -79,6 +79,7 @@ public class UnderweightController extends StandardController<UnderweightAction>
 	}
 
 	public void weightingClick(ActionEvent event) {
+		getContext().setAttribute(Const.BWL_WEIGHT, null);
 		getAction().setNextAction(getAction().getWeightingAction());
 		done();
 	}

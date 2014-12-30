@@ -8,7 +8,7 @@ import ru.aplix.packline.controller.ReadBarcodeBoxController;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.StringList;
 
-public class ReadBarcodeBoxAction extends NotificationAction<ReadBarcodeBoxController> {
+public class ReadBarcodeBoxAction extends CommonAction<ReadBarcodeBoxController> {
 
 	@Override
 	protected String getFormName() {

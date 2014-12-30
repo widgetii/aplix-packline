@@ -2,6 +2,7 @@ package ru.aplix.packline.action;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.ArrayUtils;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
@@ -40,14 +41,40 @@ public class OrderActAction extends CommonAction<OrderActController> {
 			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.customer"));
 		}
 
-		Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return incoming.getId().equals(((Tag) item).getId());
+		Incoming existing;
+		switch (registry.getActionType()) {
+		case ADD:
+			// Now we should add a new incoming to our registry.
+			// Check that it hasn't been added yet.
+			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return incoming.getId().equals(((Tag) item).getId());
+				}
+			});
+			if (existing != null) {
+				throw new PackLineException(getResources().getString("error.post.incoming.registered"));
 			}
-		});
-		if (existing != null) {
-			throw new PackLineException(getResources().getString("error.post.incoming.registered"));
+
+			break;
+		case DELETE:
+			// Now we should delete selected incoming from our registry.
+			// Check that incoming is present in registry first.
+			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object o) {
+					Incoming item = (Incoming) o;
+					boolean result = incoming.getId().equals(item.getId());
+					if (!result && item.getBarcodes() != null) {
+						result = ArrayUtils.contains(item.getBarcodes().toArray(), incoming.getId());
+					}
+					return result;
+				}
+			});
+			if (existing == null) {
+				throw new PackLineException(getResources().getString("error.post.incoming.other.registy"));
+			}
+			break;
 		}
 
 		return true;

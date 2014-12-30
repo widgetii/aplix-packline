@@ -70,6 +70,7 @@
 	</dependencies>
 
 	<build>
+		<defaultGoal>clean package</defaultGoal>
 		<resources>
 			<resource>
 				<directory>${basedir}/../app/src/main/resources/wsdl</directory>
@@ -123,6 +124,9 @@
 								<wsdlFile>PackingLine.1cws.wsdl</wsdlFile>
 							</wsdlFiles>
 							<packageName>ru.aplix.packline.post</packageName>
+							<vmArgs>
+								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+							</vmArgs>
 						</configuration>
 					</execution>
 				</executions>

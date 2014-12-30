@@ -19,6 +19,9 @@
 				<module>hardware/implementations/scales/mera</module>
 				<module>hardware/implementations/scanner/morena</module>
 			</modules>
+			<build>
+				<defaultGoal>clean install</defaultGoal>
+			</build>
 		</profile>
 		<profile>
 			<id>apps</id>
@@ -27,6 +30,9 @@
 				<module>controller</module>
 				<module>mock-post-service</module>
 			</modules>
+			<build>
+				<defaultGoal>clean package</defaultGoal>
+			</build>
 		</profile>
 	</profiles>
 

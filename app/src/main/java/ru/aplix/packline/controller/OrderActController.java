@@ -40,6 +40,7 @@ import ru.aplix.packline.dialog.ConfirmationDialog;
 import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.post.ActionType;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.workflow.WorkflowContext;
@@ -93,7 +94,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-		
+
 		setProgress(false);
 
 		registry = (Registry) context.getAttribute(Const.REGISTRY);
@@ -113,6 +114,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
 		}
+
+		closeActButton.setDisable(registry != null && ActionType.DELETE.equals(registry.getActionType()) && registry.getIncoming().size() > 0);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -584,7 +587,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		public void updateItem(Incoming item, boolean empty) {
 			super.updateItem(item, empty);
 
-			if (empty) {
+			if (empty || ActionType.DELETE.equals(registry.getActionType())) {
 				setText(null);
 				setGraphic(null);
 			} else {

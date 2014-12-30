@@ -36,6 +36,7 @@ import ru.aplix.packline.dialog.ConfirmationDialog;
 import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.post.ActionType;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.workflow.WorkflowContext;
@@ -109,6 +110,8 @@ public class ReturnRegistryViewController extends StandardController<ReturnRegis
 		if (barcodeScanner != null) {
 			barcodeScanner.addBarcodeListener(this);
 		}
+
+		closeRegistryButton.setDisable(registry != null && ActionType.DELETE.equals(registry.getActionType()) && registry.getIncoming().size() > 0);
 	}
 
 	@SuppressWarnings("unchecked")

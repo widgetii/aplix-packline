@@ -136,14 +136,6 @@
                             <Image url="@../images/logo-ponyexpress.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <ImageView fx:id="logoFirstclass" fitHeight="65.13042449951172" fitWidth="130.26084899902344" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                          <effect>
-                            <InnerShadow />
-                          </effect>
-                          <image>
-                            <Image url="@../images/logo-firstclass.png" preserveRatio="false" smooth="false" />
-                          </image>
-                        </ImageView>
                       </children>
                       <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

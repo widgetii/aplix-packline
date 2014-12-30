@@ -97,8 +97,6 @@ public class ReturnRegistryScanAction extends CommonAction<ReturnRegistryScanCon
 			return PostType.HERMES;
 		} else if ("Ponyexpress".equals(selectedCarrier)) {
 			return PostType.PONYEXPRESS;
-		} else if ("Firstclass".equals(selectedCarrier)) {
-			return PostType.FIRSTCLASS;
 		} else {
 			throw new PackLineException(String.format(getResources().getString("error.unknown.carrier"), selectedCarrier));
 		}

@@ -43,6 +43,9 @@ public class Configuration {
 	@XmlElement(name = "EmptyBoxThreshold")
 	private Integer emptyBoxThreshold;
 
+	@XmlElement(name = "ActivePostsUpdateInterval")
+	private Integer activePostsUpdateInterval;
+
 	@XmlElement(name = "Sounds")
 	private Boolean soundsEnabled;
 
@@ -153,7 +156,7 @@ public class Configuration {
 	}
 
 	public Integer getEmptyBoxThreshold() {
-		return emptyBoxThreshold;
+		return emptyBoxThreshold != null ? emptyBoxThreshold : 0;
 	}
 
 	public void setEmptyBoxThreshold(Integer emptyBoxThreshold) {
@@ -230,4 +233,13 @@ public class Configuration {
 	public void setZebraTest(ZebraTest zebraTest) {
 		this.zebraTest = zebraTest;
 	}
+
+	public Integer getActivePostsUpdateInterval() {
+		return activePostsUpdateInterval != null ? activePostsUpdateInterval : 0;
+	}
+
+	public void setActivePostsUpdateInterval(Integer activePostsUpdateInterval) {
+		this.activePostsUpdateInterval = activePostsUpdateInterval;
+	}
+
 }

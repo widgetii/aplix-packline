@@ -35,8 +35,6 @@ public class ReturnRegistryCarrierController extends StandardController<ReturnRe
 	private ImageView logoHermes;
 	@FXML
 	private ImageView logoPonyexpress;
-	@FXML
-	private ImageView logoFirstclass;
 
 	public void onImageClicked(MouseEvent mouseEvent) {
 		String value = null;
@@ -68,8 +66,6 @@ public class ReturnRegistryCarrierController extends StandardController<ReturnRe
 			value = "Hermes";
 		} else if (mouseEvent.getSource().equals(logoPonyexpress)) {
 			value = "Ponyexpress";
-		} else if (mouseEvent.getSource().equals(logoFirstclass)) {
-			value = "Firstclass";
 		}
 
 		getAction().select(value);

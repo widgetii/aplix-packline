@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="953.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.aplix.packline.controller.ActivePostsController">
+  <children>
+    <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
+          <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TreeTableView id="postsTreeTableView" fx:id="postsTreeTableView" prefHeight="200.0" prefWidth="200.0" showRoot="false" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" text="%activeposts.number" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" styleClass="centered-column" text="%activeposts.datetime" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" styleClass="centered-column" text="%activeposts.count" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" text="%activeposts.deliveryAddress" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" text="%activeposts.consigneeName" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" styleClass="centered-column" text="%activeposts.carrier" />
+                              <TreeTableColumn editable="false" prefWidth="75.0" sortable="false" text="%activeposts.container" />
+                           </columns></TreeTableView>
+                     </center>
+            </BorderPane>
+            <fx:include source="error-container.fxml" />
+          </children>
+        </StackPane>
+      </center>
+      <top>
+        <fx:include source="system-header.fxml" />
+      </top>
+    </BorderPane>
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

@@ -67,6 +67,7 @@
 	</dependencies>
 	
 	<build>
+		<defaultGoal>clean install</defaultGoal>
 		<resources>
 			<resource>
 				<directory>${basedir}/src/main/META-INF</directory>

@@ -86,6 +86,7 @@
 		<property name="overweightAction" ref="action13" />
 		<property name="underweightAction" ref="action14" />
 		<property name="printingAction" ref="action15" />
+		<property name="nextParcelAction" ref="action2" />
 	</bean>
 
 	<bean id="action13" class="ru.aplix.packline.action.OverweightAction">
@@ -119,7 +120,7 @@
 
 	<bean id="action18" class="ru.aplix.packline.action.ReturnRegistryViewAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="backAction" ref="action2" />
+		<property name="backAction" ref="action16" />
 		<property name="weightingAction" ref="action19" />
 	</bean>
 
@@ -154,6 +155,11 @@
 	</bean>
 
 	<bean id="warrantyCardAction" class="ru.aplix.packline.action.WarrantyCardAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+	
+	<bean id="activePostsAction" class="ru.aplix.packline.action.ActivePostsAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>

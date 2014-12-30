@@ -80,5 +80,5 @@ done
 #  run program
 #--------------------------------------------
 
-exec_command="java $JAVA_OPTS -cp \"$LOCALCLASSPATH\" com.javafx.main.Main \"--config=$APP_CONFIG\" $CMD_LINE_ARGS"
+exec_command="java $JAVA_OPTS -cp \"$LOCALCLASSPATH\" ru.aplix.packline.App \"--config=$APP_CONFIG\" $CMD_LINE_ARGS"
 eval $exec_command

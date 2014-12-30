@@ -5,16 +5,19 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
@@ -37,8 +40,10 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.idle.WorkflowActionWithUserActivityMonitor;
+import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.workflow.StandardWorkflowController;
 import ru.aplix.packline.workflow.WorkflowAction;
+import ru.aplix.packline.workflow.WorkflowContext;
 
 public abstract class CommonAction<Controller extends StandardWorkflowController<?>> extends WorkflowActionWithUserActivityMonitor<Controller> {
 
@@ -47,8 +52,11 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private Timeline logoImageMousePressedTimeline;
 	private int logoImageMousePressedCount;
 	private Parent rootNode;
+	protected Label postsCountLabel;
 	private ContextMenu contextMenu = null;
 	private boolean skipClick;
+
+	private Task<?> task;
 
 	public CommonAction() {
 		logoImageMousePressedTimeline = new Timeline();
@@ -63,6 +71,22 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 				}
 			}
 		}));
+	}
+
+	@Override
+	public void execute(WorkflowContext context) {
+		super.execute(context);
+
+		updatePostsCount();
+	}
+
+	@Override
+	public void done() {
+		if (task != null) {
+			task.cancel(false);
+		}
+
+		super.done();
 	}
 
 	@Override
@@ -111,6 +135,53 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 				}
 			});
 		}
+
+		try {
+			if (Configuration.getInstance().getRoles().getLabeling()) {
+				postsCountLabel = (Label) rootNode.lookup("#postsCountLabel");
+				if (postsCountLabel != null) {
+					postsCountLabel.setVisible(true);
+					postsCountLabel.setText(null);
+					postsCountLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+						@Override
+						public void handle(MouseEvent mouseEvent) {
+							showActivePosts();
+						}
+					});
+				}
+			}
+		} catch (FileNotFoundException | MalformedURLException | JAXBException e) {
+			LOG.error(null, e);
+		}
+	}
+
+	protected void updatePostsCount() {
+		if (postsCountLabel == null || (task != null && task.isRunning())) {
+			return;
+		}
+
+		task = new Task<Integer>() {
+			@Override
+			public Integer call() throws Exception {
+				try {
+					PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+					return postServicePort.getActivePostsCount();
+				} catch (Throwable e) {
+					LOG.error(null, e);
+					throw e;
+				}
+			}
+
+			@Override
+			protected void succeeded() {
+				super.succeeded();
+
+				postsCountLabel.setText("" + getValue());
+			}
+		};
+
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(task);
 	}
 
 	private ContextMenu createContextMenu(ResourceBundle resources) throws FileNotFoundException, MalformedURLException, JAXBException {
@@ -220,6 +291,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemActivePosts = null;
+		if (Configuration.getInstance().getRoles().getLabeling()) {
+			itemActivePosts = new MenuItem(resources.getString("menu.active.posts"));
+			itemActivePosts.setStyle(menuItemStyle2);
+			itemActivePosts.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					showActivePosts();
+				}
+			});
+		}
+
 		Menu subMenu = new Menu(resources.getString("menu.sub.operations"));
 		subMenu.setStyle(menuItemStyle2);
 		if (itemMarkersForContainers != null) {
@@ -237,6 +319,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		if (itemControlReturns != null) {
 			subMenu.getItems().add(itemControlReturns);
 		}
+		if (itemActivePosts != null) {
+			subMenu.getItems().add(itemActivePosts);
+		}
 
 		result.getItems().add(itemBegin);
 		if (itemBarcode != null) {
@@ -248,7 +333,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		if (reconnectBarcode != null) {
 			result.getItems().add(reconnectBarcode);
 		}
-		result.getItems().add(subMenu);
+		if (subMenu.getItems().size() > 0) {
+			result.getItems().add(subMenu);
+		}
 		return result;
 	}
 
@@ -336,6 +423,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void controlReturns() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.CONTROL_RETURNS_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void showActivePosts() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ACTIVE_POSTS_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 

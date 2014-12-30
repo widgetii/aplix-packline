@@ -1,11 +1,11 @@
 #!/bin/bash
 
-mvn -Pinstaller clean package
+mvn -Pinstaller
 if [ $? != 0 ]; then
 exit 1
 fi
 
-mvn -Plauncher clean package
+mvn -Plauncher
 if [ $? != 0 ]; then
 exit 1
 fi

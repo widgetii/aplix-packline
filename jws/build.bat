@@ -1,9 +1,9 @@
 @ECHO OFF
 
-CALL mvn -Pinstaller clean package
+CALL mvn -Pinstaller
 IF ERRORLEVEL 1 GOTO END
 
-CALL mvn -Plauncher clean package
+CALL mvn -Plauncher
 IF ERRORLEVEL 1 GOTO END
 
 :END

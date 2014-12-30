@@ -4,12 +4,12 @@
 # build libs and apps
 #
 
-mvn -Plibs clean install
+mvn -Plibs
 if [ $? != 0 ]; then
 exit 1
 fi
 
-mvn -Papps clean package
+mvn -Papps
 if [ $? != 0 ]; then
 exit 1
 fi

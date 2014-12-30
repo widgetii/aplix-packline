@@ -27,6 +27,9 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 	private WorkflowAction printingAction;
 	private WorkflowAction overweightAction;
 	private WorkflowAction underweightAction;
+	private WorkflowAction nextParcelAction;
+
+	private boolean containerHasUnrecoverableProblem;
 
 	public WorkflowAction getPrintingAction() {
 		return printingAction;
@@ -52,12 +55,29 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 		this.underweightAction = underweightAction;
 	}
 
+	public WorkflowAction getNextParcelAction() {
+		return nextParcelAction;
+	}
+
+	public void setNextParcelAction(WorkflowAction nextParcelAction) {
+		this.nextParcelAction = nextParcelAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "weighting-box";
 	}
 
+	public void reset() {
+		containerHasUnrecoverableProblem = false;
+	}
+
 	public void processMeasure(Float value) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
+		if (containerHasUnrecoverableProblem) {
+			setNextAction(getNextParcelAction());
+			return;
+		}
+
 		value = Math.max(value, 0);
 		final Post post = (Post) getContext().getAttribute(Const.POST);
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
@@ -82,6 +102,7 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 		if (response == null) {
 			throw new PackLineException(getResources().getString("error.post.container.update"));
 		} else if (response.getError() != null && response.getError().length() > 0) {
+			containerHasUnrecoverableProblem = true;
 			throw new PackLineException(response.getError());
 		} else if (response.getContainer() == null) {
 			throw new PackLineException(getResources().getString("error.post.container.update"));

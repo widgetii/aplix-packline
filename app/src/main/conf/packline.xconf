@@ -261,6 +261,9 @@
 	<!-- notification to replenish the stock of boxes -->
 	<EmptyBoxThreshold>10</EmptyBoxThreshold>
 	
+	<!-- Time interval in minutes to update active posts screen -->
+	<ActivePostsUpdateInterval>15</ActivePostsUpdateInterval>
+	
 	<!-- Select a printer for Zebra test -->
 	<ZebraTest printerId="printer1"></ZebraTest>
 </packline>

@@ -7,12 +7,14 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.controller.ReadBarcodeOrderController;
+import ru.aplix.packline.post.ActionType;
 import ru.aplix.packline.post.CheckAddressResult;
 import ru.aplix.packline.post.Container;
 import ru.aplix.packline.post.Incoming;
@@ -244,13 +246,32 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 	}
 
 	private boolean isIncomingRegistered(Registry registry, final String incomingId) throws PackLineException {
-		Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
-			@Override
-			public boolean evaluate(Object item) {
-				return incomingId.equals(((Tag) item).getId());
+		if (ActionType.ADD.equals(registry.getActionType())) {
+			Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object item) {
+					return incomingId.equals(((Tag) item).getId());
+				}
+			});
+			return (existing != null);
+		} else {
+			Incoming existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object o) {
+					Incoming item = (Incoming) o;
+					boolean result = incomingId.equals(item.getId());
+					if (!result && item.getBarcodes() != null) {
+						result = ArrayUtils.contains(item.getBarcodes().toArray(), incomingId);
+					}
+					return result;
+				}
+			});
+			if (existing == null) {
+				throw new PackLineException(getResources().getString("error.post.incoming.other.registy"));
 			}
-		});
-		return (existing != null);
+
+			return false;
+		}
 	}
 
 	private void checkRegistry(Registry registry, Order order) throws PackLineException {

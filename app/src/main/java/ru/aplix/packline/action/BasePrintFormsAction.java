@@ -32,6 +32,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.fop.apps.MimeConstants;
+import org.springframework.util.StringUtils;
 
 import ru.aplix.converters.fr2afop.app.RenderXMLToOutputImpl;
 import ru.aplix.converters.fr2afop.database.ValueResolver;
@@ -58,6 +59,7 @@ import ru.aplix.packline.conf.PrintMode;
 import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.jdbc.PostDriver;
 import ru.aplix.packline.post.Container;
+import ru.aplix.packline.post.GetLabelResponse2;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.StandardWorkflowController;
@@ -452,8 +454,14 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 	private void downloadAndPrintForm(String containerId, String formName, Printer printer) throws Exception {
 		// Download label from server
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		byte[] labelData = postServicePort.getLabel(containerId);
-		if (labelData == null || labelData.length == 0) {
+		GetLabelResponse2 response = postServicePort.getLabel2(containerId);
+		if (response == null) {
+			throw new PackLineException(String.format(getResources().getString("error.post.label.empty"), formName, containerId));
+		}
+		if (!StringUtils.isEmpty(response.getError())) {
+			throw new PackLineException(response.getError());
+		}
+		if (response.getFileContents() == null || response.getFileContents().length == 0) {
 			throw new PackLineException(String.format(getResources().getString("error.post.label.empty"), formName, containerId));
 		}
 
@@ -463,7 +471,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		tempFile.deleteOnExit();
 		OutputStream os = new FileOutputStream(tempFile);
 		try {
-			os.write(labelData);
+			os.write(response.getFileContents());
 			os.flush();
 		} finally {
 			os.close();

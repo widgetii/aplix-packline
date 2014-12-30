@@ -5,10 +5,10 @@ set SCRIPTDIR=%~dp0
 @rem  build libs and apps
 @rem --------------------------------------------
 
-CALL mvn -Plibs clean install
+CALL mvn -Plibs
 IF ERRORLEVEL 1 GOTO END
 
-CALL mvn -Papps clean package
+CALL mvn -Papps
 IF ERRORLEVEL 1 GOTO END
 
 @rem --------------------------------------------

@@ -15,6 +15,7 @@ public final class Const {
 	public static final String ZEBRA_TEST_ACTION_BEAN_NAME = "zebraTestAction";
 	public static final String WARRANTY_CARD_ACTION_BEAN_NAME = "warrantyCardAction";
 	public static final String CONTROL_RETURNS_ACTION_BEAN_NAME = "controlReturnsAction";
+	public static final String ACTIVE_POSTS_ACTION_BEAN_NAME = "activePostsAction";
 	public static final String ASYNC_COMMAND_RUNNER = "asyncCommandRunner";
 	public static final String BARCODE_LISTENERS = "barcodeListeners";
 	public static final String MEASUREMENT_LISTENERS = "measurementListeners";
