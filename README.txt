@@ -15,7 +15,7 @@ BUILDING THE APPLICATION
 
 In order to build application you will need:
 	- Maven 3.0.x or later
-	- JDK 1.6 or later
+	- JDK 8 or later
 
 Also optional additional software would make it easy for you to work 
 with the sources of the application:

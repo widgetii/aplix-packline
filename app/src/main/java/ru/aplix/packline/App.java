@@ -63,8 +63,6 @@ import ru.aplix.packline.workflow.WorkflowAction;
 import ru.aplix.packline.workflow.WorkflowContext;
 import ru.aplix.packline.workflow.WorkflowController;
 
-// TODO 90 styles of act-table, menu and quantity buttons
-
 public class App extends Application implements IdleListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
@@ -197,6 +195,11 @@ public class App extends Application implements IdleListener {
 
 				@Override
 				public void onDisconnected() {
+					// A workaround for http://jira.aplix.ru/browse/APLXPOST-328
+					Scales<?> sc = (Scales<?>) workflowContext.getAttribute(Const.SCALES);
+					if (sc != null && sc.isConnected()) {
+						sc.disconnect();
+					}
 					postConnectToHardware(Const.BARCODE_SCANNER);
 				}
 
@@ -210,7 +213,7 @@ public class App extends Application implements IdleListener {
 
 		// Create photo camera instance
 		if (!StringUtils.isEmpty(configuration.getPhotoCamera().getName()) && configuration.getPhotoCamera().isEnabled()) {
-			final PhotoCamera<?> pc = PhotoCameraFactory.createInstance(configuration.getPhotoCamera().getName());
+			PhotoCamera<?> pc = PhotoCameraFactory.createInstance(configuration.getPhotoCamera().getName());
 			pc.setConnectOnDemand(true);
 			pc.setConfiguration(configuration.getPhotoCamera().getConfiguration());
 			pc.addConnectionListener(new PhotoCameraConnectionListener() {
@@ -273,6 +276,11 @@ public class App extends Application implements IdleListener {
 
 				@Override
 				public void onDisconnected() {
+					// A workaround for http://jira.aplix.ru/browse/APLXPOST-328
+					BarcodeScanner<?> bc = (BarcodeScanner<?>) workflowContext.getAttribute(Const.BARCODE_SCANNER);
+					if (bc != null && bc.isConnected()) {
+						bc.disconnect();
+					}
 					postConnectToHardware(Const.SCALES);
 				}
 
@@ -384,7 +392,7 @@ public class App extends Application implements IdleListener {
 							executorLock.unlock();
 						}
 					}
-				}, Configuration.getInstance().getHardwareConfiguration().getReconnectInterval(), TimeUnit.SECONDS);
+				}, Math.max(Configuration.getInstance().getHardwareConfiguration().getReconnectInterval(), 1), TimeUnit.SECONDS);
 			} catch (Exception e) {
 				LOG.error(null, e);
 			}
