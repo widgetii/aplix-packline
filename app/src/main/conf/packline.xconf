@@ -117,6 +117,7 @@
 				<PostType>PACKAGE</PostType>
 				<PostType>IML</PostType>
 				<PostType>SPSR</PostType>
+				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="ф-116" file="f116" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0084">
@@ -166,12 +167,7 @@
 				<PostType>FORPARCEL</PostType>
 				<PostType>PETITPAQUET</PostType>
 			</PostTypeRestriction>
-		</Form>
-		<Form name="DPD" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013" postPrintDelay="2000">
-			<PostTypeRestriction>
-				<PostType>DPD</PostType>
-			</PostTypeRestriction>
-		</Form>
+		</Form>		
 		<Form name="QIWI" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>QIWIPOST</PostType>
@@ -180,6 +176,11 @@
 		<Form name="PickPoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>PICKPOINT</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="PonyExpress" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013" postPrintDelay="2000">
+			<PostTypeRestriction>
+				<PostType>PONYEXPRESS</PostType>
 			</PostTypeRestriction>
 		</Form>
 		<Form name="Logibox" file="f3" printerId="printer1" whenPrint="MANUALLY" weight="0.002">
