@@ -771,5 +771,13 @@
 			<name>BATTERIES</name>
 			<value>965IB</value>
 		</field>
+		<field>
+			<name>POINT_ID</name>
+			<value>4201-001</value>
+		</field>
+		<field>
+			<name>BARCODE2</name>
+			<value>201218749891</value>
+		</field>
 	</gatherInfoResponse>
 </configuration>

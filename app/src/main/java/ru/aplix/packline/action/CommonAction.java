@@ -177,12 +177,16 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			protected void succeeded() {
 				super.succeeded();
 
-				postsCountLabel.setText("" + getValue());
+				updatePostsCount("" + getValue());
 			}
 		};
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	public void updatePostsCount(String value) {
+		postsCountLabel.setText(value);
 	}
 
 	private ContextMenu createContextMenu(ResourceBundle resources) throws FileNotFoundException, MalformedURLException, JAXBException {
@@ -444,7 +448,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void showActivePosts() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.ACTIVE_POSTS_ACTION_BEAN_NAME);
-		wa.execute(getContext());
+		WorkflowAction currentWA = (WorkflowAction) getContext().getAttribute(Const.CURRENT_WORKFLOW_ACTION);
+		if (wa == currentWA) {
+			((CommonAction<?>) wa).done();
+		} else {
+			wa.execute(getContext());
+		}
 	}
 
 	private void reconnectBarcodeScanner() {

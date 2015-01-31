@@ -173,7 +173,7 @@
 				<PostType>QIWIPOST</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="PickPoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002" postPrintDelay="2000">
+		<Form name="PickPoint" file="pickpoint" printerId="printer1" whenPrint="MANUALLY" weight="0.002" postPrintDelay="2000">
 			<PostTypeRestriction>
 				<PostType>PICKPOINT</PostType>
 			</PostTypeRestriction>
@@ -206,6 +206,11 @@
 		<Form name="Сервисная наклейка" file="dhl-service-label" printerId="printer1" whenPrint="MANUALLY" weight="0.002">			
 			<PostTypeRestriction>
 				<PostType>DHL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="Hermes" file="hermes" printerId="printer1" whenPrint="AFTER-WEIGHTING" copies="4" weight="0.0006">
+			<PostTypeRestriction>
+				<PostType>HERMES</PostType>
 			</PostTypeRestriction>
 		</Form>
 	</Printing>

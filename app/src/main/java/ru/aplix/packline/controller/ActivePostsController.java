@@ -18,10 +18,12 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.SortEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -31,12 +33,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.util.StringUtils;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ActivePostsAction;
 import ru.aplix.packline.action.ActivePostsAction.CustomerItem;
+import ru.aplix.packline.action.ActivePostsAction.GroupItem;
 import ru.aplix.packline.action.ActivePostsAction.OrderItem;
+import ru.aplix.packline.action.ActivePostsAction.PostTypeItem;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.PostType;
@@ -51,6 +56,7 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
+	private GroupType groupType = GroupType.CUSTOMER;
 
 	private Timeline updater;
 	private Task<?> task;
@@ -61,12 +67,13 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
 
-		updater = new Timeline(new KeyFrame(Duration.ZERO, new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				doAction();
-			}
-		}), new KeyFrame(Duration.minutes(Math.max(Configuration.getInstance().getActivePostsUpdateInterval(), 1))));
+		updater = new Timeline(new KeyFrame(Duration.minutes(Math.max(Configuration.getInstance().getActivePostsUpdateInterval(), 1)),
+				new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						doAction();
+					}
+				}));
 		updater.setCycleCount(Timeline.INDEFINITE);
 	}
 
@@ -81,7 +88,7 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		updater.playFromStart();
+		doAction();
 	}
 
 	@Override
@@ -152,13 +159,18 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		column.setCellValueFactory(new Callback<CellDataFeatures<TableColumns, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<TableColumns, String> p) {
-				String s = "";
-				if (p.getValue().getValue().getPostType() != null) {
-					s = p.getValue().getValue().getPostType().toString();
+				if (GroupType.CUSTOMER.equals(groupType)) {
+					String s = "";
+					if (p.getValue().getValue().getPostType() != null) {
+						s = p.getValue().getValue().getPostType().toString();
+					}
+					return new ReadOnlyObjectWrapper<String>(s);
+				} else {
+					return new ReadOnlyObjectWrapper<String>(p.getValue().getValue().getCustomerName());
 				}
-				return new ReadOnlyObjectWrapper<String>(s);
 			}
 		});
+		column.setSortable(true);
 
 		column = postsTreeTableView.getColumns().get(6);
 		column.prefWidthProperty().bind(postsTreeTableView.widthProperty().multiply(0.10));
@@ -170,13 +182,37 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		});
 
 		postsTreeTableView.setPlaceholder(new Text(getResources().getString("activeposts.noactiveposts")));
+		postsTreeTableView.setOnMousePressed(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				updater.playFromStart();
+			}
+		});
+		postsTreeTableView.setOnSort(new EventHandler<SortEvent<TreeTableView<TableColumns>>>() {
+			@Override
+			public void handle(SortEvent<TreeTableView<TableColumns>> event) {
+				event.consume();
+
+				changeGroupType();
+			}
+		});
 	}
 
-	private void updateTable(List<CustomerItem> list) {
+	private void updateTable(List<? extends GroupItem<?>> list) {
 		TreeItem<TableColumns> rootNode = new TreeItem<TableColumns>();
 
-		for (CustomerItem customerItem : list) {
-			TreeItem<TableColumns> customerNode = new TreeItem<TableColumns>(new CustomerItemColumns(customerItem));
+		for (GroupItem<?> customerItem : list) {
+			TableColumns tableColumns;
+
+			if (customerItem instanceof CustomerItem) {
+				tableColumns = new CustomerItemColumns((CustomerItem) customerItem);
+			} else if (customerItem instanceof PostTypeItem) {
+				tableColumns = new PostTypeItemColumns((PostTypeItem) customerItem);
+			} else {
+				continue;
+			}
+
+			TreeItem<TableColumns> customerNode = new TreeItem<TableColumns>(tableColumns);
 			rootNode.getChildren().add(customerNode);
 
 			for (OrderItem orderItem : customerItem.getOrders()) {
@@ -190,11 +226,29 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 			}
 		}
 
+		EventHandler<SortEvent<TreeTableView<TableColumns>>> oldEventListener = postsTreeTableView.getOnSort();
+		postsTreeTableView.setOnSort(null);
 		postsTreeTableView.setRoot(rootNode);
+		postsTreeTableView.setOnSort(oldEventListener);
+
+		switch (groupType) {
+		case CUSTOMER:
+			postsTreeTableView.getColumns().get(0).setText(getResources().getString("activeposts.customer"));
+			postsTreeTableView.getColumns().get(5).setText(getResources().getString("activeposts.carrier"));
+			break;
+		case POSTTYPE:
+			postsTreeTableView.getColumns().get(0).setText(getResources().getString("activeposts.carrier"));
+			postsTreeTableView.getColumns().get(5).setText(getResources().getString("activeposts.customer"));
+		}
 	}
 
 	private void setProgress(boolean value) {
 		progressVisibleProperty.set(value);
+		if (value) {
+			updater.pause();
+		} else {
+			updater.play();
+		}
 	}
 
 	private void doAction() {
@@ -202,11 +256,15 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 			return;
 		}
 
-		task = new Task<List<CustomerItem>>() {
+		task = new Task<List<? extends GroupItem<?>>>() {
 			@Override
-			public List<CustomerItem> call() throws Exception {
+			public List<? extends GroupItem<?>> call() throws Exception {
 				try {
-					return getAction().getActivePosts();
+					if (GroupType.CUSTOMER.equals(groupType)) {
+						return getAction().getActivePostsByCustomer();
+					} else {
+						return getAction().getActivePostsByCarrier();
+					}
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -247,11 +305,21 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 				errorVisibleProperty.set(false);
 
 				updateTable(getValue());
+				getAction().updatePostsCount("" + getAction().getTotalPostsCount());
 			}
 		};
 
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
+	}
+
+	private void changeGroupType() {
+		if (GroupType.CUSTOMER.equals(groupType)) {
+			groupType = GroupType.POSTTYPE;
+		} else {
+			groupType = GroupType.CUSTOMER;
+		}
+		doAction();
 	}
 
 	/**
@@ -268,6 +336,8 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		PostType getPostType();
 
 		String getDeliveryAddress();
+
+		String getCustomerName();
 
 		String getConsigneeName();
 
@@ -287,7 +357,7 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public String getId() {
-			return customerItem.getCustomer().getName();
+			return customerItem.getGroup().getName();
 		}
 
 		@Override
@@ -307,6 +377,64 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public String getDeliveryAddress() {
+			return null;
+		}
+
+		@Override
+		public String getCustomerName() {
+			return customerItem.getGroup().getName();
+		}
+
+		@Override
+		public String getConsigneeName() {
+			return null;
+		}
+
+		@Override
+		public String getContainerId() {
+			return null;
+		}
+
+	}
+
+	/**
+	 * 
+	 */
+	private class PostTypeItemColumns implements TableColumns {
+
+		private PostTypeItem postTypeItem;
+
+		public PostTypeItemColumns(PostTypeItem postTypeItem) {
+			this.postTypeItem = postTypeItem;
+		}
+
+		@Override
+		public String getId() {
+			return postTypeItem.getGroup().toString();
+		}
+
+		@Override
+		public XMLGregorianCalendar getDate() {
+			return postTypeItem.getMinDate();
+		}
+
+		@Override
+		public Integer getCount() {
+			return postTypeItem.getPostsCount();
+		}
+
+		@Override
+		public PostType getPostType() {
+			return null;
+		}
+
+		@Override
+		public String getDeliveryAddress() {
+			return null;
+		}
+
+		@Override
+		public String getCustomerName() {
 			return null;
 		}
 
@@ -334,7 +462,8 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public String getId() {
-			return String.format(getResources().getString("activeposts.order"), orderItem.getOrder().getId());
+			return String.format(getResources().getString("activeposts.order"), StringUtils.isEmpty(orderItem.getOrder().getId()) ? "" : orderItem.getOrder()
+					.getId());
 		}
 
 		@Override
@@ -349,12 +478,17 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public PostType getPostType() {
-			return null;
+			return getCount() == 1 ? orderItem.getPosts().get(0).getPostType() : null;
 		}
 
 		@Override
 		public String getDeliveryAddress() {
 			return orderItem.getOrder().getDeliveryAddress();
+		}
+
+		@Override
+		public String getCustomerName() {
+			return orderItem.getOrder().getCustomer() != null ? orderItem.getOrder().getCustomer().getName() : null;
 		}
 
 		@Override
@@ -364,7 +498,12 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public String getContainerId() {
-			return null;
+			if (getCount() == 1) {
+				Post post = orderItem.getPosts().get(0);
+				return post.getContainer() != null ? post.getContainer().getId() : null;
+			} else {
+				return null;
+			}
 		}
 	}
 
@@ -381,7 +520,7 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 
 		@Override
 		public String getId() {
-			return String.format(getResources().getString("activeposts.post"), post.getId());
+			return String.format(getResources().getString("activeposts.post"), StringUtils.isEmpty(post.getId()) ? "" : post.getId());
 		}
 
 		@Override
@@ -405,6 +544,11 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		}
 
 		@Override
+		public String getCustomerName() {
+			return null;
+		}
+
+		@Override
 		public String getConsigneeName() {
 			return null;
 		}
@@ -413,5 +557,12 @@ public class ActivePostsController extends StandardController<ActivePostsAction>
 		public String getContainerId() {
 			return post.getContainer() != null ? post.getContainer().getId() : null;
 		}
+	}
+
+	/**
+	 * 
+	 */
+	private enum GroupType {
+		CUSTOMER, POSTTYPE
 	}
 }

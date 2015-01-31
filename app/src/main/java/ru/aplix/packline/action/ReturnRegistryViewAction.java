@@ -46,21 +46,23 @@ public class ReturnRegistryViewAction extends CommonAction<ReturnRegistryViewCon
 		Incoming existing = null;
 		switch (registry.getActionType()) {
 		case ADD:
+			final Incoming incoming = postServicePort.findIncoming2(code);
+			if (incoming == null || incoming.getId() == null || incoming.getId().length() == 0) {
+				throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+			}
+
 			// Now we should add a new incoming to our registry.
 			// Check that it hasn't been added yet.
 			existing = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
 				@Override
 				public boolean evaluate(Object item) {
-					return code.equals(((Tag) item).getId());
+					return incoming.getId().equals(((Tag) item).getId());
 				}
 			});
 			if (existing != null) {
 				throw new PackLineException(getResources().getString("error.post.incoming.registered"));
-			}
-
-			existing = postServicePort.findIncoming2(code);
-			if (existing == null || existing.getId() == null || existing.getId().length() == 0) {
-				throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
+			} else {
+				existing = incoming;
 			}
 
 			break;
