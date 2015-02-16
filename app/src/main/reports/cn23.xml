@@ -3323,6 +3323,7 @@ Facture (14)</Memo>
     </Pages>
 	<Variables>
 		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable5] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="CancelPrinting" Type="expression" Content="f:choose([Variable15] = 'Belarus' or [Variable15] = 'Kazakhstan', 'true', 'false')"/>
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIRM_PRED"/>		
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="io_gift" />

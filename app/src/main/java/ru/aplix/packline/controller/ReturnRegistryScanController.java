@@ -206,6 +206,7 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void createPagination() {
 		pagination = PaginationBuilder.create().pageFactory(new Callback<Integer, Node>() {
 			@Override
