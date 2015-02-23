@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -28,7 +29,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+import javax.xml.bind.JAXBException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,6 +42,7 @@ import org.apache.commons.logging.LogFactory;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.ReturnRegistryScanAction;
+import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.dialog.ConfirmationDialog;
 import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
@@ -44,6 +51,7 @@ import ru.aplix.packline.hardware.scanner.ImageListener;
 import ru.aplix.packline.hardware.scanner.ImageScanner;
 import ru.aplix.packline.workflow.WorkflowContext;
 
+@SuppressWarnings("deprecation")
 public class ReturnRegistryScanController extends StandardController<ReturnRegistryScanAction> implements ImageListener, BarcodeListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
@@ -206,7 +214,6 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private void createPagination() {
 		pagination = PaginationBuilder.create().pageFactory(new Callback<Integer, Node>() {
 			@Override
@@ -232,7 +239,7 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 		paginationContainer.getChildren().add(pagination);
 	}
 
-	private File convertToJpeg(File originalFile) throws IOException {
+	private File convertToJpeg(File originalFile) throws IOException, JAXBException {
 		BufferedImage image = ImageIO.read(originalFile);
 
 		File jpegFile = File.createTempFile("scan", ".jpg");
@@ -240,7 +247,35 @@ public class ReturnRegistryScanController extends StandardController<ReturnRegis
 
 		FileOutputStream fos = new FileOutputStream(jpegFile);
 		try {
-			ImageIO.write(image, "jpeg", fos);
+			Float quality = Configuration.getInstance().getJpegCompressionQuality();
+			if (quality != null) {
+				quality = Math.max(0, Math.min(1, quality));
+
+				// get all image writers for JPG format
+				Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
+				if (!writers.hasNext())
+					throw new IllegalStateException("No writers found");
+
+				ImageWriter writer = (ImageWriter) writers.next();
+				ImageOutputStream ios = ImageIO.createImageOutputStream(fos);
+				writer.setOutput(ios);
+				try {
+					ImageWriteParam param = writer.getDefaultWriteParam();
+
+					// compress to a given quality
+					param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+					param.setCompressionQuality(0.75f);
+
+					// write image
+					writer.write(null, new IIOImage(image, null, null), param);
+				} finally {
+					// close all streams
+					ios.close();
+					writer.dispose();
+				}
+			} else {
+				ImageIO.write(image, "jpeg", fos);
+			}
 		} finally {
 			fos.close();
 		}

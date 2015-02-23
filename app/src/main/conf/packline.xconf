@@ -137,6 +137,14 @@
 				<PaymentFlags>CASH_ON_DELIVERY</PaymentFlags>
 			</PaymentFlagsRestriction>
 		</Form>
+		<Form name="МР 1бис" file="mp1bis" printerId="printer1" whenPrint="MANUALLY" weight="0.004">
+			<PostTypeRestriction>
+				<PostType>FORPARCEL</PostType>
+			</PostTypeRestriction>
+			<PaymentFlagsRestriction>
+				<PaymentFlags>CASH_ON_DELIVERY</PaymentFlags>
+			</PaymentFlagsRestriction>
+		</Form>
 		<Form name="EMS" file="ems" printerId="printer1" whenPrint="AFTER-WEIGHTING" copies="4" weight="0.01533">
 			<PostTypeRestriction>
 				<PostType>EMS</PostType>
@@ -269,6 +277,9 @@
 	
 	<!-- Time interval in minutes to update active posts screen -->
 	<ActivePostsUpdateInterval>15</ActivePostsUpdateInterval>
+	
+	<!-- Sets the compression quality to a value between 0 and 1 -->
+	<JPEGCompressionQuality>0.75</JPEGCompressionQuality>
 	
 	<!-- Select a printer for Zebra test -->
 	<ZebraTest printerId="printer1"></ZebraTest>

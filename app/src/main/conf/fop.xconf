@@ -142,6 +142,10 @@ the location of this file.
 			<font-triplet name="C39HrP24DmTt" style="italic" weight="normal"/>
 			<font-triplet name="C39HrP24DmTt" style="italic" weight="bold"/>
         </font>
+		
+		<font metrics-url="MyriadPro.xml" kerning="yes" embed-url="MyriadPro.ttf">
+			<font-triplet name="Myriad Pro" style="normal" weight="normal"/>
+        </font>
 		        
       </fonts>
 	  

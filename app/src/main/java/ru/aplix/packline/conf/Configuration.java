@@ -46,6 +46,9 @@ public class Configuration {
 	@XmlElement(name = "ActivePostsUpdateInterval")
 	private Integer activePostsUpdateInterval;
 
+	@XmlElement(name = "JPEGCompressionQuality")
+	private Float jpegCompressionQuality;
+
 	@XmlElement(name = "Sounds")
 	private Boolean soundsEnabled;
 
@@ -240,6 +243,14 @@ public class Configuration {
 
 	public void setActivePostsUpdateInterval(Integer activePostsUpdateInterval) {
 		this.activePostsUpdateInterval = activePostsUpdateInterval;
+	}
+
+	public Float getJpegCompressionQuality() {
+		return jpegCompressionQuality;
+	}
+
+	public void setJpegCompressionQuality(Float jpegCompressionQuality) {
+		this.jpegCompressionQuality = jpegCompressionQuality;
 	}
 
 }

@@ -1,0 +1,1726 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="210.0" Height="148.0" MarginLeft="1.0" MarginTop="1.0" MarginRight="1.0" MarginBottom="1.0" Orientation="landscape" UseMargins="true">
+            <Views>
+                <BandView Type="master-data" Dataset="PostDataSet" Name="BandView1" Left="0.0" Top="0.0" Width="100.0" Height="71.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>						
+						<PictureView Centered="true" KeepRatio="true" Name="PictureView1" Left="0" Top="0" Width="100" Height="100" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <SVGImage Mime="image/svg+xml">
+                                <Content><![CDATA[
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="754.17499"
+   height="377.5"
+   id="svg2985"
+   xml:space="preserve"><metadata
+     id="metadata2991"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs2989"><clipPath
+       id="clipPath2995"><path
+         d="m 0,0 595.22,0 0,842 L 0,842 0,0 z"
+         id="path2997" /></clipPath><clipPath
+       id="clipPath3473"><path
+         d="m 183.54,157.431 7.2,0 0,2.34 -7.2,0 0,-2.34 z"
+         id="path3475" /></clipPath><mask
+       id="mask3679"><image
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiUAAAAICAAAAAADq9D2AAAAAXNCSVQI5gpbmQAAACNJREFUWIXtxLENAAAIA6DG/3/WDxyNAwwkAHCl296uAAD8MJYqtU1CaIkPAAAAAElFTkSuQmCC"
+         width="1"
+         height="1"
+         id="image3681" /></mask><mask
+       id="mask3713"><image
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsAAAAICAAAAACjC1CFAAAAAXNCSVQI5gpbmQAAACFJREFUOI1jYBgFo4CB4f//wY8ZGBgYmAY2mEbBKCAJAACH0lGxXOYLwQAAAABJRU5ErkJggg=="
+         width="1"
+         height="1"
+         id="image3715" /></mask></defs><g
+     transform="matrix(0,1.25,1.25,0,-135.61375,-208.525)"
+     clip-path="url(#clipPath2995)"
+     id="g2993"><g
+   transform="translate(325.98,115.971)"
+   id="g2999"><path
+     d="M 0,0 0,167.94"
+     id="path3001"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 361.62,174.291 14.16,0 0,109.68 -14.16,0 0,-109.68 z"
+   id="path3003"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 337.86,346.851 16.26,0 0,119.04 -16.26,0 0,-119.04 z"
+   id="path3005"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="translate(401.58,290.391)"
+   id="g3007"><path
+     d="M 0,0 0,417.84"
+     id="path3009"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 361.2,290.511 14.58,0 0,295.92 -14.58,0 0,-295.92 z"
+   id="path3011"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 266.22,656.331 -0.3,1.08 -0.48,1.02 -0.42,1.02 -0.54,0.96 -0.6,0.959 -0.6,0.901 -0.66,0.9 -0.72,0.839 -0.78,0.841 -0.78,0.719 -0.78,0.721 -0.9,0.719 -0.9,0.6 -0.96,0.601 -0.96,0.539 -1.02,0.421 -1.02,0.48 -1.08,0.359 -1.08,0.3 -1.08,0.241"
+   id="path3013"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(248.52,670.911)"
+   id="g3015"><path
+     d="M 0,0 -3.96,0"
+     id="path3017"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 240.48,670.07 -1.02,-0.359 -1.08,-0.42 -0.96,-0.481 -1.02,-0.479 -0.96,-0.6 -0.9,-0.601 -0.9,-0.659 -0.84,-0.721 -0.78,-0.779 -0.78,-0.781 -0.72,-0.779 -0.66,-0.901 -0.66,-0.9 -0.54,-0.959 -0.54,-0.961 -0.48,-1.019 -0.42,-1.02 -0.36,-1.081 -0.3,-1.08 -0.24,-1.079"
+   id="path3019"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(225.96,652.31)"
+   id="g3021"><path
+     d="M 0,0 -0.06,-0.9 -0.06,-3 0,-3.9"
+     id="path3023"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 226.8,644.271 0.36,-1.021 0.36,-1.079 0.48,-0.96 0.54,-1.021 0.54,-0.96 0.6,-0.899 0.72,-0.9 0.72,-0.84 0.72,-0.781 0.78,-0.779 0.9,-0.721 0.84,-0.659 0.9,-0.661 0.96,-0.539 0.96,-0.54 1.02,-0.48 1.02,-0.421 1.08,-0.359 1.08,-0.3 1.14,-0.241"
+   id="path3025"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(244.5,629.81)"
+   id="g3027"><path
+     d="M 0,0 0.96,-0.06 3,-0.06 3.96,0"
+     id="path3029"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 252.54,630.591 1.08,0.36 1.02,0.359 1.02,0.481 0.96,0.54 0.96,0.539 0.9,0.601 0.9,0.719 0.84,0.721 0.84,0.719 0.72,0.781 0.72,0.899 0.72,0.841 0.6,0.9 0.6,0.959 0.54,0.961 0.42,1.019 0.48,1.02 0.36,1.081 0.3,1.08 0.24,1.139"
+   id="path3031"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(267.06,648.351)"
+   id="g3033"><path
+     d="M 0,0 0.06,0.96 0.06,3 0,3.96"
+     id="path3035"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 361.02,650.271 14.46,0 0,57.54 -14.46,0 0,-57.54 z"
+   id="path3037"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="translate(409.92,290.391)"
+   id="g3039"><path
+     d="M 0,0 0,417.84"
+     id="path3041"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 434.94,205.611 -0.36,1.08 -0.42,1.02 -0.48,1.02 -0.48,1.02 -0.6,0.96 -0.6,0.9 -0.66,0.9 -0.72,0.84 -0.78,0.78 -0.78,0.78 -0.84,0.66 -0.9,0.72 -0.9,0.6 -0.9,0.6 -0.96,0.54 -1.02,0.48 -1.02,0.42 -1.08,0.36 -1.08,0.3 -1.14,0.24"
+   id="path3043"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(417.18,220.191)"
+   id="g3045"><path
+     d="M 0,0 -0.96,0.06 -3,0.06 -3.96,0"
+     id="path3047"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 409.2,219.411 -1.08,-0.36 -1.02,-0.48 -1.02,-0.42 -0.96,-0.54 -0.96,-0.6 -0.9,-0.6 -0.9,-0.6 -0.84,-0.78 -0.84,-0.72 -0.72,-0.84 -0.72,-0.78 -0.72,-0.9 -0.6,-0.9 -0.6,-0.96 -0.54,-0.96 -0.42,-0.96 -0.48,-1.08 -0.36,-1.02 -0.3,-1.14 -0.24,-1.08"
+   id="path3049"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(394.62,201.651)"
+   id="g3051"><path
+     d="M 0,0 0,-3.96"
+     id="path3053"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 395.46,193.611 0.36,-1.08 0.36,-1.02 0.48,-1.02 0.54,-1.02 0.54,-0.96 0.6,-0.9 0.72,-0.9 0.66,-0.84 0.78,-0.78 0.78,-0.78 0.84,-0.66 0.9,-0.72 0.9,-0.66 0.9,-0.54 1.02,-0.54 1.02,-0.48 1.02,-0.42 1.08,-0.36 1.08,-0.3 1.08,-0.24"
+   id="path3055"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(413.22,179.091)"
+   id="g3057"><path
+     d="M 0,0 0.9,-0.06 3,-0.06 3.9,0"
+     id="path3059"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 421.2,179.871 1.02,0.36 1.08,0.42 1.02,0.42 0.96,0.54 0.96,0.6 0.9,0.6 0.9,0.66 0.84,0.72 0.84,0.72 0.72,0.84 0.72,0.84 0.66,0.84 0.6,0.9 0.6,0.96 0.6,1.02 0.42,0.96 0.48,1.08 0.3,1.02 0.3,1.14 0.3,1.08"
+   id="path3061"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(435.72,197.631)"
+   id="g3063"><path
+     d="M 0,0 0.06,0.96 0.06,3 0,3.96"
+     id="path3065"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 205.44,290.631 8.52,0 0,8.52 -8.52,0 0,-8.52 z"
+   id="path3067"
+   style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none" /><g
+   transform="translate(250.62,438.111)"
+   id="g3069"><path
+     d="M 0,0 0,148.32"
+     id="path3071"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+     transform="translate(-23.76,0)"
+     id="g3073"><path
+       d="M 0,0 0,148.32"
+       id="path3075"
+       style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g></g><path
+   d="m 183.84,438.411 8.52,0 0,8.46 -8.52,0 0,-8.46 z"
+   id="path3077"
+   style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none" /><g
+   transform="translate(183.6,435.651)"
+   id="g3079"><path
+     d="M 0,0 105.24,0"
+     id="path3081"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 205.44,363.411 8.52,0 0,8.46 -8.52,0 0,-8.46 z"
+   id="path3083"
+   style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none" /><g
+   transform="translate(202.32,290.391)"
+   id="g3085"><path
+     d="M 0,0 0,143.52"
+     id="path3087"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+     transform="translate(-24,143.4)"
+     id="g3089"><path
+       d="M 0,0 24,0"
+       id="path3091"
+       style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+       transform="translate(0,-143.4)"
+       id="g3093"><path
+         d="M 0,0 0,143.52"
+         id="path3095"
+         style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+         transform="translate(19.2,45.12)"
+         id="g3097"><path
+           d="M 0,0 0,97.14"
+           id="path3099"
+           style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+           transform="translate(77.7,-219.54)"
+           id="g3101"><path
+             d="M 0,0 0,167.64"
+             id="path3103"
+             style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g></g></g></g></g><g
+   transform="translate(170.58,650.211)"
+   id="g3105"><path
+     d="m 0,0 39.54,-43.26 0,86.52 L 0,0"
+     id="path3107"
+     style="fill:#bcbec0;fill-opacity:1;fill-rule:evenodd;stroke:none" /></g><g
+   transform="translate(170.58,650.211)"
+   id="g3109"><path
+     d="m 0,0 39.54,-43.26 0,86.52 L 0,0 z"
+     id="path3111"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><g
+   transform="translate(181.5,264.711)"
+   id="g3113"><path
+     d="m 0,0 20.4,-18.36 0,36.72 L 0,0"
+     id="path3115"
+     style="fill:#bcbec0;fill-opacity:1;fill-rule:evenodd;stroke:none" /></g><g
+   transform="translate(181.5,264.711)"
+   id="g3117"><path
+     d="m 0,0 20.4,-18.36 0,36.72 L 0,0 z"
+     id="path3119"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 305.82,657.171 14.1,0 0,50.1 -14.1,0 0,-50.1 z"
+   id="path3121"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 327.36,657.351 13.62,0 0,15.36 -13.62,0 0,-15.36 z"
+   id="path3123"
+   style="fill:#bcbec0;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(1.2,0,0,1,239.375,115.971)"
+   id="g3125"><path
+     d="M 0,0 0,167.64"
+     id="path3127"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><g
+   transform="translate(167.82,109.491)"
+   id="g3129"><path
+     d="M 0,0 300,0"
+     id="path3131"
+     style="fill:none;stroke:#231f20;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><path
+   d="m 361.8,116.571 13.98,0 0,42.84 -13.98,0 0,-42.84 z"
+   id="path3133"
+   style="fill:none;stroke:#231f20;stroke-width:0.49200001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none" /><g
+   transform="translate(362.22,145.731)"
+   id="g3135"><path
+     d="M 0,0 13.5,0"
+     id="path3137"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+     transform="translate(0,-14.7)"
+     id="g3139"><path
+       d="M 0,0 13.5,-0.12"
+       id="path3141"
+       style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g></g><text
+   transform="matrix(0,1,1,0,237.9,302.2105)"
+   id="text3143"><tspan
+     x="0 3.1800001"
+     y="0"
+     id="tspan3145"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">да</tspan></text>
+
+
+
+<path
+   d="m 230.52,290.211 0.48001,0 0,0.48001 -0.48001,0 0,-0.48001 z"
+   id="path3147"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 230.52,290.211 0.48001,0 0,9 -0.48001,0 0,-9 z"
+   id="path3149"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 230.52,298.731 0.48001,0 0,0.47998 -0.48001,0 0,-0.47998 z"
+   id="path3151"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 230.52,362.931 0.48001,0 0,0.47998 -0.48001,0 0,-0.47998 z"
+   id="path3153"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 230.52,362.931 0.48001,0 0,8.94 -0.48001,0 0,-8.94 z"
+   id="path3155"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 230.52,371.391 0.48001,0 0,0.47998 -0.48001,0 0,-0.47998 z"
+   id="path3157"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 231,290.211 7.92,0 0,0.48001 -7.92,0 0,-0.48001 z"
+   id="path3159"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 231,298.731 7.92,0 0,0.47998 -7.92,0 0,-0.47998 z"
+   id="path3161"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 231,362.931 7.92,0 0,0.47998 -7.92,0 0,-0.47998 z"
+   id="path3163"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 231,371.391 7.92,0 0,0.47998 -7.92,0 0,-0.47998 z"
+   id="path3165"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,246.54,373.4905)"
+   id="text3167"><tspan
+     x="0 2.0999999 3.96 25.02 27.120001 28.92 32.939999"
+     y="0"
+     id="tspan3169"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">г-нг-жа</tspan></text>
+
+
+
+<path
+   d="m 238.92,290.211 0.48001,0 0,0.48001 -0.48001,0 0,-0.48001 z"
+   id="path3171"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,290.211 0.48001,0 0,9 -0.48001,0 0,-9 z"
+   id="path3173"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,298.731 0.48001,0 0,0.47998 -0.48001,0 0,-0.47998 z"
+   id="path3175"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,299.211 0.24001,0 0,63.72 -0.24001,0 0,-63.72 z"
+   id="path3177"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,362.931 0.48001,0 0,8.94 -0.48001,0 0,-8.94 z"
+   id="path3179"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,371.871 0.24001,0 0,16.02 -0.24001,0 0,-16.02 z"
+   id="path3181"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,387.891 0.48001,0 0,0.47998 -0.48001,0 0,-0.47998 z"
+   id="path3183"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,387.891 0.48001,0 0,9 -0.48001,0 0,-9 z"
+   id="path3185"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,396.411 0.48001,0 0,0.48001 -0.48001,0 0,-0.48001 z"
+   id="path3187"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 238.92,396.891 0.24001,0 0,36.84 -0.24001,0 0,-36.84 z"
+   id="path3189"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 239.4,362.931 8.64,0 0,0.47998 -8.64,0 0,-0.47998 z"
+   id="path3191"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 247.62,362.931 0.42,0 0,8.46 -0.42,0 0,-8.46 z"
+   id="path3193"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 239.4,371.391 8.64,0 0,0.47998 -8.64,0 0,-0.47998 z"
+   id="path3195"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 247.62,371.391 0.42,0 0,0.47998 -0.42,0 0,-0.47998 z"
+   id="path3197"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 239.4,387.891 8.64,0 0,0.47998 -8.64,0 0,-0.47998 z"
+   id="path3199"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 247.62,387.891 0.42,0 0,8.52 -0.42,0 0,-8.52 z"
+   id="path3201"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 239.4,396.411 8.64,0 0,0.48001 -8.64,0 0,-0.48001 z"
+   id="path3203"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 247.62,396.411 0.42,0 0,0.48001 -0.42,0 0,-0.48001 z"
+   id="path3205"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 337.92,290.211 0.47998,0 0,0.48001 -0.47998,0 0,-0.48001 z"
+   id="path3207"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 337.92,290.211 0.47998,0 0,43.32 -0.47998,0 0,-43.32 z"
+   id="path3209"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 337.92,333.051 0.47998,0 0,0.47998 -0.47998,0 0,-0.47998 z"
+   id="path3211"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 338.4,290.211 15.6,0 0,0.48001 -15.6,0 0,-0.48001 z"
+   id="path3213"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 353.58,290.211 0.41998,0 0,13.5 -0.41998,0 0,-13.5 z"
+   id="path3215"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 338.4,303.711 15.6,0 0,0.48001 -15.6,0 0,-0.48001 z"
+   id="path3217"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 353.58,304.191 0.41998,0 0,14.7 -0.41998,0 0,-14.7 z"
+   id="path3219"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 338.4,318.891 15.6,0 0,0.47998 -15.6,0 0,-0.47998 z"
+   id="path3221"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 353.58,319.371 0.41998,0 0,13.68 -0.41998,0 0,-13.68 z"
+   id="path3223"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 338.4,333.051 15.6,0 0,0.47998 -15.6,0 0,-0.47998 z"
+   id="path3225"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 353.58,333.051 0.41998,0 0,0.47998 -0.41998,0 0,-0.47998 z"
+   id="path3227"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.42,593.271 0.47998,0 0,0.47998 -0.47998,0 0,-0.47998 z"
+   id="path3229"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.42,593.271 0.47998,0 0,43.32 -0.47998,0 0,-43.32 z"
+   id="path3231"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.42,636.11 0.47998,0 0,0.48004 -0.47998,0 0,-0.48004 z"
+   id="path3233"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.9,593.271 14.76,0 0,0.47998 -14.76,0 0,-0.47998 z"
+   id="path3235"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.24,593.271 0.41998,0 0,13.38 -0.41998,0 0,-13.38 z"
+   id="path3237"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.9,606.651 14.76,0 0,0.47998 -14.76,0 0,-0.47998 z"
+   id="path3239"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.24,607.13 0.41998,0 0,14.34 -0.41998,0 0,-14.34 z"
+   id="path3241"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.9,621.471 14.76,0 0,0.47998 -14.76,0 0,-0.47998 z"
+   id="path3243"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.24,621.951 0.41998,0 0,14.16 -0.41998,0 0,-14.16 z"
+   id="path3245"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 360.9,636.11 14.76,0 0,0.48004 -14.76,0 0,-0.48004 z"
+   id="path3247"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.24,636.11 0.41998,0 0,0.48004 -0.41998,0 0,-0.48004 z"
+   id="path3249"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,174.48,116.2105)"
+   id="text3251"><tspan
+     x="0 3.0599999 5.8842001 9.1283998 12.4206"
+     y="0"
+     id="tspan3253"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Купон</tspan></text>
+
+
+
+<text
+   transform="matrix(0,0.93358333,1,0,174.78,290.2705)"
+   id="text3255"><tspan
+     x="0 1.7352 5.0771999 7.5191998 10.9254 13.887 17.232599 20.194201 21.929399 45.515999 50.409599 53.558998 58.571999 62.4282 65.623802 69.6726 73.4646 76.6782 80.726997 84.6474 88.696198 93.259201 97.276802 98.433601 102.4182 106.5954 110.3232 113.151 117.3924 120.7344 125.28 129.29761 130.5186 134.4222 137.50681 140.7684 143.853 147.1308 151.1796 155.02921 156.2502 160.299 164.21941 167.8824 172.0596 176.9352 180.01981 184.0014 188.0502 192.2916 194.7336 198.93719 200.09399 203.9976 207.6606 211.131 214.21561 217.3002 222.1848 225.97681"
+     y="0"
+     id="tspan3257"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">(Страна) МЕЖДУНАРОДНЫЙ ПОЧТОВЫЙ ПЕРЕВОД НАЛОЖЕННОГО ПЛАТЕЖА </tspan></text>
+
+
+
+<text
+   transform="matrix(0,0.93593985,1,0,176.28,519.7705)"
+   id="text3259"><tspan
+     x="0 6.4829521 10.795344 13.680114 17.840885 22.071882 26.559834 30.201906"
+     y="0"
+     id="tspan3261"
+     style="font-size:7.98000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">MP 1бис </tspan></text>
+
+
+
+<text
+   transform="matrix(0,0.93358333,1,0,176.28,550.6705)"
+   id="text3263"><tspan
+     x="0 1.6763999 4.3758001 7.1394 11.1882 14.2026 17.1588 20.0508 21.785999 24.8064 27.7626 31.0404 33.1614 36.245998"
+     y="0"
+     id="tspan3265"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">(ссылка TFP 3)</tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,188.58,290.2705)"
+   id="text3267"><tspan
+     x="0 3.9456 7.0655999 10.0692 13.3428 15.7428 19.042801 22.8864 26.208 29.148001 32.028 35.3256 38.647202 41.6208 43.720798"
+     y="0"
+     id="tspan3269"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Идентификация/ </tspan><tspan
+     x="159.72 162.96899 165.978 169.395 172.40401 175.407 178.647 181.827 183.08701 186.366 189.261 192.306 195.48599 198.606 201.90601 205.92599 208.686 253.326 256.38599 259.50601 262.44601 264.90601 266.16599 269.41501 272.71201 275.71201 278.53201 281.65201 284.47198 286.75201 289.75201 292.797"
+     y="1.5"
+     id="tspan3271"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">перевод наличных Счет получателя</tspan><tspan
+     x="295.79999"
+     y="1.5"
+     id="tspan3273"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="0 3.9612 5.8824 7.1423998 10.3824 12.7824 16.041599 19.4688 22.348801 25.348801 28.403999 31.423201 34.712399 38.012402 41.001598"
+     y="8.6999998"
+     id="tspan3275"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N° отправления </tspan><tspan
+     x="159.72 163.02 165.89999 167.16 169.8 172.92 175.86"
+     y="10.2"
+     id="tspan3277"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">на счет</tspan><tspan
+     x="178.32001"
+     y="8.6999998"
+     id="tspan3279"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="147.72 151.56 154.56 157.8282 160.2282 163.6344 164.89439 168.2106 169.4706 174.9906 176.2506 179.22479 183.05099 186.52319 187.7832 191.0994 194.13361 197.4498 198.76981 202.01401 203.4402 206.9124 209.01241 210.4386 213.6828 217.347 221.2872"
+     y="14.64"
+     id="tspan3281"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Центр и № ТПС или BIC/IBAN </tspan></text>
+
+
+
+<g
+   transform="translate(203.7,520.55)"
+   id="g3283"><path
+     d="m 0,0 0,65.76 0.3,0 L 0.3,0"
+     id="path3285"
+     style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><text
+   transform="matrix(0,1,1,0,210.42,302.2705)"
+   id="text3287"><tspan
+     x="0 3.1199999 6.1199999 9.3954 12.4008 16.402201 19.677601 23.697599 26.997601 28.257601 31.503 34.5084 37.921799 40.9272 43.926601 47.166599 50.3466 72.666603 75.912003 78.917397 82.330803 85.336197 88.335602 91.5756 94.7556 96.015602 98.655602 101.9556 103.2156 105.8556 108.9756 111.9156 114.2556 117.147 118.407 121.647 124.707 127.6824"
+     y="0"
+     id="tspan3289"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">денежный перевод перевод со счета для </tspan></text>
+
+
+
+<path
+   d="m 210.9,437.811 0.29999,0 0,148.5 -0.29999,0 0,-148.5 z"
+   id="path3291"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,217.56,302.2705)"
+   id="text3293"><tspan
+     x="0 3.2981999 6.1781998 9.2424002 12.4224 15.5346 18.8328 22.844999 26.7012 29.9412 72.721199 75.743401 79.7556 82.995598 86.055603 88.875603 91.275597 95.287804 96.547798 99.846001 102.726 105.7902 108.9702 112.0824 115.3224 119.3346 123.1908"
+     y="0"
+     id="tspan3295"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">наличными выплаты наличными</tspan><tspan
+     x="126.48"
+     y="0"
+     id="tspan3297"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="-12 -9.0600004 -6.0599999 -3.0534 0.066600002 3.3612001 7.2612 10.3038 13.3104 16.587 19.9116 22.9182 24.1782 27.472799 28.7328 31.979401 34.986 38.4006 41.4072 44.407799 47.7024 50.822399"
+     y="8.5799999"
+     id="tspan3299"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Уведомление о переводе</tspan><tspan
+     x="53.82"
+     y="8.5799999"
+     id="tspan3301"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="71.699997 74.985001 77.925003 80.400002"
+     y="19.799999"
+     id="tspan3303"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">нет </tspan><tspan
+     x="135.72 140.05859 142.93919 146.7618 150.0744 153.1344 156.4344 159.4344 160.6944 164.007 165.267 168.57961 172.40221 175.40221 176.6622 179.6508 182.7108 185.5914 188.7114 191.70599 194.826 197.826 201.12601 204.00661"
+     y="20.280001"
+     id="tspan3305"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Фамилия и имя владельца </tspan></text>
+
+
+
+<path
+   d="m 238.32,509.331 0.3,0 0,76.98 -0.3,0 0,-76.98 z"
+   id="path3307"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,245.52,290.2705)"
+   id="text3309"><tspan
+     x="0 3.8418 7.1436 10.1436 12.9774 16.075199 18.895201 21.1752 24.188999 27.2388 30.2346 31.4946 34.254601 37.014599 40.8564 44.6982"
+     y="0"
+     id="tspan3311"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Получатель суммы</tspan><tspan
+     x="48.66"
+     y="0"
+     id="tspan3313"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="0 3.2886 6.1686001 9.2231998 12.4632 16.423201 19.423201 22.7118 26.000401 29.306999 31.407 34.707001 35.966999 39.225601 42.280201 45.100201 47.380199 50.3988 54.478802"
+     y="6.4200001"
+     id="tspan3315"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">наложенного платежа</tspan><tspan
+     x="57.360001"
+     y="6.4200001"
+     id="tspan3317"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="0 4.3200002 7.1999998 11.0514 14.3514 17.410801 20.7108 23.704201 24.9636 26.2236 29.5236 33.363602 36.356998"
+     y="15"
+     id="tspan3319"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Фамилия, имя </tspan><tspan
+     x="147.24001 150.237 154.086 157.58099 159.621 162.912 165.79201 169.08299"
+     y="13.98"
+     id="tspan3321"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">ТПС/Банк</tspan><tspan
+     x="171.96001"
+     y="15"
+     id="tspan3323"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<path
+   d="m 261,326.631 0.30002,0 0,107.1 -0.30002,0 0,-107.1 z"
+   id="path3325"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,273.84,437.5105)"
+   id="text3327"><tspan
+     x="0 3.9030001 6.7859998 10.101 13.926 16.923 20.223 23.523001 26.514 29.396999 32.696999 35.997002 38.993999"
+     y="0"
+     id="tspan3329"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Наименование </tspan></text>
+
+
+
+<path
+   d="m 274.32,290.271 0.29999,0 0,143.46 -0.29999,0 0,-143.46 z"
+   id="path3331"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 274.32,477.891 0.29999,0 0,108.42 -0.29999,0 0,-108.42 z"
+   id="path3333"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,288,290.2705)"
+   id="text3335"><tspan
+     x="0 3.9084001 6.7968001 10.1172 13.9476 16.950001 20.222401 23.5128 26.509199 29.3976 32.669998 35.990398 38.992802 40.2528 43.495201 46.905602 49.908001 53.0844 56.326801 59.806801 63.127201 66.099602 68.499603 71.799599 74.772003"
+     y="0"
+     id="tspan3337"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Наименование предприятия </tspan></text>
+
+
+
+<path
+   d="m 288.48,367.311 0.29999,0 0,66.42 -0.29999,0 0,-66.42 z"
+   id="path3339"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 286.5,436.251 0.30002,0 0,150.06 -0.30002,0 0,-150.06 z"
+   id="path3341"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,299.58,290.2705)"
+   id="text3343"><tspan
+     x="0 3.7049999 6.8850002 10.305 13.305 16.004999 17.264999 20.504999 23.805 26.805 29.625 32.748001 35.568001 37.848 40.848 43.923 46.931999"
+     y="0"
+     id="tspan3345"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Адрес получателя </tspan></text>
+
+
+
+<path
+   d="m 300.06,338.871 0.30002,0 0,247.44 -0.30002,0 0,-247.44 z"
+   id="path3347"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,312.6,431.5705)"
+   id="text3349"><tspan
+     x="0 5.4966002 6.7565999 9.0366001 12.0366 15.0792 18.0858 21.9324 25.226999 28.503599 31.3962 32.6562 35.902802 39.197399 42.197399 45.017399 48.137402 50.957401 53.2374 56.2374 59.357399 62.357399"
+     y="0"
+     id="tspan3351"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">№ телефона получателя </tspan></text>
+
+
+
+<path
+   d="m 313.08,290.271 0.29999,0 0,140.04 -0.29999,0 0,-140.04 z"
+   id="path3353"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 313.08,496.01 0.29999,0 0,90.3 -0.29999,0 0,-90.3 z"
+   id="path3355"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,324.9,290.2705)"
+   id="text3357"><tspan
+     x="0 3.8352001 7.0152001 10.0752 12.3552 15.6504 18.6516 22.642799 25.968 27.228001 30.5532 33.830399 36.950401 39.950401 42.770401 45.470402 77.450401 79.430397 82.725601 86.1408 89.380798 92.561996 175.48199 178.782 181.18201 184.5972 187.4904 190.76759 193.6608"
+     y="0"
+     id="tspan3359"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Почтовый индекс Город Страна </tspan></text>
+
+
+
+<path
+   d="m 325.38,335.751 0.30002,0 0,31.98 -0.30002,0 0,-31.98 z"
+   id="path3361"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 325.38,382.851 0.30002,0 0,82.92 -0.30002,0 0,-82.92 z"
+   id="path3363"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="translate(325.38,485.631)"
+   id="g3365"><path
+     d="m 0,0 0,100.68 0.3,0 L 0.3,0"
+     id="path3367"
+     style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><text
+   transform="matrix(0,1,1,0,336.06,290.3905)"
+   id="text3369"><tspan
+     x="0 3.2435999 6.1272001 9.1608 13.3824 15.7224 18.606001 56.285999 59.585999 62.346001 66.1716 69.9972 72.880798 74.1408 77.432404 80.748001 84.585602 88.065598 90.949203 94.774803"
+     y="0"
+     id="tspan3371"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Валюта Сумма цифрами</tspan><tspan
+     x="98.160004"
+     y="0"
+     id="tspan3373"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,358.08,290.2705)"
+   id="text3375"><tspan
+     x="0 3.3 6.0599999 9.8940001 13.728 16.620001 17.879999 21.125999 24.540001 27.834 31.08 34.403999 37.091999 40.080002"
+     y="0"
+     id="tspan3377"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Сумма прописью</tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,0.83810437,0,201.84,634.1905)"
+   id="text3379"><tspan
+     x="0 9.2993784 20.878983"
+     y="0"
+     id="tspan3381"
+     style="font-size:16.68050003px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">COD</tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,218.52,613.9705)"
+   id="text3383"><tspan
+     x="0 5.04 7.3200002 10.3224 14.1528 17.395201 20.3976 23.436001 26.420401 27.680401 30.500401 33.500401 36.380402 40.340401 43.504799 47.491199 49.329601 52.110001 55.940399 59.180401 61.4604 64.460403 67.732803 70.0728"
+     y="0"
+     id="tspan3385"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Штемпель службы-эмитента</tspan><tspan
+     x="73.019997"
+     y="0"
+     id="tspan3387"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,274.2,593.3305)"
+   id="text3389"><tspan
+     x="0 3.9396 5.8392 50.299198 53.290798 57.310799 60.490799 63.1908 65.870399 68.810402 71.694"
+     y="0"
+     id="tspan3391"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N° выпуска </tspan></text>
+
+
+
+<path
+   d="m 274.68,674.151 0.30002,0 0,33.06 -0.30002,0 0,-33.06 z"
+   id="path3393"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,286.14,593.3305)"
+   id="text3395"><tspan
+     x="0 3.5352001 6.5352001 9.4164 13.3764 16.5564 19.436399 21.2964 24.0564 27.8964 31.1364 33.416401 36.416401 39.656399 42.116402"
+     y="0"
+     id="tspan3397"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Служба-эмитент </tspan></text>
+
+
+
+<path
+   d="m 286.62,638.57 0.30002,0 0,68.16 -0.30002,0 0,-68.16 z"
+   id="path3399"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,298.14,593.3305)"
+   id="text3401"><tspan
+     x="0 3.78 6.5999999 8.9399996 11.82"
+     y="0"
+     id="tspan3403"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Дата </tspan></text>
+
+
+
+<path
+   d="m 298.62,606.591 0.30002,0 0,100.62 -0.30002,0 0,-100.62 z"
+   id="path3405"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,314.16,593.0905)"
+   id="text3407"><tspan
+     x="0 3.3599999 6.54 9.8381996 13.2564 14.5164 17.1066 20.0028 21.2628 24.267 28.2612 31.4412 34.141201 36.833401"
+     y="0"
+     id="tspan3409"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Сбор за выпуск</tspan><tspan
+     x="39.720001"
+     y="0"
+     id="tspan3411"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,335.7,593.0905)"
+   id="text3413"><tspan
+     x="0 3.2765999 6.2831998 8.8697996 10.1298 12.8184 15.987 19.281601 22.696199 25.5888 26.848801 29.4354 32.327999 33.588001 36.5886 40.608601 43.788601 46.488602 49.1772"
+     y="0"
+     id="tspan3415"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Без сбора за выпуск</tspan><tspan
+     x="52.080002"
+     y="0"
+     id="tspan3417"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan><tspan
+     x="0.18000001 4.3049998 7.4640002 11.289 14.286 17.586 20.826 24.846001 28.146 84.786003 87.651001 90.468002 93.873001 96.552002"
+     y="11.94"
+     id="tspan3419"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Обменный курс </tspan></text>
+
+
+
+<path
+   d="m 348.12,694.431 0.29999,0 0,13.08 -0.29999,0 0,-13.08 z"
+   id="path3421"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,358.38,593.2705)"
+   id="text3423"><tspan
+     x="0 3.24 6.1199999 9.1499996 13.368 15.708 18.587999"
+     y="0"
+     id="tspan3425"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Валюта </tspan><tspan
+     x="56.639999 60.540001 63.540001 66.969597 69.909599 73.015198 76.315201 79.135201 82.195198 85.216797 88.5084 91.800003 94.620003 97.611603 98.871597 101.6316 104.3916 108.2412 112.0908"
+     y="1.02"
+     id="tspan3427"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Перечисленная сумма</tspan></text>
+
+
+
+<path
+   d="m 167.58,113.751 0.24001,0 0,0.23999 -0.24001,0 0,-0.23999 z"
+   id="path3429"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 167.58,113.751 0.24001,0 0,598.08 -0.24001,0 0,-598.08 z"
+   id="path3431"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 167.58,711.591 0.24001,0 0,0.23999 -0.24001,0 0,-0.23999 z"
+   id="path3433"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 167.82,113.751 10.2,0 0,0.23999 -10.2,0 0,-0.23999 z"
+   id="path3435"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-1.92,0,169.74,287.151)"
+   id="g3437"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljaG5s+s/w/////0zr1qxhYJAUFfsPAG9TCc0GoM2NAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3439" /></g><g
+   transform="matrix(0,0.48,-1.92,0,171.66,287.151)"
+   id="g3441"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljaG5s+s/w/////0zr1qxhYJAUFfsPAG9TCc0GoM2NAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3443" /></g><g
+   transform="matrix(0,0.48,-1.92,0,173.58,287.151)"
+   id="g3445"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljaG5s+s/w/////0zr1qxhYJAUFfsPAG9TCc0GoM2NAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3447" /></g><g
+   transform="matrix(0,0.48,-1.92,0,175.5,287.151)"
+   id="g3449"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljaG5s+s/w/////0zr1qxhYJAUFfsPAG9TCc0GoM2NAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3451" /></g><g
+   transform="matrix(0,0.48,-1.92,0,177.42,287.151)"
+   id="g3453"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljaG5s+s/w/////0zr1qxhYJAUFfsPAG9TCc0GoM2NAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3455" /></g><g
+   transform="matrix(0,0.48,-0.6,0,178.02,287.151)"
+   id="g3457"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAABHNCSVQICAgIfAhkiAAAABJJREFUCJljKCoo/M/w/Nmz/wAZtgYFgtnMggAAAABJRU5ErkJggg=="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3459" /></g><path
+   d="m 167.82,589.13 10.2,0 0,1.5 -10.2,0 0,-1.5 z"
+   id="path3461"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 167.82,711.591 10.2,0 0,0.23999 -10.2,0 0,-0.23999 z"
+   id="path3463"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,189.24,115.8506)"
+   id="text3465"><tspan
+     x="0 3.9389999 7.059 10.056 13.323 15.723 19.023001 22.860001 26.174999 29.115 31.995001 35.285999 38.601002"
+     y="0"
+     id="tspan3467"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Идентификация</tspan></text>
+
+
+
+<g
+   id="g3469"><g
+     clip-path="url(#clipPath3473)"
+     id="g3471"><text
+   transform="matrix(0,1,1,0,189.24,157.4305)"
+   id="text3477"><tspan
+     x="0"
+     y="0"
+     id="tspan3479"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">/</tspan></text>
+
+
+
+</g></g><text
+   transform="matrix(0,1,1,0,196.2,115.8505)"
+   id="text3481"><tspan
+     x="0 3.9558001 5.8716002 7.1315999 10.3716 12.7716 16.0254 19.447201 22.347 25.354799 28.4046 31.4184 34.702202 38.002201"
+     y="0"
+     id="tspan3483"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N° отправления</tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,0.8434983,0,198,255.3505)"
+   id="text3485"><tspan
+     x="0 5.3395624 11.939278"
+     y="0"
+     id="tspan3487"
+     style="font-size:9.4605999px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">COD</tspan></text>
+
+
+
+<path
+   d="m 178.02,113.751 0.23999,0 0,122.22 -0.23999,0 0,-122.22 z"
+   id="path3489"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 178.02,235.731 0.23999,0 0,0.24001 -0.23999,0 0,-0.24001 z"
+   id="path3491"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-0.24,0,178.26,287.151)"
+   id="g3493"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJlj+P///38ACfsD/QjR6B4AAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3495" /></g><path
+   d="m 178.02,589.13 0.23999,0 0,1.5 -0.23999,0 0,-1.5 z"
+   id="path3497"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 178.02,711.591 0.23999,0 0,0.23999 -0.23999,0 0,-0.23999 z"
+   id="path3499"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 178.26,113.751 18.78,0 0,0.23999 -18.78,0 0,-0.23999 z"
+   id="path3501"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 178.26,235.731 18.78,0 0,0.24001 -18.78,0 0,-0.24001 z"
+   id="path3503"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-1.92,0,180.18,287.151)"
+   id="g3505"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3507" /></g><g
+   transform="matrix(0,0.48,-1.92,0,182.1,287.151)"
+   id="g3509"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3511" /></g><g
+   transform="matrix(0,0.48,-1.92,0,184.02,287.151)"
+   id="g3513"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3515" /></g><g
+   transform="matrix(0,0.48,-1.92,0,185.94,287.151)"
+   id="g3517"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3519" /></g><g
+   transform="matrix(0,0.48,-1.92,0,187.86,287.151)"
+   id="g3521"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3523" /></g><g
+   transform="matrix(0,0.48,-1.92,0,189.78,287.151)"
+   id="g3525"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3527" /></g><g
+   transform="matrix(0,0.48,-1.92,0,191.7,287.151)"
+   id="g3529"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3531" /></g><g
+   transform="matrix(0,0.48,-1.92,0,193.62,287.151)"
+   id="g3533"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3535" /></g><g
+   transform="matrix(0,0.48,-1.92,0,195.54,287.151)"
+   id="g3537"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljuHHjxn8GRVm5/0xq6uoMDD9//vwPAFqrCUOQgfrkAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3539" /></g><g
+   transform="matrix(0,0.48,-1.5,0,197.04,287.151)"
+   id="g3541"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJljePjw4X8GBRnZ/wwC3Dz/GTZu2PAfAF1gCTH5q2cDAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3543" /></g><path
+   d="m 178.26,589.13 18.78,0 0,1.5 -18.78,0 0,-1.5 z"
+   id="path3545"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 178.26,711.591 18.78,0 0,0.23999 -18.78,0 0,-0.23999 z"
+   id="path3547"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.04,113.751 0.24002,0 0,0.23999 -0.24002,0 0,-0.23999 z"
+   id="path3549"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.04,159.771 0.24002,0 0,76.2 -0.24002,0 0,-76.2 z"
+   id="path3551"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-0.24,0,197.28,287.151)"
+   id="g3553"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJlj+P///38ACfsD/QjR6B4AAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3555" /></g><path
+   d="m 197.04,589.13 0.24002,0 0,1.5 -0.24002,0 0,-1.5 z"
+   id="path3557"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.04,711.591 0.24002,0 0,0.23999 -0.24002,0 0,-0.23999 z"
+   id="path3559"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.28,113.751 4.68,0 0,0.23999 -4.68,0 0,-0.23999 z"
+   id="path3561"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.28,235.731 4.68,0 0,0.24001 -4.68,0 0,-0.24001 z"
+   id="path3563"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-1.92,0,199.2,287.151)"
+   id="g3565"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJlj+P///3/m2zduNjDwcXH/Zzhx/Ph/AHuwC4O5w9+XAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3567" /></g><g
+   transform="matrix(0,0.48,-1.92,0,201.12,287.151)"
+   id="g3569"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAABHNCSVQICAgIfAhkiAAAAB1JREFUCJlj+P///3/m2zduNjDwcXH/Zzhx/Ph/AHuwC4O5w9+XAAAAAElFTkSuQmCC"
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3571" /></g><g
+   transform="matrix(0,0.48,-0.84,0,201.96,287.151)"
+   id="g3573"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAABHNCSVQICAgIfAhkiAAAABNJREFUCJlj+P///3/m2zduNgAAJiEHDLUDfxwAAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3575" /></g><path
+   d="m 197.28,589.13 4.68,0 0,1.5 -4.68,0 0,-1.5 z"
+   id="path3577"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 197.28,711.591 4.68,0 0,0.23999 -4.68,0 0,-0.23999 z"
+   id="path3579"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,214.02,115.8505)"
+   id="text3581"><tspan
+     x="0 3.1800001 6.48 9.7200003 12.06 14.94 17.940001 20.34 23.639999 27.645 30.666 38.585999 41.780998 44.660999 47.952 51.192001 55.196999 58.137001 66.056999 69.318001 72.626999 75.626999 78.446999 81.552002 84.372002 86.652 89.652 92.709 95.699997 103.62 106.911 109.791 112.848 116.028 119.988 122.988 126.279 129.57001 132.879 135.039 138.339 146.259 149.52 152.577 155.397 157.677 160.698 164.778 167.658"
+     y="0"
+     id="tspan3583"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Контактные данные получателя наложенного платежа </tspan><tspan
+     x="0 4.3200002 7.1999998 11.0514 14.3514 17.410801 20.7108 23.704201 24.9636 26.2236 29.5236 33.363602 36.356998"
+     y="12.3"
+     id="tspan3585"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Фамилия, имя </tspan></text>
+
+
+
+<path
+   d="m 226.8,153.351 0.3,0 0,130.14 -0.3,0 0,-130.14 z"
+   id="path3587"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,250.98,115.8506)"
+   id="text3589"><tspan
+     x="0 3.1800001 6.48 9.7553997 12.0954 14.9868 17.986799 20.386801 23.6868 27.7068 30.7068 35.146801 38.326199 41.217602 44.493 47.768398 51.788399 54.7938 59.233799 62.473801 64.873802 68.119202 71.5326 74.424004 77.423401 80.746803 83.026802 86.032204 89.073601 92.049004 96.488998 98.192398 101.4378 104.7312 107.7312 110.5566 113.6766 116.4966 118.8366 121.842 124.8834 127.8588 132.2988 135.5388 137.9388 141.1842 144.5976 147.489 150.4884 153.5298 156.5352 159.81059 163.134 166.10941 167.81281"
+     y="0"
+     id="tspan3591"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Контактные данные отправителя (получателя отправления) </tspan><tspan
+     x="0 4.3200002 7.1999998 11.0514 14.3514 17.410801 20.7108 23.704201 24.9636 26.2236 29.5236 33.363602 36.356998"
+     y="10.8"
+     id="tspan3593"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Фамилия, имя </tspan></text>
+
+
+
+<path
+   d="m 262.26,153.051 0.29999,0 0,130.62 -0.29999,0 0,-130.62 z"
+   id="path3595"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,286.68,115.8506)"
+   id="text3597"><tspan
+     x="0 3.72 6.9000001 10.3122 13.3164 16.0026"
+     y="0"
+     id="tspan3599"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Адрес </tspan></text>
+
+
+
+<path
+   d="m 287.16,137.751 0.29999,0 0,145.92 -0.29999,0 0,-145.92 z"
+   id="path3601"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,298.5,115.8506)"
+   id="text3603"><tspan
+     x="0 3.8352001 7.0152001 10.0752 12.3552 15.6504 18.6516 22.642799 25.968 27.228001 30.5532 33.830399 36.950401 39.950401 42.770401 45.470402 74.990402 76.970398 80.265602 83.680801 86.920799 90.101997"
+     y="0"
+     id="tspan3605"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Почтовый индекс Город </tspan></text>
+
+
+
+<path
+   d="m 298.98,161.331 0.29999,0 0,29.52 -0.29999,0 0,-29.52 z"
+   id="path3607"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="translate(298.98,208.491)"
+   id="g3609"><path
+     d="m 0,0 0,75 0.3,0 0,-75"
+     id="path3611"
+     style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><text
+   transform="matrix(0,1,1,0,310.32,115.8506)"
+   id="text3613"><tspan
+     x="0 3.3 5.6999998 9.1199999 12 15.3 18.18"
+     y="0"
+     id="tspan3615"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Страна </tspan></text>
+
+
+
+<path
+   d="m 310.8,136.671 0.29999,0 0,147 -0.29999,0 0,-147 z"
+   id="path3617"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,322.2,115.8506)"
+   id="text3619"><tspan
+     x="0 5.5139999 6.7740002 9.7740002 13.626"
+     y="0"
+     id="tspan3621"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">№ ТПС</tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,320.22,132.9505)"
+   id="text3623"><tspan
+     x="0 1.74"
+     y="0"
+     id="tspan3625"
+     style="font-size:3.48000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">1 </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,322.2,200.7505)"
+   id="text3627"><tspan
+     x="0 3.8399999 6.8400002 10.08 12.48 15.9"
+     y="0"
+     id="tspan3629"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Центр </tspan></text>
+
+
+
+<path
+   d="m 322.68,134.691 0.3,0 0,66.06 -0.3,0 0,-66.06 z"
+   id="path3631"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="translate(322.68,219.051)"
+   id="g3633"><path
+     d="m 0,0 0,64.44 0.3,0 L 0.3,0"
+     id="path3635"
+     style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><text
+   transform="matrix(0,1,1,0,330.42,115.8506)"
+   id="text3637"><tspan
+     x="0 1.7998559"
+     y="0"
+     id="tspan3639"
+     style="font-size:3.48000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">1 </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,332.4,118.8506)"
+   id="text3641"><tspan
+     x="0 2.3998621 4.739964 7.2668161 10.027728 11.10789 13.804062 16.301035 19.136646 21.633617 24.12561 26.825766 29.467157 30.547319 32.707146 35.467064 36.547222 38.70705 41.287189 43.747307 45.667099 48.06945 49.149612 51.84977 53.829815 56.52599 59.361599 61.76395 64.255943 66.9561 68.875893 71.372864 73.899712 76.371788 77.45195 80.152107 82.671982 85.144058 86.22422 88.716209 92.0299 94.726074 97.25293 99.655281 101.63532 104.94902 106.02918 108.75025 111.21037 113.73722 116.43738 119.00407 121.72514 125.03883 128.22305"
+     y="0"
+     id="tspan3643"
+     style="font-size:4.98000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Если перевод со счета отправителя для выплаты наличными</tspan><tspan
+     x="131.03973"
+     y="0"
+     id="tspan3645"
+     style="font-size:4.98000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,358.92,116.2105)"
+   id="text3647"><tspan
+     x="0 3.2418001 6.1236 9.1554003 13.3752 15.7152 18.597 57.777 61.137001 63.896999 67.720802 71.544601 74.426399 75.686401 78.976196 82.290001 86.125801 89.529602 92.4114 96.235199"
+     y="0"
+     id="tspan3649"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Валюта Сумма цифрами</tspan><tspan
+     x="99.660004"
+     y="0"
+     id="tspan3651"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,387.24,163.4305)"
+   id="text3653"><tspan
+     x="0 5.04 7.3200002 10.3224 14.1528 17.395201 20.3976 23.436001 26.420401 27.680401 30.500401 33.500401 36.380402 40.340401 43.504799 47.491199 49.329601 52.110001 55.940399 59.180401 61.4604 64.460403 67.732803 70.0728"
+     y="0"
+     id="tspan3655"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Штемпель службы-эмитента</tspan><tspan
+     x="73.019997"
+     y="0"
+     id="tspan3657"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,445.74,181.4305)"
+   id="text3659"><tspan
+     x="0 3.9588001 6.7188001 9.3587999 12.5988 15.8388 18.8388 23.343599 26.6436 29.9436 31.2036 35.162399"
+     y="0"
+     id="tspan3661"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Исходящий N°</tspan></text>
+
+
+
+<path
+   d="m 201.96,113.751 0.23999,0 0,122.22 -0.23999,0 0,-122.22 z"
+   id="path3663"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 201.96,235.731 0.23999,0 0,0.24001 -0.23999,0 0,-0.24001 z"
+   id="path3665"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-0.24,0,202.2,287.151)"
+   id="g3667"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljUJZX+A8AAi0BYvkweGYAAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3669" /></g><path
+   d="m 201.96,589.13 0.23999,0 0,1.5 -0.23999,0 0,-1.5 z"
+   id="path3671"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 201.96,711.591 0.23999,0 0,0.23999 -0.23999,0 0,-0.23999 z"
+   id="path3673"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 202.2,113.751 173.34,0 0,0.23999 -173.34,0 0,-0.23999 z"
+   id="path3675"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(175.26,0,0,2.4,201.24,286.191)"
+   id="g3677"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiUAAAAICAYAAAAmwI8qAAAABHNCSVQICAgIfAhkiAAAAIVJREFUeJzt28EJg0AURdFnWhgbCEmf06hiA1pD3IloloqzOGd1eSTg8oPY1Vp/AQB42OvpBwAASA5HSV9K+lJOP7Lb7Xa73W6/ap+GMdMwnvbtKNn/SWuttdb6jt4fI8fDxOsbAKAJ21EyL0u01lprre/s9/fzt5Ok8/UNANACr28AgCas+tVVHaazFKwAAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     mask="url(#mask3679)"
+     id="image3683" /></g><path
+   d="m 202.2,589.13 173.34,0 0,1.5 -173.34,0 0,-1.5 z"
+   id="path3685"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 202.2,711.591 173.34,0 0,0.23999 -173.34,0 0,-0.23999 z"
+   id="path3687"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,382.32,290.2705)"
+   id="text3689"><tspan
+     x="0 3.96 5.8800001 7.1399999 9.8999996 12.24 15.1098 18.4098 21.5676 24.437401 27.829201 30.2292 33.529202 36.829201 40.131001 41.390999 44.692799 47.812801 50.7966 54.0504 56.450401 59.810398 63.634201 66.935997 69.875999 72.779999 76.072197 79.388397 82.704597 84.024597 87.262802 90.261002 93.667198 96.665398 99.6576 102.8976 106.0776 108.9618 110.2218 111.918 116.3382 118.7964 122.2026 125.5188 128.289 130.1232 132.94321 136.1832 139.3632"
+     y="0"
+     id="tspan3691"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N° стандартной идентификации перевода (штрих-код)</tspan><tspan
+     x="141.12"
+     y="0"
+     id="tspan3693"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+
+
+<text
+   transform="matrix(0,1,1,0,408.18,350.8105)"
+   id="text3695"><tspan
+     x="0 4.0254002 8.0867996 13.0062 15.9462 17.3262 21.351601 25.3116 29.007 32.072399 34.532398 38.672401 40.052399 44.077801 47.017799 48.3978 52.297798 56.3778 59.917801 63.3978 66.493202 69.9132 72.9132 74.293198 78.253197 82.333199 87.252602 90.192596 91.572601 95.598 99.557999 103.2534 106.3188 108.7788 112.9188 114.2988 118.3242 121.2042 122.5842 126.5316 130.593 134.1864 137.6664 140.7618 144.0618 145.4418 148.4418 149.82179 153.7818 157.8618 162.7812 165.72121 167.1012 171.1266 175.08659 178.782 181.782 184.242 188.382 189.76199 193.7874 196.7274 198.10741 202.05479 206.1162 209.70959 213.18961 216.285 219.52499 220.905 223.905 225.285 229.31039 233.3304 238.2498 241.1898 242.5098 246.5352 250.55521 254.2506 257.31601 259.776 263.91599 265.29599 269.32141 272.26141 273.64139 277.54141 281.6214 285.21481 288.69479 291.79019"
+     y="0"
+     id="tspan3697"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">НИЖЕ НИЧЕГО НЕ ПИСАТЬ– НИЖЕ НИЧЕГО НЕ ПИСАТЬ – НИЖЕ НИЧЕГО НЕ ПИСАТЬ – НИЖЕ НИЧЕГО НЕ ПИСАТЬ</tspan></text>
+
+
+
+<path
+   d="m 375.54,113.751 0.23999,0 0,0.23999 -0.23999,0 0,-0.23999 z"
+   id="path3699"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(0,0.48,-0.24,0,375.78,287.151)"
+   id="g3701"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJlj+P///38ACfsD/QjR6B4AAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3703" /></g><path
+   d="m 375.54,711.591 0.23999,0 0,0.23999 -0.23999,0 0,-0.23999 z"
+   id="path3705"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.78,113.751 79.8,0 0,0.23999 -79.8,0 0,-0.23999 z"
+   id="path3707"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 455.34,113.751 0.24002,0 0,173.4 -0.24002,0 0,-173.4 z"
+   id="path3709"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+   transform="matrix(81.6,0,0,3.36,374.34,285.711)"
+   id="g3711"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsAAAAICAYAAACGYA9ZAAAABHNCSVQICAgIfAhkiAAAAF1JREFUWIXt2DEKwCAQRFE3peKZ99CibawSkihiFV34rxuxsJhiUFT1dIABx+oHALNeZY0+uOgDmbxF/pJrBowuAX9LJTdnzACYcZf12eRUMpm8NPcIvwGwghkAMyqwCwCR153s2QAAAABJRU5ErkJggg=="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     mask="url(#mask3713)"
+     id="image3717" /></g><g
+   transform="matrix(0,0.48,-0.84,0,455.34,287.151)"
+   id="g3719"><image
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAABHNCSVQICAgIfAhkiAAAABNJREFUCJlj+P///3/m71++NgAAJx0HYOR0XhwAAAAASUVORK5CYII="
+     width="1"
+     height="1"
+     transform="matrix(1,0,0,-1,0,1)"
+     id="image3721" /></g><path
+   d="m 455.34,287.151 0.24002,0 0,424.44 -0.24002,0 0,-424.44 z"
+   id="path3723"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 375.78,711.591 79.8,0 0,0.23999 -79.8,0 0,-0.23999 z"
+   id="path3725"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 455.34,711.591 0.24002,0 0,0.23999 -0.24002,0 0,-0.23999 z"
+   id="path3727"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,467.28,113.6306)"
+   id="text3729"><tspan
+     x="0 3.5401859 6.8999581 9.9248762 14.409954 17.926271 21.91995 26.587547 28.087723 31.68828 35.228466 38.829025 40.281464 43.882019 45.382195 48.631752 50.131927 53.732483 57.272671 60.812855 62.252659 65.853218 67.353394 71.83847"
+     y="0"
+     id="tspan3731"
+     style="font-size:7.01999998px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Размеры 210,8 x 101,6 мм</tspan><tspan
+     x="76.259666"
+     y="0"
+     id="tspan3733"
+     style="font-size:7.01999998px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+</g></svg>
+]]></Content>
+                            </SVGImage>
+                        </PictureView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView1" Left="8.9" Top="6.0" Width="12.1" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable1]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="37.9" Top="6.3" Width="15.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable1]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="top" Rotate="0" Name="MemoView2" Left="30.65" Top="12.75" Width="1.2" Height="3.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>x</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="1.9" Top="65.0" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>R</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="4.3" Top="65.0" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>U</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="6.65" Top="65.0" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>B</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="11.5" Top="65.0" Width="17.2" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable2]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="30.5" Top="57.5" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>R</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="32.9" Top="57.5" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>U</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="35.3" Top="57.5" Width="1.7" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>B</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="40.3" Top="57.5" Width="18.2" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable2]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="30.7" Top="65.0" Width="48.0" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable3]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="30.3" Top="31.6" Width="23.5" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable4]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="1.5" Top="20.2" Width="27.5" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable4]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="1.5" Top="32.0" Width="27.5" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable11]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="5.0" Top="36.0" Width="24.0" Height="3.6" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable12]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="9.1" Top="40.2" Width="4.5" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable17]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="16.75" Top="40.2" Width="12.3" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable13]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="5.0" Top="44.0" Width="24.0" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable19]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="38.3" Top="40.5" Width="40.7" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable10]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="64.2" Top="44.8" Width="14.7" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable6]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="37.85" Top="48.85" Width="5.0" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable16]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="45.7" Top="48.85" Width="13.3" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable7]</Memo>
+                        </MemoView>
+						<MemoView FontName="Arial" FontColor="#000000" FontSize="7" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView2" Left="62.5" Top="48.85" Width="16.4" Height="3.4" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[Variable18]</Memo>
+                        </MemoView>
+                    </ChildViews>
+                </BandView>
+            </Views>
+        </Page>
+		<Page Size="9" Width="210.0" Height="148.0" MarginLeft="1.0" MarginTop="1.0" MarginRight="1.0" MarginBottom="1.0" Orientation="landscape" UseMargins="true">
+            <Views>
+                <BandView Type="master-data" Dataset="PostDataSet" Name="BandView1" Left="0.0" Top="0.0" Width="100.0" Height="71.0" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <ChildViews>						
+						<PictureView Centered="true" KeepRatio="true" Name="PictureView1" Left="0" Top="0" Width="100" Height="100" BoundLeft="0.0" BoundTop="0.0" BoundWidth="100.0" BoundHeight="100.0" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="0.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <SVGImage Mime="image/svg+xml">
+                                <Content><![CDATA[
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="763.33124"
+   height="387.32501"
+   id="svg3737"
+   xml:space="preserve"><metadata
+     id="metadata3743"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs3741" /><g
+     transform="matrix(0,1.25,1.25,0,-126.01375,-198.85)"
+     id="g3745"><path
+   d="m 169.92,113.511 288.24,0 0,597.84 -288.24,0 0,-597.84 z"
+   id="path3747"
+   style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:8;stroke-opacity:1;stroke-dasharray:none" /><g
+   transform="translate(215.4,289.251)"
+   id="g3749"><path
+     d="M 0,0 0,418.92"
+     id="path3751"
+     style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><g
+   transform="translate(280.44,299.871)"
+   id="g3753"><path
+     d="M 0,0 0,297.66"
+     id="path3755"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+     transform="translate(165.96,0.12)"
+     id="g3757"><path
+       d="M 0,0 0,85.02"
+       id="path3759"
+       style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+       transform="translate(0,144)"
+       id="g3761"><path
+         d="M 0,0 0,152.88"
+         id="path3763"
+         style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g></g></g><path
+   d="m 457.5,286.371 -287.7,0 m 281.76,365.939 -0.36,1.021 -0.48,1.08 -0.42,0.959 -0.48,1.021 -0.6,0.96 -0.6,0.899 -0.66,0.901 -0.78,0.839 -0.72,0.781 -0.84,0.78 -0.78,0.66 -0.9,0.72 -0.9,0.6 -0.96,0.599 -0.96,0.541 -0.96,0.48 -1.08,0.419 -1.02,0.361 -1.14,0.3 -1.08,0.24 m -10.08,-0.42 -1.08,-0.361 -1.02,-0.479 -1.02,-0.42 -1.02,-0.481 -0.9,-0.599 -0.9,-0.601 -0.9,-0.659 -0.9,-0.78 -0.78,-0.72 -0.72,-0.841 -0.72,-0.779 -0.72,-0.9 -0.66,-0.9 -0.54,-0.961 -0.54,-0.96 -0.42,-0.959 -0.48,-1.081 -0.36,-1.019 -0.3,-1.14 -0.24,-1.08 m 0.48,-10.021 0.36,-1.08 0.42,-1.019 0.42,-1.021 0.6,-1.019 0.54,-0.96 0.6,-0.901 0.66,-0.899 0.72,-0.841 0.78,-0.779 0.78,-0.781 0.84,-0.659 0.84,-0.721 0.9,-0.659 0.96,-0.54 1.02,-0.54 0.96,-0.48 1.08,-0.421 1.02,-0.36 1.14,-0.299 1.08,-0.24 m 10.08,0.479 1.02,0.361 1.08,0.42 0.96,0.42 1.02,0.539 0.96,0.601 0.9,0.599 0.9,0.661 0.84,0.72 0.78,0.719 0.78,0.841 0.66,0.84 0.72,0.839 0.6,0.901 0.6,0.959 0.54,1.02 0.48,0.961 0.42,1.08 0.36,1.019 0.3,1.141 0.24,1.08"
+   id="path3765"
+   style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:1.4, 0.8;stroke-dashoffset:0" /><g
+   transform="translate(433.8,666.831)"
+   id="g3767"><path
+     d="M 0,0 -0.96,0.06 -3,0.06 -3.96,0"
+     id="path3769"
+     style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+     transform="translate(-22.56,-18.54)"
+     id="g3771"><path
+       d="M 0,0 -0.06,-0.96 -0.06,-3 0,-3.96"
+       id="path3773"
+       style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+       transform="translate(18.54,-22.56)"
+       id="g3775"><path
+         d="M 0,0 0.96,-0.06 3,-0.06 3.96,0"
+         id="path3777"
+         style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /><g
+         transform="translate(22.56,18.54)"
+         id="g3779"><path
+           d="M 0,0 0.06,0.96 0.06,3 0,3.96"
+           id="path3781"
+           style="fill:none;stroke:#231f20;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g></g></g></g><g
+   transform="translate(160.08,101.811)"
+   id="g3783"><path
+     d="M 0,0 307.86,0"
+     id="path3785"
+     style="fill:none;stroke:#231f20;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><g
+   transform="translate(170.1,101.691)"
+   id="g3787"><path
+     d="M 0,0 -10.02,0"
+     id="path3789"
+     style="fill:none;stroke:#231f20;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" /></g><text
+   transform="matrix(0,1,1,0,165.66,593.2105)"
+   id="text3791"><tspan
+     x="0 7.2305999 12.0132 13.9329 18.5445 23.2911 28.2717 32.298302 34.217999 36.7686 41.704201 46.450802 51.386398 56.501999 61.362 64.961998 69.882301 74.262604 78.702301 80.622002 84.762001 88.301697 93.237297 98.352898 103.2885 108.1971 112.5297"
+     y="0"
+     id="tspan3793"
+     style="font-size:9px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">MP 1бис (оборотная сторона)</tspan><tspan
+     x="115.0803"
+     y="0"
+     id="tspan3795"
+     style="font-size:9px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,225.9,299.9305)"
+   id="text3797"><tspan
+     x="0 4.8234 7.8288002 10.5888 12.8688 16.162201 17.403601 18.663601 21.909 25.322399 28.327801 31.5072 34.7826 37.674 40.259399 43.534801 46.2948 49.414799 52.4202 55.695599 58.971001 62.2644 65.269798 66.5298 69.769798 72.829803 75.805199 77.065201 80.3106 83.316002 86.729401 89.734802 92.9142 95.7342 98.014198 101.1942 104.3142 107.5896 111.6096 114.387 115.647 118.9224 121.8138 124.9932 128.2386 131.562 134.202 137.2074 140.53081 141.7722 143.0322 146.0316 147.2916 150.1116 153.1116 155.937 159.05701 161.94839 164.9538 166.21381 169.4892 172.4946 175.78799 178.84801 181.48801 184.728 187.90739 191.2308 195.06419 198.3576 201.1176 203.51759"
+     y="0"
+     id="tspan3799"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Место, предназначенное для передаточных надписей, в случае необходимости</tspan><tspan
+     x="206.88"
+     y="0"
+     id="tspan3801"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,293.7,299.9305)"
+   id="text3803"><tspan
+     x="0 4.3139882 8.2928162 12.702564 15.882594 19.717781 24.06369 28.441519 32.851265"
+     y="0"
+     id="tspan3805"
+     style="font-size:7.98000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Квитанция</tspan><tspan
+     x="36.900318"
+     y="0"
+     id="tspan3807"
+     style="font-size:7.98000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,316.86,299.9905)"
+   id="text3809"><tspan
+     x="0 3.72 7.0194001 9.8987999 12.6588 16.498199 19.5096 22.749599 24.729601 25.976999 27.237 29.877001 32.997002 36.296398 39.0564 41.336399 44.636398 47.6418 50.653198 54.072601 57.054001 61.254002 65.753998 69.083397 72.412804 73.672798 76.7202 79.9002 82.995598 86.277 89.576401 92.336403 94.736397 97.736397"
+     y="0"
+     id="tspan3811"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Документ, удостоверяющий личность </tspan><tspan
+     x="297.42001 301.37399 303.28799"
+     y="-1.02"
+     id="tspan3813"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N° </tspan></text>
+
+<path
+   d="m 317.34,397.731 0.30002,0 0,199.68 -0.30002,0 0,-199.68 z"
+   id="path3815"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 316.32,604.37 0.29999,0 0,82.08 -0.29999,0 0,-82.08 z"
+   id="path3817"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,340.74,299.9905)"
+   id="text3819"><tspan
+     x="0 3.0107999 7.0116 10.2024 13.1052 16.392 17.652 20.591999"
+     y="0"
+     id="tspan3821"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">выдан в </tspan><tspan
+     x="141.48 144.3 147.3 151.1358 296.93579 300.11761 302.93759 305.27759 308.15759 309.4176 312.4194 316.41119 319.59299 322.353 325.44479 328.7706"
+     y="-0.47999999"
+     id="tspan3823"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">кем дата выдачи </tspan></text>
+
+<path
+   d="m 341.22,320.571 0.30002,0 0,120.9 -0.30002,0 0,-120.9 z"
+   id="path3825"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 340.74,451.131 0.29999,0 0,145.8 -0.29999,0 0,-145.8 z"
+   id="path3827"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 340.74,632.51 0.29999,0 0,53.94 -0.29999,0 0,-53.94 z"
+   id="path3829"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,364.92,299.9905)"
+   id="text3831"><tspan
+     x="0 3.2748001 6.1655998 7.4256001 10.7484 14.5812 17.556 202.65601 205.83479 208.6548 210.9948 213.8748 215.19479 218.51759 219.7776 223.6104 226.6152 229.3752 231.6552 234.948 236.20799 239.6208 242.86079 247.06081 250.1808 253.18559 256.46039 259.7832 262.758"
+     y="0"
+     id="tspan3833"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">на имя дата и место рождения </tspan></text>
+
+<path
+   d="m 365.4,317.571 0.30002,0 0,185.1 -0.30002,0 0,-185.1 z"
+   id="path3835"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 365.4,570.23 0.30002,0 0,116.22 -0.30002,0 0,-116.22 z"
+   id="path3837"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,388.14,299.9905)"
+   id="text3839"><tspan
+     x="0 3.8388 7.1375999 10.1376 12.9684 16.0632 19.073999 22.354799 25.2516 26.5116 29.271601 32.031601 35.870399 39.709202"
+     y="0"
+     id="tspan3841"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Получена сумма</tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,386.1,342.5905)"
+   id="text3843"><tspan
+     x="0 1.74"
+     y="0"
+     id="tspan3845"
+     style="font-size:3.48000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">1 </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,388.62,441.2905)"
+   id="text3847"><tspan
+     x="0 4.8126001 7.8072 10.5672 12.8472 16.129801 17.389799 20.7024 21.9624 25.2024 28.0224 30.3624 33.302399"
+     y="0"
+     id="tspan3849"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Место и дата </tspan></text>
+
+<path
+   d="m 389.21999,344.331 0.18002,0 0,95.04 -0.18002,0 0,-95.04 z"
+   id="path3851"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><path
+   d="m 389.1,476.871 0.29999,0 0,209.94 -0.29999,0 0,-209.94 z"
+   id="path3853"
+   style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none" /><text
+   transform="matrix(0,1,1,0,412.92,299.9305)"
+   id="text3855"><tspan
+     x="0 3.1170001 5.7600002 9 12.24 15.24 19.74 23.040001 26.4"
+     y="0"
+     id="tspan3857"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Входящий </tspan><tspan
+     x="0 3.96"
+     y="14.4"
+     id="tspan3859"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">N°</tspan><tspan
+     x="5.8800001"
+     y="14.4"
+     id="tspan3861"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,412.92,444.1705)"
+   id="text3863"><tspan
+     x="0 3.8448 7.0847998 10.2756 13.5324 16.832399 19.5312 22.530001 23.790001 27.046801 30.351601 33.351601 36.1716 39.2724 42.0924 44.372398 47.372398 50.425201"
+     y="0"
+     id="tspan3865"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Подпись получателя</tspan><tspan
+     x="53.400002"
+     y="0"
+     id="tspan3867"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,404.04,603.7705)"
+   id="text3869"><tspan
+     x="0 5.04 7.3200002 10.3344 14.1768 17.4312 20.445601 23.496 26.492399 27.752399 30.572399 33.572399 36.4524 40.412399 43.588799 47.548801 49.3992 52.653599 55.703999 58.523998 60.804001 63.804001 66.854401 69.8508 74.353203 77.653198 80.593201"
+     y="0"
+     id="tspan3871"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Штемпель службы-плательщика</tspan><tspan
+     x="83.459999"
+     y="0"
+     id="tspan3873"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,451.68,299.9905)"
+   id="text3875"><tspan
+     x="0 1.7998559"
+     y="0"
+     id="tspan3877"
+     style="font-size:3.48000002px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">1 </tspan></text>
+
+<text
+   transform="matrix(0,1,1,0,453.66,302.9905)"
+   id="text3879"><tspan
+     x="0 2.9400001 5.8800001 8.7701998 11.3544 14.1744 16.5744 19.5606 20.820601 23.580601 26.340599 30.1728 33.952801 36.777 38.097 41.419201 42.679199 45.677399 48.5676 51.6078 55.835999 58.355999 61.175999 62.436001 65.434196 69.422401 72.666603 75.706802 78.526802 80.926804"
+     y="0"
+     id="tspan3881"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular">Указать сумму и валюту выплаты</tspan><tspan
+     x="84.959999"
+     y="0"
+     id="tspan3883"
+     style="font-size:6px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Myriad Pro;-inkscape-font-specification:MyriadPro-Regular"> </tspan></text>
+</g></svg>
+]]></Content>
+                            </SVGImage>
+                        </PictureView>
+                    </ChildViews>
+                </BandView>
+            </Views>
+        </Page>
+    </Pages>
+	<Variables>		
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="PAYMENT"/>
+		<Variable Name="Variable3" Type="expression" Content="f:toRoublesRU([Variable2])"/>
+		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
+		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="FIRM_PRED" />
+		<Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="FIRM_TEL" />
+		<Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>
+		<Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="REGION1"/>
+		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="AREA1" />
+		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+        <Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="index_from"/>
+        <Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_FROM"/>
+        <Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="COUNTRY_TO"/>  
+	</Variables>
+	<Datasets>
+        <Dataset Name="PostDataSet">
+            <Rows>
+                <Row>
+					<Column Name="Variable1"/>
+					<Column Name="Variable2"/>
+					<Column Name="Variable3"/>
+					<Column Name="Variable4"/>
+					<Column Name="Variable5"/>
+					<Column Name="Variable6"/>
+					<Column Name="Variable7"/>
+					<Column Name="Variable8"/>
+					<Column Name="Variable9"/>
+					<Column Name="Variable10"/>
+					<Column Name="Variable11"/>
+					<Column Name="Variable12"/>
+					<Column Name="Variable13"/>
+					<Column Name="Variable14"/>
+					<Column Name="Variable15"/>
+					<Column Name="Variable16"/>
+					<Column Name="Variable17"/>
+					<Column Name="Variable18"/>
+					<Column Name="Variable19"/>
+				 </Row>
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

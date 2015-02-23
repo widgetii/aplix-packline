@@ -309,7 +309,7 @@
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 				<quantity>3</quantity>
 			</enclosure>
-			<postType>PARCEL</postType>
+			<postType>FORPARCEL</postType>
 			<paymentFlags>CASH_ON_DELIVERY</paymentFlags>
 			<orderId>123456789</orderId>
 			<date>2014-12-25T13:07:18.039+03:00</date>
