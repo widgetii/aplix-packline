@@ -602,12 +602,19 @@
 					Height="20" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
 					<Memo>[Variable1]</Memo>
 				</BarCodeView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="left"
+					VerticalAlign="top" Rotate="0" Name="MemoView2" Left="5" Top="85" Width="90" Height="7" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+					FrameColor="#000000" FillColor="transparent" Visible="true">
+					<Memo>[Variable4]</Memo>
+				</MemoView>
 			</Views>
 		</Page>
 	</Pages>
 	<Variables>
 		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="barkod" />
 		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="FIO" />
+		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="data_rep" />
+		<Variable Name="Variable4" Type="expression" Content="f:formatDate([Variable3], 'dd.MM.yyyy')"/>
 	</Variables>
 	<Datasets>
 		<Dataset Name="PostDataSet">
@@ -615,6 +622,8 @@
 				<Row>
 					<Column Name="Variable1" />
 					<Column Name="Variable2" />
+					<Column Name="Variable3" />
+					<Column Name="Variable4" />
 				</Row>
 			</Rows>
 		</Dataset>

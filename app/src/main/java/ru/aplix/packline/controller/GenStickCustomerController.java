@@ -70,17 +70,18 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 		countButton3.setToggleGroup(countGroup);
 		countButton4.setToggleGroup(countGroup);
 		countGroup.selectToggle(countButton2);
-
-		setCount(countButton1, 1);
-		setCount(countButton2, 2);
-		setCount(countButton3, 3);
-		setCount(countButton4, 4);
 	}
 
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-		
+
+		setCount(countButton1, 1);
+		setCount(countButton2, 2);
+		setCount(countButton3, 3);
+		setCount(countButton4, 4);
+		countButton2.setSelected(true);
+
 		setProgress(false);
 
 		customerCode = null;
@@ -110,7 +111,28 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				processBarcode(value);
+				if (value == null || value.length() == 0 || progressVisibleProperty.get() || confirmationDialog != null) {
+					return;
+				}
+
+				String barcode;
+				try {
+					String[] args = value.split("#");
+					if (args.length == 2) {
+						barcode = args[0];
+						Integer count = Integer.valueOf(args[1]);
+
+						countButton4.setText(count.toString());
+						countButton4.setUserData(count);
+						countButton4.setSelected(true);
+					} else {
+						barcode = value;
+					}
+				} catch (Exception e) {
+					return;
+				}
+
+				processBarcode(barcode);
 			}
 		});
 	}
@@ -201,10 +223,6 @@ public class GenStickCustomerController extends StandardController<GenStickCusto
 	}
 
 	private void processBarcode(final String value) {
-		if (progressVisibleProperty.get() || confirmationDialog != null) {
-			return;
-		}
-
 		task = new Task<Customer>() {
 
 			private int lastPrintedTagIndex = -1;
