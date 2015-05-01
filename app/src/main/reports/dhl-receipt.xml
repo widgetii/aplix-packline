@@ -24,6 +24,12 @@
                       Visible="true"
                       Width="101.47951">
                <ChildViews>
+					<BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39" ModuleWidth="0.3" Angle="0" Name="BarCodeView1" 
+								Left="3.3111424" Top="1.5734261" Width="53.724445" Height="16.0" 
+								Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+						<Memo>[barcod]</Memo>
+					</BarCodeView>
+			   
                   <MemoView BoundHeight="2.5204868" BoundLeft="3.264506" BoundTop="15.12292"
                             BoundWidth="53.817715"
                             FillColor="transparent"
@@ -41,9 +47,9 @@
                             Name="MemoView1"
                             Rotate="0"
                             Stretched="false"
-                            TextAlign="center"
+                            TextAlign="left"
                             TextDecoration="none"
-                            Top="15.209788"
+                            Top="18.209788"
                             VerticalAlign="middle"
                             Visible="true"
                             Width="53.724445">
@@ -428,7 +434,7 @@
                             VerticalAlign="top"
                             Visible="true"
                             Width="26.022778">
-                     <Memo>ЗАО "ДХЛ Интернешнл"
+                     <Memo>АО "ДХЛ Интернешнл"
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="1.989858" BoundLeft="3.0779629" BoundTop="30.24584"
@@ -1415,6 +1421,7 @@
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
 		<Variable Name="itogo" Type="expression" Content="[total_cost] + f:choose([Variable18] = '', 0, [Variable18])" />
 		<Variable Name="itogo_rub" Type="expression" Content="f:str([Variable17], 2)" />
+		<Variable Name="barcod" Type="expression" Content="[Variable1] + '$I' + [Variable17]" />
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="data_rep"/>
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
