@@ -93,23 +93,26 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		queryId = RandomStringUtils.randomAlphanumeric(15);
 	}
 
+	protected String getJarFolder() {
+		if (jarFolder == null) {
+			File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
+			jarFolder = confFolder != null ? confFolder.getParent() : "";
+			fr2afopConfigFileName = jarFolder + Const.FR2AFOP_CONF_FILE;
+			fopConfigFileName = jarFolder + Const.FOP_CONF_FILE;
+		}
+		return jarFolder;
+	}
+
 	public void printForms(String containerId, String postId, PrintForm printForm) throws PackLineException {
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(String.format(getResources().getString("error.printer.not.assigned"), printForm.getName()));
 		}
 
 		try {
-			if (jarFolder == null) {
-				File confFolder = new File(Configuration.getConfigFileName()).getParentFile();
-				jarFolder = confFolder != null ? confFolder.getParent() : "";
-				fr2afopConfigFileName = jarFolder + Const.FR2AFOP_CONF_FILE;
-				fopConfigFileName = jarFolder + Const.FOP_CONF_FILE;
-			}
-
 			if (printForm.getFile() == null) {
 				downloadAndPrintForm(containerId, printForm.getName(), printForm.getPrinter());
 			} else {
-				String reportFileName = jarFolder + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
+				String reportFileName = getJarFolder() + String.format(Const.REPORT_FILE_TEMPLATE, printForm.getFile());
 				printFormFromFile(containerId, postId, reportFileName, printForm.getPrinter(), printForm.getName(), printForm.getCopies());
 			}
 
@@ -229,6 +232,17 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 					baos2 = memoryBuffer;
 
 					rxto.setOutputFormat(MimeConstants.MIME_PCL);
+					rxto.setOutputStreamOpener(new OutputStreamOpener() {
+						@Override
+						public OutputStream openStream() throws IOException {
+							return memoryBuffer;
+						}
+					});
+				} else if (PrintMode.PDF.equals(printer.getPrintMode())) {
+					final ByteArrayOutputStream memoryBuffer = new ByteArrayOutputStream(BUFFER_SIZE);
+					baos2 = memoryBuffer;
+
+					rxto.setOutputFormat(MimeConstants.MIME_PDF);
 					rxto.setOutputStreamOpener(new OutputStreamOpener() {
 						@Override
 						public OutputStream openStream() throws IOException {
@@ -478,7 +492,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		}
 
 		// Invoke pdf printer
-		String command = String.format("\"%s%s%s\" -p \"%s\" \"%s\"", jarFolder, File.separatorChar, Const.PDF_PRINTER_FILE, printer.getName(),
+		String command = String.format("\"%s%s%s\" -p \"%s\" \"%s\"", getJarFolder(), File.separatorChar, Const.PDF_PRINTER_FILE, printer.getName(),
 				tempFile.getAbsolutePath());
 		LOG.debug("Executing command: " + command);
 		Runtime.getRuntime().exec(command);

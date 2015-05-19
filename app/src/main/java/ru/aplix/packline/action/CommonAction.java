@@ -307,6 +307,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemCloseRegistry = null;
+		if (Configuration.getInstance().getRoles().getLabeling()) {
+			itemCloseRegistry = new MenuItem(resources.getString("menu.registry.close"));
+			itemCloseRegistry.setStyle(menuItemStyle2);
+			itemCloseRegistry.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					closeRegistry();
+				}
+			});
+		}
+
 		MenuItem itemActivePosts = null;
 		if (Configuration.getInstance().getRoles().getLabeling()) {
 			itemActivePosts = new MenuItem(resources.getString("menu.active.posts"));
@@ -334,6 +345,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemControlReturns != null) {
 			subMenu.getItems().add(itemControlReturns);
+		}
+		if (itemCloseRegistry != null) {
+			subMenu.getItems().add(itemCloseRegistry);
 		}
 		if (itemActivePosts != null) {
 			subMenu.getItems().add(itemActivePosts);
@@ -442,6 +456,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void controlReturns() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.CONTROL_RETURNS_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void closeRegistry() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.CLOSE_REGISTRY_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 

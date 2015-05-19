@@ -6,5 +6,5 @@
 		port="{http://www.aplix.ru/PackingLine}PackingLineSoap" 
 		implementation="ru.aplix.packline.post.MockService" 
 		url-pattern="/PackingLine"
-		wsdl="WEB-INF/wsdl/PackingLine.1cws.wsdl" />
+		wsdl="/WEB-INF/wsdl/PackingLine.1cws.wsdl" />
 </endpoints>

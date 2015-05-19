@@ -218,6 +218,20 @@
 					<xs:enumeration value="BOXBERRY"/>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:complexType name="PrintDocument">
+				<xs:sequence>
+					<xs:element name="fileContents" type="xs:base64Binary" nillable="true"/>
+					<xs:element name="copies" type="xs:int"/>
+					<xs:element name="format" type="xs:string"/>
+					<xs:element name="duplex" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PrintingDocumentsResponse">
+				<xs:sequence>
+					<xs:element name="items" type="tns:PrintDocument" maxOccurs="unbounded"/>
+					<xs:element name="error" type="xs:string" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Registry">
 				<xs:sequence>
 					<xs:element name="id" type="xs:string"/>
@@ -420,6 +434,20 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:CheckAddressResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CloseAndPrintCurrentRegistry">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="carrier" type="tns:PostType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CloseAndPrintCurrentRegistryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -669,17 +697,15 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetBoxCount">
+			<xs:element name="GetActivePosts">
 				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="boxTypeId" type="xs:string"/>
-					</xs:sequence>
+					<xs:sequence/>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetBoxCountResponse">
+			<xs:element name="GetActivePostsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:int"/>
+						<xs:element name="return" type="tns:PostList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -689,6 +715,20 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetActivePostsCountResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxCount">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="boxTypeId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetBoxCountResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:int"/>
@@ -723,6 +763,20 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="GetDocumentsForPrinting">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="postId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDocumentsForPrintingResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="GetLabel">
 				<xs:complexType>
 					<xs:sequence>
@@ -734,6 +788,20 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="xs:base64Binary" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetLabel2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="containerId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetLabel2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:GetLabelResponse2" nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -907,32 +975,6 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetLabel2">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetLabel2Response">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:GetLabelResponse2" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetActivePosts">
-				<xs:complexType>
-					<xs:sequence/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetActivePostsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:PostList"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AccountContainerCostRequestMessage">
@@ -994,6 +1036,12 @@
 	</message>
 	<message name="CheckAddressResponseMessage">
 		<part name="parameters" element="tns:CheckAddressResponse"/>
+	</message>
+	<message name="CloseAndPrintCurrentRegistryRequestMessage">
+		<part name="parameters" element="tns:CloseAndPrintCurrentRegistry"/>
+	</message>
+	<message name="CloseAndPrintCurrentRegistryResponseMessage">
+		<part name="parameters" element="tns:CloseAndPrintCurrentRegistryResponse"/>
 	</message>
 	<message name="DeleteIncomingFromRegistryRequestMessage">
 		<part name="parameters" element="tns:DeleteIncomingFromRegistry"/>
@@ -1097,6 +1145,18 @@
 	<message name="GenerateTagsForIncomingsResponseMessage">
 		<part name="parameters" element="tns:GenerateTagsForIncomingsResponse"/>
 	</message>
+	<message name="GetActivePostsRequestMessage">
+		<part name="parameters" element="tns:GetActivePosts"/>
+	</message>
+	<message name="GetActivePostsResponseMessage">
+		<part name="parameters" element="tns:GetActivePostsResponse"/>
+	</message>
+	<message name="GetActivePostsCountRequestMessage">
+		<part name="parameters" element="tns:GetActivePostsCount"/>
+	</message>
+	<message name="GetActivePostsCountResponseMessage">
+		<part name="parameters" element="tns:GetActivePostsCountResponse"/>
+	</message>
 	<message name="GetBoxCountRequestMessage">
 		<part name="parameters" element="tns:GetBoxCount"/>
 	</message>
@@ -1115,11 +1175,23 @@
 	<message name="GetCustomerResponseMessage">
 		<part name="parameters" element="tns:GetCustomerResponse"/>
 	</message>
+	<message name="GetDocumentsForPrintingRequestMessage">
+		<part name="parameters" element="tns:GetDocumentsForPrinting"/>
+	</message>
+	<message name="GetDocumentsForPrintingResponseMessage">
+		<part name="parameters" element="tns:GetDocumentsForPrintingResponse"/>
+	</message>
 	<message name="GetLabelRequestMessage">
 		<part name="parameters" element="tns:GetLabel"/>
 	</message>
 	<message name="GetLabelResponseMessage">
 		<part name="parameters" element="tns:GetLabelResponse"/>
+	</message>
+	<message name="GetLabel2RequestMessage">
+		<part name="parameters" element="tns:GetLabel2"/>
+	</message>
+	<message name="GetLabel2ResponseMessage">
+		<part name="parameters" element="tns:GetLabel2Response"/>
 	</message>
 	<message name="GetOperatorRequestMessage">
 		<part name="parameters" element="tns:GetOperator"/>
@@ -1193,24 +1265,6 @@
 	<message name="UpdateContainer2ResponseMessage">
 		<part name="parameters" element="tns:UpdateContainer2Response"/>
 	</message>
-	<message name="GetLabel2RequestMessage">
-		<part name="parameters" element="tns:GetLabel2"/>
-	</message>
-	<message name="GetLabel2ResponseMessage">
-		<part name="parameters" element="tns:GetLabel2Response"/>
-	</message>
-	<message name="GetActivePostsRequestMessage">
-		<part name="parameters" element="tns:GetActivePosts"/>
-	</message>
-	<message name="GetActivePostsResponseMessage">
-		<part name="parameters" element="tns:GetActivePostsResponse"/>
-	</message>
-	<message name="GetActivePostsCountRequestMessage">
-		<part name="parameters" element="tns:GetActivePostsCount"/>
-	</message>
-	<message name="GetActivePostsCountResponseMessage">
-		<part name="parameters" element="tns:GetActivePostsCountResponse"/>
-	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AccountContainerCost">
 			<input message="tns:AccountContainerCostRequestMessage"/>
@@ -1251,6 +1305,10 @@
 		<operation name="CheckAddress">
 			<input message="tns:CheckAddressRequestMessage"/>
 			<output message="tns:CheckAddressResponseMessage"/>
+		</operation>
+		<operation name="CloseAndPrintCurrentRegistry">
+			<input message="tns:CloseAndPrintCurrentRegistryRequestMessage"/>
+			<output message="tns:CloseAndPrintCurrentRegistryResponseMessage"/>
 		</operation>
 		<operation name="DeleteIncomingFromRegistry">
 			<input message="tns:DeleteIncomingFromRegistryRequestMessage"/>
@@ -1320,6 +1378,14 @@
 			<input message="tns:GenerateTagsForIncomingsRequestMessage"/>
 			<output message="tns:GenerateTagsForIncomingsResponseMessage"/>
 		</operation>
+		<operation name="GetActivePosts">
+			<input message="tns:GetActivePostsRequestMessage"/>
+			<output message="tns:GetActivePostsResponseMessage"/>
+		</operation>
+		<operation name="GetActivePostsCount">
+			<input message="tns:GetActivePostsCountRequestMessage"/>
+			<output message="tns:GetActivePostsCountResponseMessage"/>
+		</operation>
 		<operation name="GetBoxCount">
 			<input message="tns:GetBoxCountRequestMessage"/>
 			<output message="tns:GetBoxCountResponseMessage"/>
@@ -1332,9 +1398,17 @@
 			<input message="tns:GetCustomerRequestMessage"/>
 			<output message="tns:GetCustomerResponseMessage"/>
 		</operation>
+		<operation name="GetDocumentsForPrinting">
+			<input message="tns:GetDocumentsForPrintingRequestMessage"/>
+			<output message="tns:GetDocumentsForPrintingResponseMessage"/>
+		</operation>
 		<operation name="GetLabel">
 			<input message="tns:GetLabelRequestMessage"/>
 			<output message="tns:GetLabelResponseMessage"/>
+		</operation>
+		<operation name="GetLabel2">
+			<input message="tns:GetLabel2RequestMessage"/>
+			<output message="tns:GetLabel2ResponseMessage"/>
 		</operation>
 		<operation name="GetOperator">
 			<input message="tns:GetOperatorRequestMessage"/>
@@ -1383,18 +1457,6 @@
 		<operation name="UpdateContainer2">
 			<input message="tns:UpdateContainer2RequestMessage"/>
 			<output message="tns:UpdateContainer2ResponseMessage"/>
-		</operation>
-		<operation name="GetLabel2">
-			<input message="tns:GetLabel2RequestMessage"/>
-			<output message="tns:GetLabel2ResponseMessage"/>
-		</operation>
-		<operation name="GetActivePosts">
-			<input message="tns:GetActivePostsRequestMessage"/>
-			<output message="tns:GetActivePostsResponseMessage"/>
-		</operation>
-		<operation name="GetActivePostsCount">
-			<input message="tns:GetActivePostsCountRequestMessage"/>
-			<output message="tns:GetActivePostsCountResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1482,6 +1544,15 @@
 		</operation>
 		<operation name="CheckAddress">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CloseAndPrintCurrentRegistry">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1642,6 +1713,24 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetActivePosts">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetActivePostsCount">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetBoxCount">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
 			<input>
@@ -1669,8 +1758,26 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetDocumentsForPrinting">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetLabel">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetLabel2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1786,33 +1893,6 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="GetLabel2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetActivePosts">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetActivePostsCount">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
 	</binding>
 	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
 		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1899,6 +1979,15 @@
 		</operation>
 		<operation name="CheckAddress">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CloseAndPrintCurrentRegistry">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2059,6 +2148,24 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetActivePosts">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetActivePostsCount">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetBoxCount">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
 			<input>
@@ -2086,8 +2193,26 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetDocumentsForPrinting">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetLabel">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetLabel2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2196,33 +2321,6 @@
 		</operation>
 		<operation name="UpdateContainer2">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetLabel2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetActivePosts">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetActivePostsCount">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

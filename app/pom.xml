@@ -3,7 +3,7 @@
 
 	<name>PackLine App</name>
 	<url>http://git.aplix.ru/packline</url>
-	<version>1.16</version>
+	<version>1.17</version>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>packline</artifactId>
 	<packaging>jar</packaging>
@@ -163,6 +163,11 @@
 			<resource>
 				<directory>${basedir}/src/main/reports</directory>
 				<targetPath>${project.build.directory}/reports</targetPath>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/bin-dep</directory>
+				<targetPath>${project.build.directory}/bin</targetPath>
 				<filtering>false</filtering>
 			</resource>
 		</resources>

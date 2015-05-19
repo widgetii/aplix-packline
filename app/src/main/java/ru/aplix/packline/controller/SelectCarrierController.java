@@ -3,9 +3,10 @@ package ru.aplix.packline.controller;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import ru.aplix.packline.action.ReturnRegistryCarrierAction;
+import ru.aplix.packline.PackLineException;
+import ru.aplix.packline.action.SelectCarrierAction;
 
-public class ReturnRegistryCarrierController extends StandardController<ReturnRegistryCarrierAction> {
+public class SelectCarrierController extends StandardController<SelectCarrierAction> {
 
 	@FXML
 	private ImageView logoAplix;
@@ -36,7 +37,7 @@ public class ReturnRegistryCarrierController extends StandardController<ReturnRe
 	@FXML
 	private ImageView logoPonyexpress;
 
-	public void onImageClicked(MouseEvent mouseEvent) {
+	public void onImageClicked(MouseEvent mouseEvent) throws PackLineException {
 		String value = null;
 		if (mouseEvent.getSource().equals(logoAplix)) {
 			value = "Aplix";

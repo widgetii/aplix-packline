@@ -18,6 +18,7 @@
 	<alias alias="firstWorkflowAction" name="action1" />
 	<alias alias="startWorkflowAction" name="action2" />
 	<alias alias="controlReturnsAction" name="action16" />
+	<alias alias="closeRegistryAction" name="action22" />
 
 	<bean id="action1" class="ru.aplix.packline.action.AuthAction">
 		<property name="idleTimeout" value="SHORT" />
@@ -29,7 +30,7 @@
 		<property name="resetWorkAction" ref="action1" />
 		<property name="acceptanceAction" ref="action3" />
 		<property name="orderActAction" ref="action6" />
-		<property name="packingAction" ref="action7" />
+		<property name="packingAction" ref="action7_pre" />
 		<property name="markingAction" ref="action10" />
 	</bean>
 
@@ -51,6 +52,11 @@
 	<bean id="action6" class="ru.aplix.packline.action.OrderActAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="action7_pre" class="ru.aplix.packline.action.PrintFormsBeforePackingAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action7" />
 	</bean>
 
 	<bean id="action7" class="ru.aplix.packline.action.PackTypeAction">
@@ -108,7 +114,7 @@
 		<property name="normalAction" ref="action2" />
 	</bean>
 
-	<bean id="action16" class="ru.aplix.packline.action.ReturnRegistryCarrierAction">
+	<bean id="action16" class="ru.aplix.packline.action.SelectCarrierAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action17" />
 	</bean>
@@ -139,6 +145,16 @@
 		<property name="nextAction" ref="action18" />
 	</bean>
 
+	<bean id="action22" class="ru.aplix.packline.action.SelectCarrierAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action23" />
+	</bean>
+
+	<bean id="action23" class="ru.aplix.packline.action.CloseRegistryAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+
 	<bean id="genStickAction" class="ru.aplix.packline.action.GenStickAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
@@ -158,7 +174,7 @@
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>
-	
+
 	<bean id="activePostsAction" class="ru.aplix.packline.action.ActivePostsAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />

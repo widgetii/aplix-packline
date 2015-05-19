@@ -20,6 +20,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.math.RandomUtils;
 
 @WebService(name = "MockPostService", serviceName = "PackingLine", portName = "PackingLineSoap", endpointInterface = "ru.aplix.packline.post.PackingLinePortType", wsdlLocation = "WEB-INF/wsdl/PackingLine.1cws.wsdl", targetNamespace = "http://www.aplix.ru/PackingLine")
 public class MockService implements PackingLinePortType {
@@ -796,6 +797,28 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public PrintingDocumentsResponse getDocumentsForPrinting(String postId) {
+		PrintingDocumentsResponse response = new PrintingDocumentsResponse();
+		if (RandomUtils.nextInt(10) == 0) {
+			PrintDocument pd = new PrintDocument();
+			pd.setFileContents(getLabel(postId));
+			pd.setCopies(1);
+			response.getItems().add(pd);
+		}
+		return response;
+	}
+
+	@Override
+	public PrintingDocumentsResponse closeAndPrintCurrentRegistry(PostType carrier) {
+		PrintingDocumentsResponse response = new PrintingDocumentsResponse();
+		PrintDocument pd = new PrintDocument();
+		pd.setFileContents(getLabel(null));
+		pd.setCopies(1);
+		response.getItems().add(pd);
+		return response;
+	}
+
+	@Override
 	public String fileUpload(String fileId, String path, DocumentType document) {
 		return null;
 	}
@@ -836,7 +859,7 @@ public class MockService implements PackingLinePortType {
 		if (configuration == null) {
 			try {
 				ServletContext servletContext = (ServletContext) wsContext.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-				InputStream is = servletContext.getResourceAsStream("WEB-INF/configuration.xml");
+				InputStream is = servletContext.getResourceAsStream("/WEB-INF/configuration.xml");
 
 				JAXBContext inst = JAXBContext.newInstance(Configuration.class);
 				Unmarshaller unmarshaller = inst.createUnmarshaller();

@@ -140,6 +140,19 @@ public class HardwareConfiguration {
 		return printer;
 	}
 
+	public Printer lookupPrinter(final PrintMode printMode) {
+		if (printMode == null || printers == null) {
+			return null;
+		}
+		Printer printer = (Printer) CollectionUtils.find(printers, new Predicate() {
+			@Override
+			public boolean evaluate(Object item) {
+				return printMode.equals(((Printer) item).getPrintMode());
+			}
+		});
+		return printer;
+	}
+
 	public Controller getController() {
 		if (controller == null) {
 			controller = new Controller();

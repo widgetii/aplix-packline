@@ -10,7 +10,7 @@ public enum PrintMode {
 
 	@XmlEnumValue("JAVA2D")
 	JAVA2D,
-	
+
 	@XmlEnumValue("JAVA2D_WO_COPIES")
 	JAVA2D_WO_COPIES,
 
@@ -19,6 +19,9 @@ public enum PrintMode {
 
 	@XmlEnumValue("PCL")
 	PCL,
+
+	@XmlEnumValue("PDF")
+	PDF,
 
 	@XmlEnumValue("EZPL")
 	EZPL,
