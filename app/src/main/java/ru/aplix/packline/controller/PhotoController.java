@@ -1,5 +1,6 @@
 package ru.aplix.packline.controller;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,8 @@ import ru.aplix.packline.hardware.camera.ImageListener;
 import ru.aplix.packline.hardware.camera.PhotoCamera;
 import ru.aplix.packline.hardware.camera.PhotoCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.PhotoCameraImage;
+import ru.aplix.packline.hardware.scales.Scales;
+import ru.aplix.packline.hardware.scales.ScalesBundle;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
 
@@ -25,12 +28,37 @@ public class PhotoController extends StandardController<PhotoAction> {
 
 	private PhotoTask photoTask;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
 
-		PhotoCamera<?> pc = (PhotoCamera<?>) context.getAttribute(Const.PHOTO_CAMERA);
-		if (pc != null) {
+		List<PhotoCamera<?>> pcs = (List<PhotoCamera<?>>) context.getAttribute(Const.PHOTO_CAMERAS);
+		if (pcs != null && pcs.size() > 0) {
+			// Get first photo camera in list
+			// (weight can be inputed manually)
+			PhotoCamera<?> pc = pcs.get(0);
+
+			// Make photo only above active scales
+			Scales<?> scales = (Scales<?>) getContext().getAttribute(Const.SCALES);
+			if (scales != null && scales instanceof ScalesBundle) {
+				ScalesBundle<?> scalesBundle = ((ScalesBundle<?>) scales);
+				scales = scalesBundle.whoIsLoaded();
+				if (scales != null) {
+					int index = 0;
+					scalesBundle.resetEnumerator();
+					while (scalesBundle.hasMoreElements()) {
+						if (scales.equals(scalesBundle.nextElement())) {
+							break;
+						}
+						index++;
+					}
+					if (index > 0 && index < pcs.size()) {
+						pc = pcs.get(index);
+					}
+				}
+			}
+
 			photoTask = new PhotoTask(pc);
 			ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 			executor.submit(photoTask);
@@ -42,7 +70,7 @@ public class PhotoController extends StandardController<PhotoAction> {
 	@Override
 	public void terminate(boolean appIsStopping) {
 		super.terminate(appIsStopping);
-		
+
 		if (photoTask != null) {
 			photoTask.cancel(false);
 			photoTask = null;

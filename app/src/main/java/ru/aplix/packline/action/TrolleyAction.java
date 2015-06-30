@@ -24,7 +24,7 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 
 	public TrolleyType getTrolleyMessage() {
 		int current = 0;
-		int total = 0;
+		int total = Integer.MAX_VALUE;
 
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
 		if (order != null) {
@@ -57,8 +57,10 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 				throw new PackLineException(getResources().getString("error.post.incoming.registry.add"));
 			}
 
-			order.getIncoming().add(incoming);
 			registry.getIncoming().add(incoming);
+			if (order != null) {
+				order.getIncoming().add(incoming);
+			}
 			break;
 		case DELETE:
 			// Delete incoming from registry
@@ -77,17 +79,19 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 					return result;
 				}
 			}));
-			order.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
-				@Override
-				public boolean evaluate(Object o) {
-					Incoming item = (Incoming) o;
-					boolean result = incoming.getId().equals(item.getId());
-					if (!result && item.getBarcodes() != null) {
-						result = ArrayUtils.contains(item.getBarcodes().toArray(), incoming.getId());
+			if (order != null) {
+				order.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+					@Override
+					public boolean evaluate(Object o) {
+						Incoming item = (Incoming) o;
+						boolean result = incoming.getId().equals(item.getId());
+						if (!result && item.getBarcodes() != null) {
+							result = ArrayUtils.contains(item.getBarcodes().toArray(), incoming.getId());
+						}
+						return result;
 					}
-					return result;
-				}
-			}));
+				}));
+			}
 			break;
 		}
 	}

@@ -11,12 +11,12 @@
 			<!-- "portName"  - port name, for example "COM1" or "/dev/tty0"                      -->
 			<!-- "portSpeed" - port speed (optional), for example 57600                          -->
 			<!-- "timeout"   - receiver timeout in milliseconds (optional), for example 2000     -->
-			<Configuration portName="COM4"/>
+			<Configuration portName="COM41"/>
 		</BarcodeScanner>
 		
 		<!-- Scales driver -->
 		<!-- Available drivers: MeraScalesUniversal, MeraScalesAuto, MeraScalesByte9 -->
-		<Scales name="MeraScalesAuto" enabled="true" >
+		<Scales name="MeraScalesAuto" enabled="false" >
 			<!-- "portName"            - port name, for example "COM1" or "/dev/tty0"                                                 					-->
 			<!-- "receiveTimeout"      - timeout in milliseconds to wait for response after sending request, default 200								-->
 			<!-- "protocolName"        - protocol name: "Auto", "Byte9" (only for MeraScalesUniversal), default Byte9                 					-->
@@ -25,7 +25,7 @@
 			<!-- "commandRetries"      - maximum number of times to retry to send the command (only for MeraScalesUniversal), default 1               	-->			
 			<!-- "dataDelay"           - the delay in milliseconds between the sending of address and data (only for MeraScalesUniversal), default 200	-->
 			<!-- "steadyWeightSamples" - number of samples to aquire for steady weight calculation (only for MeraScalesUniversal), default 5			-->
-			<Configuration portName="COM6" protocolName="Byte9"/>
+			<Configuration portName="COM43" protocolName="Auto"/>
 		</Scales>
 		
 		<!-- Photo Camera driver -->
@@ -46,7 +46,7 @@
 		</DVRCamera>
 		
 		<!-- Image Scanner driver -->
-		<ImageScanner name="MorenaScanner" enabled="false" >
+		<ImageScanner name="MorenaScanner" enabled="true" >
 			<!-- "name" 		  - the name of scanner, for example "EPSON XP-200/ME-301"  							-->
 			<!-- "resolution" 	  - scanner's enlargement capability in DPI, for example "300"   						-->
 			<!-- "duplex" 		  - scan front and back sides: "true" or "false"										-->
@@ -55,7 +55,7 @@
 			<!-- "tryNextPage"	  - continue scanning the next page even though feeder is empty: "true" or "false"		-->
 			<!-- "frame"		  - sets area of scanning in pixels														-->
 			<Configuration 
-				name="WIA on TWAIN sample device" 
+				name="EPSONE04CBD (XP-205 207 Series)" 
 				resolution="300" functionalUnit="flatbed" scanMode="rgb-8" duplex="false">
 				<!--Frame x="0" y="0" width="1000" height="1000"/-->
 			</Configuration>

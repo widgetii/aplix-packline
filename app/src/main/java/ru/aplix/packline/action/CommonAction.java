@@ -285,6 +285,17 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 			});
 		}
 
+		MenuItem itemRemarking = null;
+		if (Configuration.getInstance().getRoles().getLabeling()) {
+			itemRemarking = new MenuItem(resources.getString("menu.remarking"));
+			itemRemarking.setStyle(menuItemStyle2);
+			itemRemarking.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					remarking();
+				}
+			});
+		}
+
 		MenuItem itemZebraTest = null;
 		if (Configuration.getInstance().getRoles().getLabeling()) {
 			itemZebraTest = new MenuItem(resources.getString("menu.zebra.test"));
@@ -339,6 +350,9 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 		}
 		if (itemWarrantyCard != null) {
 			subMenu.getItems().add(itemWarrantyCard);
+		}
+		if (itemRemarking != null) {
+			subMenu.getItems().add(itemRemarking);
 		}
 		if (itemZebraTest != null) {
 			subMenu.getItems().add(itemZebraTest);
@@ -444,6 +458,12 @@ public abstract class CommonAction<Controller extends StandardWorkflowController
 	private void fillWarrantyCard() {
 		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
 		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.WARRANTY_CARD_ACTION_BEAN_NAME);
+		wa.execute(getContext());
+	}
+
+	private void remarking() {
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		WorkflowAction wa = (WorkflowAction) applicationContext.getBean(Const.REMARKING_ACTION_BEAN_NAME);
 		wa.execute(getContext());
 	}
 

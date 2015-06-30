@@ -10,6 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -45,10 +46,10 @@ import ru.aplix.packline.hardware.camera.DVRCamera;
 import ru.aplix.packline.hardware.camera.DVRCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.DVRCameraFactory;
 import ru.aplix.packline.hardware.camera.PhotoCamera;
-import ru.aplix.packline.hardware.camera.PhotoCameraConnectionListener;
 import ru.aplix.packline.hardware.camera.PhotoCameraFactory;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
+import ru.aplix.packline.hardware.scales.ScalesBundleImpl;
 import ru.aplix.packline.hardware.scales.ScalesConnectionListener;
 import ru.aplix.packline.hardware.scales.ScalesFactory;
 import ru.aplix.packline.hardware.scanner.ImageScanner;
@@ -172,6 +173,7 @@ public class App extends Application implements IdleListener {
 		wa.execute(workflowContext);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeHardware() throws ClassNotFoundException, FileNotFoundException, MalformedURLException, JAXBException {
 		HardwareConfiguration configuration = Configuration.getInstance().getHardwareConfiguration();
 
@@ -212,26 +214,22 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create photo camera instance
-		if (!StringUtils.isEmpty(configuration.getPhotoCamera().getName()) && configuration.getPhotoCamera().isEnabled()) {
-			PhotoCamera<?> pc = PhotoCameraFactory.createInstance(configuration.getPhotoCamera().getName());
-			pc.setConnectOnDemand(true);
-			pc.setConfiguration(configuration.getPhotoCamera().getConfiguration());
-			pc.addConnectionListener(new PhotoCameraConnectionListener() {
-				@Override
-				public void onConnected() {
+		List<PhotoCamera<?>> photoCameraList = configuration.getPhotoCamera().stream().map(driver -> {
+			try {
+				if (!StringUtils.isEmpty(driver.getName()) && driver.isEnabled()) {
+					PhotoCamera<?> pc = PhotoCameraFactory.createInstance(driver.getName()).getClass().newInstance();
+					pc.setConfiguration(driver.getConfiguration());
+					pc.setConnectOnDemand(true);
+					return pc;
 				}
+				return null;
+			} catch (Exception cnfe) {
+				throw new RuntimeException(cnfe);
+			}
+		}).filter(photoCamera -> photoCamera != null).collect(Collectors.toList());
 
-				@Override
-				public void onDisconnected() {
-					postConnectToHardware(Const.PHOTO_CAMERA);
-				}
-
-				@Override
-				public void onConnectionFailed() {
-					postConnectToHardware(Const.PHOTO_CAMERA);
-				}
-			});
-			workflowContext.setAttribute(Const.PHOTO_CAMERA, pc);
+		if (photoCameraList != null && photoCameraList.size() > 0) {
+			workflowContext.setAttribute(Const.PHOTO_CAMERAS, photoCameraList);
 		}
 
 		// Create DVR camera instance
@@ -258,8 +256,22 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Create scales instance
-		if (!StringUtils.isEmpty(configuration.getScales().getName()) && configuration.getScales().isEnabled()) {
-			Scales<?> sc = ScalesFactory.createInstance(configuration.getScales().getName());
+		List<Scales<?>> scalesList = configuration.getScales().stream().map(driver -> {
+			try {
+				if (!StringUtils.isEmpty(driver.getName()) && driver.isEnabled()) {
+					Scales<?> sc = ScalesFactory.createInstance(driver.getName()).getClass().newInstance();
+					sc.setConfiguration(driver.getConfiguration());
+					sc.setConnectOnDemand(true);
+					return sc;
+				}
+				return null;
+			} catch (Exception cnfe) {
+				throw new RuntimeException(cnfe);
+			}
+		}).filter(scales -> scales != null).collect(Collectors.toList());
+
+		if (scalesList != null && scalesList.size() > 0) {
+			Scales<?> sc = new ScalesBundleImpl(scalesList);
 
 			// Proxy scales in order to intercept listener methods
 			ProxyFactory factory = new ProxyFactory(sc);
@@ -267,8 +279,6 @@ public class App extends Application implements IdleListener {
 			factory.addAdvisor(new DefaultPointcutAdvisor(slsmmp, slsmmp));
 			sc = (Scales<?>) factory.getProxy();
 
-			sc.setConnectOnDemand(true);
-			sc.setConfiguration(configuration.getScales().getConfiguration());
 			sc.addConnectionListener(new ScalesConnectionListener() {
 				@Override
 				public void onConnected() {
@@ -292,7 +302,7 @@ public class App extends Application implements IdleListener {
 			workflowContext.setAttribute(Const.SCALES, sc);
 		}
 
-		// Create scales instance
+		// Create image scanner instance
 		if (!StringUtils.isEmpty(configuration.getImageScanner().getName()) && configuration.getImageScanner().isEnabled()) {
 			final ImageScanner<?> is = ImageScannerFactory.createInstance(configuration.getImageScanner().getName());
 			is.setConnectOnDemand(true);
@@ -316,6 +326,7 @@ public class App extends Application implements IdleListener {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void deinitializeHardware() {
 		// Stop barcode scanner
 		BarcodeScanner<?> bs = (BarcodeScanner<?>) workflowContext.getAttribute(Const.BARCODE_SCANNER);
@@ -324,9 +335,9 @@ public class App extends Application implements IdleListener {
 		}
 
 		// Stop photo camera
-		PhotoCamera<?> pc = (PhotoCamera<?>) workflowContext.getAttribute(Const.PHOTO_CAMERA);
-		if (pc != null) {
-			pc.disconnect();
+		List<PhotoCamera<?>> pcs = (List<PhotoCamera<?>>) workflowContext.getAttribute(Const.PHOTO_CAMERAS);
+		if (pcs != null) {
+			pcs.stream().forEach(pc -> pc.disconnect());
 		}
 
 		// Stop DVR camera

@@ -37,6 +37,10 @@ public class Configuration {
 	@XmlElement(name = "post", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Post> posts;
 
+	@XmlElementWrapper(name = "pickupRequests", namespace = "http://www.aplix.ru/PackingLine")
+	@XmlElement(name = "pickupRequest", namespace = "http://www.aplix.ru/PackingLine")
+	private List<PickupRequest> pickupRequests;
+
 	@XmlElementWrapper(name = "containers", namespace = "http://www.aplix.ru/PackingLine")
 	@XmlElement(name = "container", namespace = "http://www.aplix.ru/PackingLine")
 	private List<Container> containers;
@@ -106,6 +110,17 @@ public class Configuration {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	public List<PickupRequest> getPickupRequests() {
+		if (pickupRequests == null) {
+			pickupRequests = new ArrayList<PickupRequest>();
+		}
+		return pickupRequests;
+	}
+
+	public void setPickupRequests(List<PickupRequest> pickupRequests) {
+		this.pickupRequests = pickupRequests;
 	}
 
 	public List<Container> getContainers() {

@@ -398,3 +398,29 @@
 	-fx-text-fill: black;
 	-fx-wrap-text: true;
 }
+
+.general-table .column-header .label {
+	-fx-text-fill: black;
+	-fx-effect: dropshadow(three-pass-box, rgba(240, 240, 240, 1.0), 1, 0,
+		-1, -1);
+	-fx-padding: 10 0 10 0;	
+	-fx-wrap-text: true;
+	-fx-font-family: Verdana;
+	-fx-font-size: 1em;
+	-fx-font-weight: normal;
+}
+
+.general-table .table-row-cell {
+    -fx-cell-size: 4em;
+}
+
+.general-table .table-cell {
+	-fx-alignment: CENTER;
+	-fx-text-alignment: CENTER;
+    -fx-padding: 10 0 10 0;	
+	-fx-font-family: Verdana;
+	-fx-font-size: 1em;
+	-fx-font-weight: normal;
+	-fx-text-fill: black;
+	-fx-wrap-text: true;
+}

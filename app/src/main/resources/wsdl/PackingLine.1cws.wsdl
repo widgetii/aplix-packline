@@ -99,6 +99,20 @@
 					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
+			<xs:complexType name="PickupRequest">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="customerId" type="xs:string"/>
+							<xs:element name="date" type="xs:dateTime" nillable="true"/>
+							<xs:element name="addresss" type="xs:string"/>				
+							<xs:element name="courier" type="xs:string"/>
+							<xs:element name="commentForCourier" type="xs:string"/>
+							<xs:element name="contact" type="xs:string"/>							
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
 			<xs:complexType name="Operator">
 				<xs:sequence>
 					<xs:element name="id" type="xs:string"/>
@@ -242,6 +256,7 @@
 					<xs:element name="carriedOutAndClosed" type="xs:boolean"/>
 					<xs:element name="registryType" type="tns:RegistryType" nillable="true"/>
 					<xs:element name="actionType" type="tns:ActionType" nillable="true"/>
+					<xs:element name="pickupRequest" type="tns:PickupRequest" nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="RegistryType">
@@ -533,6 +548,20 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindContainerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:Container" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SearchContainer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="trackingId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SearchContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:Container" nillable="true"/>
@@ -847,6 +876,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="GetPickupRequests">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customerId" type="xs:string"/>
+						<xs:element name="date" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPickupRequestsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PickupRequest" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="GetPlannedRegistry">
 				<xs:complexType>
 					<xs:sequence/>
@@ -975,6 +1019,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="BindRegistryWithPickupRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="pickupRequestId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BindRegistryWithPickupRequestResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:string" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AccountContainerCostRequestMessage">
@@ -1078,6 +1137,12 @@
 	</message>
 	<message name="FindContainerResponseMessage">
 		<part name="parameters" element="tns:FindContainerResponse"/>
+	</message>
+	<message name="SearchContainerRequestMessage">
+		<part name="parameters" element="tns:SearchContainer"/>
+	</message>
+	<message name="SearchContainerResponseMessage">
+		<part name="parameters" element="tns:SearchContainerResponse"/>
 	</message>
 	<message name="FindIncomingRequestMessage">
 		<part name="parameters" element="tns:FindIncoming"/>
@@ -1211,6 +1276,12 @@
 	<message name="GetOrderResponseMessage">
 		<part name="parameters" element="tns:GetOrderResponse"/>
 	</message>
+	<message name="GetPickupRequestsRequestMessage">
+		<part name="parameters" element="tns:GetPickupRequests"/>
+	</message>
+	<message name="GetPickupRequestsResponseMessage">
+		<part name="parameters" element="tns:GetPickupRequestsResponse"/>
+	</message>
 	<message name="GetPlannedRegistryRequestMessage">
 		<part name="parameters" element="tns:GetPlannedRegistry"/>
 	</message>
@@ -1264,6 +1335,12 @@
 	</message>
 	<message name="UpdateContainer2ResponseMessage">
 		<part name="parameters" element="tns:UpdateContainer2Response"/>
+	</message>
+	<message name="BindRegistryWithPickupRequestRequestMessage">
+		<part name="parameters" element="tns:BindRegistryWithPickupRequest"/>
+	</message>
+	<message name="BindRegistryWithPickupRequestResponseMessage">
+		<part name="parameters" element="tns:BindRegistryWithPickupRequestResponse"/>
 	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AccountContainerCost">
@@ -1333,6 +1410,10 @@
 		<operation name="FindContainer">
 			<input message="tns:FindContainerRequestMessage"/>
 			<output message="tns:FindContainerResponseMessage"/>
+		</operation>
+		<operation name="SearchContainer">
+			<input message="tns:SearchContainerRequestMessage"/>
+			<output message="tns:SearchContainerResponseMessage"/>
 		</operation>
 		<operation name="FindIncoming">
 			<input message="tns:FindIncomingRequestMessage"/>
@@ -1422,6 +1503,10 @@
 			<input message="tns:GetOrderRequestMessage"/>
 			<output message="tns:GetOrderResponseMessage"/>
 		</operation>
+		<operation name="GetPickupRequests">
+			<input message="tns:GetPickupRequestsRequestMessage"/>
+			<output message="tns:GetPickupRequestsResponseMessage"/>
+		</operation>
 		<operation name="GetPlannedRegistry">
 			<input message="tns:GetPlannedRegistryRequestMessage"/>
 			<output message="tns:GetPlannedRegistryResponseMessage"/>
@@ -1457,6 +1542,10 @@
 		<operation name="UpdateContainer2">
 			<input message="tns:UpdateContainer2RequestMessage"/>
 			<output message="tns:UpdateContainer2ResponseMessage"/>
+		</operation>
+		<operation name="BindRegistryWithPickupRequest">
+			<input message="tns:BindRegistryWithPickupRequestRequestMessage"/>
+			<output message="tns:BindRegistryWithPickupRequestResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
@@ -1607,6 +1696,15 @@
 		</operation>
 		<operation name="FindContainer">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SearchContainer">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1812,6 +1910,15 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetPickupRequests">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPickupRequests"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetPlannedRegistry">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
 			<input>
@@ -1886,6 +1993,15 @@
 		</operation>
 		<operation name="UpdateContainer2">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="BindRegistryWithPickupRequest">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:BindRegistryWithPickupRequest"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -2042,6 +2158,15 @@
 		</operation>
 		<operation name="FindContainer">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SearchContainer">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2247,6 +2372,15 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
+		<operation name="GetPickupRequests">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPickupRequests"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
 		<operation name="GetPlannedRegistry">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
 			<input>
@@ -2326,6 +2460,15 @@
 			</input>
 			<output>
 				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="BindRegistryWithPickupRequest">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:BindRegistryWithPickupRequest"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
 			</output>
 		</operation>
 	</binding>

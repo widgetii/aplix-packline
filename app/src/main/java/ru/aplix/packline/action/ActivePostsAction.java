@@ -52,7 +52,7 @@ public class ActivePostsAction extends CommonAction<ActivePostsController> {
 		totalPostsCount = 0;
 		for (Post post : postList.getItems()) {
 			// Retrieve corresponding order
-			Order order = postServicePort.getOrder(post.getOrderId());
+			final Order order = postServicePort.getOrder(post.getOrderId());
 			if (order == null || order.getId() == null || order.getId().length() == 0) {
 				throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 			}
@@ -155,7 +155,7 @@ public class ActivePostsAction extends CommonAction<ActivePostsController> {
 		// Build result list
 		List<PostTypeItem> resultList = new ArrayList<PostTypeItem>();
 		totalPostsCount = 0;
-		for (Post post : postList.getItems()) {
+		for (final Post post : postList.getItems()) {
 			// Find customer item and create a new one of not found
 			PostTypeItem postTypeItem = (PostTypeItem) CollectionUtils.find(resultList, new Predicate() {
 				@Override
@@ -171,7 +171,7 @@ public class ActivePostsAction extends CommonAction<ActivePostsController> {
 			}
 
 			// Retrieve corresponding order
-			Order order = postServicePort.getOrder(post.getOrderId());
+			final Order order = postServicePort.getOrder(post.getOrderId());
 			if (order == null || order.getId() == null || order.getId().length() == 0) {
 				throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 			}

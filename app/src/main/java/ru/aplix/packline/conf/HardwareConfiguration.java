@@ -27,10 +27,10 @@ public class HardwareConfiguration {
 	private Driver barcodeScanner;
 
 	@XmlElement(name = "Scales", type = Driver.class)
-	private Driver scales;
+	private List<Driver> scales;
 
 	@XmlElement(name = "PhotoCamera", type = Driver.class)
-	private Driver photoCamera;
+	private List<Driver> photoCamera;
 
 	@XmlElement(name = "DVRCamera", type = Driver.class)
 	private Driver dvrCamera;
@@ -72,25 +72,25 @@ public class HardwareConfiguration {
 		this.barcodeScanner = barcodeScanner;
 	}
 
-	public Driver getScales() {
+	public List<Driver> getScales() {
 		if (scales == null) {
-			scales = new Driver();
+			scales = new ArrayList<Driver>();
 		}
 		return scales;
 	}
 
-	public void setScales(Driver scales) {
+	public void setScales(List<Driver> scales) {
 		this.scales = scales;
 	}
 
-	public Driver getPhotoCamera() {
+	public List<Driver> getPhotoCamera() {
 		if (photoCamera == null) {
-			photoCamera = new Driver();
+			photoCamera = new ArrayList<Driver>();
 		}
 		return photoCamera;
 	}
 
-	public void setPhotoCamera(Driver photoCamera) {
+	public void setPhotoCamera(List<Driver> photoCamera) {
 		this.photoCamera = photoCamera;
 	}
 

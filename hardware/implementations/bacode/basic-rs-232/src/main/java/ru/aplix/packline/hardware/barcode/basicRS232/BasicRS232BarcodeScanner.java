@@ -8,8 +8,8 @@ import gnu.io.SerialPortEventListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import java.util.List;
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -34,15 +34,15 @@ public class BasicRS232BarcodeScanner implements BarcodeScanner<RS232Configurati
 	private volatile boolean isConnected = false;
 
 	private RS232Configuration configuration;
-	private List<BarcodeListener> listeners;
-	private List<BarcodeScannerConnectionListener> connectionListeners;
+	private Set<BarcodeListener> listeners;
+	private Set<BarcodeScannerConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
 
 	public BasicRS232BarcodeScanner() {
 		configuration = new RS232Configuration();
 
-		listeners = new Vector<BarcodeListener>();
-		connectionListeners = new Vector<BarcodeScannerConnectionListener>();
+		listeners = new HashSet<BarcodeListener>();
+		connectionListeners = new HashSet<BarcodeScannerConnectionListener>();
 
 		connectionLock = new ReentrantLock();
 

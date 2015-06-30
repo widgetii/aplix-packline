@@ -2,8 +2,10 @@ package ru.aplix.packline.action;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
@@ -21,11 +23,13 @@ import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
+import ru.aplix.packline.post.PickupRequest;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.RouteList;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.post.TagType;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
 public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderController> {
@@ -35,6 +39,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 	private WorkflowAction markingAction;
 	private WorkflowAction orderActAction;
 	private WorkflowAction resetWorkAction;
+	private WorkflowAction pickupRequestAction;
 
 	public WorkflowAction getAcceptanceAction() {
 		return acceptanceAction;
@@ -76,6 +81,14 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		this.resetWorkAction = resetWorkAction;
 	}
 
+	public WorkflowAction getPickupRequestAction() {
+		return pickupRequestAction;
+	}
+
+	public void setPickupRequestAction(WorkflowAction pickupRequestAction) {
+		this.pickupRequestAction = pickupRequestAction;
+	}
+
 	@Override
 	protected String getFormName() {
 		return "barcode-order";
@@ -110,10 +123,12 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		setNextAction(this);
 	}
 
-	public Tag processBarcode(String code) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException {
+	public Tag processBarcode(String code) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException,
+			DatatypeConfigurationException {
 		Post post;
 		Registry registry;
 		Order order;
+		PickupRequest pickupRequest = null;
 		Tag result;
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
@@ -124,14 +139,24 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 			}
 
 			Incoming incoming = findAndValidateTag(postServicePort, TagType.INCOMING, code, Incoming.class, false);
-			order = findOrder(postServicePort, incoming.getOrderId());
+			order = findOrder(postServicePort, incoming.getOrderId(), false);
 			registry = findRegistry(postServicePort, incoming.getId());
 			checkRegistry(registry, order);
+
+			RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
+			if (routeList == null) {
+				List<PickupRequest> list = postServicePort.getPickupRequests(registry.getCustomer().getId(), Utils.now());
+				pickupRequest = list != null && list.size() > 0 ? list.get(0) : null;
+			}
 
 			if (isIncomingRegistered(registry, incoming.getId())) {
 				setNextAction(getOrderActAction());
 			} else {
-				setNextAction(getAcceptanceAction());
+				if (registry.getPickupRequest() == null && routeList != null) {
+					setNextAction(getPickupRequestAction());
+				} else {
+					setNextAction(getAcceptanceAction());
+				}
 			}
 			result = incoming;
 			post = null;
@@ -142,7 +167,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 
 			post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
 			checkPost(post);
-			order = findOrder(postServicePort, post.getOrderId());
+			order = findOrder(postServicePort, post.getOrderId(), true);
 
 			setNextAction(getPackingAction());
 			result = post;
@@ -155,7 +180,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 			Container container = findAndValidateTag(postServicePort, TagType.CONTAINER, code, Container.class, false);
 			checkContainer(container);
 			post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
-			order = findOrder(postServicePort, post.getOrderId());
+			order = findOrder(postServicePort, post.getOrderId(), true);
 
 			setNextAction(getMarkingAction());
 			notifyAboutOutgoingParcel(container.getId());
@@ -184,6 +209,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		getContext().setAttribute(Const.REGISTRY, registry);
 		getContext().setAttribute(Const.ORDER, order);
 		getContext().setAttribute(Const.POST, post);
+		getContext().setAttribute(Const.PICKUPREQUEST, pickupRequest);
 		if (result instanceof RouteList) {
 			getContext().setAttribute(Const.ROUTE_LIST, result);
 			getContext().setAttribute(Const.TAG, null);
@@ -228,9 +254,9 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		}
 	}
 
-	private Order findOrder(PackingLinePortType postServicePort, String orderId) throws PackLineException {
+	private Order findOrder(PackingLinePortType postServicePort, String orderId, boolean strict) throws PackLineException {
 		Order order = postServicePort.getOrder(orderId);
-		if (order == null || order.getId() == null || order.getId().length() == 0) {
+		if (strict && (order == null || order.getId() == null || order.getId().length() == 0)) {
 			throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 		}
 		return order;
@@ -278,7 +304,8 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		if (registry.isCarriedOutAndClosed()) {
 			throw new PackLineException(getResources().getString("error.post.order.already.closed"));
 		}
-		if (registry.getCustomer() == null || order.getCustomer() == null || !registry.getCustomer().getId().equals(order.getCustomer().getId())) {
+		if (registry.getCustomer() == null
+				|| (order != null && (order.getCustomer() == null || !registry.getCustomer().getId().equals(order.getCustomer().getId())))) {
 			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.customer"));
 		}
 	}

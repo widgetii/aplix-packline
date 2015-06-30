@@ -79,8 +79,8 @@
 			<deliveryMethod>Почтовая посылка Почта России (140.7 руб., 7 дня)</deliveryMethod>
 			<deliveryAddress>456010, Челябинская обл., Ашинский р-н, Аша г., Ленина ул., дом № 45А, кв. 29</deliveryAddress>
 			<customer>
-				<id>11111111</id>
-				<name>ИП Митрюшкин Сергей Сергеевич</name>
+				<id>22222222</id>
+				<name>УП "БОНЖУР"</name>
 			</customer>
 			<date>2014-02-07T10:56:18.039+03:00</date>
 			<incoming>
@@ -170,14 +170,15 @@
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
 			<customer>
-				<id>33333333</id>
-				<name>ИП Митрюшкин Сергей Сергеевич</name>
+				<id>22222222</id>
+				<name>УП "БОНЖУР"</name>
 			</customer>
 			<date>2013-12-17T13:16:12.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
 			<carriedOutAndClosed>false</carriedOutAndClosed>
 			<registryType>RETURN</registryType>
 			<actionType>Delete</actionType>
+			<pickupRequest xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
 		</registry>
 	</registries>
 	<incomings>
@@ -252,6 +253,46 @@
 			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 			<weight>0.0</weight>
 			<contentDescription>Пылесос Samsung VC1600</contentDescription>
+		</incoming>
+		<incoming>
+			<id>009001</id>
+			<orderId>12345678955555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>009002</id>
+			<orderId>12345678955555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Фишки для игры, 200 шт.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>009003</id>
+			<orderId>12345678955555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>009004</id>
+			<orderId>12345678955555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Подарочный набор Eleganci.</contentDescription>
+		</incoming>
+		<incoming>
+			<id>009005</id>
+			<orderId>12345678955555</orderId>
+			<photoId></photoId>
+			<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<weight>0.0</weight>
+			<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 		</incoming>
 	</incomings>
 	<posts>
@@ -360,6 +401,26 @@
 			<date>2013-06-01T13:44:18.039+03:00</date>
 		</post>
 	</posts>
+	<pickupRequests>
+		<pickupRequest>
+			<id>100004554</id>
+			<customerId>22222222</customerId>
+			<date>2015-06-28T12:13:45.039+03:00</date>
+			<addresss>Москва г, Волгоградский пр-кт, дом № 28</addresss>
+			<courier>Кожемякин Андрей</courier>
+			<commentForCourier>Не принимать товар без наклеек со штрих-кодом</commentForCourier>
+			<contact>Дмитрий, тел: +7 (495) 9788823</contact>
+		</pickupRequest>
+		<pickupRequest>
+			<id>100004543</id>
+			<customerId>22222222</customerId>
+			<date>2015-06-28T12:13:45.039+03:00</date>
+			<addresss>105082, Москва г, Спартаковская пл, дом № 14, строение 3, офис 3004 </addresss>
+			<courier>Кожемякин Андрей</courier>
+			<commentForCourier>Не принимать товар без наклеек со штрих-кодом</commentForCourier>
+			<contact>Ирина +7(929)543-2796</contact>
+		</pickupRequest>
+	</pickupRequests>
 	<containers>
 		<container>
 			<id>70001792</id>

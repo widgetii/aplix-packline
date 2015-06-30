@@ -3,9 +3,9 @@ package ru.aplix.packline.hardware.scales.mera;
 import static ru.aplix.mera.scales.ScalesService.newScalesService;
 
 import java.io.StringReader;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.xml.bind.JAXBContext;
@@ -44,8 +44,8 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 	private volatile Float lastMeasurement;
 
 	private MeraScalesConfiguration configuration;
-	private List<MeasurementListener> listeners;
-	private List<ScalesConnectionListener> connectionListeners;
+	private Set<MeasurementListener> listeners;
+	private Set<ScalesConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
 
 	public MeraScalesUniversal() {
@@ -53,8 +53,8 @@ public class MeraScalesUniversal implements Scales<MeraScalesConfiguration> {
 
 		configuration = new MeraScalesConfiguration();
 
-		listeners = new Vector<MeasurementListener>();
-		connectionListeners = new Vector<ScalesConnectionListener>();
+		listeners = new HashSet<MeasurementListener>();
+		connectionListeners = new HashSet<ScalesConnectionListener>();
 
 		connectionLock = new ReentrantLock();
 

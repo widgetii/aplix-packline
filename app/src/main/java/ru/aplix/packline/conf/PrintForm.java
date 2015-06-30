@@ -39,6 +39,8 @@ public class PrintForm {
 	@XmlElement(name = "PaymentFlags", type = PaymentFlags.class)
 	private List<PaymentFlags> paymentFlags;
 
+	private transient boolean enabled;
+
 	@XmlTransient
 	private Printer printer;
 
@@ -127,4 +129,13 @@ public class PrintForm {
 	public void setPaymentFlags(List<PaymentFlags> paymentFlags) {
 		this.paymentFlags = paymentFlags;
 	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 }

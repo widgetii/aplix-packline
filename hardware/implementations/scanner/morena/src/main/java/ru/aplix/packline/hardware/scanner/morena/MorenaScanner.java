@@ -2,8 +2,9 @@ package ru.aplix.packline.hardware.scanner.morena;
 
 import java.io.File;
 import java.io.StringReader;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Vector;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 
@@ -28,8 +29,8 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 	private final Log LOG = LogFactory.getLog(getClass());
 
 	private MorenaScannerConfiguration configuration;
-	private List<ImageListener> listeners;
-	private List<ImageScannerConnectionListener> connectionListeners;
+	private Set<ImageListener> listeners;
+	private Set<ImageScannerConnectionListener> connectionListeners;
 	private ImageTransferHandler currentImageTransferHandler;
 	private boolean connectOnDemand;
 	private boolean isConnected;
@@ -45,8 +46,8 @@ public class MorenaScanner implements ImageScanner<MorenaScannerConfiguration> {
 	public MorenaScanner() {
 		configuration = new MorenaScannerConfiguration();
 
-		listeners = new Vector<ImageListener>();
-		connectionListeners = new Vector<ImageScannerConnectionListener>();
+		listeners = new HashSet<ImageListener>();
+		connectionListeners = new HashSet<ImageScannerConnectionListener>();
 
 		isConnected = false;
 		connectOnDemand = false;

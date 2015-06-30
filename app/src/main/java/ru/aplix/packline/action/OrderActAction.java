@@ -7,14 +7,53 @@ import org.apache.commons.lang.ArrayUtils;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.OrderActController;
+import ru.aplix.packline.post.ActionType;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.post.TagType;
+import ru.aplix.packline.workflow.WorkflowAction;
 
 public class OrderActAction extends CommonAction<OrderActController> {
+
+	private WorkflowAction saveActAction;
+	private WorkflowAction deleteActAction;
+	private WorkflowAction closeActAction;
+	private WorkflowAction scanActAction;
+
+	public WorkflowAction getSaveActAction() {
+		return saveActAction;
+	}
+
+	public void setSaveActAction(WorkflowAction saveActAction) {
+		this.saveActAction = saveActAction;
+	}
+
+	public WorkflowAction getDeleteActAction() {
+		return deleteActAction;
+	}
+
+	public void setDeleteActAction(WorkflowAction deleteActAction) {
+		this.deleteActAction = deleteActAction;
+	}
+
+	public WorkflowAction getCloseActAction() {
+		return closeActAction;
+	}
+
+	public void setCloseActAction(WorkflowAction closeActAction) {
+		this.closeActAction = closeActAction;
+	}
+
+	public WorkflowAction getScanActAction() {
+		return scanActAction;
+	}
+
+	public void setScanActAction(WorkflowAction scanActAction) {
+		this.scanActAction = scanActAction;
+	}
 
 	@Override
 	protected String getFormName() {
@@ -34,10 +73,11 @@ public class OrderActAction extends CommonAction<OrderActController> {
 			throw new PackLineException(getResources().getString("error.barcode.invalid.code"));
 		}
 		Order order = postServicePort.getOrder(incoming.getOrderId());
-		if (order == null || order.getId() == null || order.getId().length() == 0) {
+		if (order != null && (order.getId() == null || order.getId().length() == 0)) {
 			throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
 		}
-		if (registry.getCustomer() == null || order.getCustomer() == null || !registry.getCustomer().getId().equals(order.getCustomer().getId())) {
+		if (registry.getCustomer() == null
+				|| (order != null && (order.getCustomer() == null || !registry.getCustomer().getId().equals(order.getCustomer().getId())))) {
 			throw new PackLineException(getResources().getString("error.post.incoming.incorrect.customer"));
 		}
 
@@ -84,14 +124,26 @@ public class OrderActAction extends CommonAction<OrderActController> {
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
+		if (registry.getActionType() == ActionType.DELETE) {
+			setNextAction(getScanActAction());
+		} else {
+			setNextAction(getCloseActAction());
+		}
+
 		if (!postServicePort.carryOutRegistry(registry.getId())) {
 			throw new PackLineException(getResources().getString("error.post.registry.carryout"));
 		}
 	}
 
+	public void saveAct() {
+		setNextAction(getSaveActAction());
+	}
+
 	public void deleteRegistry() throws PackLineException {
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+
+		setNextAction(getDeleteActAction());
 
 		if (!postServicePort.deleteRegistry(registry.getId())) {
 			throw new PackLineException(getResources().getString("error.post.registry.delete"));
@@ -111,14 +163,16 @@ public class OrderActAction extends CommonAction<OrderActController> {
 
 		// Delete incoming from order as well
 		Order order = (Order) getContext().getAttribute(Const.ORDER);
-		Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
-			@Override
-			public boolean evaluate(Object object) {
-				return incoming.getId().equals(((Incoming) object).getId());
+		if (order != null) {
+			Incoming existing = (Incoming) CollectionUtils.find(order.getIncoming(), new Predicate() {
+				@Override
+				public boolean evaluate(Object object) {
+					return incoming.getId().equals(((Incoming) object).getId());
+				}
+			});
+			if (existing != null) {
+				order.getIncoming().remove(existing);
 			}
-		});
-		if (existing != null) {
-			order.getIncoming().remove(existing);
 		}
 	}
 }

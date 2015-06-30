@@ -12,7 +12,7 @@
 	<bean id="asyncCommandRunner" class="ru.aplix.packline.utils.AsyncCommandRunner" />
 
 	<util:list id="barcodeListeners" value-type="ru.aplix.packline.hardware.barcode.BarcodeListener" list-class="java.util.Vector" />
-	<util:list id="measurementListeners" value-type="ru.aplix.packline.hardware.barcode.MeasurementListener" list-class="java.util.Vector" />
+	<util:list id="measurementListeners" value-type="ru.aplix.packline.hardware.scales.MeasurementListener" list-class="java.util.Vector" />
 
 	<!-- Workflow actions -->
 	<alias alias="firstWorkflowAction" name="action1" />
@@ -28,10 +28,16 @@
 	<bean id="action2" class="ru.aplix.packline.action.ReadBarcodeOrderAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="resetWorkAction" ref="action1" />
+		<property name="pickupRequestAction" ref="action3_pre" />
 		<property name="acceptanceAction" ref="action3" />
 		<property name="orderActAction" ref="action6" />
 		<property name="packingAction" ref="action7_pre" />
 		<property name="markingAction" ref="action10" />
+	</bean>
+	
+	<bean id="action3_pre" class="ru.aplix.packline.action.SelectPickupRequestsAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action3" />
 	</bean>
 
 	<bean id="action3" class="ru.aplix.packline.action.WeightingOrderAction">
@@ -51,7 +57,10 @@
 
 	<bean id="action6" class="ru.aplix.packline.action.OrderActAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="nextAction" ref="action2" />
+		<property name="saveActAction" ref="action2" />
+		<property name="deleteActAction" ref="action2" />
+		<property name="closeActAction" ref="action2" />
+		<property name="scanActAction" ref="actionOrderActScan" />
 	</bean>
 
 	<bean id="action7_pre" class="ru.aplix.packline.action.PrintFormsBeforePackingAction">
@@ -176,6 +185,21 @@
 	</bean>
 
 	<bean id="activePostsAction" class="ru.aplix.packline.action.ActivePostsAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+	
+	<bean id="actionOrderActScan" class="ru.aplix.packline.action.OrderActScanAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+	
+	<bean id="selectPrintFormsAction" class="ru.aplix.packline.action.SelectPrintFormsAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="remarkingAction" />
+	</bean>
+	
+	<bean id="remarkingAction" class="ru.aplix.packline.action.RemarkingAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>

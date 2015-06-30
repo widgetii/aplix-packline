@@ -24,7 +24,10 @@ import ru.aplix.packline.dialog.ConfirmationDialog;
 import ru.aplix.packline.dialog.ConfirmationListener;
 import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
+import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Operator;
+import ru.aplix.packline.post.Order;
+import ru.aplix.packline.post.PickupRequest;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.RouteList;
 import ru.aplix.packline.post.Tag;
@@ -65,7 +68,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-		
+
 		setProgress(false);
 
 		// Display route list info
@@ -182,7 +185,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 				Object result = getValue();
 				if (result != null) {
-					ReadBarcodeOrderController.this.done();
+					checkRouteList();
 				} else {
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
@@ -197,6 +200,37 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	public void saveRouteListClick(ActionEvent event) {
 		getAction().saveRouteList();
 		done();
+	}
+
+	public void checkRouteList() {
+		Tag tag = (Tag) getContext().getAttribute(Const.TAG);
+		RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
+		PickupRequest pickupRequest = (PickupRequest) getContext().getAttribute(Const.PICKUPREQUEST);
+		Order order = (Order) getContext().getAttribute(Const.ORDER);
+
+		if (!(tag instanceof Incoming) || routeList != null || pickupRequest == null || order == null) {
+			ReadBarcodeOrderController.this.done();
+			return;
+		}
+
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				ReadBarcodeOrderController.this.done();
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.routeList.check", order.getCustomer().getName(), pickupRequest.getCourier());
+		confirmationDialog.show();
 	}
 
 	public void closeRouteListClick(ActionEvent event) {

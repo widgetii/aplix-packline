@@ -300,6 +300,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 	}
 
 	public void saveActClick(ActionEvent event) {
+		getAction().saveAct();
 		done();
 	}
 
@@ -520,6 +521,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				if (result != null && result.booleanValue()) {
 					getContext().setAttribute(Const.JUST_SCANNED_BARCODE, value);
 
+					getAction().saveAct();
 					OrderActController.this.done();
 				} else {
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));

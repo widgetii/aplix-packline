@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
-import java.util.List;
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
@@ -40,7 +40,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 
 	private WeightSteadinessDetector weightSteadinessDetector;
 	private RS232Configuration configuration;
-	private List<ScalesConnectionListener> connectionListeners;
+	private Set<ScalesConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
 
 	private static final int MERA_SCALES_PORT_SPEED = 14400;
@@ -50,7 +50,7 @@ public class MeraScalesByte9 implements Scales<RS232Configuration> {
 
 		weightSteadinessDetector = new WeightSteadinessDetector(STEADY_DETECTOR_SIZE);
 
-		connectionListeners = new Vector<ScalesConnectionListener>();
+		connectionListeners = new HashSet<ScalesConnectionListener>();
 
 		connectionLock = new ReentrantLock();
 

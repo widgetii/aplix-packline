@@ -3,9 +3,9 @@ package ru.aplix.packline.hardware.camera.flussonic;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 import javax.xml.bind.JAXBContext;
@@ -35,16 +35,16 @@ public class FlussonicCamera implements DVRCamera<FlussonicCameraConfiguration> 
 	private volatile boolean isRecording = false;
 
 	private FlussonicCameraConfiguration configuration;
-	private List<RecorderListener> listeners;
-	private List<DVRCameraConnectionListener> connectionListeners;
+	private Set<RecorderListener> listeners;
+	private Set<DVRCameraConnectionListener> connectionListeners;
 	protected LinkedList<Integer> commands;
 	private boolean connectOnDemand;
 
 	public FlussonicCamera() {
 		configuration = new FlussonicCameraConfiguration();
 
-		listeners = new Vector<RecorderListener>();
-		connectionListeners = new Vector<DVRCameraConnectionListener>();
+		listeners = new HashSet<RecorderListener>();
+		connectionListeners = new HashSet<DVRCameraConnectionListener>();
 
 		commands = new LinkedList<Integer>();
 		connectOnDemand = false;

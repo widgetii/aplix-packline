@@ -3,7 +3,10 @@ package ru.aplix.packline.post;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 import javax.jws.WebService;
@@ -77,6 +80,11 @@ public class MockService implements PackingLinePortType {
 			}
 		});
 		return order;
+	}
+
+	@Override
+	public List<PickupRequest> getPickupRequests(String customerId, XMLGregorianCalendar date) {
+		return getConfig().getPickupRequests().stream().filter(pr -> customerId.equals(pr.getCustomerId())).collect(Collectors.toList());
 	}
 
 	@Override
@@ -198,6 +206,16 @@ public class MockService implements PackingLinePortType {
 			}
 		});
 		return container;
+	}
+
+	@Override
+	public Container searchContainer(String trackingId) {
+		if (trackingId == null) {
+			return null;
+		}
+
+		Optional<Container> optional = getConfig().getContainers().stream().filter(c -> trackingId.equals(c.getTrackingId())).findFirst();
+		return optional.isPresent() ? optional.get() : null;
 	}
 
 	@Override
@@ -847,6 +865,18 @@ public class MockService implements PackingLinePortType {
 
 	@Override
 	public String carryOutPlannedRegistry(PlannedRegistryCheckoutItems items, String id) {
+		return null;
+	}
+
+	@Override
+	public String bindRegistryWithPickupRequest(String registryId, String pickupRequestId) {
+		Optional<PickupRequest> optionalPickupRequest = configuration.getPickupRequests().stream().filter(pr -> pickupRequestId.equals(pr.getId())).findAny();
+		Optional<Registry> optionalRegistry = configuration.getRegistries().stream().filter(r -> registryId.equals(r.getId())).findAny();
+
+		if (optionalRegistry.isPresent() && optionalPickupRequest.isPresent()) {
+			optionalRegistry.get().setPickupRequest(optionalPickupRequest.get());
+		}
+
 		return null;
 	}
 

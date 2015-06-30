@@ -29,6 +29,7 @@ import ru.aplix.packline.action.WeightingOrderAction;
 import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.hardware.scales.MeasurementListener;
 import ru.aplix.packline.hardware.scales.Scales;
+import ru.aplix.packline.hardware.scales.ScalesBundle;
 import ru.aplix.packline.post.Incoming;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.Registry;
@@ -83,7 +84,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	@Override
 	public void prepare(WorkflowContext context) {
 		super.prepare(context);
-		
+
 		nextButton.setDisable(false);
 		awaitingCompletion = false;
 
@@ -158,10 +159,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 	}
 
 	public void nextClick(ActionEvent event) {
-		if (measure <= 0) {
-			errorMessageProperty.set(getResources().getString("error.scales.negative.weight"));
-			errorVisibleProperty.set(true);
-
+		if (!checkScales()) {
 			return;
 		}
 
@@ -201,7 +199,7 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 
 				errorMessageProperty.set(errorStr);
 				errorVisibleProperty.set(true);
-				
+
 				awaitingCompletion = false;
 			}
 
@@ -219,6 +217,25 @@ public class WeightingOrderController extends StandardController<WeightingOrderA
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(task);
 		awaitingCompletion = true;
+	}
+
+	private boolean checkScales() {
+		if (measure <= 0f) {
+			errorMessageProperty.set(getResources().getString("error.scales.negative.weight"));
+			errorVisibleProperty.set(true);
+
+			return false;
+		}
+
+		scales = (Scales<?>) getContext().getAttribute(Const.SCALES);
+		if (scales != null && scales instanceof ScalesBundle && !((ScalesBundle<?>) scales).isNoMoreThanOneLoaded()) {
+			errorMessageProperty.set(getResources().getString("error.scales.more.than.one"));
+			errorVisibleProperty.set(true);
+
+			return false;
+		}
+
+		return true;
 	}
 
 	@Override

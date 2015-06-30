@@ -1,7 +1,7 @@
 package ru.aplix.packline.hardware.scales.mera;
 
-import java.util.List;
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.collections.buffer.CircularFifoBuffer;
 import org.apache.commons.lang.ArrayUtils;
@@ -16,11 +16,11 @@ public class WeightSteadinessDetector {
 
 	boolean lastWeightStabled;
 	private CircularFifoBuffer buffer;
-	private List<MeasurementListener> listeners;
+	private Set<MeasurementListener> listeners;
 
 	public WeightSteadinessDetector(int size) {
 		lastWeightStabled = false;
-		listeners = new Vector<MeasurementListener>();
+		listeners = new HashSet<MeasurementListener>();
 		buffer = new CircularFifoBuffer(size > 0 ? size : DEFAULT_SIZE);
 	}
 

@@ -14,6 +14,7 @@ public final class Const {
 	public static final String GEN_STICK_CUSTOMER_ACTION_BEAN_NAME = "genStickCustomerAction";
 	public static final String ZEBRA_TEST_ACTION_BEAN_NAME = "zebraTestAction";
 	public static final String WARRANTY_CARD_ACTION_BEAN_NAME = "warrantyCardAction";
+	public static final String REMARKING_ACTION_BEAN_NAME = "selectPrintFormsAction";
 	public static final String CONTROL_RETURNS_ACTION_BEAN_NAME = "controlReturnsAction";
 	public static final String CLOSE_REGISTRY_ACTION_BEAN_NAME = "closeRegistryAction";
 	public static final String ACTIVE_POSTS_ACTION_BEAN_NAME = "activePostsAction";
@@ -29,11 +30,12 @@ public final class Const {
 	public static final String OPERATOR = "Operator";
 	public static final String TAG = "Tag";
 	public static final String ORDER = "Order";
+	public static final String PICKUPREQUEST = "PickupRequest";
 	public static final String REGISTRY = "Registry";
 	public static final String ROUTE_LIST = "RouteList";
 	public static final String POST = "Post";
 	public static final String BARCODE_SCANNER = "BarcodeScanner";
-	public static final String PHOTO_CAMERA = "PhotoCamera";
+	public static final String PHOTO_CAMERAS = "PhotoCameras";
 	public static final String DVR_CAMERA = "DVRCamera";
 	public static final String SCALES = "Scales";
 	public static final String IMAGE_SCANNER = "ImageScanner";

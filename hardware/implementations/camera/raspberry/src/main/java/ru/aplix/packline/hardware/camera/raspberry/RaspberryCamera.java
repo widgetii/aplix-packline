@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
-import java.util.Vector;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.xml.bind.JAXBContext;
@@ -30,8 +30,8 @@ public class RaspberryCamera implements PhotoCamera<RaspberryCameraConfiguration
 	private volatile boolean isConnected = false;
 
 	private RaspberryCameraConfiguration configuration;
-	private List<ImageListener> listeners;
-	private List<PhotoCameraConnectionListener> connectionListeners;
+	private Set<ImageListener> listeners;
+	private Set<PhotoCameraConnectionListener> connectionListeners;
 	private boolean connectOnDemand;
 
 	private static final String RESPONSE_OK = "OK";
@@ -40,8 +40,8 @@ public class RaspberryCamera implements PhotoCamera<RaspberryCameraConfiguration
 	public RaspberryCamera() {
 		configuration = new RaspberryCameraConfiguration();
 
-		listeners = new Vector<ImageListener>();
-		connectionListeners = new Vector<PhotoCameraConnectionListener>();
+		listeners = new HashSet<ImageListener>();
+		connectionListeners = new HashSet<PhotoCameraConnectionListener>();
 
 		connectionLock = new ReentrantLock();
 
