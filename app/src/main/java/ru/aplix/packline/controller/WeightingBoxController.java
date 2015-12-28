@@ -130,6 +130,18 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 				onWeightStabled(weight);
 			}
 		}
+
+		// If bar-code has been read already, then process it
+		final Boolean pcw = (Boolean) getContext().getAttribute(Const.PREDEFINED_CONTAINER_WEIGHT);
+		if (pcw != null) {
+			getContext().setAttribute(Const.PREDEFINED_CONTAINER_WEIGHT, null);
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					processAction(container.getTotalWeight());
+				}
+			});
+		}
 	}
 
 	@Override
@@ -152,11 +164,15 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			return;
 		}
 
+		processAction(measure);
+	}
+
+	private void processAction(final float value) {
 		task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().processMeasure(measure);
+					getAction().processMeasure(value);
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;

@@ -3,7 +3,7 @@
 
 	<name>PackLine App</name>
 	<url>http://git.aplix.ru/packline</url>
-	<version>1.18</version>
+	<version>1.20</version>
 	<groupId>ru.aplix.packline</groupId>
 	<artifactId>packline</artifactId>
 	<packaging>jar</packaging>
@@ -116,6 +116,11 @@
 					<artifactId>jaybird-full</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.6</version>
 		</dependency>
 	</dependencies>
 

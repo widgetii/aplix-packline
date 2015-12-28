@@ -40,6 +40,7 @@ public final class Const {
 	public static final String SCALES = "Scales";
 	public static final String IMAGE_SCANNER = "ImageScanner";
 	public static final String JUST_SCANNED_BARCODE = "JustScannedBarcode";
+	public static final String PREDEFINED_CONTAINER_WEIGHT = "PredefinedContainerWeight";
 	public static final String POST_SERVICE_PORT = "PostServicePort";
 	public static final String EXECUTOR = "Executor";
 	public static final String WARNING_MESSAGE = "WarningMessage";
@@ -76,4 +77,6 @@ public final class Const {
 	public static final String FOP_CONF_FILE = "/conf/fop.xconf";
 	public static final String REPORT_FILE_TEMPLATE = "/reports/%s.xml";
 	public static final String PDF_PRINTER_FILE = "/bin/pdfprinter.exe";
+	public static final String FONTS = "/fonts";
+	public static final String APLIX_LOGO = "/classes/resources/images/logo-aplix.png";
 }

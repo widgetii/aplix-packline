@@ -9,6 +9,7 @@ import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.SelectPickupRequestsController;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PickupRequest;
+import ru.aplix.packline.post.PickupRequestList;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.utils.Utils;
 
@@ -23,7 +24,8 @@ public class SelectPickupRequestsAction extends CommonAction<SelectPickupRequest
 		Registry registry = (Registry) getContext().getAttribute(Const.REGISTRY);
 
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		return postServicePort.getPickupRequests(registry.getCustomer().getId(), Utils.now());
+		PickupRequestList list = postServicePort.getPickupRequests(registry.getCustomer().getId(), Utils.now());
+		return list != null ? list.getItems() : null;
 	}
 
 	public void bindRegistryWithPickupRequest(PickupRequest pickupRequest) throws PackLineException {

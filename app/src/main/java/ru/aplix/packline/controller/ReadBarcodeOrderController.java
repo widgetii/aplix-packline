@@ -3,6 +3,7 @@ package ru.aplix.packline.controller;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
+import java.util.function.Consumer;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -31,6 +32,7 @@ import ru.aplix.packline.post.PickupRequest;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.RouteList;
 import ru.aplix.packline.post.Tag;
+import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOrderAction> implements BarcodeListener {
@@ -185,7 +187,7 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 				Object result = getValue();
 				if (result != null) {
-					checkRouteList();
+					checkBlockedCustomer(v -> ReadBarcodeOrderController.this.done());
 				} else {
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
@@ -200,37 +202,6 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 	public void saveRouteListClick(ActionEvent event) {
 		getAction().saveRouteList();
 		done();
-	}
-
-	public void checkRouteList() {
-		Tag tag = (Tag) getContext().getAttribute(Const.TAG);
-		RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
-		PickupRequest pickupRequest = (PickupRequest) getContext().getAttribute(Const.PICKUPREQUEST);
-		Order order = (Order) getContext().getAttribute(Const.ORDER);
-
-		if (!(tag instanceof Incoming) || routeList != null || pickupRequest == null || order == null) {
-			ReadBarcodeOrderController.this.done();
-			return;
-		}
-
-		Window owner = rootNode.getScene().getWindow();
-		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
-
-			@Override
-			public void onAccept() {
-				confirmationDialog = null;
-				ReadBarcodeOrderController.this.done();
-			}
-
-			@Override
-			public void onDecline() {
-				confirmationDialog = null;
-			}
-		});
-
-		confirmationDialog.centerOnScreen();
-		confirmationDialog.setMessage("confirmation.routeList.check", order.getCustomer().getName(), pickupRequest.getCourier());
-		confirmationDialog.show();
 	}
 
 	public void closeRouteListClick(ActionEvent event) {
@@ -327,5 +298,66 @@ public class ReadBarcodeOrderController extends StandardController<ReadBarcodeOr
 
 			return false;
 		}
+	}
+
+	private void checkBlockedCustomer(Consumer<Void> action) {
+		Order order = (Order) getContext().getAttribute(Const.ORDER);
+
+		if (order == null || order.getCustomer() == null || !order.getCustomer().isBlocked()) {
+			checkRouteList(action);
+			return;
+		}
+
+		Utils.playSound(Utils.SOUND_WARNING);
+
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				checkRouteList(action);
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.act.customer.blocked", order.getCustomer().getName());
+		confirmationDialog.show();
+	}
+
+	private void checkRouteList(Consumer<Void> action) {
+		Tag tag = (Tag) getContext().getAttribute(Const.TAG);
+		RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
+		PickupRequest pickupRequest = (PickupRequest) getContext().getAttribute(Const.PICKUPREQUEST);
+		Order order = (Order) getContext().getAttribute(Const.ORDER);
+
+		if (!(tag instanceof Incoming) || routeList != null || pickupRequest == null || order == null) {
+			action.accept(null);
+			return;
+		}
+
+		Window owner = rootNode.getScene().getWindow();
+		confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
+
+			@Override
+			public void onAccept() {
+				confirmationDialog = null;
+				action.accept(null);
+			}
+
+			@Override
+			public void onDecline() {
+				confirmationDialog = null;
+			}
+		});
+
+		confirmationDialog.centerOnScreen();
+		confirmationDialog.setMessage("confirmation.routeList.check", order.getCustomer().getName(), pickupRequest.getCourier());
+		confirmationDialog.show();
 	}
 }

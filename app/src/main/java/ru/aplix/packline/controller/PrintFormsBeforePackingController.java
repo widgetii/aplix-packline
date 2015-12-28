@@ -73,7 +73,7 @@ public class PrintFormsBeforePackingController extends StandardController<PrintF
 			super.failed();
 
 			progressVisibleProperty.set(false);
-			
+
 			LOG.error(null, getException());
 
 			String error = getException().getMessage() != null ? getException().getMessage() : getException().getClass().getSimpleName();

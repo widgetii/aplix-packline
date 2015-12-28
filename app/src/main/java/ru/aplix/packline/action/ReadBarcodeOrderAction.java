@@ -2,7 +2,6 @@ package ru.aplix.packline.action;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
-import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -24,6 +23,7 @@ import ru.aplix.packline.post.Operator;
 import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.PickupRequest;
+import ru.aplix.packline.post.PickupRequestList;
 import ru.aplix.packline.post.Post;
 import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.RouteList;
@@ -145,8 +145,8 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 
 			RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
 			if (routeList == null) {
-				List<PickupRequest> list = postServicePort.getPickupRequests(registry.getCustomer().getId(), Utils.now());
-				pickupRequest = list != null && list.size() > 0 ? list.get(0) : null;
+				PickupRequestList list = postServicePort.getPickupRequests(registry.getCustomer().getId(), Utils.now());
+				pickupRequest = list != null && !list.getItems().isEmpty() ? list.getItems().get(0) : null;
 			}
 
 			if (isIncomingRegistered(registry, incoming.getId())) {

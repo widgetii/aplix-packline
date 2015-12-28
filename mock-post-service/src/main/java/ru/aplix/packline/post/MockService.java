@@ -3,7 +3,6 @@ package ru.aplix.packline.post;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -83,8 +82,10 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
-	public List<PickupRequest> getPickupRequests(String customerId, XMLGregorianCalendar date) {
-		return getConfig().getPickupRequests().stream().filter(pr -> customerId.equals(pr.getCustomerId())).collect(Collectors.toList());
+	public PickupRequestList getPickupRequests(String customerId, XMLGregorianCalendar date) {
+		PickupRequestList result = new PickupRequestList();
+		result.getItems().addAll(getConfig().getPickupRequests().stream().filter(pr -> customerId.equals(pr.getCustomerId())).collect(Collectors.toList()));
+		return result;
 	}
 
 	@Override
@@ -878,6 +879,12 @@ public class MockService implements PackingLinePortType {
 		}
 
 		return null;
+	}
+
+	@Override
+	public Post createPostFromIncoming(Incoming incoming) {
+		Optional<Post> optional = getConfig().getPosts().stream().filter(p -> p.getContainer() != null).findAny();
+		return optional.isPresent() ? optional.get() : null;
 	}
 
 	@Resource

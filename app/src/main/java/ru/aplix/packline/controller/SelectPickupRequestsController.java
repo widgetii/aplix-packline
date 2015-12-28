@@ -77,7 +77,7 @@ public class SelectPickupRequestsController extends StandardController<SelectPic
 		secondColumn.setCellValueFactory(new Callback<CellDataFeatures<PickupRequest, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<PickupRequest, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getAddresss());
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getAddress());
 			}
 		});
 

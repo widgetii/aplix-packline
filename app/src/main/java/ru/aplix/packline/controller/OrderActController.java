@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutorService;
 
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,7 +108,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 					date != null ? timeFormat.format(date) : "", registry.getCustomer().getName()));
 
 			totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
-					registry.getTotalIncomings()));
+					registry.getTotalIncomings()));			
 		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
@@ -249,10 +250,13 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 	private void doCloseAct() {
 		Task<?> task = new Task<Void>() {
+			
+			ActionType at;
+			
 			@Override
 			public Void call() throws Exception {
 				try {
-					getAction().carryOutRegistry();
+					at = getAction().carryOutRegistry();
 				} catch (Throwable e) {
 					LOG.error(null, e);
 					throw e;
@@ -289,8 +293,39 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				super.succeeded();
 
 				setProgress(false);
+				
+				if (at == ActionType.ADD){
+					Window owner = rootNode.getScene().getWindow();
+					confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
 
-				OrderActController.this.done();
+						@Override
+						public void onAccept() {
+							confirmationDialog = null;
+							
+							doPrintAct();
+							
+							OrderActController.this.done();
+						}
+
+						@Override
+						public void onDecline() {
+							confirmationDialog = null;
+							try {
+								getAction().printAct(false);
+							} catch (Exception e){
+								LOG.error(null, e);
+							} 
+							
+							OrderActController.this.done();
+						}
+					});
+
+					confirmationDialog.centerOnScreen();
+					confirmationDialog.setMessage("confirmation.act.print");
+					confirmationDialog.show();
+					
+				} else
+					OrderActController.this.done();
 			}
 		};
 
@@ -298,10 +333,73 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		executor.submit(task);
 		tasks.add(task);
 	}
+	
+	private void doPrintAct(){
+		Task<?> printTask = new PrintTask();		
+		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
+		executor.submit(printTask);
+	}
+	
+	private class PrintTask extends Task<Void> {
+
+		@Override
+		public Void call() throws Exception {
+			LOG.debug("Print task called");
+			
+			long t = System.currentTimeMillis();
+
+			try {
+				getAction().printAct(true);
+			} finally {
+				t = System.currentTimeMillis() - t;
+				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void running() {
+			super.running();
+			LOG.debug("Print task running");
+			progressVisibleProperty.set(true);
+		}
+
+		@Override
+		protected void failed() {
+			super.failed();
+
+			progressVisibleProperty.set(false);
+			
+			LOG.error(null, getException());
+
+			String error = getException().getMessage() != null ? getException().getMessage() : getException().getClass().getSimpleName();
+			errorMessageProperty.set(error);
+			errorVisibleProperty.set(true);
+
+			errorVisibleProperty.addListener(new ChangeListener<Boolean>() {
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					if (!newValue) {
+						errorVisibleProperty.removeListener(this);
+						OrderActController.this.done();
+					}
+				}
+			});
+		}
+
+		@Override
+		protected void succeeded() {			
+			super.succeeded();
+			LOG.debug("Print task succeed");
+			progressVisibleProperty.set(false);
+			OrderActController.this.done();
+		}
+	};
 
 	public void saveActClick(ActionEvent event) {
 		getAction().saveAct();
-		done();
+		OrderActController.this.done();
 	}
 
 	private void doDeleteAct() {
@@ -546,7 +644,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			return false;
 		}
 	}
-
+	
 	/**
 	 *
 	 */

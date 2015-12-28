@@ -44,9 +44,14 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 
 		trolleyType = getAction().getTrolleyMessage();
 		switch (trolleyType) {
+		case SKIP:
+			infoLabel.setText(getResources().getString("trolley.skip.info"));
+			Image image = new Image(getClass().getResource("/resources/images/img-trolley-skip.png").toExternalForm());
+			imageView.setImage(image);
+			break;
 		case PACK:
 			infoLabel.setText(getResources().getString("trolley.pack.info"));
-			Image image = new Image(getClass().getResource("/resources/images/img-trolley-red.png").toExternalForm());
+			image = new Image(getClass().getResource("/resources/images/img-trolley-red.png").toExternalForm());
 			imageView.setImage(image);
 			break;
 		case KEEP:
@@ -73,7 +78,7 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 	@Override
 	public void terminate(boolean appIsStopping) {
 		super.terminate(appIsStopping);
-		
+
 		if (task != null) {
 			task.cancel(false);
 			task = null;
@@ -110,7 +115,7 @@ public class TrolleyController extends StandardController<TrolleyAction> {
 				super.failed();
 
 				progressVisibleProperty.set(false);
-				nextButton.setDisable(false);
+				nextButton.setDisable(true); // We can't go further if action failed
 
 				String errorStr;
 				if (getException() instanceof PackLineException) {

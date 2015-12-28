@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.aplix.ru/PackingLine" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.aplix.ru/PackingLine" name="PackingLine" targetNamespace="http://www.aplix.ru/PackingLine">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/"
+		xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:tns="http://www.aplix.ru/PackingLine"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsd1="http://www.aplix.ru/PackingLine"
+		name="PackingLine"
+		targetNamespace="http://www.aplix.ru/PackingLine">
 	<types>
-		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.aplix.ru/PackingLine" targetNamespace="http://www.aplix.ru/PackingLine" attributeFormDefault="unqualified" elementFormDefault="qualified">
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				xmlns:xs1="http://www.aplix.ru/PackingLine"
+				targetNamespace="http://www.aplix.ru/PackingLine"
+				attributeFormDefault="unqualified"
+				elementFormDefault="qualified">
 			<xs:simpleType name="ActionType">
 				<xs:restriction base="xs:string">
 					<xs:enumeration value="Add"/>
@@ -10,40 +21,66 @@
 			</xs:simpleType>
 			<xs:complexType name="BoxType">
 				<xs:sequence>
-					<xs:element name="packingSize" type="tns:PackingSize"/>
-					<xs:element name="id" type="xs:string"/>
-					<xs:element name="supplierName" type="xs:string"/>
-					<xs:element name="cardboardGrade" type="xs:string"/>
-					<xs:element name="emptyWeight" type="xs:float"/>
-					<xs:element name="cost" type="xs:float"/>
+					<xs:element name="packingSize"
+							type="tns:PackingSize"/>
+					<xs:element name="id"
+							type="xs:string"/>
+					<xs:element name="supplierName"
+							type="xs:string"/>
+					<xs:element name="cardboardGrade"
+							type="xs:string"/>
+					<xs:element name="emptyWeight"
+							type="xs:float"/>
+					<xs:element name="cost"
+							type="xs:float"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="CheckAddressResult">
 				<xs:sequence>
-					<xs:element name="result" type="xs:boolean"/>
-					<xs:element name="msg" type="xs:string" nillable="true"/>
+					<xs:element name="result"
+							type="xs:boolean"/>
+					<xs:element name="msg"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Container">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
-							<xs:element name="packingSize" type="tns:PackingSize"/>
-							<xs:element name="postId" type="xs:string" nillable="true"/>
-							<xs:element name="boxTypeId" type="xs:string" nillable="true"/>
-							<xs:element name="packingType" type="tns:PackingType"/>
-							<xs:element name="totalWeight" type="xs:float"/>
-							<xs:element name="date" type="xs:dateTime" nillable="true"/>
-							<xs:element name="shipped" type="xs:boolean"/>
-							<xs:element name="trackingId" type="xs:string" nillable="true"/>
+							<xs:element name="packingSize"
+									type="tns:PackingSize"/>
+							<xs:element name="postId"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="boxTypeId"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="packingType"
+									type="tns:PackingType"/>
+							<xs:element name="totalWeight"
+									type="xs:float"/>
+							<xs:element name="date"
+									type="xs:dateTime"
+									nillable="true"/>
+							<xs:element name="shipped"
+									type="xs:boolean"/>
+							<xs:element name="trackingId"
+									type="xs:string"
+									nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
 			<xs:complexType name="Customer">
 				<xs:sequence>
-					<xs:element name="id" type="xs:string"/>
-					<xs:element name="name" type="xs:string"/>
+					<xs:element name="id"
+							type="xs:string"/>
+					<xs:element name="name"
+							type="xs:string"/>
+					<xs:element name="blocked"
+							type="xs:boolean"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="DocumentType">
@@ -56,86 +93,120 @@
 			</xs:simpleType>
 			<xs:complexType name="Enclosure">
 				<xs:sequence>
-					<xs:element name="postId" type="xs:string"/>
-					<xs:element name="contentDescription" type="xs:string"/>
-					<xs:element name="cost" type="xs:float"/>
-					<xs:element name="quantity" type="xs:int"/>
+					<xs:element name="postId"
+							type="xs:string"/>
+					<xs:element name="contentDescription"
+							type="xs:string"/>
+					<xs:element name="cost"
+							type="xs:float"/>
+					<xs:element name="quantity"
+							type="xs:int"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Field">
 				<xs:sequence>
-					<xs:element name="name" type="xs:string"/>
-					<xs:element name="value" type="xs:string" nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"/>
+					<xs:element name="value"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="FieldList">
 				<xs:sequence>
-					<xs:element name="items" type="tns:Field" maxOccurs="unbounded"/>
+					<xs:element name="items"
+							type="tns:Field"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="GetLabelResponse2">
 				<xs:sequence>
-					<xs:element name="fileContents" type="xs:base64Binary" nillable="true"/>
-					<xs:element name="error" type="xs:string" nillable="true"/>
+					<xs:element name="fileContents"
+							type="xs:base64Binary"
+							nillable="true"/>
+					<xs:element name="error"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="GetOperatorResponse2">
 				<xs:sequence>
-					<xs:element name="operator" type="tns:Operator" nillable="true"/>
-					<xs:element name="error" type="xs:string" nillable="true"/>
+					<xs:element name="operator"
+							type="tns:Operator"
+							nillable="true"/>
+					<xs:element name="error"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Incoming">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
-							<xs:element name="orderId" type="xs:string"/>
-							<xs:element name="photoId" type="xs:string" nillable="true"/>
-							<xs:element name="date" type="xs:dateTime" nillable="true"/>
-							<xs:element name="weight" type="xs:float" nillable="true"/>
-							<xs:element name="contentDescription" type="xs:string"/>
-							<xs:element name="barcodes" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:extension>
-				</xs:complexContent>
-			</xs:complexType>
-			<xs:complexType name="PickupRequest">
-				<xs:complexContent>
-					<xs:extension base="tns:Tag">
-						<xs:sequence>
-							<xs:element name="customerId" type="xs:string"/>
-							<xs:element name="date" type="xs:dateTime" nillable="true"/>
-							<xs:element name="addresss" type="xs:string"/>				
-							<xs:element name="courier" type="xs:string"/>
-							<xs:element name="commentForCourier" type="xs:string"/>
-							<xs:element name="contact" type="xs:string"/>							
+							<xs:element name="orderId"
+									type="xs:string"/>
+							<xs:element name="photoId"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="date"
+									type="xs:dateTime"
+									nillable="true"/>
+							<xs:element name="weight"
+									type="xs:float"
+									nillable="true"/>
+							<xs:element name="contentDescription"
+									type="xs:string"/>
+							<xs:element name="barcodes"
+									type="xs:string"
+									nillable="true"
+									minOccurs="0"
+									maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
 			<xs:complexType name="Operator">
 				<xs:sequence>
-					<xs:element name="id" type="xs:string"/>
-					<xs:element name="name" type="xs:string"/>
+					<xs:element name="id"
+							type="xs:string"/>
+					<xs:element name="name"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Order">
 				<xs:sequence>
-					<xs:element name="id" type="xs:string"/>
-					<xs:element name="date" type="xs:dateTime"/>
-					<xs:element name="customer" type="tns:Customer"/>
-					<xs:element name="clientName" type="xs:string"/>
-					<xs:element name="deliveryMethod" type="xs:string"/>
-					<xs:element name="deliveryAddress" type="xs:string"/>
-					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="totalIncomings" type="xs:int"/>
+					<xs:element name="id"
+							type="xs:string"/>
+					<xs:element name="date"
+							type="xs:dateTime"/>
+					<xs:element name="customer"
+							type="tns:Customer"/>
+					<xs:element name="clientName"
+							type="xs:string"/>
+					<xs:element name="deliveryMethod"
+							type="xs:string"/>
+					<xs:element name="deliveryAddress"
+							type="xs:string"/>
+					<xs:element name="incoming"
+							type="tns:Incoming"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+					<xs:element name="totalIncomings"
+							type="xs:int"/>
+					<xs:element name="skipPacking"
+							type="xs:boolean"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PackingSize">
 				<xs:sequence>
-					<xs:element name="length" type="xs:float"/>
-					<xs:element name="height" type="xs:float"/>
-					<xs:element name="width" type="xs:float"/>
+					<xs:element name="length"
+							type="xs:float"/>
+					<xs:element name="height"
+							type="xs:float"/>
+					<xs:element name="width"
+							type="xs:float"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="PackingType">
@@ -151,61 +222,139 @@
 					<xs:enumeration value="OTHER"/>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:complexType name="PickupRequest">
+				<xs:complexContent>
+					<xs:extension base="tns:Tag">
+						<xs:sequence>
+							<xs:element name="customerId"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="date"
+									type="xs:dateTime"
+									nillable="true"/>
+							<xs:element name="address"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="courier"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="commentForCourier"
+									type="xs:string"
+									nillable="true"/>
+							<xs:element name="contact"
+									type="xs:string"
+									nillable="true"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="PickupRequestList">
+				<xs:sequence>
+					<xs:element name="items"
+							type="tns:PickupRequest"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="PlannedRegistry">
 				<xs:sequence>
-					<xs:element name="Items" type="tns:PlannedRegistryItem" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="ID" type="xs:string"/>
+					<xs:element name="Items"
+							type="tns:PlannedRegistryItem"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+					<xs:element name="ID"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PlannedRegistryCheckout">
 				<xs:sequence>
-					<xs:element name="ID" type="xs:string"/>
-					<xs:element name="Container" type="xs:string"/>
-					<xs:element name="Date" type="xs:dateTime"/>
-					<xs:element name="Status" type="xs:string"/>
-					<xs:element name="Comment" type="xs:string"/>
-					<xs:element name="Photos" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="Videos" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ID"
+							type="xs:string"/>
+					<xs:element name="Container"
+							type="xs:string"/>
+					<xs:element name="Date"
+							type="xs:dateTime"/>
+					<xs:element name="Status"
+							type="xs:string"/>
+					<xs:element name="Comment"
+							type="xs:string"/>
+					<xs:element name="Photos"
+							type="xs:string"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+					<xs:element name="Videos"
+							type="xs:string"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PlannedRegistryCheckoutItems">
 				<xs:sequence>
-					<xs:element name="Items" type="tns:PlannedRegistryCheckout" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Items"
+							type="tns:PlannedRegistryCheckout"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PlannedRegistryItem">
 				<xs:sequence>
-					<xs:element name="ID" type="xs:string"/>
-					<xs:element name="ClientName" type="xs:string"/>
-					<xs:element name="DeliveryMethod" type="xs:string"/>
-					<xs:element name="Products" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ID"
+							type="xs:string"/>
+					<xs:element name="ClientName"
+							type="xs:string"/>
+					<xs:element name="DeliveryMethod"
+							type="xs:string"/>
+					<xs:element name="Products"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PlannedRegistryProduct">
 				<xs:sequence>
-					<xs:element name="Name" type="xs:string"/>
-					<xs:element name="Qty" type="xs:int"/>
-					<xs:element name="SKU" type="xs:string" nillable="true"/>
-					<xs:element name="Barcode" type="xs:string" nillable="true"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+					<xs:element name="Qty"
+							type="xs:int"/>
+					<xs:element name="SKU"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Barcode"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Post">
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
-							<xs:element name="container" type="tns:Container"/>
-							<xs:element name="enclosure" type="tns:Enclosure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element name="postType" type="tns:PostType" nillable="true"/>
-							<xs:element name="orderId" type="xs:string"/>
-							<xs:element name="date" type="xs:dateTime" nillable="true"/>
-							<xs:element name="paymentFlags" type="tns:PaymentFlags" nillable="true"/>
+							<xs:element name="container"
+									type="tns:Container"/>
+							<xs:element name="enclosure"
+									type="tns:Enclosure"
+									nillable="true"
+									minOccurs="0"
+									maxOccurs="unbounded"/>
+							<xs:element name="postType"
+									type="tns:PostType"
+									nillable="true"/>
+							<xs:element name="orderId"
+									type="xs:string"/>
+							<xs:element name="date"
+									type="xs:dateTime"
+									nillable="true"/>
+							<xs:element name="paymentFlags"
+									type="tns:PaymentFlags"
+									nillable="true"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
 			<xs:complexType name="PostList">
 				<xs:sequence>
-					<xs:element name="items" type="tns:Post" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="items"
+							type="tns:Post"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="PostType">
@@ -234,29 +383,55 @@
 			</xs:simpleType>
 			<xs:complexType name="PrintDocument">
 				<xs:sequence>
-					<xs:element name="fileContents" type="xs:base64Binary" nillable="true"/>
-					<xs:element name="copies" type="xs:int"/>
-					<xs:element name="format" type="xs:string"/>
-					<xs:element name="duplex" type="xs:boolean"/>
+					<xs:element name="fileContents"
+							type="xs:base64Binary"
+							nillable="true"/>
+					<xs:element name="copies"
+							type="xs:int"/>
+					<xs:element name="format"
+							type="xs:string"/>
+					<xs:element name="duplex"
+							type="xs:boolean"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="PrintingDocumentsResponse">
 				<xs:sequence>
-					<xs:element name="items" type="tns:PrintDocument" maxOccurs="unbounded"/>
-					<xs:element name="error" type="xs:string" nillable="true"/>
+					<xs:element name="items"
+							type="tns:PrintDocument"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+					<xs:element name="error"
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Registry">
 				<xs:sequence>
-					<xs:element name="id" type="xs:string"/>
-					<xs:element name="incoming" type="tns:Incoming" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="customer" type="tns:Customer"/>
-					<xs:element name="date" type="xs:dateTime"/>
-					<xs:element name="totalIncomings" type="xs:int"/>
-					<xs:element name="carriedOutAndClosed" type="xs:boolean"/>
-					<xs:element name="registryType" type="tns:RegistryType" nillable="true"/>
-					<xs:element name="actionType" type="tns:ActionType" nillable="true"/>
-					<xs:element name="pickupRequest" type="tns:PickupRequest" nillable="true"/>
+					<xs:element name="id"
+							type="xs:string"/>
+					<xs:element name="incoming"
+							type="tns:Incoming"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+					<xs:element name="customer"
+							type="tns:Customer"/>
+					<xs:element name="date"
+							type="xs:dateTime"/>
+					<xs:element name="totalIncomings"
+							type="xs:int"/>
+					<xs:element name="carriedOutAndClosed"
+							type="xs:boolean"/>
+					<xs:element name="registryType"
+							type="tns:RegistryType"
+							nillable="true"/>
+					<xs:element name="actionType"
+							type="tns:ActionType"
+							nillable="true"/>
+					<xs:element name="pickupRequest"
+							type="tns:PickupRequest"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="RegistryType">
@@ -269,28 +444,40 @@
 				<xs:complexContent>
 					<xs:extension base="tns:Tag">
 						<xs:sequence>
-							<xs:element name="driverName" type="xs:string"/>
-							<xs:element name="date" type="xs:dateTime"/>
-							<xs:element name="registry" type="tns:Registry" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element name="totalRegistries" type="xs:int"/>
-							<xs:element name="carriedOutAndClosed" type="xs:boolean"/>
+							<xs:element name="driverName"
+									type="xs:string"/>
+							<xs:element name="date"
+									type="xs:dateTime"/>
+							<xs:element name="registry"
+									type="tns:Registry"
+									minOccurs="0"
+									maxOccurs="unbounded"/>
+							<xs:element name="totalRegistries"
+									type="xs:int"/>
+							<xs:element name="carriedOutAndClosed"
+									type="xs:boolean"/>
 						</xs:sequence>
 					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
 			<xs:complexType name="StringList">
 				<xs:sequence>
-					<xs:element name="items" type="xs:string" maxOccurs="unbounded"/>
+					<xs:element name="items"
+							type="xs:string"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Tag">
 				<xs:sequence>
-					<xs:element name="id" type="xs:string"/>
+					<xs:element name="id"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="TagList">
 				<xs:sequence>
-					<xs:element name="items" type="tns:Tag" maxOccurs="unbounded"/>
+					<xs:element name="items"
+							type="tns:Tag"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:simpleType name="TagType">
@@ -304,425 +491,496 @@
 			</xs:simpleType>
 			<xs:complexType name="UpdateContainerResponse2">
 				<xs:sequence>
-					<xs:element name="container" type="tns:Container"/>
-					<xs:element name="error" type="xs:string"/>
+					<xs:element name="container"
+							type="tns:Container"/>
+					<xs:element name="error"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:element name="AccountContainerCost">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerIds" type="tns:StringList"/>
+						<xs:element name="containerIds"
+								type="tns:StringList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AccountContainerCostResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddBoxContainers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="boxTypeId" type="xs:string"/>
-						<xs:element name="tag" type="tns:TagList"/>
+						<xs:element name="boxTypeId"
+								type="xs:string"/>
+						<xs:element name="tag"
+								type="tns:TagList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddBoxContainersResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddContainer">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="container" type="tns:Container"/>
+						<xs:element name="container"
+								type="tns:Container"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddIncomingToRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="incoming" type="tns:Incoming"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="incoming"
+								type="tns:Incoming"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddIncomingToRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:int"/>
+						<xs:element name="return"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddIncomingToRegistry2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="incoming" type="tns:Incoming"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="incoming"
+								type="tns:Incoming"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="AddIncomingToRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:int"/>
+						<xs:element name="return"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutPlannedRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Items" type="tns:PlannedRegistryCheckoutItems" nillable="true"/>
-						<xs:element name="ID" type="xs:string"/>
+						<xs:element name="Items"
+								type="tns:PlannedRegistryCheckoutItems"
+								nillable="true"/>
+						<xs:element name="ID"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutPlannedRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRegistry2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:string"/>
+						<xs:element name="return"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRouteList">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="routeListId" type="xs:string"/>
+						<xs:element name="routeListId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CarryOutRouteListResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CheckAddress">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CheckAddressResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:CheckAddressResult"/>
+						<xs:element name="return"
+								type="tns:CheckAddressResult"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CloseAndPrintCurrentRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="carrier" type="tns:PostType"/>
+						<xs:element name="carrier"
+								type="tns:PostType"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="CloseAndPrintCurrentRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
+						<xs:element name="return"
+								type="tns:PrintingDocumentsResponse"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteIncomingFromRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="incoming" type="tns:Incoming"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="incoming"
+								type="tns:Incoming"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteIncomingFromRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteIncomingFromRegistry2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="incoming" type="tns:Incoming"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="incoming"
+								type="tns:Incoming"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteIncomingFromRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteRegistry2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeleteRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FileUpload">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="fileId" type="xs:string"/>
-						<xs:element name="path" type="xs:string"/>
-						<xs:element name="document" type="tns:DocumentType" nillable="true"/>
+						<xs:element name="fileId"
+								type="xs:string"/>
+						<xs:element name="path"
+								type="xs:string"/>
+						<xs:element name="document"
+								type="tns:DocumentType"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FileUploadResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindContainer">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Container" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="SearchContainer">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="trackingId" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="SearchContainerResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:Container" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Container"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindIncoming">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="incomingId" type="xs:string"/>
+						<xs:element name="incomingId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindIncomingResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Incoming" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Incoming"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindIncoming2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="incomingId" type="xs:string"/>
+						<xs:element name="incomingId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindIncoming2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Incoming" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Incoming"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindPost">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="postId" type="xs:string"/>
+						<xs:element name="postId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindPostResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Post" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Post"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="routeListId" type="xs:string"/>
-						<xs:element name="incomingId" type="xs:string"/>
+						<xs:element name="routeListId"
+								type="xs:string"/>
+						<xs:element name="incomingId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Registry" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Registry"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRegistry2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="carrier" type="tns:PostType"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="carrier"
+								type="tns:PostType"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRegistry2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Registry" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Registry"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRouteList">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="routeListId" type="xs:string"/>
+						<xs:element name="routeListId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindRouteListResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:RouteList" nillable="true"/>
+						<xs:element name="return"
+								type="tns:RouteList"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindTag">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="tagId" type="xs:string"/>
+						<xs:element name="tagId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindTagResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:TagType" nillable="true"/>
+						<xs:element name="return"
+								type="tns:TagType"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindTrackNumber">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="trackId" type="xs:string"/>
+						<xs:element name="trackId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="FindTrackNumberResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Post" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Post"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GatherInfo">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-						<xs:element name="field" type="tns:StringList"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
+						<xs:element name="field"
+								type="tns:StringList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GatherInfoResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:FieldList" nillable="true"/>
+						<xs:element name="return"
+								type="tns:FieldList"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GenerateTagsForContainers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="count" type="xs:int"/>
+						<xs:element name="count"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GenerateTagsForContainersResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:TagList"/>
+						<xs:element name="return"
+								type="tns:TagList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GenerateTagsForIncomings">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="customerCode" type="xs:string"/>
-						<xs:element name="count" type="xs:int"/>
+						<xs:element name="customerCode"
+								type="xs:string"/>
+						<xs:element name="count"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GenerateTagsForIncomingsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:TagList"/>
+						<xs:element name="return"
+								type="tns:TagList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -734,7 +992,8 @@
 			<xs:element name="GetActivePostsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:PostList"/>
+						<xs:element name="return"
+								type="tns:PostList"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -746,148 +1005,157 @@
 			<xs:element name="GetActivePostsCountResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:int"/>
+						<xs:element name="return"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetBoxCount">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="boxTypeId" type="xs:string"/>
+						<xs:element name="boxTypeId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetBoxCountResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:int"/>
+						<xs:element name="return"
+								type="xs:int"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetBoxType">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="boxTypeId" type="xs:string"/>
+						<xs:element name="boxTypeId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetBoxTypeResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:BoxType"/>
+						<xs:element name="return"
+								type="tns:BoxType"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetCustomer">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="customerId" type="xs:string"/>
+						<xs:element name="customerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetCustomerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Customer" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Customer"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetDocumentsForPrinting">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="postId" type="xs:string"/>
+						<xs:element name="postId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetDocumentsForPrintingResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
+						<xs:element name="return"
+								type="tns:PrintingDocumentsResponse"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetLabel">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetLabelResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:base64Binary" nillable="true"/>
+						<xs:element name="return"
+								type="xs:base64Binary"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetLabel2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetLabel2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:GetLabelResponse2" nillable="true"/>
+						<xs:element name="return"
+								type="tns:GetLabelResponse2"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOperator">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="machineId" type="xs:string"/>
+						<xs:element name="machineId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOperatorResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Operator" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Operator"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOperator2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="machineId" type="xs:string"/>
+						<xs:element name="machineId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOperator2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:GetOperatorResponse2"/>
+						<xs:element name="return"
+								type="tns:GetOperatorResponse2"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOrder">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="orderId" type="xs:string"/>
+						<xs:element name="orderId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetOrderResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Order" nillable="true"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetPickupRequests">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="customerId" type="xs:string"/>
-						<xs:element name="date" type="xs:dateTime"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="GetPickupRequestsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return" type="tns:PickupRequest" maxOccurs="unbounded"/>
+						<xs:element name="return"
+								type="tns:Order"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -899,448 +1167,634 @@
 			<xs:element name="GetPlannedRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:PlannedRegistry"/>
+						<xs:element name="return"
+								type="tns:PlannedRegistry"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetRegistry">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
+						<xs:element name="registryId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="GetRegistryResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:Registry" nillable="true"/>
+						<xs:element name="return"
+								type="tns:Registry"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="MarkAsProblem">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
-						<xs:element name="problemStatus" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
+						<xs:element name="problemStatus"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="MarkAsProblemResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="MarkPostAsShipped">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="containerId" type="xs:string"/>
+						<xs:element name="containerId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="MarkPostAsShippedResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="SetOperatorActivity">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="isActive" type="xs:boolean"/>
+						<xs:element name="isActive"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="SetOperatorActivityResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="StartFillingWarrantyCard">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="incomingId" type="xs:string"/>
-						<xs:element name="shipmentId" type="xs:string"/>
+						<xs:element name="incomingId"
+								type="xs:string"/>
+						<xs:element name="shipmentId"
+								type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="StartFillingWarrantyCardResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="StopFillingWarrantyCard">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="incomingId" type="xs:string"/>
-						<xs:element name="shipmentId" type="xs:string"/>
-						<xs:element name="filled" type="xs:boolean"/>
+						<xs:element name="incomingId"
+								type="xs:string"/>
+						<xs:element name="shipmentId"
+								type="xs:string"/>
+						<xs:element name="filled"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="StopFillingWarrantyCardResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="UpdateContainer">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="container" type="tns:Container"/>
+						<xs:element name="container"
+								type="tns:Container"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="UpdateContainerResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:boolean"/>
+						<xs:element name="return"
+								type="xs:boolean"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="UpdateContainer2">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="container" type="tns:Container"/>
+						<xs:element name="container"
+								type="tns:Container"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="UpdateContainer2Response">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="tns:UpdateContainerResponse2"/>
+						<xs:element name="return"
+								type="tns:UpdateContainerResponse2"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="BindRegistryWithPickupRequest">
+			<xs:element name="getPickupRequests">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="registryId" type="xs:string"/>
-						<xs:element name="pickupRequestId" type="xs:string"/>
+						<xs:element name="customerId"
+								type="xs:string"/>
+						<xs:element name="date"
+								type="xs:dateTime"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="BindRegistryWithPickupRequestResponse">
+			<xs:element name="getPickupRequestsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="return" type="xs:string" nillable="true"/>
+						<xs:element name="return"
+								type="tns:PickupRequestList"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="bindRegistryWithPickupRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryId"
+								type="xs:string"/>
+						<xs:element name="pickupRequestId"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="bindRegistryWithPickupRequestResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SearchContainer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="trackingId"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SearchContainerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Container"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatePostFromIncoming">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="incoming"
+								type="tns:Incoming"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatePostFromIncomingResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Post"
+								nillable="true"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="AccountContainerCostRequestMessage">
-		<part name="parameters" element="tns:AccountContainerCost"/>
+		<part name="parameters"
+				element="tns:AccountContainerCost"/>
 	</message>
 	<message name="AccountContainerCostResponseMessage">
-		<part name="parameters" element="tns:AccountContainerCostResponse"/>
+		<part name="parameters"
+				element="tns:AccountContainerCostResponse"/>
 	</message>
 	<message name="AddBoxContainersRequestMessage">
-		<part name="parameters" element="tns:AddBoxContainers"/>
+		<part name="parameters"
+				element="tns:AddBoxContainers"/>
 	</message>
 	<message name="AddBoxContainersResponseMessage">
-		<part name="parameters" element="tns:AddBoxContainersResponse"/>
+		<part name="parameters"
+				element="tns:AddBoxContainersResponse"/>
 	</message>
 	<message name="AddContainerRequestMessage">
-		<part name="parameters" element="tns:AddContainer"/>
+		<part name="parameters"
+				element="tns:AddContainer"/>
 	</message>
 	<message name="AddContainerResponseMessage">
-		<part name="parameters" element="tns:AddContainerResponse"/>
+		<part name="parameters"
+				element="tns:AddContainerResponse"/>
 	</message>
 	<message name="AddIncomingToRegistryRequestMessage">
-		<part name="parameters" element="tns:AddIncomingToRegistry"/>
+		<part name="parameters"
+				element="tns:AddIncomingToRegistry"/>
 	</message>
 	<message name="AddIncomingToRegistryResponseMessage">
-		<part name="parameters" element="tns:AddIncomingToRegistryResponse"/>
+		<part name="parameters"
+				element="tns:AddIncomingToRegistryResponse"/>
 	</message>
 	<message name="AddIncomingToRegistry2RequestMessage">
-		<part name="parameters" element="tns:AddIncomingToRegistry2"/>
+		<part name="parameters"
+				element="tns:AddIncomingToRegistry2"/>
 	</message>
 	<message name="AddIncomingToRegistry2ResponseMessage">
-		<part name="parameters" element="tns:AddIncomingToRegistry2Response"/>
+		<part name="parameters"
+				element="tns:AddIncomingToRegistry2Response"/>
 	</message>
 	<message name="CarryOutPlannedRegistryRequestMessage">
-		<part name="parameters" element="tns:CarryOutPlannedRegistry"/>
+		<part name="parameters"
+				element="tns:CarryOutPlannedRegistry"/>
 	</message>
 	<message name="CarryOutPlannedRegistryResponseMessage">
-		<part name="parameters" element="tns:CarryOutPlannedRegistryResponse"/>
+		<part name="parameters"
+				element="tns:CarryOutPlannedRegistryResponse"/>
 	</message>
 	<message name="CarryOutRegistryRequestMessage">
-		<part name="parameters" element="tns:CarryOutRegistry"/>
+		<part name="parameters"
+				element="tns:CarryOutRegistry"/>
 	</message>
 	<message name="CarryOutRegistryResponseMessage">
-		<part name="parameters" element="tns:CarryOutRegistryResponse"/>
+		<part name="parameters"
+				element="tns:CarryOutRegistryResponse"/>
 	</message>
 	<message name="CarryOutRegistry2RequestMessage">
-		<part name="parameters" element="tns:CarryOutRegistry2"/>
+		<part name="parameters"
+				element="tns:CarryOutRegistry2"/>
 	</message>
 	<message name="CarryOutRegistry2ResponseMessage">
-		<part name="parameters" element="tns:CarryOutRegistry2Response"/>
+		<part name="parameters"
+				element="tns:CarryOutRegistry2Response"/>
 	</message>
 	<message name="CarryOutRouteListRequestMessage">
-		<part name="parameters" element="tns:CarryOutRouteList"/>
+		<part name="parameters"
+				element="tns:CarryOutRouteList"/>
 	</message>
 	<message name="CarryOutRouteListResponseMessage">
-		<part name="parameters" element="tns:CarryOutRouteListResponse"/>
+		<part name="parameters"
+				element="tns:CarryOutRouteListResponse"/>
 	</message>
 	<message name="CheckAddressRequestMessage">
-		<part name="parameters" element="tns:CheckAddress"/>
+		<part name="parameters"
+				element="tns:CheckAddress"/>
 	</message>
 	<message name="CheckAddressResponseMessage">
-		<part name="parameters" element="tns:CheckAddressResponse"/>
+		<part name="parameters"
+				element="tns:CheckAddressResponse"/>
 	</message>
 	<message name="CloseAndPrintCurrentRegistryRequestMessage">
-		<part name="parameters" element="tns:CloseAndPrintCurrentRegistry"/>
+		<part name="parameters"
+				element="tns:CloseAndPrintCurrentRegistry"/>
 	</message>
 	<message name="CloseAndPrintCurrentRegistryResponseMessage">
-		<part name="parameters" element="tns:CloseAndPrintCurrentRegistryResponse"/>
+		<part name="parameters"
+				element="tns:CloseAndPrintCurrentRegistryResponse"/>
 	</message>
 	<message name="DeleteIncomingFromRegistryRequestMessage">
-		<part name="parameters" element="tns:DeleteIncomingFromRegistry"/>
+		<part name="parameters"
+				element="tns:DeleteIncomingFromRegistry"/>
 	</message>
 	<message name="DeleteIncomingFromRegistryResponseMessage">
-		<part name="parameters" element="tns:DeleteIncomingFromRegistryResponse"/>
+		<part name="parameters"
+				element="tns:DeleteIncomingFromRegistryResponse"/>
 	</message>
 	<message name="DeleteIncomingFromRegistry2RequestMessage">
-		<part name="parameters" element="tns:DeleteIncomingFromRegistry2"/>
+		<part name="parameters"
+				element="tns:DeleteIncomingFromRegistry2"/>
 	</message>
 	<message name="DeleteIncomingFromRegistry2ResponseMessage">
-		<part name="parameters" element="tns:DeleteIncomingFromRegistry2Response"/>
+		<part name="parameters"
+				element="tns:DeleteIncomingFromRegistry2Response"/>
 	</message>
 	<message name="DeleteRegistryRequestMessage">
-		<part name="parameters" element="tns:DeleteRegistry"/>
+		<part name="parameters"
+				element="tns:DeleteRegistry"/>
 	</message>
 	<message name="DeleteRegistryResponseMessage">
-		<part name="parameters" element="tns:DeleteRegistryResponse"/>
+		<part name="parameters"
+				element="tns:DeleteRegistryResponse"/>
 	</message>
 	<message name="DeleteRegistry2RequestMessage">
-		<part name="parameters" element="tns:DeleteRegistry2"/>
+		<part name="parameters"
+				element="tns:DeleteRegistry2"/>
 	</message>
 	<message name="DeleteRegistry2ResponseMessage">
-		<part name="parameters" element="tns:DeleteRegistry2Response"/>
+		<part name="parameters"
+				element="tns:DeleteRegistry2Response"/>
 	</message>
 	<message name="FileUploadRequestMessage">
-		<part name="parameters" element="tns:FileUpload"/>
+		<part name="parameters"
+				element="tns:FileUpload"/>
 	</message>
 	<message name="FileUploadResponseMessage">
-		<part name="parameters" element="tns:FileUploadResponse"/>
+		<part name="parameters"
+				element="tns:FileUploadResponse"/>
 	</message>
 	<message name="FindContainerRequestMessage">
-		<part name="parameters" element="tns:FindContainer"/>
+		<part name="parameters"
+				element="tns:FindContainer"/>
 	</message>
 	<message name="FindContainerResponseMessage">
-		<part name="parameters" element="tns:FindContainerResponse"/>
-	</message>
-	<message name="SearchContainerRequestMessage">
-		<part name="parameters" element="tns:SearchContainer"/>
-	</message>
-	<message name="SearchContainerResponseMessage">
-		<part name="parameters" element="tns:SearchContainerResponse"/>
+		<part name="parameters"
+				element="tns:FindContainerResponse"/>
 	</message>
 	<message name="FindIncomingRequestMessage">
-		<part name="parameters" element="tns:FindIncoming"/>
+		<part name="parameters"
+				element="tns:FindIncoming"/>
 	</message>
 	<message name="FindIncomingResponseMessage">
-		<part name="parameters" element="tns:FindIncomingResponse"/>
+		<part name="parameters"
+				element="tns:FindIncomingResponse"/>
 	</message>
 	<message name="FindIncoming2RequestMessage">
-		<part name="parameters" element="tns:FindIncoming2"/>
+		<part name="parameters"
+				element="tns:FindIncoming2"/>
 	</message>
 	<message name="FindIncoming2ResponseMessage">
-		<part name="parameters" element="tns:FindIncoming2Response"/>
+		<part name="parameters"
+				element="tns:FindIncoming2Response"/>
 	</message>
 	<message name="FindPostRequestMessage">
-		<part name="parameters" element="tns:FindPost"/>
+		<part name="parameters"
+				element="tns:FindPost"/>
 	</message>
 	<message name="FindPostResponseMessage">
-		<part name="parameters" element="tns:FindPostResponse"/>
+		<part name="parameters"
+				element="tns:FindPostResponse"/>
 	</message>
 	<message name="FindRegistryRequestMessage">
-		<part name="parameters" element="tns:FindRegistry"/>
+		<part name="parameters"
+				element="tns:FindRegistry"/>
 	</message>
 	<message name="FindRegistryResponseMessage">
-		<part name="parameters" element="tns:FindRegistryResponse"/>
+		<part name="parameters"
+				element="tns:FindRegistryResponse"/>
 	</message>
 	<message name="FindRegistry2RequestMessage">
-		<part name="parameters" element="tns:FindRegistry2"/>
+		<part name="parameters"
+				element="tns:FindRegistry2"/>
 	</message>
 	<message name="FindRegistry2ResponseMessage">
-		<part name="parameters" element="tns:FindRegistry2Response"/>
+		<part name="parameters"
+				element="tns:FindRegistry2Response"/>
 	</message>
 	<message name="FindRouteListRequestMessage">
-		<part name="parameters" element="tns:FindRouteList"/>
+		<part name="parameters"
+				element="tns:FindRouteList"/>
 	</message>
 	<message name="FindRouteListResponseMessage">
-		<part name="parameters" element="tns:FindRouteListResponse"/>
+		<part name="parameters"
+				element="tns:FindRouteListResponse"/>
 	</message>
 	<message name="FindTagRequestMessage">
-		<part name="parameters" element="tns:FindTag"/>
+		<part name="parameters"
+				element="tns:FindTag"/>
 	</message>
 	<message name="FindTagResponseMessage">
-		<part name="parameters" element="tns:FindTagResponse"/>
+		<part name="parameters"
+				element="tns:FindTagResponse"/>
 	</message>
 	<message name="FindTrackNumberRequestMessage">
-		<part name="parameters" element="tns:FindTrackNumber"/>
+		<part name="parameters"
+				element="tns:FindTrackNumber"/>
 	</message>
 	<message name="FindTrackNumberResponseMessage">
-		<part name="parameters" element="tns:FindTrackNumberResponse"/>
+		<part name="parameters"
+				element="tns:FindTrackNumberResponse"/>
 	</message>
 	<message name="GatherInfoRequestMessage">
-		<part name="parameters" element="tns:GatherInfo"/>
+		<part name="parameters"
+				element="tns:GatherInfo"/>
 	</message>
 	<message name="GatherInfoResponseMessage">
-		<part name="parameters" element="tns:GatherInfoResponse"/>
+		<part name="parameters"
+				element="tns:GatherInfoResponse"/>
 	</message>
 	<message name="GenerateTagsForContainersRequestMessage">
-		<part name="parameters" element="tns:GenerateTagsForContainers"/>
+		<part name="parameters"
+				element="tns:GenerateTagsForContainers"/>
 	</message>
 	<message name="GenerateTagsForContainersResponseMessage">
-		<part name="parameters" element="tns:GenerateTagsForContainersResponse"/>
+		<part name="parameters"
+				element="tns:GenerateTagsForContainersResponse"/>
 	</message>
 	<message name="GenerateTagsForIncomingsRequestMessage">
-		<part name="parameters" element="tns:GenerateTagsForIncomings"/>
+		<part name="parameters"
+				element="tns:GenerateTagsForIncomings"/>
 	</message>
 	<message name="GenerateTagsForIncomingsResponseMessage">
-		<part name="parameters" element="tns:GenerateTagsForIncomingsResponse"/>
+		<part name="parameters"
+				element="tns:GenerateTagsForIncomingsResponse"/>
 	</message>
 	<message name="GetActivePostsRequestMessage">
-		<part name="parameters" element="tns:GetActivePosts"/>
+		<part name="parameters"
+				element="tns:GetActivePosts"/>
 	</message>
 	<message name="GetActivePostsResponseMessage">
-		<part name="parameters" element="tns:GetActivePostsResponse"/>
+		<part name="parameters"
+				element="tns:GetActivePostsResponse"/>
 	</message>
 	<message name="GetActivePostsCountRequestMessage">
-		<part name="parameters" element="tns:GetActivePostsCount"/>
+		<part name="parameters"
+				element="tns:GetActivePostsCount"/>
 	</message>
 	<message name="GetActivePostsCountResponseMessage">
-		<part name="parameters" element="tns:GetActivePostsCountResponse"/>
+		<part name="parameters"
+				element="tns:GetActivePostsCountResponse"/>
 	</message>
 	<message name="GetBoxCountRequestMessage">
-		<part name="parameters" element="tns:GetBoxCount"/>
+		<part name="parameters"
+				element="tns:GetBoxCount"/>
 	</message>
 	<message name="GetBoxCountResponseMessage">
-		<part name="parameters" element="tns:GetBoxCountResponse"/>
+		<part name="parameters"
+				element="tns:GetBoxCountResponse"/>
 	</message>
 	<message name="GetBoxTypeRequestMessage">
-		<part name="parameters" element="tns:GetBoxType"/>
+		<part name="parameters"
+				element="tns:GetBoxType"/>
 	</message>
 	<message name="GetBoxTypeResponseMessage">
-		<part name="parameters" element="tns:GetBoxTypeResponse"/>
+		<part name="parameters"
+				element="tns:GetBoxTypeResponse"/>
 	</message>
 	<message name="GetCustomerRequestMessage">
-		<part name="parameters" element="tns:GetCustomer"/>
+		<part name="parameters"
+				element="tns:GetCustomer"/>
 	</message>
 	<message name="GetCustomerResponseMessage">
-		<part name="parameters" element="tns:GetCustomerResponse"/>
+		<part name="parameters"
+				element="tns:GetCustomerResponse"/>
 	</message>
 	<message name="GetDocumentsForPrintingRequestMessage">
-		<part name="parameters" element="tns:GetDocumentsForPrinting"/>
+		<part name="parameters"
+				element="tns:GetDocumentsForPrinting"/>
 	</message>
 	<message name="GetDocumentsForPrintingResponseMessage">
-		<part name="parameters" element="tns:GetDocumentsForPrintingResponse"/>
+		<part name="parameters"
+				element="tns:GetDocumentsForPrintingResponse"/>
 	</message>
 	<message name="GetLabelRequestMessage">
-		<part name="parameters" element="tns:GetLabel"/>
+		<part name="parameters"
+				element="tns:GetLabel"/>
 	</message>
 	<message name="GetLabelResponseMessage">
-		<part name="parameters" element="tns:GetLabelResponse"/>
+		<part name="parameters"
+				element="tns:GetLabelResponse"/>
 	</message>
 	<message name="GetLabel2RequestMessage">
-		<part name="parameters" element="tns:GetLabel2"/>
+		<part name="parameters"
+				element="tns:GetLabel2"/>
 	</message>
 	<message name="GetLabel2ResponseMessage">
-		<part name="parameters" element="tns:GetLabel2Response"/>
+		<part name="parameters"
+				element="tns:GetLabel2Response"/>
 	</message>
 	<message name="GetOperatorRequestMessage">
-		<part name="parameters" element="tns:GetOperator"/>
+		<part name="parameters"
+				element="tns:GetOperator"/>
 	</message>
 	<message name="GetOperatorResponseMessage">
-		<part name="parameters" element="tns:GetOperatorResponse"/>
+		<part name="parameters"
+				element="tns:GetOperatorResponse"/>
 	</message>
 	<message name="GetOperator2RequestMessage">
-		<part name="parameters" element="tns:GetOperator2"/>
+		<part name="parameters"
+				element="tns:GetOperator2"/>
 	</message>
 	<message name="GetOperator2ResponseMessage">
-		<part name="parameters" element="tns:GetOperator2Response"/>
+		<part name="parameters"
+				element="tns:GetOperator2Response"/>
 	</message>
 	<message name="GetOrderRequestMessage">
-		<part name="parameters" element="tns:GetOrder"/>
+		<part name="parameters"
+				element="tns:GetOrder"/>
 	</message>
 	<message name="GetOrderResponseMessage">
-		<part name="parameters" element="tns:GetOrderResponse"/>
-	</message>
-	<message name="GetPickupRequestsRequestMessage">
-		<part name="parameters" element="tns:GetPickupRequests"/>
-	</message>
-	<message name="GetPickupRequestsResponseMessage">
-		<part name="parameters" element="tns:GetPickupRequestsResponse"/>
+		<part name="parameters"
+				element="tns:GetOrderResponse"/>
 	</message>
 	<message name="GetPlannedRegistryRequestMessage">
-		<part name="parameters" element="tns:GetPlannedRegistry"/>
+		<part name="parameters"
+				element="tns:GetPlannedRegistry"/>
 	</message>
 	<message name="GetPlannedRegistryResponseMessage">
-		<part name="parameters" element="tns:GetPlannedRegistryResponse"/>
+		<part name="parameters"
+				element="tns:GetPlannedRegistryResponse"/>
 	</message>
 	<message name="GetRegistryRequestMessage">
-		<part name="parameters" element="tns:GetRegistry"/>
+		<part name="parameters"
+				element="tns:GetRegistry"/>
 	</message>
 	<message name="GetRegistryResponseMessage">
-		<part name="parameters" element="tns:GetRegistryResponse"/>
+		<part name="parameters"
+				element="tns:GetRegistryResponse"/>
 	</message>
 	<message name="MarkAsProblemRequestMessage">
-		<part name="parameters" element="tns:MarkAsProblem"/>
+		<part name="parameters"
+				element="tns:MarkAsProblem"/>
 	</message>
 	<message name="MarkAsProblemResponseMessage">
-		<part name="parameters" element="tns:MarkAsProblemResponse"/>
+		<part name="parameters"
+				element="tns:MarkAsProblemResponse"/>
 	</message>
 	<message name="MarkPostAsShippedRequestMessage">
-		<part name="parameters" element="tns:MarkPostAsShipped"/>
+		<part name="parameters"
+				element="tns:MarkPostAsShipped"/>
 	</message>
 	<message name="MarkPostAsShippedResponseMessage">
-		<part name="parameters" element="tns:MarkPostAsShippedResponse"/>
+		<part name="parameters"
+				element="tns:MarkPostAsShippedResponse"/>
 	</message>
 	<message name="SetOperatorActivityRequestMessage">
-		<part name="parameters" element="tns:SetOperatorActivity"/>
+		<part name="parameters"
+				element="tns:SetOperatorActivity"/>
 	</message>
 	<message name="SetOperatorActivityResponseMessage">
-		<part name="parameters" element="tns:SetOperatorActivityResponse"/>
+		<part name="parameters"
+				element="tns:SetOperatorActivityResponse"/>
 	</message>
 	<message name="StartFillingWarrantyCardRequestMessage">
-		<part name="parameters" element="tns:StartFillingWarrantyCard"/>
+		<part name="parameters"
+				element="tns:StartFillingWarrantyCard"/>
 	</message>
 	<message name="StartFillingWarrantyCardResponseMessage">
-		<part name="parameters" element="tns:StartFillingWarrantyCardResponse"/>
+		<part name="parameters"
+				element="tns:StartFillingWarrantyCardResponse"/>
 	</message>
 	<message name="StopFillingWarrantyCardRequestMessage">
-		<part name="parameters" element="tns:StopFillingWarrantyCard"/>
+		<part name="parameters"
+				element="tns:StopFillingWarrantyCard"/>
 	</message>
 	<message name="StopFillingWarrantyCardResponseMessage">
-		<part name="parameters" element="tns:StopFillingWarrantyCardResponse"/>
+		<part name="parameters"
+				element="tns:StopFillingWarrantyCardResponse"/>
 	</message>
 	<message name="UpdateContainerRequestMessage">
-		<part name="parameters" element="tns:UpdateContainer"/>
+		<part name="parameters"
+				element="tns:UpdateContainer"/>
 	</message>
 	<message name="UpdateContainerResponseMessage">
-		<part name="parameters" element="tns:UpdateContainerResponse"/>
+		<part name="parameters"
+				element="tns:UpdateContainerResponse"/>
 	</message>
 	<message name="UpdateContainer2RequestMessage">
-		<part name="parameters" element="tns:UpdateContainer2"/>
+		<part name="parameters"
+				element="tns:UpdateContainer2"/>
 	</message>
 	<message name="UpdateContainer2ResponseMessage">
-		<part name="parameters" element="tns:UpdateContainer2Response"/>
+		<part name="parameters"
+				element="tns:UpdateContainer2Response"/>
 	</message>
-	<message name="BindRegistryWithPickupRequestRequestMessage">
-		<part name="parameters" element="tns:BindRegistryWithPickupRequest"/>
+	<message name="getPickupRequestsRequestMessage">
+		<part name="parameters"
+				element="tns:getPickupRequests"/>
 	</message>
-	<message name="BindRegistryWithPickupRequestResponseMessage">
-		<part name="parameters" element="tns:BindRegistryWithPickupRequestResponse"/>
+	<message name="getPickupRequestsResponseMessage">
+		<part name="parameters"
+				element="tns:getPickupRequestsResponse"/>
+	</message>
+	<message name="bindRegistryWithPickupRequestRequestMessage">
+		<part name="parameters"
+				element="tns:bindRegistryWithPickupRequest"/>
+	</message>
+	<message name="bindRegistryWithPickupRequestResponseMessage">
+		<part name="parameters"
+				element="tns:bindRegistryWithPickupRequestResponse"/>
+	</message>
+	<message name="SearchContainerRequestMessage">
+		<part name="parameters"
+				element="tns:SearchContainer"/>
+	</message>
+	<message name="SearchContainerResponseMessage">
+		<part name="parameters"
+				element="tns:SearchContainerResponse"/>
+	</message>
+	<message name="CreatePostFromIncomingRequestMessage">
+		<part name="parameters"
+				element="tns:CreatePostFromIncoming"/>
+	</message>
+	<message name="CreatePostFromIncomingResponseMessage">
+		<part name="parameters"
+				element="tns:CreatePostFromIncomingResponse"/>
 	</message>
 	<portType name="PackingLinePortType">
 		<operation name="AccountContainerCost">
@@ -1410,10 +1864,6 @@
 		<operation name="FindContainer">
 			<input message="tns:FindContainerRequestMessage"/>
 			<output message="tns:FindContainerResponseMessage"/>
-		</operation>
-		<operation name="SearchContainer">
-			<input message="tns:SearchContainerRequestMessage"/>
-			<output message="tns:SearchContainerResponseMessage"/>
 		</operation>
 		<operation name="FindIncoming">
 			<input message="tns:FindIncomingRequestMessage"/>
@@ -1503,10 +1953,6 @@
 			<input message="tns:GetOrderRequestMessage"/>
 			<output message="tns:GetOrderResponseMessage"/>
 		</operation>
-		<operation name="GetPickupRequests">
-			<input message="tns:GetPickupRequestsRequestMessage"/>
-			<output message="tns:GetPickupRequestsResponseMessage"/>
-		</operation>
 		<operation name="GetPlannedRegistry">
 			<input message="tns:GetPlannedRegistryRequestMessage"/>
 			<output message="tns:GetPlannedRegistryResponseMessage"/>
@@ -1543,15 +1989,30 @@
 			<input message="tns:UpdateContainer2RequestMessage"/>
 			<output message="tns:UpdateContainer2ResponseMessage"/>
 		</operation>
-		<operation name="BindRegistryWithPickupRequest">
-			<input message="tns:BindRegistryWithPickupRequestRequestMessage"/>
-			<output message="tns:BindRegistryWithPickupRequestResponseMessage"/>
+		<operation name="getPickupRequests">
+			<input message="tns:getPickupRequestsRequestMessage"/>
+			<output message="tns:getPickupRequestsResponseMessage"/>
+		</operation>
+		<operation name="bindRegistryWithPickupRequest">
+			<input message="tns:bindRegistryWithPickupRequestRequestMessage"/>
+			<output message="tns:bindRegistryWithPickupRequestResponseMessage"/>
+		</operation>
+		<operation name="SearchContainer">
+			<input message="tns:SearchContainerRequestMessage"/>
+			<output message="tns:SearchContainerResponseMessage"/>
+		</operation>
+		<operation name="CreatePostFromIncoming">
+			<input message="tns:CreatePostFromIncomingRequestMessage"/>
+			<output message="tns:CreatePostFromIncomingResponseMessage"/>
 		</operation>
 	</portType>
-	<binding name="PackingLineSoapBinding" type="tns:PackingLinePortType">
-		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	<binding name="PackingLineSoapBinding"
+			type="tns:PackingLinePortType">
+		<soapbind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="AccountContainerCost">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1560,7 +2021,8 @@
 			</output>
 		</operation>
 		<operation name="AddBoxContainers">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1569,7 +2031,8 @@
 			</output>
 		</operation>
 		<operation name="AddContainer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1578,7 +2041,8 @@
 			</output>
 		</operation>
 		<operation name="AddIncomingToRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1587,7 +2051,8 @@
 			</output>
 		</operation>
 		<operation name="AddIncomingToRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1596,7 +2061,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutPlannedRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1605,7 +2071,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1614,7 +2081,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1623,7 +2091,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRouteList">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRouteList"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRouteList"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1632,7 +2101,8 @@
 			</output>
 		</operation>
 		<operation name="CheckAddress">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1641,7 +2111,8 @@
 			</output>
 		</operation>
 		<operation name="CloseAndPrintCurrentRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1650,7 +2121,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteIncomingFromRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1659,7 +2131,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteIncomingFromRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1668,7 +2141,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1677,7 +2151,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1686,7 +2161,8 @@
 			</output>
 		</operation>
 		<operation name="FileUpload">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1695,16 +2171,8 @@
 			</output>
 		</operation>
 		<operation name="FindContainer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="SearchContainer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1713,7 +2181,8 @@
 			</output>
 		</operation>
 		<operation name="FindIncoming">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1722,7 +2191,8 @@
 			</output>
 		</operation>
 		<operation name="FindIncoming2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1731,7 +2201,8 @@
 			</output>
 		</operation>
 		<operation name="FindPost">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1740,7 +2211,8 @@
 			</output>
 		</operation>
 		<operation name="FindRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1749,7 +2221,8 @@
 			</output>
 		</operation>
 		<operation name="FindRegistry2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1758,7 +2231,8 @@
 			</output>
 		</operation>
 		<operation name="FindRouteList">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1767,7 +2241,8 @@
 			</output>
 		</operation>
 		<operation name="FindTag">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1776,7 +2251,8 @@
 			</output>
 		</operation>
 		<operation name="FindTrackNumber">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1785,7 +2261,8 @@
 			</output>
 		</operation>
 		<operation name="GatherInfo">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1794,7 +2271,8 @@
 			</output>
 		</operation>
 		<operation name="GenerateTagsForContainers">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1803,7 +2281,8 @@
 			</output>
 		</operation>
 		<operation name="GenerateTagsForIncomings">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1812,7 +2291,8 @@
 			</output>
 		</operation>
 		<operation name="GetActivePosts">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1821,7 +2301,8 @@
 			</output>
 		</operation>
 		<operation name="GetActivePostsCount">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1830,7 +2311,8 @@
 			</output>
 		</operation>
 		<operation name="GetBoxCount">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1839,7 +2321,8 @@
 			</output>
 		</operation>
 		<operation name="GetBoxType">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1848,7 +2331,8 @@
 			</output>
 		</operation>
 		<operation name="GetCustomer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1857,7 +2341,8 @@
 			</output>
 		</operation>
 		<operation name="GetDocumentsForPrinting">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1866,7 +2351,8 @@
 			</output>
 		</operation>
 		<operation name="GetLabel">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1875,7 +2361,8 @@
 			</output>
 		</operation>
 		<operation name="GetLabel2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1884,7 +2371,8 @@
 			</output>
 		</operation>
 		<operation name="GetOperator">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1893,7 +2381,8 @@
 			</output>
 		</operation>
 		<operation name="GetOperator2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1902,16 +2391,8 @@
 			</output>
 		</operation>
 		<operation name="GetOrder">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOrder"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetPickupRequests">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPickupRequests"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOrder"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1920,7 +2401,8 @@
 			</output>
 		</operation>
 		<operation name="GetPlannedRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1929,7 +2411,8 @@
 			</output>
 		</operation>
 		<operation name="GetRegistry">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1938,7 +2421,8 @@
 			</output>
 		</operation>
 		<operation name="MarkAsProblem">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1947,7 +2431,8 @@
 			</output>
 		</operation>
 		<operation name="MarkPostAsShipped">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1956,7 +2441,8 @@
 			</output>
 		</operation>
 		<operation name="SetOperatorActivity">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1965,7 +2451,8 @@
 			</output>
 		</operation>
 		<operation name="StartFillingWarrantyCard">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1974,7 +2461,8 @@
 			</output>
 		</operation>
 		<operation name="StopFillingWarrantyCard">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StopFillingWarrantyCard"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:StopFillingWarrantyCard"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1983,7 +2471,8 @@
 			</output>
 		</operation>
 		<operation name="UpdateContainer">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1992,7 +2481,8 @@
 			</output>
 		</operation>
 		<operation name="UpdateContainer2">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -2000,8 +2490,39 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="BindRegistryWithPickupRequest">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:BindRegistryWithPickupRequest"/>
+		<operation name="getPickupRequests">
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:getPickupRequests"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="bindRegistryWithPickupRequest">
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:bindRegistryWithPickupRequest"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SearchContainer">
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatePostFromIncoming">
+			<soapbind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CreatePostFromIncoming"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -2010,10 +2531,13 @@
 			</output>
 		</operation>
 	</binding>
-	<binding name="PackingLineSoap12Binding" type="tns:PackingLinePortType">
-		<soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	<binding name="PackingLineSoap12Binding"
+			type="tns:PackingLinePortType">
+		<soap12bind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="AccountContainerCost">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AccountContainerCost"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2022,7 +2546,8 @@
 			</output>
 		</operation>
 		<operation name="AddBoxContainers">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddBoxContainers"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2031,7 +2556,8 @@
 			</output>
 		</operation>
 		<operation name="AddContainer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddContainer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2040,7 +2566,8 @@
 			</output>
 		</operation>
 		<operation name="AddIncomingToRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2049,7 +2576,8 @@
 			</output>
 		</operation>
 		<operation name="AddIncomingToRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:AddIncomingToRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2058,7 +2586,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutPlannedRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutPlannedRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2067,7 +2596,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2076,7 +2606,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2085,7 +2616,8 @@
 			</output>
 		</operation>
 		<operation name="CarryOutRouteList">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRouteList"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CarryOutRouteList"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2094,7 +2626,8 @@
 			</output>
 		</operation>
 		<operation name="CheckAddress">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CheckAddress"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2103,7 +2636,8 @@
 			</output>
 		</operation>
 		<operation name="CloseAndPrintCurrentRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CloseAndPrintCurrentRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2112,7 +2646,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteIncomingFromRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2121,7 +2656,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteIncomingFromRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteIncomingFromRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2130,7 +2666,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2139,7 +2676,8 @@
 			</output>
 		</operation>
 		<operation name="DeleteRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:DeleteRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2148,7 +2686,8 @@
 			</output>
 		</operation>
 		<operation name="FileUpload">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FileUpload"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2157,16 +2696,8 @@
 			</output>
 		</operation>
 		<operation name="FindContainer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="SearchContainer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindContainer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2175,7 +2706,8 @@
 			</output>
 		</operation>
 		<operation name="FindIncoming">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2184,7 +2716,8 @@
 			</output>
 		</operation>
 		<operation name="FindIncoming2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindIncoming2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2193,7 +2726,8 @@
 			</output>
 		</operation>
 		<operation name="FindPost">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindPost"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2202,7 +2736,8 @@
 			</output>
 		</operation>
 		<operation name="FindRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2211,7 +2746,8 @@
 			</output>
 		</operation>
 		<operation name="FindRegistry2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRegistry2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2220,7 +2756,8 @@
 			</output>
 		</operation>
 		<operation name="FindRouteList">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindRouteList"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2229,7 +2766,8 @@
 			</output>
 		</operation>
 		<operation name="FindTag">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTag"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2238,7 +2776,8 @@
 			</output>
 		</operation>
 		<operation name="FindTrackNumber">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:FindTrackNumber"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2247,7 +2786,8 @@
 			</output>
 		</operation>
 		<operation name="GatherInfo">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GatherInfo"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2256,7 +2796,8 @@
 			</output>
 		</operation>
 		<operation name="GenerateTagsForContainers">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForContainers"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2265,7 +2806,8 @@
 			</output>
 		</operation>
 		<operation name="GenerateTagsForIncomings">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GenerateTagsForIncomings"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2274,7 +2816,8 @@
 			</output>
 		</operation>
 		<operation name="GetActivePosts">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePosts"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2283,7 +2826,8 @@
 			</output>
 		</operation>
 		<operation name="GetActivePostsCount">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetActivePostsCount"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2292,7 +2836,8 @@
 			</output>
 		</operation>
 		<operation name="GetBoxCount">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxCount"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2301,7 +2846,8 @@
 			</output>
 		</operation>
 		<operation name="GetBoxType">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetBoxType"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2310,7 +2856,8 @@
 			</output>
 		</operation>
 		<operation name="GetCustomer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetCustomer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2319,7 +2866,8 @@
 			</output>
 		</operation>
 		<operation name="GetDocumentsForPrinting">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2328,7 +2876,8 @@
 			</output>
 		</operation>
 		<operation name="GetLabel">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2337,7 +2886,8 @@
 			</output>
 		</operation>
 		<operation name="GetLabel2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetLabel2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2346,7 +2896,8 @@
 			</output>
 		</operation>
 		<operation name="GetOperator">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2355,7 +2906,8 @@
 			</output>
 		</operation>
 		<operation name="GetOperator2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOperator2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2364,16 +2916,8 @@
 			</output>
 		</operation>
 		<operation name="GetOrder">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOrder"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="GetPickupRequests">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPickupRequests"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetOrder"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2382,7 +2926,8 @@
 			</output>
 		</operation>
 		<operation name="GetPlannedRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetPlannedRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2391,7 +2936,8 @@
 			</output>
 		</operation>
 		<operation name="GetRegistry">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetRegistry"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2400,7 +2946,8 @@
 			</output>
 		</operation>
 		<operation name="MarkAsProblem">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkAsProblem"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2409,7 +2956,8 @@
 			</output>
 		</operation>
 		<operation name="MarkPostAsShipped">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:MarkPostAsShipped"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2418,7 +2966,8 @@
 			</output>
 		</operation>
 		<operation name="SetOperatorActivity">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:SetOperatorActivity"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2427,7 +2976,8 @@
 			</output>
 		</operation>
 		<operation name="StartFillingWarrantyCard">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:StartFillingWarrantyCard"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2436,7 +2986,8 @@
 			</output>
 		</operation>
 		<operation name="StopFillingWarrantyCard">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:StopFillingWarrantyCard"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:StopFillingWarrantyCard"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2445,7 +2996,8 @@
 			</output>
 		</operation>
 		<operation name="UpdateContainer">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2454,7 +3006,8 @@
 			</output>
 		</operation>
 		<operation name="UpdateContainer2">
-			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:UpdateContainer2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -2462,24 +3015,58 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="BindRegistryWithPickupRequest">
-			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:BindRegistryWithPickupRequest"/>
+		<operation name="getPickupRequests">
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:getPickupRequests"/>
 			<input>
-				<soapbind:body use="literal"/>
+				<soap12bind:body use="literal"/>
 			</input>
 			<output>
-				<soapbind:body use="literal"/>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="bindRegistryWithPickupRequest">
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:bindRegistryWithPickupRequest"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SearchContainer">
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:SearchContainer"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatePostFromIncoming">
+			<soap12bind:operation style="document"
+					soapAction="http://www.aplix.ru/PackingLine#PackingLine:CreatePostFromIncoming"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
 	</binding>
 	<service name="PackingLine">
-		<port name="PackingLineSoap" binding="tns:PackingLineSoapBinding">
+		<port name="PackingLineSoap"
+				binding="tns:PackingLineSoapBinding">
 			<documentation> 
-				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
+						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
 			<soapbind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
 		</port>
-		<port name="PackingLineSoap12" binding="tns:PackingLineSoap12Binding">
+		<port name="PackingLineSoap12"
+				binding="tns:PackingLineSoap12Binding">
 			<soap12bind:address location="http://z.aplix.ru/post/ws/PackingLine.1cws"/>
 		</port>
 	</service>

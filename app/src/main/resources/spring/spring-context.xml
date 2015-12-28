@@ -34,7 +34,7 @@
 		<property name="packingAction" ref="action7_pre" />
 		<property name="markingAction" ref="action10" />
 	</bean>
-	
+
 	<bean id="action3_pre" class="ru.aplix.packline.action.SelectPickupRequestsAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action3" />
@@ -52,15 +52,16 @@
 
 	<bean id="action5" class="ru.aplix.packline.action.TrolleyAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="nextAction" ref="action6" />
+		<property name="acceptanceAction" ref="action6" />
+		<property name="dimentionAction" ref="expressMarkingAction1" />
+		<property name="expressMarkingAction" ref="expressMarkingAction2" />
 	</bean>
 
 	<bean id="action6" class="ru.aplix.packline.action.OrderActAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="saveActAction" ref="action2" />
+		<property name="idleAction" ref="action2" />
 		<property name="deleteActAction" ref="action2" />
-		<property name="closeActAction" ref="action2" />
-		<property name="scanActAction" ref="actionOrderActScan" />
+		<property name="closeActAction" ref="actionOrderActScan" />
 	</bean>
 
 	<bean id="action7_pre" class="ru.aplix.packline.action.PrintFormsBeforePackingAction">
@@ -188,19 +189,57 @@
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>
-	
+
 	<bean id="actionOrderActScan" class="ru.aplix.packline.action.OrderActScanAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>
-	
+
 	<bean id="selectPrintFormsAction" class="ru.aplix.packline.action.SelectPrintFormsAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="remarkingAction" />
 	</bean>
-	
+
 	<bean id="remarkingAction" class="ru.aplix.packline.action.RemarkingAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="expressMarkingAction1" class="ru.aplix.packline.action.Dimentions2Action">
+		<property name="idleTimeout" value="LONG" />
+		<property name="nextAction" ref="expressMarkingAction2" />
+	</bean>
+
+	<bean id="expressMarkingAction2" class="ru.aplix.packline.action.WarningAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="normalAction" ref="expressMarkingAction3" />
+		<property name="backAction" ref="action6" />
+	</bean>
+
+	<bean id="expressMarkingAction3" class="ru.aplix.packline.action.WeightingBoxAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="overweightAction" ref="expressMarkingAction4" />
+		<property name="underweightAction" ref="expressMarkingAction5" />
+		<property name="printingAction" ref="expressMarkingAction6" />
+		<property name="nextParcelAction" ref="action6" />
+	</bean>
+
+	<bean id="expressMarkingAction4" class="ru.aplix.packline.action.OverweightAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="weightingAction" ref="expressMarkingAction3" />
+		<property name="normalAction" ref="action6" />
+	</bean>
+
+	<bean id="expressMarkingAction5" class="ru.aplix.packline.action.UnderweightAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="weightingAction" ref="expressMarkingAction3" />
+		<property name="backAction" ref="action6" />
+		<property name="normalAction" ref="expressMarkingAction6" />
+	</bean>
+
+	<bean id="expressMarkingAction6" class="ru.aplix.packline.action.PrintFormsAction">
+		<property name="idleTimeout" value="LONG" />
+		<property name="weightingAction" ref="expressMarkingAction3" />
+		<property name="normalAction" ref="action6" />
 	</bean>
 </beans>

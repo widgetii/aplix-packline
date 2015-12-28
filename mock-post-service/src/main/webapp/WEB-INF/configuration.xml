@@ -4,10 +4,12 @@
 		<customer>
 			<id>11111111</id>
 			<name>ИП Митрюшкин Сергей Сергеевич</name>
+			<blocked>false</blocked>			
 		</customer>
 		<customer>
 			<id>22222222</id>
 			<name>УП "БОНЖУР"</name>
+			<blocked>false</blocked>
 		</customer>
 	</customers>
 	<operators>
@@ -33,9 +35,11 @@
 			<customer>
 				<id>11111111</id>
 				<name>ИП Митрюшкин Сергей Сергеевич</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2013-11-12T23:06:18.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
+			<skipPacking>true</skipPacking>
 		</order>
 		<order>
 			<id>987654321</id>
@@ -45,9 +49,11 @@
 			<customer>
 				<id>22222222</id>
 				<name>УП "БОНЖУР"</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2014-05-07T13:16:18.039+03:00</date>
 			<totalIncomings>1</totalIncomings>
+			<skipPacking>false</skipPacking>
 		</order>
 		<order>
 			<id>12349876</id>
@@ -57,9 +63,11 @@
 			<customer>
 				<id>22222222</id>
 				<name>УП "БОНЖУР"</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2013-09-25T14:36:18.039+03:00</date>
 			<totalIncomings>2</totalIncomings>
+			<skipPacking>false</skipPacking>
 		</order>
 		<order>
 			<id>4444455555</id>
@@ -69,9 +77,11 @@
 			<customer>
 				<id>22222222</id>
 				<name>УП "БОНЖУР"</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2013-08-11T15:23:12.039+03:00</date>
 			<totalIncomings>2</totalIncomings>
+			<skipPacking>false</skipPacking>
 		</order>
 		<order>
 			<id>12345678955555</id>
@@ -81,6 +91,7 @@
 			<customer>
 				<id>22222222</id>
 				<name>УП "БОНЖУР"</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2014-02-07T10:56:18.039+03:00</date>
 			<incoming>
@@ -124,6 +135,7 @@
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 			</incoming>
 			<totalIncomings>5</totalIncomings>
+			<skipPacking>false</skipPacking>
 		</order>
 	</orders>
 	<registries>
@@ -172,6 +184,7 @@
 			<customer>
 				<id>22222222</id>
 				<name>УП "БОНЖУР"</name>
+				<blocked>false</blocked>
 			</customer>
 			<date>2013-12-17T13:16:12.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
@@ -308,7 +321,7 @@
 				<postId>010931</postId>
 				<boxTypeId>180001</boxTypeId>
 				<trackingId>1234567890123</trackingId>
-				<packingType>BOX</packingType>
+				<packingType>PAPER</packingType>
 				<totalWeight>0.0</totalWeight>
 				<date xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
 				<shipped>false</shipped>
@@ -406,7 +419,7 @@
 			<id>100004554</id>
 			<customerId>22222222</customerId>
 			<date>2015-06-28T12:13:45.039+03:00</date>
-			<addresss>Москва г, Волгоградский пр-кт, дом № 28</addresss>
+			<address>Москва г, Волгоградский пр-кт, дом № 28</address>
 			<courier>Кожемякин Андрей</courier>
 			<commentForCourier>Не принимать товар без наклеек со штрих-кодом</commentForCourier>
 			<contact>Дмитрий, тел: +7 (495) 9788823</contact>
@@ -415,7 +428,7 @@
 			<id>100004543</id>
 			<customerId>22222222</customerId>
 			<date>2015-06-28T12:13:45.039+03:00</date>
-			<addresss>105082, Москва г, Спартаковская пл, дом № 14, строение 3, офис 3004 </addresss>
+			<address>105082, Москва г, Спартаковская пл, дом № 14, строение 3, офис 3004 </address>
 			<courier>Кожемякин Андрей</courier>
 			<commentForCourier>Не принимать товар без наклеек со штрих-кодом</commentForCourier>
 			<contact>Ирина +7(929)543-2796</contact>
