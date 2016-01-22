@@ -66,7 +66,7 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 			total = Math.max(1, order.getTotalIncomings());
 		}
 
-		if (order.isSkipPacking()) {
+		if (order != null && order.isSkipPacking()) {
 			return TrolleyType.SKIP;
 		} else if (total == 1) {
 			return TrolleyType.PACK;
@@ -131,7 +131,7 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 			break;
 		}
 
-		if (order.isSkipPacking()) {
+		if (order != null && order.isSkipPacking()) {
 			Post post = postServicePort.createPostFromIncoming(incoming);
 			if (post != null) {
 				checkContainer(post.getContainer());
