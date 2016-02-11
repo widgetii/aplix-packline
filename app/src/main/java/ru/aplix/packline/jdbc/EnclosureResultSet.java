@@ -153,6 +153,10 @@ public class EnclosureResultSet implements ResultSet {
 			return 4;
 		} else if ("TOTAL_COST".equals(columnLabel)) {
 			return 5;
+		} else if ("VAT".equals(columnLabel)) {
+			return 6;
+		} else if ("VAT_RATE".equals(columnLabel)) {
+			return 7;
 		} else {
 			throw new SQLException();
 		}
@@ -172,6 +176,10 @@ public class EnclosureResultSet implements ResultSet {
 			return "" + item.getQuantity();
 		case 5:
 			return "" + (item.getCost() * item.getQuantity());
+		case 6:
+			return "" + (item.getVat());
+		case 7:
+			return item.getVatRate();
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}
@@ -206,6 +214,14 @@ public class EnclosureResultSet implements ResultSet {
 			return item.getQuantity();
 		case 5:
 			return Math.round(item.getCost() * item.getQuantity());
+		case 6:
+			return Math.round(item.getVat());
+		case 7:
+			try {
+				return item.getVatRate() != null ? Integer.valueOf(item.getVatRate().replace("%", "")) : null;
+			} catch (NumberFormatException nfe) {
+				return 0;
+			}
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}
@@ -230,6 +246,14 @@ public class EnclosureResultSet implements ResultSet {
 			return item.getQuantity();
 		case 5:
 			return item.getCost() * item.getQuantity();
+		case 6:
+			return (item.getVat());
+		case 7:
+			try {
+				return item.getVatRate() != null ? Float.valueOf(item.getVatRate().replace("%", "")) / 100f : null;
+			} catch (NumberFormatException nfe) {
+				return 0f;
+			}
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}

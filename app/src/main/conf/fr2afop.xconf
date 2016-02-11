@@ -24,7 +24,7 @@
 			<Query><![CDATA[
 				SELECT 
 					barkod, barkod_espp, data_rep, pps, comment, POSTTYPE, MAILRANK,
-					FIRM_NAME, ADRES1, REGION1, index_from, INN, BR_BNAME, bik, rs, ks, telefon,
+					FIRM_NAME, ADRES1, REGION1, index_from, INN, KPP, BR_BNAME, bik, rs, ks, telefon,
 					FIO, ADRES, CITY, AREA, REGION, index_to, TRANSTYPEID, AREA1,				
 					MASS, VALUE_, PAYMENT, ITOGOZAPERESULKU, 
 					io_band1kl, io_nalozh, io_opis, io_cennost, io_prostuved, io_zakazuved,

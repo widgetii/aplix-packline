@@ -46,6 +46,8 @@ public class SelectCarrierAction extends CommonAction<SelectCarrierController> {
 			return PostType.HERMES;
 		} else if ("Ponyexpress".equals(selectedCarrier)) {
 			return PostType.PONYEXPRESS;
+		} else if ("B2CPL".equals(selectedCarrier)) {
+			return PostType.B_2_CPL;
 		} else {
 			throw new PackLineException(String.format(getResources().getString("error.unknown.carrier"), selectedCarrier));
 		}

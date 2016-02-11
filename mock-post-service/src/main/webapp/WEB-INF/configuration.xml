@@ -329,12 +329,16 @@
 			<enclosure>
 				<postId>010931</postId>
 				<cost>2340.78</cost>
+				<Vat>212.8</Vat>
+				<VatRate>10%</VatRate>
 				<quantity>1</quantity>
 				<contentDescription>Настольный бильярд. В комплекте: стол, 2 кия, набор из 16 шаров, треугольник, мелок.</contentDescription>
 			</enclosure>
 			<enclosure>
 				<postId>010931</postId>
 				<cost>1000.4</cost>
+				<Vat>90.95</Vat>
+				<VatRate>10%</VatRate>
 				<quantity>4</quantity>
 				<contentDescription>Фишки для игры, 200 шт.</contentDescription>
 			</enclosure>
@@ -348,18 +352,24 @@
 			<enclosure>
 				<postId>010932</postId>
 				<cost>23.8</cost>
+				<Vat>2.16</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Папка для документов. Материал: кожзам. Размер изделия: 35,4 x 26,3 x 4 см.</contentDescription>
 				<quantity>10</quantity>
 			</enclosure>
 			<enclosure>
 				<postId>010932</postId>
 				<cost>234.9</cost>
+				<Vat>21.35</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Подарочный набор Eleganci.</contentDescription>
 				<quantity>1</quantity>
 			</enclosure>
 			<enclosure>
 				<postId>010932</postId>
 				<cost>500.0</cost>
+				<Vat>45.45</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Часы-метеостанция в автомобильном стиле. Материал: дерево, металл.</contentDescription>
 				<quantity>3</quantity>
 			</enclosure>
@@ -373,6 +383,8 @@
 			<enclosure>
 				<postId>008006</postId>
 				<cost>200.0</cost>
+				<Vat>18.18</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Увлажнитель воздуха Scarlett SC-988.</contentDescription>
 				<quantity>4</quantity>
 			</enclosure>
@@ -386,12 +398,16 @@
 			<enclosure>
 				<postId>010933</postId>
 				<cost>1234.5</cost>
+				<Vat>112.23</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Мультиварка Bosch BR-546.</contentDescription>
 				<quantity>2</quantity>
 			</enclosure>
 			<enclosure>
 				<postId>010933</postId>
 				<cost>2344.8</cost>
+				<Vat>213.16</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Кофемашина Scarlett SC-9875.</contentDescription>
 				<quantity>1</quantity>
 			</enclosure>
@@ -405,6 +421,8 @@
 			<enclosure>
 				<postId>008009</postId>
 				<cost>22200.0</cost>
+				<Vat>2018.18</Vat>
+				<VatRate>10%</VatRate>
 				<contentDescription>Пылесос Samsung VC1600</contentDescription>
 				<quantity>1</quantity>
 			</enclosure>
@@ -644,6 +662,10 @@
 		<field>
 			<name>INN</name>
 			<value>123456789012</value>
+		</field>
+		<field>
+			<name>KPP</name>
+			<value>987654321</value>
 		</field>
 		<field>
 			<name>BR_BNAME</name>

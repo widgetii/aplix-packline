@@ -47,16 +47,20 @@ public class OverweightController extends StandardController<OverweightAction> {
 			Container container = (Container) getContext().getAttribute(Const.TAG);
 			final Post post = (Post) getContext().getAttribute(Const.POST);
 
-			WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeighting().getWeightingRestrictions(), new Predicate() {
-				@Override
-				public boolean evaluate(Object object) {
-					return post.getPostType().equals(((WeightingRestriction) object).getPostType());
-				}
-			});
+			WeightingRestriction wr = (WeightingRestriction) CollectionUtils.find(Configuration.getInstance().getWeighting().getWeightingRestrictions(),
+					new Predicate() {
+						@Override
+						public boolean evaluate(Object object) {
+							if (post.getPostType() != null) {
+								return post.getPostType().equals(((WeightingRestriction) object).getPostType());
+							}
+							return ((WeightingRestriction) object).getPostType() == null;
+						}
+					});
 
 			infoLabel.setText(String.format(getResources().getString("overweight.info"), String.format("%.3f", container.getTotalWeight()),
 					String.format("%.3f", wr.getMaxWeight())));
-			
+
 			Utils.playSound(Utils.SOUND_WARNING);
 		} catch (Exception e) {
 			LOG.error(null, e);
@@ -66,7 +70,7 @@ public class OverweightController extends StandardController<OverweightAction> {
 	@Override
 	public void terminate(boolean appIsStopping) {
 		super.terminate(appIsStopping);
-		
+
 		if (task != null) {
 			task.cancel(false);
 			task = null;

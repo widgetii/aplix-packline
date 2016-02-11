@@ -11,7 +11,7 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return 5;
+		return 7;
 	}
 
 	@Override
@@ -41,6 +41,8 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 		case 3:
 		case 4:
 		case 5:
+		case 6:
+		case 7:
 			return ResultSetMetaData.columnNoNulls;
 		case 2:
 			return ResultSetMetaData.columnNullable;
@@ -72,6 +74,10 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 			return "QUANTITY";
 		case 5:
 			return "TOTAL_COST";
+		case 6:
+			return "VAT";
+		case 7:
+			return "VAT_RATE";
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}
@@ -120,6 +126,10 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 			return java.sql.Types.INTEGER;
 		case 5:
 			return java.sql.Types.FLOAT;
+		case 6:
+			return java.sql.Types.FLOAT;
+		case 7:
+			return java.sql.Types.NVARCHAR;
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}
@@ -138,6 +148,10 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 			return "INTEGER";
 		case 5:
 			return "FLOAT";
+		case 6:
+			return "FLOAT";
+		case 7:
+			return "NVARCHAR";
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}
@@ -171,6 +185,10 @@ public class EnclosureResultSetMetaData implements ResultSetMetaData {
 			return Integer.class.getName();
 		case 5:
 			return Float.class.getName();
+		case 6:
+			return Float.class.getName();
+		case 7:
+			return String.class.getName();
 		default:
 			throw new SQLException(new IndexOutOfBoundsException());
 		}

@@ -36,6 +36,8 @@ public class SelectCarrierController extends StandardController<SelectCarrierAct
 	private ImageView logoHermes;
 	@FXML
 	private ImageView logoPonyexpress;
+	@FXML
+	private ImageView logoB2CPL;
 
 	public void onImageClicked(MouseEvent mouseEvent) throws PackLineException {
 		String value = null;
@@ -67,6 +69,8 @@ public class SelectCarrierController extends StandardController<SelectCarrierAct
 			value = "Hermes";
 		} else if (mouseEvent.getSource().equals(logoPonyexpress)) {
 			value = "Ponyexpress";
+		} else if (mouseEvent.getSource().equals(logoB2CPL)) {
+			value = "B2CPL";
 		}
 
 		getAction().select(value);

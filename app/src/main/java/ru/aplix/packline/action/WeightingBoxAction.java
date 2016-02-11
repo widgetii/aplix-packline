@@ -117,7 +117,10 @@ public class WeightingBoxAction extends CommonAction<WeightingBoxController> {
 				new Predicate() {
 					@Override
 					public boolean evaluate(Object object) {
-						return post.getPostType().equals(((WeightingRestriction) object).getPostType());
+						if (post.getPostType() != null) {
+							return post.getPostType().equals(((WeightingRestriction) object).getPostType());
+						}
+						return (((WeightingRestriction) object).getPostType() == null);
 					}
 				});
 
