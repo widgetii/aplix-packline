@@ -20,7 +20,7 @@
                       Name="BandView1"
                       Stretched="false"
                       Top="12.204461"
-                      Type="master-header"
+                      Type="report-title"
                       Visible="true"
                       Width="101.47951">
                <ChildViews>
@@ -50,8 +50,8 @@
                      <Memo>Счет-фактура к заказу №[Variable1] от [orderdate]
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="61.186172" BoundTop="41.38904"
-                            BoundWidth="5.503025"
+                  <MemoView BoundHeight="11.673834" BoundLeft="60.999626" BoundTop="41.38904"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -63,7 +63,7 @@
                             FrameType="top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="61.232803"
+                            Left="61.04626"
                             Name="MemoView2"
                             Rotate="0"
                             Stretched="false"
@@ -72,13 +72,13 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>Налоговая
 ставка
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="55.403336" BoundTop="41.38904"
-                            BoundWidth="5.7828393"
+                  <MemoView BoundHeight="11.673834" BoundLeft="55.21678" BoundTop="41.38904"
+                            BoundWidth="5.689568"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -90,7 +90,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="55.44997"
+                            Left="55.263424"
                             Name="MemoView3"
                             Rotate="0"
                             Stretched="false"
@@ -99,14 +99,14 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.689568">
+                            Width="5.5962963">
                      <Memo>В том
 числе
 сумма
 акциза
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="66.68919" BoundTop="41.38904"
+                  <MemoView BoundHeight="11.673834" BoundLeft="66.40938" BoundTop="41.38904"
                             BoundWidth="5.3164816"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -119,7 +119,7 @@
                             FrameType="all"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="66.735825"
+                            Left="66.45602"
                             Name="MemoView4"
                             Rotate="0"
                             Stretched="false"
@@ -134,8 +134,8 @@
 покупа-телю
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="72.098946" BoundTop="41.38904"
-                            BoundWidth="8.767531"
+                  <MemoView BoundHeight="11.673834" BoundLeft="71.81914" BoundTop="41.38904"
+                            BoundWidth="8.674259"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -147,7 +147,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="72.145584"
+                            Left="71.865776"
                             Name="MemoView5"
                             Rotate="0"
                             Stretched="false"
@@ -156,7 +156,7 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="8.674259">
+                            Width="8.580988">
                      <Memo>Стоимость товаров
 (работ, услуг),
 имущественных
@@ -164,8 +164,8 @@
 всего
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="5.836917" BoundLeft="80.95975" BoundTop="41.38904"
-                            BoundWidth="9.420432"
+                  <MemoView BoundHeight="5.836917" BoundLeft="80.58666" BoundTop="41.38904"
+                            BoundWidth="9.233889"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -177,7 +177,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="13.149845"
-                            Left="81.006386"
+                            Left="80.6333"
                             Name="MemoView6"
                             Rotate="0"
                             Stretched="false"
@@ -186,13 +186,13 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="9.32716">
+                            Width="9.140616">
                      <Memo>Страна
 происхождения товара
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="90.47346" BoundTop="41.38904"
-                            BoundWidth="6.9020987"
+                  <MemoView BoundHeight="11.673834" BoundLeft="89.91382" BoundTop="41.38904"
+                            BoundWidth="6.808827"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -204,7 +204,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="90.52009"
+                            Left="89.96046"
                             Name="MemoView7"
                             Rotate="0"
                             Stretched="false"
@@ -213,7 +213,7 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="6.808827">
+                            Width="6.7155557">
                      <Memo>Номер
 таможенной
 декларации
@@ -273,8 +273,8 @@
 от 26 декабря 2011 г. № 1137
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="47.75506" BoundTop="41.38904"
-                            BoundWidth="7.6482716"
+                  <MemoView BoundHeight="11.673834" BoundLeft="47.56852" BoundTop="41.38904"
+                            BoundWidth="7.555"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -286,7 +286,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="47.801693"
+                            Left="47.615154"
                             Name="MemoView24"
                             Rotate="0"
                             Stretched="false"
@@ -295,7 +295,7 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="7.555">
+                            Width="7.461728">
                      <Memo>Стоимость
 товаров (работ,
 услуг),
@@ -304,8 +304,8 @@
 всего
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="11.673834" BoundLeft="41.13278" BoundTop="41.38904"
-                            BoundWidth="6.529012"
+                  <MemoView BoundHeight="11.673834" BoundLeft="41.039505" BoundTop="41.38904"
+                            BoundWidth="6.435741"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -317,7 +317,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="26.605505"
-                            Left="41.179413"
+                            Left="41.08614"
                             Name="MemoView25"
                             Rotate="0"
                             Stretched="false"
@@ -326,14 +326,14 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="6.435741">
+                            Width="6.342469">
                      <Memo>Цена (тариф)
 за единицу
 измерения
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="11.673834" BoundLeft="36.375923" BoundTop="41.38904"
-                            BoundWidth="4.66358"
+                            BoundWidth="4.570308"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -354,14 +354,14 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="4.570308">
+                            Width="4.477037">
                      <Memo>Коли-
 чество
 (объем)
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="5.836917" BoundLeft="26.116049" BoundTop="41.38904"
-                            BoundWidth="10.259876"
+                            BoundWidth="10.166605"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -382,13 +382,13 @@
                             Top="67.43119"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="10.166605">
+                            Width="10.073333">
                      <Memo>Единица
 измерения
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="5.836917" BoundLeft="80.95975" BoundTop="47.22596"
-                            BoundWidth="3.8241358"
+                  <MemoView BoundHeight="5.836917" BoundLeft="80.58666" BoundTop="47.22596"
+                            BoundWidth="3.730864"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -400,7 +400,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="13.149845"
-                            Left="81.006386"
+                            Left="80.6333"
                             Name="MemoView28"
                             Rotate="0"
                             Stretched="false"
@@ -409,13 +409,13 @@
                             Top="80.88685"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="3.730864">
+                            Width="3.6375926">
                      <Memo>цифро-вой
 код
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="5.836917" BoundLeft="84.87716" BoundTop="47.22596"
-                            BoundWidth="5.503025"
+                  <MemoView BoundHeight="5.836917" BoundLeft="84.410805" BoundTop="47.22596"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -427,7 +427,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="13.149845"
-                            Left="84.9238"
+                            Left="84.457436"
                             Name="MemoView29"
                             Rotate="0"
                             Stretched="false"
@@ -436,7 +436,7 @@
                             Top="80.88685"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>краткое
 наимено-вание
 </Memo>
@@ -468,7 +468,7 @@
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="5.836917" BoundLeft="30.8729" BoundTop="47.22596"
-                            BoundWidth="5.503025"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -489,7 +489,7 @@
                             Top="80.88685"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>условное
 обозна-чение
 </Memo>
@@ -1010,8 +1010,8 @@
                      <Memo>наименование, код Российский рубль, 643
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="61.186172" BoundTop="53.06288"
-                            BoundWidth="5.503025"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="60.999626" BoundTop="53.06288"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1023,7 +1023,7 @@
                             FrameType="top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="61.232803"
+                            Left="61.04626"
                             Name="MemoView52"
                             Rotate="0"
                             Stretched="false"
@@ -1032,11 +1032,11 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>7
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="55.403336" BoundTop="53.06288"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="55.12352" BoundTop="53.06288"
                             BoundWidth="5.7828393"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -1049,7 +1049,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="55.44997"
+                            Left="55.170155"
                             Name="MemoView53"
                             Rotate="0"
                             Stretched="false"
@@ -1062,7 +1062,7 @@
                      <Memo>6
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="66.68919" BoundTop="53.06288"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="66.40938" BoundTop="53.06288"
                             BoundWidth="5.3164816"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -1075,7 +1075,7 @@
                             FrameType="all"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="66.735825"
+                            Left="66.45602"
                             Name="MemoView54"
                             Rotate="0"
                             Stretched="false"
@@ -1088,8 +1088,8 @@
                      <Memo>8
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="72.098946" BoundTop="53.06288"
-                            BoundWidth="8.767531"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="71.81914" BoundTop="53.06288"
+                            BoundWidth="8.674259"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1101,7 +1101,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="72.145584"
+                            Left="71.865776"
                             Name="MemoView55"
                             Rotate="0"
                             Stretched="false"
@@ -1110,12 +1110,12 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="8.674259">
+                            Width="8.580988">
                      <Memo>9
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="90.47346" BoundTop="53.06288"
-                            BoundWidth="6.9020987"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="89.91382" BoundTop="53.06288"
+                            BoundWidth="6.808827"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1127,7 +1127,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="90.52009"
+                            Left="89.96046"
                             Name="MemoView56"
                             Rotate="0"
                             Stretched="false"
@@ -1136,11 +1136,11 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="6.808827">
+                            Width="6.7155557">
                      <Memo>11
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="47.75506" BoundTop="53.06288"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="47.475246" BoundTop="53.06288"
                             BoundWidth="7.6482716"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -1153,7 +1153,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="47.801693"
+                            Left="47.521885"
                             Name="MemoView57"
                             Rotate="0"
                             Stretched="false"
@@ -1166,7 +1166,7 @@
                      <Memo>5
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="41.13278" BoundTop="53.06288"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="40.94623" BoundTop="53.06288"
                             BoundWidth="6.529012"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -1179,7 +1179,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="41.179413"
+                            Left="40.992867"
                             Name="MemoView58"
                             Rotate="0"
                             Stretched="false"
@@ -1193,7 +1193,7 @@
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.3878295" BoundLeft="36.375923" BoundTop="53.06288"
-                            BoundWidth="4.66358"
+                            BoundWidth="4.570308"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1214,12 +1214,12 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="4.570308">
+                            Width="4.477037">
                      <Memo>3
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="80.95975" BoundTop="53.06288"
-                            BoundWidth="3.8241358"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="80.58666" BoundTop="53.06288"
+                            BoundWidth="3.730864"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1231,7 +1231,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="81.006386"
+                            Left="80.6333"
                             Name="MemoView60"
                             Rotate="0"
                             Stretched="false"
@@ -1240,12 +1240,12 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="3.730864">
+                            Width="3.6375926">
                      <Memo>10
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="84.87716" BoundTop="53.06288"
-                            BoundWidth="5.503025"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="84.410805" BoundTop="53.06288"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1257,7 +1257,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="5.1987762"
-                            Left="84.9238"
+                            Left="84.457436"
                             Name="MemoView61"
                             Rotate="0"
                             Stretched="false"
@@ -1266,7 +1266,7 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>10а
 </Memo>
                   </MemoView>
@@ -1297,7 +1297,7 @@
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.3878295" BoundLeft="30.8729" BoundTop="53.06288"
-                            BoundWidth="5.503025"
+                            BoundWidth="5.409753"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -1318,7 +1318,7 @@
                             Top="94.34251"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="5.409753">
+                            Width="5.3164816">
                      <Memo>2а
 </Memo>
                   </MemoView>
@@ -1360,7 +1360,7 @@
                       Height="2.3878295"
                       Left="-0.65290123"
                       Name="BandView2"
-                      Stretched="false"
+                      Stretched="true"
                       Top="63.01217"
                       Type="master-data"
                       Visible="true"
@@ -1717,7 +1717,7 @@
                       Name="BandView3"
                       Stretched="false"
                       Top="73.35943"
-                      Type="master-footer"
+                      Type="report-summary"
                       Visible="true"
                       Width="101.47951">
                <ChildViews>
@@ -2088,8 +2088,8 @@
 регистрации индивидуального предпринимателя)
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="55.403336" BoundTop="73.49209"
-                            BoundWidth="11.379136"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="55.12352" BoundTop="73.49209"
+                            BoundWidth="11.285863"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -2101,7 +2101,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="11.486486"
-                            Left="55.44997"
+                            Left="55.170155"
                             Name="MemoView78"
                             Rotate="0"
                             Stretched="false"
@@ -2110,38 +2110,12 @@
                             Top="1.0134954"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="11.285863">
+                            Width="11.192593">
                      <Memo>Х
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="66.68919" BoundTop="73.49209"
-                            BoundWidth="5.3164816"
-                            FillColor="transparent"
-                            FontColor="#000000"
-                            FontName="Arial"
-                            FontSize="7.0"
-                            FontStyle="normal"
-                            FontWeight="normal"
-                            FrameColor="#000000"
-                            FrameStyle="solid"
-                            FrameType="all"
-                            FrameWidth="1.0"
-                            Height="11.486486"
-                            Left="66.735825"
-                            Name="MemoView79"
-                            Rotate="0"
-                            Stretched="false"
-                            TextAlign="right"
-                            TextDecoration="none"
-                            Top="1.0134954"
-                            VerticalAlign="middle"
-                            Visible="true"
-                            Width="5.22321">
-                     <Memo>[total_vat_rub] 
-</Memo>
-                  </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="72.098946" BoundTop="73.49209"
-                            BoundWidth="8.767531"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="66.502655" BoundTop="73.49209"
+                            BoundWidth="5.22321"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -2153,7 +2127,33 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="11.486486"
-                            Left="72.145584"
+                            Left="66.549286"
+                            Name="MemoView79"
+                            Rotate="0"
+                            Stretched="false"
+                            TextAlign="right"
+                            TextDecoration="none"
+                            Top="1.0134954"
+                            VerticalAlign="middle"
+                            Visible="true"
+                            Width="5.129938">
+                     <Memo>[total_vat_rub] 
+</Memo>
+                  </MemoView>
+                  <MemoView BoundHeight="2.3878295" BoundLeft="71.81914" BoundTop="73.49209"
+                            BoundWidth="8.674259"
+                            FillColor="transparent"
+                            FontColor="#000000"
+                            FontName="Arial"
+                            FontSize="7.0"
+                            FontStyle="normal"
+                            FontWeight="normal"
+                            FrameColor="#000000"
+                            FrameStyle="solid"
+                            FrameType="right|top|bottom"
+                            FrameWidth="1.0"
+                            Height="11.486486"
+                            Left="71.865776"
                             Name="MemoView80"
                             Rotate="0"
                             Stretched="false"
@@ -2162,11 +2162,11 @@
                             Top="1.0134954"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="8.674259">
+                            Width="8.580988">
                      <Memo>[total_rub] 
 </Memo>
                   </MemoView>
-                  <MemoView BoundHeight="2.3878295" BoundLeft="47.75506" BoundTop="73.49209"
+                  <MemoView BoundHeight="2.3878295" BoundLeft="47.475246" BoundTop="73.49209"
                             BoundWidth="7.6482716"
                             FillColor="transparent"
                             FontColor="#000000"
@@ -2179,7 +2179,7 @@
                             FrameType="right|top|bottom"
                             FrameWidth="1.0"
                             Height="11.486486"
-                            Left="47.801693"
+                            Left="47.521885"
                             Name="MemoView81"
                             Rotate="0"
                             Stretched="false"
@@ -2193,7 +2193,7 @@
 </Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.3878295" BoundLeft="2.7981484" BoundTop="73.49209"
-                            BoundWidth="44.95691"
+                            BoundWidth="44.6771"
                             FillColor="transparent"
                             FontColor="#000000"
                             FontName="Arial"
@@ -2214,7 +2214,7 @@
                             Top="1.0134954"
                             VerticalAlign="middle"
                             Visible="true"
-                            Width="44.86364">
+                            Width="44.583828">
                      <Memo> Всего к оплате
 </Memo>
                   </MemoView>
@@ -2252,7 +2252,8 @@
       </Page>
    </Pages>
    <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '' and [Variable17] = 'D', 'ReceiverAddress', ''))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="CancelPrinting" Type="expression" Content="f:choose((''+[Variable3]).contains('Калининград'), 'false', 'true')"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>		
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable3], f:choose([Variable3] = '', [Variable9], [Variable3] + ', ' + [Variable9]))"/>		
 		<Variable Name="kuda_area_region" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable3], [Variable11], f:choose([Variable11] = '', [Variable12], [Variable12] + ', ' + [Variable11]))"/>
@@ -2272,7 +2273,7 @@
 		<Variable Name="total_cost_without_vat" Type="expression" Content="[total_cost] - [total_vat]" />		
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
 		<Variable Name="total_vat_rub" Type="expression" Content="f:str([total_vat], 2)" />
-		<Variable Name="total_cost_without_vat_rub" Type="expression" Content="f:str([total_cost_without_vat], 2)" />
+		<Variable Name="total_cost_without_vat_rub" Type="expression" Content="f:str([total_cost_without_vat], 2)" />		
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
         <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="data_rep"/>
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="CITY"/>

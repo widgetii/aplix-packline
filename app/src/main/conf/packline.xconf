@@ -227,16 +227,16 @@
 				<PostType>BOXBERRY</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<Form name="Счет-фактура" file="dpd-invoice" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+		<Form name="Счет-фактура" file="dpd-invoice" printerId="printer1" whenPrint="BEFORE-WEIGHTING" weight="0.008">
 			<PostTypeRestriction>
 				<PostType>DPD</PostType>
 			</PostTypeRestriction>
 		</Form>
-		<!--Form name="ТОРГ-12" file="dpd-torg12" printerId="printer1" whenPrint="MANUALLY" weight="0.008">
+		<Form name="ТОРГ-12" file="dpd-torg12" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.008">
 			<PostTypeRestriction>
 				<PostType>DPD</PostType>
 			</PostTypeRestriction>
-		</Form-->
+		</Form>
 		<Form name="B2CPL" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
 			<PostTypeRestriction>
 				<PostType>B2CPL</PostType>
