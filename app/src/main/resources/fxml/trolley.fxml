@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="896.0" styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.aplix.packline.controller.TrolleyController">
+<AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="896.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.aplix.packline.controller.TrolleyController">
   <children>
     <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -24,15 +24,16 @@
                   <children>
                     <HBox id="HBox" alignment="CENTER" spacing="80.0">
                       <children>
+                                    <Button fx:id="photoButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#makePhotoClick" prefHeight="184.0" prefWidth="124.0" styleClass="back-button" text="%button.makePhoto" textAlignment="CENTER" wrapText="true" />
                         <ImageView fx:id="imageView" fitHeight="351.9999694824219" fitWidth="351.9999694824219" pickOnBounds="true" preserveRatio="true">
                           <effect>
                             <InnerShadow />
                           </effect>
                           <image>
-                            <Image url="@../images/img-trolley-blue.png" preserveRatio="false" smooth="false" />
+                            <Image preserveRatio="false" smooth="false" url="@../images/img-trolley-blue.png" />
                           </image>
                         </ImageView>
-                        <Button fx:id="nextButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
+                        <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="184.0" prefWidth="124.0" styleClass="next-button" text="%button.done" textAlignment="CENTER" wrapText="true" />
                       </children>
                     </HBox>
                   </children>

@@ -29,7 +29,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="false" >
+		<PhotoCamera name="RaspberryCamera" enabled="true" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost" />

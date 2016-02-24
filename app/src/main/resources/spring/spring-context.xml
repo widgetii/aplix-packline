@@ -52,6 +52,7 @@
 
 	<bean id="action5" class="ru.aplix.packline.action.TrolleyAction">
 		<property name="idleTimeout" value="SHORT" />
+		<property name="photoAction" ref="action4" />
 		<property name="acceptanceAction" ref="action6" />
 		<property name="dimentionAction" ref="expressMarkingAction1" />
 		<property name="expressMarkingAction" ref="expressMarkingAction2" />

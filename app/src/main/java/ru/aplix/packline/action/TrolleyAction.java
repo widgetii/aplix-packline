@@ -1,5 +1,11 @@
 package ru.aplix.packline.action;
 
+import java.util.ResourceBundle;
+
+import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.input.InputEvent;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -23,9 +29,18 @@ import ru.aplix.packline.workflow.WorkflowAction;
 
 public class TrolleyAction extends CommonAction<TrolleyController> {
 
+	private WorkflowAction photoAction;
 	private WorkflowAction acceptanceAction;
 	private WorkflowAction dimentionAction;
 	private WorkflowAction expressMarkingAction;
+
+	public WorkflowAction getPhotoAction() {
+		return photoAction;
+	}
+
+	public void setPhotoAction(WorkflowAction photoAction) {
+		this.photoAction = photoAction;
+	}
 
 	public WorkflowAction getAcceptanceAction() {
 		return acceptanceAction;
@@ -54,6 +69,19 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 	@Override
 	protected String getFormName() {
 		return "trolley";
+	}
+
+	@Override
+	protected void onFormLoaded(Parent rootNode, ResourceBundle resources) {
+		super.onFormLoaded(rootNode, resources);
+
+		// Add user activity event filter
+		rootNode.addEventFilter(InputEvent.ANY, new EventHandler<InputEvent>() {
+			@Override
+			public void handle(InputEvent inputEvent) {
+				getController().stopAutoFirer();
+			}
+		});
 	}
 
 	public TrolleyType getTrolleyMessage() {
@@ -88,23 +116,20 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 
 		switch (registry.getActionType()) {
 		case ADD:
-			int res = postServicePort.addIncomingToRegistry(registry.getId(), incoming);
-			if (res <= -1) {
-				throw new PackLineException(getResources().getString("error.post.incoming.registry.add"));
+			if (registry.getIncoming().indexOf(incoming) == -1) {
+				int res = postServicePort.addIncomingToRegistry(registry.getId(), incoming);
+				if (res <= -1) {
+					throw new PackLineException(getResources().getString("error.post.incoming.registry.add"));
+				}
+				registry.getIncoming().add(incoming);
 			}
-
-			registry.getIncoming().add(incoming);
-			if (order != null) {
+			if (order != null && order.getIncoming().indexOf(incoming) == -1) {
 				order.getIncoming().add(incoming);
 			}
 			break;
 		case DELETE:
 			// Delete incoming from registry
-			if (!postServicePort.deleteIncomingFromRegistry(registry.getId(), incoming)) {
-				throw new PackLineException(getResources().getString("error.post.incoming.registry.delete"));
-			}
-
-			registry.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+			Incoming item = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
 				@Override
 				public boolean evaluate(Object o) {
 					Incoming item = (Incoming) o;
@@ -114,9 +139,16 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 					}
 					return result;
 				}
-			}));
+			});
+			if (item != null) {
+				if (!postServicePort.deleteIncomingFromRegistry(registry.getId(), incoming)) {
+					throw new PackLineException(getResources().getString("error.post.incoming.registry.delete"));
+				}
+
+				registry.getIncoming().remove(item);
+			}
 			if (order != null) {
-				order.getIncoming().remove((Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
+				item = (Incoming) CollectionUtils.find(registry.getIncoming(), new Predicate() {
 					@Override
 					public boolean evaluate(Object o) {
 						Incoming item = (Incoming) o;
@@ -126,7 +158,10 @@ public class TrolleyAction extends CommonAction<TrolleyController> {
 						}
 						return result;
 					}
-				}));
+				});
+				if (item != null) {
+					order.getIncoming().remove(item);
+				}
 			}
 			break;
 		}

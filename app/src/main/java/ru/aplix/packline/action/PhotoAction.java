@@ -1,5 +1,7 @@
 package ru.aplix.packline.action;
 
+import org.apache.commons.lang.StringUtils;
+
 import ru.aplix.packline.Const;
 import ru.aplix.packline.controller.PhotoController;
 import ru.aplix.packline.hardware.camera.PhotoCameraImage;
@@ -14,6 +16,10 @@ public class PhotoAction extends CommonAction<PhotoController> {
 
 	public void imageAcquired(PhotoCameraImage result) {
 		Incoming incoming = (Incoming) getContext().getAttribute(Const.TAG);
-		incoming.setPhotoId(result.getImageId());
+		if (StringUtils.isEmpty(incoming.getPhotoId())) {
+			incoming.setPhotoId(result.getImageId());
+		} else {
+			incoming.getPhotos().add(result.getImageId());
+		}
 	}
 }

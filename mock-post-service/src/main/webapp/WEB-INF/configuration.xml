@@ -39,7 +39,7 @@
 			</customer>
 			<date>2013-11-12T23:06:18.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
-			<skipPacking>true</skipPacking>
+			<skipPacking>false</skipPacking>
 		</order>
 		<order>
 			<id>987654321</id>
@@ -47,8 +47,8 @@
 			<deliveryMethod>Почтовая посылка Почта России (234.1 руб., 5 дней)</deliveryMethod>
 			<deliveryAddress>142783, Московская область, Одинцовский район, п. Переделкино, ул. Павленко, д. 3</deliveryAddress>
 			<customer>
-				<id>22222222</id>
-				<name>УП "БОНЖУР"</name>
+				<id>11111111</id>
+				<name>ИП Митрюшкин Сергей Сергеевич</name>
 				<blocked>false</blocked>
 			</customer>
 			<date>2014-05-07T13:16:18.039+03:00</date>
@@ -81,7 +81,7 @@
 			</customer>
 			<date>2013-08-11T15:23:12.039+03:00</date>
 			<totalIncomings>2</totalIncomings>
-			<skipPacking>false</skipPacking>
+			<skipPacking>true</skipPacking>
 		</order>
 		<order>
 			<id>12345678955555</id>
