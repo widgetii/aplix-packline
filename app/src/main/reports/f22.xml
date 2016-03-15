@@ -32,7 +32,10 @@
                 </MemoView>
 				<MemoView FontName="Arial" FontColor="#000000" FontSize="10" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="middle" Rotate="90" Name="MemoView6" Left="87.6949307" Top="47.228207" Width="7.4221053" Height="47.651146" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
                     <Memo>[Variable34]  [Variable16]</Memo>
-                </MemoView>                
+                </MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="bottom" Rotate="0" Name="MemoView1" Left="16.60208" Top="90.228207" Width="66.01768" Height="7.051146" BoundLeft="16.40676" BoundTop="90.087227" BoundWidth="66.40832" BoundHeight="7.3331" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>[Variable36]</Memo>
+				</MemoView>
             </Views>
         </Page>
     </Pages>
@@ -58,6 +61,7 @@
 		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_DATE"/>
 		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_TIME"/>
+		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="POINT_ID"/>
 		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable8], 1, 6)" />
 		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable8], 7, 2)" />
 		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable8], 9, 5)" />
@@ -71,6 +75,7 @@
 		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable15], 1, 4)" />
 		<Variable Name="Variable34" Type="expression" Content="[Variable31].concat('.').concat([Variable32]).concat('.').concat([Variable33])" />
 		<Variable Name="Variable35" Type="expression" Content="f:choose(size([Variable8].toString()) = 14, [Variable25], [Variable8])" />
+		<Variable Name="Variable36" Type="expression" Content="f:choose([Variable13] = 'PACKAGE' and size([Variable17].toString()) > 0, 'САМОВЫВОЗ', '')" />
     </Variables>
     <Datasets>        
         <Dataset Name="PostDataSet">
@@ -92,6 +97,7 @@
 					<Column Name="Variable14"/>
 					<Column Name="Variable15"/>
 					<Column Name="Variable16"/>
+					<Column Name="Variable17"/>
 					<Column Name="Variable21"/>
 					<Column Name="Variable22"/>
 					<Column Name="Variable23"/>
@@ -105,6 +111,7 @@
 					<Column Name="Variable33"/>
 					<Column Name="Variable34"/>
 					<Column Name="Variable35"/>
+					<Column Name="Variable36"/>
                 </Row>								
             </Rows>
         </Dataset>
