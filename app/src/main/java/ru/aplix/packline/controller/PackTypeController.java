@@ -116,8 +116,7 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 						Platform.runLater(new Runnable() {
 							@Override
 							public void run() {
-								warningMessageProperty.set(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
-								errorVisibleProperty.set(true);
+								showWarningMessage(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
 							}
 						});
 

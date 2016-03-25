@@ -2252,7 +2252,7 @@
       </Page>
    </Pages>
    <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', f:choose((''+[Variable3]).contains('Калининград'), 'AttachDocuments', '')))"/>
 		<Variable Name="CancelPrinting" Type="expression" Content="f:choose((''+[Variable3]).contains('Калининград'), 'false', 'true')"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>		
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable3], f:choose([Variable3] = '', [Variable9], [Variable3] + ', ' + [Variable9]))"/>		
@@ -2274,8 +2274,8 @@
 		<Variable Name="total_rub" Type="expression" Content="f:str([total_cost], 2)" />
 		<Variable Name="total_vat_rub" Type="expression" Content="f:str([total_vat], 2)" />
 		<Variable Name="total_cost_without_vat_rub" Type="expression" Content="f:str([total_cost_without_vat], 2)" />		
-        <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
-        <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="data_rep"/>
+        <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="PostNumber"/>
+        <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="PostDate"/>
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
 		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="INN"/>

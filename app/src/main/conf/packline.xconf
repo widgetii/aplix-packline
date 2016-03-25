@@ -29,7 +29,7 @@
 		</Scales>
 		
 		<!-- Photo Camera driver -->
-		<PhotoCamera name="RaspberryCamera" enabled="true" >
+		<PhotoCamera name="RaspberryCamera" enabled="false" >
 			<!-- "hostName" - host name of camera controller, for example "localhost:8080"      	-->
 			<!-- "timeout"  - acquisition timeout in milliseconds (optional), for example 20000 	-->
 			<Configuration hostName="localhost" />
@@ -84,8 +84,8 @@
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</ServiceAddress>
-		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
+		<_ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</_ServiceAddress>
+		<ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 		<RemoteStoragePath>$(java.io.tmpdir)</RemoteStoragePath>
 	</PostService>
@@ -287,7 +287,7 @@
 	<ActivityMonitor idleShortTreshold="600" idleLongTreshold="1800" />
 	
 	<!-- Enable sounds in application -->
-	<Sounds>true</Sounds>
+	<Sounds>false</Sounds>
 	
 	<!-- Automatically close message "Put incoming into packing trolley" -->
 	<TrolleyPackAutoClose>false</TrolleyPackAutoClose>

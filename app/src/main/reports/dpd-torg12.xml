@@ -530,8 +530,7 @@
                             VerticalAlign="bottom"
                             Visible="true"
                             Width="62.958336">
-                     <Memo>Заказ на доставку
-</Memo>
+                     <Memo>[Variable22]</Memo>
                   </MemoView>
                   <MemoView BoundHeight="3.31643" BoundLeft="11.65895" BoundTop="31.174438"
                             BoundWidth="63.051598"
@@ -1502,10 +1501,10 @@
                             TextAlign="center"
                             TextDecoration="none"
                             Top="16.232227"
-                            VerticalAlign="bottom"
+                            VerticalAlign="middle"
                             Visible="true"
                             Width="12.21858">
-                     <Memo/>
+                     <Memo>68911279</Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.785801" BoundLeft="84.31753" BoundTop="18.837322"
                             BoundWidth="12.3118515"
@@ -1602,10 +1601,10 @@
                             TextAlign="center"
                             TextDecoration="none"
                             Top="34.478672"
-                            VerticalAlign="bottom"
+                            VerticalAlign="middle"
                             Visible="true"
                             Width="12.21858">
-                     <Memo/>
+                     <Memo>68911279</Memo>
                   </MemoView>
                   <MemoView BoundHeight="4.1123734" BoundLeft="84.31753" BoundTop="30.378496"
                             BoundWidth="12.3118515"
@@ -2327,8 +2326,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="12.125308">
-                     <Memo>
-</Memo>
+                     <Memo>[Variable23]</Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.122515" BoundLeft="55.31006" BoundTop="48.9505"
                             BoundWidth="12.3118515"
@@ -2353,7 +2351,7 @@
                             VerticalAlign="middle"
                             Visible="true"
                             Width="12.125308">
-                     <Memo/>
+                     <Memo>[postdate]</Memo>
                   </MemoView>
                   <MemoView BoundHeight="2.122515" BoundLeft="42.99821" BoundTop="46.695335"
                             BoundWidth="12.3118515"
@@ -5124,9 +5122,10 @@
       </Page>
    </Pages>
    <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', f:choose((''+[Variable3]).contains('Калининград'), 'AttachDocuments', '')))"/>
 		<Variable Name="CancelPrinting" Type="expression" Content="f:choose((''+[Variable3]).contains('Калининград'), 'false', 'true')"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>		
+		<Variable Name="postdate" Type="expression" Content="f:formatDate([Variable24], 'dd MMMMM yyyy')"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable3], f:choose([Variable3] = '', [Variable9], [Variable3] + ', ' + [Variable9]))"/>		
 		<Variable Name="kuda_area_region" Type="expression" Content="f:choose([Variable12] = '' or [Variable12] = [Variable3], [Variable11], f:choose([Variable11] = '', [Variable12], [Variable12] + ', ' + [Variable11]))"/>
 		<Variable Name="kuda_full_adres" Type="expression" Content="f:choose([kuda_city_adres] = '', [kuda_area_region], f:choose([kuda_area_region] = '', [kuda_city_adres], [kuda_area_region] + ', ' + [kuda_city_adres]))"/>
@@ -5150,7 +5149,7 @@
 		<Variable Name="ves" Type="expression" Content="f:str([Variable17],3)" />
 		<Variable Name="places" Type="expression" Content="f:toWordsRU([total])" />
         <Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="ORDER"/>
-        <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="data_rep"/>
+        <Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="OrderDate"/>
 		<Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
 		<Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="INN"/>
@@ -5170,6 +5169,9 @@
 		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
 		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="FIRM_CITY"/>		
 		<Variable Name="Variable21" Type="db-field" Dataset="PostDataSet" Content="telefon"/>		
+		<Variable Name="Variable22" Type="db-field" Dataset="PostDataSet" Content="OrderView"/>
+		<Variable Name="Variable23" Type="db-field" Dataset="PostDataSet" Content="PostNumber"/>
+		<Variable Name="Variable24" Type="db-field" Dataset="PostDataSet" Content="PostDate"/>
 		<Variable Name="VarEnclosureIndex" Type="db-field" Dataset="EnclosuresDataSet" Content="INDEX"/>
 		<Variable Name="VarEnclosureIndex2" Type="db-field" Dataset="EnclosuresDataSet" Content="INDEX"/>
 		<Variable Name="VarEnclosureIndex3" Type="db-field" Dataset="EnclosuresDataSet" Content="INDEX"/>
@@ -5207,6 +5209,9 @@
 					<Column Name="Variable19"/>
 					<Column Name="Variable20"/>					
 					<Column Name="Variable21"/>	
+					<Column Name="Variable22"/>
+					<Column Name="Variable23"/>
+					<Column Name="Variable24"/>	
                 </Row>               
             </Rows>
         </Dataset>

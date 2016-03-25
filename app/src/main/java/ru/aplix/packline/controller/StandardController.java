@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.KeyEvent;
@@ -34,6 +35,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	@FXML
 	protected Parent rootNode;
 
+	protected BooleanProperty visibleButtonProperty = new SimpleBooleanProperty();
 	protected StringProperty titleProperty = new SimpleStringProperty();
 	protected StringProperty errorMessageProperty = new SimpleStringProperty();
 	protected StringProperty warningMessageProperty = new SimpleStringProperty();
@@ -45,6 +47,28 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 
 	private Timeline errorChecker;
 	private ErrorCheckerEventHandler errorCheckerEventHandler;
+
+	private void hidePane()
+	{
+		errorMessageProperty.set(null);
+		warningMessageProperty.set(null);
+		errorVisibleProperty.set(false);
+	}
+
+	public void showWarningMessage(final String message) {
+		showWarningMessage(message, false);
+	}
+
+	public void showWarningMessage(final String message, final Boolean pressAnyKey) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				visibleButtonProperty.set(pressAnyKey);
+				warningMessageProperty.set(message);
+				errorVisibleProperty.set(true);
+			}
+		});
+	}
 
 	public StandardController() {
 		errorCheckerEventHandler = new ErrorCheckerEventHandler();
@@ -58,6 +82,16 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	public void initialize(URL location, ResourceBundle resources) {
 		this.resources = resources;
 
+		Button okButton = (Button) rootNode.lookup("#okButton");
+		if (okButton != null) {
+			okButton.visibleProperty().bind(visibleButtonProperty);
+			okButton.setOnAction((event) -> {
+				if (checkNoError()) {
+					hidePane();
+				}
+			});
+		}
+
 		// Set title label
 		Label titleLabel = (Label) rootNode.lookup("#titleLabel");
 		if (titleLabel != null) {
@@ -69,10 +103,12 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		if (errorPane != null) {
 			errorPane.visibleProperty().bind(errorVisibleProperty);
 		}
+
 		final Label errorLabel = (Label) rootNode.lookup("#errorLabel");
 		if (errorLabel != null) {
 			errorLabel.textProperty().bind(errorMessageProperty);
 		}
+
 		final Label warningLabel = (Label) rootNode.lookup("#warningLabel");
 		if (warningLabel != null) {
 			warningLabel.textProperty().bind(warningMessageProperty);
@@ -128,6 +164,10 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 					}
 					break;
 				default:
+					if (errorVisibleProperty.get()) {
+					    hidePane();
+						keyEvent.consume();
+					}
 					break;
 				}
 			}
@@ -149,6 +189,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		warningMessageProperty.set(null);
 		errorVisibleProperty.set(false);
 		progressVisibleProperty.set(false);
+		visibleButtonProperty.set(false);
 
 		errorCheckerEventHandler.reset();
 		errorChecker.playFromStart();
@@ -190,9 +231,9 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		public void handle(ActionEvent event) {
 			if (delayCount <= 0) {
 				if (checkNoError()) {
-					errorMessageProperty.set(null);
-					warningMessageProperty.set(null);
-					errorVisibleProperty.set(false);
+					if (!visibleButtonProperty.get()) {
+						hidePane();
+					}
 				}
 			} else {
 				delayCount--;

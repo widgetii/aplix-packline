@@ -52,6 +52,21 @@
 	-fx-effect: dropshadow(three-pass-box, black, 2, 0, -2, 2);
 }
 
+#okButton {
+	-fx-background-color:
+			linear-gradient(#f2f2f2, #d6d6d6),
+			linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+			linear-gradient(#dddddd 0%, #f6f6f6 50%);
+	-fx-background-radius: 8,7,6;
+	-fx-background-insets: 0,1,2;
+	-fx-text-fill: black;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#okButton:pressed:hover {
+	-fx-text-fill: red;
+}
+
 #errorLabel {
 	-fx-background-color: rgba(255, 0, 0, 0.7);
 	-fx-background-radius: 10 10 10 10;

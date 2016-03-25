@@ -57,6 +57,7 @@ public class PrintFormsBeforeWeightingController extends StandardController<Prin
 		@Override
 		public Void call() throws Exception {
 			long t = System.currentTimeMillis();
+			boolean attachDocuments = false;
 			boolean printedAtLeastOne = false;
 
 			// Enumerate all forms
@@ -71,7 +72,8 @@ public class PrintFormsBeforeWeightingController extends StandardController<Prin
 
 				if (postTypeRestriction && paymentMethodRestriction) {
 					try {
-						getAction().printForms(container.getId(), post.getId(), form);
+						Boolean result = getAction().printForms(container.getId(), post.getId(), form);
+						attachDocuments = result ? true : attachDocuments;
 						printedAtLeastOne = true;
 					} catch (Throwable e) {
 						LOG.error(null, e);
@@ -83,6 +85,11 @@ public class PrintFormsBeforeWeightingController extends StandardController<Prin
 			t = System.currentTimeMillis() - t;
 			if (printedAtLeastOne) {
 				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
+			}
+
+			if (printedAtLeastOne && attachDocuments)
+			{
+				showWarningMessage(getResources().getString("printing.info4"), true);
 			}
 
 			return null;

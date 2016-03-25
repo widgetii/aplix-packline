@@ -302,10 +302,16 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 			Set<ContainerProblemException> problems = new TreeSet<ContainerProblemException>(createSetComparator());
 
 			// Print all forms
+			boolean attachDocuments = false;
 			boolean printedAtLeastOne = false;
 			for (Button button : buttons) {
 				try {
-					if (printLikeButton(button)) {
+					PrintForm printForm = (PrintForm) button.getUserData();
+					if (printForm != null
+							&& (WhenPrint.AFTER_WEIGHTING.equals(printForm.getWhenPrint()) || skipAutoPrint || (!weightingEnabled && WhenPrint.BEFORE_WEIGHTING
+							.equals(printForm.getWhenPrint())))) {
+						Boolean result = getAction().printForms(container.getId(), post.getId(), printForm);
+						attachDocuments = result ? true : attachDocuments;
 						printedAtLeastOne = true;
 					}
 				} catch (ContainerProblemException cpe) {
@@ -365,18 +371,12 @@ public class PrintFormsController extends StandardController<PrintFormsAction> i
 				throw new PackLineException(sb.toString());
 			}
 
-			return null;
-		}
-
-		private boolean printLikeButton(Button button) throws Exception {
-			PrintForm printForm = (PrintForm) button.getUserData();
-			if (printForm != null
-					&& (WhenPrint.AFTER_WEIGHTING.equals(printForm.getWhenPrint()) || skipAutoPrint || (!weightingEnabled && WhenPrint.BEFORE_WEIGHTING
-							.equals(printForm.getWhenPrint())))) {
-				getAction().printForms(container.getId(), post.getId(), printForm);
-				return true;
+			if (printedAtLeastOne && attachDocuments)
+			{
+				showWarningMessage(getResources().getString("printing.info4"), true);
 			}
-			return false;
+
+			return null;
 		}
 
 		@Override

@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.context.ApplicationContext;
+
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -30,10 +34,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.util.Callback;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.OrderActAction;
@@ -43,7 +43,10 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.post.ActionType;
 import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Order;
+import ru.aplix.packline.post.PackingLinePortType;
 import ru.aplix.packline.post.Registry;
+import ru.aplix.packline.utils.CacheOrders;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class OrderActController extends StandardController<OrderActAction> implements BarcodeListener {
@@ -107,8 +110,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			actInfoLabel.setText(String.format(getResources().getString("act.info"), registry.getId(), date != null ? dateFormat.format(date) : "",
 					date != null ? timeFormat.format(date) : "", registry.getCustomer().getName()));
 
-			totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
-					registry.getTotalIncomings()));			
+			totalOrdersLabel
+					.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(), registry.getTotalIncomings()));
 		}
 
 		barcodeScanner = (BarcodeScanner<?>) context.getAttribute(Const.BARCODE_SCANNER);
@@ -125,7 +128,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		firstColumn.setSortable(false);
 		firstColumn.setResizable(false);
 		firstColumn.setEditable(false);
-		firstColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.20));
+		firstColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.14));
 		firstColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
@@ -137,7 +140,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		secondColumn.setSortable(false);
 		secondColumn.setResizable(false);
 		secondColumn.setEditable(false);
-		secondColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.38));
+		secondColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.30));
 		secondColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
@@ -149,7 +152,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		thirdColumn.setSortable(false);
 		thirdColumn.setResizable(false);
 		thirdColumn.setEditable(false);
-		thirdColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.15));
+		thirdColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
 		thirdColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
@@ -166,8 +169,9 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		fourthColumn.setSortable(false);
 		fourthColumn.setResizable(false);
 		fourthColumn.setEditable(false);
-		fourthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
+		fourthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.08));
 		fourthColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, Float>, ObservableValue<Float>>() {
+			@Override
 			public ObservableValue<Float> call(CellDataFeatures<Incoming, Float> p) {
 				return new ReadOnlyObjectWrapper<Float>(p.getValue().getWeight());
 			}
@@ -177,8 +181,9 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		fifthColumn.setSortable(false);
 		fifthColumn.setResizable(false);
 		fifthColumn.setEditable(false);
-		fifthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.10));
+		fifthColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.08));
 		fifthColumn.setCellFactory(new Callback<TableColumn<Incoming, Incoming>, TableCell<Incoming, Incoming>>() {
+			@Override
 			public TableCell<Incoming, Incoming> call(TableColumn<Incoming, Incoming> p) {
 				return new ButtonTableCell();
 			}
@@ -190,11 +195,48 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			}
 		});
 
+		TableColumn<Incoming, String> fiveColumn = new TableColumn<Incoming, String>(getResources().getString("act.incoming.deliveryMethod"));
+		fiveColumn.setSortable(false);
+		fiveColumn.setResizable(false);
+		fiveColumn.setEditable(false);
+		fiveColumn.prefWidthProperty().bind(ordersTableView.widthProperty().multiply(0.30));
+		fiveColumn.setCellValueFactory(new Callback<CellDataFeatures<Incoming, String>, ObservableValue<String>>() {
+
+			private ApplicationContext applicationContext = null;
+			private CacheOrders cacheOrders = null;
+			private PackingLinePortType postServicePort = null;
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Incoming, String> p) {
+				if (applicationContext == null )
+					applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+
+				if (cacheOrders == null)
+					cacheOrders = (CacheOrders) applicationContext.getBean(Const.CACHE_ORDERS_BEAN_NAME);
+
+				if (postServicePort == null)
+					postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+
+				String output = null;
+				try {
+					Order order = cacheOrders.findOrder(postServicePort, p.getValue().getOrderId(), false, false);
+					if (order != null) {
+						output = order.getDeliveryMethod();
+					}
+				} catch (PackLineException e) {
+					LOG.error(null, e);
+				}
+
+				return new ReadOnlyObjectWrapper<String>(output);
+			}
+		});
+
 		ordersTableView.getColumns().add(fifthColumn);
 		ordersTableView.getColumns().add(firstColumn);
 		ordersTableView.getColumns().add(secondColumn);
 		ordersTableView.getColumns().add(thirdColumn);
 		ordersTableView.getColumns().add(fourthColumn);
+		ordersTableView.getColumns().add(fiveColumn);
 
 		ordersTableView.setPlaceholder(new Text(getResources().getString("act.noincomings")));
 
@@ -250,9 +292,9 @@ public class OrderActController extends StandardController<OrderActAction> imple
 
 	private void doCloseAct() {
 		Task<?> task = new Task<Void>() {
-			
+
 			ActionType at;
-			
+
 			@Override
 			public Void call() throws Exception {
 				try {
@@ -293,17 +335,17 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				super.succeeded();
 
 				setProgress(false);
-				
-				if (at == ActionType.ADD){
+
+				if (at == ActionType.ADD) {
 					Window owner = rootNode.getScene().getWindow();
 					confirmationDialog = new ConfirmationDialog(owner, "dialog.confirm", null, new ConfirmationListener() {
 
 						@Override
 						public void onAccept() {
 							confirmationDialog = null;
-							
+
 							doPrintAct();
-							
+
 							OrderActController.this.done();
 						}
 
@@ -312,10 +354,10 @@ public class OrderActController extends StandardController<OrderActAction> imple
 							confirmationDialog = null;
 							try {
 								getAction().printAct(false);
-							} catch (Exception e){
+							} catch (Exception e) {
 								LOG.error(null, e);
-							} 
-							
+							}
+
 							OrderActController.this.done();
 						}
 					});
@@ -323,7 +365,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 					confirmationDialog.centerOnScreen();
 					confirmationDialog.setMessage("confirmation.act.print");
 					confirmationDialog.show();
-					
+
 				} else
 					OrderActController.this.done();
 			}
@@ -333,26 +375,26 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		executor.submit(task);
 		tasks.add(task);
 	}
-	
-	private void doPrintAct(){
-		Task<?> printTask = new PrintTask();		
+
+	private void doPrintAct() {
+		Task<?> printTask = new PrintTask();
 		ExecutorService executor = (ExecutorService) getContext().getAttribute(Const.EXECUTOR);
 		executor.submit(printTask);
 	}
-	
+
 	private class PrintTask extends Task<Void> {
 
 		@Override
 		public Void call() throws Exception {
 			LOG.debug("Print task called");
-			
+
 			long t = System.currentTimeMillis();
 
 			try {
 				getAction().printAct(true);
 			} finally {
 				t = System.currentTimeMillis() - t;
-				LOG.info(String.format("Printing time: %.1f sec", (float) t / 1000f));
+				LOG.info(String.format("Printing time: %.1f sec", t / 1000f));
 			}
 
 			return null;
@@ -370,7 +412,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			super.failed();
 
 			progressVisibleProperty.set(false);
-			
+
 			LOG.error(null, getException());
 
 			String error = getException().getMessage() != null ? getException().getMessage() : getException().getClass().getSimpleName();
@@ -389,7 +431,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 		}
 
 		@Override
-		protected void succeeded() {			
+		protected void succeeded() {
 			super.succeeded();
 			LOG.debug("Print task succeed");
 			progressVisibleProperty.set(false);
@@ -549,8 +591,8 @@ public class OrderActController extends StandardController<OrderActAction> imple
 				errorVisibleProperty.set(false);
 
 				ordersTableView.getItems().remove(incoming);
-				totalOrdersLabel.setText(String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(),
-						registry.getTotalIncomings()));
+				totalOrdersLabel.setText(
+						String.format(getResources().getString("act.incomings.total"), ordersTableView.getItems().size(), registry.getTotalIncomings()));
 			}
 		};
 
@@ -644,7 +686,7 @@ public class OrderActController extends StandardController<OrderActAction> imple
 			return false;
 		}
 	}
-	
+
 	/**
 	 *
 	 */

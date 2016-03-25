@@ -8,12 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 import javax.print.DocFlavor;
 import javax.print.PrintService;
@@ -83,6 +78,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 	private String fr2afopConfigFileName;
 	private String fopConfigFileName;
 	private String queryId;
+	private Boolean attachDocuments = false;
 
 	public BasePrintFormsAction() {
 		queryIdParams = new ArrayList<Parameter>();
@@ -103,7 +99,9 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 		return jarFolder;
 	}
 
-	public void printForms(String containerId, String postId, PrintForm printForm) throws PackLineException {
+	public Boolean printForms(String containerId, String postId, PrintForm printForm) throws PackLineException {
+		attachDocuments = false;
+
 		if (printForm.getPrinter() == null) {
 			throw new PackLineException(String.format(getResources().getString("error.printer.not.assigned"), printForm.getName()));
 		}
@@ -125,6 +123,7 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 			PackLineException ple = new PackLineException(String.format(getResources().getString("error.printing"), printForm.getPrinter().getName()), e);
 			throw ple;
 		}
+		return attachDocuments;
 	}
 
 	private void printFormFromFile(String containerId, String postId, final String reportFileName, Printer printer, String formName, Integer copies)
@@ -415,6 +414,8 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 	}
 
 	private boolean checkPrintingStatus(Report report) throws PackLineException {
+		attachDocuments = false;
+
 		// Cancel printing
 		Variable variable = (Variable) CollectionUtils.find(report.getVariables(), new Predicate() {
 			@Override
@@ -440,10 +441,11 @@ public abstract class BasePrintFormsAction<Controller extends StandardWorkflowCo
 				throw new ContainerProblemException(getResources().getString("error.post.container.problem.address.sender"), variable.getValue());
 			} else if ("ReceiverAddress".equalsIgnoreCase(variable.getValue())) {
 				throw new ContainerProblemException(getResources().getString("error.post.container.problem.address.receiver"), variable.getValue());
-			} else {
-				throw new ContainerProblemException(String.format(getResources().getString("error.post.container.problem.other"), variable.getValue()),
-						variable.getValue());
+			} else if ("AttachDocuments".equalsIgnoreCase(variable.getValue())) {
+					attachDocuments = true;
 			}
+			else throw new ContainerProblemException(String.format(getResources().getString("error.post.container.problem.other"), variable.getValue()),
+				variable.getValue());
 		}
 
 		// Check container tracking Id

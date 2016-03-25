@@ -129,6 +129,11 @@ public class RemarkingController extends StandardController<RemarkingAction> imp
 					errorMessageProperty.set(getResources().getString("error.barcode.invalid.code"));
 					errorVisibleProperty.set(true);
 				}
+				else
+				if (getAction().attachDocuments) {
+					showWarningMessage(getResources().getString("printing.info4"), true);
+				}
+
 			}
 		};
 

@@ -10,6 +10,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.context.ApplicationContext;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
@@ -29,6 +30,7 @@ import ru.aplix.packline.post.Registry;
 import ru.aplix.packline.post.RouteList;
 import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.post.TagType;
+import ru.aplix.packline.utils.CacheOrders;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
 
@@ -123,14 +125,16 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 		setNextAction(this);
 	}
 
-	public Tag processBarcode(String code) throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException,
-			DatatypeConfigurationException {
+	public Tag processBarcode(String code)
+			throws PackLineException, FileNotFoundException, MalformedURLException, JAXBException, DatatypeConfigurationException {
 		Post post;
 		Registry registry;
 		Order order;
 		PickupRequest pickupRequest = null;
 		Tag result;
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
+		ApplicationContext applicationContext = (ApplicationContext) getContext().getAttribute(Const.APPLICATION_CONTEXT);
+		CacheOrders cacheOrders = (CacheOrders) applicationContext.getBean(Const.CACHE_ORDERS_BEAN_NAME);
 
 		TagType tagType = postServicePort.findTag(code);
 		if (TagType.INCOMING.equals(tagType)) {
@@ -139,9 +143,13 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 			}
 
 			Incoming incoming = findAndValidateTag(postServicePort, TagType.INCOMING, code, Incoming.class, false);
-			order = findOrder(postServicePort, incoming.getOrderId(), false);
+			order = cacheOrders.findOrder(postServicePort, incoming.getOrderId(), false, true);
 			registry = findRegistry(postServicePort, incoming.getId());
 			checkRegistry(registry, order);
+
+			for (final Incoming inc : registry.getIncoming()) {
+				cacheOrders.findOrder(postServicePort, inc.getOrderId(), false, true);
+			}
 
 			RouteList routeList = (RouteList) getContext().getAttribute(Const.ROUTE_LIST);
 			if (routeList == null) {
@@ -167,7 +175,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 
 			post = findAndValidateTag(postServicePort, TagType.POST, code, Post.class, false);
 			checkPost(post);
-			order = findOrder(postServicePort, post.getOrderId(), true);
+			order = cacheOrders.findOrder(postServicePort, post.getOrderId(), true, true);
 
 			setNextAction(getPackingAction());
 			result = post;
@@ -180,7 +188,7 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 			Container container = findAndValidateTag(postServicePort, TagType.CONTAINER, code, Container.class, false);
 			checkContainer(container);
 			post = findAndValidateTag(postServicePort, TagType.POST, container.getPostId(), Post.class, true);
-			order = findOrder(postServicePort, post.getOrderId(), true);
+			order = cacheOrders.findOrder(postServicePort, post.getOrderId(), true, true);
 
 			setNextAction(getMarkingAction());
 			notifyAboutOutgoingParcel(container.getId());
@@ -247,19 +255,11 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 			}
 		}
 		if (!(tag.getClass().equals(tagClass))) {
-			throw new PackLineException(String.format(getResources().getString("error.post.invalid.tag.class"), tagId, tagClass.getSimpleName(), tag.getClass()
-					.getSimpleName()));
+			throw new PackLineException(
+					String.format(getResources().getString("error.post.invalid.tag.class"), tagId, tagClass.getSimpleName(), tag.getClass().getSimpleName()));
 		} else {
 			return (T) tag;
 		}
-	}
-
-	private Order findOrder(PackingLinePortType postServicePort, String orderId, boolean strict) throws PackLineException {
-		Order order = postServicePort.getOrder(orderId);
-		if (strict && (order == null || order.getId() == null || order.getId().length() == 0)) {
-			throw new PackLineException(getResources().getString("error.post.invalid.nested.tag"));
-		}
-		return order;
 	}
 
 	private Registry findRegistry(PackingLinePortType postServicePort, String incomingId) throws PackLineException {
@@ -346,10 +346,8 @@ public class ReadBarcodeOrderAction extends NotificationAction<ReadBarcodeOrderC
 	private void checkRouteList(RouteList routeList) throws PackLineException {
 		// @formatter:off
 		/*
-		if (routeList.isCarriedOutAndClosed()) {
-			throw new PackLineException(getResources().getString("error.post.routeList.already.closed"));
-		}
-		*/
-		// @formatter:on		
+		 * if (routeList.isCarriedOutAndClosed()) { throw new PackLineException(getResources().getString("error.post.routeList.already.closed")); }
+		 */
+		// @formatter:on
 	}
 }

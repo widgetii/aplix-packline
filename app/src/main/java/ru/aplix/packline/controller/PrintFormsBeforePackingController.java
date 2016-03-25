@@ -98,8 +98,7 @@ public class PrintFormsBeforePackingController extends StandardController<PrintF
 			progressVisibleProperty.set(false);
 
 			if (getValue() > 0) {
-				warningMessageProperty.set(getResources().getString("printing.info3"));
-				errorVisibleProperty.set(true);
+				showWarningMessage(getResources().getString("printing.info3"));
 
 				errorVisibleProperty.addListener(new ChangeListener<Boolean>() {
 					@Override

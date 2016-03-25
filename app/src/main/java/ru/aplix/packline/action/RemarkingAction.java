@@ -21,6 +21,7 @@ public class RemarkingAction extends BasePrintFormsAction<RemarkingController> {
 		return "remarking";
 	}
 
+	public boolean attachDocuments = false;
 	public boolean processBarcode(String code) throws Exception {
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
 
@@ -37,6 +38,7 @@ public class RemarkingAction extends BasePrintFormsAction<RemarkingController> {
 		getContext().setAttribute(Const.POST, post);
 
 		long t = System.currentTimeMillis();
+		attachDocuments = false;
 		boolean printedAtLeastOne = false;
 		Set<Throwable> exceptions = new TreeSet<Throwable>(createSetComparator());
 		try {
@@ -46,8 +48,8 @@ public class RemarkingAction extends BasePrintFormsAction<RemarkingController> {
 				boolean paymentMethodRestriction = (form.getPaymentFlags().size() == 0 || form.getPaymentFlags().contains(post.getPaymentFlags()));
 
 				if (postTypeRestriction && paymentMethodRestriction && form.getEnabled()) {
-					printForms(container.getId(), post.getId(), form);
-
+					Boolean result = printForms(container.getId(), post.getId(), form);
+					attachDocuments = result ? true : attachDocuments;
 					printedAtLeastOne = true;
 				}
 			}
