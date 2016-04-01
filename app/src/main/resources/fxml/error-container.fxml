@@ -19,7 +19,7 @@
         <Insets top="-100.0" />
       </StackPane.margin>
     </Label>
-    <Button fx:id="okButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="%dialog.pressAnyKey" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" StackPane.alignment="BOTTOM_CENTER">
+    <Button fx:id="okButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="400.0" text="%dialog.pressAnyKey" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" StackPane.alignment="BOTTOM_CENTER">
     </Button>
   </children>
 </StackPane>
