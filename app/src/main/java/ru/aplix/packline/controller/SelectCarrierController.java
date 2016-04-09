@@ -1,13 +1,25 @@
 package ru.aplix.packline.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.SelectCarrierAction;
 
 public class SelectCarrierController extends StandardController<SelectCarrierAction> {
-
+    @FXML
+	public ImageView logoPEK;
+	@FXML
+	public StackPane contentPane;
+	@FXML
+	public Label infoLabel;
+	@FXML
+	public InnerShadow x1;
+	@FXML
+	public InnerShadow x2;
 	@FXML
 	private ImageView logoAplix;
 	@FXML
@@ -71,7 +83,9 @@ public class SelectCarrierController extends StandardController<SelectCarrierAct
 			value = "Ponyexpress";
 		} else if (mouseEvent.getSource().equals(logoB2CPL)) {
 			value = "B2CPL";
-		}
+		} else if (mouseEvent.getSource().equals(logoPEK)) {
+		    value = "PEK";
+	}
 
 		getAction().select(value);
 		done();

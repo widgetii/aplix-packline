@@ -34,7 +34,8 @@
 					ORDER, DELIVERY, URL, FIRM_PRED, FIRM_TEL, FIRM_CITY, POST_DESCRIPTION, POST_DESCRIPTION_ENG, 
 					CONTAINER_ID, site, cartons, delivery_type, delivery_cost, DELIVERY_DATE, DELIVERY_TIME,
 					AREA_PEREVOD, REGION_PEREVOD, ADRES_PEREVOD, index_perevod, BATTERIES, DOGOVOR,
-					COUNTRY_FROM, COUNTRY_TO, ValueInDollars, POINT_ID, BARCODE2, PostDate, OrderView, OrderDate
+					COUNTRY_FROM, COUNTRY_TO, ValueInDollars, POINT_ID, BARCODE2, PostDate, OrderView, OrderDate,
+					PlaceNumber, PlaceTotalCount, AdditionalNumber
 				FROM POST
 				WHERE 
 					CONTAINER_ID = '${containerId}' AND QUERY_ID = '${queryId}';

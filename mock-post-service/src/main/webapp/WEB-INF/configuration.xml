@@ -4,7 +4,7 @@
 		<customer>
 			<id>11111111</id>
 			<name>ИП Митрюшкин Сергей Сергеевич</name>
-			<blocked>false</blocked>			
+			<blocked>false</blocked>
 		</customer>
 		<customer>
 			<id>22222222</id>
@@ -40,6 +40,36 @@
 			<date>2013-11-12T23:06:18.039+03:00</date>
 			<totalIncomings>5</totalIncomings>
 			<skipPacking>false</skipPacking>
+			<verifyPacking>true</verifyPacking>
+			<products>
+				<barcodes>123</barcodes>
+				<barcodes>098</barcodes>
+				<count>2</count>
+				<description>Мышь</description>
+				<photos>http://content2.onliner.by/catalog/device/main/aeefc3417f1f00642c2f1e4ec9a463d4.jpg</photos>
+				<photos>http://content2.onliner.by/catalog/device/main/2de20c8385559ea1d32e736125a8aca6.jpg</photos>
+			</products>
+			<products>
+				<barcodes>456</barcodes>
+				<barcodes>765</barcodes>
+				<count>2</count>
+				<description>Процессор</description>
+				<photos>http://content2.onliner.by/catalog/device/main/e5bf1b7164711246599b36b0dea9d9cb.jpg</photos>
+			</products>
+			<products>
+				<barcodes>789</barcodes>
+				<barcodes>432</barcodes>
+				<count>1</count>
+				<description>Корпус</description>
+				<photos>http://content2.onliner.by/catalog/device/main/616ef28471c93e73e8a006e1ebc02bc9.jpg</photos>
+				<photos>http://content2.onliner.by/catalog/device/main/290d97fcc0ca5a8914d0e17c413db288.jpg</photos>
+				<photos>http://content2.onliner.by/catalog/device/main/ab111a174f7cad9b40508f6873c61ef2.jpg</photos>
+			</products>
+			<products>
+				<barcodes>111</barcodes>
+				<count>2</count>
+				<description>Монитор</description>
+			</products>
 		</order>
 		<order>
 			<id>987654321</id>
@@ -646,7 +676,7 @@
 		<field>
 			<name>AREA_PEREVOD</name>
 			<value></value>
-		</field>		
+		</field>
 		<field>
 			<name>index_from</name>
 			<value>117556</value>
@@ -875,5 +905,25 @@
 			<name>BARCODE2</name>
 			<value>201218749891</value>
 		</field>
+		<field>
+			<name>PlaceNumber</name>
+			<value>2</value>
+		</field>
+		<field>
+			<name>PlaceTotalCount</name>
+			<value>6</value>
+		</field>
+		<field>
+			<name>AdditionalNumber</name>
+			<value>123415145</value>
+		</field>
+    <field>
+      <name>OrderDate</name>
+      <value>2014-01-22T00:00:00</value>
+    </field>
+    <field>
+      <name>PostDate</name>
+      <value>2014-01-22T00:00:00</value>
+    </field>
 	</gatherInfoResponse>
 </configuration>

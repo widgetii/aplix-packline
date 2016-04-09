@@ -5122,8 +5122,8 @@
       </Page>
    </Pages>
    <Variables>
-		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', f:choose((''+[Variable12]).contains('Калининград'), 'AttachDocuments', '')))"/>
-		<Variable Name="CancelPrinting" Type="expression" Content="f:choose((''+[Variable12]).contains('Калининград'), 'false', 'true')"/>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable19] = '', 'SenderAddress', f:choose([Variable9] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="CancelPrinting" Type="expression" Content="false"/>
 		<Variable Name="orderdate" Type="expression" Content="f:formatDate([Variable2], 'dd MMMMM yyyy')"/>		
 		<Variable Name="postdate" Type="expression" Content="f:formatDate([Variable24], 'dd MMMMM yyyy')"/>
 		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable9] = '', [Variable3], f:choose([Variable3] = '', [Variable9], [Variable3] + ', ' + [Variable9]))"/>		

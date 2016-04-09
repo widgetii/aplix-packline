@@ -389,6 +389,10 @@
     -fx-font-weight: bold;
 }
 
+.custom-verify-button {
+	-fx-font-size: 0.8em;
+}
+
 .centered-column {
     -fx-alignment: CENTER;
 }

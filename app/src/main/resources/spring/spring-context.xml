@@ -45,13 +45,20 @@
 		<property name="pickupRequestAction" ref="action3_pre" />
 		<property name="acceptanceAction" ref="action3" />
 		<property name="orderActAction" ref="action6" />
-		<property name="packingAction" ref="action7_pre" />
+		<property name="packingAction" ref="actionVerify" />
 		<property name="markingAction" ref="action10" />
 	</bean>
 
 	<bean id="action3_pre" class="ru.aplix.packline.action.SelectPickupRequestsAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action3" />
+	</bean>
+
+	<bean id="actionVerify" class="ru.aplix.packline.action.VerifyAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="idleAction" ref="action2" />
+		<property name="verifyCloseAction" ref="action7_pre" />
+		<property name="cancelAction" ref="action2" />
 	</bean>
 
 	<bean id="action3" class="ru.aplix.packline.action.WeightingOrderAction">

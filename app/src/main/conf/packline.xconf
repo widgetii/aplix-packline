@@ -84,8 +84,8 @@
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<_ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</_ServiceAddress>
-		<ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</ServiceAddress>
+		<ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</ServiceAddress>
+		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 		<RemoteStoragePath>$(java.io.tmpdir)</RemoteStoragePath>
 	</PostService>
@@ -240,6 +240,16 @@
 		<Form name="B2CPL" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.0013">
 			<PostTypeRestriction>
 				<PostType>B2CPL</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="ПЭК" file="pek" printerId="printer1" whenPrint="MANUALLY" weight="0.0006">
+			<PostTypeRestriction>
+				<PostType>PEK</PostType>
+			</PostTypeRestriction>
+		</Form>
+		<Form name="ТОРГ-12" file="torg12" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.008">
+			<PostTypeRestriction>
+				<PostType>PEK</PostType>
 			</PostTypeRestriction>
 		</Form>
 	</Printing>

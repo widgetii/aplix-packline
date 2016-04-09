@@ -571,7 +571,7 @@
                             VerticalAlign="bottom"
                             Visible="true"
                             Width="66.31611">
-                     <Memo>[Variable6]</Memo>
+                     <Memo>ООО "Апликс", ИНН 7726664036, р/с 40702810702200001539 в банке ОАО "АЛЬФА-БАНК", БИК 044525593, к/с 30101810200000000593, тел.: (495) 640-42-11</Memo>
                   </MemoView>
                   <MemoView BoundHeight="1.7245435" BoundLeft="2.7048764" BoundTop="23.08235"
                             BoundWidth="3.1712346"
@@ -622,7 +622,7 @@
                             VerticalAlign="bottom"
                             Visible="true"
                             Width="67.901726">
-                     <Memo>[otkuda_full_adres_index]</Memo>
+                     <Memo>117405, Москва г, Варшавское ш, дом № 141, корпус 80</Memo>
                   </MemoView>
                   <MemoView BoundHeight="1.7245435" BoundLeft="2.7048764" BoundTop="25.07221"
                             BoundWidth="8.860802"
