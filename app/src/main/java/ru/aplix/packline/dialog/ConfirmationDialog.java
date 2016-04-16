@@ -29,9 +29,9 @@ public class ConfirmationDialog extends Stage {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource(fxmlName));
 			loader.setResources(ResourceBundle.getBundle("resources.messages.strings"));
-			Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlName));
+			Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlName));
 
-			controller = (ConfirmationDialogController) loader.getController();
+			controller = loader.getController();
 			if (title != null) {
 				controller.setTitle(title);
 			}

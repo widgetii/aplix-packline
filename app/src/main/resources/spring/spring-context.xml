@@ -47,6 +47,7 @@
 		<property name="orderActAction" ref="action6" />
 		<property name="packingAction" ref="actionVerify" />
 		<property name="markingAction" ref="action10" />
+		<property name="newMarkerAction" ref="askGenStickCustomerAction" />
 	</bean>
 
 	<bean id="action3_pre" class="ru.aplix.packline.action.SelectPickupRequestsAction">
@@ -193,6 +194,11 @@
 	</bean>
 
 	<bean id="genStickCustomerAction" class="ru.aplix.packline.action.GenStickCustomerAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+
+	<bean id="askGenStickCustomerAction" class="ru.aplix.packline.action.AskGenStickCustomerAction">
 		<property name="idleTimeout" value="SHORT" />
 		<property name="nextAction" ref="action2" />
 	</bean>

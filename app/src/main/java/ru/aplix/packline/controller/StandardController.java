@@ -10,8 +10,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -48,11 +46,23 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	private Timeline errorChecker;
 	private ErrorCheckerEventHandler errorCheckerEventHandler;
 
-	private void hidePane()
+	protected void hidePane()
 	{
 		errorMessageProperty.set(null);
 		warningMessageProperty.set(null);
 		errorVisibleProperty.set(false);
+	}
+
+	public void showErrorMessage(final String message) {
+		showErrorMessage(message, false);
+	}
+
+	public void showErrorMessage(final String message, final Boolean pressAnyKey) {
+		Platform.runLater(() -> {
+            visibleButtonProperty.set(pressAnyKey);
+            errorMessageProperty.set(message);
+            errorVisibleProperty.set(true);
+        });
 	}
 
 	public void showWarningMessage(final String message) {
@@ -60,14 +70,11 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 	}
 
 	public void showWarningMessage(final String message, final Boolean pressAnyKey) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				visibleButtonProperty.set(pressAnyKey);
-				warningMessageProperty.set(message);
-				errorVisibleProperty.set(true);
-			}
-		});
+		Platform.runLater(() -> {
+            visibleButtonProperty.set(pressAnyKey);
+            warningMessageProperty.set(message);
+            errorVisibleProperty.set(true);
+        });
 	}
 
 	public StandardController() {
@@ -88,6 +95,8 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 			okButton.setOnAction((event) -> {
 				if (checkNoError()) {
 					hidePane();
+
+
 				}
 			});
 		}
@@ -114,38 +123,40 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 			warningLabel.textProperty().bind(warningMessageProperty);
 		}
 
-		errorMessageProperty.addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+		errorMessageProperty.addListener((observable, oldValue, newValue) -> {
+			if (errorLabel != null) {
 				errorLabel.setVisible(newValue != null);
+			}
+			if (warningLabel != null) {
 				warningLabel.setVisible(newValue == null);
-
-				if (newValue != null) {
-					Object operator = context.getAttribute(Const.OPERATOR);
-					if (operator != null) {
-						Utils.playSound(Utils.SOUND_ERROR);
-					}
-
-					errorCheckerEventHandler.reset();
-				}
 			}
-		});
-		warningMessageProperty.addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+            if (newValue != null) {
+                Object operator = context.getAttribute(Const.OPERATOR);
+                if (operator != null) {
+                    Utils.playSound(Utils.SOUND_ERROR);
+                }
+
+                errorCheckerEventHandler.reset();
+            }
+        });
+		warningMessageProperty.addListener((observable, oldValue, newValue) -> {
+			if (warningLabel != null) {
 				warningLabel.setVisible(newValue != null);
-				errorLabel.setVisible(newValue == null);
-
-				if (newValue != null) {
-					Object operator = context.getAttribute(Const.OPERATOR);
-					if (operator != null) {
-						Utils.playSound(Utils.SOUND_WARNING);
-					}
-
-					errorCheckerEventHandler.reset();
-				}
 			}
-		});
+			if (errorLabel != null) {
+				errorLabel.setVisible(newValue == null);
+			}
+
+            if (newValue != null) {
+                Object operator = context.getAttribute(Const.OPERATOR);
+                if (operator != null) {
+                    Utils.playSound(Utils.SOUND_WARNING);
+                }
+
+                errorCheckerEventHandler.reset();
+            }
+        });
 
 		// Bind progress properties
 		ProgressIndicator progressIndicator = (ProgressIndicator) rootNode.lookup("#progressIndicator");
@@ -154,24 +165,21 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		}
 
 		// Add key event filter
-		rootNode.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent keyEvent) {
-				switch (keyEvent.getCode()) {
-				case X:
-					if (keyEvent.isAltDown()) {
-						Platform.exit();
-					}
-					break;
-				default:
-					if (errorVisibleProperty.get()) {
-					    hidePane();
-						keyEvent.consume();
-					}
-					break;
-				}
-			}
-		});
+		rootNode.addEventFilter(KeyEvent.ANY, keyEvent -> {
+            switch (keyEvent.getCode()) {
+            case X:
+                if (keyEvent.isAltDown()) {
+                    Platform.exit();
+                }
+                break;
+            default:
+                if (errorVisibleProperty.get()) {
+                    hidePane();
+                    keyEvent.consume();
+                }
+                break;
+            }
+        });
 	}
 
 	@Override
@@ -231,7 +239,7 @@ public abstract class StandardController<Action extends WorkflowAction> extends 
 		public void handle(ActionEvent event) {
 			if (delayCount <= 0) {
 				if (checkNoError()) {
-					if (!visibleButtonProperty.get()) {
+					if (errorVisibleProperty.get() && !visibleButtonProperty.get()) {
 						hidePane();
 					}
 				}
