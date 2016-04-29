@@ -69,7 +69,7 @@
 
 	<bean id="action4" class="ru.aplix.packline.action.PhotoAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="nextAction" ref="action5" />
+		<property name="nextAction" ref="action7_pre" />
 	</bean>
 
 	<bean id="action5" class="ru.aplix.packline.action.TrolleyAction">
@@ -89,7 +89,8 @@
 
 	<bean id="action7_pre" class="ru.aplix.packline.action.PrintFormsBeforePackingAction">
 		<property name="idleTimeout" value="SHORT" />
-		<property name="nextAction" ref="action7" />
+		<property name="acceptanceAction" ref="action5" />
+		<property name="packingAction" ref="action7" />
 	</bean>
 
 	<bean id="action7" class="ru.aplix.packline.action.PackTypeAction">

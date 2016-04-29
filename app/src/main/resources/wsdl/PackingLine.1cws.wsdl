@@ -824,6 +824,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="GetDocumentsForPrinting2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="postId" type="xs:string"/>
+						<xs:element name="tagType" type="tns:TagType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDocumentsForPrintingResponse2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="GetLabel">
 				<xs:complexType>
 					<xs:sequence>
@@ -1286,6 +1301,12 @@
 	<message name="GetDocumentsForPrintingResponseMessage">
 		<part name="parameters" element="tns:GetDocumentsForPrintingResponse"/>
 	</message>
+	<message name="GetDocumentsForPrintingRequestMessage2">
+		<part name="parameters" element="tns:GetDocumentsForPrinting2"/>
+	</message>
+	<message name="GetDocumentsForPrintingResponseMessage2">
+		<part name="parameters" element="tns:GetDocumentsForPrintingResponse2"/>
+	</message>
 	<message name="GetLabelRequestMessage">
 		<part name="parameters" element="tns:GetLabel"/>
 	</message>
@@ -1530,6 +1551,10 @@
 		<operation name="GetDocumentsForPrinting">
 			<input message="tns:GetDocumentsForPrintingRequestMessage"/>
 			<output message="tns:GetDocumentsForPrintingResponseMessage"/>
+		</operation>
+		<operation name="GetDocumentsForPrinting2">
+			<input message="tns:GetDocumentsForPrintingRequestMessage2"/>
+			<output message="tns:GetDocumentsForPrintingResponseMessage2"/>
 		</operation>
 		<operation name="GetLabel">
 			<input message="tns:GetLabelRequestMessage"/>
@@ -1905,6 +1930,15 @@
 		</operation>
 		<operation name="GetDocumentsForPrinting">
 			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDocumentsForPrinting2">
+			<soapbind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting2"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -2376,6 +2410,15 @@
 		</operation>
 		<operation name="GetDocumentsForPrinting">
 			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDocumentsForPrinting2">
+			<soap12bind:operation style="document" soapAction="http://www.aplix.ru/PackingLine#PackingLine:GetDocumentsForPrinting2"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

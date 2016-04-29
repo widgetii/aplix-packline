@@ -12,12 +12,13 @@ import ru.aplix.packline.conf.Configuration;
 import ru.aplix.packline.conf.PrintMode;
 import ru.aplix.packline.conf.Printer;
 import ru.aplix.packline.controller.PrintFormsBeforePackingController;
-import ru.aplix.packline.post.PackingLinePortType;
-import ru.aplix.packline.post.Post;
-import ru.aplix.packline.post.PrintDocument;
-import ru.aplix.packline.post.PrintingDocumentsResponse;
+import ru.aplix.packline.post.*;
+import ru.aplix.packline.workflow.WorkflowAction;
 
 public class PrintFormsBeforePackingAction extends BasePrintFormsAction<PrintFormsBeforePackingController> {
+
+	private WorkflowAction acceptanceAction;
+	private WorkflowAction packingAction;
 
 	@Override
 	protected String getFormName() {
@@ -25,11 +26,20 @@ public class PrintFormsBeforePackingAction extends BasePrintFormsAction<PrintFor
 	}
 
 	public void downloadAndPrintDocuments(int[] printed) throws Exception {
-		Post post = (Post) getContext().getAttribute(Const.POST);
+		Tag tag = (Tag) getContext().getAttribute(Const.TAG);
+
+		TagType tagtype = TagType.UNKNOWN;
+		if (tag instanceof Incoming) {
+			tagtype = TagType.INCOMING;
+		}
+		else
+		if (tag instanceof Post) {
+			tagtype = TagType.POST;
+		}
 
 		// Download label from server
 		PackingLinePortType postServicePort = (PackingLinePortType) getContext().getAttribute(Const.POST_SERVICE_PORT);
-		PrintingDocumentsResponse response = postServicePort.getDocumentsForPrinting(post.getId());
+		PrintingDocumentsResponse response = postServicePort.getDocumentsForPrinting2(tag.getId(), tagtype);
 		if (response == null) {
 			throw new PackLineException(getResources().getString("error.post.printing.documents"));
 		}
@@ -49,15 +59,12 @@ public class PrintFormsBeforePackingAction extends BasePrintFormsAction<PrintFor
 			PrintDocument pd = response.getItems().get(index);
 
 			// Save it in temp file
-			File tempFile = File.createTempFile(post.getId() + "_" + (index + 1), ".pdf");
+			File tempFile = File.createTempFile(tag.getId() + "_" + (index + 1), ".pdf");
 			LOG.debug(String.format("Saving label temporary to '%s'...", tempFile.getAbsolutePath()));
 			tempFile.deleteOnExit();
-			OutputStream os = new FileOutputStream(tempFile);
-			try {
+			try (OutputStream os = new FileOutputStream(tempFile)) {
 				os.write(pd.getFileContents());
 				os.flush();
-			} finally {
-				os.close();
 			}
 
 			// Invoke pdf printer
@@ -75,5 +82,21 @@ public class PrintFormsBeforePackingAction extends BasePrintFormsAction<PrintFor
 
 			printed[0]++;
 		}
+	}
+
+	public void setAcceptanceAction(WorkflowAction acceptanceAction) {
+		this.acceptanceAction = acceptanceAction;
+	}
+
+	public WorkflowAction getAcceptanceAction() {
+		return acceptanceAction;
+	}
+
+	public void setPackingAction(WorkflowAction packingAction) {
+		this.packingAction = packingAction;
+	}
+
+	public WorkflowAction getPackingAction() {
+		return packingAction;
 	}
 }

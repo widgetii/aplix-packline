@@ -828,6 +828,19 @@ public class MockService implements PackingLinePortType {
 	}
 
 	@Override
+	public PrintingDocumentsResponse getDocumentsForPrinting2(String postId, TagType tagType) {
+		PrintingDocumentsResponse response = new PrintingDocumentsResponse();
+		if (RandomUtils.nextInt(10) == 0)
+		{
+			PrintDocument pd = new PrintDocument();
+			pd.setFileContents(getLabel(postId));
+			pd.setCopies(1);
+			response.getItems().add(pd);
+		}
+		return response;
+	}
+
+	@Override
 	public PrintingDocumentsResponse closeAndPrintCurrentRegistry(PostType carrier) {
 		PrintingDocumentsResponse response = new PrintingDocumentsResponse();
 		PrintDocument pd = new PrintDocument();

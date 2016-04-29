@@ -11,6 +11,9 @@ import org.apache.commons.logging.LogFactory;
 
 import ru.aplix.packline.Const;
 import ru.aplix.packline.action.PrintFormsBeforePackingAction;
+import ru.aplix.packline.post.Incoming;
+import ru.aplix.packline.post.Post;
+import ru.aplix.packline.post.Tag;
 import ru.aplix.packline.workflow.WorkflowContext;
 
 public class PrintFormsBeforePackingController extends StandardController<PrintFormsBeforePackingAction> {
@@ -114,4 +117,19 @@ public class PrintFormsBeforePackingController extends StandardController<PrintF
 			}
 		}
 	};
+
+	@Override
+	protected void done() {
+		Tag tag = (Tag) getContext().getAttribute(Const.TAG);
+
+		if (tag instanceof Incoming) {
+			getAction().setNextAction(getAction().getAcceptanceAction());
+		}
+		else
+		if (tag instanceof Post) {
+			getAction().setNextAction(getAction().getPackingAction());
+		}
+
+		super.done();
+	}
 }
