@@ -832,7 +832,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="GetDocumentsForPrintingResponse2">
+			<xs:element name="GetDocumentsForPrinting2Response">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return" type="tns:PrintingDocumentsResponse"/>
@@ -1301,11 +1301,11 @@
 	<message name="GetDocumentsForPrintingResponseMessage">
 		<part name="parameters" element="tns:GetDocumentsForPrintingResponse"/>
 	</message>
-	<message name="GetDocumentsForPrintingRequestMessage2">
+	<message name="GetDocumentsForPrinting2RequestMessage">
 		<part name="parameters" element="tns:GetDocumentsForPrinting2"/>
 	</message>
-	<message name="GetDocumentsForPrintingResponseMessage2">
-		<part name="parameters" element="tns:GetDocumentsForPrintingResponse2"/>
+	<message name="GetDocumentsForPrinting2ResponseMessage">
+		<part name="parameters" element="tns:GetDocumentsForPrinting2Response"/>
 	</message>
 	<message name="GetLabelRequestMessage">
 		<part name="parameters" element="tns:GetLabel"/>
@@ -1553,8 +1553,8 @@
 			<output message="tns:GetDocumentsForPrintingResponseMessage"/>
 		</operation>
 		<operation name="GetDocumentsForPrinting2">
-			<input message="tns:GetDocumentsForPrintingRequestMessage2"/>
-			<output message="tns:GetDocumentsForPrintingResponseMessage2"/>
+			<input message="tns:GetDocumentsForPrinting2RequestMessage"/>
+			<output message="tns:GetDocumentsForPrinting2ResponseMessage"/>
 		</operation>
 		<operation name="GetLabel">
 			<input message="tns:GetLabelRequestMessage"/>
