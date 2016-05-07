@@ -75,7 +75,7 @@ public class AskGenStickCustomerController extends StandardController<AskGenStic
 						.limit(5)
 						.map(p -> {
 							        enclosureCount[0]++;
-									return enclosureCount + ". " + p.getContentDescription();
+									return enclosureCount[0] + ". " + p.getContentDescription();
 								}
 						)
 						.collect(Collectors.joining("\n"));
