@@ -246,12 +246,7 @@
 			<PostTypeRestriction>
 				<PostType>PEK</PostType>
 			</PostTypeRestriction>
-		</Form>
-		<Form name="ТОРГ-12" file="torg12" printerId="printer1" whenPrint="AFTER-WEIGHTING" weight="0.008">
-			<PostTypeRestriction>
-				<PostType>PEK</PostType>
-			</PostTypeRestriction>
-		</Form>
+		</Form>		
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->
