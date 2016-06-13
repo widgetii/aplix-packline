@@ -1,19 +1,16 @@
 package ru.aplix.packline.controller;
 
-import java.util.concurrent.ExecutorService;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.PackTypeAction;
@@ -24,10 +21,24 @@ import ru.aplix.packline.post.Order;
 import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.workflow.WorkflowContext;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.util.concurrent.ExecutorService;
+
 public class PackTypeController extends StandardController<PackTypeAction> implements BarcodeListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
-
+	@FXML
+	public StackPane contentPane;
+	@FXML
+	public Button boxPackButton;
+	@FXML
+	public Button packetPackButton;
+	@FXML
+	public Button paperPackButton;
+	@FXML
+	public Button roofBoardingPackButton;
+	@FXML
+	public AnchorPane orderInfoContainer;
 	@FXML
 	private Label clientLabel;
 	@FXML
@@ -81,6 +92,10 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 		selectPacketType(PackingType.PAPER);
 	}
 
+	public void roofBoardingClick(ActionEvent event) {
+		selectPacketType(PackingType.ROOF_BOARDING);
+	}
+
 	private void selectPacketType(PackingType value) {
 		try {
 			getAction().selectPacketType(value);
@@ -93,12 +108,7 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 
 	@Override
 	public void onCatchBarcode(final String value) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				processBarcode(value);
-			}
-		});
+		Platform.runLater(() -> processBarcode(value));
 	}
 
 	private void processBarcode(final String value) {
@@ -113,12 +123,7 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 					final Integer emptyBoxCount = getAction().processBarcode(value);
 					Integer emptyBoxThreshold = Configuration.getInstance().getEmptyBoxThreshold();
 					if ((emptyBoxCount != null) && (emptyBoxThreshold != null) && (Integer.compare(emptyBoxCount, emptyBoxThreshold) < 0)) {
-						Platform.runLater(new Runnable() {
-							@Override
-							public void run() {
-								showWarningMessage(String.format(getResources().getString("message.replenish.box"), emptyBoxCount));
-							}
-						});
+						Platform.runLater(() -> showWarningMessage(String.format(getResources().getString("message.replenish.box"), emptyBoxCount)));
 
 						Thread.sleep(Const.ERROR_DISPLAY_DELAY * DateUtils.MILLIS_PER_SECOND);
 					}
@@ -126,8 +131,7 @@ public class PackTypeController extends StandardController<PackTypeAction> imple
 					LOG.error(null, e);
 					throw e;
 				}
-				return null;
-			}
+				return null;			}
 
 			@Override
 			protected void running() {

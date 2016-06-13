@@ -176,12 +176,16 @@
 	-fx-graphic: url('../images/img-pack-box.png');
 }
 
-#packetPackButon {
+#packetPackButton {
 	-fx-graphic: url('../images/img-pack-packet.png');
 }
 
 #paperPackButton {
 	-fx-graphic: url('../images/img-pack-paper.png');
+}
+
+#roofBoardingPackButton {
+	-fx-graphic: url('../images/img-pack-roof-boarding.png');
 }
 
 .blue-button {

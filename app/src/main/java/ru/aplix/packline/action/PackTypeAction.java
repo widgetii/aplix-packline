@@ -1,17 +1,13 @@
 package ru.aplix.packline.action;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.controller.PackTypeController;
-import ru.aplix.packline.post.Container;
-import ru.aplix.packline.post.PackingLinePortType;
-import ru.aplix.packline.post.PackingType;
-import ru.aplix.packline.post.Post;
-import ru.aplix.packline.post.TagType;
+import ru.aplix.packline.post.*;
 import ru.aplix.packline.utils.Utils;
 import ru.aplix.packline.workflow.WorkflowAction;
+
+import javax.xml.datatype.DatatypeConfigurationException;
 
 public class PackTypeAction extends NotificationAction<PackTypeController> {
 
@@ -59,13 +55,14 @@ public class PackTypeAction extends NotificationAction<PackTypeController> {
 		container.setDate(Utils.now());
 
 		switch (value) {
-		case BOX:
-			setNextAction(getBarcodeAction());
-			break;
-		case PACKET:
-		case PAPER:
-			setNextAction(getDimentionAction());
-			break;
+			case BOX:
+				setNextAction(getBarcodeAction());
+				break;
+			case PACKET:
+			case PAPER:
+			case ROOF_BOARDING:
+				setNextAction(getDimentionAction());
+				break;
 		}
 	}
 

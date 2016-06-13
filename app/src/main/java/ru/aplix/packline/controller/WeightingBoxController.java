@@ -1,11 +1,5 @@
 package ru.aplix.packline.controller;
 
-import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-
 import javafx.animation.FadeTransitionBuilder;
 import javafx.animation.Timeline;
 import javafx.animation.Transition;
@@ -16,13 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-
-import javax.xml.bind.JAXBException;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.WeightingBoxAction;
@@ -35,6 +25,13 @@ import ru.aplix.packline.post.PackingSize;
 import ru.aplix.packline.post.PackingType;
 import ru.aplix.packline.workflow.SkipActionException;
 import ru.aplix.packline.workflow.WorkflowContext;
+
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
 
 public class WeightingBoxController extends StandardController<WeightingBoxAction> implements MeasurementListener {
 
@@ -97,15 +94,18 @@ public class WeightingBoxController extends StandardController<WeightingBoxActio
 			PackingType pt = container.getPackingType();
 			if (pt != null) {
 				switch (pt) {
-				case BOX:
-					packingType.setText(getResources().getString("packtype.box"));
-					break;
-				case PACKET:
-					packingType.setText(getResources().getString("packtype.packet"));
-					break;
-				case PAPER:
-					packingType.setText(getResources().getString("packtype.paper"));
-					break;
+					case BOX:
+						packingType.setText(getResources().getString("packtype.box"));
+						break;
+					case PACKET:
+						packingType.setText(getResources().getString("packtype.packet"));
+						break;
+					case PAPER:
+						packingType.setText(getResources().getString("packtype.paper"));
+						break;
+					case ROOF_BOARDING:
+						packingType.setText(getResources().getString("packtype.roofBoarding"));
+						break;
 				}
 			}
 		}
