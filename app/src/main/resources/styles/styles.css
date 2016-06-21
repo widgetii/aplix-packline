@@ -127,6 +127,12 @@
 	-fx-background-size: auto 100%
 }
 
+.print-barcode-pane-bg {
+	-fx-background-image: url("../images/print-barcode.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+}
+
 .date-time-label {
 	-fx-font-family: Verdana;
 	-fx-font-size: 1em;

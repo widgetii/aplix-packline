@@ -22,6 +22,7 @@ public final class Const {
 	public static final String BARCODE_LISTENERS = "barcodeListeners";
 	public static final String MEASUREMENT_LISTENERS = "measurementListeners";
 	public static final String CACHE_ORDERS_BEAN_NAME = "cacheOrders";
+	public static final String PRINT_BARCODE_ACTION_BEAN_NAME = "printBarcodeAction";
 
 	public static final String APPLICATION_CONTEXT = "ApplicationContext";
 	public static final String STAGE = "Stage";

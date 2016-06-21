@@ -1,21 +1,15 @@
 package ru.aplix.packline.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-
+import javafx.scene.layout.StackPane;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.DimentionsAction;
@@ -23,10 +17,20 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.workflow.WorkflowContext;
 
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class DimentionsController extends StandardController<DimentionsAction> implements BarcodeListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
-
+	@FXML
+	public StackPane contentPane;
 	@FXML
 	private TextField lengthEdit;
 	@FXML
@@ -37,6 +41,8 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	private Pane buttonsContainer;
 
 	private BarcodeScanner<?> barcodeScanner = null;
+
+	private final Pattern dimentionsPattern = Pattern.compile("^PL-(W|H|L)\\s+([\\d]+)", Pattern.DOTALL);
 
 	private Float length = Float.NaN;
 	private Float width = Float.NaN;
@@ -49,18 +55,15 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		super.initialize(location, resources);
 
 		// Add key event filter
-		rootNode.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent keyEvent) {
-				switch (keyEvent.getCode()) {
-				case ENTER:
-					numericKeybordEnterClick(null);
-					break;
-				default:
-					break;
-				}
-			}
-		});
+		rootNode.addEventFilter(KeyEvent.KEY_RELEASED, keyEvent -> {
+            switch (keyEvent.getCode()) {
+            case ENTER:
+                numericKeybordEnterClick(null);
+                break;
+            default:
+                break;
+            }
+        });
 	}
 
 	@Override
@@ -96,12 +99,44 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 
 	@Override
 	public void onCatchBarcode(final String value) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				processBarcode(value);
+		if (!isDimentions(value)) {
+			Platform.runLater(() -> processBarcode(value));
+		}
+	}
+
+	public boolean isDimentions(final String code) {
+		Boolean result = false;
+		try {
+			Matcher matcher = dimentionsPattern.matcher(code);
+			if (matcher.matches()) {
+				char side = matcher.group(1).charAt(0);
+				int mm = Integer.valueOf(matcher.group(2));
+
+				intoField(side, mm);
+
+				result = true;
 			}
-		});
+		}
+		catch (Exception ignored) {
+		}
+
+		return result;
+	}
+
+	private void intoField(char side, int mm) {
+		DecimalFormatSymbols dotSymbol = new DecimalFormatSymbols(Locale.US);
+		String text = new DecimalFormat("#.#", dotSymbol).format(mm / 10.0);
+		switch (side) {
+			case 'H':
+				heightEdit.setText(text);
+				break;
+			case 'W':
+				widthEdit.setText(text);
+				break;
+			case 'L':
+				lengthEdit.setText(text);
+				break;
+		}
 	}
 
 	private void processBarcode(final String value) {
@@ -227,13 +262,10 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 	public void numericKeybordEnterClick(ActionEvent event) {
 		if (lengthEdit.isFocused()) {
 			widthEdit.requestFocus();
-			return;
 		} else if (widthEdit.isFocused()) {
 			heightEdit.requestFocus();
-			return;
 		} else {
 			lengthEdit.requestFocus();
-			return;
 		}
 	}
 

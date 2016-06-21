@@ -1,5 +1,9 @@
 package ru.aplix.packline.conf;
 
+import ru.aplix.packline.utils.Utils;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
@@ -7,15 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import ru.aplix.packline.utils.Utils;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "packline")
@@ -62,6 +57,9 @@ public class Configuration {
 	@XmlElement(name = "Stickers")
 	private StickersContainer stickersContainer;
 
+	@XmlElement(name = "BarcodeLine")
+	private BarcodeLine barcodeLine;
+
 	@XmlElement(name = "Weighting")
 	private Weighting weighting;
 
@@ -98,6 +96,9 @@ public class Configuration {
 
 		printer = getHardwareConfiguration().lookupPrinter(getZebraTest().getPrinterId());
 		getZebraTest().setPrinter(printer);
+
+		printer = getHardwareConfiguration().lookupPrinter(getBarcodeLine().getPrinterId());
+		getBarcodeLine().setPrinter(printer);
 
 		// Resolve path settings
 		getPostService().setRemoteStoragePath(resolvePath(getPostService().getRemoteStoragePath()));
@@ -168,7 +169,7 @@ public class Configuration {
 
 	public List<PrintForm> getPrintForms() {
 		if (printForms == null) {
-			printForms = new ArrayList<PrintForm>();
+			printForms = new ArrayList<>();
 		}
 		return printForms;
 	}
@@ -186,6 +187,17 @@ public class Configuration {
 
 	public void setStickers(StickersContainer stickersContainer) {
 		this.stickersContainer = stickersContainer;
+	}
+
+	public void setBarcodeLine(BarcodeLine barcodeLine) {
+		this.barcodeLine = barcodeLine;
+	}
+
+	public BarcodeLine getBarcodeLine() {
+		if (barcodeLine == null) {
+			barcodeLine = new BarcodeLine();
+		}
+		return barcodeLine;
 	}
 
 	public Boolean getSoundsEnabled() {

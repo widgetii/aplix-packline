@@ -1,23 +1,22 @@
 package ru.aplix.packline.workflow;
 
-import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.MessageSourceResourceBundle;
-import org.springframework.context.support.ResourceBundleMessageSource;
-
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceResourceBundle;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import ru.aplix.packline.Const;
 import ru.aplix.packline.utils.Utils;
+
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @SuppressWarnings("rawtypes")
 public abstract class StandardWorkflowAction<Controller extends StandardWorkflowController> implements WorkflowAction, DoneListener {
@@ -67,7 +66,7 @@ public abstract class StandardWorkflowAction<Controller extends StandardWorkflow
 				currentAction.controller.terminate(false);
 			}
 
-			// Load form, controoler and create scene
+			// Load form, controller and create scene
 			if (controller == null) {
 				String fxmlName = String.format("/resources/fxml/%s.fxml", getFormName());
 				resources = new MessageSourceResourceBundle(messageSource, Locale.getDefault());

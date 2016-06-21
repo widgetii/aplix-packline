@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Adobe PDF" FileVersion="22">
+    <Pages>
+        <Page Size="4" Width="210.0" Height="297.0" MarginLeft="2.7344606" MarginTop="2.7350063" MarginRight="2.7344606"
+              MarginBottom="2.7350063" Orientation="portrait" UseMargins="true">
+            <Views>
+
+                <BandView Type="page-header"
+                          Height="2.45" Left="0" Top="0" Width="101.47951"
+                          Visible="true">
+                    <ChildViews>
+
+                        <MemoView Name="MemoView1"
+                                  FillColor="#a0d468"
+                                  FontColor="#000000" FontName="Arial" FontSize="10.0" FontStyle="normal"
+                                  FontWeight="bold"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right|bottom" FrameWidth="1.0"
+                                  Left="10" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="center" TextDecoration="none"
+                                  VerticalAlign="middle"
+                                  Visible="true">
+                            <Memo>Высота</Memo>
+                        </MemoView>
+
+                        <MemoView Name="MemoView1"
+                                  FillColor="#ffce54"
+                                  FontColor="#000000" FontName="Arial" FontSize="10.0" FontStyle="normal"
+                                  FontWeight="bold"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right|bottom" FrameWidth="1.0"
+                                  Left="38.33333333" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="center" TextDecoration="none"
+                                  VerticalAlign="middle"
+                                  Visible="true">
+                            <Memo>Ширина</Memo>
+                        </MemoView>
+                        <MemoView Name="MemoView1"
+                                  FillColor="#fc6e51"
+                                  FontColor="#000000" FontName="Arial" FontSize="10.0" FontStyle="normal"
+                                  FontWeight="bold"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right|bottom" FrameWidth="1.0"
+                                  Left="66.66666667" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="center" TextDecoration="none"
+                                  VerticalAlign="middle"
+                                  Visible="true">
+                            <Memo>Длина</Memo>
+                        </MemoView>
+                    </ChildViews>
+                </BandView>
+
+
+                <BandView Type="master-data" Dataset="GenerateLineDataSet"
+                          Left="0" Top="25" Height="3.4321" Width="101.47951"
+                          Visible="true">
+                    <ChildViews>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right" FrameWidth="1.0"
+                                  Left="10" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="30.83333333" Top="0" Height="50" Width="2.5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="28.33333333" Top="50" Height="50" Width="5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo>[VarBarCodeIndex]</Memo>
+                        </MemoView>
+
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="11" Top="-11" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeHeight1]</Memo>
+                        </BarCodeView>
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="11" Top="39" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeHeight2]</Memo>
+                        </BarCodeView>
+
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right" FrameWidth="1.0"
+                                  Left="38.33333333" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="59.16666667" Top="0" Height="50" Width="2.5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="56.66666667" Top="50" Height="50" Width="5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo>[VarBarCodeIndex]</Memo>
+                        </MemoView>
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="39.33333333" Top="-11" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeWidth1]</Memo>
+                        </BarCodeView>
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="39.33333333" Top="39" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeWidth2]</Memo>
+                        </BarCodeView>
+
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#cccccc" FrameStyle="dashed" FrameType="left|right" FrameWidth="1.0"
+                                  Left="66.66666667" Top="0" Height="100" Width="23.33333333"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="87.5" Top="0" Height="50" Width="2.5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo/>
+                        </MemoView>
+                        <MemoView Name="MemoView6"
+                                  FillColor="transparent"
+                                  FontColor="#000000" FontName="Arial" FontSize="9.0" FontStyle="normal"
+                                  FontWeight="normal"
+                                  FrameColor="#000000" FrameStyle="solid" FrameType="bottom" FrameWidth="1.0"
+                                  Left="85" Top="50" Height="50" Width="5"
+                                  Rotate="0"
+                                  Stretched="false"
+                                  TextAlign="right" VerticalAlign="bottom" TextDecoration="none"
+                                  Visible="true">
+                            <Memo>[VarBarCodeIndex]</Memo>
+                        </MemoView>
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="67.66666667" Top="-11" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeLength1]</Memo>
+                        </BarCodeView>
+                        <BarCodeView CheckSum="true" ShowText="false" Align="left" BarCodeType="code39"
+                                     ModuleWidth="0.2" Angle="0" Name="BarCodeView1"
+                                     Left="67.66666667" Top="39" Width="53" Height="75"
+                                     Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0"
+                                     FrameColor="#000000" FillColor="transparent" Visible="true">
+                            <Memo>[VarBarCodeLength2]</Memo>
+                        </BarCodeView>
+                    </ChildViews>
+                </BandView>
+            </Views>
+        </Page>
+    </Pages>
+    <Variables>
+        <Variable Name="VarBarCodeIndex" Type="db-field" Dataset="GenerateLineDataSet" Content="INDEX"/>
+        <Variable Name="VarBarCodeHeight1" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeHeigth1"/>
+        <Variable Name="VarBarCodeWidth1" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeWidth1"/>
+        <Variable Name="VarBarCodeLength1" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeLength1"/>
+        <Variable Name="VarBarCodeHeight2" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeHeigth2"/>
+        <Variable Name="VarBarCodeWidth2" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeWidth2"/>
+        <Variable Name="VarBarCodeLength2" Type="db-field" Dataset="GenerateLineDataSet" Content="BarCodeLength2"/>
+    </Variables>
+    <Datasets>
+        <Dataset Name="GenerateLineDataSet">
+            <Rows>
+                <Row>
+                    <Column Name="VarBarCodeIndex" />
+                    <Column Name="VarBarCodeWidth1" />
+                    <Column Name="VarBarCodeHeight1" />
+                    <Column Name="VarBarCodeLength1" />
+                    <Column Name="VarBarCodeWidth2" />
+                    <Column Name="VarBarCodeHeight2" />
+                    <Column Name="VarBarCodeLength2" />
+                </Row>
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

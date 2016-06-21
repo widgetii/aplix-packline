@@ -84,8 +84,8 @@
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</ServiceAddress>
-		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
+		<_ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</_ServiceAddress>
+		<ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 		<RemoteStoragePath>$(java.io.tmpdir)</RemoteStoragePath>
 	</PostService>
@@ -273,6 +273,16 @@
 			<Quantity>5000</Quantity>
 		</ForCustomers>
 	</Stickers>
+
+	<!-- BarcodeLine for output to print -->
+	<!-- 	"printerId"    - printer identifier, references hardware configuration, see above	-->
+	<BarcodeLine printerId="printer1" >
+		<!-- length (cm.), maximum 4 items -->
+		<Quantity>28</Quantity>
+		<Quantity>56</Quantity>
+		<Quantity>112</Quantity>
+		<Quantity>252</Quantity>
+	</BarcodeLine>
 	
 	<!-- Weighting restrictions by post types -->
 	<Weighting minStableWeight="0.050">
@@ -308,5 +318,5 @@
 	<JPEGCompressionQuality>0.75</JPEGCompressionQuality>
 	
 	<!-- Select a printer for Zebra test -->
-	<ZebraTest printerId="printer1"></ZebraTest>
+	<ZebraTest printerId="printer1" />
 </packline>

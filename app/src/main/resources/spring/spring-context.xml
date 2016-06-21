@@ -234,6 +234,11 @@
 		<property name="nextAction" ref="action2" />
 	</bean>
 
+	<bean id="printBarcodeAction" class="ru.aplix.packline.action.PrintBarcodeAction">
+		<property name="idleTimeout" value="SHORT" />
+		<property name="nextAction" ref="action2" />
+	</bean>
+
 	<bean id="expressMarkingAction1" class="ru.aplix.packline.action.Dimentions2Action">
 		<property name="idleTimeout" value="LONG" />
 		<property name="nextAction" ref="expressMarkingAction2" />

@@ -1,17 +1,15 @@
 package ru.aplix.packline.controller;
 
-import java.util.concurrent.ExecutorService;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import ru.aplix.packline.Const;
 import ru.aplix.packline.PackLineException;
 import ru.aplix.packline.action.RemarkingAction;
@@ -19,10 +17,15 @@ import ru.aplix.packline.hardware.barcode.BarcodeListener;
 import ru.aplix.packline.hardware.barcode.BarcodeScanner;
 import ru.aplix.packline.workflow.WorkflowContext;
 
+import java.util.concurrent.ExecutorService;
+
 public class RemarkingController extends StandardController<RemarkingAction> implements BarcodeListener {
 
 	private final Log LOG = LogFactory.getLog(getClass());
-
+	@FXML
+	public StackPane contentPane;
+	@FXML
+	public HBox printingContainer;
 	@FXML
 	private Label infoLabel;
 	@FXML
