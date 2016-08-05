@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Report PrinterName="Adobe PDF" FileVersion="22">
+    <Pages>
+        <Page Size="9" Width="70.0" Height="103.0" MarginLeft="0.0" MarginTop="0.0" MarginRight="0.0" MarginBottom="0.0" Orientation="portrait" UseMargins="true">
+            <Views>
+                <MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="bold" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="0" Name="MemoView1" Left="2.9297783" Top="8" Width="90" Height="15" BoundLeft="2.7344599" BoundTop="3.3835132" BoundWidth="51.173466" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+                    <Memo>Деловые Линии</Memo>
+				</MemoView>
+				<MemoView FontName="Arial" FontColor="#000000" FontSize="12" FontWeight="normal" FontStyle="normal" TextDecoration="none" TextAlign="center" VerticalAlign="top" Rotate="0" Name="MemoView1" Left="2.9297783" Top="31" Width="90" Height="15" BoundLeft="2.7344599" BoundTop="3.3835132" BoundWidth="51.173466" BoundHeight="5.3572288" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+					<Memo>[Variable20]</Memo>
+				</MemoView>
+				<BarCodeView CheckSum="true" ShowText="false" BarCodeType="code128" ModuleWidth="0.30" Angle="0" Name="MemoView2" Left="2.5391412" Top="42" Width="94.924835" Height="20" BoundLeft="2.3438227" BoundTop="16.917566" BoundWidth="95.31546" BoundHeight="10.150539" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+					<Memo>[Variable27]</Memo>
+				</BarCodeView>
+				<BarCodeView CheckSum="true" ShowText="false" BarCodeType="ean-13" ModuleWidth="0.30" Angle="0" Name="MemoView22" Left="2.5391412" Top="42" Width="94.924835" Height="20" BoundLeft="2.3438227" BoundTop="16.917566" BoundWidth="95.31546" BoundHeight="10.150539" Stretched="false" FrameType="none" FrameStyle="solid" FrameWidth="1.0" FrameColor="#000000" FillColor="transparent" Visible="true">
+					<Memo>[Variable28]</Memo>
+				</BarCodeView>
+            </Views>
+        </Page>
+    </Pages>
+    <Variables>
+		<Variable Name="ContainerProblem" Type="expression" Content="f:choose([Variable14] = '', 'SenderAddress', f:choose([Variable3] = '', 'ReceiverAddress', ''))"/>
+		<Variable Name="kuda_city_adres" Type="expression" Content="f:choose([Variable3] = '', [Variable4], f:choose([Variable4] = '', [Variable3], [Variable4] + ', ' + [Variable3]))"/>
+		<Variable Name="kuda_area_city" Type="expression" Content="f:choose([Variable5] = '', [kuda_city_adres], f:choose([kuda_city_adres] = '', [Variable5], [Variable5] + ', ' + [kuda_city_adres]))"/>
+		<Variable Name="kuda_region_area" Type="expression" Content="f:choose([Variable6] = '' or [Variable6] = [Variable4], [kuda_area_city], f:choose([kuda_area_city] = '', [Variable6], [Variable6] + ', ' + [kuda_area_city]))"/>		
+		<Variable Name="kuda_full_address" Type="expression" Content="f:choose([Variable7] = '', [kuda_region_area], f:choose([kuda_region_area] = '', [Variable7], [Variable7] + ', ' + [kuda_region_area]))"/>		
+		<Variable Name="Variable1" Type="db-field" Dataset="PostDataSet" Content="FIRM_NAME"/>
+		<Variable Name="Variable2" Type="db-field" Dataset="PostDataSet" Content="PostNumber"/>
+        <Variable Name="Variable3" Type="db-field" Dataset="PostDataSet" Content="ADRES"/>
+        <Variable Name="Variable4" Type="db-field" Dataset="PostDataSet" Content="CITY"/>
+        <Variable Name="Variable5" Type="db-field" Dataset="PostDataSet" Content="AREA"/>
+        <Variable Name="Variable6" Type="db-field" Dataset="PostDataSet" Content="REGION"/>
+        <Variable Name="Variable7" Type="db-field" Dataset="PostDataSet" Content="index_to"/>
+        <Variable Name="Variable8" Type="db-field" Dataset="PostDataSet" Content="barkod"/>
+		<Variable Name="Variable9" Type="db-field" Dataset="PostDataSet" Content="FIO"/>
+		<Variable Name="Variable10" Type="db-field" Dataset="PostDataSet" Content="telefon"/>
+		<Variable Name="Variable11" Type="db-field" Dataset="PostDataSet" Content="DELIVERY"/>
+		<Variable Name="Variable12" Type="db-field" Dataset="PostDataSet" Content="URL"/>
+		<Variable Name="Variable13" Type="db-field" Dataset="PostDataSet" Content="POSTTYPE"/>
+		<Variable Name="Variable14" Type="db-field" Dataset="PostDataSet" Content="ADRES1"/>
+		<Variable Name="Variable15" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_DATE"/>
+		<Variable Name="Variable16" Type="db-field" Dataset="PostDataSet" Content="DELIVERY_TIME"/>
+		<Variable Name="Variable17" Type="db-field" Dataset="PostDataSet" Content="POINT_ID"/>
+		<Variable Name="Variable18" Type="db-field" Dataset="PostDataSet" Content="PlaceNumber"/>
+		<Variable Name="Variable19" Type="db-field" Dataset="PostDataSet" Content="PlaceTotalCount"/>
+		<Variable Name="Variable20" Type="db-field" Dataset="PostDataSet" Content="AdditionalNumber"/>
+		<Variable Name="Variable21" Type="expression" Content="f:copy([Variable8], 1, 6)" />
+		<Variable Name="Variable22" Type="expression" Content="f:copy([Variable8], 7, 2)" />
+		<Variable Name="Variable23" Type="expression" Content="f:copy([Variable8], 9, 5)" />
+		<Variable Name="Variable24" Type="expression" Content="f:copy([Variable8], 14, 1)" />
+		<Variable Name="Variable25" Type="expression" Content="[Variable21].concat(' ').concat([Variable22]).concat(' ').concat([Variable23]).concat(' ').concat([Variable24])"  />		
+		<Variable Name="Variable26" Type="expression" Content="f:choose(([Variable6] = 'Санкт-Петербург г' or [Variable6] = 'Москва г') and ([Variable4] = ''), [Variable6], [Variable4])" />
+		<Variable Name="Variable27" Type="expression" Content="f:choose([Variable13] = 'IML', '', [Variable8])" />
+		<Variable Name="Variable28" Type="expression" Content="f:choose([Variable13] = 'IML', [Variable8], '')" />
+		<Variable Name="Variable31" Type="expression" Content="f:copy([Variable15], 9, 2)" />
+		<Variable Name="Variable32" Type="expression" Content="f:copy([Variable15], 6, 2)" />
+		<Variable Name="Variable33" Type="expression" Content="f:copy([Variable15], 1, 4)" />
+		<Variable Name="Variable34" Type="expression" Content="[Variable31].concat('.').concat([Variable32]).concat('.').concat([Variable33])" />
+		<Variable Name="Variable35" Type="expression" Content="f:choose(size([Variable8].toString()) = 14, [Variable25], [Variable8])" />
+		<Variable Name="Variable36" Type="expression" Content="f:choose([Variable13] = 'PACKAGE' and size([Variable17].toString()) > 0, 'САМОВЫВОЗ', '')" />
+    </Variables>
+    <Datasets>        
+        <Dataset Name="PostDataSet">
+            <Rows>
+                <Row>
+                    <Column Name="Variable1"/>
+                    <Column Name="Variable2"/>
+                    <Column Name="Variable3"/>
+                    <Column Name="Variable4"/>
+                    <Column Name="Variable5"/>
+                    <Column Name="Variable6"/>
+                    <Column Name="Variable7"/>
+                    <Column Name="Variable8"/>
+                    <Column Name="Variable9"/>
+					<Column Name="Variable10"/>
+					<Column Name="Variable11"/>
+					<Column Name="Variable12"/>
+					<Column Name="Variable13"/>
+					<Column Name="Variable14"/>
+					<Column Name="Variable15"/>
+					<Column Name="Variable16"/>
+					<Column Name="Variable17"/>
+					<Column Name="Variable18"/>
+					<Column Name="Variable19"/>
+					<Column Name="Variable20"/>
+					<Column Name="Variable21"/>
+					<Column Name="Variable22"/>
+					<Column Name="Variable23"/>
+					<Column Name="Variable24"/>
+					<Column Name="Variable25"/>
+					<Column Name="Variable26"/>
+					<Column Name="Variable27"/>
+					<Column Name="Variable28"/>
+					<Column Name="Variable31"/>
+					<Column Name="Variable32"/>
+					<Column Name="Variable33"/>
+					<Column Name="Variable34"/>
+					<Column Name="Variable35"/>
+					<Column Name="Variable36"/>
+                </Row>								
+            </Rows>
+        </Dataset>
+    </Datasets>
+</Report>

@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import java.net.*?>
-<?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="1000.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.aplix.packline.controller.Dimentions2Controller">
-  <children>
     <BorderPane prefHeight="243.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
         <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0">
-          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
-              <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="719.0" styleClass="action-label" text="%dimentions2.info" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
                 <VBox id="VBox" alignment="CENTER" fillWidth="false" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
-                  <children>
                     <HBox id="HBox" alignment="CENTER" fillHeight="false" prefHeight="498.0" prefWidth="1076.0" spacing="5.0" VBox.vgrow="ALWAYS">
-                      <children>
                         <Pane fx:id="buttonsContainer" prefHeight="499.0" prefWidth="879.0">
-                          <children>
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="163.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.length" />
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="237.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.width" />
                             <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="312.0" prefHeight="49.7373046875" prefWidth="157.0" text="%dimentions.height" />
@@ -47,27 +35,21 @@
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="151.0" mnemonicParsing="false" onAction="#numericKeybordClearClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.clear" textAlignment="CENTER" wrapText="true" />
                             <Button contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="722.0" layoutY="40.0" mnemonicParsing="false" onAction="#numericKeybordBackClick" prefHeight="100.0" prefWidth="100.0" styleClass="numpad-button2" text="%button.back" textAlignment="CENTER" wrapText="true" />
                             <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="31.0" layoutY="392.0" prefHeight="81.0" prefWidth="309.0" text="%dimentions.measurements" textAlignment="CENTER" wrapText="true" />
-                          </children>
                         </Pane>
                         <Button fx:id="nextButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#nextClick" prefHeight="88.0" prefWidth="102.0" styleClass="next-button" text="%button.done" />
-                      </children>
                       <VBox.margin>
                         <Insets />
                       </VBox.margin>
                     </HBox>
-                  </children>
                 </VBox>
-              </children>
             </AnchorPane>
             <fx:include source="error-container.fxml" />
-          </children>
         </StackPane>
       </center>
       <top>
         <fx:include source="system-header.fxml" />
       </top>
     </BorderPane>
-  </children>
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>

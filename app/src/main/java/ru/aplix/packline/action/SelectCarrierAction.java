@@ -50,6 +50,8 @@ public class SelectCarrierAction extends CommonAction<SelectCarrierController> {
 			return PostType.B_2_CPL;
 		} else if ("PEK".equals(selectedCarrier)) {
 			return PostType.PEK;
+    	} else if ("DELLINE".equals(selectedCarrier)) {
+      		return PostType.DELLINE;
 		} else {
 			throw new PackLineException(String.format(getResources().getString("error.unknown.carrier"), selectedCarrier));
 		}

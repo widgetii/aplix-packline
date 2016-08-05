@@ -117,6 +117,12 @@
                            </effect>
                               <Image url="@../images/logo-pek.png" />
                         </ImageView>
+                        <ImageView fx:id="logoDELLINE" fitHeight="80.99998474121094" fitWidth="150.2608469267041" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                              <Image url="@../images/logo-delline.png" />
+                        </ImageView>
                       <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -124,6 +130,7 @@
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       </columnConstraints>
                       <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />

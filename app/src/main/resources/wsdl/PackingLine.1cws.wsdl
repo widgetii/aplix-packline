@@ -263,6 +263,7 @@
 					<xs:enumeration value="BOXBERRY"/>
 					<xs:enumeration value="B2CPL"/>
 					<xs:enumeration value="PEK"/>
+					<xs:enumeration value="DELLINE"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<xs:complexType name="PrintDocument">

@@ -21,6 +21,8 @@ public class SelectCarrierController extends StandardController<SelectCarrierAct
 	@FXML
 	public InnerShadow x2;
 	@FXML
+	public ImageView logoDELLINE;
+	@FXML
 	private ImageView logoAplix;
 	@FXML
 	private ImageView logoCDEK;
@@ -85,7 +87,9 @@ public class SelectCarrierController extends StandardController<SelectCarrierAct
 			value = "B2CPL";
 		} else if (mouseEvent.getSource().equals(logoPEK)) {
 		    value = "PEK";
-	}
+    	} else if (mouseEvent.getSource().equals(logoDELLINE)) {
+			value = "DELLINE";
+		}
 
 		getAction().select(value);
 		done();

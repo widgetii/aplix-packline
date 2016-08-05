@@ -104,7 +104,7 @@ public class DimentionsController extends StandardController<DimentionsAction> i
 		}
 	}
 
-	public boolean isDimentions(final String code) {
+	private boolean isDimentions(final String code) {
 		Boolean result = false;
 		try {
 			Matcher matcher = dimentionsPattern.matcher(code);

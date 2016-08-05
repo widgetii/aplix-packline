@@ -84,8 +84,8 @@
 	
 	<!-- Post Service connection settings -->
 	<PostService>
-		<_ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</_ServiceAddress>
-		<ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</ServiceAddress>
+		<ServiceAddress>http://localhost:8080/mock-post-service/PackingLine?WSDL</ServiceAddress>
+		<_ServiceAddress>http://z.aplix.ru/post/ws/PackingLine.1cws</_ServiceAddress>
 		<Password>P8HLCtoOey</Password>
 		<RemoteStoragePath>$(java.io.tmpdir)</RemoteStoragePath>
 	</PostService>
@@ -247,6 +247,11 @@
 				<PostType>PEK</PostType>
 			</PostTypeRestriction>
 		</Form>		
+    <Form name="Деловые Линии" file="delline" printerId="printer1" whenPrint="MANUALLY" weight="0.0006">
+      <PostTypeRestriction>
+        <PostType>DELLINE</PostType>
+      </PostTypeRestriction>
+    </Form>
 	</Printing>
 
 	<!-- Settings for generation and printing stickers -->

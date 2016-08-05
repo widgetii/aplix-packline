@@ -1,0 +1,4 @@
+CALL mvn
+
+ECHO.
+PAUSE
