@@ -17,6 +17,7 @@
 				<module>hardware/implementations/camera/raspberry</module>
 				<module>hardware/implementations/camera/flussonic</module>
 				<module>hardware/implementations/scales/mera</module>
+				<module>hardware/implementations/scales/middle</module>
 				<module>hardware/implementations/scanner/morena</module>
 			</modules>
 			<build>
